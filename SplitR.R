@@ -171,5 +171,12 @@ for (i in 1:length(list_run_days)) {
     # Remove list values containing '0' (representing missing .w5
     # data files for Feb in leap years)
     if(exists("met")) met <- met[!met %in% c(0)]
+
+    # Are the met files available on the selected path?
+    met.file.df <- setNames(data.frame(mat.or.vec(nr = length(met), nc = 2)),
+                            nm = c("file","available?"))
+    for (k in 1:length(met)) {
+      met.file.df[k, 1] <- met[k]
+      met.file.df[k, 2] <- as.character(file.exists(paste(path_met_files, met[k], sep = '')))}
 # Close the day loop
 }
