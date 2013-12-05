@@ -232,5 +232,10 @@ for (i in 1:length(list_run_days)) {
     cat(length(met), "\n",
         file = paste(path_wd, "CONTROL", sep = ''),
         sep = '', append = TRUE)
+
+    # Write met file paths to 'CONTROL'
+    for (i in 1:length(met)){
+      cat(path_met_files, "\n", met[i], "\n", file = paste(path_wd, "CONTROL", sep = ''),
+      sep = '', append = TRUE)}
 # Close the day loop
 }
