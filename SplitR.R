@@ -178,5 +178,18 @@ for (i in 1:length(list_run_days)) {
     for (k in 1:length(met)) {
       met.file.df[k, 1] <- met[k]
       met.file.df[k, 2] <- as.character(file.exists(paste(path_met_files, met[k], sep = '')))}
+
+
+    # Construct the output filename string for this model run
+    output_filename <- paste("traj",
+                            ifelse(backtrajectory == TRUE, '(back)', '(forward)'), "-",
+                            start_year_GMT, "-",
+                            start_month_GMT, "-",
+                            start_day_GMT, "-",
+                            start_hour_GMT, "-",
+                            "lat_", start_lat_deg, "_",
+                            "long_",start_long_deg, "-",
+                            "height_",start_height_m_ASL, "-",
+                            simulation_duration_h, "h", sep = '')
 # Close the day loop
 }
