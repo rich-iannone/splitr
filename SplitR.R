@@ -22,4 +22,6 @@ top_of_model_domain_m <- 20000
 # Define the type of run (day, range, years)
 run_type <- "range"
 
+# For all runs define the daily hours to start as a vector list
+daily_hours_to_start <- c("03", "06", "09", "12", "15", "18", "21")
 }
