@@ -222,5 +222,10 @@ for (i in 1:length(list_run_days)) {
     cat(vertical_motion_option, "\n",
         file = paste(path_wd, "CONTROL", sep = ''),
         sep = '', append = TRUE)
+
+    # Write top of model domain in meters to 'CONTROL'
+    cat(top_of_model_domain_m, "\n",
+        file = paste(path_wd, "CONTROL", sep = ''),
+        sep = '', append = TRUE)
 # Close the day loop
 }
