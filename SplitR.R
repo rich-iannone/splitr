@@ -100,5 +100,9 @@ for (i in 1:length(list_run_days)) {
 
     #--- Divide different requirements for met files into different cases
 
+    # Set the different cases to FALSE by default
+    case_within_month <- FALSE
+    case_over_year <- FALSE
+    case_over_month <- FALSE
 # Close the day loop
 }
