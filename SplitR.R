@@ -199,5 +199,10 @@ for (i in 1:length(list_run_days)) {
         start_hour_GMT, "\n",
         file = paste(path_wd, "CONTROL", sep = ''),
         sep = '', append = FALSE)
+
+    #Write number of starting locations to 'CONTROL'
+    cat(no_starting_locations, "\n",
+        file = paste(path_wd, "CONTROL", sep = ''),
+        sep = '', append = TRUE)
 # Close the day loop
 }
