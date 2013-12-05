@@ -78,5 +78,11 @@ for (i in 1:length(list_run_days)) {
                                     start_day_GMT, " ",
                                     start_hour_GMT, ":00:00",
                                     sep = ''))
+
+
+    end_time_GMT <- as.POSIXct(ifelse(backtrajectory == TRUE, 
+                               start_time_GMT - (simulation_duration_h * 3600),
+                               start_time_GMT + (simulation_duration_h * 3600)),
+                               origin = "1970-01-01", tz = "UTC")
 # Close the day loop
 }
