@@ -24,4 +24,15 @@ run_type <- "range"
 
 # For all runs define the daily hours to start as a vector list
 daily_hours_to_start <- c("03", "06", "09", "12", "15", "18", "21")
+
+# For the 'day' run type, specify a single day in the format YYYY-MM-DD
+run_day <- "2005-04-08"
+
+# For the 'range' run type, define the beginning and ending period in a vector list
+# containing two items of format YYYY-MM-DD
+run_range <- c("2005-04-05", "2005-04-25")
+
+# For the 'years' run type, specify a year (YYYY) or the range of years (YYYY-YYYY)
+run_years <- "2004-2005"
+
 }
