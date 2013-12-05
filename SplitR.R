@@ -18,4 +18,8 @@ backtrajectory <- TRUE
 simulation_duration_h <- 48
 vertical_motion_option <- 0
 top_of_model_domain_m <- 20000
+
+# Define the type of run (day, range, years)
+run_type <- "range"
+
 }
