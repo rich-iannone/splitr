@@ -104,5 +104,14 @@ for (i in 1:length(list_run_days)) {
     case_within_month <- FALSE
     case_over_year <- FALSE
     case_over_month <- FALSE
+
+    # Determine which of the three cases is true
+    if (number_of_calendar_years == 1 & number_of_calendar_months == 1) {
+    case_within_month <- TRUE
+    } else if (number_of_calendar_years > 1) {
+    case_over_year <- TRUE
+    } else if (number_of_calendar_months > 1) {
+    case_over_month <- TRUE
+    } else { NULL }
 # Close the day loop
 }
