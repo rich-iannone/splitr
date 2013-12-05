@@ -1,4 +1,4 @@
 SplitR
 ======
 
-A collection of tools to help with trajectory and dispersion modelling using HYSPLIT
+SplitR is a collection of functions to help conduct trajectory and dispersion modelling with [NOAA HYSPLIT](http://ready.arl.noaa.gov/HYSPLIT.php).
