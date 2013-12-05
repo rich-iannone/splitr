@@ -1,3 +1,4 @@
+#--- R script for carrying out HYSPLIT trajectory model runs
 
 # Define package requirements
 require(lubridate)
