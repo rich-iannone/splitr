@@ -35,4 +35,18 @@ run_range <- c("2005-04-05", "2005-04-25")
 # For the 'years' run type, specify a year (YYYY) or the range of years (YYYY-YYYY)
 run_years <- "2004-2005"
 
+# Make a vector list of run days in POSIXct format
+if (run_type == "day") {
+  list_run_days <- as.POSIXct(run_day, origin = "1970-01-01", tz = "UTC")
+} else if (run_type == "range") {
+  list_run_days <- seq(as.POSIXct(run_range[1], origin = "1970-01-01", tz = "UTC"),
+                       as.POSIXct(run_range[2], origin = "1970-01-01", tz = "UTC"),
+                       by = 86400)
+} else if (run_type == "years") {
+  list_run_days <- seq(as.POSIXct(paste(substr(run_years, 1, 4),"-01-01", sep = ''), 
+                       origin = "1970-01-01", tz = "UTC"),
+                       as.POSIXct(paste(substr(run_years, 6, 9),"-12-31", sep = ''), 
+                       origin = "1970-01-01", tz = "UTC"),
+                       by = 86400)
+} else {stop("A run type has not been selected")}
 }
