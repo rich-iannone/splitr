@@ -204,5 +204,12 @@ for (i in 1:length(list_run_days)) {
     cat(no_starting_locations, "\n",
         file = paste(path_wd, "CONTROL", sep = ''),
         sep = '', append = TRUE)
+
+    # Write starting latitude, longitude, height ASL to 'CONTROL'
+    cat(start_lat_deg, " ", 
+        start_long_deg, " ", 
+        start_height_m_ASL, "\n",
+        file = paste(path_wd, "CONTROL", sep = ''),
+        sep = '', append = TRUE)
 # Close the day loop
 }
