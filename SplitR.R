@@ -64,5 +64,8 @@ for (i in 1:length(list_run_days)) {
   start_day_GMT <- formatC(as.numeric(day(list_run_days[i])),
                            width = 2, format = "d", flag = "0")
   #start_day_GMT <- "15"
+    
+    # Make nested loop with daily beginning hours
+    for (j in daily_hours_to_start) {    
 # Close the day loop
 }
