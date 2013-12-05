@@ -247,5 +247,7 @@ for (i in 1:length(list_run_days)) {
     cat(output_filename, "\n",
         file = paste(path_wd, "CONTROL", sep = ''),
         sep = '', append = TRUE)
+
+    # CONTROL file is now complete and in the working directory
 # Close the day loop
 }
