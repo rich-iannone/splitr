@@ -89,5 +89,13 @@ for (i in 1:length(list_run_days)) {
     leap_year <- leap_year(ymd(paste(start_year_GMT, "-",
                                      start_month_GMT, "-",
                                      start_day_GMT, sep = '')))
+
+    # Determine whether the beginning and end of the current run
+    # crosses over a calendar year
+    number_of_calendar_years <- ifelse(year(start_time_GMT) == year(end_time_GMT), 1, 2)
+
+    # Determine whether the beginning and end of the current run
+    # crosses over a calendar month
+    number_of_calendar_months <- ifelse(month(start_time_GMT) == month(end_time_GMT), 1, 2)
 # Close the day loop
 }
