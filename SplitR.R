@@ -249,5 +249,8 @@ for (i in 1:length(list_run_days)) {
         sep = '', append = TRUE)
 
     # CONTROL file is now complete and in the working directory
+# Close the hour loop  
+}
+
 # Close the day loop
 }
