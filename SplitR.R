@@ -49,4 +49,9 @@ if (run_type == "day") {
                        origin = "1970-01-01", tz = "UTC"),
                        by = 86400)
 } else {stop("A run type has not been selected")}
+
+# Make loop with all run days
+for (i in 1:length(list_run_days)) {
+
+# Close the day loop
 }
