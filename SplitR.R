@@ -53,5 +53,16 @@ if (run_type == "day") {
 # Make loop with all run days
 for (i in 1:length(list_run_days)) {
 
+  # Define starting time parameters
+  start_year_GMT <- substr(as.character(year(list_run_days[i])),3,4)
+  #start_year_GMT <- "05"
+
+  start_month_GMT <- formatC(as.numeric(month(list_run_days[i])),
+                             width = 2, format = "d", flag = "0")
+  #start_month_GMT <- "04"
+
+  start_day_GMT <- formatC(as.numeric(day(list_run_days[i])),
+                           width = 2, format = "d", flag = "0")
+  #start_day_GMT <- "15"
 # Close the day loop
 }
