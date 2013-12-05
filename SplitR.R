@@ -113,5 +113,59 @@ for (i in 1:length(list_run_days)) {
     } else if (number_of_calendar_months > 1) {
     case_over_month <- TRUE
     } else { NULL }
+
+    # Get vector lists of met files applicable to run from GDAS 1-degree dataset
+    # Trap leap-year condition of missing .w5 met file for February in a '0' list value
+    if (case_within_month == TRUE) met <- c(paste("gdas1.",
+                                          substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+                                          substr(year(start_time_GMT), 3, 4), ".w1", sep = ''),                                      
+                                          paste("gdas1.",
+                                          substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+                                          substr(year(start_time_GMT), 3, 4), ".w2", sep = ''),
+                                          paste("gdas1.",
+                                          substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+                                          substr(year(start_time_GMT), 3, 4), ".w3", sep = ''),
+                                          paste("gdas1.",
+                                          substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+                                          substr(year(start_time_GMT), 3, 4), ".w4", sep = ''),
+                                          ifelse(month(start_time_GMT) == 2 &
+                                                leap_year == TRUE, 0,
+                                          paste("gdas1.",
+                                          substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+                                          substr(year(start_time_GMT), 3, 4), ".w5", sep = '')))
+
+    if (case_over_year == TRUE) met <- c(paste("gdas1.dec",
+                                       substr(year(end_time_GMT), 3, 4), ".w3", sep = ''),                                      
+                                       paste("gdas1.dec",
+                                       substr(year(end_time_GMT), 3, 4), ".w4", sep = ''),
+                                       paste("gdas1.dec",
+                                       substr(year(end_time_GMT), 3, 4), ".w5", sep = ''),
+                                       paste("gdas1.jan",
+                                       substr(year(start_time_GMT), 3, 4), ".w1", sep = ''),
+                                       paste("gdas1.jan",
+                                       substr(year(start_time_GMT), 3, 4), ".w2", sep = ''),
+                                       paste("gdas1.jan",
+                                       substr(year(start_time_GMT), 3, 4), ".w3", sep = ''))
+
+    if (case_over_month == TRUE) met <- c(paste("gdas1.",
+                                        substr(tolower(format(end_time_GMT, "%B")), 1, 3),
+                                        substr(year(end_time_GMT), 3, 4), ".w3", sep = ''),                                      
+                                        paste("gdas1.",
+                                        substr(tolower(format(end_time_GMT, "%B")), 1, 3),
+                                        substr(year(end_time_GMT), 3, 4), ".w4", sep = ''),
+                                        ifelse(month(end_time_GMT) == 2 &
+                                              leap_year == TRUE, 0,
+                                        paste("gdas1.",
+                                        substr(tolower(format(end_time_GMT, "%B")), 1, 3),
+                                        substr(year(end_time_GMT), 3, 4), ".w5", sep = '')),
+                                        paste("gdas1.",
+                                        substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+                                        substr(year(start_time_GMT), 3, 4), ".w1", sep = ''),
+                                        paste("gdas1.",
+                                        substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+                                        substr(year(start_time_GMT), 3, 4), ".w2", sep = ''),
+                                        paste("gdas1.",
+                                        substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+                                        substr(year(start_time_GMT), 3, 4), ".w3", sep = ''))
 # Close the day loop
 }
