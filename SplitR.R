@@ -67,5 +67,8 @@ for (i in 1:length(list_run_days)) {
     
     # Make nested loop with daily beginning hours
     for (j in daily_hours_to_start) {    
+    
+    start_hour_GMT <- j
+    #start_hour_GMT <- "00"
 # Close the day loop
 }
