@@ -211,5 +211,11 @@ for (i in 1:length(list_run_days)) {
         start_height_m_ASL, "\n",
         file = paste(path_wd, "CONTROL", sep = ''),
         sep = '', append = TRUE)
+    
+    # Write direction and number of simulation hours to 'CONTROL'
+    cat(ifelse(backtrajectory == TRUE, "-", ""),
+        simulation_duration_h, "\n",
+        file = paste(path_wd, "CONTROL", sep = ''),
+        sep = '', append = TRUE)
 # Close the day loop
 }
