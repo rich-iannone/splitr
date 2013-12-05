@@ -217,5 +217,10 @@ for (i in 1:length(list_run_days)) {
         simulation_duration_h, "\n",
         file = paste(path_wd, "CONTROL", sep = ''),
         sep = '', append = TRUE)
+
+    # Write vertical motion option to 'CONTROL'
+    cat(vertical_motion_option, "\n",
+        file = paste(path_wd, "CONTROL", sep = ''),
+        sep = '', append = TRUE)
 # Close the day loop
 }
