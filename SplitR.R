@@ -237,5 +237,10 @@ for (i in 1:length(list_run_days)) {
     for (i in 1:length(met)){
       cat(path_met_files, "\n", met[i], "\n", file = paste(path_wd, "CONTROL", sep = ''),
       sep = '', append = TRUE)}
+
+    # Write path for trajectory output files to 'CONTROL'
+    cat(path_output_files, "\n",
+        file = paste(path_wd, "CONTROL", sep = ''),
+        sep = '', append = TRUE)
 # Close the day loop
 }
