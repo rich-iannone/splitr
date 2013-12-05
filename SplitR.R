@@ -249,6 +249,9 @@ for (i in 1:length(list_run_days)) {
         sep = '', append = TRUE)
 
     # CONTROL file is now complete and in the working directory
+    # Execute the model run
+    system(paste("(cd ", path_wd, " && ", path_executable, ")", sep = ''))
+
 # Close the hour loop  
 }
 
