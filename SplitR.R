@@ -167,5 +167,9 @@ for (i in 1:length(list_run_days)) {
                                         paste("gdas1.",
                                         substr(tolower(format(start_time_GMT, "%B")), 1, 3),
                                         substr(year(start_time_GMT), 3, 4), ".w3", sep = ''))
+
+    # Remove list values containing '0' (representing missing .w5
+    # data files for Feb in leap years)
+    if(exists("met")) met <- met[!met %in% c(0)]
 # Close the day loop
 }
