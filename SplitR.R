@@ -20,7 +20,7 @@ vertical_motion_option <- 0
 top_of_model_domain_m <- 20000
 
 # Define the type of run (day, range, years)
-run_type <- "range"
+run_type <- "years"
 
 # Define the type of meteorological data (gdas1, reanalysis)
 met_type <- "reanalysis"
