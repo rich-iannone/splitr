@@ -1,5 +1,10 @@
 #--- R script for carrying out HYSPLIT trajectory model runs
 
+hysplit.trajectory <- function(start_lat_deg,
+                               start_long_deg
+                              
+                                ) {
+
 # Define package requirements
 require(lubridate)
 
