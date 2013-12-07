@@ -3,6 +3,10 @@
 # Define package requirements
 require(lubridate)
 
+#--- Get user input for model run 
+#
+#
+
 # Identify file system paths (UNIX/Linux)
 path_met_files <- "~/Downloads/Hysplit4-OSX/met/"
 path_output_files <- "~/Downloads/Hysplit4-OSX/output_trajectory/"
@@ -37,6 +41,16 @@ run_range <- c("2005-01-05", "2005-04-25")
 
 # For the 'years' run type, specify a year (YYYY) or the range of years (YYYY-YYYY)
 run_years <- "2004"
+
+#
+#
+#--- End of user input for model run
+
+#--- Perform calculations for model run
+#
+#
+
+# Determine whether the run_years input is a single year or a range
 run_years_single_range <- ifelse(nchar(run_years) == 4, "single", "range") 
 
 # Make a vector list of run days in POSIXct format
@@ -77,12 +91,13 @@ for (i in 1:length(list_run_days)) {
 
     #--- Determine which met files are required for this run
     
+    # Determine the start time of the model run
     start_time_GMT <- ymd_hms(paste(start_year_GMT, "-",
                                     start_month_GMT, "-",
                                     start_day_GMT, " ",
                                     start_hour_GMT, ":00:00",
                                     sep = ''))
-
+    # Determine the end time of the model run
     end_time_GMT <- as.POSIXct(ifelse(backtrajectory == TRUE, 
                                start_time_GMT - (simulation_duration_h * 3600),
                                start_time_GMT + (simulation_duration_h * 3600)),
@@ -117,7 +132,8 @@ for (i in 1:length(list_run_days)) {
     case_over_month <- TRUE
     } else { NULL }
 
-    # Get vector lists of met files applicable to run from GDAS 1-degree dataset
+    #--- Get vector lists of met files applicable to run from GDAS 1-degree dataset
+    
     # Trap leap-year condition of missing .w5 met file for February in a '0' list value
     if (case_within_month == TRUE &
         met_type == "gdas1") met <- 
@@ -290,3 +306,7 @@ for (i in 1:length(list_run_days)) {
 
 # Close the day loop
 }
+
+#
+#
+#--- End of calculations for model run
