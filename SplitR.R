@@ -37,6 +37,8 @@ run_range <- c("2005-01-05", "2005-04-25")
 
 # For the 'years' run type, specify a year (YYYY) or the range of years (YYYY-YYYY)
 run_years <- "2004"
+run_years_single_range <- ifelse(nchar(run_years) == 4, "single", "range") 
+
 
 # Make a vector list of run days in POSIXct format
 if (run_type == "day") {
