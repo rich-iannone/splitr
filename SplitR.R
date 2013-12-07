@@ -39,7 +39,6 @@ run_range <- c("2005-01-05", "2005-04-25")
 run_years <- "2004"
 run_years_single_range <- ifelse(nchar(run_years) == 4, "single", "range") 
 
-
 # Make a vector list of run days in POSIXct format
 if (run_type == "day") {
   list_run_days <- as.POSIXct(run_day, origin = "1970-01-01", tz = "UTC")
@@ -62,22 +61,20 @@ for (i in 1:length(list_run_days)) {
 
   # Define starting time parameters
   start_year_GMT <- substr(as.character(year(list_run_days[i])),3,4)
-  #start_year_GMT <- "05"
+
 
   start_month_GMT <- formatC(as.numeric(month(list_run_days[i])),
                              width = 2, format = "d", flag = "0")
-  #start_month_GMT <- "04"
+
 
   start_day_GMT <- formatC(as.numeric(day(list_run_days[i])),
                            width = 2, format = "d", flag = "0")
-  #start_day_GMT <- "15"
-    
+
     # Make nested loop with daily beginning hours
     for (j in daily_hours_to_start) {    
     
     start_hour_GMT <- j
-    #start_hour_GMT <- "00"
-    
+
     #--- Determine which met files are required for this run
     
     start_time_GMT <- ymd_hms(paste(start_year_GMT, "-",
@@ -85,7 +82,6 @@ for (i in 1:length(list_run_days)) {
                                     start_day_GMT, " ",
                                     start_hour_GMT, ":00:00",
                                     sep = ''))
-
 
     end_time_GMT <- as.POSIXct(ifelse(backtrajectory == TRUE, 
                                start_time_GMT - (simulation_duration_h * 3600),
@@ -204,26 +200,6 @@ for (i in 1:length(list_run_days)) {
                      formatC(month(start_time_GMT)+1, width = 2, format = "d", flag = "0")),
               ".gbl",
               sep = ''))
-    
-#     if (case_over_year == TRUE &
-#           met_type == "reanalysis") met <- 
-#       c(paste("RP",
-#               year(end_time_GMT), "12.gbl",
-#               sep = ''),
-#         paste("RP",
-#               year(start_time_GMT), "01.gbl",
-#               sep = ''))
-#     
-#     if (case_over_month == TRUE &
-#           met_type == "reanalysis") met <-
-#       c(paste("RP",
-#               year(start_time_GMT), 
-#               formatC(as.numeric(month(end_time_GMT)),
-#                       width = 2, format = "d", flag = "0"), ".gbl",
-#               sep = ''),
-#         paste("RP",
-#               year(start_time_GMT), start_month_GMT, "gbl",
-#               sep = ''))
     
     # Remove list values containing '0' (representing missing .w5
     # data files for Feb in leap years)
