@@ -12,6 +12,31 @@ require(lubridate)
 #
 #
 
+  
+
+
+
+# start_lat_deg <- 50.108 #no default
+# start_long_deg <- -122.942 #no default
+# start_height_m_ASL <- 2200.0 #no default
+
+# simulation_duration_h <- 24 #default
+# backtrajectory <- TRUE #no default
+# met_type <- "reanalysis" #no default
+# vertical_motion_option <- 0 #default
+# top_of_model_domain_m <- 20000 #default
+
+# run_type <- "years" #no default
+# run_day <- "2005-04-08" #no default
+# run_range <- c("2005-01-05", "2005-04-25") #no default
+# run_years <- "2004" #no default
+# daily_hours_to_start <- c("03", "06", "09", "12", "15", "18", "21") #no default
+
+# path_met_files <- "~/Downloads/Hysplit4-OSX/met/" #no default
+# path_output_files <- "~/Downloads/Hysplit4-OSX/output_trajectory/" #no default
+# path_wd <- "~/Downloads/Hysplit4-OSX/working/" #no default
+# path_executable <- "~/Downloads/Hysplit4-OSX/exec/hyts_std" #no default
+
 # Identify file system paths (UNIX/Linux)
 path_met_files <- "~/Downloads/Hysplit4-OSX/met/"
 path_output_files <- "~/Downloads/Hysplit4-OSX/output_trajectory/"
