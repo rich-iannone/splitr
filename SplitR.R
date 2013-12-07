@@ -183,8 +183,7 @@ for (i in 1:length(list_run_days)) {
 
     # Get vector lists of met files applicable to run from the NCEP/NCAR reanalysis dataset
     # Trap leap-year condition of missing .w5 met file for February in a '0' list value
-    if (case_within_month == TRUE &
-        met_type == "reanalysis") met <- 
+    if (met_type == "reanalysis") met <- 
       c(paste("RP",
               year(start_time_GMT),
               start_month_GMT, ".gbl",
