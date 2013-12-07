@@ -33,10 +33,10 @@ run_day <- "2005-04-08"
 
 # For the 'range' run type, define the beginning and ending period in a vector list
 # containing two items of format YYYY-MM-DD
-run_range <- c("2005-04-05", "2005-04-25")
+run_range <- c("2005-01-05", "2005-04-25")
 
 # For the 'years' run type, specify a year (YYYY) or the range of years (YYYY-YYYY)
-run_years <- "2004-2005"
+run_years <- "2004"
 
 # Make a vector list of run days in POSIXct format
 if (run_type == "day") {
