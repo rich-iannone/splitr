@@ -185,29 +185,45 @@ for (i in 1:length(list_run_days)) {
     # Trap leap-year condition of missing .w5 met file for February in a '0' list value
     if (met_type == "reanalysis") met <- 
       c(paste("RP",
+              ifelse(start_month_GMT == "01",
+                     year(start_time_GMT) - 1,
+                     year(start_time_GMT)),
+              ifelse(start_month_GMT == "01", "12",
+                     formatC(month(start_time_GMT)-1, width = 2, format = "d", flag = "0")),
+              ".gbl",
+              sep = ''),
+        paste("RP",
               year(start_time_GMT),
               start_month_GMT, ".gbl",
-              sep = ''))
-    
-    if (case_over_year == TRUE &
-          met_type == "reanalysis") met <- 
-      c(paste("RP",
-              year(end_time_GMT), "12.gbl",
               sep = ''),
         paste("RP",
-              year(start_time_GMT), "01.gbl",
+              ifelse(start_month_GMT == "12",
+                     year(start_time_GMT) + 1,
+                     year(start_time_GMT)),
+              ifelse(start_month_GMT == "12", "01",
+                     formatC(month(start_time_GMT)+1, width = 2, format = "d", flag = "0")),
+              ".gbl",
               sep = ''))
     
-    if (case_over_month == TRUE &
-          met_type == "reanalysis") met <-
-      c(paste("RP",
-              year(start_time_GMT), 
-              formatC(as.numeric(month(end_time_GMT)),
-                      width = 2, format = "d", flag = "0"), ".gbl",
-              sep = ''),
-        paste("RP",
-              year(start_time_GMT), start_month_GMT, "gbl",
-              sep = ''))
+#     if (case_over_year == TRUE &
+#           met_type == "reanalysis") met <- 
+#       c(paste("RP",
+#               year(end_time_GMT), "12.gbl",
+#               sep = ''),
+#         paste("RP",
+#               year(start_time_GMT), "01.gbl",
+#               sep = ''))
+#     
+#     if (case_over_month == TRUE &
+#           met_type == "reanalysis") met <-
+#       c(paste("RP",
+#               year(start_time_GMT), 
+#               formatC(as.numeric(month(end_time_GMT)),
+#                       width = 2, format = "d", flag = "0"), ".gbl",
+#               sep = ''),
+#         paste("RP",
+#               year(start_time_GMT), start_month_GMT, "gbl",
+#               sep = ''))
     
     # Remove list values containing '0' (representing missing .w5
     # data files for Feb in leap years)
