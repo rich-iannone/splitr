@@ -337,6 +337,9 @@ for (i in 1:length(list_run_days)) {
 # Close the day loop
 }
 
+# Close the function
+}
+
 #
 #
 #--- End of calculations for model run
