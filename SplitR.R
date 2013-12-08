@@ -1,9 +1,22 @@
 #--- R script for carrying out HYSPLIT trajectory model runs
 
 hysplit.trajectory <- function(start_lat_deg,
-                               start_long_deg
-                              
-                                ) {
+                               start_long_deg,
+                               start_height_m_ASL,
+                               simulation_duration_h = 24,
+                               backtrajectory = FALSE,
+                               met_type,
+                               vertical_motion_option = 0,
+                               top_of_model_domain_m = 20000,
+                               run_type,
+                               run_day,
+                               run_range,
+                               run_years,
+                               daily_hours_to_start,
+                               path_met_files,
+                               path_output_files,
+                               path_wd,
+                               path_executable) {
 
 # Define package requirements
 require(lubridate)
