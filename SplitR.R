@@ -34,7 +34,7 @@ require(lubridate)
 # start_height_m_ASL <- 2200.0 #no default
 
 # simulation_duration_h <- 24 #default
-# backtrajectory <- TRUE #no default
+# backtrajectory <- FALSE #default
 # met_type <- "reanalysis" #no default
 # vertical_motion_option <- 0 #default
 # top_of_model_domain_m <- 20000 #default
