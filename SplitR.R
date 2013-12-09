@@ -354,7 +354,7 @@ for (i in 1:length(list_run_days)) {
 #--- End of calculations for model run
 
 
-# tests
+# test run type of 'day' with back trajectory
 
 hysplit.trajectory(start_lat_deg = 50.108,
                    start_long_deg = -122.942,
@@ -374,5 +374,102 @@ hysplit.trajectory(start_lat_deg = 50.108,
                    path_wd = "~/Downloads/Hysplit4-OSX/working/",
                    path_executable = "~/Downloads/Hysplit4-OSX/exec/hyts_std") 
 
+# test run type of 'range' with back trajectory
+
+hysplit.trajectory(start_lat_deg = 50.108,
+                   start_long_deg = -122.942,
+                   start_height_m_ASL = 2200.0,
+                   simulation_duration_h = 24,
+                   backtrajectory = TRUE,
+                   met_type = "reanalysis",
+                   vertical_motion_option = 0,
+                   top_of_model_domain_m = 20000,
+                   run_type = "range",
+                   #run_day = "2005-04-08",
+                   run_range = c("2005-01-05", "2005-04-25"),
+                   #run_years = "2004",
+                   daily_hours_to_start = c("03", "06", "09", "12", "15", "18", "21"),
+                   path_met_files = "~/Downloads/Hysplit4-OSX/met/",
+                   path_output_files = "~/Downloads/Hysplit4-OSX/output_trajectory/",
+                   path_wd = "~/Downloads/Hysplit4-OSX/working/",
+                   path_executable = "~/Downloads/Hysplit4-OSX/exec/hyts_std") 
 
 
+# test run type of 'years' with back trajectory
+hysplit.trajectory(start_lat_deg = 50.108,
+                   start_long_deg = -122.942,
+                   start_height_m_ASL = 2200.0,
+                   simulation_duration_h = 24,
+                   backtrajectory = TRUE,
+                   met_type = "reanalysis",
+                   vertical_motion_option = 0,
+                   top_of_model_domain_m = 20000,
+                   run_type = "years",
+                   #run_day = "2005-04-08",
+                   #run_range = c("2005-01-05", "2005-04-25"),
+                   run_years = "2004",
+                   daily_hours_to_start = c("03", "06", "09", "12", "15", "18", "21"),
+                   path_met_files = "~/Downloads/Hysplit4-OSX/met/",
+                   path_output_files = "~/Downloads/Hysplit4-OSX/output_trajectory/",
+                   path_wd = "~/Downloads/Hysplit4-OSX/working/",
+                   path_executable = "~/Downloads/Hysplit4-OSX/exec/hyts_std")
+
+# test run type of 'day' with forward trajectory
+
+hysplit.trajectory(start_lat_deg = 50.108,
+                   start_long_deg = -122.942,
+                   start_height_m_ASL = 2200.0,
+                   simulation_duration_h = 24,
+                   backtrajectory = FALSE,
+                   met_type = "reanalysis",
+                   vertical_motion_option = 0,
+                   top_of_model_domain_m = 20000,
+                   run_type = "day",
+                   run_day = "2005-04-08",
+                   run_range = c("2005-01-05", "2005-04-25"),
+                   run_years = "2004",
+                   daily_hours_to_start = c("03", "06", "09", "12", "15", "18", "21"),
+                   path_met_files = "~/Downloads/Hysplit4-OSX/met/",
+                   path_output_files = "~/Downloads/Hysplit4-OSX/output_trajectory/",
+                   path_wd = "~/Downloads/Hysplit4-OSX/working/",
+                   path_executable = "~/Downloads/Hysplit4-OSX/exec/hyts_std") 
+
+# test run type of 'range' with forward trajectory
+
+hysplit.trajectory(start_lat_deg = 50.108,
+                   start_long_deg = -122.942,
+                   start_height_m_ASL = 2200.0,
+                   simulation_duration_h = 24,
+                   backtrajectory = FALSE,
+                   met_type = "reanalysis",
+                   vertical_motion_option = 0,
+                   top_of_model_domain_m = 20000,
+                   run_type = "range",
+                   run_day = "2005-04-08",
+                   run_range = c("2005-01-05", "2005-04-25"),
+                   run_years = "2004",
+                   daily_hours_to_start = c("03", "06", "09", "12", "15", "18", "21"),
+                   path_met_files = "~/Downloads/Hysplit4-OSX/met/",
+                   path_output_files = "~/Downloads/Hysplit4-OSX/output_trajectory/",
+                   path_wd = "~/Downloads/Hysplit4-OSX/working/",
+                   path_executable = "~/Downloads/Hysplit4-OSX/exec/hyts_std") 
+
+
+# test run type of 'years' with forward trajectory
+hysplit.trajectory(start_lat_deg = 50.108,
+                   start_long_deg = -122.942,
+                   start_height_m_ASL = 2200.0,
+                   simulation_duration_h = 24,
+                   backtrajectory = FALSE,
+                   met_type = "reanalysis",
+                   vertical_motion_option = 0,
+                   top_of_model_domain_m = 20000,
+                   run_type = "years",
+                   #run_day = "2005-04-08",
+                   #run_range = c("2005-01-05", "2005-04-25"),
+                   run_years = "2004",
+                   daily_hours_to_start = c("03", "06", "09", "12", "15", "18", "21"),
+                   path_met_files = "~/Downloads/Hysplit4-OSX/met/",
+                   path_output_files = "~/Downloads/Hysplit4-OSX/output_trajectory/",
+                   path_wd = "~/Downloads/Hysplit4-OSX/working/",
+                   path_executable = "~/Downloads/Hysplit4-OSX/exec/hyts_std") 
