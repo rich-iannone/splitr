@@ -9,9 +9,9 @@ hysplit.trajectory <- function(start_lat_deg,
                                vertical_motion_option = 0,
                                top_of_model_domain_m = 20000,
                                run_type,
-                               run_day,
-                               run_range,
-                               run_years,
+                               run_day = NULL,
+                               run_range = NULL,
+                               run_years = NULL,
                                daily_hours_to_start,
                                path_met_files,
                                path_output_files,
@@ -49,7 +49,6 @@ require(lubridate)
 #path_executable <- "~/Downloads/Hysplit4-OSX/exec/hyts_std"
 
 # Non-varying model parameters      
-#no_starting_locations <- 1
 #start_lat_deg <- 50.108
 #start_long_deg <- -122.942
 #start_height_m_ASL <- 2200.0
@@ -85,8 +84,13 @@ require(lubridate)
 #
 #
 
+# Set number of starting locations to 1 for this function
+no_starting_locations <- 1
+
 # Determine whether the run_years input is a single year or a range
-run_years_single_range <- ifelse(nchar(run_years) == 4, "single", "range") 
+
+if(exists("run_years")) run_years_single_range <-
+  ifelse(nchar(run_years) == 4, "single", "range") 
 
 # Make a vector list of run days in POSIXct format
 if (run_type == "day") {
@@ -348,3 +352,27 @@ for (i in 1:length(list_run_days)) {
 #
 #
 #--- End of calculations for model run
+
+
+# tests
+
+hysplit.trajectory(start_lat_deg = 50.108,
+                   start_long_deg = -122.942,
+                   start_height_m_ASL = 2200.0,
+                   simulation_duration_h = 24,
+                   backtrajectory = TRUE,
+                   met_type = "reanalysis",
+                   vertical_motion_option = 0,
+                   top_of_model_domain_m = 20000,
+                   run_type = "day",
+                   run_day = "2005-04-08",
+                   #run_range = c("2005-01-05", "2005-04-25"),
+                   #run_years = "2004",
+                   daily_hours_to_start = c("03", "06", "09", "12", "15", "18", "21"),
+                   path_met_files = "~/Downloads/Hysplit4-OSX/met/",
+                   path_output_files = "~/Downloads/Hysplit4-OSX/output_trajectory/",
+                   path_wd = "~/Downloads/Hysplit4-OSX/working/",
+                   path_executable = "~/Downloads/Hysplit4-OSX/exec/hyts_std") 
+
+
+
