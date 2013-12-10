@@ -1,5 +1,3 @@
-#--- R script for carrying out HYSPLIT trajectory model runs
-
 hysplit.trajectory <- function(start_lat_deg,
                                start_long_deg,
                                start_height_m_ASL,
@@ -20,69 +18,6 @@ hysplit.trajectory <- function(start_lat_deg,
 
 # Define package requirements
 require(lubridate)
-
-#--- Get user input for model run 
-#
-#
-# hysplit.trajectory <- function(start_lat_deg = 50.108,
-#                                start_long_deg = -122.942,
-#                                start_height_m_ASL = 2200.0,
-#                                simulation_duration_h = 24,
-#                                backtrajectory = TRUE,
-#                                met_type = "reanalysis",
-#                                vertical_motion_option = 0,
-#                                top_of_model_domain_m = 20000,
-#                                # run_type = "day",
-#                                run_day = 2005-04-08",
-#                                run_range = c("2005-01-05", "2005-04-25"),
-#                                run_years = "2004",
-#                                daily_hours_to_start = c("03", "06", "09", "12", "15", "18", "21"),
-#                                path_met_files = "~/Downloads/Hysplit4-OSX/met/",
-#                                path_output_files = "~/Downloads/Hysplit4-OSX/output_trajectory/",
-#                                path_wd = "~/Downloads/Hysplit4-OSX/working/",
-#                                path_executable = "~/Downloads/Hysplit4-OSX/exec/hyts_std") 
-
-# Identify file system paths (UNIX/Linux)
-#path_met_files <- "~/Downloads/Hysplit4-OSX/met/"
-#path_output_files <- "~/Downloads/Hysplit4-OSX/output_trajectory/"
-#path_wd <- "~/Downloads/Hysplit4-OSX/working/"
-#path_executable <- "~/Downloads/Hysplit4-OSX/exec/hyts_std"
-
-# Non-varying model parameters      
-#start_lat_deg <- 50.108
-#start_long_deg <- -122.942
-#start_height_m_ASL <- 2200.0
-#backtrajectory <- TRUE
-#simulation_duration_h <- 48
-#vertical_motion_option <- 0
-#top_of_model_domain_m <- 20000
-
-# Define the type of run (day, range, years)
-#run_type <- "years"
-
-# Define the type of meteorological data (gdas1, reanalysis)
-#met_type <- "reanalysis"
-
-# For all runs define the daily hours to start as a vector list
-#daily_hours_to_start <- c("03", "06", "09", "12", "15", "18", "21")
-
-# For the 'day' run type, specify a single day in the format YYYY-MM-DD
-#run_day <- "2005-04-08"
-
-# For the 'range' run type, define the beginning and ending period in a vector list
-# containing two items of format YYYY-MM-DD
-#run_range <- c("2005-01-05", "2005-04-25")
-
-# For the 'years' run type, specify a year (YYYY) or the range of years (YYYY-YYYY)
-#run_years <- "2004"
-
-#
-#
-#--- End of user input for model run
-
-#--- Perform calculations for model run
-#
-#
 
 # Set number of starting locations to 1 for this function
 no_starting_locations <- 1
@@ -348,10 +283,3 @@ for (i in 1:length(list_run_days)) {
 
 # Close the function
 }
-
-#
-#
-#--- End of calculations for model run
-
-
-
