@@ -3,6 +3,7 @@ Title: A set of tools to help with HYSPLIT trajectory and dispersion modelling.
 Description: These functions allow you to perform HYSPLIT runs.
 Version: 0.1
 Author: Richard Iannone <riannone@me.com>
+Maintainer: Richard Iannone <riannone@me.com>
 Depends: R (>= 3.0.2)
 License: MIT
 LazyData: true
