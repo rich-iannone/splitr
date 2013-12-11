@@ -43,4 +43,8 @@ for (i in 1:length(trajectory_file_list)) {
                             traj[1,3], traj[1,4], traj[1,5], min = 0, sec = 0, tz = "GMT") +
       traj$hour.inc[k] * 3600}
   traj$date2 <- as.POSIXct(date2, origin = "1970-01-01", tz = "GMT")
+  
+  traj$date <- ISOdatetime(ifelse(traj[1,2] < 50, traj[1,2] + 2000, traj[1,2] + 1900),
+                           traj[1,3], traj[1,4], traj[1,5], min = 0, sec = 0, tz = "GMT")
+  
 }
