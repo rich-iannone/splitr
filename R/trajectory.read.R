@@ -55,5 +55,8 @@ trajectory.read <- function(path_trajectory_files){
     # Close the trajectory file loop  
   }
   
+  # Return the large data frame
+  traj.df
+  
   # Close the function
 }
