@@ -14,6 +14,7 @@ traj.df <- setNames(data.frame(mat.or.vec(nr = 0, nc = 12)),
 
 # Make loop with all trajectory files
 for (i in 1:length(trajectory_file_list)) {
+trajectory.read <- function(path_trajectory_files){
   
   # For each trajectory file, read each line and determine where the variable-length
   # header ends
