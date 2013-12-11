@@ -15,4 +15,13 @@ traj.df <- setNames(data.frame(mat.or.vec(nr = 0, nc = 12)),
 # Make loop with all trajectory files
 for (i in 1:length(trajectory_file_list)) {
   
+  # For each trajectory file, read each line and determine where the variable-length
+  # header ends
+  column.widths <- c(92)
+  traj_temp <- read.fwf(paste(path_trajectory_files, trajectory_file_list[i], sep = ''),
+                        widths = column.widths)
+  
+  for (j in 1:nrow(traj)) {
+    if(length(grep("PRESSURE", traj_temp[j,1])) != 0) skip_up_to_line <- j
+  }
 }
