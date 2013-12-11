@@ -24,4 +24,13 @@ for (i in 1:length(trajectory_file_list)) {
   for (j in 1:nrow(traj)) {
     if(length(grep("PRESSURE", traj_temp[j,1])) != 0) skip_up_to_line <- j
   }
+  
+  column.widths <- c(6, 6, 6, 6, 6, 6, 6, 6,
+                     8, 9, 9, 9, 9)
+  
+  traj <- read.fwf(paste(path_trajectory_files, trajectory_file_list[i], sep = ''),
+                   skip = skip_up_to_line,
+                   widths = column.widths)
+  names(traj) <- c("first", "receptor", "year", "month", "day", "hour", "zero1", "zero2", 
+                   "hour.inc", "lat", "lon", "height", "pressure")
 }
