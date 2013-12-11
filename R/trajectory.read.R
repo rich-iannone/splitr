@@ -33,4 +33,7 @@ for (i in 1:length(trajectory_file_list)) {
                    widths = column.widths)
   names(traj) <- c("first", "receptor", "year", "month", "day", "hour", "zero1", "zero2", 
                    "hour.inc", "lat", "lon", "height", "pressure")
+  traj$first <- NULL
+  traj$zero1 <- NULL
+  traj$zero2 <- NULL
 }
