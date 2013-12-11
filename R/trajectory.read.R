@@ -41,3 +41,7 @@ traj$date2 <- as.POSIXct(date2, origin = "1970-01-01", tz = "GMT")
 
 
 
+# Get file path for trajectory files
+path_trajectory_files <- "~/Downloads/Hysplit4-OSX/output_trajectory/"
+
+}
