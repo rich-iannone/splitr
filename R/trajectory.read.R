@@ -1,5 +1,3 @@
-## Function to read in trajectory files
-
 trajectory.read <- function(path_trajectory_files){
     
   # Generate file list
