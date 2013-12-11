@@ -70,16 +70,3 @@ trajectory.cluster <- function(traj, method = "Euclid", n.cluster = 5, plot = TR
   }
   invisible(traj)
 }
-
-# Generate a data frame with all of the trajectory data that is to be clustered
-traj.df <- trajectory.read(path_trajectory_files =
-                             "~/Downloads/Hysplit4-OSX/output_trajectory/")
-
-# Use the trajectory.cluster function
-
-traj.cluster <- trajectory.cluster(traj = traj.df, method = "Euclid", n.cluster = 4,
-                            plot = TRUE, type = "default", cols = "Set1",
-                            split.after = FALSE, map.fill = TRUE,
-                            map.cols = "grey50", map.alpha = 0.4)
-
-
