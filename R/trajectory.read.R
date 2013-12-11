@@ -2,7 +2,6 @@
 
 trajectory.read <- function(path_trajectory_files){
   
-  
   # Get file path for trajectory files
   #path_trajectory_files <- "~/Downloads/Hysplit4-OSX/output_trajectory/"
   
@@ -58,3 +57,7 @@ trajectory.read <- function(path_trajectory_files){
   
   # Close the function
 }
+
+# test
+
+trajectory.read(path_trajectory_files = "~/Downloads/Hysplit4-OSX/output_trajectory/")
