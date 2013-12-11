@@ -50,4 +50,5 @@ for (i in 1:length(trajectory_file_list)) {
   # Continuously bind data frames together to make a large df with all trajectory  files
   traj.df <- rbind(traj.df, traj)
   
+  # Close the trajectory file loop  
 }
