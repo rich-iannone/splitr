@@ -22,7 +22,7 @@
 column.widths <- c(6, 6, 6, 6, 6, 6, 6, 6,
                    8, 9, 9, 9, 9)
 
-traj <- read.fwf("/Users/riannone/Downloads/Hysplit4-OSX/output_trajectory/traj(back)-05-04-08-03-lat_50.108_long_-122.942-height_2200-24h",
+traj <- read.fwf("~/Downloads/Hysplit4-OSX/output_trajectory/traj(back)-05-04-08-03-lat_50.108_long_-122.942-height_2200-24h",
                  skip = 7,
                  column.widths)
 names(traj) <- c("first", "receptor", "year", "month", "day", "hour", "zero1", "zero2", 
