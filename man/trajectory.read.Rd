@@ -34,5 +34,6 @@ Richard Iannone
 }
 \examples{
 # Process all trajectory output files in the specified output directory
-trajectory.df <- trajectory.read(path_trajectory_files = "~/HYSPLIT4/out/trajectory")
+trajectory.df <- trajectory.read(path_trajectory_files =
+                                 "~/HYSPLIT4/out/trajectory")
 }
