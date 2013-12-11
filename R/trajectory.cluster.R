@@ -1,4 +1,4 @@
-trajectory.cluster <- function(traj, method = "Euclid", n.cluster = 5, plot = TRUE, 
+trajectory.cluster <- function(traj_df, method = "Euclid", n.cluster = 5, plot = TRUE, 
                                type = "default", cols = "Set1", split.after = FALSE,
                                map.fill = TRUE, 
                                map.cols = "grey30",
@@ -31,14 +31,14 @@ trajectory.cluster <- function(traj, method = "Euclid", n.cluster = 5, plot = TR
   extra.args$lwd <- if ("lwd" %in% names(extra.args)) 
     extra.args$lwd
   else extra.args$lwd <- 4
-  calcTraj <- function(traj) {
-    traj <- traj[order(traj$date, traj$hour.inc), ]
-    traj$len <- ave(traj$lat, traj$date, FUN = length)
-    n <- max(abs(traj$hour.inc)) + 1
-    traj <- subset(traj, len == n)
-    len <- nrow(traj)/n
-    x <- matrix(traj$lon, nrow = n)
-    y <- matrix(traj$lat, nrow = n)
+  calcTraj <- function(traj_df) {
+    traj_df <- traj_df[order(traj_df$date, traj_df$hour.inc), ]
+    traj_df$len <- ave(traj_df$lat, traj_df$date, FUN = length)
+    n <- max(abs(traj_df$hour.inc)) + 1
+    traj_df <- subset(traj_df, len == n)
+    len <- nrow(traj_df)/n
+    x <- matrix(traj_df$lon, nrow = n)
+    y <- matrix(traj_df$lat, nrow = n)
     z <- matrix(0, nrow = n, ncol = len)
     res <- matrix(0, nrow = len, ncol = len)
     res <- .Call(method, x, y, res)
@@ -46,27 +46,30 @@ trajectory.cluster <- function(traj, method = "Euclid", n.cluster = 5, plot = TR
     dist.res <- as.dist(res)
     clusters <- pam(dist.res, n.cluster)
     cluster <- rep(clusters$clustering, each = n)
-    traj$cluster <- factor(paste("C", cluster, sep = ""))
-    traj
+    traj_df$cluster <- factor(paste("C", cluster, sep = ""))
+    traj_df
   }
   if (split.after) {
-    traj <- ddply(traj, "default", calcTraj)
-    traj <- cutData(traj, type)
+    traj_df <- ddply(traj_df, "default", calcTraj)
+    traj_df <- cutData(traj_df, type)
   }
   else {
-    traj <- cutData(traj, type)
-    traj <- ddply(traj, type, calcTraj)
+    traj_df <- cutData(traj_df, type)
+    traj_df <- ddply(traj_df, type, calcTraj)
   }
   if (plot) {
-    agg <- aggregate(traj[, c("lat", "lon", "date")], traj[, 
-                                                           c("cluster", "hour.inc", type)], mean, na.rm = TRUE)
-    class(agg$date) = class(traj$date)
+    agg <- aggregate(traj_df[, c("lat", "lon", "date")],
+                     traj_df[, c("cluster", "hour.inc", type)],
+                     mean, na.rm = TRUE)
+    class(agg$date) = class(traj_df$date)
     attr(agg$date, "tzone") <- "GMT"
     plot.args <- list(agg, x = "lon", y = "lat", group = "cluster", 
-                      col = cols, type = type, map = TRUE, map.fill = map.fill, 
-                      map.cols = map.cols, map.alpha = map.alpha)
+                      col = cols, type = type, map = TRUE,
+                      map.fill = map.fill, 
+                      map.cols = map.cols,
+                      map.alpha = map.alpha)
     plot.args <- listUpdate(plot.args, extra.args)
     plt <- do.call(scatterPlot, plot.args)
   }
-  invisible(traj)
+  invisible(traj_df)
 }
