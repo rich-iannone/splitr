@@ -49,7 +49,7 @@ trajectory.read <- function(path_trajectory_files){
     traj$date <- ISOdatetime(ifelse(traj[1,2] < 50, traj[1,2] + 2000, traj[1,2] + 1900),
                              traj[1,3], traj[1,4], traj[1,5], min = 0, sec = 0, tz = "GMT")
     
-    # Continuously bind data frames together to make a large df with all trajectory  files
+    # Continuously bind data frames together to make a large df with all trajectory files
     traj.df <- rbind(traj.df, traj)
     
     # Close the trajectory file loop  
