@@ -4,6 +4,6 @@
 \alias{SplitR-package}
 \title{SplitR}
 \description{
-SplitR
+SplitR is a package that allows you to achieve Complete HYSPLIT very quickly and painlessly.
 }
 
