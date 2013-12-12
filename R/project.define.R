@@ -58,6 +58,15 @@ project.define <- function(project_name,
   #
   #
   
+  # Construct a long project name based on the input string and date/time of creation 
+  long_project_name <- paste(project_name, "_",
+                             year(Sys.time()), "-",
+                             month(Sys.time()), "-",
+                             day(Sys.time()), " (",
+                             hour(Sys.time()), "_",
+                             minute(Sys.time()), "_",
+                             round(second(Sys.time()), digits = 0), ")",
+                             sep = '')
   #
   #
   #---- Create project folder
