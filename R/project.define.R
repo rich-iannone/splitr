@@ -67,6 +67,11 @@ project.define <- function(project_name,
                              minute(Sys.time()), "_",
                              round(second(Sys.time()), digits = 0), ")",
                              sep = '')
+  
+  # Create the new project directory in the SplitR/Projects folder
+  dir.create(file.path(paste(SplitR_path, "/Projects/", long_project_name, sep = '')),
+             showWarnings = FALSE)
+  
   #
   #
   #---- Create project folder
