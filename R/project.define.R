@@ -8,6 +8,8 @@ project.define <- function(project_name,
   # This function allows for the creation of a new project folder
   # It also allows for the setting of global options that apply to all projects
   
+  # Test data
+  project_name <- "test-project"
   install_folders = FALSE
   install_in_documents = TRUE
   #other_install_path = ""
