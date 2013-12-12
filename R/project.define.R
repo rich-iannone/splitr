@@ -38,6 +38,9 @@ project.define <- function(project_name,
   # Set new SplitR directory as the working directory
   setwd(file.path(paste(documents_folder_path, "/SplitR", sep = '')))
   
+  # Set path of SplitR directory
+  SplitR_path <- file.path(paste(documents_folder_path, "/SplitR", sep = ''))
+  
   # If the SplitR directory didn't exist, create the other subfolders (Exec, Met, Projects)
   if(SplitR_dir_exists == FALSE){
     dir.create(file.path(paste(documents_folder_path, "/SplitR/Exec", sep = '')),
