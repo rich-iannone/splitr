@@ -3,6 +3,8 @@ project.define <- function(project_name,
                            install_in_documents = TRUE,
                            other_install_path){
   
+  require(lubridate)
+  
   # This function allows for the creation of a new project folder
   # It also allows for the setting of global options that apply to all projects
   
