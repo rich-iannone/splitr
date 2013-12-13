@@ -32,6 +32,7 @@ project.define <- function(project_name,
                               TRUE, FALSE)
   
   # If the SplitR folder exists, return its path
+  SplitR_path <- file.path(paste(documents_folder_path, "/SplitR", sep = ''))
   
   #
   #
