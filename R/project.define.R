@@ -104,7 +104,4 @@ project.define <- function(project_name,
   #  
   #---- Add to .SplitR_projects document
   
-
-  
-  
 }
