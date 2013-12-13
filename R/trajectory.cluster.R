@@ -3,10 +3,13 @@ trajectory.cluster <- function(traj_df, method = "Euclid", n.cluster = 5, plot =
                                map.fill = TRUE, 
                                map.cols = "grey30",
                                map.alpha = 0.4, ...){
+  
+  # Require statements
   require(maps)
   require(mapdata)
   require(plyr)
   require(cluster)
+  
   listUpdate <- function(a, b, drop.dots = TRUE, subset.a = NULL, subset.b = NULL) 
   {
     if (drop.dots) {
