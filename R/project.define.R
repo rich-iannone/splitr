@@ -59,13 +59,18 @@ project.define <- function(project_name,
   #
   
   # Construct a long project name based on the input string and date/time of creation 
+  project_create_date <- Sys.time()
+    
+  create_date_string <-  paste(year(project_create_date), "-",
+                               month(project_create_date), "-",
+                               day(project_create_date), " (",
+                               hour(project_create_date), "_",
+                               minute(project_create_date), "_",
+                               round(second(project_create_date), digits = 0), ")",
+                               sep = '')
+  
   long_project_name <- paste(project_name, "_",
-                             year(Sys.time()), "-",
-                             month(Sys.time()), "-",
-                             day(Sys.time()), " (",
-                             hour(Sys.time()), "_",
-                             minute(Sys.time()), "_",
-                             round(second(Sys.time()), digits = 0), ")",
+                             create_date_string,
                              sep = '')
   
   # Create the new project directory in the SplitR/Projects folder
