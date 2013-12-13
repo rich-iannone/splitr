@@ -81,6 +81,19 @@ project.define <- function(project_name,
   #
   #---- Create project folder
   
+  #---- Add to .SplitR_projects document
+  #
+  #
+  cat(project_name, ",",
+      project_create_date, ",\"",
+      file.path(paste(SplitR_path, "/Projects/", long_project_name, sep = '')), "\"\n",
+      sep = '',
+      file = paste(file.path(paste(SplitR_path, "/Projects/", sep = '')),
+                   ".SplitR_projects", sep = ''),
+      append = TRUE)
+  #
+  #  
+  #---- Add to .SplitR_projects document
   
   
 }
