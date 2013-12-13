@@ -14,7 +14,7 @@ project.define <- function(project_name,
   install_in_documents = TRUE
   #other_install_path = ""
   
-  #---- Create folder structure
+  #---- Check for existance and path of SplitR folder
   #
   # 
   
@@ -30,6 +30,16 @@ project.define <- function(project_name,
                                                             "/SplitR", sep = ''),
                                                full.names = TRUE, recursive = FALSE)) > 0, 
                               TRUE, FALSE)
+  
+  # If the SplitR folder exists, return its path
+  
+  #
+  #
+  #---- Check for existance and path of SplitR folder
+  
+  #---- Create folder structure
+  #
+  # 
   
   # If it the SplitR folder doesn't exist, crete the folder tree in ~/Documents
   if(SplitR_dir_exists == FALSE) {
