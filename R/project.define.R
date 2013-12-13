@@ -48,9 +48,6 @@ project.define <- function(project_name,
                                "/SplitR", sep = '')),
                showWarnings = FALSE)
   
-  # Set new SplitR directory as the working directory
-  # setwd(file.path(paste(documents_folder_path, "/SplitR", sep = '')))
-  
   # Set path of SplitR directory
   SplitR_path <- file.path(paste(documents_folder_path, "/SplitR", sep = ''))
   
@@ -106,6 +103,8 @@ project.define <- function(project_name,
   #
   #  
   #---- Add to .SplitR_projects document
+  
+
   
   
 }
