@@ -11,8 +11,7 @@ trajectory.cluster <- function(traj_df, method = "Euclid", n.cluster = 5, plot =
   require(cluster)
   
   # Include listUpdate function
-  listUpdate <- function(a, b, drop.dots = TRUE, subset.a = NULL, subset.b = NULL) 
-  {
+  listUpdate <- function(a, b, drop.dots = TRUE, subset.a = NULL, subset.b = NULL) {
     if (drop.dots) {
       a <- a[names(a) != "..."]
       b <- b[names(b) != "..."]
