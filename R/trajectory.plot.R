@@ -16,4 +16,7 @@ trajectory.plot <- function(traj_df = "traj.df",
                             map.cols = "grey40", 
                             map.alpha = 0.4){
   
+  # Include require statements for 'maps' and 'mapdata' packages
+  require(maps)
+  require(mapdata)
 }
