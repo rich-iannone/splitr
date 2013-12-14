@@ -31,4 +31,29 @@ trajectory.plot <- function(traj_df = "traj.df",
   if (!"xlab" %in% names(extra.args)) 
     extra.args$xlab <- "longitude"
     
+  
+  if (missing(pollutant)) {
+    if (is.na(group)) 
+      key <- FALSE
+    else key <- TRUE
+    if (!"main" %in% names(extra.args)) 
+      extra.args$main <- NULL
+    scatterPlot.args <- list(traj.df, x = lon, y = lat, z = NA, 
+                             type = type, method = method, smooth = smooth, map = map, 
+                             x.inc = lon.inc, y.inc = lat.inc, key = key, group = group, 
+                             map.fill = map.fill, map.res = map.res, map.cols = map.cols, 
+                             map.alpha = map.alpha)
+  }
+  else {
+    if (!"main" %in% names(extra.args)) 
+      extra.args$main <- pollutant
+    scatterPlot.args <- list(traj.df, x = lon, y = lat, z = pollutant, 
+                             type = type, method = method, smooth = smooth, map = map, 
+                             x.inc = lon.inc, y.inc = lat.inc, group = group, 
+                             map.fill = map.fill, map.res = map.res, map.cols = map.cols, 
+                             map.alpha = map.alpha)
+  }
+  scatterPlot.args <- listUpdate(scatterPlot.args, extra.args)
+  do.call(scatterPlot, scatterPlot.args)
+  
 }
