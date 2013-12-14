@@ -19,6 +19,13 @@ trajectory.plot <- function(traj_df = "traj.df",
   # Include require statements for 'maps' and 'mapdata' packages
   require(maps)
   require(mapdata)
+   
+  len <- NULL
+  traj.df <- traj.df[order(traj.df$date, traj.df$hour.inc), ]
+  traj.df$len <- ave(traj.df$lat, traj.df$date, FUN = length)
+  n <- max(abs(traj.df$hour.inc)) + 1
+  traj.df <- subset(traj.df, len == n)
+  
   # Collect plotting parameters
   extra.args <- list(...)
   method <- "scatter"
