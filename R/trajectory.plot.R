@@ -1,4 +1,4 @@
-trajectory.plot <- function(traj_df = "traj.df",
+trajectory.plot <- function(traj.df = "traj.df",
                             lon = "lon",
                             lat = "lat",
                             pollutant = "height", 
@@ -19,7 +19,7 @@ trajectory.plot <- function(traj_df = "traj.df",
   # Include require statements for 'maps' and 'mapdata' packages
   require(maps)
   require(mapdata)
-   
+  
   len <- NULL
   traj.df <- traj.df[order(traj.df$date, traj.df$hour.inc), ]
   traj.df$len <- ave(traj.df$lat, traj.df$date, FUN = length)
