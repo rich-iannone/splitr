@@ -14,7 +14,9 @@ trajectory.plot <- function(traj.df = "traj.df",
                             map.fill = TRUE,
                             map.res = "default",
                             map.cols = "grey40", 
-                            map.alpha = 0.4){
+                            map.alpha = 0.4,
+                            plot.type = "l"
+                            ){
   
   # Include require statements for 'maps' and 'mapdata' packages
   require(openair)
@@ -26,6 +28,6 @@ trajectory.plot <- function(traj.df = "traj.df",
            statistic = statistic, percentile = percentile, map = map,
            lon.inc = lon.inc, lat.inc = lat.inc, min.bin = min.bin, group = group,
            map.fill = map.fill, map.res = map.res,
-           map.cols = map.cols, map.alpha = map.alpha)
+           map.cols = map.cols, map.alpha = map.alpha, plot.type = plot.type)
   
 }
