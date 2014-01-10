@@ -15,51 +15,37 @@ hysplit.trajectory <- function(start_lat_deg,
                                path_output_files,
                                path_wd,
                                path_executable) {
-
-# Define package requirements
-require(lubridate)
-
-# Set number of starting locations to 1 for this function
-no_starting_locations <- 1
-
-# Determine whether the run_years input is a single year or a range
-
-if(exists("run_years")) run_years_single_range <-
-  ifelse(nchar(run_years) == 4, "single", "range") 
-
-# Make a vector list of run days in POSIXct format
-if (run_type == "day") {
-  list_run_days <- as.POSIXct(run_day, origin = "1970-01-01", tz = "UTC")
-} else if (run_type == "range") {
-  list_run_days <- seq(as.POSIXct(run_range[1], origin = "1970-01-01", tz = "UTC"),
-                       as.POSIXct(run_range[2], origin = "1970-01-01", tz = "UTC"),
-                       by = 86400)
-} else if (run_type == "years") {
-  list_run_days <- seq(as.POSIXct(paste(substr(run_years, 1, 4),"-01-01", sep = ''), 
-                       origin = "1970-01-01", tz = "UTC"),
-                       as.POSIXct(ifelse(run_years_single_range == "single",
-                                         paste(substr(run_years, 1, 4),"-12-31",sep = ''),
-                                         paste(substr(run_years, 6, 9),"-12-31",sep = '')), 
-                       origin = "1970-01-01", tz = "UTC"),
-                       by = 86400)
-} else {stop("A run type has not been selected")}
-
-# Make loop with all run days
-for (i in 1:length(list_run_days)) {
-
-  # Define starting time parameters
-  start_year_GMT <- substr(as.character(year(list_run_days[i])),3,4)
-
-
-  start_month_GMT <- formatC(as.numeric(month(list_run_days[i])),
-                             width = 2, format = "d", flag = "0")
-
-
-  start_day_GMT <- formatC(as.numeric(day(list_run_days[i])),
-                           width = 2, format = "d", flag = "0")
-
-    # Make nested loop with daily beginning hours
-    for (j in daily_hours_to_start) {    
+  
+  # Define package requirements
+  require(lubridate)
+  
+  # Set number of starting locations to 1 for this function
+  no_starting_locations <- 1
+  
+  # Determine whether the run_years input is a single year or a range
+  
+  if(exists("run_years")) run_years_single_range <-
+    ifelse(nchar(run_years) == 4, "single", "range") 
+  
+  # Make a vector list of run days in POSIXct format
+  if (run_type == "day") {
+    list_run_days <- as.POSIXct(run_day, origin = "1970-01-01", tz = "UTC")
+  } else if (run_type == "range") {
+    list_run_days <- seq(as.POSIXct(run_range[1], origin = "1970-01-01", tz = "UTC"),
+                         as.POSIXct(run_range[2], origin = "1970-01-01", tz = "UTC"),
+                         by = 86400)
+  } else if (run_type == "years") {
+    list_run_days <- seq(as.POSIXct(paste(substr(run_years, 1, 4),"-01-01", sep = ''), 
+                                    origin = "1970-01-01", tz = "UTC"),
+                         as.POSIXct(ifelse(run_years_single_range == "single",
+                                           paste(substr(run_years, 1, 4),"-12-31",sep = ''),
+                                           paste(substr(run_years, 6, 9),"-12-31",sep = '')), 
+                                    origin = "1970-01-01", tz = "UTC"),
+                         by = 86400)
+  } else {stop("A run type has not been selected")}
+  
+  # Make loop with all run days
+  for (i in 1:length(list_run_days)) {
     
     start_hour_GMT <- j
 
