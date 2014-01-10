@@ -75,8 +75,8 @@ trajectory.read <- function(path_output_files,
     # Close the trajectory file loop  
   }
   
-  # Return the large data frame
-  traj.df
+  # Assign object to global environment
+  assign("traj.df", traj.df, envir = .GlobalEnv)
   
   # Close the function
 }
