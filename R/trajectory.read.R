@@ -1,4 +1,3 @@
-# Add selection of year and of starting height to function
 trajectory.read <- function(path_output_files,
                             year = NULL,
                             start_height_m_ASL = NULL){
