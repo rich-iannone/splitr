@@ -12,7 +12,22 @@ require(devtools)
 install_github('SplitR', 'rich-iannone')
 ```
 
+## Description
+
+The basic ideas behind SplitR are to make the process of setting up and executing HYSPLIT runs very fast and easy, and, to directly use the output data in further analyses. To achieve these aims, SplitR can enforce a directory structure so that input files are reusable across SplitR projects and output files are organized in named project folders. Also, the framework allows for the automatic generation of input `CONTROL` files for continuous running (e.g., over one or more years, specific date ranges, etc.). The user doesn't really need to examine the series of input `CONTROL` files but the text are included in automatically generated log files for later inspection. Most importantly, getting to a `Complete Hysplit` situation is enjoyable again.
+
 ## Features
 
-The basic ideas behind SplitR are to make the process of setting up and executing Hysplit runs very fast and easy, and, to directly use the output data in further analyses. To achieve these aims, SplitR can enforce a directory structure so that input files are reusable across SplitR projects and output files are organized in named project folders. Also, the framework allows for the automatic generation of input `CONTROL` files for continuous running (e.g., over one or more years, specific date ranges, etc.). The user doesn't really need to examine the series of input `CONTROL` files but the text are included in automatically generated log files for later inspection.
+- organization modelling runs through the SplitR project framework
+- retrieval of the necessary meteorological data files
+- simple setup of trajectory and dispersion model runs (forward or backward)
+- batching options: set and get model results for multiple start times through a single year, several years, or a defined time range
+- trajectory plotting
+- clustering of trajectories and plotting of clusters
+
+### Future Additions
+
+- parallelization of trajectory and dispersion runs
+- merging of trajectories with pollutant concentration data for advanced air quality analyses
+- visualization of dispersion analyses
 
