@@ -28,8 +28,6 @@ trajectory.read <- function(path_output_files,
                                                      "-.*$", sep = ''))
   }
   
-  "traj(back)-12-12-31-21-lat_42.83752_long_-80.30364-height_500-48h"
-  
   # Initialize empty data frame with 12 named columns
   traj.df <- setNames(data.frame(mat.or.vec(nr = 0, nc = 12)),
                       nm = c("receptor", "year", "month", "day",
