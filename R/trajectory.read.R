@@ -1,5 +1,5 @@
 # Add selection of year and of starting height to function
-trajectory.read <- function(path_trajectory_files,
+trajectory.read <- function(path_output_files,
                             year = NULL,
                             start_height_m_ASL = NULL){
     
@@ -19,7 +19,7 @@ trajectory.read <- function(path_trajectory_files,
     # For each trajectory file, read each line and determine where the variable-length
     # header ends
     column.widths <- c(92)
-    traj_temp <- read.fwf(paste(path_trajectory_files, trajectory_file_list[i], sep = ''),
+    traj_temp <- read.fwf(paste(path_output_files, trajectory_file_list[i], sep = ''),
                           widths = column.widths)
     
     for (j in 1:nrow(traj_temp)) {
@@ -29,7 +29,7 @@ trajectory.read <- function(path_trajectory_files,
     column.widths <- c(6, 6, 6, 6, 6, 6, 6, 6,
                        8, 9, 9, 9, 9)
     
-    traj <- read.fwf(paste(path_trajectory_files, trajectory_file_list[i], sep = ''),
+    traj <- read.fwf(paste(path_output_files, trajectory_file_list[i], sep = ''),
                      skip = skip_up_to_line,
                      widths = column.widths)
     names(traj) <- c("first", "receptor", "year", "month", "day", "hour", "zero1", "zero2", 
