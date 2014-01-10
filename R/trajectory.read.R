@@ -8,7 +8,24 @@ trajectory.read <- function(path_output_files,
     trajectory_file_list <- list.files(path = path_output_files)
   } else if (!is.null(year) & is.null(start_height_m_ASL)) {
     trajectory_file_list <- list.files(path = path_output_files,
-                                       pattern = "traj")
+                                       pattern = paste("^traj.*?)-",
+                                                       gsub("^[0-9][0-9]", "",
+                                                            as.character(year)),
+                                                       ".*$", sep = ''))
+  } else if (is.null(year) & !is.null(start_height_m_ASL)) {
+    trajectory_file_list <- list.files(path = path_output_files,
+                                      pattern = paste("^.*?height_",
+                                                      gsub("^[0-9][0-9]", "",
+                                                           as.character(year)),
+                                                      ".*$", sep = ''))
+  } else if (!is.null(year) & !is.null(start_height_m_ASL)) {
+  trajectory_file_list <- list.files(path = path_output_files,
+                                     pattern = paste("^traj.*?)-",
+                                                     gsub("^[0-9][0-9]", "",
+                                                          as.character(year)),
+                                                     ".*?height_",
+                                                     as.character(start_height_m_ASL),
+                                                     "-.*$", sep = ''))
   }
   
   "traj(back)-12-12-31-21-lat_42.83752_long_-80.30364-height_500-48h"
