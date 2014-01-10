@@ -50,6 +50,8 @@ hysplit.trajectory <- function(start_lat_deg,
     start_hour_GMT <- j
 
     #--- Determine which met files are required for this run
+    # Define starting time parameters
+    start_year_GMT <- substr(as.character(year(list_run_days[i])),3,4)
     
     # Determine the start time of the model run
     start_time_GMT <- ymd_hms(paste(start_year_GMT, "-",
