@@ -1,8 +1,9 @@
 \docType{package}
-\name{The SplitR Package}
+\name{SplitR}
+\alias{SplitR}
 \alias{SplitR-package}
-\title{The SplitR Package}
+\title{SplitR}
 \description{
-SplitR is a package that allows you to achieve Complete HYSPLIT very quickly and painlessly.
+SplitR
 }
 

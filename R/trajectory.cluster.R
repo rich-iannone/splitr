@@ -9,6 +9,7 @@ trajectory.cluster <- function(traj_df, method = "Euclid", n.cluster = 5, plot =
   require(mapdata)
   require(plyr)
   require(cluster)
+  require(openair)
   
   
   # Include listUpdate function
