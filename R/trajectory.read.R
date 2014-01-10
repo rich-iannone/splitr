@@ -1,6 +1,8 @@
+# Add selection of year and of starting height to function
 trajectory.read <- function(path_trajectory_files){
     
   # Generate file list
+  # Use 'pattern' argument to select specific year or starting heights
   trajectory_file_list <- list.files(path = path_trajectory_files)
   
   # Initialize empty data frame with 12 named columns
