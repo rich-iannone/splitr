@@ -8,7 +8,14 @@ trajectory.read <- function(path_output_files,
   
   # Generate file list
   # Use 'pattern' argument to select specific year or starting heights
-  trajectory_file_list <- list.files(path = path_trajectory_files)
+  if (is.null(year) & is.null(start_height_m_ASL)) {
+    trajectory_file_list <- list.files(path = path_output_files)
+  } else if (!is.null(year) & is.null(start_height_m_ASL)) {
+    trajectory_file_list <- list.files(path = path_output_files,
+                                       pattern = "traj")
+  }
+  
+  "traj(back)-12-12-31-21-lat_42.83752_long_-80.30364-height_500-48h"
   
   # Initialize empty data frame with 12 named columns
   traj.df <- setNames(data.frame(mat.or.vec(nr = 0, nc = 12)),
