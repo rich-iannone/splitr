@@ -1,5 +1,7 @@
 # Add selection of year and of starting height to function
-trajectory.read <- function(path_trajectory_files){
+trajectory.read <- function(path_trajectory_files,
+                            year = NULL,
+                            start_height_m_ASL = NULL){
     
   # Generate file list
   # Use 'pattern' argument to select specific year or starting heights
