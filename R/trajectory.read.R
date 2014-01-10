@@ -1,5 +1,6 @@
 trajectory.read <- function(path_output_files,
                             year = NULL,
+                            start_height_m_ASL = NULL){  
   
   # Generate file list
   # Use 'pattern' argument to select specific year or starting heights
