@@ -4,7 +4,7 @@ trajectory.cluster <- function(traj_df, method = "Euclid", n.cluster = 5, plot =
                                map.cols = "grey30",
                                map.alpha = 0.4, ...){
   
-  # Require statements
+  # Define package requirements
   require(maps)
   require(mapdata)
   require(plyr)
