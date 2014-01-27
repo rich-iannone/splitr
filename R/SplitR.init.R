@@ -8,7 +8,7 @@ SplitR.init <- function(install_folders = TRUE,
   install_in_documents = TRUE
   #other_install_path = ""
   
-  #---- Check for existance and path of SplitR folder
+  #---- Check for existence and path of SplitR folder
   #
   # 
   
@@ -19,7 +19,7 @@ SplitR.init <- function(install_folders = TRUE,
     documents_folder_path <- paste("~", "/Documents", sep = '')
   }
   
-  # Check existence of SplitR folder
+  # Check for existence of SplitR folder
   SplitR_dir_exists <- 
     ifelse(length(list.dirs(path = paste(documents_folder_path,
                                          "/SplitR", sep = ''),
@@ -32,7 +32,7 @@ SplitR.init <- function(install_folders = TRUE,
   
   #
   #
-  #---- Check for existance and path of SplitR folder
+  #---- Check for existence and path of SplitR folder
   
   #---- Create folder structure and initialize .SplitR file
   #
