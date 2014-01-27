@@ -7,5 +7,75 @@ SplitR.init <- function(install_folders = TRUE,
   install_folders = TRUE
   install_in_documents = TRUE
   #other_install_path = ""
+  
+  #---- Check for existance and path of SplitR folder
+  #
+  # 
+  
+  #Check existence of Documents folder in user home folder
+  if(length(grep("/Documents$",
+                 list.dirs(path = "~", full.names = TRUE,
+                           recursive = FALSE))) > 0) {
+    documents_folder_path <- paste("~", "/Documents", sep = '')
+  }
+  
+  # Check existence of SplitR folder
+  SplitR_dir_exists <- 
+    ifelse(length(list.dirs(path = paste(documents_folder_path,
+                                         "/SplitR", sep = ''),
+                            full.names = TRUE, recursive = FALSE)) > 0, TRUE, FALSE)
+  
+  # If the SplitR folder exists, return its path
+  if (SplitR_dir_exists == TRUE) {
+    SplitR_path <- file.path(paste(documents_folder_path, "/SplitR", sep = ''))
+  }
+  
+  #
+  #
+  #---- Check for existance and path of SplitR folder
+  
+  #---- Create folder structure and initialize .SplitR file
+  #
+  # 
+  
+  # If it the SplitR folder doesn't exist, crete the folder tree in ~/Documents
+  if(SplitR_dir_exists == FALSE & install_folders == TRUE) {
+    dir.create(file.path(paste(documents_folder_path,
+                               "/SplitR", sep = '')),
+               showWarnings = FALSE)
+    
+    # Set path of SplitR directory
+    SplitR_path <- file.path(paste(documents_folder_path, "/SplitR", sep = ''))
+    
+    # Subfolder creation (Exec, Met, Projects)
+    dir.create(file.path(paste(documents_folder_path, "/SplitR/Exec", sep = '')),
+               showWarnings = FALSE)
+    dir.create(file.path(paste(documents_folder_path, "/SplitR/Met", sep = '')),
+               showWarnings = FALSE)
+    dir.create(file.path(paste(documents_folder_path, "/SplitR/Projects", sep = '')),
+               showWarnings = FALSE)  
+  
+    # Get date and time of initialization
+    create_time <- Sys.time()
+    
+    # Initialize the .SplitR plaintext file
+    cat("paths", "-----",
+        paste(documents_folder_path, "/SplitR/Exec", sep = ''),
+        paste(documents_folder_path, "/SplitR/Met", sep = ''),
+        paste(documents_folder_path, "/SplitR/Projects", sep = ''),
+        "platform", "--------",
+        "executables", "-----------",
+        "met files", "---------",
+        "log", "---",
+        paste("Folders were created on: ", create_time, sep = ''),
+        file = paste(SplitR_path, "/.SplitR", sep = ''),
+        sep = "\n")
+  
+  }
+  
+  #
+  #
+  #---- Create folder structure and initialize .SplitR file
+  
   # Close function
 }
