@@ -11,7 +11,7 @@ SplitR.info.edit <- function(mode = "add",
                           met = 4,
                           log = 5)
   
-  # Get Documents folder path (in user home folder)
+  # Get Documents folder path (in user's home folder)
   if(length(grep("/Documents$",
                  list.dirs(path = "~", full.names = TRUE,
                            recursive = FALSE))) > 0) {
