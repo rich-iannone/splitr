@@ -95,6 +95,9 @@ SplitR.info.edit <- function(mode = "add",
                                     heading = heading,
                                     line_number)
     
+    # Overwrite the original .SplitR file with new one
+    cat(SplitR_file_text, file = SplitR_file_path, sep = "\n")
+  }
   
   # Close function
 }
