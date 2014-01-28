@@ -1,12 +1,7 @@
 SplitR.init <- function(install_folders = TRUE,
                         install_in_documents = TRUE,
                         other_install_path){
-  
-  
-  # Test data
-  install_folders = TRUE
-  install_in_documents = TRUE
-  #other_install_path = ""
+
   
   #---- Check for existence and path of SplitR folder
   #
@@ -24,8 +19,6 @@ SplitR.init <- function(install_folders = TRUE,
     ifelse(length(list.dirs(path = paste(documents_folder_path,
                                          "/SplitR", sep = ''),
                             full.names = TRUE, recursive = FALSE)) > 0, TRUE, FALSE)
-  
-  
   
   # If the SplitR folder exists, return its path
   if (SplitR_dir_exists == TRUE) {
