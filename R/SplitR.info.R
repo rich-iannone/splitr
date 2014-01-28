@@ -70,7 +70,7 @@ SplitR.info.add <- function(heading,
     unlist(result)
   }
   
-  # Remove from heading
-
+  # Insert string just below heading
+  SplitR_file_text <- insert.at(SplitR_file_text, positions[heading_order] + 1, string)
   
 }
