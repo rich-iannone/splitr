@@ -62,15 +62,18 @@ SplitR.info.edit <- function(mode = "add",
     if (grepl("log", SplitR_file_text[i]) == TRUE) positions[5] <- i
   }
   
-  
-  # Function for inserting a vector element at an arbitrary position in a vector
-  insert.at <- function(a, pos, ...){
-    dots <- list(...)
-    stopifnot(length(dots) == length(pos))
-    result <- vector("list", 2 * length(pos) + 1)
-    result[c(TRUE, FALSE)] <- split(a, cumsum(seq_along(a) %in% (pos + 1)))
-    result[c(FALSE, TRUE)] <- dots
-    unlist(result)
+  # Add text to log
+  if (mode == "add") {
+    # Function for inserting a vector element at an arbitrary position in a vector
+    insert.at <- function(a, pos, ...){
+      dots <- list(...)
+      stopifnot(length(dots) == length(pos))
+      result <- vector("list", 2 * length(pos) + 1)
+      result[c(TRUE, FALSE)] <- split(a, cumsum(seq_along(a) %in% (pos + 1)))
+      result[c(FALSE, TRUE)] <- dots
+      unlist(result)
+    }
+    
   }
   
   # Insert string just below heading
