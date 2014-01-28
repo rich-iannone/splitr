@@ -74,6 +74,8 @@ SplitR.info.edit <- function(mode = "add",
       unlist(result)
     }
     
+    # Insert string just below heading
+    SplitR_file_text <- insert.at(SplitR_file_text, positions[heading_order] + 1, string)
   }
   
   # Insert string just below heading
