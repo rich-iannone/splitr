@@ -59,20 +59,15 @@ SplitR.info.add <- function(heading,
     if (grepl("log", SplitR_file_text[i]) == TRUE) positions[5] <- i
   }
   
-  # Add to heading
-  if (mode == "add") {
-    insert.at <- function(a, pos, ...){
-      dots <- list(...)
-      stopifnot(length(dots) == length(pos))
-      result <- vector("list", 2 * length(pos) + 1)
-      result[c(TRUE, FALSE)] <- split(a, cumsum(seq_along(a) %in% (pos + 1)))
-      result[c(FALSE, TRUE)] <- dots
-      unlist(result)
-    }
-    SplitR_file_text <- insert.at(SplitR_file_text, positions[heading_order] + 1, string)
-    
-    # Overwrite the original .SplitR file with new one
-    cat(SplitR_file_text, file = SplitR_file_path, sep = "\n")
+  
+  # Function for inserting a vector element at an arbitrary position in a vector
+  insert.at <- function(a, pos, ...){
+    dots <- list(...)
+    stopifnot(length(dots) == length(pos))
+    result <- vector("list", 2 * length(pos) + 1)
+    result[c(TRUE, FALSE)] <- split(a, cumsum(seq_along(a) %in% (pos + 1)))
+    result[c(FALSE, TRUE)] <- dots
+    unlist(result)
   }
   
   # Remove from heading
