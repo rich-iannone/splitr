@@ -77,5 +77,20 @@ SplitR.init <- function(install_folders = TRUE,
   #
   #---- Create folder structure and initialize .SplitR file
   
+  # Access the newly created .SplitR file
+  SplitR_file <- file(paste("file://",
+                            system("cd ~ ; pwd", intern = TRUE),
+                            gsub("~", "", SplitR_path),
+                            "/.SplitR", sep = ''))
+  
+  # Get .SplitR file as character vector
+  SplitR_file_text <- readLines(SplitR_file)
+  
+  # Check that the 'SplitR_file_text' object was created
+  if (exists("SplitR_file_text")) SplitR_file_text_created <- TRUE
+  
+  # Close and destroy the connection to file
+  close(SplitR_file)
+                                
   # Close function
 }
