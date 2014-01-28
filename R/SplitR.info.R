@@ -77,3 +77,6 @@ SplitR.info.add <- function(heading,
   cat(SplitR_file_text, file = SplitR_file_path, sep = "\n")
   
   # Close function
+}
+
+
