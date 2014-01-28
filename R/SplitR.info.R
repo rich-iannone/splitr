@@ -89,6 +89,12 @@ SplitR.info.edit <- function(mode = "add",
       remove <- SplitR_file_text[positions[heading_order] + line_number + 1]
       a[!a %in% remove]
     }
+    
+    # Remove string a set number of lines below heading
+    SplitR_file_text <- remove.from(SplitR_file_text,
+                                    heading = heading,
+                                    line_number)
+    
   
   # Close function
 }
