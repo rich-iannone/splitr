@@ -1,5 +1,6 @@
-SplitR.info <- function(mode = 'add',
-                        string,
+SplitR.info <- function(mode = "add",
+                        heading,
+                        string
                         ){
   
   
