@@ -81,6 +81,14 @@ SplitR.info.edit <- function(mode = "add",
     cat(SplitR_file_text, file = SplitR_file_path, sep = "\n")
   }
   
+  # Remove text from log
+  if (mode == "remove") {
+    # Function for removing a vector element from an arbitrary position in a vector
+    remove.from <- function(a, heading, line_number){
+      a <- SplitR_file_text
+      remove <- SplitR_file_text[positions[heading_order] + line_number + 1]
+      a[!a %in% remove]
+    }
   
   # Close function
 }
