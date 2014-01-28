@@ -1,5 +1,7 @@
-SplitR.info.add <- function(heading,
-                            string){
+SplitR.info.edit <- function(mode = "add",
+                            heading,
+                            string,
+                            line_number){
   
   heading_order <- switch(heading,
                           paths = 1,
