@@ -73,4 +73,7 @@ SplitR.info.add <- function(heading,
   # Insert string just below heading
   SplitR_file_text <- insert.at(SplitR_file_text, positions[heading_order] + 1, string)
   
-}
+  # Overwrite the original .SplitR file with new one
+  cat(SplitR_file_text, file = SplitR_file_path, sep = "\n")
+  
+  # Close function
