@@ -101,5 +101,3 @@ SplitR.info.edit <- function(mode = "add",
   
   # Close function
 }
-
-
