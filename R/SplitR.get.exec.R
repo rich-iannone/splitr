@@ -36,6 +36,8 @@ SplitR.get.exec <- function(){
     # Extract last line from output of hdiutil info stdout
     location <- hdiutil_info[length(hdiutil_info)]
     
+    # Get device path for mounted .dmg file
+    dev_path <- strsplit(location, split = "\\t", perl = TRUE)[[1]][1]
     # Copy executable binaries from disk image to 'SplitR/Exec' folder
     system(paste("cd '/Volumes/Disk Image/Hysplit4/exec/' ; cp * ",
                  paste(documents_folder_path, "/SplitR/Exec", sep = ''), sep = ''))
