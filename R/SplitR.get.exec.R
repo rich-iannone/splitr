@@ -43,7 +43,7 @@ SplitR.get.exec <- function(){
     vol_path <- strsplit(location, split = "\\t", perl = TRUE)[[1]][3]
     
     # Copy executable binaries from disk image to 'SplitR/Exec' folder
-    system(paste("cd '/Volumes/Disk Image/Hysplit4/exec/' ; cp * ",
+    system(paste("cd '", vol_path, "/Hysplit4/exec/' ; cp * ",
                  paste(documents_folder_path, "/SplitR/Exec", sep = ''), sep = ''))
     
     # Get information on disks
