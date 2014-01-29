@@ -7,7 +7,7 @@ SplitR.init <- function(install_folders = TRUE,
   #
   # 
   
-  #Check existence of Documents folder in user home folder
+  # Check for existence of Documents folder in user home folder
   if(length(grep("/Documents$",
                  list.dirs(path = "~", full.names = TRUE,
                            recursive = FALSE))) > 0) {
