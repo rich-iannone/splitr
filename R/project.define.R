@@ -41,22 +41,22 @@ project.define <- function(project_name){
   # 
   
   # If it the SplitR folder doesn't exist, crete the folder tree in ~/Documents
-  if(SplitR_dir_exists == FALSE) {
-    dir.create(file.path(paste(documents_folder_path,
-                               "/SplitR", sep = '')),
-               showWarnings = FALSE)
-  
-  # Set path of SplitR directory
-  SplitR_path <- file.path(paste(documents_folder_path, "/SplitR", sep = ''))
-  
-  # Subfolder creation (Exec, Met, Projects)
-    dir.create(file.path(paste(documents_folder_path, "/SplitR/Exec", sep = '')),
-               showWarnings = FALSE)
-    dir.create(file.path(paste(documents_folder_path, "/SplitR/Met", sep = '')),
-               showWarnings = FALSE)
-    dir.create(file.path(paste(documents_folder_path, "/SplitR/Projects", sep = '')),
-               showWarnings = FALSE)  
-  }
+  if(SplitR_dir_exists == FALSE) SplitR.init()
+#     dir.create(file.path(paste(documents_folder_path,
+#                                "/SplitR", sep = '')),
+#                showWarnings = FALSE)
+#   
+#   # Set path of SplitR directory
+#   SplitR_path <- file.path(paste(documents_folder_path, "/SplitR", sep = ''))
+#   
+#   # Subfolder creation (Exec, Met, Projects)
+#     dir.create(file.path(paste(documents_folder_path, "/SplitR/Exec", sep = '')),
+#                showWarnings = FALSE)
+#     dir.create(file.path(paste(documents_folder_path, "/SplitR/Met", sep = '')),
+#                showWarnings = FALSE)
+#     dir.create(file.path(paste(documents_folder_path, "/SplitR/Projects", sep = '')),
+#                showWarnings = FALSE)  
+#   }
   #
   #
   #---- Create folder structure
