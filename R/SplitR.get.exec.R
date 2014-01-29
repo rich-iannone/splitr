@@ -17,3 +17,12 @@ SplitR.get.exec <- function(){
   if (SplitR_dir_exists == TRUE) {
     SplitR_path <- file.path(paste(documents_folder_path, "/SplitR", sep = ''))
   }
+  
+  download.file(url = "http://ready.arl.noaa.gov/data/web/models/hysplit4/applex/HYSPLIT_mac.dmg",
+                destfile = ,
+                method = ,
+                mode = )
+                
+                
+}
+
