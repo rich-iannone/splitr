@@ -33,6 +33,8 @@ SplitR.get.exec <- function(){
     # Get information on disks
     hdiutil_info <- system("hdiutil info", intern = TRUE)
     
+    # Unmount and eject disk image
+    system(paste("hdiutil detach /dev/disk2s9"))
 
                 
                 
