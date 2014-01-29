@@ -1,5 +1,6 @@
 project.define <- function(project_name){
   
+  # Add require statement
   require(lubridate)
   
   # This function allows for the creation of a new project folder
