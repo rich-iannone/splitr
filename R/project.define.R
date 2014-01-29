@@ -1,7 +1,4 @@
-project.define <- function(project_name,
-                           install_folders = FALSE,
-                           install_in_documents = TRUE,
-                           other_install_path){
+project.define <- function(project_name){
   
   require(lubridate)
   
