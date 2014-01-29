@@ -9,9 +9,9 @@ project.define <- function(project_name,
   # It also allows for the setting of global options that apply to all projects
   
   # Test data
-  project_name <- "test-project"
-  install_folders = FALSE
-  install_in_documents = TRUE
+#   project_name <- "test-project"
+#   install_folders = FALSE
+#   install_in_documents = TRUE
   #other_install_path = ""
   
   #---- Check for existance and path of SplitR folder
