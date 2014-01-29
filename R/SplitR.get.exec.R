@@ -25,8 +25,12 @@ SplitR.get.exec <- function(){
                                    sep = ''),
                   method = "auto",
                   mode = "w")
+    
+    # Attach the HYSPLIT .dmg file
     system(paste("cd ", documents_folder_path, "/SplitR/Exec", " ; ",
                  "hdiutil attach HYSPLIT_mac.dmg", sep = ''))
+    
+    
     system(paste("cd '/Volumes/Disk Image/Hysplit4/exec/' ; cp * ",
                  paste(documents_folder_path, "/SplitR/Exec", sep = ''), sep = ''))
     
