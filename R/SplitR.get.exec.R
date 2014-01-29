@@ -46,11 +46,8 @@ SplitR.get.exec <- function(){
     system(paste("cd '", vol_path, "/Hysplit4/exec/' ; cp * ",
                  paste(documents_folder_path, "/SplitR/Exec", sep = ''), sep = ''))
     
-    # Get information on disks
-    hdiutil_info <- system("hdiutil info", intern = TRUE)
-    
     # Unmount and eject disk image
-    system(paste("hdiutil detach /dev/disk2s9"))
+    system(paste("hdiutil detach ", dev_path, sep = ''))
 
   }
     
