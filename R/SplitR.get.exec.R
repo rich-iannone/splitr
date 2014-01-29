@@ -16,12 +16,19 @@ SplitR.get.exec <- function(){
   # If the SplitR folder exists, return its path
   if (SplitR_dir_exists == TRUE) {
     SplitR_path <- file.path(paste(documents_folder_path, "/SplitR", sep = ''))
+  
+    # Download the HYSPLIT Mac .dmg file, place it in the Exec folder
+    download.file(url = "http://ready.arl.noaa.gov/data/web/models/hysplit4/applex/HYSPLIT_mac.dmg",
+                  destfile = paste(documents_folder_path,
+                                   "/SplitR/Exec",
+                                   "/HYSPLIT_mac.dmg",
+                                   sep = ''),
+                  method = "auto",
+                  mode = "w")
+    
   }
   
-  download.file(url = "http://ready.arl.noaa.gov/data/web/models/hysplit4/applex/HYSPLIT_mac.dmg",
-                destfile = ,
-                method = ,
-                mode = )
+
                 
                 
 }
