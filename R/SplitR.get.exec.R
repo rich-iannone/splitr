@@ -33,6 +33,9 @@ SplitR.get.exec <- function(){
     # Get information on disks in order to get path for newly mounted disk image
     hdiutil_info <- system("hdiutil info", intern = TRUE)
     
+    # Extract last line from output of hdiutil info stdout
+    location <- hdiutil_info[length(hdiutil_info)]
+    
     # Copy executable binaries from disk image to 'SplitR/Exec' folder
     system(paste("cd '/Volumes/Disk Image/Hysplit4/exec/' ; cp * ",
                  paste(documents_folder_path, "/SplitR/Exec", sep = ''), sep = ''))
