@@ -30,8 +30,9 @@ SplitR.get.exec <- function(){
     system(paste("cd '/Volumes/Disk Image/Hysplit4/exec/' ; cp * ",
                  paste(documents_folder_path, "/SplitR/Exec", sep = ''), sep = ''))
     
-  }
-  
+    # Get information on disks
+    hdiutil_info <- system("hdiutil info", intern = TRUE)
+    
 
                 
                 
