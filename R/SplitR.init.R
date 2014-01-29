@@ -53,6 +53,9 @@ SplitR.init <- function(install_folders = TRUE,
     # Get date and time of initialization
     create_time <- Sys.time()
     
+    # Get the platform name
+    
+    
     # Initialize the .SplitR plaintext file
     cat("paths", "-----",
         paste(documents_folder_path, "/SplitR/Exec", sep = ''),
