@@ -65,6 +65,7 @@ SplitR.init <- function(install_folders = TRUE,
         paste(Sys.info()[['sysname']], ", release ", Sys.info()[['release']], 
               " (", Sys.info()[['machine']], ")", sep = '')
         "executables", "-----------",
+        paste("Available in '/SplitR/Exec' folder"),
         "met files", "---------",
         "log", "---",
         paste("Folders were created on: ", create_time, sep = ''),
