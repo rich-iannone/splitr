@@ -63,7 +63,7 @@ SplitR.init <- function(install_folders = TRUE,
         paste(documents_folder_path, "/SplitR/Projects", sep = ''),
         "platform", "--------",
         paste(Sys.info()[['sysname']], ", release ", Sys.info()[['release']], 
-              " (", Sys.info()[['machine']], ")", sep = '')
+              " (", Sys.info()[['machine']], ")", sep = ''),
         "executables", "-----------",
         paste("Available in '/SplitR/Exec' folder"),
         "met files", "---------",
