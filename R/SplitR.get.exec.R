@@ -12,3 +12,8 @@ SplitR.get.exec <- function(){
     ifelse(length(list.dirs(path = paste(documents_folder_path,
                                          "/SplitR", sep = ''),
                             full.names = TRUE, recursive = FALSE)) > 0, TRUE, FALSE)
+  
+  # If the SplitR folder exists, return its path
+  if (SplitR_dir_exists == TRUE) {
+    SplitR_path <- file.path(paste(documents_folder_path, "/SplitR", sep = ''))
+  }
