@@ -18,5 +18,10 @@ project.list <- function(){
     
     # Get path to SplitR folder
     SplitR_path <- file.path(paste(documents_folder_path, "/SplitR", sep = ''))
+    
+    # Read .SplitR_projects file as a data frame
+    project_list <- read.csv(paste(SplitR_path, "/Projects/.SplitR_projects", sep = ''),
+                             header = FALSE, stringsAsFactors = FALSE)
+    
 
 }
