@@ -15,7 +15,7 @@ project.open <- function(list_select = TRUE, project = NULL){
                      paste(nrow(project.list()), sep = ''), "] ", sep = ''))
     project_number_to_open <- as.numeric(project_number_to_open)
     
-    # Validate input, 
+    # Validate input
     if(!(project_number_to_open %in% project_numbers)){
       return("That is not a valid project number.")
     }
