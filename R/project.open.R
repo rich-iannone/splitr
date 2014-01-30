@@ -32,8 +32,10 @@ project.open <- function(list_select = TRUE, project = NULL){
       save_to_Rdata <- "y"
     }
     
-      # Clear out objects in the global workspace
-      rm(list = ls())
+    if(save_to_Rdata == "yes" | save_to_Rdata == "yeah" |
+         save_to_Rdata == "yep" | save_to_Rdata == "sure"){
+      save_to_Rdata <- "y"
+    }
     
     # Change the working directory to that of the project to open
     setwd(project.list(display_paths = TRUE)[project_number_to_open,3])
