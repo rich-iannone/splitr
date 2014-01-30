@@ -21,7 +21,8 @@ project.open <- function(list_select = TRUE, project = NULL){
     }
     
     # If currently in a project, ask to close that project before switching to the next
-    
+    if(grepl("*/Documents/SplitR/Projects/*", getwd()) == TRUE){
+      close_current_project <- readline("Close the current project? [y/n] ")
     
     # Ask to save the current workspace to an .Rdata file in its project directory
       save_to_Rdata <- readline("Save the workspace? [y/n] ")
