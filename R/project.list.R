@@ -26,11 +26,20 @@ project.list <- function(display_paths = FALSE){
     # Include column names
     colnames(project_list) <- c("Project Name", "Date Created", "Location")
     
-    # Format the display of projects in single lines
-    project_list_oneline <- project_list
-    project_list_oneline[,2] <- as.POSIXct(project_list_oneline[,2], origin = "1970-01-01")
-    project_list_oneline[,3] <- NULL
-    project_list_oneline
+    # Either format the list of project with or without the project paths
+    if (display_paths == FALSE) {
+      project_list_nopaths <- project_list
+      project_list_nopaths[,2] <- as.POSIXct(project_list_nopaths[,2], origin = "1970-01-01")
+      project_list_nopaths[,3] <- NULL
+      return(project_list_nopaths)
+    }
+    
+    if (display_paths == TRUE) {
+      project_list_withpaths <- project_list
+      project_list_withpaths[,2] <- as.POSIXct(project_list_withpaths[,2], origin = "1970-01-01")
+      return(project_list_withpaths)
+    }
+    
   }
-
+  
 }
