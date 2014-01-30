@@ -20,19 +20,25 @@ project.open <- function(list_select = TRUE, project = NULL){
       return("That is not a valid project number.")
     }
     
+    # If currently in a project, close that project before switching to the next
+    
+    
+    # Ask to save the current workspace to an .Rdata file in its project directory
+    
+    
     # Clear out objects in the global workspace
-  
-  
-  # Change the working directory to that of the project to open
-  
-  
-  # Load the .Rdata file in the new project, if available
-  
+    
+    
+    # Change the working directory to that of the project to open
+    setwd(project.list(display_paths = TRUE)[project_number_to_open,3])
+    
+    # Load the .Rdata file in the new project, if available
+    
   }
   
   if (list_select == FALSE & !is.null(project)) {
-  
-  
+    
+    
   }
   
   
