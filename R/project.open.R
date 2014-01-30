@@ -26,6 +26,11 @@ project.open <- function(list_select = TRUE, project = NULL){
     # Ask to save the current workspace to an .Rdata file in its project directory
       save_to_Rdata <- readline("Save the workspace? [y/n]")
     
+    # Validate input
+    if(!(save_to_Rdata %in% c("y", "n", "yes", "no", "yeah", "nope",
+                              "yep", "sure", "nah", "false"))){
+      save_to_Rdata <- "y"
+    }
     
       # Clear out objects in the global workspace
       rm(list = ls())
