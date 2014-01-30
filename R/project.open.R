@@ -4,7 +4,7 @@ project.open <- function(list_select = TRUE, project = NULL){
   project_numbers <- seq(from = 1, to = nrow(project.list()), by = 1)
   
   # Allow for the selection of the project to open through the display of the project list
-  if (list_select == TRUE) {
+  if (list_select == TRUE & is.null(project)) {
     
     # Display the project list
     print(project.list())
