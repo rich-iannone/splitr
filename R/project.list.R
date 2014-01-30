@@ -16,5 +16,7 @@ project.list <- function(){
   # Perform remainder of script if the SplitR folder exists
   if (SplitR_dir_exists == TRUE) {
     
+    # Get path to SplitR folder
+    SplitR_path <- file.path(paste(documents_folder_path, "/SplitR", sep = ''))
 
 }
