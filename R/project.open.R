@@ -41,6 +41,11 @@ project.open <- function(list_select = TRUE, project = NULL){
          save_to_Rdata == "nah" | save_to_Rdata == "false"){
       save_to_Rdata <- "n"
     }
+    
+    if(save_to_Rdata == "y"){    
+      save(list = ls(all = TRUE), file = ".RData")
+    }
+    
     # Change the working directory to that of the project to open
     setwd(project.list(display_paths = TRUE)[project_number_to_open,3])
     
