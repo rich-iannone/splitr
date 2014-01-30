@@ -7,6 +7,9 @@ project.open <- function(list_select = TRUE, project = NULL){
   
   # Get the current wd, strip the path to the project subfolder level
   current_wd_project <- gsub("^(.*)(Projects*)", "\\2", getwd())
+  
+  # Get list of paths for projects, strip the paths to the project subfolder level
+  project_paths <- gsub("^(.*)(Projects*)", "\\2", project.list(display_paths = TRUE)[,3])
   # Allow for the selection of the project to open through the display of the project list
   if (list_select == TRUE & is.null(project)) {
     
