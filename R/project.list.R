@@ -23,5 +23,7 @@ project.list <- function(){
     project_list <- read.csv(paste(SplitR_path, "/Projects/.SplitR_projects", sep = ''),
                              header = FALSE, stringsAsFactors = FALSE)
     
+    # Include column names
+    colnames(project_list) <- c("Project Name", "Date Created", "Location")
 
 }
