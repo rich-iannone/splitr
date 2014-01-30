@@ -35,6 +35,10 @@ project.open <- function(list_select = TRUE, project = NULL){
         close_current_project <- "y"
       }
       
+      if(close_current_project == "no" | close_current_project == "nope" |
+           close_current_project == "nah" | close_current_project == "false"){
+        close_current_project <- "n"
+      }
     
     # Ask to save the current workspace to an .Rdata file in its project directory
       save_to_Rdata <- readline("Save the workspace? [y/n] ")
