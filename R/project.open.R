@@ -30,6 +30,11 @@ project.open <- function(list_select = TRUE, project = NULL){
         return("I need a yes or no answer.")
       }
       
+      if(close_current_project == "yes" | close_current_project == "yeah" |
+           close_current_project == "yep" | close_current_project == "sure"){
+        close_current_project <- "y"
+      }
+      
     
     # Ask to save the current workspace to an .Rdata file in its project directory
       save_to_Rdata <- readline("Save the workspace? [y/n] ")
