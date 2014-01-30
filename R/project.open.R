@@ -1,6 +1,7 @@
 project.open <- function(list_select = TRUE, project = NULL){ 
   
-  
+  # Get available project numbers
+  project_numbers <- seq(from = 1, to = nrow(project.list()), by = 1)
     # Ask to save the current workspace to an .Rdata file in its project directory
   
   
