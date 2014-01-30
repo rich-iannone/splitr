@@ -23,6 +23,13 @@ project.open <- function(list_select = TRUE, project = NULL){
     # If currently in a project, ask to close that project before switching to the next
     if(grepl("*/Documents/SplitR/Projects/*", getwd()) == TRUE){
       close_current_project <- readline("Close the current project? [y/n] ")
+      
+      # Validate input
+      if(!(close_current_project %in% c("y", "n", "yes", "no", "yeah", "nope",
+                                "yep", "sure", "nah", "false"))){
+        return("I need a yes or no answer.")
+      }
+      
     
     # Ask to save the current workspace to an .Rdata file in its project directory
       save_to_Rdata <- readline("Save the workspace? [y/n] ")
