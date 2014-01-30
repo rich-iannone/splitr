@@ -20,7 +20,7 @@ project.open <- function(list_select = TRUE, project = NULL){
       return("That is not a valid project number.")
     }
     
-    # If currently in a project, close that project before switching to the next
+    # If currently in a project, ask to close that project before switching to the next
     
     
     # Ask to save the current workspace to an .Rdata file in its project directory
