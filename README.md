@@ -5,7 +5,7 @@ SplitR is a collection of functions to help conduct trajectory and dispersion mo
 
 ## Installation
 
-Easy installation of SplitR from GitHub is possible with the `devtools` package:
+Easy installation of SplitR from GitHub is entirely possible with the `devtools` package:
 
 ```coffee
 require(devtools)
@@ -14,20 +14,22 @@ install_github('SplitR', 'rich-iannone')
 
 ## Description
 
-The basic ideas behind SplitR are to make the process of setting up and executing HYSPLIT runs very fast and easy, and, to directly use the output data in further analyses. To achieve these aims, SplitR can enforce a directory structure so that input files are reusable across SplitR projects and output files are organized in named project folders. Also, the framework allows for the automatic generation of input `CONTROL` files for continuous running (e.g., over one or more years, specific date ranges, etc.). The user doesn't really need to examine the series of input `CONTROL` files but the text are included in automatically generated log files for later inspection. Most importantly, getting to a `Complete Hysplit` situation is enjoyable again.
+The basic idea behind SplitR is to make the process of setting up and executing HYSPLIT runs very fast and easy. Also, it would be great to use the output data in further analyses. The framework allows for the automatic generation of input `CONTROL` files for continuous running (e.g., over one or more years, specific date ranges, etc.). Getting to a `Complete Hysplit` situation has never been this enjoyable before.
 
 ## Features
 
-- organization modelling runs through the SplitR project framework
-- retrieval of the necessary meteorological data files
-- simple setup of trajectory and dispersion model runs (forward or backward)
+- simple setup of trajectory model runs (forward or backward)
 - batching options: set and get model results for multiple start times through a single year, several years, or a defined time range
 - trajectory plotting
 - clustering of trajectories and plotting of clusters
+- organization of modelling runs through the SplitR project framework
 
-### Future Additions
+## Future Additions
 
-- parallelization of trajectory and dispersion runs
+- capability for the starting location to be moving during successive model runs
+- retrieval of the necessary meteorological data files
 - merging of trajectories with pollutant concentration data for advanced air quality analyses
+- dispersion model runs
 - visualization of dispersion analyses
+- parallelization of trajectory and dispersion runs
 
