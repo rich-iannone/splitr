@@ -13,5 +13,8 @@ project.list <- function(){
                                          "/SplitR", sep = ''),
                             full.names = TRUE, recursive = FALSE)) > 0, TRUE, FALSE)
   
+  # Perform remainder of script if the SplitR folder exists
+  if (SplitR_dir_exists == TRUE) {
+    
 
 }
