@@ -80,7 +80,9 @@ project.open <- function(list_select = TRUE, project = NULL){
     project <- NULL
     
     # Load the .Rdata file in the new project, if available
-    
+    if(file.exists(paste(getwd(), "/.Rdata", sep = '')) == TRUE){
+      load(".RData", .GlobalEnv)
+    }
   }
   
   if (list_select == FALSE & !is.null(project)) {
