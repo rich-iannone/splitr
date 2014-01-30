@@ -5,6 +5,9 @@ project.open <- function(list_select = TRUE, project = NULL){
   
   # Allow for the selection of the project to open through the display of the project list
   if (list_select == TRUE) {
+    
+    # Display the project list
+    print(project.list())
     # Clear out objects in the global workspace
   
   
