@@ -10,6 +10,14 @@ project.open <- function(list_select = TRUE, project = NULL){
   
   # Get list of paths for projects, strip the paths to the project subfolder level
   project_paths <- gsub("^(.*)(Projects*)", "\\2", project.list(display_paths = TRUE)[,3])
+  
+  # Set up loop to determine if the current wd (i.e. the current project) is set to any of
+  # the paths for the currently defined project
+  for (i in 1:length(project_paths)){
+    if (current_wd_project %in% project_paths[i]) in_project_number <- i
+  }
+  
+  
   # Allow for the selection of the project to open through the display of the project list
   if (list_select == TRUE & is.null(project)) {
     
