@@ -1,5 +1,5 @@
-project.list <- function(){ 
-
+project.list <- function(display_paths = FALSE){ 
+  
   # Check for existence of Documents folder in user home folder
   if(length(grep("/Documents$",
                  list.dirs(path = "~", full.names = TRUE,
