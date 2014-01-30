@@ -46,8 +46,10 @@ project.open <- function(list_select = TRUE, project = NULL){
       save(list = ls(all = TRUE), file = ".RData")
     }
     
-    # Clear out objects in the global workspace
+    # Clear out objects in the global workspace; except 'list_select' and 'project'
     rm(list = ls())
+    list_select <- TRUE
+    project <- NULL
     
     # Change the working directory to that of the project to open
     setwd(project.list(display_paths = TRUE)[project_number_to_open,3])
