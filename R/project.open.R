@@ -1,7 +1,7 @@
 project.open <- function(list_select = TRUE, project = NULL){ 
 
   # Allow for the selection of the project to open through the display of the project list
-  if (list_select = TRUE) {
+  if (list_select == TRUE) {
   project.list()
   
   # Allow for user to enter a number corresponding to the project to open
@@ -23,7 +23,7 @@ project.open <- function(list_select = TRUE, project = NULL){
   
   }
   
-  if (list_select = FALSE & !is.null(project)) {
+  if (list_select == FALSE & !is.null(project)) {
   
   
   }
