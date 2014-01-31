@@ -38,9 +38,10 @@ project.open <- function(list_select = TRUE, project = NULL){
       selectable_project_numbers <- project_numbers[!project_numbers == in_project_number]
     }
     
-    # Validate input
-    if(!(project_number_to_open %in% project_numbers)){
-      return("That is not a valid project number.")
+    # Allow for user to enter a number corresponding to the project to open
+    if (exists("in_project_number") & length(selectable_project_numbers) == 1){
+      switch_to_other_project <-
+        readline(paste("Switch to project ", selectable_project_numbers, "? [y/n] ", sep = ''))
     }
     
     # If currently in a project, ask to close that project before switching to the next
