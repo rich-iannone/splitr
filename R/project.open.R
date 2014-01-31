@@ -31,6 +31,8 @@ project.open <- function(list_select = TRUE, project = NULL){
                             matrix(x, nrow = nrow(project_list),
                                    ncol = 1, dimnames = list(1:length(project_list), c(" "))))
     }
+    print(project_list)
+    
     # Allow for user to enter a number corresponding to the project to open
     project_number_to_open <-
       readline(paste("Which project number would you like to open? [1-",
