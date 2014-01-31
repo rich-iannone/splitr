@@ -26,7 +26,8 @@ project.list <- function(display_paths = FALSE){
     # Include column names
     colnames(project_list) <- c("Project Name", "Date Created", "Location")
     
-    # Either format the list of project with or without the project paths
+    # Either format the list of project with or without the project paths, depending
+    # on 'display_paths' value
     if (display_paths == FALSE) {
       project_list_nopaths <- project_list
       project_list_nopaths[,2] <- as.POSIXct(project_list_nopaths[,2], origin = "1970-01-01")
