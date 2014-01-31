@@ -29,7 +29,7 @@ project.open <- function(list_select = TRUE, project = NULL){
       x <- gsub("FALSE", " ", x)  
       project_list <- cbind(project_list,
                             matrix(x, nrow = nrow(project_list),
-                                   ncol = 1, dimnames = list(1:length(project_list), c(" "))))
+                                   ncol = 1, dimnames = list(1:nrow(project_list), c(" "))))
     }
     print(project_list)
     
