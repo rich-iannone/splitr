@@ -33,11 +33,10 @@ project.open <- function(list_select = TRUE, project = NULL){
     }
     print(project_list)
     
-    # Allow for user to enter a number corresponding to the project to open
-    project_number_to_open <-
-      readline(paste("Which project number would you like to open? [",
-                     paste(nrow(project.list()), sep = ''), "] ", sep = ''))
-    project_number_to_open <- as.numeric(project_number_to_open)
+    # Filter a list of selectable project numbers
+    if (in_project_number %in% project_numbers){
+      selectable_project_numbers <- project_numbers[!project_numbers == in_project_number]
+    }
     
     # Validate input
     if(!(project_number_to_open %in% project_numbers)){
