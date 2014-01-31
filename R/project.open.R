@@ -74,7 +74,7 @@ project.open <- function(list_select = TRUE, project = NULL){
       project_number_to_open <- as.numeric(project_number_to_open)
       
       # Validate input
-      if(!(project_number_to_open %in% project_numbers)){
+      if(!(project_number_to_open %in% selectable_project_numbers)){
         return("That is not a valid project number.")
       }
     }
