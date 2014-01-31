@@ -4,7 +4,7 @@ project.open <- function(list_select = TRUE, project = NULL){
   project_numbers <- seq(from = 1, to = nrow(project.list()), by = 1)
   
   # Determine the current project number
-  
+  #
   # Get the current wd, strip the path to the project subfolder level
   current_wd_project <- gsub("^(.*)(Projects*)", "\\2", getwd())
   
