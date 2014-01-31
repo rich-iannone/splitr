@@ -17,12 +17,11 @@ project.open <- function(list_select = TRUE, project = NULL){
     if (current_wd_project %in% project_paths[i]) in_project_number <- i
   }
   
-  
   # Allow for the selection of the project to open through the display of the project list
   if (list_select == TRUE & is.null(project)) {
     
-    # Display the project list
-    print(project.list())
+    # Display the project list; indicate if a project is currently open
+    project_list <- (project.list(display_paths = FALSE))
     
     # Allow for user to enter a number corresponding to the project to open
     project_number_to_open <-
