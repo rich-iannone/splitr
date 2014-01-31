@@ -66,6 +66,7 @@ project.open <- function(list_select = TRUE, project = NULL){
       }      
     }
 
+    # Allow user to open another selectable project by number
     if (exists("in_project_number") & length(selectable_project_numbers) > 1){
       project_number_to_open <-
         readline(paste("Which project number would you like to open? [",
