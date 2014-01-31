@@ -65,6 +65,12 @@ project.open <- function(list_select = TRUE, project = NULL){
         return("Okay, let's stay in the current project")
       }      
     }
+
+    if (exists("in_project_number") & length(selectable_project_numbers) > 1){
+      project_number_to_open <-
+        readline(paste("Which project number would you like to open? [",
+                       paste(selectable_project_numbers, sep = ", "), "] ", sep = ''))
+      project_number_to_open <- as.numeric(project_number_to_open)
     }
     
     # If currently in a project, ask to close that project before switching to the next
