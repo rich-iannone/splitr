@@ -42,6 +42,29 @@ project.open <- function(list_select = TRUE, project = NULL){
     if (exists("in_project_number") & length(selectable_project_numbers) == 1){
       switch_to_other_project <-
         readline(paste("Switch to project ", selectable_project_numbers, "? [y/n] ", sep = ''))
+      
+      # Validate input
+      if(!(switch_to_other_project %in% c("y", "n", "yes", "no", "yeah", "nope",
+                                          "yep", "sure", "nah", "false"))){
+        return("I need a yes or no answer.")
+      }
+      
+      if(switch_to_other_project == "yes" | switch_to_other_project == "yeah" |
+           switch_to_other_project == "yep" | switch_to_other_project == "sure"){
+        switch_to_other_project <- "y"
+      }
+      
+      if(switch_to_other_project == "no" | switch_to_other_project == "nope" |
+           switch_to_other_project == "nah" | switch_to_other_project == "false"){
+        switch_to_other_project <- "n"
+      }
+      
+      if(switch_to_other_project == "y"){    
+        project_number_to_open <- selectable_project_numbers
+      } else if (switch_to_other_project == "n"){
+        return("Okay, let's stay in the current project")
+      }      
+    }
     }
     
     # If currently in a project, ask to close that project before switching to the next
