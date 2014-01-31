@@ -23,6 +23,14 @@ project.open <- function(list_select = TRUE, project = NULL){
     # Display the project list; indicate if a project is currently open
     project_list <- (project.list(display_paths = FALSE))
     
+    if (exists("in_project_number")){
+      x <- (in_project_number == project_numbers)
+      x <- gsub("TRUE", " *OPEN* ", x) 
+      x <- gsub("FALSE", " ", x)  
+      project_list <- cbind(project_list,
+                            matrix(x, nrow = nrow(project_list),
+                                   ncol = 1, dimnames = list(1:length(project_list), c(" "))))
+    }
     # Allow for user to enter a number corresponding to the project to open
     project_number_to_open <-
       readline(paste("Which project number would you like to open? [1-",
