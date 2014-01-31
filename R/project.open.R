@@ -38,7 +38,7 @@ project.open <- function(list_select = TRUE, project = NULL){
       selectable_project_numbers <- project_numbers[!project_numbers == in_project_number]
     }
     
-    # Allow for user to enter a number corresponding to the project to open
+    # Allow user to switch to the only other selectable project
     if (exists("in_project_number") & length(selectable_project_numbers) == 1){
       switch_to_other_project <-
         readline(paste("Switch to project ", selectable_project_numbers, "? [y/n] ", sep = ''))
