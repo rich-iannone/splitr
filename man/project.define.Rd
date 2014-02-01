@@ -1,6 +1,5 @@
 \name{Define a SplitR project}
 \alias{project.define}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Define a name for a new SplitR project and create the project subfolder.
 }
@@ -10,24 +9,10 @@ By defining a SplitR project, one can keep different models and analyses separat
 \usage{
 project.define(project_name)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{project_name}{
 a name that describes the project in sufficient detail.
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
 }
 \author{
 Richard Iannone
