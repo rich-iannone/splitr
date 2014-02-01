@@ -4,7 +4,7 @@
 Define a name for a new SplitR project and create the project subfolder.
 }
 \description{
-By defining a SplitR project, one can keep different models and analyses separated through project folders. If no folder structure is set up (i.e., first use of command), the project folder tree will be set up in the Documents folder. There is the option to manually specify a project folder location by supplying a path. This manual option is useful for having output written to external storage, for example.
+By defining a SplitR project, one can keep different models and analyses separated through project folders. If no folder structure is set up (i.e., first use of command), the project folder tree will be set up in the Documents folder.
 }
 \usage{
 project.define(project_name)
