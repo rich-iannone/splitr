@@ -18,12 +18,6 @@ a name that describes the project in sufficient detail.
   \item{install_folders}{
 an option for whether the SplitR folder structure should be set up. If TRUE, then the function will only set up the folders (overwriting existing folders) and it will not define a project name (i.e., no argument required for 'project_name').
 }
-  \item{install_in_documents}{
-if install_folders was provided a TRUE argument, there is the option to specify whether the folder tree structure should or should not be placed in the Documents folder. While the default option is TRUE, a FALSE argument requires that an argument for 'other_install_path' be provided in the form of an absolute path.
-}
-  \item{other_install_path}{
-a string that specifies the absolute path of an alternate folder for installation of the SplitR folders. This must be provided if 'install_in_documents' was given a FALSE argument.
-}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
