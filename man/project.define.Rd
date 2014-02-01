@@ -20,14 +20,4 @@ Richard Iannone
 \examples{
 # Set up a new project entitled 'dispersion - rainforest case'
 project.define('dispersion - rainforest case')
-
-# Install the SplitR folders in '~/Documents' without defining
-# a new project
-project.define(install_folders = TRUE)
-
-# Install the SplitR folders in an alternate location other than
-# in '~/Documents' without defining a new project
-project.define(install_folders = TRUE,
-			   install_in_documents = FALSE,
-			   other_install_path = '/Volumes/External')
 }
