@@ -15,9 +15,6 @@ project.define(project_name)
   \item{project_name}{
 a name that describes the project in sufficient detail.
 }
-  \item{install_folders}{
-an option for whether the SplitR folder structure should be set up. If TRUE, then the function will only set up the folders (overwriting existing folders) and it will not define a project name (i.e., no argument required for 'project_name').
-}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
