@@ -1,6 +1,5 @@
 \name{Perform cluster analysis on HYSPLIT trajectories}
 \alias{trajectory.cluster}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Perform cluster analysis HYSPLIT trajectory output files already processed into a data frame.
 }
@@ -13,7 +12,6 @@ trajectory.cluster(traj_df, method = "Euclid", n.cluster = 5,
                    split.after = FALSE, map.fill = TRUE,
                    map.cols = "grey30", map.alpha = 0.4)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{traj_df}{
 a data frame object that was produced from HYSPLIT output files using the 'trajectory.read' function.
@@ -45,19 +43,6 @@ provided that map.fill is TRUE, the fill colour can be specified using R built i
   \item{map.alpha}{
 a value in the range of 0-1 that controls transpency of the map fill. Values closer to 1 are increasingly opaque whereas setting map.alpha to 0 makes the map colour fully transparent.
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
 }
 \author{
 Richard Iannone
