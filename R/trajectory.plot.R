@@ -18,10 +18,9 @@ trajectory.plot <- function(traj.df = "traj.df",
                             plot.type = "l"
                             ){
   
-  # Include require statements for 'maps' and 'mapdata' packages
+  # Include require statements
   require(openair)
 
-  
   # Execute and pass arguments to openair 'trajPlot' function
   trajPlot(mydata = traj.df, lon = lon, lat = lat,
            pollutant = pollutant, type = type, smooth = smooth,
