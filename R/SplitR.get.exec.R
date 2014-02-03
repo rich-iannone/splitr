@@ -48,7 +48,6 @@ SplitR.get.exec <- function(){
     
     # Unmount and eject disk image
     system(paste("hdiutil detach ", dev_path, sep = ''))
-
   }
     
  # Close function     
