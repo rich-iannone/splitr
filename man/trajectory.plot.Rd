@@ -1,0 +1,35 @@
+\name{Plot a trajectory}
+\alias{trajectory.plot}
+\title{
+Plot a HYSPLIT trajectory.
+}
+\description{
+Takes output data (in the form of a data frame) from one or more HYSPLIT trajectory runs (either forward or backward) and plots the trajectories. The default behaviour is to plot onto a map.
+}
+\usage{
+trajectory.plot(traj.df = "traj.df",
+                lon = "lon",
+                lat = "lat",
+                pollutant = "height", 
+                type = "default",
+                smooth = FALSE,
+                statistic = "mean",
+                percentile = 90, 
+                map = TRUE,
+                lon.inc = 1,
+                lat.inc = 1,
+                min.bin = 1,
+                group = NA, 
+                map.fill = TRUE,
+                map.res = "default",
+                map.cols = "grey40", 
+                map.alpha = 0.4,
+                plot.type = "l")
+}
+\author{
+Richard Iannone
+}
+\examples{
+# Plot trajectory data in the traj.df data frame using defaults
+trajectory.plot()
+}
