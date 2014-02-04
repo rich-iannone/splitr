@@ -91,6 +91,10 @@ for (i in 1:length(list_run_days)) {
     # Determine whether the beginning and end of the current run
     # crosses over a calendar year
     number_of_calendar_years <- ifelse(year(start_time_GMT) == year(end_time_GMT), 1, 2)
+    
+    # Determine whether the beginning and end of the current run
+    # crosses over a calendar month
+    number_of_calendar_months <- ifelse(month(start_time_GMT) == month(end_time_GMT), 1, 2)
   }
   
   
