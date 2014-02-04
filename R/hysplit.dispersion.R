@@ -47,3 +47,11 @@ hysplit.dispersion <- function(use_default_config = TRUE,
   
 }
 
+# Make loop with all run days
+for (i in 1:length(list_run_days)) {
+
+  
+  
+}
+
+
