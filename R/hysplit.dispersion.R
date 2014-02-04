@@ -114,6 +114,26 @@ for (i in 1:length(list_run_days)) {
     
     #--- Get vector lists of met files applicable to run from GDAS 1-degree dataset
     
+    # Trap leap-year condition of missing .w5 met file for February in a '0' list value
+    if (case_within_month == TRUE &
+          met_type == "gdas1") met <- 
+      c(paste("gdas1.",
+              substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+              substr(year(start_time_GMT), 3, 4), ".w1", sep = ''),                                      
+        paste("gdas1.",
+              substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+              substr(year(start_time_GMT), 3, 4), ".w2", sep = ''),
+        paste("gdas1.",
+              substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+              substr(year(start_time_GMT), 3, 4), ".w3", sep = ''),
+        paste("gdas1.",
+              substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+              substr(year(start_time_GMT), 3, 4), ".w4", sep = ''),
+        ifelse(month(start_time_GMT) == 2 &
+                 leap_year == TRUE, 0,
+               paste("gdas1.",
+                     substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+                     substr(year(start_time_GMT), 3, 4), ".w5", sep = '')))
   }
   
   
