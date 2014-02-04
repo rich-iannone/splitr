@@ -83,6 +83,10 @@ for (i in 1:length(list_run_days)) {
                                       start_time_GMT + (simulation_duration_h * 3600)),
                                origin = "1970-01-01", tz = "UTC")
     
+    # Determine whether the start year is a leap year
+    leap_year <- leap_year(ymd(paste(start_year_GMT, "-",
+                                     start_month_GMT, "-",
+                                     start_day_GMT, sep = '')))
   }
   
   
