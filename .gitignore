@@ -3,6 +3,7 @@
 # Example code in package build process
 *-Ex.R
 *.Rproj
+*.CFG
 .Rproj.user
 README.html
 .Rdata
