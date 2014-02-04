@@ -69,6 +69,14 @@ for (i in 1:length(list_run_days)) {
    
     #--- Determine which met files are required for this run
     
+    # Determine the start time of the model run
+    start_time_GMT <- ymd_hms(paste(ifelse(start_year_GMT > 50,
+                                           paste("19", start_year_GMT, sep = ''),
+                                           start_year_GMT), "-",
+                                    start_month_GMT, "-",
+                                    start_day_GMT, " ",
+                                    start_hour_GMT, ":00:00",
+                                    sep = ''))
     
   }
   
