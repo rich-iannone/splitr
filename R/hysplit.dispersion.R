@@ -1,7 +1,7 @@
 hysplit.dispersion <- function(use_default_config = TRUE,
                                start_lat_deg,
                                start_long_deg,
-                               start_height_m_ASL,
+                               start_height_m_AGL,
                                simulation_duration_h = 24,
                                backward_running = FALSE,
                                met_type,
