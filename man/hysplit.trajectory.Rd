@@ -47,7 +47,7 @@ an option to select whether to conduct forward trajectory model runs or to gener
 an option to select meteorological data files. The options are "gdas1" (Global Data Assimilation System 1-degree resolution data) and 'reanalysis' (NCAR/NCEP global reanalysis data). 
 }
   \item{vertical_motion_option}{
-a numbered option to select the method used to simulation vertical motion.
+a numbered option to select the method used to simulation vertical motion. The methods are: (0) input model data, (1) isobaric, (2) isentropic, (3) constant density, (4) isosigma, (5) from divergence, (6) remap MSL to AGL, (7) average data, and (8) damped magnitude. 
 }
   \item{run_type}{
 used to select whether models should be run for a single day ("day"), for one or more years ("years"), or within a specified date range ("range").
