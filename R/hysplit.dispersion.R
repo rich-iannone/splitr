@@ -173,6 +173,40 @@ for (i in 1:length(list_run_days)) {
               substr(tolower(format(start_time_GMT, "%B")), 1, 3),
               substr(year(start_time_GMT), 3, 4), ".w3", sep = ''))
     
+    # Get vector lists of met files applicable to run from the NCEP/NCAR reanalysis dataset
+    if (met_type == "reanalysis") met <- 
+      c(paste("RP",
+              ifelse(start_month_GMT == "01",
+                     year(start_time_GMT) - 1,
+                     year(start_time_GMT)),
+              ifelse(start_month_GMT == "01", "12",
+                     formatC(month(start_time_GMT)-1, width = 2, format = "d", flag = "0")),
+              ".gbl",
+              sep = ''),
+        paste("RP",
+              year(start_time_GMT),
+              start_month_GMT, ".gbl",
+              sep = ''),
+        paste("RP",
+              ifelse(start_month_GMT == "12",
+                     year(start_time_GMT) + 1,
+                     year(start_time_GMT)),
+              ifelse(start_month_GMT == "12", "01",
+                     formatC(month(start_time_GMT)+1, width = 2, format = "d", flag = "0")),
+              ".gbl",
+              sep = ''))
+    
+    # Remove list values containing '0' (representing missing .w5
+    # data files for Feb in leap years)
+    if(exists("met")) met <- met[!met %in% c(0)]
+    
+    # Are the met files available on the selected path?
+    met.file.df <- setNames(data.frame(mat.or.vec(nr = length(met), nc = 2)),
+                            nm = c("file","available?"))
+    for (k in 1:length(met)) {
+      met.file.df[k, 1] <- met[k]
+      met.file.df[k, 2] <- as.character(file.exists(paste(path_met_files, met[k], sep = '')))}
+    
   }
   
   
