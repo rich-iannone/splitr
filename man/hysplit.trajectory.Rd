@@ -10,7 +10,7 @@ The function executes single/multiple forward or backward HYSPLIT trajectory run
 \usage{
 hysplit.trajectory(start_lat_deg,
                    start_long_deg,
-                   start_height_m_ASL,
+                   start_height_m_AGL,
                    simulation_duration_h = 24,
                    backtrajectory = FALSE,
                    met_type,
@@ -34,8 +34,8 @@ the starting latitude (in decimal degrees) for the model run(s)
   \item{start_long_deg}{
 the starting longitude (in decimal degrees) for the model run(s)
 }
-  \item{start_height_m_ASL}{
-the starting height (in meters above sea level) for the model run(s)
+  \item{start_height_m_AGL}{
+the starting height (in meters above ground level) for the model run(s)
 }
   \item{simulation_duration_h}{
 the duration of each model run (either forward or backward) in hours
@@ -97,7 +97,7 @@ Richard Iannone
 # test run type of 'years' with forward trajectory using NCEP/NCAR reanalaysis data
 hysplit.trajectory(start_lat_deg = 50.108,
                    start_long_deg = -122.942,
-                   start_height_m_ASL = 200.0,
+                   start_height_m_AGL = 200.0,
                    simulation_duration_h = 96,
                    backtrajectory = FALSE,
                    met_type = "reanalysis",
