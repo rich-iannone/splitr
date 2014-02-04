@@ -20,6 +20,8 @@ hysplit.dispersion <- function(use_default_config = TRUE,
   # Define package requirements
   require(lubridate)
   
+  # Set number of starting locations to 1 for this function
+  no_starting_locations <- 1
   
   
   
