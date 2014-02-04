@@ -112,6 +112,8 @@ for (i in 1:length(list_run_days)) {
       case_over_month <- TRUE
     } else { NULL }
     
+    #--- Get vector lists of met files applicable to run from GDAS 1-degree dataset
+    
   }
   
   
