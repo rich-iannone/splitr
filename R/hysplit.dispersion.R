@@ -95,6 +95,13 @@ for (i in 1:length(list_run_days)) {
     # Determine whether the beginning and end of the current run
     # crosses over a calendar month
     number_of_calendar_months <- ifelse(month(start_time_GMT) == month(end_time_GMT), 1, 2)
+    
+    #--- Divide different requirements for met files into different cases
+    
+    # Set the different cases to FALSE by default
+    case_within_month <- FALSE
+    case_over_year <- FALSE
+    case_over_month <- FALSE
   }
   
   
