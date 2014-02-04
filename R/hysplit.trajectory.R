@@ -1,6 +1,6 @@
 hysplit.trajectory <- function(start_lat_deg,
                                start_long_deg,
-                               start_height_m_ASL,
+                               start_height_m_AGL,
                                simulation_duration_h = 24,
                                backtrajectory = FALSE,
                                met_type,
@@ -213,7 +213,7 @@ hysplit.trajectory <- function(start_lat_deg,
                                start_hour_GMT, "-",
                                "lat_", start_lat_deg, "_",
                                "long_",start_long_deg, "-",
-                               "height_",start_height_m_ASL, "-",
+                               "height_",start_height_m_AGL, "-",
                                simulation_duration_h, "h", sep = '')
       
       # Write start year, month, day, hour to 'CONTROL'
@@ -229,10 +229,10 @@ hysplit.trajectory <- function(start_lat_deg,
           file = paste(path_wd, "CONTROL", sep = ''),
           sep = '', append = TRUE)
       
-      # Write starting latitude, longitude, height ASL to 'CONTROL'
+      # Write starting latitude, longitude, height AGL to 'CONTROL'
       cat(start_lat_deg, " ", 
           start_long_deg, " ", 
-          start_height_m_ASL, "\n",
+          start_height_m_AGL, "\n",
           file = paste(path_wd, "CONTROL", sep = ''),
           sep = '', append = TRUE)
       
