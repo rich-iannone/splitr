@@ -128,6 +128,16 @@ hysplit.dispersion.define <- function(define){
         if (wdep_below_cloud_dep >= 0) wdep_below_cloud_dep <-
           as.numeric(wdep_below_cloud_dep)
           
+        # Ask to assign value to 'rad_decay'
+        rad_decay <-
+          readline(paste(cat("Category: Radioactive Decay", "\n",
+                             "Set the radioactive decay half-life.", "\n",
+                             "Units: days. Default: 0.", "\n",
+                             "Provide a postive real number (<ENTER> for default value): ",
+                             sep = '')))
+        if (rad_decay == "") rad_decay <- 0.0
+        if (rad_decay >= 0) rad_decay <- as.numeric(rad_decay)
+          
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
