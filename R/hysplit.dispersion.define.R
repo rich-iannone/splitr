@@ -35,6 +35,9 @@ hysplit.dispersion.define <- function(define){
       }
       if (species_type_gas_use_default == "n") {
         
+        # Automatically assign default value to 'particle_pdiam'
+        particle_pdiam <- 0.0
+        
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
