@@ -314,8 +314,8 @@ hysplit.dispersion.define <- function(define){
     # Provide a summary of the chosen options and ask if the chosen options are acceptable
     
     acceptable_species <-
-      readline(paste(cat("The plan", "\n",
-                         "------------------------------", "\n", 
+      readline(paste(cat("The plan. Adding species: ",  species_name, "\n",
+                         "-------------------------", "\n", 
                          "Particle Properties // ", 
                          "diameter: ", particle_pdiam,
                          " / density: ", particle_density,
