@@ -84,6 +84,17 @@ hysplit.dispersion.define <- function(define){
         if (ddep_D_ratio == "") ddep_D_ratio <- 0.0
         if (ddep_D_ratio >= 0) ddep_D_ratio <- as.numeric(ddep_D_ratio)
           
+        # Ask to assign value to 'ddep_Henrys_Law_coeff'
+        ddep_Henrys_Law_coeff <-
+          readline(paste(cat("Category: Dry Deposition", "\n",
+                             "Set the Henry's Law coefficient.", "\n",
+                             "Units: M/a. Default: 0.", "\n",
+                             "Provide a postive real number (<ENTER> for default value): ",
+                             sep = '')))
+        if (ddep_Henrys_Law_coeff == "") ddep_Henrys_Law_coeff <- 0.0
+        if (ddep_Henrys_Law_coeff >= 0) ddep_Henrys_Law_coeff <-
+          as.numeric(ddep_Henrys_Law_coeff)
+          
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
