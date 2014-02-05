@@ -355,6 +355,8 @@ hysplit.dispersion.define <- function(define){
     # in the project folder
     
     
+    # Close species block
+  }
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
