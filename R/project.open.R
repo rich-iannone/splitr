@@ -1,5 +1,35 @@
 project.open <- function(list_select = TRUE, project = NULL){ 
   
+  # Check for existence of Documents folder in user home folder
+  if(length(grep("/Documents$",
+                 list.dirs(path = "~", full.names = TRUE,
+                           recursive = FALSE))) > 0) {
+    documents_folder_path <- paste("~", "/Documents", sep = '')
+  }
+  
+  # Check for existence of SplitR folder
+  SplitR_dir_exists <- 
+    ifelse(length(list.dirs(path = paste(documents_folder_path,
+                                         "/SplitR", sep = ''),
+                            full.names = TRUE, recursive = FALSE)) > 0, TRUE, FALSE)
+  
+  # If the SplitR folder exists, get its path; if it doesn't exist, stop the function
+  if (SplitR_dir_exists == TRUE) {
+    # Get path to SplitR folder
+    SplitR_path <- file.path(paste(documents_folder_path, "/SplitR", sep = ''))
+  } else if (SplitR_dir_exists == FALSE) {
+    # Stop function if the path doesn't exist
+    stop("The SplitR folder doesn't exist. Please set up with 'SplitR.init' function.")
+  }
+  
+  # Check current working directory
+  current_wd <- getwd()
+  
+  # If the current working directory is outside of ~/SplitR, set it to that
+#   if (current_wd) {
+#     
+#   }
+  
   # Get available project numbers
   project_numbers <- seq(from = 1, to = nrow(project.list()), by = 1)
   
