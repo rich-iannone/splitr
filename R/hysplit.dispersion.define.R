@@ -310,7 +310,6 @@ hysplit.dispersion.define <- function(define){
         if (pollutant_resuspension_factor >= 0) pollutant_resuspension_factor <-
           as.numeric(pollutant_resuspension_factor)
       }
-      
     }
     
     # Provide a summary of the chosen options and ask if the chosen options are acceptable
