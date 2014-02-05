@@ -1,5 +1,4 @@
-hysplit.dispersion.define <- function(define,
-                                      ){
+hysplit.dispersion.define <- function(define){
   
   
   # Define species (names, properties)
