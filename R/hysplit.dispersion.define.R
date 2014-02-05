@@ -172,6 +172,8 @@ hysplit.dispersion.define <- function(define){
         rad_decay <- 0.0
         pollutant_resuspension_factor <- 0.0
       }
+      if (species_type_particle_use_default == "n") {
+        
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
