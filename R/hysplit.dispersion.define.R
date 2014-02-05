@@ -174,6 +174,16 @@ hysplit.dispersion.define <- function(define){
       }
       if (species_type_particle_use_default == "n") {
         
+        # Ask to assign default value to 'particle_pdiam'
+        particle_pdiam <-
+          readline(paste(cat("Category: Particle Properties", "\n",
+                             "Set the particle diameter.", "\n",
+                             "Units: µm. Default: 5 µm.", "\n",
+                             "Provide a positive real number (<ENTER> for default value): ",
+                             sep = '')))
+        if (particle_pdiam == "") particle_pdiam <- 5.0
+        if (particle_pdiam >= 0) particle_pdiam <- as.numeric(particle_pdiam)
+        
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
