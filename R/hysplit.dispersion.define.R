@@ -1,6 +1,5 @@
 hysplit.dispersion.define <- function(define){
   
-  
   # Define species (names, properties)
   if (define == 'species'){
     
@@ -322,31 +321,24 @@ hysplit.dispersion.define <- function(define){
                          " / density: ", particle_density,
                          " / shape factor: ", particle_shape_factor,
                          "\n",
-                         
                          "Dry Deposition // ",
-                         
                          "deposition velocity: ", ddep_velocity,
                          " / molecular weight: ", ddep_MW, "\n",
                          "                 ",
                          " A ratio: ", ddep_A_ratio,
                          " / D ratio: ", ddep_D_ratio,
                          "\n",
-                         
                          "Wet Deposition // ",
-                         
                          "Henry's Law coeff.: ", wdep_Henrys_Law_coeff,
                          " / in-cloud deposition: ", wdep_in_cloud_dep,
                          " / below-cloud deposition: ", wdep_below_cloud_dep,
                          "\n",
-                         
                          "Radioactive Decay // ",
                          "half-life: ", rad_decay,
                          "\n",
-                         
                          "Pollutant Resuspension // ",
                          "factor: ", pollutant_resuspension_factor, "\n",
                          "------------------------------", "\n",
-                         
                          "This is what will be set. Okay? [y/n]: ",
                          sep = '')))
     
