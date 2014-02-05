@@ -148,29 +148,7 @@ project.open <- function(list_select = TRUE, project = NULL){
       }      
     }
     
-#     # Ask to save the current workspace to an .Rdata file in its project directory
-#       save_to_Rdata <- readline("Save the workspace? [y/n] ")
-#     
-#     # Validate input
-#     if(!(save_to_Rdata %in% c("y", "n", "yes", "no", "yeah", "nope",
-#                               "yep", "sure", "nah", "false"))){
-#       save_to_Rdata <- "y"
-#     }
-#     
-#     if(save_to_Rdata == "yes" | save_to_Rdata == "yeah" |
-#          save_to_Rdata == "yep" | save_to_Rdata == "sure"){
-#       save_to_Rdata <- "y"
-#     }
-#     
-#     if(save_to_Rdata == "no" | save_to_Rdata == "nope" |
-#          save_to_Rdata == "nah" | save_to_Rdata == "false"){
-#       save_to_Rdata <- "n"
-#     }
-#     
-#     if(save_to_Rdata == "y"){    
-#       save(list = ls(all = TRUE), file = ".RData")
-#     }
-    
+
     # Change the working directory to that of the project to open
     setwd(project.list(display_paths = TRUE)[project_number_to_open,3])
     
