@@ -154,6 +154,9 @@ hysplit.dispersion.define <- function(define){
     # If particle, ask if default parameters acceptable
     if (species_type == "particle") {
       
+      species_type_particle_use_default <-
+        readline("Use the default parameters for a particle species? [y/n] ")
+      
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
