@@ -267,6 +267,17 @@ hysplit.dispersion.define <- function(define){
         if (wdep_Henrys_Law_coeff >= 0) wdep_Henrys_Law_coeff <-
           as.numeric(wdep_Henrys_Law_coeff)
         
+        # Ask to assign value to 'wdep_in_cloud_dep'  
+        wdep_in_cloud_dep <-
+          readline(paste(cat("Category: Wet Deposition", "\n",
+                             "Set the in-cloud deposition rate.", "\n",
+                             "Units: L/L. Default: 0.", "\n",
+                             "Provide a postive real number (<ENTER> for default value): ",
+                             sep = '')))
+        if (wdep_in_cloud_dep == "") wdep_in_cloud_dep <- 0.0
+        if (wdep_in_cloud_dep >= 0) wdep_in_cloud_dep <-
+          as.numeric(wdep_in_cloud_dep)
+        
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
