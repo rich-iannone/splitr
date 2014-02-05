@@ -215,6 +215,16 @@ hysplit.dispersion.define <- function(define){
         if (ddep_velocity == "") ddep_velocity <- 0.0
         if (ddep_velocity >= 0) ddep_velocity <- as.numeric(ddep_velocity)
         
+        # Ask to assign value to 'ddep_MW'
+        ddep_MW <-
+          readline(paste(cat("Category: Dry Deposition", "\n",
+                             "Set the molecular weight.", "\n",
+                             "Units: g/mol. Default: 0 g/mol.", "\n",
+                             "Provide a positive real number (<ENTER> for default value): ",
+                             sep = '')))
+        if (ddep_MW == "") ddep_MW <- 0.0
+        if (ddep_MW >= 0) ddep_MW <- as.numeric(ddep_MW)
+        
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
