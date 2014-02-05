@@ -309,6 +309,10 @@ hysplit.dispersion.define <- function(define){
         if (pollutant_resuspension_factor == "") pollutant_resuspension_factor <- 0.0
         if (pollutant_resuspension_factor >= 0) pollutant_resuspension_factor <-
           as.numeric(pollutant_resuspension_factor)
+      }
+      
+    }
+    
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
