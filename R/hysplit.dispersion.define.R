@@ -138,6 +138,16 @@ hysplit.dispersion.define <- function(define){
         if (rad_decay == "") rad_decay <- 0.0
         if (rad_decay >= 0) rad_decay <- as.numeric(rad_decay)
           
+        # Ask to assign value to 'pollutant_resuspension_factor'  
+        pollutant_resuspension_factor <-
+          readline(paste(cat("Category: Pollutant Resuspension", "\n",
+                             "Set the pollutant resuspension factor.", "\n",
+                             "Units: 1/m. Default: 0.", "\n",
+                             "Provide a postive real number (<ENTER> for default value): ",
+                             sep = '')))
+        if (pollutant_resuspension_factor == "") pollutant_resuspension_factor <- 0.0
+        if (pollutant_resuspension_factor >= 0) pollutant_resuspension_factor <-
+          as.numeric(pollutant_resuspension_factor)
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
