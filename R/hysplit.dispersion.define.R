@@ -184,6 +184,16 @@ hysplit.dispersion.define <- function(define){
         if (particle_pdiam == "") particle_pdiam <- 5.0
         if (particle_pdiam >= 0) particle_pdiam <- as.numeric(particle_pdiam)
         
+        # Ask to assign default value to 'particle_density'
+        particle_density <-
+          readline(paste(cat("Category: Particle Properties", "\n",
+                             "Set the particle density.", "\n",
+                             "Units: g/cm3. Default: 6 g/cm3.", "\n",
+                             "Provide a positive real number (<ENTER> for default value): ",
+                             sep = '')))
+        if (particle_density == "") particle_density <- 6.0
+        if (particle_density >= 0) particle_density <- as.numeric(particle_density)
+        
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
