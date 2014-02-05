@@ -151,7 +151,7 @@ hysplit.dispersion.define <- function(define){
       }
     }
     
-    # If gas-phase, ask if default parameters acceptable
+    # If particle, ask if default parameters acceptable
     if (species_type == "particle") {
       
   
