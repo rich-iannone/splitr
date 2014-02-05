@@ -205,6 +205,16 @@ hysplit.dispersion.define <- function(define){
         if (particle_shape_factor >= 0) particle_shape_factor <-
           as.numeric(particle_shape_factor)
         
+        # Ask to assign value to 'ddep_velocity'
+        ddep_velocity <-
+          readline(paste(cat("Category: Dry Deposition", "\n",
+                             "Set the dry deposition velocity.", "\n",
+                             "Units: m/s. Default: 0 m/s.", "\n",
+                             "Provide a positive real number (<ENTER> for default value): ",
+                             sep = '')))
+        if (ddep_velocity == "") ddep_velocity <- 0.0
+        if (ddep_velocity >= 0) ddep_velocity <- as.numeric(ddep_velocity)
+        
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
