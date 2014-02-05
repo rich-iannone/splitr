@@ -151,6 +151,9 @@ hysplit.dispersion.define <- function(define){
       }
     }
     
+    # If gas-phase, ask if default parameters acceptable
+    if (species_type == "particle") {
+      
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
