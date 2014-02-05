@@ -1,30 +1,30 @@
 trajectory.read <- function(path_output_files,
                             year = NULL,
-                            start_height_m_ASL = NULL){  
+                            start_height_m_AGL = NULL){  
   
   # Generate the file list
   # Use 'pattern' argument to select specific year or starting heights
-  if (is.null(year) & is.null(start_height_m_ASL)) {
+  if (is.null(year) & is.null(start_height_m_AGL)) {
     trajectory_file_list <- list.files(path = path_output_files)
-  } else if (!is.null(year) & is.null(start_height_m_ASL)) {
+  } else if (!is.null(year) & is.null(start_height_m_AGL)) {
     trajectory_file_list <- list.files(path = path_output_files,
                                        pattern = paste("^traj.*?)-",
                                                        gsub("^[0-9][0-9]", "",
                                                             as.character(year)),
                                                        ".*$", sep = ''))
-  } else if (is.null(year) & !is.null(start_height_m_ASL)) {
+  } else if (is.null(year) & !is.null(start_height_m_AGL)) {
     trajectory_file_list <- list.files(path = path_output_files,
                                       pattern = paste("^.*?height_",
                                                       gsub("^[0-9][0-9]", "",
                                                            as.character(year)),
                                                       ".*$", sep = ''))
-  } else if (!is.null(year) & !is.null(start_height_m_ASL)) {
+  } else if (!is.null(year) & !is.null(start_height_m_AGL)) {
   trajectory_file_list <- list.files(path = path_output_files,
                                      pattern = paste("^traj.*?)-",
                                                      gsub("^[0-9][0-9]", "",
                                                           as.character(year)),
                                                      ".*?height_",
-                                                     as.character(start_height_m_ASL),
+                                                     as.character(start_height_m_AGL),
                                                      "-.*$", sep = ''))
   }
   
