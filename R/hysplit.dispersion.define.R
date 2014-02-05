@@ -318,21 +318,36 @@ hysplit.dispersion.define <- function(define){
                          "-------------------------", "\n", 
                          "Particle Properties // ", 
                          "diameter: ", particle_pdiam, " µm",
-                         " / density: ", particle_density, " g/cm3",
-                         " / shape factor: ", particle_shape_factor,
+                         " | density: ", particle_density, " g/cm3",
+                         " | shape factor: ", particle_shape_factor,
+                         ifelse(particle_pdiam == 0 &
+                                  particle_density == 0 &
+                                  particle_shape_factor == 0,
+                                paste(" ——not a particle species"), paste("")),
                          "\n",
                          "Dry Deposition // ",
                          "deposition velocity: ", ddep_velocity, " m/s",
-                         " / molecular weight: ", ddep_MW, " g/mol", "\n",
+                         " | molecular weight: ", ddep_MW, " g/mol", "\n",
                          "                 ",
                          " A ratio: ", ddep_A_ratio,
-                         " / D ratio: ", ddep_D_ratio,
-                         " / Henry's Law: ", ddep_Henrys_Law_coeff, " M/a",
+                         " | D ratio: ", ddep_D_ratio,
+                         " | Henry's Law: ", ddep_Henrys_Law_coeff, " M/a",
+                         ifelse(ddep_velocity == 0 &
+                                ddep_MW == 0 &
+                                ddep_A_ratio == 0 &
+                                ddep_D_ratio == 0 &
+                                ddep_Henrys_Law_coeff == 0,
+                                paste(" ——no dry deposition"), paste("")),
                          "\n",
                          "Wet Deposition // ",
-                         "Henry's Law coeff.: ", wdep_Henrys_Law_coeff,
-                         " / in-cloud deposition: ", wdep_in_cloud_dep,
-                         " / below-cloud deposition: ", wdep_below_cloud_dep,
+                         "Henry's Law coeff.: ", wdep_Henrys_Law_coeff, " M/a",
+                         " | in-cloud deposition: ", wdep_in_cloud_dep, " L/L", "\n",
+                         "                ",
+                         "  below-cloud deposition: ", wdep_below_cloud_dep, " 1/s",
+                         ifelse(wdep_Henrys_Law_coeff == 0 &
+                                  wdep_in_cloud_dep == 0 &
+                                  wdep_below_cloud_dep == 0,
+                                paste(" ——no wet deposition"), paste("")),
                          "\n",
                          "Radioactive Decay // ",
                          "half-life: ", rad_decay, " days",
