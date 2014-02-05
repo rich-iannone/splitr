@@ -21,7 +21,7 @@ project.open <- function(list_select = TRUE, project = NULL){
   if (list_select == TRUE & is.null(project)) {
     
     # Display the project list; indicate if a project is currently open
-    project_list <- (project.list(display_paths = FALSE))
+    project_list <- project.list(display_paths = FALSE)
     
     if (exists("in_project_number")){
       x <- (in_project_number == project_numbers)
