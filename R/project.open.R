@@ -64,51 +64,63 @@ project.open <- function(list_select = TRUE, project = NULL){
     print(project_list)
     
     # Filter a list of selectable project numbers
-    if (in_project_number %in% project_numbers){
-      selectable_project_numbers <- project_numbers[!project_numbers == in_project_number]
+    if (exists("in_project_number")){
+      if (in_project_number %in% project_numbers){
+        selectable_project_numbers <- project_numbers[!project_numbers == in_project_number]
+      }
     }
     
     # Allow user to switch to the only other selectable project
-    if (exists("in_project_number") & length(selectable_project_numbers) == 1){
-      switch_to_other_project <-
-        readline(paste("Switch to project ", selectable_project_numbers, "? [y/n] ", sep = ''))
+    if (exists("in_project_number") & exists("selectable_project_numbers")){
       
-      # Validate input
-      if(!(switch_to_other_project %in% c("y", "n", "yes", "no", "yeah", "nope",
-                                          "yep", "sure", "nah", "false"))){
-        return("I need a yes or no answer.")
+      if (length(selectable_project_numbers) == 1){
+        
+        switch_to_other_project <-
+          readline(paste("Switch to project ", selectable_project_numbers, "? [y/n] ",
+                         sep = ''))
+        
+        # Validate input
+        if(!(switch_to_other_project %in% c("y", "n", "yes", "no", "yeah", "nope",
+                                            "yep", "sure", "nah", "false"))){
+          return("I need a yes or no answer.")
+        }
+        
+        if(switch_to_other_project == "yes" | switch_to_other_project == "yeah" |
+             switch_to_other_project == "yep" | switch_to_other_project == "sure"){
+          switch_to_other_project <- "y"
+        }
+        
+        if(switch_to_other_project == "no" | switch_to_other_project == "nope" |
+             switch_to_other_project == "nah" | switch_to_other_project == "false"){
+          switch_to_other_project <- "n"
+        }
+        
+        if(switch_to_other_project == "y"){    
+          project_number_to_open <- selectable_project_numbers
+        } else if (switch_to_other_project == "n"){
+          return("Okay, let's stay in the current project")
+        }      
       }
-      
-      if(switch_to_other_project == "yes" | switch_to_other_project == "yeah" |
-           switch_to_other_project == "yep" | switch_to_other_project == "sure"){
-        switch_to_other_project <- "y"
-      }
-      
-      if(switch_to_other_project == "no" | switch_to_other_project == "nope" |
-           switch_to_other_project == "nah" | switch_to_other_project == "false"){
-        switch_to_other_project <- "n"
-      }
-      
-      if(switch_to_other_project == "y"){    
-        project_number_to_open <- selectable_project_numbers
-      } else if (switch_to_other_project == "n"){
-        return("Okay, let's stay in the current project")
-      }      
     }
-
+        
     # Allow user to open another selectable project by number
-    if (exists("in_project_number") & length(selectable_project_numbers) > 1){
-      project_number_to_open <-
-        readline(paste("Which project number would you like to open? [",
-                       paste(selectable_project_numbers, sep = ", "), "] ", sep = ''))
-      project_number_to_open <- as.numeric(project_number_to_open)
+    
+    if (exists("in_project_number") & exists("selectable_project_numbers")){
       
-      # Validate input
-      if(!(project_number_to_open %in% selectable_project_numbers)){
-        return("That is not a valid project number.")
+      if (length(selectable_project_numbers) > 1){
+        
+        project_number_to_open <-
+          readline(paste("Which project number would you like to open? [",
+                         paste(selectable_project_numbers, sep = ", "), "] ", sep = ''))
+        project_number_to_open <- as.numeric(project_number_to_open)
+        
+        # Validate input
+        if(!(project_number_to_open %in% selectable_project_numbers)){
+          return("That is not a valid project number.")
+        }
       }
     }
-    
+      
     # If currently in a project, ask to close that project before switching to the next
     if(grepl("*/Documents/SplitR/Projects/*", getwd()) == TRUE){
       close_current_project <- readline("Close the current project? [y/n] ")
@@ -133,8 +145,7 @@ project.open <- function(list_select = TRUE, project = NULL){
       NULL
       } else if (close_current_project == "n"){
         return("Okay, let's stay in the current project")
-      }
-      
+      }      
     }
     
 #     # Ask to save the current workspace to an .Rdata file in its project directory
