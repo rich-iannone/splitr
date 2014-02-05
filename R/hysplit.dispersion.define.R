@@ -17,6 +17,22 @@ hysplit.dispersion.define <- function(define){
       
       species_type_gas_use_default <-
         readline("Use the default parameters for a gas-phase species? [y/n] ")
+      
+      if (species_type_gas_use_default == "y") {
+        particle_pdiam <- 0.0
+        particle_density <- 0.0
+        particle_shape_factor <- 0.0
+        ddep_velocity <- 0.0
+        ddep_MW <- 0.0
+        ddep_A_ratio <- 0.0
+        ddep_D_ratio <- 0.0
+        ddep_Henrys_Law_coeff <- 0.0
+        wdep_Henrys_Law_coeff <- 0.0
+        wdep_in_cloud_dep <- 0.0
+        wdep_below_cloud_dep <- 0.0
+        rad_decay <- 0.0
+        pollutant_resuspension_factor <- 0.0
+      }
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
