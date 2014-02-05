@@ -38,6 +38,9 @@ hysplit.dispersion.define <- function(define){
         # Automatically assign default value to 'particle_pdiam'
         particle_pdiam <- 0.0
         
+        # Automatically assign default value to 'particle_density'
+        particle_density <- 0.0
+        
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
