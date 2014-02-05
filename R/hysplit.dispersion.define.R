@@ -351,6 +351,10 @@ hysplit.dispersion.define <- function(define){
                          "This is what will be set. Okay? [y/n]: ",
                          sep = '')))
     
+    # If acceptable, add the species and the options to the list of species
+    # in the project folder
+    
+    
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
