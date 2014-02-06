@@ -374,17 +374,21 @@ hysplit.dispersion.define <- function(define){
     # Ask for the name of the emissions source
     emissions_name <-
       readline("What is the name of the emissions source? ")
-  
+    
     # Ask to assign value to 'emissions_start_time'  
     emissions_start_time <-
       readline(paste(cat("Provide the starting date and time.", "\n",
                          "Use the format YYYY-MM-DD HH:MM", "\n",
                          sep = '')))
-    if (grepl("2001-03-01 23:00", "2000-03-01 23:00", perl = TRUE) == TRUE) print("nice")
-              
-              emissions_start_time
-    if (emissions_start_time >= 0) wdep_below_cloud_dep <-
-      as.numeric(wdep_below_cloud_dep)
+    
+    # Validate the input of the date and time string
+    if (grepl("[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-9][0-9]",
+              emissions_start_time, perl = TRUE) == TRUE) {
+      emissions_start_time_valid_1 <- TRUE
+    } else if (grepl("[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-9][0-9]",
+                     emissions_start_time, perl = TRUE) == FALSE) {
+      emissions_start_time_valid_1 <- FALSE
+    }
     
   }
   
