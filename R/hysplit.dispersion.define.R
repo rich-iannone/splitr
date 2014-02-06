@@ -369,6 +369,9 @@ hysplit.dispersion.define <- function(define){
   # defined species or define a new one here)
   if (define == 'emissions'){
   
+    # Ask for the name of the emissions source
+    emissions_name <-
+      readline("What is the name of the emissions source? ")
   
   }
   
