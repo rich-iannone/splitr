@@ -373,6 +373,17 @@ hysplit.dispersion.define <- function(define){
     emissions_name <-
       readline("What is the name of the emissions source? ")
   
+    # Ask to assign value to 'emissions_start_time'  
+    emissions_start_time <-
+      readline(paste(cat("Provide the starting date and time.", "\n",
+                         "Use the format YYYY-MM-DD HH:MM", "\n",
+                         sep = '')))
+    if (grepl("2001-03-01 23:00", "2000-03-01 23:00", perl = TRUE) == TRUE) print("nice")
+              
+              emissions_start_time
+    if (emissions_start_time >= 0) wdep_below_cloud_dep <-
+      as.numeric(wdep_below_cloud_dep)
+    
   }
   
   # Define grids (fixed location, size/spacing, rate of sampling, sampling times)
