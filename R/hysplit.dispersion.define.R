@@ -411,6 +411,10 @@ hysplit.dispersion.define <- function(define){
                          "an ending date and time."
                          "Use the formats # h, # d, or YYYY-MM-DD HH:MM", "\n",
                          sep = '')))
+    
+    # Determine the format of the supplied input and divide into types to resolve into hours
+    
+    
   }
   
   # Define grids (fixed location, size/spacing, rate of sampling, sampling times)
