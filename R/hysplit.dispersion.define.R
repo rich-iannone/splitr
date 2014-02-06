@@ -396,6 +396,14 @@ hysplit.dispersion.define <- function(define){
     } else if (is.na(ymd_hms(paste(emissions_start_time, ":00", sep = '')))) {
       emissions_start_time_valid_2 <- FALSE
     }
+    
+    
+    # If the entered date passes both validation tests, assign it to 'emissions_start_time'
+    if (emissions_start_time_valid_1 = TRUE &
+          emissions_start_time_valid_2 = TRUE ) {
+      emissions_start_time <- as.character(gsub("-", " ", emissions_start_time))
+      emissions_start_time <- as.character(gsub(":", " ", emissions_start_time))
+    }
   }
   
   # Define grids (fixed location, size/spacing, rate of sampling, sampling times)
