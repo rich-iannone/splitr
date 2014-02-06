@@ -378,6 +378,9 @@ hysplit.dispersion.define <- function(define){
   # Define grids (fixed location, size/spacing, rate of sampling, sampling times)
   if (define == 'grids'){
     
+    # Ask for the name of the grid
+    grid_name <-
+      readline("What is the name of the grid? ")
     
   }
   
