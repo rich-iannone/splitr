@@ -390,6 +390,12 @@ hysplit.dispersion.define <- function(define){
       emissions_start_time_valid_1 <- FALSE
     }
     
+    # Determine whether the supplied date/time string yields a valid POSIXct date/time
+    if (class(ymd_hms(paste(emissions_start_time, ":00", sep = '')))[1] == "POSIXct") {
+      emissions_start_time_valid_2 <- TRUE
+    } else if (is.na(ymd_hms(paste(emissions_start_time, ":00", sep = '')))) {
+      emissions_start_time_valid_2 <- FALSE
+    }
   }
   
   # Define grids (fixed location, size/spacing, rate of sampling, sampling times)
