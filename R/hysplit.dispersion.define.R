@@ -1,5 +1,7 @@
 hysplit.dispersion.define <- function(define){
   
+  require(lubridate)
+  
   # Define species (names, properties)
   if (define == 'species'){
     
