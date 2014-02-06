@@ -375,8 +375,7 @@ hysplit.dispersion.define <- function(define){
   
   }
   
-  # Define sampling grids (fixed location, size/spacing, rate of sampling, sampling times)
-  
+  # Define grids (fixed location, size/spacing, rate of sampling, sampling times)
   
   # Close function
 }
