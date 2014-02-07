@@ -1,4 +1,4 @@
-trajectory.cluster <- function(traj_df, method = "Euclid", n.cluster = 5, plot = TRUE, 
+trajectory.cluster <- function(traj_df, method = "Euclid", n.cluster = 4, plot = TRUE, 
                                type = "default", cols = "Set1", split.after = FALSE,
                                map.fill = TRUE, 
                                map.cols = "grey30",
