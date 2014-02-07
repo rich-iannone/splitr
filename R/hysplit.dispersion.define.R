@@ -413,6 +413,15 @@ hysplit.dispersion.define <- function(define){
                          sep = '')))
     
     # Determine the format of the supplied input and divide into types to resolve into hours
+    # Validate the input of the date and time string
+    if (grepl("[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-9][0-9]",
+              emissions_duration, perl = TRUE) == TRUE){
+      emissions_duration_type <- "ending_date_time"
+    } else if (grepl("^[0-9]+[ ]?h$", emissions_duration, perl = TRUE) == TRUE){
+      emissions_duration_type <- "duration_hours"
+    } else if (grepl("^[0-9]+[ ]?d$", emissions_duration, perl = TRUE) == TRUE){
+      emissions_duration_type <- "duration_days"
+    }
     
     
   }
