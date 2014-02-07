@@ -439,6 +439,22 @@ hysplit.dispersion.define <- function(define){
       } else if (is.na(ymd_hms(paste(emissions_duration, ":00", sep = '')))){
         emissions_duration_valid <- FALSE
       }
+      
+      if (emissions_duration_valid == TRUE){
+        
+        # Get ending date/time as a POSIXct date/time object
+        emissions_end_POSIXct <- ymd_hms(paste(emissions_duration, ":00", sep = ''))
+        
+        # Get starting date/time as a POSIXct date/time object
+        emissions_start_POSIXct <- ymd_hms(paste(emissions_start_time, ":00", sep = ''))
+        
+        # Get the difference in days between the starting and ending times
+        # Creates a 'difftime' object
+        emissions_duration_diff_days <- emissions_end_POSIXct - emissions_start_POSIXct
+        
+        # Get the difference in hours
+        emissions_duration_diff_hours <- emissions_duration_diff[[1]] * 24
+        
       }
       
       
