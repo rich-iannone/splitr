@@ -375,6 +375,9 @@ hysplit.dispersion.define <- function(define){
     emissions_name <-
       readline("What is the name of the emissions source? ")
     
+    # test
+    emissions_start_time <- "2010-01-01 00:00"
+    
     # Ask to assign value to 'emissions_start_time'  
     emissions_start_time <-
       readline(paste(cat("Provide the starting date and time.", "\n",
