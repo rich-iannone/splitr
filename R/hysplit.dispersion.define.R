@@ -405,10 +405,10 @@ hysplit.dispersion.define <- function(define){
       emissions_start_time <- as.character(gsub(":", " ", emissions_start_time))
     }
     
-    # Ask to assign value to 'emissions_duration'  
+    # Ask to assign value to 'emissions_duration'    
     emissions_duration <-
-      readline(paste(cat("Provide either a time duration in hours or days, or, provide", "\n",
-                         "an ending date and time."
+      readline(paste(cat("Provide either a time duration in hours", "\n",
+                         "or days, or, provide an ending date and time.", "\n",
                          "Use the formats # h, # d, or YYYY-MM-DD HH:MM", "\n",
                          sep = '')))
     
