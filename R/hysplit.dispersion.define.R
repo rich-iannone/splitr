@@ -423,6 +423,25 @@ hysplit.dispersion.define <- function(define){
       emissions_duration_type <- "duration_days"
     }
     
+    # Work with case where 'emissions_duration_type' is an end date and time
+    if (exists("emissions_duration_type") &
+          emissions_duration_type ==  "ending_date_time"){
+      
+      # Determine whether the supplied date/time string yields a valid POSIXct date/time
+      if (class(ymd_hms(paste(emissions_duration, ":00", sep = '')))[1] == "POSIXct"){
+        emissions_duration_valid_1 <- TRUE
+      } else if (is.na(ymd_hms(paste(emissions_duration, ":00", sep = '')))){
+        emissions_duration_valid_1 <- FALSE
+      }
+      
+      
+    }
+    
+    
+    
+    
+    
+    
     
   }
   
