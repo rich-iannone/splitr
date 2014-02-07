@@ -435,9 +435,10 @@ hysplit.dispersion.define <- function(define){
       
       # Determine whether the supplied date/time string yields a valid POSIXct date/time
       if (class(ymd_hms(paste(emissions_duration, ":00", sep = '')))[1] == "POSIXct"){
-        emissions_duration_valid_1 <- TRUE
+        emissions_duration_valid <- TRUE
       } else if (is.na(ymd_hms(paste(emissions_duration, ":00", sep = '')))){
-        emissions_duration_valid_1 <- FALSE
+        emissions_duration_valid <- FALSE
+      }
       }
       
       
