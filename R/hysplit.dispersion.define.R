@@ -407,10 +407,6 @@ hysplit.dispersion.define <- function(define){
       emissions_start_time_char <- as.character(gsub(":", " ", emissions_start_time_char))
     }
     
-    
-    # test
-    emissions_duration <- "2010-03-01 00:00"
-    
     # Ask to assign value to 'emissions_duration'    
     emissions_duration <-
       readline(paste(cat("Provide either a time duration in hours", "\n",
