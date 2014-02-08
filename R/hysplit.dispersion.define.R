@@ -481,9 +481,7 @@ hysplit.dispersion.define <- function(define){
       readline(paste(cat("Provide the rate of emissions in mass units per hour.", "\n",
                          sep = '')))
     
-    
-    
-    
+    # Close emissions block
   }
   
   # Define grids (fixed location, size/spacing, rate of sampling, sampling times)
