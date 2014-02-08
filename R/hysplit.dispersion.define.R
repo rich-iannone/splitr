@@ -491,6 +491,7 @@ hysplit.dispersion.define <- function(define){
     grid_name <-
       readline("What is the name of the grid? ")
     
+    # Close grids block
   }
   
   # Close function
