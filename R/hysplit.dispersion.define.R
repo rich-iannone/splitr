@@ -476,6 +476,10 @@ hysplit.dispersion.define <- function(define){
       
     }
     
+    # Ask to assign value to 'emissions_rate'    
+    emissions_rate <-
+      readline(paste(cat("Provide the rate of emissions in mass units per hour.", "\n",
+                         sep = '')))
     
     
     
