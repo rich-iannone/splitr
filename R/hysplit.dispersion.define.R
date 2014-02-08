@@ -450,9 +450,9 @@ hysplit.dispersion.define <- function(define){
         
         # Get the difference in hours
         emissions_duration_diff_hours <- emissions_duration_diff[[1]] * 24
-        
+    
+        emissions_duration <- emissions_duration_diff_hours
       }
-      
       
     }
     
