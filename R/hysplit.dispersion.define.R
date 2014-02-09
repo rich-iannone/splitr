@@ -491,6 +491,13 @@ hysplit.dispersion.define <- function(define){
     grid_name <-
       readline("What is the name of the grid? ")
     
+    # Ask to assign value to 'grid_center'
+    grid_center <-
+      readline(paste(cat("Provide the center of the grid.", "\n",
+                         "Set the radioactive decay half-life.", "\n",
+                         "Units: degrees. Default: none.", "\n",
+                         "Provide the latitude and then the longitude: ",
+                         sep = '')))
     # Close grids block
   }
   
