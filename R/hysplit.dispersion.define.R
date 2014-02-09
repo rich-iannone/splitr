@@ -543,6 +543,14 @@ hysplit.dispersion.define <- function(define){
           exists("grid_spacing_lon_valid") & grid_spacing_lon_valid == TRUE){
       grid_spacing <- paste(grid_spacing_lat, grid_spacing_lon, sep = ' ')
     }
+    
+    # Ask to assign value to 'grid_span'
+    grid_span <-
+      readline(paste(cat("Provide the total span of the grid in the x and y directions.",
+                         "\n",
+                         "Units: degrees. Default: none.", "\n",
+                         "Provide the latitude value and then the longitude value: ",
+                         sep = '')))
     # Close grids block
   }
   
