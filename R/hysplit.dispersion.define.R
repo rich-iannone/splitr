@@ -539,6 +539,10 @@ hysplit.dispersion.define <- function(define){
     # Check longitude grid spacing value and validate
     if (grid_spacing_lon > 0) grid_spacing_lon_valid <- TRUE   
     
+    if (exists("grid_spacing_lat_valid") & grid_spacing_lat_valid == TRUE &
+          exists("grid_spacing_lon_valid") & grid_spacing_lon_valid == TRUE){
+      grid_spacing <- paste(grid_spacing_lat, grid_spacing_lon, sep = ' ')
+    }
     # Close grids block
   }
   
