@@ -525,6 +525,9 @@ hysplit.dispersion.define <- function(define){
                          "Provide the latitude interval and then the longitude interval: ",
                          sep = '')))
     
+    # Get input string into a vector object of length 2
+    grid_spacing_values <- unlist(strsplit(grid_spacing, "[, | |,]"))
+    grid_spacing_values <- grid_spacing_values[grid_spacing_values != ""]
     # Close grids block
   }
   
