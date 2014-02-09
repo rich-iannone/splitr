@@ -512,6 +512,10 @@ hysplit.dispersion.define <- function(define){
     # Check longitude value and validate
     if (grid_center_lon >= -180 & grid_center_lon <= 180) grid_center_lon_valid <- TRUE    
     
+    if (exists("grid_center_lat_valid") & grid_center_lat_valid == TRUE &
+          exists("grid_center_lon_valid") & grid_center_lon_valid == TRUE){
+      grid_center <- paste(grid_center_lat, grid_center_lon, sep = ' ')
+    }
     
     
     # Close grids block
