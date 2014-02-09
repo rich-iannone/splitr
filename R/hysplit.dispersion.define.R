@@ -494,7 +494,6 @@ hysplit.dispersion.define <- function(define){
     # Ask to assign value to 'grid_center'
     grid_center <-
       readline(paste(cat("Provide the center of the grid.", "\n",
-                         "Set the radioactive decay half-life.", "\n",
                          "Units: degrees. Default: none.", "\n",
                          "Provide the latitude and then the longitude: ",
                          sep = '')))
