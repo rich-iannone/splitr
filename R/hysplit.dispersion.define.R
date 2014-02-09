@@ -517,6 +517,13 @@ hysplit.dispersion.define <- function(define){
       grid_center <- paste(grid_center_lat, grid_center_lon, sep = ' ')
     }
     
+    # Ask to assign value to 'grid_spacing'
+    grid_spacing <-
+      readline(paste(cat("Provide the spacing of adjacent grid points in the x and y directions.",
+                         "\n",
+                         "Units: degrees. Default: none.", "\n",
+                         "Provide the latitude interval and then the longitude interval: ",
+                         sep = '')))
     
     # Close grids block
   }
