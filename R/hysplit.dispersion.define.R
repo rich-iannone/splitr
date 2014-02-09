@@ -500,6 +500,11 @@ hysplit.dispersion.define <- function(define){
                          sep = '')))
     grid_center_coords <- unlist(strsplit(grid_center, "[, | |,]"))
     grid_center_coords <- unique(grid_center_coords[grid_center_coords != ""])
+
+    grid_center_lat <- grid_center_coords[1]
+    grid_center_lon <- grid_center_coords[2]
+    
+    
     # Close grids block
   }
   
