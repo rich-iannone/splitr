@@ -498,6 +498,8 @@ hysplit.dispersion.define <- function(define){
                          "Units: degrees. Default: none.", "\n",
                          "Provide the latitude and then the longitude: ",
                          sep = '')))
+    grid_center_coords <- unlist(strsplit(grid_center, "[, | |,]"))
+    grid_center_coords <- unique(grid_center_coords[grid_center_coords != ""])
     # Close grids block
   }
   
