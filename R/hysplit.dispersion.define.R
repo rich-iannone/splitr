@@ -502,9 +502,10 @@ hysplit.dispersion.define <- function(define){
     # Get input string into a vector object of length 2
     grid_center_coords <- unlist(strsplit(grid_center, "[, | |,]"))
     grid_center_coords <- unique(grid_center_coords[grid_center_coords != ""])
-
-    grid_center_lat <- grid_center_coords[1]
-    grid_center_lon <- grid_center_coords[2]
+    
+    # Separate latitude and longitude into two separate numeric objects
+    grid_center_lat <- as.numeric(grid_center_coords[1])
+    grid_center_lon <- as.numeric(grid_center_coords[2])
     
     
     # Close grids block
