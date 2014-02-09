@@ -507,6 +507,8 @@ hysplit.dispersion.define <- function(define){
     grid_center_lat <- as.numeric(grid_center_coords[1])
     grid_center_lon <- as.numeric(grid_center_coords[2])
     
+    # Check latitude value and validate
+    if (grid_center_lat >= -90 & grid_center_lat <= 90) grid_center_lat_valid <- TRUE
     
     # Close grids block
   }
