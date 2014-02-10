@@ -637,6 +637,10 @@ hysplit.dispersion.define <- function(define){
     grid_heights_values <- grid_heights_values[grid_heights_values != ""]
     grid_heights_values <- as.numeric(grid_heights_values[grid_heights_values != ""])
     
+    # Verify that the values are in ascending order; sort ascending if not sorted
+    if (is.unsorted(grid_heights_values) == TRUE){
+      grid_heights_values <- sort(grid_heights_values)
+    }
     
     
     # Close grids block
