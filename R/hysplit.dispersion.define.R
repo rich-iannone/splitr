@@ -562,6 +562,10 @@ hysplit.dispersion.define <- function(define){
     
     # Check latitude grid span value and validate
     if (grid_span_lat > 0) grid_span_lat_valid <- TRUE 
+    
+    # Check longitude grid span value and validate
+    if (grid_span_lon > 0) grid_span_lon_valid <- TRUE 
+    
     # Close grids block
   }
   
