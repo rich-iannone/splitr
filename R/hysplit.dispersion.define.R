@@ -589,6 +589,16 @@ hysplit.dispersion.define <- function(define){
     
     # Automatically assign the output grid file name
     grid_filename <- "cdump"
+    
+    # Ask to assign number of vertical levels 'grid_number_vertical'
+    grid_number_vertical <-
+      readline(paste(cat("Provide the number of vertical levels in the concentration grid.",
+                         "\n",
+                         "This number includes the deposition layer (with height = 0 m AGL)",
+                         "\n",
+                         "Default: 1.", "\n",
+                         "Provide a postive integer (<ENTER> for default value): ",
+                         sep = '')))
     # Close grids block
   }
   
