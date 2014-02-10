@@ -583,6 +583,10 @@ hysplit.dispersion.define <- function(define){
         grid_span <- paste(grid_span_lat, grid_span_lon, sep = ' ')
       } 
     }
+    
+    # Automatically assign the location of the 'grids' folder
+    grid_folder <- "./"
+    
     # Close grids block
   }
   
