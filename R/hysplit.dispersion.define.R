@@ -607,6 +607,29 @@ hysplit.dispersion.define <- function(define){
     # Assign as string to 'grid_number_vertical'
     grid_number_vertical_string <- as.character(grid_number_vertical)
    
+    # Ask to assign the height of each vertical level
+    grid_heights <-
+      readline(paste(cat(if(grid_number_vertical == 1){
+                           paste("For the single level specified, does that refer to the",
+                                 "ground (deposition layer) or some height ")
+                         },
+                         if(grid_number_vertical == 1) paste("\n"),
+                         if(grid_number_vertical == 1) paste("above the ground?"),
+                         if(grid_number_vertical == 1) paste("\n"),
+                         if(grid_number_vertical == 1){
+                           paste("Press <ENTER> to assign level to the ground layer, or,",
+                                 " provide a height in meters above ground level: ",
+                                 sep = '')
+                         },
+                         if(grid_number_vertical > 1){
+                           paste("For the ", grid_number_vertical, " levels specified, provide ",
+                                 "a list of heights in meters above ground level: ", sep = '')
+                         },
+                         sep = '')))
+    
+    
+    
+    
     # Close grids block
   }
   
