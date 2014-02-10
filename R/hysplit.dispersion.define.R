@@ -627,6 +627,7 @@ hysplit.dispersion.define <- function(define){
                          },
                          sep = '')))
     
+    if (grid_number_vertical == 1 & grid_heights == '') grid_heights <- 0
     
     
     
