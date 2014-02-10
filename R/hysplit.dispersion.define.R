@@ -555,6 +555,10 @@ hysplit.dispersion.define <- function(define){
     # Get input string into a vector object of length 2
     grid_span_values <- unlist(strsplit(grid_span, "[, | |,]"))
     grid_span_values <- grid_span_values[grid_span_values != ""]
+    
+    # Separate latitude and longitude into two separate numeric objects
+    grid_span_lat <- as.numeric(grid_span_values[1])
+    grid_span_lon <- as.numeric(grid_span_values[2])
     # Close grids block
   }
   
