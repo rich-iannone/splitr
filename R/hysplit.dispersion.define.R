@@ -635,6 +635,7 @@ hysplit.dispersion.define <- function(define){
     # Get input string into a vector object
     grid_heights_values <- unlist(strsplit(grid_heights, "[, | |,]"))
     grid_heights_values <- grid_heights_values[grid_heights_values != ""]
+    grid_heights_values <- as.numeric(grid_heights_values[grid_heights_values != ""])
     
     
     
