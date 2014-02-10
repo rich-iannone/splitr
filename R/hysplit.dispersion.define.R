@@ -587,6 +587,8 @@ hysplit.dispersion.define <- function(define){
     # Automatically assign the location of the 'grids' folder
     grid_folder <- "./"
     
+    # Automatically assign the output grid file name
+    grid_filename <- "cdump"
     # Close grids block
   }
   
