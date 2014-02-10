@@ -599,6 +599,10 @@ hysplit.dispersion.define <- function(define){
                          "Default: 1.", "\n",
                          "Provide a postive integer (<ENTER> for default value): ",
                          sep = '')))
+    
+    if (grid_number_vertical == "") grid_number_vertical <- 1
+    if (grid_number_vertical >= 0) grid_number_vertical <-
+      round(as.numeric(grid_number_vertical), digits = 0)
     # Close grids block
   }
   
