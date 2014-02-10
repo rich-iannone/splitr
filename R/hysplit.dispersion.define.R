@@ -603,6 +603,10 @@ hysplit.dispersion.define <- function(define){
     if (grid_number_vertical == "") grid_number_vertical <- 1
     if (grid_number_vertical >= 0) grid_number_vertical <-
       round(as.numeric(grid_number_vertical), digits = 0)
+    
+    # Assign as string to 'grid_number_vertical'
+    grid_number_vertical_string <- as.character(grid_number_vertical)
+   
     # Close grids block
   }
   
