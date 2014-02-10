@@ -573,6 +573,9 @@ hysplit.dispersion.define <- function(define){
       if (grid_span_lat %% grid_spacing_lat == 0) grid_span_lat_valid <- TRUE
       if (grid_span_lat %% grid_spacing_lat != 0) grid_span_lat_valid <- FALSE
       
+      # Check to see that grid span in y direction is a multiple of its grid spacing value
+      if (grid_span_lat %% grid_spacing_lat == 0) grid_span_lon_valid <- TRUE
+      if (grid_span_lat %% grid_spacing_lat != 0) grid_span_lon_valid <- FALSE  
     # Close grids block
   }
   
