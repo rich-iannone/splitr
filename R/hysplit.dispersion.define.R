@@ -693,6 +693,13 @@ hysplit.dispersion.define <- function(define){
       grid_end_time_valid_1 <- FALSE
     }
     
+    # Determine whether the supplied date/time string yields a valid POSIXct date/time
+    if (class(ymd_hms(paste(grid_start_time, ":00", sep = '')))[1] == "POSIXct"){
+      grid_end_time_valid_2 <- TRUE
+    } else if (is.na(ymd_hms(paste(grid_start_time, ":00", sep = '')))){
+      grid_end_time_valid_2 <- FALSE
+    }
+    
     
     # Close grids block
   }
