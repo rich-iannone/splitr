@@ -647,7 +647,6 @@ hysplit.dispersion.define <- function(define){
       grid_heights <- as.character(grid_heights_values)
     } 
     
-  }
     
     # Close grids block
   }
