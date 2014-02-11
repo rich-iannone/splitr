@@ -707,7 +707,7 @@ hysplit.dispersion.define <- function(define){
       grid_end_time_char <- as.character(gsub(":", " ", grid_end_time_char))
     }
     
-    # Ask to assign value to 'sampling interval type'
+    # Ask to assign value to 'sampling_interval_type'
     sampling_interval_type <-
       readline(paste(cat("Provide the type grid sampling to perform.",
                          "\n",
