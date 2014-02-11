@@ -654,6 +654,14 @@ hysplit.dispersion.define <- function(define){
                          "Use the format YYYY-MM-DD HH:MM", "\n",
                          sep = '')))
     
+    # Validate the input of the date and time string
+    if (grepl("[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-9][0-9]",
+              grid_start_time, perl = TRUE) == TRUE) {
+      grid_start_time_valid_1 <- TRUE
+    } else if (grepl("[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-9][0-9]",
+                     grid_start_time, perl = TRUE) == FALSE) {
+      grid_start_time_valid_1 <- FALSE
+    }
     
     # Close grids block
   }
