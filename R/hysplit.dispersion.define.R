@@ -647,6 +647,13 @@ hysplit.dispersion.define <- function(define){
       grid_heights <- as.character(grid_heights_values)
     } 
     
+    # Ask to assign value to 'grid_start_time'
+    grid_start_time <-
+      readline(paste(cat("Provide a date and time for the start of grid sampling.",
+                         "\n",
+                         "Use the format YYYY-MM-DD HH:MM", "\n",
+                         sep = '')))
+    
     
     # Close grids block
   }
