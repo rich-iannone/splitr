@@ -670,6 +670,13 @@ hysplit.dispersion.define <- function(define){
       grid_start_time_valid_2 <- FALSE
     }
     
+    # If the entered date passes both validation tests, assign it to 'grid_start_time_char'
+    if (grid_start_time_valid_1 == TRUE &
+          grid_start_time_valid_2 == TRUE ) {
+      grid_start_time_char <- as.character(gsub("-", " ", grid_start_time))
+      grid_start_time_char <- as.character(gsub(":", " ", grid_start_time_char))
+    }
+    
     
     # Close grids block
   }
