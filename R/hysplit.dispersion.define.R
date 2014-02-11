@@ -707,6 +707,14 @@ hysplit.dispersion.define <- function(define){
       grid_end_time_char <- as.character(gsub(":", " ", grid_end_time_char))
     }
     
+    # Ask to assign value to 'sampling interval type'
+    sampling_interval_type <-
+      readline(paste(cat("Provide the type grid sampling to perform.",
+                         "\n",
+                         "Choices are: averaging, snapshot, or maximum", "\n",
+                         "Press <ENTER> to assign the 'averaging' method", "\n",
+                         sep = '')))
+    
     # Close grids block
   }
   
