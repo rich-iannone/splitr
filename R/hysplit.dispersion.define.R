@@ -717,10 +717,10 @@ hysplit.dispersion.define <- function(define){
     
     # Check user input and assign a numeric value correponding to:
     # 0 - averaging, 1 - snapshot, 2 - maximum
-    if sampling_interval_type == "averaging" sampling_interval_type_no <- 0
-    if sampling_interval_type == "snapshot" sampling_interval_type_no <- 1
-    if sampling_interval_type == "maximum" sampling_interval_type_no <- 2
-    if sampling_interval_type == "" sampling_interval_type_no <- 0
+    if (sampling_interval_type == "averaging") sampling_interval_type_no <- 0
+    if (sampling_interval_type == "snapshot") sampling_interval_type_no <- 1
+    if (sampling_interval_type == "maximum") sampling_interval_type_no <- 2
+    if (sampling_interval_type == "") sampling_interval_type_no <- 0
     
     # Close grids block
   }
