@@ -711,7 +711,7 @@ hysplit.dispersion.define <- function(define){
     sampling_interval_type <-
       readline(paste(cat("Provide the type grid sampling to perform.",
                          "\n",
-                         "Choices are: averaging, snapshot, or maximum", "\n",
+                         "Choices are: (1) averaging, (2) snapshot, or (3) maximum", "\n",
                          "Press <ENTER> to assign the 'averaging' method", "\n",
                          sep = '')))
     
