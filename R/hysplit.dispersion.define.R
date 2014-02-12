@@ -78,7 +78,7 @@ hysplit.dispersion.define <- function(define){
         # Ask to assign value to 'ddep_D_ratio'
         ddep_D_ratio <-
           readline(paste(cat("Category: Dry Deposition", "\n",
-                             "Set the D ratio.", "\n",
+                             "Set the diffusivity ratio.", "\n",
                              "Units: none. Default: 0.", "\n",
                              "Provide a value between 0-1 (<ENTER> for default value): ",
                              sep = '')))
