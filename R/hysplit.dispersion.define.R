@@ -450,7 +450,6 @@ hysplit.dispersion.define <- function(define){
     
         emissions_duration <- emissions_duration_diff_hours
       }
-      
     }
     
     # Work with case where 'emissions_duration_type' is duration in hours
