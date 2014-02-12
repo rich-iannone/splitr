@@ -489,6 +489,11 @@ hysplit.dispersion.define <- function(define){
                          "----------------------------------", "\n",
                          "This is what will be set. Okay? [y/n]: ",
                          sep = '')))
+    
+    # If acceptable, add the emissions source and the options to the list of emissions
+    # sources in the project folder
+    
+    
     # Close emissions block
   }
   
