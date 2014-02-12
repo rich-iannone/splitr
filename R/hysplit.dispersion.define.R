@@ -601,7 +601,7 @@ hysplit.dispersion.define <- function(define){
     grid_folder <- "./"
     
     # Automatically assign the output grid file name
-    grid_filename <- "cdump"
+    grid_filename <- grid_name
     
     # Ask to assign number of vertical levels 'grid_number_vertical'
     grid_number_vertical <-
