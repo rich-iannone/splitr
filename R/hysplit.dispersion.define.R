@@ -768,6 +768,11 @@ hysplit.dispersion.define <- function(define){
     } else if (grepl("[0-2][0-9]:[0-9][0-9]", sampling_interval_rate, perl = TRUE) == FALSE) {
       sampling_interval_rate_valid <- FALSE
     }
+    
+    # If the entered date passes the validation test, assign it to 'sampling_interval_rate_char'
+    if (sampling_interval_rate_valid == TRUE) {
+      sampling_interval_rate_char <- as.character(gsub(":", " ", sampling_interval_rate))
+    }
     # Close grids block
   }
   
