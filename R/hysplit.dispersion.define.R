@@ -778,6 +778,32 @@ hysplit.dispersion.define <- function(define){
     if (sampling_interval_rate == "") {
       sampling_interval_rate_char <- "01 00"
     }
+    
+    
+    # Provide a summary of the chosen options and ask if the chosen options are acceptable
+    acceptable_grid <-
+      readline(paste(cat("The plan. Adding grid: ", grid_name, "\n",
+                         "----------------------------------", "\n", 
+                         "            Grid Center: ", grid_center, "\n",
+                         "           Grid Spacing: ", grid_spacing, "\n",
+                         "              Grid Span: ", grid_span, "\n",
+                         " No. of Vertical Levels: ", grid_number_vertical, "\n",
+                         "           Grid Heights: ", grid_heights_string_list, "\n",
+                         "      Start of Sampling: ", grid_start_time, "\n",
+                         "        End of Sampling: ", grid_end_time, "\n",
+                         "        Sampling Method: ", sampling_interval_type_no, "\n",
+                         "     Sampling Frequency: ",
+                         as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[1],
+                         " h",
+                         ifelse(as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[2]
+                                == 0, paste(""), paste(
+                                as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[2],
+                                " m", sep = '')),
+                         "\n",
+                         "----------------------------------", "\n",
+                         "This is what will be set. Okay? [y/n]: ",
+                         sep = '')))
+    
     # Close grids block
   }
   
