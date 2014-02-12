@@ -774,7 +774,6 @@ hysplit.dispersion.define <- function(define){
       sampling_interval_rate_char <- "01 00"
     }
     
-    
     # Provide a summary of the chosen options and ask if the chosen options are acceptable
     acceptable_grid <-
       readline(paste(cat("The plan. Adding grid: ", grid_name, "\n",
