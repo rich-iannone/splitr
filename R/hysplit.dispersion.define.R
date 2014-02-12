@@ -646,8 +646,10 @@ hysplit.dispersion.define <- function(define){
     }
     
     # Get input string into a vector object
+    if (grid_heights != 0){
     grid_heights_values <- unlist(strsplit(grid_heights, "[, | |,]"))
     grid_heights_values <- as.numeric(grid_heights_values[grid_heights_values != ""])
+    }
     
     # Verify that the values are in ascending order; sort ascending if not sorted
     if (is.unsorted(grid_heights_values) == TRUE){
