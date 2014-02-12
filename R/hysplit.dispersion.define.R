@@ -475,7 +475,6 @@ hysplit.dispersion.define <- function(define){
       readline(paste(cat("Provide the rate of emissions in mass units per hour.", "\n",
                          sep = '')))
     
-    
     # Provide a summary of the chosen options and ask if the chosen options are acceptable
     acceptable_emissions <-
       readline(paste(cat("The plan. Adding emissions source: ", emissions_name, "\n",
