@@ -749,7 +749,6 @@ hysplit.dispersion.define <- function(define){
     if (sampling_interval_type == "maximum") sampling_interval_type_no <- 2
     if (sampling_interval_type == "3") sampling_interval_type_no <- 2
     
-    
     # Ask to assign value to 'sampling_interval_rate'
     sampling_interval_rate <-
       readline(paste(cat("Provide the grid sampling measurement frequency.",
