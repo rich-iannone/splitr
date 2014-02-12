@@ -773,6 +773,11 @@ hysplit.dispersion.define <- function(define){
     if (sampling_interval_rate_valid == TRUE) {
       sampling_interval_rate_char <- as.character(gsub(":", " ", sampling_interval_rate))
     }
+    
+    # If the default value of 1 hour was chosen by pressing <ENTER>, assign a value of 1
+    if (sampling_interval_rate == "") {
+      sampling_interval_rate_char <- "01 00"
+    }
     # Close grids block
   }
   
