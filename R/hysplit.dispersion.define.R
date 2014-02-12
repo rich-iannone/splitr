@@ -88,8 +88,8 @@ hysplit.dispersion.define <- function(define){
         # Ask to assign value to 'ddep_Henrys_Law_coeff'
         ddep_Henrys_Law_coeff <-
           readline(paste(cat("Category: Dry Deposition", "\n",
-                             "Set the Henry's Law coefficient.", "\n",
-                             "Units: M/a. Default: 0.", "\n",
+                             "Set the effective Henry's Law Constant.", "\n",
+                             "Units: M/atm. Default: 0.", "\n",
                              "Provide a postive real number (<ENTER> for default value): ",
                              sep = '')))
         if (ddep_Henrys_Law_coeff == "") ddep_Henrys_Law_coeff <- 0.0
