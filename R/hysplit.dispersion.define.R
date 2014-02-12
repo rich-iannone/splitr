@@ -662,7 +662,7 @@ hysplit.dispersion.define <- function(define){
     # If the grid height values pass the validity test, assign string to the 'grid_heights_string'
     # object
     if (!exists("grid_heights_values_duplicated")){
-      grid_heights <- as.character(grid_heights_values)
+      grid_heights_string <- as.character(grid_heights_values)
     } 
     
     # Ask to assign value to 'grid_start_time'
