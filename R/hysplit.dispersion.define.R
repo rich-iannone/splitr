@@ -762,6 +762,12 @@ hysplit.dispersion.define <- function(define){
                          "Press <ENTER> to assign a 1-hour measurement frequency", "\n",
                          sep = '')))
     
+    # Validate the input of the time string
+    if (grepl("[0-2][0-9]:[0-9][0-9]", sampling_interval_rate, perl = TRUE) == TRUE) {
+      sampling_interval_rate_valid <- TRUE
+    } else if (grepl("[0-2][0-9]:[0-9][0-9]", sampling_interval_rate, perl = TRUE) == FALSE) {
+      sampling_interval_rate_valid <- FALSE
+    }
     # Close grids block
   }
   
