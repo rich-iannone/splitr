@@ -769,7 +769,8 @@ hysplit.dispersion.define <- function(define){
       sampling_interval_rate_char <- as.character(gsub(":", " ", sampling_interval_rate))
     }
     
-    # If the default value of 1 hour was chosen by pressing <ENTER>, assign a value of 1
+    # If the default value of 1 hour was chosen by pressing <ENTER>, assign a value
+    # of "01 00" to 'sampling_interval_rate_char'
     if (sampling_interval_rate == "") {
       sampling_interval_rate_char <- "01 00"
     }
