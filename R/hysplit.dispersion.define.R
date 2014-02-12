@@ -80,7 +80,7 @@ hysplit.dispersion.define <- function(define){
           readline(paste(cat("Category: Dry Deposition", "\n",
                              "Set the diffusivity ratio.", "\n",
                              "Units: none. Default: 0.", "\n",
-                             "Provide a value between 0-1 (<ENTER> for default value): ",
+                             "Provide a positive real number (<ENTER> for default value): ",
                              sep = '')))
         if (ddep_D_ratio == "") ddep_D_ratio <- 0.0
         if (ddep_D_ratio >= 0) ddep_D_ratio <- as.numeric(ddep_D_ratio)
