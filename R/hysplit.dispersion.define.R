@@ -754,6 +754,13 @@ hysplit.dispersion.define <- function(define){
     if (sampling_interval_type == "3") sampling_interval_type_no <- 2
     
     
+    # Ask to assign value to 'sampling_interval_rate'
+    sampling_interval_rate <-
+      readline(paste(cat("Provide the grid sampling measurement frequency.",
+                         "\n",
+                         "Use the format HH:MM", "\n",
+                         "Press <ENTER> to assign a 1-hour measurement frequency", "\n",
+                         sep = '')))
     
     # Close grids block
   }
