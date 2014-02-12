@@ -804,6 +804,12 @@ hysplit.dispersion.define <- function(define){
                          "This is what will be set. Okay? [y/n]: ",
                          sep = '')))
     
+    # If acceptable, add the grid and the options to the list of grids in the
+    # project folder
+    
+    
+    
+    
     # Close grids block
   }
   
