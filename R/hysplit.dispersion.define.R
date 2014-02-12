@@ -459,7 +459,6 @@ hysplit.dispersion.define <- function(define){
       # Get the numeric part of the supplied string, which is the number of hours
       emissions_duration <- as.numeric(gsub("^([0-9]+)[ ]?h$", "\\1",
                                  emissions_duration, perl = TRUE))
-      
     }
     
     # Work with case where 'emissions_duration_type' is a duration in days
