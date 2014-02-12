@@ -801,9 +801,15 @@ hysplit.dispersion.define <- function(define){
     
     # If acceptable, add the grid and the options to the list of grids in the
     # project folder
-    
-    
-    
+    grid_block_to_save <-
+      paste(cat(grid_center, "\n",
+                grid_spacing, "\n",
+                grid_span, "\n",
+                grid_number_vertical, "\n",
+                grid_heights_string_list, "\n",
+                grid_start_time, "\n",
+                grid_end_time, "\n",
+                sampling_interval_type_no, " ", sampling_interval_rate_char))
     
     # Close grids block
   }
