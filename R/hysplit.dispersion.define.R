@@ -788,36 +788,37 @@ hysplit.dispersion.define <- function(define){
     
     # Provide a summary of the chosen options and ask if the chosen options are acceptable
     acceptable_grid <-
-      readline(paste(cat("The plan. Adding grid: ", grid_name, "\n",
-                         "----------------------------------", "\n", 
-                         "            Grid Center: ", 
-                         paste(unlist(strsplit(grid_center, " "))[1], "º, ",
-                               unlist(strsplit(grid_center, " "))[2], "º",
-                               sep = ''), "\n",
-                         "           Grid Spacing: ",
-                         paste(unlist(strsplit(grid_spacing, " "))[1], "º, ",
-                               unlist(strsplit(grid_spacing, " "))[2], "º",
-                               sep = ''), "\n",
-                         "              Grid Span: ",
-                         paste(unlist(strsplit(grid_span, " "))[1], "º, ",
-                               unlist(strsplit(grid_span, " "))[2], "º",
-                               sep = ''), "\n",
-                         " No. of Vertical Levels: ", grid_number_vertical, "\n",
-                         "           Grid Heights: ", grid_heights_string_list, " m", "\n",
-                         "      Start of Sampling: ", grid_start_time, "\n",
-                         "        End of Sampling: ", grid_end_time, "\n",
-                         "        Sampling Method: ", sampling_interval_type_no, "\n",
-                         "     Sampling Frequency: ",
-                         as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[1],
-                         " h",
-                         ifelse(as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[2]
-                                == 0, paste(""), paste(
-                                as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[2],
-                                " m", sep = '')),
-                         "\n",
-                         "----------------------------------", "\n",
-                         "This is what will be set. Okay? [y/n]: ",
-                         sep = '')))
+      readline(paste(cat(
+        "The plan. Adding grid: ", grid_name, "\n",
+        "----------------------------------", "\n", 
+        "            Grid Center: ", 
+        paste(unlist(strsplit(grid_center, " "))[1], "º, ",
+              unlist(strsplit(grid_center, " "))[2], "º",
+              sep = ''), "\n",
+        "           Grid Spacing: ",
+        paste(unlist(strsplit(grid_spacing, " "))[1], "º, ",
+              unlist(strsplit(grid_spacing, " "))[2], "º",
+              sep = ''), "\n",
+        "              Grid Span: ",
+        paste(unlist(strsplit(grid_span, " "))[1], "º, ",
+              unlist(strsplit(grid_span, " "))[2], "º",
+              sep = ''), "\n",
+        " No. of Vertical Levels: ", grid_number_vertical, "\n",
+        "           Grid Heights: ", grid_heights_string_list_comma_sep, " m", "\n",
+        "      Start of Sampling: ", grid_start_time, "\n",
+        "        End of Sampling: ", grid_end_time, "\n",
+        "        Sampling Method: ", sampling_interval_type_no, "\n",
+        "     Sampling Frequency: ",
+        as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[1],
+        " h",
+        ifelse(as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[2]
+               == 0, paste(""), paste(
+                 as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[2],
+                 " m", sep = '')),
+        "\n",
+        "----------------------------------", "\n",
+        "This is what will be set. Okay? [y/n]: ",
+        sep = '')))
     
     # If acceptable, add the grid and the options to the list of grids in the
     # project folder
