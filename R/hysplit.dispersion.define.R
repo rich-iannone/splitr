@@ -814,20 +814,21 @@ hysplit.dispersion.define <- function(define){
     
     # If acceptable, add the grid and the options to the list of grids in the
     # project folder
-    grid_block_to_save <-
-      paste(cat(grid_center, "\n",
-                grid_spacing, "\n",
-                grid_span, "\n",
-                grid_folder, "\n",
-                grid_filename, "\n",
-                grid_number_vertical, "\n",
-                grid_heights_string_list, "\n",                
-                grid_start_time_char, "\n",
-                grid_end_time_char, "\n",
-                sampling_interval_type_no, " ", sampling_interval_rate_char, "\n",
-                sep = ''))
-    
-    print(grid_block_to_save)
+    if (acceptable_grid == "y"){
+      cat(grid_center, "\n",
+          grid_spacing, "\n",
+          grid_span, "\n",
+          grid_folder, "\n",
+          grid_filename, "\n",
+          grid_number_vertical, "\n",
+          grid_heights_string_list, "\n",                
+          grid_start_time_char, "\n",
+          grid_end_time_char, "\n",
+          sampling_interval_type_no, " ", sampling_interval_rate_char, "\n",
+          file = "~/Documents/SplitR", append = TRUE,
+          sep = '')
+    }
+
     
     # Close grids block
   }
