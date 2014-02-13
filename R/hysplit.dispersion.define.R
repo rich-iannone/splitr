@@ -592,6 +592,7 @@ hysplit.dispersion.define <- function(define){
       if (grid_span_lat_valid == TRUE &
             grid_span_lon_valid == TRUE){
         grid_span <- paste(grid_span_lat, grid_span_lon, sep = ' ')
+        grid_span_char <- paste(grid_span_lat, ", ", grid_span_lon, sep = '')
       } 
     }
     
