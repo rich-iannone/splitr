@@ -701,6 +701,7 @@ hysplit.dispersion.define <- function(define){
           grid_start_time_valid_2 == TRUE ) {
       grid_start_time_char <- as.character(gsub("-", " ", grid_start_time))
       grid_start_time_char <- as.character(gsub(":", " ", grid_start_time_char))
+      grid_start_time_char <- as.character(gsub("^[0-9][0-9]", " ", grid_start_time_char))
     }
     
     # Ask to assign value to 'grid_end_time'
