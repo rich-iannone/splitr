@@ -732,7 +732,7 @@ hysplit.dispersion.define <- function(define){
           grid_end_time_valid_2 == TRUE ) {
       grid_end_time_char <- as.character(gsub("-", " ", grid_end_time))
       grid_end_time_char <- as.character(gsub(":", " ", grid_end_time_char))
-      grid_end_time_char <- as.character(gsub("^[0-9][0-9]", " ", grid_end_time_char))
+      grid_end_time_char <- as.character(gsub("^[0-9][0-9]", "", grid_end_time_char))
     }
     
     # Ask to assign value to 'sampling_interval_type'
