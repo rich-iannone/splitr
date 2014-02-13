@@ -815,7 +815,8 @@ hysplit.dispersion.define <- function(define){
     # If acceptable, add the grid and the options to the list of grids in the
     # project folder
     if (acceptable_grid == "y"){
-      cat(grid_center, "\n",
+      cat(paste("--- Grid named: ", grid_name, ", generated on ", Sys.time(), sep = ''), "\n",
+          grid_center, "\n",
           grid_spacing, "\n",
           grid_span, "\n",
           grid_folder, "\n",
