@@ -524,6 +524,7 @@ hysplit.dispersion.define <- function(define){
     if (exists("grid_center_lat_valid") & grid_center_lat_valid == TRUE &
           exists("grid_center_lon_valid") & grid_center_lon_valid == TRUE){
       grid_center <- paste(grid_center_lat, grid_center_lon, sep = ' ')
+      grid_center_char <- paste(grid_center_lat, ", ", grid_center_lon, sep = '') 
     }
     
     # Ask to assign value to 'grid_spacing'
