@@ -826,7 +826,7 @@ hysplit.dispersion.define <- function(define){
           grid_start_time_char, "\n",
           grid_end_time_char, "\n",
           sampling_interval_type_no, " ", sampling_interval_rate_char, "\n",
-          file = "~/Documents/SplitR", append = TRUE,
+          file = "~/Documents/SplitR/grids", append = TRUE,
           sep = '')
     }
 
