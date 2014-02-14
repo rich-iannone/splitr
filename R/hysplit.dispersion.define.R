@@ -866,7 +866,6 @@ hysplit.dispersion.define <- function(define){
           sep = '')
     }
 
-    
     # Close grids block
   }
   
