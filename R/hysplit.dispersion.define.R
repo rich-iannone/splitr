@@ -640,7 +640,7 @@ hysplit.dispersion.define <- function(define){
                          sep = '')))
     
     if (grid_number_vertical == 1 & grid_heights == '') grid_heights <- 0
-    if (grid_number_vertical > 0 & grid_heights == ''){
+    if (grid_number_vertical > 1 & grid_heights == ''){
       grid_heights <- seq(0, 200*grid_number_vertical, by = 200)
     }
     
