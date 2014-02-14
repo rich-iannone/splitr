@@ -674,7 +674,7 @@ hysplit.dispersion.define <- function(define){
                                                   ifelse(i == 1, "", ", "),
                                                   grid_heights_string[i],
                                                   sep = '')
-      grid_heights_string_list_space_sep <- paste(grid_heights_string_list_comma_sep,
+      grid_heights_string_list_space_sep <- paste(grid_heights_string_list_space_sep,
                                                   ifelse(i == 1, "", " "),
                                                   grid_heights_string[i],
                                                   sep = '')
