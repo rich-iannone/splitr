@@ -700,6 +700,11 @@ hysplit.dispersion.define <- function(define){
       }
     }
     
+    if (grid_heights == 0){
+      grid_heights_string_list_comma_sep <- "0"
+      grid_heights_string_list_space_sep <- "0"
+    }
+    
     # Ask to assign value to 'grid_start_time'
     grid_start_time <-
       readline(paste(cat("Provide a date and time for the start of grid sampling.",
