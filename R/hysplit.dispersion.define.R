@@ -507,9 +507,13 @@ hysplit.dispersion.define <- function(define){
                          "Provide the latitude and longitude (<ENTER> for default values): ",
                          sep = '')))
     
+    # Assign default values of 49.289328 and -123.117665 if <ENTER> pressed
+    if (grid_center == "") grid_center <- "49.289328, -123.117665"
+    
     # Get input string into a vector object of length 2
     grid_center_coords <- unlist(strsplit(grid_center, "[, | |,]"))
     grid_center_coords <- grid_center_coords[grid_center_coords != ""]
+    
     
     # Separate latitude and longitude into two separate numeric objects
     grid_center_lat <- as.numeric(grid_center_coords[1])
