@@ -503,8 +503,8 @@ hysplit.dispersion.define <- function(define){
     # Ask to assign value to 'grid_center'
     grid_center <-
       readline(paste(cat("Provide the center of the grid.", "\n",
-                         "Units: degrees. Default: none.", "\n",
-                         "Provide the latitude and then the longitude: ",
+                         "Units: degrees. Default: 49.289328º, -123.117665º.", "\n",
+                         "Provide the latitude and longitude (<ENTER> for default values): ",
                          sep = '')))
     
     # Get input string into a vector object of length 2
