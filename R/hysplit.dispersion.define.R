@@ -674,9 +674,11 @@ hysplit.dispersion.define <- function(define){
     
     # If the grid height values pass the validity test, assign string to the 'grid_heights_string'
     # object
-    if (!exists("grid_heights_values_duplicated")){
-      grid_heights_string <- as.character(grid_heights_values)
-    } 
+    if (grid_heights != 0){
+      if (!exists("grid_heights_values_duplicated")){
+        grid_heights_string <- as.character(grid_heights_values)
+      } 
+    }
     
     # Create a formatted list of grid heights
     for (i in 1:length(grid_heights_string)){
