@@ -559,8 +559,8 @@ hysplit.dispersion.define <- function(define){
     grid_span <-
       readline(paste(cat("Provide the total span of the grid in the x and y directions.",
                          "\n",
-                         "Units: degrees. Default: none.", "\n",
-                         "Provide the latitude value and then the longitude value: ",
+                         "Units: degrees. Default: 1.00º, 1.00º.", "\n",
+                         "Provide latitude and longitude values (<ENTER> for default values): ",
                          sep = '')))
     
     # Get input string into a vector object of length 2
