@@ -757,6 +757,18 @@ hysplit.dispersion.define <- function(define){
                          "\n",
                          sep = '')))
     
+    # Assign default ending date and time if <ENTER> pressed; this is the second day
+    # of the month prior (according to the current system date)
+    if (grid_end_time == ""){
+      grid_end_time <- unlist(strsplit(as.character(Sys.Date() %m-% months(1)), "-"))
+      grid_end_time[3] <- "02"
+      grid_end_time <- paste(grid_end_time[1], "-",
+                             grid_end_time[2], "-",
+                             grid_end_time[3], " ",
+                             "00:00",
+                             sep = '')
+    }
+    
     # Validate the input of the date and time string
     if (grepl("[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-9][0-9]",
               grid_end_time, perl = TRUE) == TRUE) {
