@@ -531,8 +531,8 @@ hysplit.dispersion.define <- function(define){
     grid_spacing <-
       readline(paste(cat("Provide the spacing of adjacent grid points in the x and y directions.",
                          "\n",
-                         "Units: degrees. Default: none.", "\n",
-                         "Provide the latitude interval and then the longitude interval: ",
+                         "Units: degrees. Default: 0.05º, 0.05º.", "\n",
+                         "Provide latitude and longitude intervals (<ENTER> for default values): ",
                          sep = '')))
     
     # Get input string into a vector object of length 2
