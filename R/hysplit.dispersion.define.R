@@ -661,8 +661,10 @@ hysplit.dispersion.define <- function(define){
     }
     
     # Verify that the values are in ascending order; sort ascending if not sorted
-    if (is.unsorted(grid_heights_values) == TRUE){
-      grid_heights_values <- sort(grid_heights_values)
+    if (grid_heights != 0){
+      if (is.unsorted(grid_heights_values) == TRUE){
+        grid_heights_values <- sort(grid_heights_values)
+      }
     }
     
     # Determine whether duplicate values were provided
