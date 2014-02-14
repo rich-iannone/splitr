@@ -709,7 +709,8 @@ hysplit.dispersion.define <- function(define){
     grid_start_time <-
       readline(paste(cat("Provide a date and time for the start of grid sampling.",
                          "\n",
-                         "Use the format YYYY-MM-DD HH:MM", "\n",
+                         "Use the format YYYY-MM-DD HH:MM (<ENTER> for default value)",
+                         "\n",
                          sep = '')))
     
     # Validate the input of the date and time string
