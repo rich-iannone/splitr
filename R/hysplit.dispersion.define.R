@@ -681,19 +681,23 @@ hysplit.dispersion.define <- function(define){
     }
     
     # Create a formatted list of grid heights
-    for (i in 1:length(grid_heights_string)){
-      if (i == 1) {
-        grid_heights_string_list_comma_sep <- NULL
-        grid_heights_string_list_space_sep <- NULL
+    if (grid_heights != 0){
+      if (!exists("grid_heights_values_duplicated")){
+        for (i in 1:length(grid_heights_string)){
+          if (i == 1) {
+            grid_heights_string_list_comma_sep <- NULL
+            grid_heights_string_list_space_sep <- NULL
+          }
+          grid_heights_string_list_comma_sep <- paste(grid_heights_string_list_comma_sep,
+                                                      ifelse(i == 1, "", ", "),
+                                                      grid_heights_string[i],
+                                                      sep = '')
+          grid_heights_string_list_space_sep <- paste(grid_heights_string_list_space_sep,
+                                                      ifelse(i == 1, "", " "),
+                                                      grid_heights_string[i],
+                                                      sep = '')
+        }
       }
-      grid_heights_string_list_comma_sep <- paste(grid_heights_string_list_comma_sep,
-                                                  ifelse(i == 1, "", ", "),
-                                                  grid_heights_string[i],
-                                                  sep = '')
-      grid_heights_string_list_space_sep <- paste(grid_heights_string_list_space_sep,
-                                                  ifelse(i == 1, "", " "),
-                                                  grid_heights_string[i],
-                                                  sep = '')
     }
     
     # Ask to assign value to 'grid_start_time'
