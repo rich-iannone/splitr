@@ -488,7 +488,16 @@ hysplit.dispersion.define <- function(define){
     
     # If acceptable, add the emissions source and the options to the list of emissions
     # sources in the project folder
-    
+    if (acceptable_emissions == "y"){
+      cat(paste("--- Emissions source named: ", emissions_name,
+                ", generated on ", Sys.time(), sep = ''), "\n",
+          emissions_start_time, "\n",
+          emissions_duration, "\n",
+          emissions_rate, "\n",
+          paste("---"),
+          file = "~/Documents/SplitR/emissions", append = TRUE,
+          sep = '')
+    }
     
     # Close emissions block
   }
