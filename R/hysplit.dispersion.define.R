@@ -491,9 +491,11 @@ hysplit.dispersion.define <- function(define){
     if (acceptable_emissions == "y"){
       cat(paste("--- Emissions source named: ", emissions_name,
                 ", generated on ", Sys.time(), sep = ''), "\n",
-          emissions_start_time, "\n",
-          emissions_duration, "\n",
+          "1", "\n",
+          toupper(gsub("^(....).*","\\1", emissions_name)), "\n",
           emissions_rate, "\n",
+          emissions_duration, "\n",
+          emissions_start_time, "\n",
           paste("---"),
           file = "~/Documents/SplitR/emissions", append = TRUE,
           sep = '')
