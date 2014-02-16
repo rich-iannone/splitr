@@ -496,7 +496,7 @@ hysplit.dispersion.define <- function(define){
           emissions_rate, "\n",
           emissions_duration, "\n",
           emissions_start_time, "\n",
-          paste("---"),
+          paste("---"), "\n",
           file = "~/Documents/SplitR/emissions", append = TRUE,
           sep = '')
     }
