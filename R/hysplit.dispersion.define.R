@@ -362,7 +362,28 @@ hysplit.dispersion.define <- function(define){
     
     # If acceptable, add the species and the options to the list of species
     # in the project folder
-    
+    # If acceptable, add the emissions source and the options to the list of emissions
+    # sources in the project folder
+    if (acceptable_species == "y"){
+      cat(paste("--- Species named: ", species_name,
+                ", generated on ", Sys.time(), sep = ''), "\n",
+          paste(particle_pdiam, " ",
+                particle_density, " ",
+                particle_shape_factor, sep = ''), "\n",
+          paste(ddep_velocity, " ",
+                ddep_MW, " ",
+                ddep_A_ratio, " ", 
+                ddep_D_ratio, " ", 
+                ddep_Henrys_Law_coeff, sep = ''), "\n",
+          paste(wdep_Henrys_Law_coeff, " ",
+                wdep_in_cloud_dep, " ",
+                wdep_below_cloud_dep, sep = ''), "\n",
+          rad_decay, "\n",
+          pollutant_resuspension_factor, "\n",
+          paste("---"), "\n",
+          file = "~/Documents/SplitR/species", append = TRUE,
+          sep = '')
+    }
     
     # Close species block
   }
