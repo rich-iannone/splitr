@@ -484,7 +484,7 @@ hysplit.dispersion.define <- function(define){
                          "----------------------------------", "\n", 
                          "Start Date/Time: ", emissions_start_time, "\n",
                          "       Duration: ", emissions_duration, " h", "\n",
-                         " Emissions Rate: ", emissions_rate, " 1/h", "\n",
+                         " Emissions Rate: ", emissions_rate, " (mass units)/h", "\n",
                          "----------------------------------", "\n",
                          "This is what will be set. Okay? [y/n]: ",
                          sep = '')))
