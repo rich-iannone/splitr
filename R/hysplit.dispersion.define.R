@@ -403,6 +403,7 @@ hysplit.dispersion.define <- function(define){
           emissions_start_time_valid_2 == TRUE ) {
       emissions_start_time_char <- as.character(gsub("-", " ", emissions_start_time))
       emissions_start_time_char <- as.character(gsub(":", " ", emissions_start_time_char))
+      emissions_start_time_char <- as.character(gsub("^[0-9][0-9]", "", emissions_start_time_char))
     }
     
     # Ask to assign value to 'emissions_duration'    
