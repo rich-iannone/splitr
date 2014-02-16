@@ -397,7 +397,8 @@ hysplit.dispersion.define <- function(define){
       emissions_start_time_valid_2 <- FALSE
     }
     
-    # If the entered date passes both validation tests, assign it to 'emissions_start_time'
+    # If the entered date passes both validation tests, assign it to
+    # 'emissions_start_time_char'
     if (emissions_start_time_valid_1 == TRUE &
           emissions_start_time_valid_2 == TRUE ) {
       emissions_start_time_char <- as.character(gsub("-", " ", emissions_start_time))
