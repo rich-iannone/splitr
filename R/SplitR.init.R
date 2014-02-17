@@ -42,12 +42,14 @@ SplitR.init <- function(install_folders = TRUE,
     # Set path of SplitR directory
     SplitR_path <- file.path(paste(documents_folder_path, "/SplitR", sep = ''))
     
-    # Subfolder creation (Exec, Met, Projects)
+    # Subfolder creation (Exec, Met, Projects, Working)
     dir.create(file.path(paste(documents_folder_path, "/SplitR/Exec", sep = '')),
                showWarnings = FALSE)
     dir.create(file.path(paste(documents_folder_path, "/SplitR/Met", sep = '')),
                showWarnings = FALSE)
     dir.create(file.path(paste(documents_folder_path, "/SplitR/Projects", sep = '')),
+               showWarnings = FALSE)  
+    dir.create(file.path(paste(documents_folder_path, "/SplitR/Working", sep = '')),
                showWarnings = FALSE)  
   
     # Get date and time of initialization
