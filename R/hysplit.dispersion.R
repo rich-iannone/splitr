@@ -211,11 +211,45 @@ hysplit.dispersion <- function(use_default_config = TRUE,
         met.file.df[k, 1] <- met[k]
         met.file.df[k, 2] <- as.character(file.exists(paste(path_met_files, met[k], sep = '')))}
       
+      # Construct the output filename string for this model run
+      output_filename <- paste("disp",
+                               ifelse(backward_running == TRUE, '(back)', '(forward)'), "-",
+                               start_year_GMT, "-",
+                               start_month_GMT, "-",
+                               start_day_GMT, "-",
+                               start_hour_GMT, "-",
+                               "lat_", start_lat_deg, "_",
+                               "long_",start_long_deg, "-",
+                               "height_",start_height_m_AGL, "-",
+                               simulation_duration_h, "h", sep = '')
+      
+      
     }
     
   }
   
+  
+  
+  
+  
 }
   
-  
+# hysplit.dispersion(use_default_config = TRUE,
+#                    start_lat_deg,
+#                    start_long_deg,
+#                    start_height_m_AGL,
+#                    simulation_duration_h = 24,
+#                    backward_running = FALSE,
+#                    met_type,
+#                    vertical_motion_option = 0,
+#                    top_of_model_domain_m = 20000,
+#                    run_type,
+#                    run_day = NULL,
+#                    run_range = NULL,
+#                    run_years = NULL,
+#                    daily_hours_to_start,
+#                    path_met_files,
+#                    path_output_files,
+#                    path_wd,
+#                    path_executable)
   
