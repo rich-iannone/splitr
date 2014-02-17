@@ -12,7 +12,7 @@ hysplit.dispersion.config <- function(create_default_config = FALSE,
    " maxpar = 10000,", " cpack = 1,", " cmass = 0,", " dxf = 1.0,", " dyf = 1.0,",
    " dzf = 0.01,", " ichem = 0,", " maxdim = 1,", " kspl = 1,", " krnd = 6,",
    " frhs = 1.0,", " frvs = 0.01,", " frts = 0.10,", " frhmax = 3.0,", " splitf = 1.0,",
-   " /", sep = "\n", file = "SETUP.CFG")
+   " /", sep = "\n", file = "~\Documents\SplitR\Working\SETUP.CFG")
   }
     
   
