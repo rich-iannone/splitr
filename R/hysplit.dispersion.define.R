@@ -515,7 +515,6 @@ hysplit.dispersion.define <- function(define){
     if (acceptable_emissions == "y"){
       cat(paste("--- Emissions source named: ", emissions_name,
                 ", generated on ", Sys.time(), sep = ''), "\n",
-          "1", "\n",
           toupper(gsub("^(....).*","\\1", emissions_name)), "\n",
           emissions_rate, "\n",
           emissions_duration, "\n",
