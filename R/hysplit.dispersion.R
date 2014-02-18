@@ -230,11 +230,7 @@ hysplit.dispersion <- function(use_default_config = TRUE,
     }
     
   }
-  
-  
-  
-  
-  
+    
 }
   
 # hysplit.dispersion(use_default_config = TRUE,
