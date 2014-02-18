@@ -53,6 +53,30 @@ hysplit.dispersion <- function(use_default_config = TRUE,
                        "Choices: (1) species, (2) emissions, (3) grids.", "\n",
                        sep = '')))
   
+  # Repeat the next steps of asking for user input unil 'done' or 'quit' entered
+  while (set_s_e_g != "done" | set_s_e_g != "quit") {
+  
+    if (set_s_e_g == 1 | set_s_e_g == "species") {
+      
+      # Display information available for species, reading from the file 'species'
+      con <- file("~/Documents/SplitR/species", "r", blocking = FALSE)
+      readLines(con)
+      
+    }
+    
+    if (set_s_e_g == 2 | set_s_e_g == "emissions") {
+      
+      # Display information available for emissions
+      
+    }
+    
+    if (set_s_e_g == 3 | set_s_e_g == "grids") {
+      
+      # Display information available for grids
+      
+    }
+  
+  }
   
   # Make loop with all run days
   for (i in 1:length(list_run_days)) {
