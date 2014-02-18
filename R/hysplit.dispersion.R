@@ -66,8 +66,7 @@ hysplit.dispersion <- function(use_default_config = TRUE,
     
     if (set_s_e_g == 2 | set_s_e_g == "emissions") {
       
-      # Display information available for emissions
-      
+      # Display information available for emissions, reading from the file 'emissions'
     }
     
     if (set_s_e_g == 3 | set_s_e_g == "grids") {
