@@ -71,8 +71,7 @@ hysplit.dispersion <- function(use_default_config = TRUE,
     
     if (set_s_e_g == 3 | set_s_e_g == "grids") {
       
-      # Display information available for grids
-      
+      # Display information available for grids, reading from the file 'grids'
     }
   
   }
