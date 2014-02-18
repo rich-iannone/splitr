@@ -51,6 +51,13 @@ hysplit.dispersion <- function(use_default_config = TRUE,
                          by = 86400)
   } else {stop("A run type has not been selected")}
   
+  # Ask to select species, emissions, and grids
+  set_s_e_g <-
+    readline(paste(cat("What would you like to set for these runs?", "\n",
+                       "Choices: (1) species, (2) emissions, (3) grids.", "\n",
+                       sep = '')))
+  
+  
   # Make loop with all run days
   for (i in 1:length(list_run_days)) {
     
