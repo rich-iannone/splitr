@@ -60,7 +60,7 @@ hysplit.dispersion <- function(use_default_config = TRUE,
       
       # Display information available for species, reading from the file 'species'
       con <- file("~/Documents/SplitR/species", "r", blocking = FALSE)
-      readLines(con)
+      species <- readLines(con)
       
     }
     
