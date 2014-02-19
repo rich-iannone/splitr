@@ -54,7 +54,7 @@ hysplit.dispersion <- function(use_default_config = TRUE,
                        sep = '')))
   
   # Repeat the next steps of asking for user input unil 'done' or 'quit' entered
-  while (set_s_e_g != "done" | set_s_e_g != "quit") {
+#   while (set_s_e_g != "done" | set_s_e_g != "quit") {
   
     if (set_s_e_g == 1 | set_s_e_g == "species") {
       
