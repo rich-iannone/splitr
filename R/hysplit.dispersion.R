@@ -75,7 +75,7 @@ hysplit.dispersion <- function(use_default_config = TRUE,
       # Display information available for emissions, reading from the file 'emissions'
       emissions <- as.vector(read.table("~/Documents/SplitR/emissions", sep = "\n"))
       
-      number_of_entries_emissions <- length(emissions) / 6
+      number_of_entries_emissions <- nrow(emissions) / 6
 
       # Get names of emissions entries      
         for (i in 1:length(seq(from = 1, to = 6 * number_of_entries_emissions, by = 6))){
