@@ -91,8 +91,7 @@ hysplit.dispersion <- function(use_default_config = TRUE,
     if (set_s_e_g == 3 | set_s_e_g == "grids") {
       
       # Display information available for grids, reading from the file 'grids'
-      con <- file("~/Documents/SplitR/grids", "r", blocking = FALSE)
-      grids <- readLines(con)
+      grids <- as.vector(read.table("~/Documents/SplitR/grids", sep = "\n"))
     }
   
   }
