@@ -85,6 +85,8 @@ hysplit.dispersion <- function(use_default_config = TRUE,
       
       # Display summary information on each species
       
+      # Close inner emissions while loop
+      }
       
       #Close outer emissions while loop
     }
