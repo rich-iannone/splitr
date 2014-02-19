@@ -92,6 +92,10 @@ hysplit.dispersion <- function(use_default_config = TRUE,
             gsub("^.*: ([a-zA-Z0-9]*),.*$", "\\1", emissions[sequence[i]], perl = FALSE)
           
         }
+      
+      # Display summary information on each species
+      
+      
     }
     
     if (set_s_e_g == 3 | set_s_e_g == "grids") {
