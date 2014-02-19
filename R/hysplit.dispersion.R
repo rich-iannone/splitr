@@ -80,6 +80,18 @@ hysplit.dispersion <- function(use_default_config = TRUE,
       
       number_of_entries_emissions <- length(emissions) / 6
 
+      # Get names of emissions entries      
+        for (i in 1:length(seq(from = 1, to = 6 * number_of_entries_emissions, by = 6))){
+          if (i == 1) {
+            names_of_entries_emissions <-
+              mat.or.vec(nr = length(seq(from = 1, to = 6 * number_of_entries_emissions, by = 6)),
+                         nc = 1)
+            sequence <- seq(from = 1, to = 6 * number_of_entries_emissions, by = 6)
+          }
+          names_of_entries_emissions[i] <-
+            gsub("^.*: ([a-zA-Z0-9]*),.*$", "\\1", emissions[sequence[i]], perl = FALSE)
+          
+        }
     }
     
     if (set_s_e_g == 3 | set_s_e_g == "grids") {
