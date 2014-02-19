@@ -77,6 +77,9 @@ hysplit.dispersion <- function(use_default_config = TRUE,
       emissions <- readLines(con)
       close(con)
       unlink("~/Documents/SplitR/emissions")
+      
+      number_of_entries_emissions <- length(emissions) / 6
+
     }
     
     if (set_s_e_g == 3 | set_s_e_g == "grids") {
