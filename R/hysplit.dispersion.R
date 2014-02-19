@@ -88,6 +88,13 @@ hysplit.dispersion <- function(use_default_config = TRUE,
             gsub("^.*: ([a-zA-Z0-9]*),.*$", "\\1", emissions[sequence[i]], perl = FALSE)
           
         }
+      # Display summary information on emissions profiles are available and which are set    
+      paste("The following emissions profiles are available for the model runs")
+      names_of_entries_emissions
+      set_species <-
+        readline(paste(cat("Select the emissions profile(s) to use for the model runs.",
+                           "\n", sep = '')))
+      
       
       # Display summary information on each species
       # Validate supplied digits for being within range
