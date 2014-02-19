@@ -66,10 +66,7 @@ hysplit.dispersion <- function(use_default_config = TRUE,
     if (set_s_e_g == 2 | set_s_e_g == "emissions") {
       
       # Display information available for emissions, reading from the file 'emissions'
-      con <- file("~/Documents/SplitR/emissions", "r", blocking = FALSE)
-      emissions <- readLines(con)
-      close(con)
-      unlink("~/Documents/SplitR/emissions")
+      emissions <- as.vector(read.table("~/Documents/SplitR/emissions", sep = "\n"))
       
       number_of_entries_emissions <- length(emissions) / 6
 
