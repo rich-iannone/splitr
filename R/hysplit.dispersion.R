@@ -94,6 +94,7 @@ hysplit.dispersion <- function(use_default_config = TRUE,
       grids <- as.vector(read.table("~/Documents/SplitR/grids", sep = "\n"))
     }
   
+    # End while loop
   }
   
   # Make loop with all run days
