@@ -58,9 +58,15 @@ hysplit.dispersion <- function(use_default_config = TRUE,
   
     if (set_s_e_g == 1 | set_s_e_g == "species") {
       
-      # Display information available for species, reading from the file 'species'
+      # Read from the file 'species'
       con <- file("~/Documents/SplitR/species", "r", blocking = FALSE)
       species <- readLines(con)
+      close(con)
+      unlink("~/Documents/SplitR/species")
+      
+      # Display summary information on each species
+      
+      
       
     }
     
