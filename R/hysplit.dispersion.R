@@ -77,18 +77,22 @@ hysplit.dispersion <- function(use_default_config = TRUE,
       
       number_of_entries_emissions <- nrow(emissions) / 6
 
-      # Get names of emissions entries      
-        for (i in 1:length(seq(from = 1, to = 6 * number_of_entries_emissions, by = 6))){
-          if (i == 1) {
-            names_of_entries_emissions <-
-              mat.or.vec(nr = length(seq(from = 1, to = 6 * number_of_entries_emissions, by = 6)),
-                         nc = 1)
-            sequence <- seq(from = 1, to = 6 * number_of_entries_emissions, by = 6)
-          }
-          names_of_entries_emissions[i] <-
-            gsub("^.*: ([a-zA-Z0-9]*),.*$", "\\1", emissions[sequence[i]], perl = FALSE)
-          
+      # Get names of available emissions entries      
+      for (i in 1:length(seq(from = 1, to = 6 * number_of_entries_emissions, by = 6))){
+        if (i == 1) {
+          names_of_entries_emissions <-
+            as.data.frame(mat.or.vec(nr = length(seq(from = 1,
+                                                     to = 6 * number_of_entries_emissions,
+                                                     by = 6)),
+                                     nc = 2))
+          colnames(names_of_entries_emissions) <- c("Available", "Use in Model")
+          names_of_entries_emissions[,2] <- "No"
+          sequence <- seq(from = 1, to = 6 * number_of_entries_emissions, by = 6)
         }
+        names_of_entries_emissions[i, 1] <-
+          gsub("^.*: ([a-zA-Z0-9]*),.*$", "\\1", emissions[sequence[i],1], perl = FALSE)
+      }
+      
       # Display summary information on emissions profiles are available and which are set    
       paste("The following emissions profiles are available for the model runs")
       names_of_entries_emissions
