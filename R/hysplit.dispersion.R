@@ -71,6 +71,7 @@ hysplit.dispersion <- function(use_default_config = TRUE,
     
     if (set_s_e_g == 2 | set_s_e_g == "emissions") {
       
+      while (set_species != "done" | set_species != "quit" | set_species != "") {
       # Display information available for emissions, reading from the file 'emissions'
       emissions <- as.vector(read.table("~/Documents/SplitR/emissions", sep = "\n"))
       
