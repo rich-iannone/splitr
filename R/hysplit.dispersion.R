@@ -95,6 +95,11 @@ hysplit.dispersion <- function(use_default_config = TRUE,
         readline(paste(cat("Select the emissions profile(s) to use for the model runs.",
                            "\n", sep = '')))
       
+      set_species_char <- unlist(strsplit(set_species, ","))
+      set_species_num <- as.numeric(set_species_char)
+      
+      # Validate supplied digits for duplicates
+      duplicates <- ifelse(anyDuplicated(set_species_num) != 0, TRUE, FALSE)
       
       # Display summary information on each species
       # Validate supplied digits for being within range
