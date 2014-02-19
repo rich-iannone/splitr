@@ -61,6 +61,12 @@ hysplit.dispersion <- function(use_default_config = TRUE,
       # Read from the file 'species'
       species <- as.vector(read.table("~/Documents/SplitR/species", sep = "\n"))
       
+      # Display summary information on which species profiles are available and which are set    
+      set_species <-
+        readline(paste(cat("The following species profiles are available for the model runs",
+                           "\n",
+                           sep = '')))
+
     }
     
     if (set_s_e_g == 2 | set_s_e_g == "emissions") {
