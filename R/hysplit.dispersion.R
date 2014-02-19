@@ -75,6 +75,8 @@ hysplit.dispersion <- function(use_default_config = TRUE,
       # Display information available for emissions, reading from the file 'emissions'
       con <- file("~/Documents/SplitR/emissions", "r", blocking = FALSE)
       emissions <- readLines(con)
+      close(con)
+      unlink("~/Documents/SplitR/emissions")
     }
     
     if (set_s_e_g == 3 | set_s_e_g == "grids") {
