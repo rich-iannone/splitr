@@ -86,6 +86,7 @@ hysplit.dispersion <- function(use_default_config = TRUE,
       # Display summary information on each species
       
       
+      #Close outer emissions while loop
     }
     
     if (set_s_e_g == 3 | set_s_e_g == "grids") {
