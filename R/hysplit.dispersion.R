@@ -110,7 +110,14 @@ hysplit.dispersion <- function(use_default_config = TRUE,
                            TRUE, FALSE)
       
       # Validate supplied digits for being within range
-
+      in_range <- ifelse(all(set_emissions_num %in% 1:number_of_entries_emissions) == TRUE,
+                        TRUE, FALSE)
+      
+#       if (no_duplicates == TRUE & in_range == TRUE & set_emissions_num != ""){
+#         for (i in 1:length(set_emissions_num)){
+#           names_of_entries_emissions[set_emissions_num[i], 2] <- "Yes"
+#         }
+#       }
       
       # Close inner emissions while loop
       }
