@@ -106,7 +106,8 @@ hysplit.dispersion <- function(use_default_config = TRUE,
       set_emissions_num <- as.numeric(set_emissions_char)
       
       # Validate supplied digits for duplicates
-      duplicates <- ifelse(anyDuplicated(set_species_num) != 0, TRUE, FALSE)
+      no_duplicates <- ifelse(anyDuplicated(set_emissions_num) == 0,
+                           TRUE, FALSE)
       
       # Validate supplied digits for being within range
 
