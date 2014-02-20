@@ -96,9 +96,9 @@ hysplit.dispersion <- function(use_default_config = TRUE,
       }
       
       # Display summary information on emissions profiles are available and which are set    
-      paste("The following emissions profiles are available for the model runs")
-      names_of_entries_emissions
-      set_species <-
+      print(paste("The following emissions profiles are available for the model runs"))
+      print(names_of_entries_emissions)
+      set_emissions <-
         readline(paste(cat("Select the emissions profile(s) to use for the model runs.",
                            "\n", sep = '')))
       
