@@ -332,3 +332,4 @@ hysplit.dispersion(use_default_config = TRUE,
                    path_wd = "~/Documents/SplitR/Working/",
                    path_executable = "~/Documents/SplitR/Exec/")
   
+
