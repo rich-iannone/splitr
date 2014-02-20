@@ -70,6 +70,8 @@ hysplit.dispersion <- function(use_default_config = TRUE,
     }
     
     if (set_s_e_g == 2 | set_s_e_g == "emissions") {
+            
+      set_emissions <- ""
       
       while (set_emissions != "done" | set_emissions != "quit" | set_emissions != "") {
       # Display information available for emissions, reading from the file 'emissions'
