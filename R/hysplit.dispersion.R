@@ -28,9 +28,10 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
 #     ifelse(nchar(run_years) == 4, "single", "range") 
   
   # Make a vector list of run days in POSIXct format
-  if (run_type == "day") {
-    list_run_days <- as.POSIXct(run_day, origin = "1970-01-01", tz = "UTC")
-  } else if (run_type == "range") {
+  if (exists("run_type") & run_type == "day" & exists("run_day")){
+    list_run_days <- as.POSIXct(run_day, origin = "1970-01-01", tz = "UTC")}
+  
+  if (exists("run_type") & run_type == "range" & exists("run_range")){
     list_run_days <- seq(as.POSIXct(run_range[1], origin = "1970-01-01", tz = "UTC"),
                          as.POSIXct(run_range[2], origin = "1970-01-01", tz = "UTC"),
                          by = 86400)
