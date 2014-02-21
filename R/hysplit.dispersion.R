@@ -222,7 +222,8 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
       
       
     }
-    
+
+# Close the day loop 
   }
     
 }
