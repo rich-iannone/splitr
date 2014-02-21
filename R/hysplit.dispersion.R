@@ -79,7 +79,7 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
                                       start_hour_GMT, ":00:00",
                                       sep = ''))
       # Determine the end time of the model run
-      end_time_GMT <- as.POSIXct(ifelse(backtrajectory == TRUE, 
+      end_time_GMT <- as.POSIXct(ifelse(backward_running == TRUE, 
                                         start_time_GMT - (simulation_duration_h * 3600),
                                         start_time_GMT + (simulation_duration_h * 3600)),
                                  origin = "1970-01-01", tz = "UTC")
