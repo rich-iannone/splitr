@@ -34,8 +34,12 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
   if (exists("run_type") & run_type == "range" & exists("run_range")){
     list_run_days <- seq(as.POSIXct(run_range[1], origin = "1970-01-01", tz = "UTC"),
                          as.POSIXct(run_range[2], origin = "1970-01-01", tz = "UTC"),
-                         by = 86400)
-  } else if (run_type == "years") {
+                         by = 86400)}
+  
+  if (exists("run_type") & run_type == "years" & exists("run_years")){
+    run_years_single_range <-
+      ifelse(nchar(run_years) == 4, "single", "range")
+    
     list_run_days <- seq(as.POSIXct(paste(substr(run_years, 1, 4),"-01-01", sep = ''), 
                                     origin = "1970-01-01", tz = "UTC"),
                          as.POSIXct(ifelse(run_years_single_range == "single",
