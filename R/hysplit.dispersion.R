@@ -23,9 +23,9 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
   # Set number of starting locations to 1 for this function
   no_starting_locations <- 1  
   
-  # Determine whether the run_years input is a single year or a range
-  if(exists("run_years")) run_years_single_range <-
-    ifelse(nchar(run_years) == 4, "single", "range") 
+#   # Determine whether the run_years input is a single year or a range
+#   if(exists("run_years")) run_years_single_range <-
+#     ifelse(nchar(run_years) == 4, "single", "range") 
   
   # Make a vector list of run days in POSIXct format
   if (run_type == "day") {
