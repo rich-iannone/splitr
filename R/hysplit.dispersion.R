@@ -273,24 +273,17 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
             file = paste(path_wd, "CONTROL", sep = ''),
             sep = '', append = TRUE)}
       
-      #End writing emissions blocks     
-      
       #Write grid blocks to 'CONTROL'
       for (i in 1:length(hysplit.dispersion.read("grids", grids))){
         cat(hysplit.dispersion.read("grids", grids)[i], "\n",
             file = paste(path_wd, "CONTROL", sep = ''),
             sep = '', append = TRUE)}
       
-      #End writing grid blocks 
-      
       # Write species blocks to 'CONTROL'
       for (i in 1:length(hysplit.dispersion.read("species", species))){
         cat(hysplit.dispersion.read("species", species)[i], "\n",
             file = paste(path_wd, "CONTROL", sep = ''),
             sep = '', append = TRUE)}
-      
-      #End writing species blocks 
-      
       
       # Write path for dispersion grid output file to 'CONTROL'
       #       cat(path_output_files, "\n",
@@ -301,10 +294,6 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
       #       cat(output_filename, "\n",
       #           file = paste(path_wd, "CONTROL", sep = ''),
       #           sep = '', append = TRUE)
-      
-      
-      
-      
       
       # CONTROL file is now complete and in the working directory
       # Execute the model run
