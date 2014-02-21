@@ -232,6 +232,14 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
       cat(no_starting_locations, "\n",
           file = paste(path_wd, "CONTROL", sep = ''),
           sep = '', append = TRUE)
+      
+      # Write starting latitude, longitude, height AGL to 'CONTROL'
+      cat(start_lat_deg, " ", 
+          start_long_deg, " ", 
+          start_height_m_AGL, "\n",
+          file = paste(path_wd, "CONTROL", sep = ''),
+          sep = '', append = TRUE)
+      
     }
 
 # Close the day loop 
