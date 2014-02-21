@@ -267,13 +267,13 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
             file = paste(path_wd, "CONTROL", sep = ''),
             sep = '', append = TRUE)}
       
-      #Write emissions blocks to 'CONTROL'
+      # Write emissions blocks to 'CONTROL'
       for (i in 1:length(hysplit.dispersion.read("emissions", emissions))){
         cat(hysplit.dispersion.read("emissions", emissions)[i], "\n",
             file = paste(path_wd, "CONTROL", sep = ''),
             sep = '', append = TRUE)}
       
-      #Write grid blocks to 'CONTROL'
+      # Write grid blocks to 'CONTROL'
       for (i in 1:length(hysplit.dispersion.read("grids", grids))){
         cat(hysplit.dispersion.read("grids", grids)[i], "\n",
             file = paste(path_wd, "CONTROL", sep = ''),
