@@ -256,6 +256,10 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
           file = paste(path_wd, "CONTROL", sep = ''),
           sep = '', append = TRUE)
       
+      # Write number of met files used to 'CONTROL'
+      cat(length(met), "\n",
+          file = paste(path_wd, "CONTROL", sep = ''),
+          sep = '', append = TRUE)
     }
 
 # Close the day loop 
