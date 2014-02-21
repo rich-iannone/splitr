@@ -283,6 +283,13 @@ for (i in 1:length(hysplit.dispersion.read("grids", grids))){
       
       #End writing grid blocks 
 
+# Write species blocks to 'CONTROL'
+for (i in 1:length(hysplit.dispersion.read("species", species))){
+  cat(hysplit.dispersion.read("species", species)[i], "\n",
+      file = paste(path_wd, "CONTROL", sep = ''),
+      sep = '', append = TRUE)}
+
+#End writing species blocks 
     }
 
 # Close the day loop 
