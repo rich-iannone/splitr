@@ -227,23 +227,6 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
     
 }
   
-hysplit.dispersion(use_default_config = TRUE,
-                   start_lat_deg = 49.90000,
-                   start_long_deg = -97.13779,
-                   start_height_m_AGL = 50,
-                   simulation_duration_h = 6,
-                   backward_running = FALSE,
-                   met_type = "reanalysis",
-                   vertical_motion_option = 0,
-                   top_of_model_domain_m = 20000,
-                   run_type = "day",
-                   run_day = "2012-03-10",
-                   run_range = NULL,
-                   run_years = NULL,
-                   daily_hours_to_start = "00",
-                   path_met_files = "~/Documents/Hysplit4-OSX/met/",
-                   path_output_files = "~/Documents/SplitR/Output/",
-                   path_wd = "~/Documents/SplitR/Working/",
-                   path_executable = "~/Documents/SplitR/Exec/")
+
   
 
