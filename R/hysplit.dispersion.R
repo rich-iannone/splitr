@@ -291,6 +291,20 @@ for (i in 1:length(hysplit.dispersion.read("species", species))){
 
 #End writing species blocks 
 
+
+      # Write path for dispersion grid output file to 'CONTROL'
+#       cat(path_output_files, "\n",
+#           file = paste(path_wd, "CONTROL", sep = ''),
+#           sep = '', append = TRUE)
+      
+      # Write name of output filename to 'CONTROL'
+#       cat(output_filename, "\n",
+#           file = paste(path_wd, "CONTROL", sep = ''),
+#           sep = '', append = TRUE)
+      
+
+      
+
       
       # CONTROL file is now complete and in the working directory
       # Execute the model run
