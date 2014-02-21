@@ -310,6 +310,7 @@ for (i in 1:length(hysplit.dispersion.read("species", species))){
       # Execute the model run
       system(paste("(cd ", path_wd, " && ", path_executable, ")", sep = ''))
       
+      # Close the hour loop 
     }
 
 # Close the day loop 
