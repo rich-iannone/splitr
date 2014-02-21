@@ -240,6 +240,12 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
           file = paste(path_wd, "CONTROL", sep = ''),
           sep = '', append = TRUE)
       
+      # Write direction and number of simulation hours to 'CONTROL'
+      cat(ifelse(backward_running == TRUE, "-", ""),
+          simulation_duration_h, "\n",
+          file = paste(path_wd, "CONTROL", sep = ''),
+          sep = '', append = TRUE)
+      
     }
 
 # Close the day loop 
