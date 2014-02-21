@@ -23,9 +23,9 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
   # Set number of starting locations to 1 for this function
   no_starting_locations <- 1  
   
-#   # Determine whether the run_years input is a single year or a range
-#   if(exists("run_years")) run_years_single_range <-
-#     ifelse(nchar(run_years) == 4, "single", "range") 
+  #   # Determine whether the run_years input is a single year or a range
+  #   if(exists("run_years")) run_years_single_range <-
+  #     ifelse(nchar(run_years) == 4, "single", "range") 
   
   # Make a vector list of run days in POSIXct format
   if (exists("run_type") & run_type == "day" & exists("run_day")){
@@ -47,7 +47,7 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
                                            paste(substr(run_years, 6, 9),"-12-31",sep = '')), 
                                     origin = "1970-01-01", tz = "UTC"),
                          by = 86400)}
-    
+  
   # Make loop with all run days
   for (i in 1:length(list_run_days)) {
     
@@ -201,12 +201,12 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
       # data files for Feb in leap years)
       if(exists("met")) met <- met[!met %in% c(0)]
       
-#       # Are the met files available on the selected path?
-#       met.file.df <- setNames(data.frame(mat.or.vec(nr = length(met), nc = 2)),
-#                               nm = c("file","available?"))
-#       for (k in 1:length(met)) {
-#         met.file.df[k, 1] <- met[k]
-#         met.file.df[k, 2] <- as.character(file.exists(paste(path_met_files, met[k], sep = '')))}
+      #       # Are the met files available on the selected path?
+      #       met.file.df <- setNames(data.frame(mat.or.vec(nr = length(met), nc = 2)),
+      #                               nm = c("file","available?"))
+      #       for (k in 1:length(met)) {
+      #         met.file.df[k, 1] <- met[k]
+      #         met.file.df[k, 2] <- as.character(file.exists(paste(path_met_files, met[k], sep = '')))}
       
       # Construct the output filename string for this model run
       output_filename <- paste("disp",
@@ -268,43 +268,43 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
             sep = '', append = TRUE)}
       
       #Write emissions blocks to 'CONTROL'
-for (i in 1:length(hysplit.dispersion.read("emissions", emissions))){
-  cat(hysplit.dispersion.read("emissions", emissions)[i], "\n",
-      file = paste(path_wd, "CONTROL", sep = ''),
-      sep = '', append = TRUE)}
-
-#End writing emissions blocks     
-
-#Write grid blocks to 'CONTROL'
-for (i in 1:length(hysplit.dispersion.read("grids", grids))){
-  cat(hysplit.dispersion.read("grids", grids)[i], "\n",
-      file = paste(path_wd, "CONTROL", sep = ''),
-      sep = '', append = TRUE)}
+      for (i in 1:length(hysplit.dispersion.read("emissions", emissions))){
+        cat(hysplit.dispersion.read("emissions", emissions)[i], "\n",
+            file = paste(path_wd, "CONTROL", sep = ''),
+            sep = '', append = TRUE)}
+      
+      #End writing emissions blocks     
+      
+      #Write grid blocks to 'CONTROL'
+      for (i in 1:length(hysplit.dispersion.read("grids", grids))){
+        cat(hysplit.dispersion.read("grids", grids)[i], "\n",
+            file = paste(path_wd, "CONTROL", sep = ''),
+            sep = '', append = TRUE)}
       
       #End writing grid blocks 
-
-# Write species blocks to 'CONTROL'
-for (i in 1:length(hysplit.dispersion.read("species", species))){
-  cat(hysplit.dispersion.read("species", species)[i], "\n",
-      file = paste(path_wd, "CONTROL", sep = ''),
-      sep = '', append = TRUE)}
-
-#End writing species blocks 
-
-
+      
+      # Write species blocks to 'CONTROL'
+      for (i in 1:length(hysplit.dispersion.read("species", species))){
+        cat(hysplit.dispersion.read("species", species)[i], "\n",
+            file = paste(path_wd, "CONTROL", sep = ''),
+            sep = '', append = TRUE)}
+      
+      #End writing species blocks 
+      
+      
       # Write path for dispersion grid output file to 'CONTROL'
-#       cat(path_output_files, "\n",
-#           file = paste(path_wd, "CONTROL", sep = ''),
-#           sep = '', append = TRUE)
+      #       cat(path_output_files, "\n",
+      #           file = paste(path_wd, "CONTROL", sep = ''),
+      #           sep = '', append = TRUE)
       
       # Write name of output filename to 'CONTROL'
-#       cat(output_filename, "\n",
-#           file = paste(path_wd, "CONTROL", sep = ''),
-#           sep = '', append = TRUE)
+      #       cat(output_filename, "\n",
+      #           file = paste(path_wd, "CONTROL", sep = ''),
+      #           sep = '', append = TRUE)
       
-
       
-
+      
+      
       
       # CONTROL file is now complete and in the working directory
       # Execute the model run
@@ -312,12 +312,12 @@ for (i in 1:length(hysplit.dispersion.read("species", species))){
       
       # Close the hour loop 
     }
-
-# Close the day loop 
-  }
     
+    # Close the day loop 
+  }
+  
 }
-  
 
-  
+
+
 
