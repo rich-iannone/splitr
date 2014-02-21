@@ -290,6 +290,12 @@ for (i in 1:length(hysplit.dispersion.read("species", species))){
       sep = '', append = TRUE)}
 
 #End writing species blocks 
+
+      
+      # CONTROL file is now complete and in the working directory
+      # Execute the model run
+      system(paste("(cd ", path_wd, " && ", path_executable, ")", sep = ''))
+      
     }
 
 # Close the day loop 
