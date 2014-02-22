@@ -422,6 +422,8 @@ hysplit.dispersion.define <- function(define){
     }
     
     # Work with case where 'emissions_start_time_type' is an end date and time
+    if (exists("emissions_start_time_type") &
+          emissions_start_time_type ==  "starting_date_time"){
     }
     
     # If the entered date passes both validation tests, assign it to
