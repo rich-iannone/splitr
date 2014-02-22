@@ -441,6 +441,8 @@ hysplit.dispersion.define <- function(define){
       }
       
     } 
+      
+    # Work with case where 'emissions_duration_type' is duration in hours
     }
     
     # If the entered date passes both validation tests, assign it to
