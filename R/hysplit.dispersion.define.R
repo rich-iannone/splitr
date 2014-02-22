@@ -443,6 +443,14 @@ hysplit.dispersion.define <- function(define){
     } 
       
     # Work with case where 'emissions_duration_type' is duration in hours
+    if (exists("emissions_start_time_type") &
+          emissions_start_time_type ==  "start_time_hours"){
+      
+      # Get the numeric part of the supplied string, which is the number of hours
+      emissions_start_time <- as.numeric(gsub("^([0-9]+)[ ]?h$", "\\1",
+                                              emissions_start_time, perl = TRUE))
+      
+      #emissions_start_time_char
     }
     
     # If the entered date passes both validation tests, assign it to
