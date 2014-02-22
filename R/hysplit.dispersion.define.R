@@ -413,11 +413,12 @@ hysplit.dispersion.define <- function(define){
     # Determine the format of the supplied input and divide into types to resolve into hours
     # Validate the input of the date and time string
     if (grepl("[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-9][0-9]",
-              emissions_start_time, perl = TRUE) == TRUE) {
-      emissions_start_time_valid_1 <- TRUE
-    } else if (grepl("[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-9][0-9]",
-                     emissions_start_time, perl = TRUE) == FALSE) {
-      emissions_start_time_valid_1 <- FALSE
+              emissions_start_time, perl = TRUE) == TRUE){
+      emissions_start_time_type <- "starting_date_time"
+    } else if (grepl("^[0-9]+[ ]?h$", emissions_start_time, perl = TRUE) == TRUE){
+      emissions_start_time_type <- "start_time_hours"
+    } else if (grepl("^[0-9]+[ ]?d$", emissions_start_time, perl = TRUE) == TRUE){
+      emissions_start_time_type <- "start_time_days"
     }
     
     # Determine whether the supplied date/time string yields a valid POSIXct date/time
