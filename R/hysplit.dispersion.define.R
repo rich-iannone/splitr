@@ -453,13 +453,6 @@ hysplit.dispersion.define <- function(define){
       #emissions_start_time_char
     }
     
-    # If the entered date passes both validation tests, assign it to
-    # 'emissions_start_time_char'
-    if (emissions_start_time_valid_1 == TRUE &
-          emissions_start_time_valid_2 == TRUE ) {
-      emissions_start_time_char <- as.character(gsub("-", " ", emissions_start_time))
-      emissions_start_time_char <- as.character(gsub(":", " ", emissions_start_time_char))
-      emissions_start_time_char <- as.character(gsub("^[0-9][0-9]", "", emissions_start_time_char))
     # Work with case where 'emissions_duration_type' is a duration in days
     if (exists("emissions_start_time_type") &
           emissions_start_time_type ==  "start_time_days"){
