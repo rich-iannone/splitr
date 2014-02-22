@@ -398,8 +398,16 @@ hysplit.dispersion.define <- function(define){
     
     # Ask to assign value to 'emissions_start_time'  
     emissions_start_time <-
-      readline(paste(cat("Provide the starting date and time.", "\n",
-                         "Use the format YYYY-MM-DD HH:MM", "\n",
+      readline(paste(cat("Provide the starting date and time.",
+                         "\n",
+                         "Several options available:",
+                         "\n",
+                         "(1) Use defined time in the format YYYY-MM-DD HH:MM",
+                         "\n",
+                         "(2) Provide the number of hours or days after start of run (x h, or x d)",
+                         "\n",
+                         "(3) Press <ENTER> to match run and sampling starting times",
+                         "\n",
                          sep = '')))
     
     # Validate the input of the date and time string
