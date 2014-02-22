@@ -463,7 +463,6 @@ hysplit.dispersion.define <- function(define){
       
       #emissions_start_time_char
     }
-      
     
     # Ask to assign value to 'emissions_duration'    
     emissions_duration <-
