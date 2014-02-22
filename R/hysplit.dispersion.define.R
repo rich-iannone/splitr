@@ -421,11 +421,6 @@ hysplit.dispersion.define <- function(define){
       emissions_start_time_type <- "start_time_days"
     }
     
-    # Determine whether the supplied date/time string yields a valid POSIXct date/time
-    if (class(ymd_hms(paste(emissions_start_time, ":00", sep = '')))[1] == "POSIXct"){
-      emissions_start_time_valid_2 <- TRUE
-    } else if (is.na(ymd_hms(paste(emissions_start_time, ":00", sep = '')))){
-      emissions_start_time_valid_2 <- FALSE
     }
     
     # If the entered date passes both validation tests, assign it to
