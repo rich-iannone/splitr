@@ -470,8 +470,15 @@ hysplit.dispersion.define <- function(define){
                                          formatC(emissions_start_time_days,
                                                  width = 2, format = "d",
                                                  flag = "0"),
-                                         " 00 00", sep = '')
+                                         " 00 00", sep = '')  
+    }
+    
+    # Work with case where 'emissions_start_time_type' is a starting time with the model
+    if (exists("emissions_start_time_type") &
+          emissions_start_time_type ==  "start_time_with_run"){
       
+      # Get the numeric part of the supplied string, which is the number of hours
+      emissions_start_time_char <- paste("00 00 00 00 00",sep = '')
     }
     
     # Ask to assign value to 'emissions_duration'    
