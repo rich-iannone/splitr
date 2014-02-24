@@ -450,6 +450,11 @@ hysplit.dispersion.define <- function(define){
       emissions_start_time_hours <- as.numeric(gsub("^([0-9]+)[ ]?h$", "\\1",
                                               emissions_start_time, perl = TRUE))
       
+      emissions_start_time_char <- paste("00 00 00 ",
+                                         formatC(emissions_start_time_hours,
+                                                 width = 2, format = "d",
+                                                 flag = "0"),
+                                         " 00", sep = '')
     }
     
     # Work with case where 'emissions_duration_type' is a duration in days
