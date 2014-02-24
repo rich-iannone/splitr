@@ -697,7 +697,7 @@ hysplit.dispersion.define <- function(define){
     }
     
     # Automatically assign the location of the 'grids' folder
-    grid_folder <- "./"
+    grid_folder <- "~/Documents/SplitR/Output"
     
     # Automatically assign the output grid file name
     grid_filename <- grid_name
