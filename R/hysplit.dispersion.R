@@ -277,6 +277,9 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
       
       # Get vector text elements through reading selected elements from 'grids' file
       grids_text <- hysplit.dispersion.read("grids", grids)
+      
+      # Get vector text indices that contain the short name(s) of the grid(s)
+      gridnames_indices <- seq(from = 1 + 5, to = length(grids_text) - 5, by = 10)
             file = paste(path_wd, "CONTROL", sep = ''),
             sep = '', append = TRUE)}
       
