@@ -557,7 +557,9 @@ hysplit.dispersion.define <- function(define){
     acceptable_emissions <-
       readline(paste(cat("The plan. Adding emissions source: ", emissions_name, "\n",
                          "----------------------------------", "\n", 
-                         "Start Date/Time: ", emissions_start_time, "\n",
+                         "Start Date/Time: ", ifelse(emissions_start_time == "",
+                                                     paste("[start of model run]"),
+                                                     emissions_start_time), "\n",
                          "       Duration: ", emissions_duration, " h", "\n",
                          " Emissions Rate: ", emissions_rate, " (mass units)/h", "\n",
                          "----------------------------------", "\n",
