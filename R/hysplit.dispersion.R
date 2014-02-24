@@ -289,7 +289,7 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
       
       # Write grid blocks to 'CONTROL'
       for (i in 1:length(grids_text)){
-        cat(grids_text)[i], "\n",
+        cat(grids_text[i], "\n",
             file = paste(path_wd, "CONTROL", sep = ''),
             sep = '', append = TRUE)}
       
