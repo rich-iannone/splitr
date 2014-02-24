@@ -8,9 +8,27 @@ Conduct a single or multiple HYSPLIT dispersion runs.
 The function executes single/multiple forward or backward HYSPLIT dispersions runs using either GDAS1 or NCAR/NCEP reanalysis meteorological data.  
 }
 \usage{
-hysplit.trajectory() 
+hysplit.dispersion(start_lat_deg = 49.289328,
+                   start_long_deg = -123.117665,
+                   start_height_m_AGL = 10,
+                   simulation_duration_h = 24,
+                   backward_running = FALSE,
+                   met_type = "reanalysis",
+                   vertical_motion_option = 0,
+                   top_of_model_domain_m = 20000,
+                   run_type = "day",
+                   run_day = "2013-02-01",
+                   run_range = c("2013-02-01", "2013-02-10"),
+                   run_years = "2013",
+                   daily_hours_to_start = "00",
+                   emissions = c(1),
+                   species = c(1),
+                   grids = c(1),
+                   path_met_files = "~/Documents/SplitR/Met/",
+                   path_output_files = "~/Documents/SplitR/Output/",
+                   path_wd = "~/Documents/SplitR/Working/",
+                   path_executable = "~/Documents/SplitR/Exec/hycs_std")
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{}{
 
