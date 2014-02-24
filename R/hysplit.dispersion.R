@@ -274,8 +274,9 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
             sep = '', append = TRUE)}
       
       # Write grid blocks to 'CONTROL'
-      for (i in 1:length(hysplit.dispersion.read("grids", grids))){
-        cat(hysplit.dispersion.read("grids", grids)[i], "\n",
+      
+      # Get vector text elements through reading selected elements from 'grids' file
+      grids_text <- hysplit.dispersion.read("grids", grids)
             file = paste(path_wd, "CONTROL", sep = ''),
             sep = '', append = TRUE)}
       
