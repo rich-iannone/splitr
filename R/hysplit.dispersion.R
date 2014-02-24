@@ -280,6 +280,12 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
       
       # Get vector text indices that contain the short name(s) of the grid(s)
       gridnames_indices <- seq(from = 1 + 5, to = length(grids_text) - 5, by = 10)
+      
+      # Combine short grid name string with longer 'output_filename' string
+      for (i in 1:((length(grids_text) - 1)/10)){
+        grids_text[gridnames_indices[i]] <- paste(grids_text[gridnames_indices[i]],
+                                                  output_filename, sep = '')
+      }
             file = paste(path_wd, "CONTROL", sep = ''),
             sep = '', append = TRUE)}
       
