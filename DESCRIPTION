@@ -1,8 +1,8 @@
 Package: SplitR
 Type: Package
 Title: A set of tools to help with HYSPLIT trajectory and dispersion modelling.
-Version: 0.1
-Date: 2013-12-11
+Version: 0.15
+Date: 2014-02-24
 Author: Richard Iannone <riannone@me.com>
 Maintainer: Richard Iannone <riannone@me.com>
 Description: These functions allow you to perform HYSPLIT runs.
