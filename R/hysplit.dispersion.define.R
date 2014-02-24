@@ -450,7 +450,6 @@ hysplit.dispersion.define <- function(define){
       emissions_start_time_hours <- as.numeric(gsub("^([0-9]+)[ ]?h$", "\\1",
                                               emissions_start_time, perl = TRUE))
       
-      #emissions_start_time_char
     }
     
     # Work with case where 'emissions_duration_type' is a duration in days
@@ -461,7 +460,6 @@ hysplit.dispersion.define <- function(define){
       emissions_start_time_days <- as.numeric(gsub("^([0-9]+)[ ]?d$", "\\1",
                                               emissions_start_time, perl = TRUE)) * 24
       
-      #emissions_start_time_char
     }
     
     # Ask to assign value to 'emissions_duration'    
