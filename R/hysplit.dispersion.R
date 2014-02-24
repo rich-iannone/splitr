@@ -209,7 +209,7 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
       #         met.file.df[k, 2] <- as.character(file.exists(paste(path_met_files, met[k], sep = '')))}
       
       # Construct the output filename string for this model run
-      output_filename <- paste("disp",
+      output_filename <- paste("--disp",
                                ifelse(backward_running == TRUE, '(back)', '(forward)'), "-",
                                start_year_GMT, "-",
                                start_month_GMT, "-",
