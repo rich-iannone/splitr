@@ -53,7 +53,7 @@ a numbered option to select the method used to simulation vertical motion. The m
 used to select whether models should be run for a single day ("day"), for one or more years ("years"), or within a specified date range ("range").
 }
   \item{run_day}{
-used when 'run_type' of 'day' is selected. The date format should be provided here as "YYY-MM-DD".
+used when 'run_type' of 'day' is selected. The date format should be provided here as "YYYY-MM-DD".
 }
   \item{run_range}{
 used when 'run_type' of 'range' is selected. The date format should be provided here as "c("YYYY-MM-DD", "YYYY-MM-DD")".
