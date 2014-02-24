@@ -202,8 +202,7 @@ hysplit.trajectory <- function(start_lat_deg,
       for (k in 1:length(met)) {
         met.file.df[k, 1] <- met[k]
         met.file.df[k, 2] <- as.character(file.exists(paste(path_met_files, met[k], sep = '')))}
-      
-      
+            
       # Construct the output filename string for this model run
       output_filename <- paste("traj",
                                ifelse(backtrajectory == TRUE, '(back)', '(forward)'), "-",
