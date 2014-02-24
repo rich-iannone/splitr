@@ -64,7 +64,7 @@ used when 'run_type' of 'range' is selected. The date format should be provided 
 used when 'run_type' of 'years' is selected. The format should either be a single year ("YYYY") or a range of years ("YYYY-YYYY").
 }
   \item{daily_hours_to_start}{
-should consist of a single daily hour in the format "HH", or, several daily hours in the format "c("HH", "HH", ...)".
+should consist of a single daily hour in the format "HH", or, several daily hours in the format "c("HH", "HH", "HH", ...)".
 }
   \item{emissions}{
 the numbers corresponding to the stored emissions presets. These presets are specified using the function 'hysplit.dispersion.define("emissions")'.
