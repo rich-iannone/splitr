@@ -409,7 +409,7 @@ hysplit.dispersion.define <- function(define){
                          "(3) Press <ENTER> to match run and sampling starting times",
                          "\n",
                          sep = '')))
-    
+        
     # Determine the format of the supplied input and divide into types to resolve into hours
     # Validate the input of the date and time string
     if (grepl("[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-9][0-9]",
@@ -441,7 +441,6 @@ hysplit.dispersion.define <- function(define){
         emissions_start_time_char <- as.character(gsub(":", " ", emissions_start_time_char))
         emissions_start_time_char <- as.character(gsub("^[0-9][0-9]", "", emissions_start_time_char))
       }
-      
     } 
       
     # Work with case where 'emissions_duration_type' is duration in hours
