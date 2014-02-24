@@ -443,7 +443,7 @@ hysplit.dispersion.define <- function(define){
       }
     } 
       
-    # Work with case where 'emissions_duration_type' is duration in hours
+    # Work with case where 'emissions_start_time_type' is duration in hours
     if (exists("emissions_start_time_type") &
           emissions_start_time_type ==  "start_time_hours"){
       
@@ -458,7 +458,7 @@ hysplit.dispersion.define <- function(define){
                                          " 00", sep = '')
     }
     
-    # Work with case where 'emissions_duration_type' is a duration in days
+    # Work with case where 'emissions_start_time_type' is a duration in days
     if (exists("emissions_start_time_type") &
           emissions_start_time_type ==  "start_time_days"){
       
