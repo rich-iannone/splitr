@@ -299,16 +299,6 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328, start_long_deg = -123.
             file = paste(path_wd, "CONTROL", sep = ''),
             sep = '', append = TRUE)}
       
-      # Write path for dispersion grid output file to 'CONTROL'
-      #       cat(path_output_files, "\n",
-      #           file = paste(path_wd, "CONTROL", sep = ''),
-      #           sep = '', append = TRUE)
-      
-      # Write name of output filename to 'CONTROL'
-      #       cat(output_filename, "\n",
-      #           file = paste(path_wd, "CONTROL", sep = ''),
-      #           sep = '', append = TRUE)
-      
       # CONTROL file is now complete and in the working directory
       # Execute the model run
       system(paste("(cd ", path_wd, " && ", path_executable, ")", sep = ''))
