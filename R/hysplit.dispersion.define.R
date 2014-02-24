@@ -404,7 +404,7 @@ hysplit.dispersion.define <- function(define){
                          "\n",
                          "(1) Use defined time in the format YYYY-MM-DD HH:MM",
                          "\n",
-                         "(2) Provide the number of hours or days after start of run (x h, or x d)",
+                         "(2) Provide the number of hours or days after start of run (# h, or # d)",
                          "\n",
                          "(3) Press <ENTER> to match run and sampling starting times",
                          "\n",
