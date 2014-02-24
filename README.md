@@ -14,11 +14,12 @@ install_github('SplitR', 'rich-iannone')
 
 ## Description
 
-The basic idea behind SplitR is to make the process of setting up and executing HYSPLIT runs very fast and easy. Also, it would be great to use the output data in further analyses. The framework allows for the automatic generation of input `CONTROL` files for continuous running (e.g., over one or more years, specific date ranges, etc.). Getting to a `Complete Hysplit` situation has never been this enjoyable before.
+The basic idea behind SplitR is to make the process of setting up and executing HYSPLIT runs very fast and easy. Because these runs are being done in R, further analyses of the output data is possible. The framework allows for the automatic generation of input `CONTROL` files for continuous running of trajectory or dispersion runs (e.g., over one or more years, specific date ranges, etc.). Getting to a `Complete Hysplit` situation has never been this enjoyable before.
 
 ## Features
 
-- simple setup of trajectory model runs (forward or backward)
+- simple setup of trajectory and dispersion model runs (forward or backward)
+- automatic downloading and installation of HYSPLIT binary executables
 - batching options: set and get model results for multiple start times through a single year, several years, or a defined time range
 - trajectory plotting
 - clustering of trajectories and plotting of clusters
@@ -26,10 +27,11 @@ The basic idea behind SplitR is to make the process of setting up and executing 
 
 ## Future Additions
 
-- capability for the starting location to be moving during successive model runs
-- retrieval of the necessary meteorological data files
-- merging of trajectories with pollutant concentration data for advanced air quality analyses
-- dispersion model runs
 - visualization of dispersion analyses
-- parallelization of trajectory and dispersion runs
+- retrieval of necessary meteorological data files
+- greater support for different types of meteorological data files
+- merging of trajectories with pollutant concentration data for advanced air quality analyses
+- ensemble model runs
+- capability for the starting location to be moving during successive model runs
+- parallelization of models runs
 
