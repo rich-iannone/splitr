@@ -419,6 +419,8 @@ hysplit.dispersion.define <- function(define){
       emissions_start_time_type <- "start_time_hours"
     } else if (grepl("^[0-9]+[ ]?d$", emissions_start_time, perl = TRUE) == TRUE){
       emissions_start_time_type <- "start_time_days"
+    } else if (emissions_start_time == ""){
+      emissions_start_time_type <- "start_time_with_run"
     }
     
     # Work with case where 'emissions_start_time_type' is an end date and time
