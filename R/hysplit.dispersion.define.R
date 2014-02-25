@@ -3,7 +3,7 @@ dispersion.preset.add <- function(type){
   require(lubridate)
   
   # Define species (names, properties)
-  if (define == 'species'){
+  if (type == 'species'){
     
     # Ask for the name of the species
     species_name <-
@@ -390,7 +390,7 @@ dispersion.preset.add <- function(type){
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
-  if (define == 'emissions'){
+  if (type == 'emissions'){
   
     # Ask for the name of the emissions source
     emissions_name <-
@@ -584,7 +584,7 @@ dispersion.preset.add <- function(type){
   }
   
   # Define grids (fixed location, size/spacing, rate of sampling, sampling times)
-  if (define == 'grids'){
+  if (type == 'grids'){
     
     # Ask for the name of the grid
     grid_name <-
