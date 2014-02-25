@@ -1,8 +1,5 @@
 hysplit.dispersion.read <- function(read, numbers){
-  
-#   read <- "grids"
-#   numbers <- c(1)
-  
+    
   # Validate supplied digits for duplicates
   no_duplicates <- ifelse(anyDuplicated(numbers) == 0,
                           TRUE, FALSE)
