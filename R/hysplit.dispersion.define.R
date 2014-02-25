@@ -1,4 +1,4 @@
-hysplit.dispersion.define <- function(define){
+dispersion.preset.add <- function(type){
   
   require(lubridate)
   
