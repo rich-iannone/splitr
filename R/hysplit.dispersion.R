@@ -317,6 +317,3 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
   
 }
 
-
-
-
