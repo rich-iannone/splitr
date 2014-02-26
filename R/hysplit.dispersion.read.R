@@ -1,4 +1,4 @@
-hysplit.dispersion.read <- function(read, numbers){
+dispersion.preset.get <- function(read, numbers){
     
   # Validate supplied digits for duplicates
   no_duplicates <- ifelse(anyDuplicated(numbers) == 0,
