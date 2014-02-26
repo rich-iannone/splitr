@@ -274,15 +274,15 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
             sep = '', append = TRUE)}
       
       # Write emissions blocks to 'CONTROL'
-      for (i in 1:length(hysplit.dispersion.read("emissions", emissions))){
-        cat(hysplit.dispersion.read("emissions", emissions)[i], "\n",
+      for (i in 1:length(dispersion.preset.get("emissions", emissions))){
+        cat(dispersion.preset.get("emissions", emissions)[i], "\n",
             file = paste(path_wd, "CONTROL", sep = ''),
             sep = '', append = TRUE)}
       
       # Write grid blocks to 'CONTROL'
       
       # Get vector text elements through reading selected elements from 'grids' file
-      grids_text <- hysplit.dispersion.read("grids", grids)
+      grids_text <- dispersion.preset.get("grids", grids)
       
       # Get vector text indices that contain the short name(s) of the grid(s)
       gridnames_indices <- seq(from = 1 + 5, to = length(grids_text) - 5, by = 10)
@@ -300,8 +300,8 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
             sep = '', append = TRUE)}
       
       # Write species blocks to 'CONTROL'
-      for (i in 1:length(hysplit.dispersion.read("species", species))){
-        cat(hysplit.dispersion.read("species", species)[i], "\n",
+      for (i in 1:length(dispersion.preset.get("species", species))){
+        cat(dispersion.preset.get("species", species)[i], "\n",
             file = paste(path_wd, "CONTROL", sep = ''),
             sep = '', append = TRUE)}
       
