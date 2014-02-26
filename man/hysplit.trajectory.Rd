@@ -1,6 +1,5 @@
 \name{Conduct HYSPLIT Runs}
 \alias{hysplit.trajectory}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Conduct a single or multiple HYSPLIT trajectory runs.
 }
