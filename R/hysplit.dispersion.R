@@ -332,6 +332,16 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
                    " GIS_part_*.csv; rm *.bk)",
                    sep = ''))
       
+      # Create list of particle positions for each hour of the model run
+      for (i in 1:simulation_duration_h){
+        if (i == 1) particle_positions <- vector(mode = "list",
+                                                 length = simulation_duration_h)
+        particle_positions[[i]] <-
+          read.csv(paste("~/Documents/SplitR/Working/GIS_part_",
+                         formatC(i, width = 3, format = "d", flag = "0"),
+                         "_ps.csv", sep = ''),
+                   col.names = c("p_no", "longitude", "latitude", "height_mAGL"))
+      }
       # Close the hour loop 
     }
     
