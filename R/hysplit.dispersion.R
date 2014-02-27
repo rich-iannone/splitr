@@ -367,6 +367,16 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
         }
       }
       
+      # Create a particle graphic for each hour
+      for (i in 1:simulation_duration_h){
+        png(filename = paste(path_output_files, "map-", i, ".png", sep = ''))
+        map(database = "worldHires", xlim = c(min_longitude_i, max_longitude_i),
+            ylim = c(min_latitude_i, max_latitude_i), col = "gray90", fill = TRUE)
+        points(x = particle_positions[[i]]$longitude, y = particle_positions[[i]]$latitude,
+               pch = 1, cex = 0.2)
+        dev.off()
+      }
+      
       # Close the hour loop 
     }
     
