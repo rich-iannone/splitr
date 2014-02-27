@@ -367,6 +367,10 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
         }
       }
       
+      # Move the .csv files from the working directory to the output directory
+      system(paste("(cd ", path_wd, " && mv GIS_part*.csv ", path_output_files, ")",
+                   sep = ''))
+      
       # Create a particle graphic for each hour
       for (i in 1:simulation_duration_h){
         png(filename = paste(path_output_files, "map-", i, ".png", sep = ''))
