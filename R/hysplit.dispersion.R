@@ -310,6 +310,10 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
       system(paste("(cd ", path_wd, " && ", path_executable, "hycs_std)",
                    sep = ''))
       
+      # Extract the particle positions at every hour
+      system(paste("(cd ", path_wd, " && ", path_executable, "parhplot -iPARDUMP -a1)",
+                   sep = ''))
+      
       
       # Close the hour loop 
     }
