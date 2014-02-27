@@ -322,6 +322,10 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
       system(paste("(cd ", path_wd, " && rm parhplot.ps)",
                    sep = ''))
       
+      # Rename the .txt files as .csv files
+      system(paste("(cd ", path_wd, " && for files in GIS*.txt;",
+                   " do mv \"$files\" \"${files%.txt}.csv\"; done)",
+                   sep = ''))
       
       # Close the hour loop 
     }
