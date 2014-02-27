@@ -327,6 +327,11 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
                    " do mv \"$files\" \"${files%.txt}.csv\"; done)",
                    sep = ''))
       
+      # Remove the 'END' string near the end of each .csv file
+      system(paste("(cd ", path_wd, " && sed -i .bk 's/END//g'",
+                   " GIS_part_*.csv; rm *.bk)",
+                   sep = ''))
+      
       # Close the hour loop 
     }
     
