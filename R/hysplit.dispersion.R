@@ -314,6 +314,10 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
       system(paste("(cd ", path_wd, " && ", path_executable, "parhplot -iPARDUMP -a1)",
                    sep = ''))
       
+      # Remove the .att files from the working directory
+      system(paste("(cd ", path_wd, " && rm GIS_part*.att)",
+                   sep = ''))
+      
       
       # Close the hour loop 
     }
