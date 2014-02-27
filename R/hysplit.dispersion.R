@@ -318,6 +318,10 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
       system(paste("(cd ", path_wd, " && rm GIS_part*.att)",
                    sep = ''))
       
+      # Remove the postscript plot from the working directory
+      system(paste("(cd ", path_wd, " && rm parhplot.ps)",
+                   sep = ''))
+      
       
       # Close the hour loop 
     }
