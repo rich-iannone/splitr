@@ -57,6 +57,8 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
         
         list.from_file[[i]] <- vector.from_file
       } 
+      }
+    
     }
     
     if (read == "species"){
