@@ -378,8 +378,195 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
                              ".jpg", sep = ''))
         map(database = "worldHires", xlim = c(min_longitude_i, max_longitude_i),
             ylim = c(min_latitude_i, max_latitude_i), col = "gray90", fill = TRUE)
-        points(x = particle_positions[[i]]$longitude, y = particle_positions[[i]]$latitude,
-               pch = 1, cex = 0.2)
+        
+        if (top_of_model_domain_m >= 500){
+        h__1000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL > 0 &
+                            particle_positions[[i]]$height_mAGL < 1000)
+        
+        points(x = h__1000$longitude, y = h__1000$latitude,
+               pch = 1, cex = 0.2, col = 113)
+        }
+        
+        if (top_of_model_domain_m >= 1000){
+        h__2000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 1000 &
+                            particle_positions[[i]]$height_mAGL < 2000)
+        
+        points(x = h__2000$longitude, y = h__2000$latitude,
+               pch = 1, cex = 0.2, col = 51)
+        }
+        
+        if (top_of_model_domain_m >= 2000){
+        h__3000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 2000 &
+                            particle_positions[[i]]$height_mAGL < 3000)
+        
+        points(x = h__3000$longitude, y = h__3000$latitude,
+               pch = 1, cex = 0.2, col = 50)
+        }
+        
+        if (top_of_model_domain_m >= 3000){
+        h__4000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 3000 &
+                            particle_positions[[i]]$height_mAGL < 4000)
+        
+        points(x = h__4000$longitude, y = h__4000$latitude,
+               pch = 1, cex = 0.2, col = 48)
+        }
+        
+        if (top_of_model_domain_m >= 4000){
+        h__5000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 4000 &
+                            particle_positions[[i]]$height_mAGL < 5000)
+        
+        points(x = h__5000$longitude, y = h__5000$latitude,
+               pch = 1, cex = 0.2, col = 254)
+        }
+        
+        if (top_of_model_domain_m >= 5000){
+        h__6000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 5000 &
+                            particle_positions[[i]]$height_mAGL < 6000)
+        
+        points(x = h__6000$longitude, y = h__6000$latitude,
+               pch = 1, cex = 0.2, col = 96)
+        }
+        
+        if (top_of_model_domain_m >= 6000){
+        h__7000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 6000 &
+                            particle_positions[[i]]$height_mAGL < 7000)
+        
+        points(x = h__7000$longitude, y = h__7000$latitude,
+               pch = 1, cex = 0.2, col = 97)
+        }
+        
+        if (top_of_model_domain_m >= 7000){
+        h__8000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 7000 &
+                            particle_positions[[i]]$height_mAGL < 8000)
+        
+        points(x = h__8000$longitude, y = h__8000$latitude,
+               pch = 1, cex = 0.2, col = 98)
+        }
+        
+        if (top_of_model_domain_m >= 8000){
+        h__9000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 8000 &
+                            particle_positions[[i]]$height_mAGL < 9000)
+        
+        points(x = h__9000$longitude, y = h__9000$latitude,
+               pch = 1, cex = 0.2, col = 95)
+        }
+        
+        if (top_of_model_domain_m >= 9000){
+        h__10000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 9000 &
+                            particle_positions[[i]]$height_mAGL < 10000)
+        
+        points(x = h__10000$longitude, y = h__10000$latitude,
+               pch = 1, cex = 0.2, col = 99)
+        }
+        
+        if (top_of_model_domain_m >= 10000){
+        h__11000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 10000 &
+                            particle_positions[[i]]$height_mAGL < 11000)
+        
+        points(x = h__11000$longitude, y = h__11000$latitude,
+               pch = 1, cex = 0.2, col = 305)
+        }
+        
+        if (top_of_model_domain_m >= 11000){
+        h__12000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 11000 &
+                            particle_positions[[i]]$height_mAGL < 12000)
+        
+        points(x = h__12000$longitude, y = h__12000$latitude,
+               pch = 1, cex = 0.2, col = 302)
+        }
+        
+        if (top_of_model_domain_m >= 12000){
+        h__13000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 12000 &
+                            particle_positions[[i]]$height_mAGL < 13000)
+        
+        points(x = h__13000$longitude, y = h__13000$latitude,
+               pch = 1, cex = 0.2, col = 299)
+        }
+        
+        if (top_of_model_domain_m >= 13000){
+        h__14000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 13000 &
+                            particle_positions[[i]]$height_mAGL < 14000)
+        
+        points(x = h__14000$longitude, y = h__14000$latitude,
+               pch = 1, cex = 0.2, col = 296)
+        }
+        
+        if (top_of_model_domain_m >= 14000){
+        h__15000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 14000 &
+                            particle_positions[[i]]$height_mAGL < 15000)
+        
+        points(x = h__15000$longitude, y = h__15000$latitude,
+               pch = 1, cex = 0.2, col = 293)
+        }
+        
+        if (top_of_model_domain_m >= 15000){
+        h__16000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 15000 &
+                            particle_positions[[i]]$height_mAGL < 16000)
+        
+        points(x = h__16000$longitude, y = h__16000$latitude,
+               pch = 1, cex = 0.2, col = 290)
+        }
+        
+        if (top_of_model_domain_m >= 16000){
+        h__17000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 16000 &
+                            particle_positions[[i]]$height_mAGL < 17000)
+        
+        points(x = h__17000$longitude, y = h__17000$latitude,
+               pch = 1, cex = 0.2, col = 287)
+        }
+        
+        if (top_of_model_domain_m >= 17000){
+        h__18000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 17000 &
+                            particle_positions[[i]]$height_mAGL < 18000)
+        
+        points(x = h__18000$longitude, y = h__18000$latitude,
+               pch = 1, cex = 0.2, col = 284)
+        }
+        
+        if (top_of_model_domain_m >= 18000){
+        h__19000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 18000 &
+                            particle_positions[[i]]$height_mAGL < 19000)
+        
+        points(x = h__19000$longitude, y = h__19000$latitude,
+               pch = 1, cex = 0.2, col = 281)
+        }
+        
+        if (top_of_model_domain_m >= 19000){
+        h__20000 <- subset(particle_positions[[i]],
+                          particle_positions[[i]]$height_mAGL >= 19000 &
+                            particle_positions[[i]]$height_mAGL < 20000)
+        
+        points(x = h__20000$longitude, y = h__20000$latitude,
+               pch = 1, cex = 0.2, col = 278)
+        }
+        
+        if (top_of_model_domain_m >= 20000){
+        h_20000_ <- subset(particle_positions[[i]],
+                           particle_positions[[i]]$height_mAGL >= 20000)
+        
+        points(x = h_20000_$longitude, y = h_20000_$latitude,
+               pch = 1, cex = 0.2, col = 275)
+        }
+        
         dev.off()
       }
       
