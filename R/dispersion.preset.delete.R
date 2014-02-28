@@ -19,6 +19,8 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
       
     if (read == "grids"){
       
+    if (read == "species"){
+      
   # End of function
 }
 
