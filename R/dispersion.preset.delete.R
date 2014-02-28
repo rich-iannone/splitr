@@ -109,7 +109,7 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
                          "--------------------------------------", "\n",
                          paste(oneline_output()),
                          "--------------------------------------", "\n",
-                         "Which grid number should be deleted?", "\n",
+                         "Which preset number should be deleted?", "\n",
                          "Press <ENTER> for no deletion. Otherwise, enter a number. ",
                          sep = '')))
     
