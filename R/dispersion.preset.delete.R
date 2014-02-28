@@ -17,6 +17,8 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
     
     if (read == "emissions"){
       
+    if (read == "grids"){
+      
   # End of function
 }
 
