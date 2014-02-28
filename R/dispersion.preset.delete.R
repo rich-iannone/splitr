@@ -50,11 +50,11 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
                                  "\\1",
                                  list.from_file[[i]][1]),
                             " / Rate: ",
-                            list.from_file[[i]][2], " (mass units)/h",
+                            list.from_file[[i]][3], " (mass units)/h",
                             " / Duration: ",
-                            list.from_file[[i]][3], " h",
+                            list.from_file[[i]][4], " h",
                             " / Release: ",
-                            list.from_file[[i]][4],
+                            list.from_file[[i]][5],
                             sep = '')
       }
       
