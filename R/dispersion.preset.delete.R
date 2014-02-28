@@ -46,7 +46,7 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
           oneline <- vector(mode = "character", length = number_of_entries)
         }
         oneline[i] <- paste("(", i, ") ",
-                            gsub("^--- Emissions preset named: ([a-zA-Z0-9]*),.*",
+                            gsub("^--- Emissions source named: ([a-zA-Z0-9]*),.*",
                                  "\\1",
                                  list.from_file[[i]][1]),
                             " / Rate: ",
