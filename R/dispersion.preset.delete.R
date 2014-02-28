@@ -23,6 +23,7 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
       # Get the total number of preset entries available in the file
       number_of_entries <- nrow(from_file) / 6
       
+      # Get the sequence of entries
       seq_of_entries <- 1:number_of_entries
       
       list.from_file <- vector(mode = "list", length = number_of_entries)
@@ -47,6 +48,7 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
       # Get the total number of preset entries available in the file
       number_of_entries <- nrow(from_file) / 12
       
+      # Get the sequence of entries
       seq_of_entries <- 1:number_of_entries
       
       list.from_file <- vector(mode = "list", length = number_of_entries)
@@ -134,6 +136,7 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
       # Get the total number of preset entries available in the file
       number_of_entries <- nrow(from_file) / 7
       
+      # Get the sequence of entries
       seq_of_entries <- 1:number_of_entries
       
       list.from_file <- vector(mode = "list", length = number_of_entries)
