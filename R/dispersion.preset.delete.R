@@ -39,6 +39,24 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
         
         list.from_file[[i]] <- vector.from_file
       }
+      
+      # Create block of oneline summaries for each of the presets
+      for (i in seq_of_entries){
+        if (i == 1) {
+          oneline <- vector(mode = "character", length = number_of_entries)
+        }
+        oneline[i] <- paste("(", i, ") ",
+                            gsub("^--- Emissions preset named: ([a-zA-Z0-9]*),.*",
+                                 "\\1",
+                                 list.from_file[[i]][1]),
+                            " / Rate: ",
+                            list.from_file[[i]][2], " (mass units)/h",
+                            " / Duration: ",
+                            list.from_file[[i]][3], " h",
+                            " / Release: ",
+                            list.from_file[[i]][4],
+                            sep = '')
+      }
     }
     
     if (read == "grids"){
