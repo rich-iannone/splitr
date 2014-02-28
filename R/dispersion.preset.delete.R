@@ -4,6 +4,13 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
   if (!is.null(numbers)){
     no_duplicates <- ifelse(anyDuplicated(numbers) == 0,
                             TRUE, FALSE)
+    
+    # If duplicated values are found, stop the function with a message
+    if (no_duplicates == FALSE) {
+      stop("The provided presets contain duplicate values.")
+    }
+    
+  }
   
   # End of function
 }
