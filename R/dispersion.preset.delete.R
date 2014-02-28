@@ -26,6 +26,7 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
       # Get the sequence of entries
       seq_of_entries <- 1:number_of_entries
       
+      # Initialize an empty list object
       list.from_file <- vector(mode = "list", length = number_of_entries)
       
       # Cycle through 
@@ -51,6 +52,7 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
       # Get the sequence of entries
       seq_of_entries <- 1:number_of_entries
       
+      # Initialize an empty list object
       list.from_file <- vector(mode = "list", length = number_of_entries)
       
       # Cycle through blocks of presets in preset file
@@ -139,6 +141,7 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
       # Get the sequence of entries
       seq_of_entries <- 1:number_of_entries
       
+      # Initialize an empty list object
       list.from_file <- vector(mode = "list", length = number_of_entries)
       
       # Cycle through 
