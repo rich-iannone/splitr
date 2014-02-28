@@ -15,6 +15,8 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
   # Begin interactive section
   if (interactive == TRUE){
     
+    if (read == "emissions"){
+      
   # End of function
 }
 
