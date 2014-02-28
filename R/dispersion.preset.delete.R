@@ -31,8 +31,8 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
       
       # Cycle through blocks of presets in preset file 
       for (i in seq_of_entries){
-        block <- seq(from = ((seq_of_entries[i] - 1) * 6) + 2,
-                     to = ((seq_of_entries[i] - 1) * 6) + 5,
+        block <- seq(from = ((seq_of_entries[i] - 1) * 6) + 1,
+                     to = ((seq_of_entries[i] - 1) * 6) + 6,
                      by = 1)
         
         vector.from_file <- as.vector(from_file[min(block):max(block),])
@@ -146,8 +146,8 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
       
       # Cycle through blocks of presets in preset file
       for (i in seq_of_entries){
-        block <- seq(from = ((seq_of_entries[i] - 1) * 7) + 2,
-                     to = ((seq_of_entries[i] - 1) * 7) + 6,
+        block <- seq(from = ((seq_of_entries[i] - 1) * 7) + 1,
+                     to = ((seq_of_entries[i] - 1) * 7) + 7,
                      by = 1)
         
         vector.from_file <- as.vector(from_file[min(block):max(block),])
