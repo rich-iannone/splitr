@@ -24,6 +24,19 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
       seq_of_entries <- 1:number_of_entries
       
       list.from_file <- vector(mode = "list", length = number_of_entries)
+      
+      # Cycle through 
+      for (i in seq_of_entries){
+        block <- seq(from = ((seq_of_entries[i] - 1) * 6) + 2,
+                     to = ((seq_of_entries[i] - 1) * 6) + 5,
+                     by = 1)
+        
+        vector.from_file <- as.vector(from_file[min(block):max(block),])
+        
+        list.from_file[[i]] <- vector.from_file
+      }
+    }
+    
     if (read == "grids"){
       
       from_file <- as.vector(read.table("~/Documents/SplitR/grids", sep = "\n"))
@@ -34,6 +47,18 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
       
       list.from_file <- vector(mode = "list", length = number_of_entries)
       
+      # Cycle through 
+      for (i in seq_of_entries){
+        block <- seq(from = ((seq_of_entries[i] - 1) * 12) + 2,
+                     to = ((seq_of_entries[i] - 1) * 12) + 11,
+                     by = 1)
+        
+        vector.from_file <- as.vector(from_file[min(block):max(block),])
+        
+        list.from_file[[i]] <- vector.from_file
+      } 
+    }
+    
     if (read == "species"){
       
       from_file <- as.vector(read.table("~/Documents/SplitR/species", sep = "\n"))
@@ -44,6 +69,20 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
       
       list.from_file <- vector(mode = "list", length = number_of_entries)
       
+      # Cycle through 
+      for (i in seq_of_entries){
+        block <- seq(from = ((seq_of_entries[i] - 1) * 7) + 2,
+                     to = ((seq_of_entries[i] - 1) * 7) + 6,
+                     by = 1)
+        
+        vector.from_file <- as.vector(from_file[min(block):max(block),])
+        
+        list.from_file[[i]] <- vector.from_file
+      } 
+      
+      # End species deletion
+    }
+    
   # End of function
 }
 
