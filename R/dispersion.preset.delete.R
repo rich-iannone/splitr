@@ -20,6 +20,7 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
       # Read the 'emissions' file line by line and place into a vector object
       from_file <- as.vector(read.table("~/Documents/SplitR/emissions", sep = "\n"))
       
+      # Get the total number of preset entries available in the file
       number_of_entries <- nrow(from_file) / 6
       
       seq_of_entries <- 1:number_of_entries
@@ -43,6 +44,7 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
       # Read the 'grids' file line by line and place into a vector object
       from_file <- as.vector(read.table("~/Documents/SplitR/grids", sep = "\n"))
       
+      # Get the total number of preset entries available in the file
       number_of_entries <- nrow(from_file) / 12
       
       seq_of_entries <- 1:number_of_entries
@@ -129,6 +131,7 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
       # Read the 'species' file line by line and place into a vector object
       from_file <- as.vector(read.table("~/Documents/SplitR/species", sep = "\n"))
       
+      # Get the total number of preset entries available in the file
       number_of_entries <- nrow(from_file) / 7
       
       seq_of_entries <- 1:number_of_entries
