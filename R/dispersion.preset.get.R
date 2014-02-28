@@ -6,7 +6,7 @@ dispersion.preset.get <- function(read, numbers){
   
   # If duplicated values are found, stop the function with a message
   if (no_duplicates == FALSE) {
-    stop("The provided emissions presets contain duplicate values.")
+    stop("The provided presets contain duplicate values.")
   }
   
   
