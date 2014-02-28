@@ -56,7 +56,6 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
         vector.from_file <- as.vector(from_file[min(block):max(block),])
         
         list.from_file[[i]] <- vector.from_file
-      } 
       }
     
     # Create block of oneline summaries for each of the presets
