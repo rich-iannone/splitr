@@ -12,6 +12,9 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
     
   }
   
+  # Begin interactive section
+  if (interactive == TRUE){
+    
   # End of function
 }
 
