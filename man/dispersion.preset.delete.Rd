@@ -26,5 +26,12 @@ determines whether the function should run in an interactive mode, prompting the
 Richard Iannone
 }
 \examples{
+# Delete an 'emissions' preset
+dispersion.preset.delete("emissions")
 
+# Delete a 'grids' preset
+dispersion.preset.delete("grids")
+
+# Delete a 'species' preset
+dispersion.preset.delete("species")
 }
