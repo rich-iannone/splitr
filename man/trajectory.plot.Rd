@@ -26,6 +26,11 @@ trajectory.plot(traj.df = "traj.df",
                 map.alpha = 0.4,
                 plot.type = "l")
 }
+\arguments{
+  \item{traj.df}{
+a trajectory data frame object that is automatically assigned with object name 'traj.df' by the 'trajectory.read' function
+}
+}
 \author{
 Richard Iannone
 }
