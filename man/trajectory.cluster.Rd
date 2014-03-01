@@ -15,7 +15,7 @@ trajectory.cluster(traj_df, method = "Euclid", n.cluster = 5,
 \arguments{
   \item{traj_df}{
 a data frame object that was produced from HYSPLIT output files using the 'trajectory.read' function.
-}d
+}
   \item{method}{
 the method of either "Euclid" or "Angle" that is used to calculate the distance matrix for the back trajectories.
 }
