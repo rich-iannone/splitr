@@ -24,5 +24,7 @@ Richard Iannone
 # The hysplit.dispersion() function obtains presets for
 # "emissions", "grids", and "species" while assembling
 # a CONTROL file
+dispersion.preset.get(read = "emissions", numbers = emissions)
+dispersion.preset.get(read = "grids", numbers = grids)
 dispersion.preset.get(read = "species", numbers = species)
 }
