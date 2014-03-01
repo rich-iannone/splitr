@@ -51,6 +51,9 @@ by default the plot will produce the mean trajectories.
   \item{percentile}{
 represents the percentile concentration of the pollutant against which the all trajectories are compared.
 }
+  \item{map}{
+determines whether a map of trajectories should be generated
+}
 }
 \author{
 Richard Iannone
