@@ -14,6 +14,16 @@ dispersion.preset.delete <- function(read = NULL, numbers = NULL, interactive = 
   # Begin interactive section
   if (interactive == TRUE){
     
+    # If an argument for read was not provided, prompt the user to select a preset class
+    if (is.null(read)){
+      read <-
+        readline(paste(cat("What type of preset would you like to delete?", "\n",
+                           "Choices are: (1) emissions, (2) grids, (3) species","\n",
+                           "Press <ENTER> for no deletion. Otherwise, enter a number or type",
+                           sep = '')))
+      if (read == ""){
+        stop("Nothing selected, so, no deletion can be made")
+      }
     if (read == "emissions"){
       
       # Read the 'emissions' file line by line and place into a vector object
