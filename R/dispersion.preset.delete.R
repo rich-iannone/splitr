@@ -82,6 +82,11 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
                            "Press <ENTER> for no deletion. Otherwise, enter a number. ",
                            sep = '')))
       
+      # Stop function if only <ENTER> was pressed (no deletion case)
+      if (preset_to_remove == ""){
+        stop("No preset number was provided, so, no deletion was made")
+      }
+      
       # Verify that the input is a single numeric value
       preset_numeric <- as.numeric(preset_to_remove)
       
@@ -169,6 +174,11 @@ dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
                          "Which preset number should be deleted?", "\n",
                          "Press <ENTER> for no deletion. Otherwise, enter a number. ",
                          sep = '')))
+    
+    # Stop function if only <ENTER> was pressed (no deletion case)
+    if (preset_to_remove == ""){
+      stop("No preset number was provided, so, no deletion was made")
+    }
     
     # Verify that the input is a single numeric value
     preset_numeric <- as.numeric(preset_to_remove)
