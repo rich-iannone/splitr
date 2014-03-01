@@ -177,39 +177,6 @@ dispersion.preset.delete <- function(read = NULL, numbers = NULL, interactive = 
                             sep = '')
       }
       
-      return(oneline_to_paste)
-    }
-    
-    # Display list of presets to remove
-    preset_to_remove <-
-      readline(paste(cat("Here are the current presets for grids", "\n",
-                         "--------------------------------------", "\n",
-                         paste(oneline_output()),
-                         "--------------------------------------", "\n",
-                         "Which preset number should be deleted?", "\n",
-                         "Press <ENTER> for no deletion. Otherwise, enter a number. ",
-                         sep = '')))
-    
-    # Stop function if only <ENTER> was pressed (no deletion case)
-    if (preset_to_remove == ""){
-      stop("No preset number was provided, so, no deletion was made")
-    }
-    
-    # Verify that the input is a single numeric value
-    preset_numeric <- as.numeric(preset_to_remove)
-    
-    # Verify that the input is a number within the range of valid numbers  
-    in_range <- ifelse(preset_numeric %in% seq_of_entries,
-                       TRUE, FALSE)
-    
-    # Remove the preset from the local copy of all presets
-    list.from_file[[as.numeric(preset_to_remove)]] <- NULL
-    
-    # Rewrite the list of presets to the preset file from the modified local copy of presets
-    # (containing all presets except the one that was removed)
-    write.table(unlist(list.from_file), "~/Documents/SplitR/grids", sep = "\n",
-                quote = FALSE, row.names = FALSE, col.names = FALSE)
-    
       # End grids deletion
     }
     
