@@ -24,6 +24,15 @@ dispersion.preset.delete <- function(read = NULL, numbers = NULL, interactive = 
       if (read == ""){
         stop("Nothing selected, so, no deletion can be made")
       }
+      
+      if (read == "1"){ 
+      read <- "emissions"
+      } else if (read == "2"){
+        read <- "grids"  
+      } else if (read == "3"){
+        read <- "species"
+      }
+      
     if (read == "emissions"){
       
       # Read the 'emissions' file line by line and place into a vector object
