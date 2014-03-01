@@ -249,6 +249,27 @@ dispersion.preset.delete <- function(read = NULL, numbers = NULL, interactive = 
         list.from_file[[i]] <- vector.from_file
       } 
       
+      # Create block of oneline summaries for each of the presets
+      for (i in seq_of_entries){
+        if (i == 1) {
+          oneline <- vector(mode = "character", length = number_of_entries)
+        }
+        oneline[i] <- paste("(", i, ") ",
+                            gsub("^--- Species named: ([a-zA-Z0-9]*),.*",
+                                 "\\1",
+                                 list.from_file[[i]][1]),
+                            " / Particle: ",
+                            list.from_file[[i]][2],
+                            " / DDep: ",
+                            list.from_file[[i]][3],
+                            " / WDep: ",
+                            list.from_file[[i]][4],
+                            " / RD: ",
+                            list.from_file[[i]][5],
+                            " / RS: ",
+                            list.from_file[[i]][6],
+                            sep = '')
+      }
       # End species deletion
     }
     
