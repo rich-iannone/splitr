@@ -11,7 +11,6 @@ trajectory.cluster <- function(traj_df, method = "Euclid", n.cluster = 4, plot =
   require(cluster)
   require(openair)
   
-  
   # Include listUpdate function
   listUpdate <- function(a, b, drop.dots = TRUE, subset.a = NULL, subset.b = NULL) {
     if (drop.dots) {
