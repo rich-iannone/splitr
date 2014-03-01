@@ -36,6 +36,9 @@ the name of the longitude column in the 'traj.df' data frame. The default value 
   \item{lat}{
 the name of the latitude column in the 'traj.df' data frame. The default value of 'lat' is created by default when using the 'trajectory.read' function.
 }
+  \item{pollutant}{
+the name of the column that represents the height in the 'traj.df' data frame. The default value of 'height' is used in this case.
+}
 }
 \author{
 Richard Iannone
