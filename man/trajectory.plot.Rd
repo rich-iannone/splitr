@@ -39,6 +39,9 @@ the name of the latitude column in the 'traj.df' data frame. The default value o
   \item{pollutant}{
 the name of the column that represents the height in the 'traj.df' data frame. The default value of 'height' is used in this case.
 }
+  \item{type}{
+the type of plot that is to be created. By default, the value used is 'default'.
+}
 }
 \author{
 Richard Iannone
