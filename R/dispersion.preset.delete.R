@@ -206,6 +206,12 @@ dispersion.preset.delete <- function(read = NULL, numbers = NULL, interactive = 
         stop("No preset number was provided, so, no deletion was made")
       }
       
+      # Verify that the input is a single numeric value
+      preset_numeric <- as.numeric(preset_to_remove)
+      
+      # Verify that the input is a number within the range of valid numbers  
+      in_range <- ifelse(preset_numeric %in% seq_of_entries,
+                         TRUE, FALSE)
       # End grids deletion
     }
     
