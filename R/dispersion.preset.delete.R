@@ -1,4 +1,4 @@
-dispersion.preset.delete <- function(read, numbers = NULL, interactive = TRUE){
+dispersion.preset.delete <- function(read = NULL, numbers = NULL, interactive = TRUE){
   
   # Validate supplied digits for duplicates
   if (!is.null(numbers)){
