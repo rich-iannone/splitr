@@ -48,6 +48,9 @@ determines whether the trajectory surface should be smoothed. The default is set
   \item{statistic}{
 by default the plot will produce the mean trajectories.
 }
+  \item{percentile}{
+represents the percentile concentration of the pollutant against which the all trajectories are compared.
+}
 }
 \author{
 Richard Iannone
