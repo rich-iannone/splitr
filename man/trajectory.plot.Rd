@@ -30,6 +30,9 @@ trajectory.plot(traj.df = "traj.df",
   \item{traj.df}{
 a trajectory data frame object that is automatically assigned with object name 'traj.df' by the 'trajectory.read' function
 }
+  \item{lon}{
+the name of the longitude column in the 'traj.df' data frame. The default value of 'lon' is created by default when using the 'trajectory.read' function.
+}
 }
 \author{
 Richard Iannone
