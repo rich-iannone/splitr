@@ -7,7 +7,9 @@ Remove a preset for HYSPLIT dispersion model runs
 
 }
 \usage{
-dispersion.preset.delete(read = NULL, numbers = NULL, interactive = TRUE)
+dispersion.preset.delete(read = NULL,
+                         numbers = NULL,
+                         interactive = TRUE)
 }
 \arguments{
   \item{read}{
