@@ -13,5 +13,7 @@ SplitR.init(install_folders = TRUE)
 Richard Iannone
 }
 \examples{
-
+# Initialize SplitR and obtain the necessary
+# files to run models and conduct analyses
+SplitR.init()
 }
