@@ -34,6 +34,7 @@ dispersion.preset.add <- function(type){
         rad_decay <- 0.0
         pollutant_resuspension_factor <- 0.0
       }
+      
       if (species_type_gas_use_default == "n") {
         
         # Automatically assign default value to 'particle_pdiam'
@@ -173,6 +174,7 @@ dispersion.preset.add <- function(type){
         rad_decay <- 0.0
         pollutant_resuspension_factor <- 0.0
       }
+      
       if (species_type_particle_use_default == "n") {
         
         # Ask to assign default value to 'particle_pdiam'
@@ -314,7 +316,6 @@ dispersion.preset.add <- function(type){
     }
     
     # Provide a summary of the chosen options and ask if the chosen options are acceptable
-    
     acceptable_species <-
       readline(paste(cat("The plan. Adding species: ", species_name, "\n",
                          "-------------------------", "\n", 
@@ -603,7 +604,6 @@ dispersion.preset.add <- function(type){
     # Get input string into a vector object of length 2
     grid_center_coords <- unlist(strsplit(grid_center, "[, | |,]"))
     grid_center_coords <- grid_center_coords[grid_center_coords != ""]
-    
     
     # Separate latitude and longitude into two separate numeric objects
     grid_center_lat <- as.numeric(grid_center_coords[1])
@@ -983,10 +983,6 @@ dispersion.preset.add <- function(type){
 
     # Close grids block
   }
-  
-  
-  
-  
+    
   # Close function
 }
-
