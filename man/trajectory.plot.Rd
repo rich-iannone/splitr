@@ -45,6 +45,9 @@ the type of plot that is to be created. By default, the value used is 'default'.
   \item{smooth}{
 determines whether the trajectory surface should be smoothed. The default is set to FALSE (no smoothing).
 }
+  \item{statistic}{
+by default the plot will produce the mean trajectories.
+}
 }
 \author{
 Richard Iannone
