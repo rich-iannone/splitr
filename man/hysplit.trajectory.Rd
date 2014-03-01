@@ -25,7 +25,6 @@ hysplit.trajectory(start_lat_deg,
                    path_wd,
                    path_executable) 
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{start_lat_deg}{
 the starting latitude (in decimal degrees) for the model run(s)
