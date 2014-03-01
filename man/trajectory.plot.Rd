@@ -42,6 +42,9 @@ the name of the column that represents the height in the 'traj.df' data frame. T
   \item{type}{
 the type of plot that is to be created. By default, the value used is 'default'.
 }
+  \item{smooth}{
+determines whether the trajectory surface should be smoothed. The default is set to FALSE (no smoothing).
+}
 }
 \author{
 Richard Iannone
