@@ -9,7 +9,6 @@ dispersion.preset.delete <- function(read = NULL, numbers = NULL, interactive = 
     if (no_duplicates == FALSE) {
       stop("The provided presets contain duplicate values.")
     }
-    
   }
   
   # Begin interactive section
