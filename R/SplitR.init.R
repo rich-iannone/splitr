@@ -60,6 +60,9 @@ SplitR.init <- function(install_folders = TRUE,
     # Get executable files
     SplitR.get.exec()
     
+    # Create default SETUP.CFG file for dispersion runs
+    hysplit.dispersion.config()
+    
     # Initialize the .SplitR plaintext file
     cat("paths", "-----",
         paste(documents_folder_path, "/SplitR/Exec", sep = ''),
