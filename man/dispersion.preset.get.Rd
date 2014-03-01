@@ -4,7 +4,7 @@
 Obtain requested presets in a format suitable for inclusion in a CONTROL file
 }
 \description{
-
+This is a helper function that is used by the 'hysplit.dispersion' function. Arguments pertaining to the preset numbers for "emissions', "grids", and "species" in the 'hysplit.dispersion' function are passed to the associated 'numbers' argument in three instances of the 'dispersion.preset.get' function. Each function call creates a block of text that is used for construction of a CONTROL file that is used in conjunction with the HYSPLIT dispersion model executable.
 }
 \usage{
 dispersion.preset.get(read, numbers)
