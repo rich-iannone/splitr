@@ -33,6 +33,12 @@ dispersion.preset.delete <- function(read = NULL, numbers = NULL, interactive = 
         read <- "species"
       }
       
+#       if (read %in% !c("emissions", "grids", "species")){
+#         stop("Please select from \"emissions\", \"grids\", or \"species\"")
+#       }
+      
+    }
+    
     if (read == "emissions"){
       
       # Read the 'emissions' file line by line and place into a vector object
