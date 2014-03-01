@@ -284,6 +284,16 @@ dispersion.preset.delete <- function(read = NULL, numbers = NULL, interactive = 
         
         return(oneline_to_paste)
       }
+      
+      # Display list of presets to remove
+      preset_to_remove <-
+        readline(paste(cat("Here are the current species presets", "\n",
+                           "------------------------------------", "\n",
+                           paste(oneline_output()),
+                           "------------------------------------", "\n",
+                           "Which preset number should be deleted?", "\n",
+                           "Press <ENTER> for no deletion. Otherwise, enter a number. ",
+                           sep = '')))
       # End species deletion
     }
     
