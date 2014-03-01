@@ -21,5 +21,8 @@ the values corresponding to the presets of a specified type (provided as the 're
 Richard Iannone
 }
 \examples{
-
+# The hysplit.dispersion() function obtains presets for
+# "emissions", "grids", and "species" while assembling
+# a CONTROL file
+dispersion.preset.get(read = "species", numbers = species)
 }
