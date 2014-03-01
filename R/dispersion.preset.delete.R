@@ -125,6 +125,8 @@ dispersion.preset.delete <- function(read = NULL, numbers = NULL, interactive = 
       # (containing all presets except the one that was removed)
       write.table(unlist(list.from_file), "~/Documents/SplitR/emissions", sep = "\n",
                   quote = FALSE, row.names = FALSE, col.names = FALSE)
+      
+      # End emissions deletion
     }
     
     if (read == "grids"){
@@ -219,6 +221,7 @@ dispersion.preset.delete <- function(read = NULL, numbers = NULL, interactive = 
     write.table(unlist(list.from_file), "~/Documents/SplitR/grids", sep = "\n",
                 quote = FALSE, row.names = FALSE, col.names = FALSE)
     
+      # End grids deletion
     }
     
     if (read == "species"){
