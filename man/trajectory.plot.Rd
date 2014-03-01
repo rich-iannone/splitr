@@ -33,6 +33,9 @@ a trajectory data frame object that is automatically assigned with object name '
   \item{lon}{
 the name of the longitude column in the 'traj.df' data frame. The default value of 'lon' is created by default when using the 'trajectory.read' function.
 }
+  \item{lat}{
+the name of the latitude column in the 'traj.df' data frame. The default value of 'lat' is created by default when using the 'trajectory.read' function.
+}
 }
 \author{
 Richard Iannone
