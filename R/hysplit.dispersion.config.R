@@ -1,5 +1,5 @@
-hysplit.dispersion.config <- function(create_default_config = FALSE,
-                                      interactive_mode = TRUE){
+hysplit.dispersion.config <- function(create_default_config = TRUE,
+                                      interactive_mode = FALSE){
   
   # Create default configuration file for dispersion runs and place it in the
   # working directory
