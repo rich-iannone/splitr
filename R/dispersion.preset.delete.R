@@ -294,6 +294,12 @@ dispersion.preset.delete <- function(read = NULL, numbers = NULL, interactive = 
                            "Which preset number should be deleted?", "\n",
                            "Press <ENTER> for no deletion. Otherwise, enter a number. ",
                            sep = '')))
+      
+      # Stop function if only <ENTER> was pressed (no deletion case)
+      if (preset_to_remove == ""){
+        stop("No preset number was provided, so, no deletion was made")
+      }
+      
       # End species deletion
     }
     
