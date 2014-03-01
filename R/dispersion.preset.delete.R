@@ -309,6 +309,13 @@ dispersion.preset.delete <- function(read = NULL, numbers = NULL, interactive = 
       
       # Remove the preset from the local copy of all presets
       list.from_file[[as.numeric(preset_to_remove)]] <- NULL
+      
+      # Rewrite the list of presets to the preset file from the modified local copy of presets
+      # (containing all presets except the one that was removed)
+      write.table(unlist(list.from_file), "~/Documents/SplitR/species", sep = "\n",
+                  quote = FALSE, row.names = FALSE, col.names = FALSE)
+      
+      
       # End species deletion
     }
     
