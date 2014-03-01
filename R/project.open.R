@@ -61,6 +61,7 @@ project.open <- function(list_select = TRUE, project = NULL){
                             matrix(x, nrow = nrow(project_list),
                                    ncol = 1, dimnames = list(1:nrow(project_list), c(" "))))
     }
+    
     print(project_list)
     
     # Filter a list of selectable project numbers
@@ -147,7 +148,6 @@ project.open <- function(list_select = TRUE, project = NULL){
         return("Okay, let's stay in the current project")
       }      
     }
-    
 
     # Change the working directory to that of the project to open
     setwd(project.list(display_paths = TRUE)[project_number_to_open,3])
@@ -165,8 +165,5 @@ project.open <- function(list_select = TRUE, project = NULL){
   
   if (list_select == FALSE & !is.null(project)) {
     
-    
-  }
-  
-  
+  }  
 }
