@@ -4,7 +4,7 @@
 Remove a preset for HYSPLIT dispersion model runs
 }
 \description{
-
+The function allows for the deletion of presets specific to dispersion runs. Presets are effectively blocks of parameters that are stored on the disk. The presets are divided into three groups: "emissions", "grids", and "species". Each preset has a plaintext file that resides on disk of the same name (located in the SplitR folder). This function by default runs in an interactive manner, prompting the user to select the preset to list from a condensed summary of presets of a given type. The function can also be called in a non-interactive manner, where specific presets of a type can be deleted without feedback. For adding presets to the associated files, the interactive function dispersion.preset.add() can be used.
 }
 \usage{
 dispersion.preset.delete(read = NULL,
