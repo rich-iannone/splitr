@@ -18,4 +18,30 @@ get.met.reanalysis <- function(files = NULL,
     
   }
   
+  # Download one or more years of reanalysis met files
+  if (!is.null(years)){
+    
+    for (i in 1:length(years)){
+      for (j in 1:12){
+        download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/RP",
+                                  years[i],
+                                  formatC(j, width = 2, format = "d", flag = "0"),
+                                  ".gbl",
+                                  sep = ''),
+                      destfile = paste(path_met_files,
+                                       "RP",
+                                       years[i],
+                                       formatC(j, width = 2, format = "d", flag = "0"),
+                                       ".gbl",
+                                       sep = ''),
+                      method = "auto",
+                      quiet = FALSE,
+                      mode = "w",
+                      cacheOK = TRUE)
+      }
+  
+    }
+    
+  }
+  
 }
