@@ -18,6 +18,42 @@ get.met.gdas1 <- function(files = NULL,
     
   }
   
+  if (!is.null(months)){
+    
+    months_3_letter <- c("jan", "feb", "mar", "apr", "may", "jun",
+                         "jul", "aug", "sep", "oct", "nov", "dec")
+    
+    for (i in 1:length(months)){
+      if (i == 1) the_files <- vector(mode = "character", length = 0)
+      the_month <- months_3_letter[as.numeric(gsub("^(..).*", "\\1", months[i]))]
+      the_year <- gsub("^..-(.*)$", "\\1", months[i])
+      the_files_1 <- paste("gdas1.", the_month, gsub("^..", "", the_year), ".w1", sep = '')
+      the_files_2 <- paste("gdas1.", the_month, gsub("^..", "", the_year), ".w2", sep = '')
+      the_files_3 <- paste("gdas1.", the_month, gsub("^..", "", the_year), ".w3", sep = '')
+      the_files_4 <- paste("gdas1.", the_month, gsub("^..", "", the_year), ".w4", sep = '')
+      the_files_5 <- paste("gdas1.", the_month, gsub("^..", "", the_year), ".w5", sep = '')
+      if (the_month == "feb" & as.numeric(the_year) %% 4 != 0) {
+        the_files <- c(the_files, the_files_1, the_files_2, the_files_3, the_files_4) 
+      } else {
+        the_files <- c(the_files, the_files_1, the_files_2,
+                       the_files_3, the_files_4, the_files_5)
+      }
+    }
+    
+    for (i in 1:length(the_files)){
+      download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
+                                files[i], sep = ''),
+                    destfile = paste(path_met_files, the_files[i], sep = ''),
+                    method = "auto",
+                    quiet = FALSE,
+                    mode = "w",
+                    cacheOK = TRUE)
+    }
+    
+  }
+  
+
+  
   # Download one or more years of GDAS1 met files
 #   if (!is.null(years)){
 #       
