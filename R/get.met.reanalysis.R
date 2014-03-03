@@ -3,7 +3,7 @@ get.met.reanalysis <- function(files = NULL,
                                path_met_files = "~/Documents/SplitR/Met/"){ 
   
   
-  # Download list of files by name
+  # Download list of reanalysis met files by name
   if (!is.null(files)){
     
     for (i in 1:length(files)){
