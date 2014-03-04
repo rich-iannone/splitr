@@ -75,7 +75,7 @@ SplitR.init <- function(install_folders = TRUE){
         "met files", "---------",
         "log", "---",
         paste("Folders were created on: ", create_time, sep = ''),
-        file = paste(SplitR_path, "/.SplitR", sep = ''),
+        file = paste(SplitR_path, "/SplitR.config", sep = ''),
         sep = "\n")
   
   }
@@ -88,7 +88,7 @@ SplitR.init <- function(install_folders = TRUE){
   SplitR_file <- file(paste("file://",
                             system("cd ~ ; pwd", intern = TRUE),
                             gsub("~", "", SplitR_path),
-                            "/.SplitR", sep = ''))
+                            "/SplitR.config", sep = ''))
   
   # Get .SplitR file as character vector
   SplitR_file_text <- readLines(SplitR_file)
