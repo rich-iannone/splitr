@@ -10,7 +10,21 @@ This function downloads GDAS1 meteorology data files from the NOAA FTP server an
 get.met.reanalysis(files = NULL,
                    years = NULL,
                    months = NULL,
-                   path_met_files = "~/Documents/SplitR/Met/"){ 
+                   path_met_files = "~/Documents/SplitR/Met/")
+}
+\arguments{
+  \item{files}{
+a vector list of filenames to be downloaded.
+}
+  \item{years}{
+a vector list of years for which a bulk download should be initiated.
+}
+  \item{months}{
+a vector list of months for which a bulk download should be initiated. Should be provided in the form "MM-YYYY".
+}
+  \item{path_met_files}{
+the path to which the downloaded files will be stored.
+}
 }
 \author{
 Richard Iannone
