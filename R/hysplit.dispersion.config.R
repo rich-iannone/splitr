@@ -22,8 +22,10 @@ hysplit.dispersion.config <- function(create_default_config = TRUE,
         "180  360	lat/lon number of data points",
         "2  	default land use category",
         "0.2  	default roughness length (meters)",
-        "'../bdyfiles/'  directory location of data files",
+        "'.'  directory location of data files",
         sep = "\n", file = "~/Documents/SplitR/Working/ASCDATA.CFG")
+    
+    # Create ROUGHLEN.ASC, LANDUSE.ASC, and TERRAIN.ASC
     
   } 
   
