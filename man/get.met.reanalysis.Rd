@@ -9,7 +9,18 @@ This function downloads reanalysis meteorology data files from the NOAA FTP serv
 \usage{
 get.met.reanalysis(files = NULL,
                    years = NULL,
-                   path_met_files = "~/Documents/SplitR/Met/"){ 
+                   path_met_files = "~/Documents/SplitR/Met/")
+}
+\arguments{
+  \item{files}{
+a vector list of filenames to be downloaded.
+}
+  \item{years}{
+a vector list of years for which a bulk download should be initiated.
+}
+  \item{path_met_files}{
+the path to which the downloaded files will be stored.
+}
 }
 \author{
 Richard Iannone
