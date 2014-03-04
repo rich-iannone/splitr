@@ -26,7 +26,7 @@ SplitR.init <- function(install_folders = TRUE){
   #
   #---- Check for existence and path of SplitR folder
   
-  #---- Create folder structure and initialize .SplitR file
+  #---- Create folder structure and initialize 'SplitR.config' file
   #
   # 
   
@@ -82,15 +82,15 @@ SplitR.init <- function(install_folders = TRUE){
   
   #
   #
-  #---- Create folder structure and initialize .SplitR file
+  #---- Create folder structure and initialize 'SplitR.config' file
   
-  # Access the newly created .SplitR file
+  # Access the newly created 'SplitR.config' file
   SplitR_file <- file(paste("file://",
                             system("cd ~ ; pwd", intern = TRUE),
                             gsub("~", "", SplitR_path),
                             "/SplitR.config", sep = ''))
   
-  # Get .SplitR file as character vector
+  # Get 'SplitR.config' file as character vector
   SplitR_file_text <- readLines(SplitR_file)
   
   # Check that the 'SplitR_file_text' object was created
