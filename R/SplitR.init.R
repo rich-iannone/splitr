@@ -65,6 +65,8 @@ SplitR.init <- function(install_folders = TRUE){
         paste(documents_folder_path, "/SplitR/Exec", sep = ''),
         paste(documents_folder_path, "/SplitR/Met", sep = ''),
         paste(documents_folder_path, "/SplitR/Projects", sep = ''),
+        paste(documents_folder_path, "/SplitR/Working", sep = ''),
+        paste(documents_folder_path, "/SplitR/Outpout", sep = ''),
         "platform", "--------",
         paste(Sys.info()[['sysname']], ", release ", Sys.info()[['release']], 
               " (", Sys.info()[['machine']], ")", sep = ''),
