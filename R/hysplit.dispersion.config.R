@@ -31,4 +31,3 @@ hysplit.dispersion.config <- function(create_default_config = TRUE,
   
 }
                                       
-                                      
