@@ -7,10 +7,10 @@ Get GDAS 1-degree meteorology data files from the NOAA FTP server
 This function downloads GDAS1 meteorology data files from the NOAA FTP server and saves them, by default, to "~/Documents/SplitR/Met". Files can be downloaded either by specifying a list of filenames, or through bulk download of a month or year of files. 
 }
 \usage{
-get.met.reanalysis(files = NULL,
-                   years = NULL,
-                   months = NULL,
-                   path_met_files = "~/Documents/SplitR/Met/")
+get.met.gdas1(files = NULL,
+              years = NULL,
+              months = NULL,
+              path_met_files = "~/Documents/SplitR/Met/")
 }
 \arguments{
   \item{files}{
