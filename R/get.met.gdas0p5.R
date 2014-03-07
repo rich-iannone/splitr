@@ -317,6 +317,8 @@ get.met.gdas0p5 <- function(files = NULL,
       
     }
     
+    # Determine whether all of the requested files are available on the server
+    all_files_available <- ifelse(all(the_list %in% listing), TRUE, FALSE)
   # End of function
 }
 
