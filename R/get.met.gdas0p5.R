@@ -331,6 +331,21 @@ get.met.gdas0p5 <- function(files = NULL,
         }
       }
       
+      # Generate report of missing files
+      missing_report <- as.data.frame(mat.or.vec(nr = length(files_missing), nc = 2))
+      colnames(missing_report) <- c("Filename", "Date")
+      
+      # Add names of missing files to the missing file report
+      missing_report$Filename <- files_missing
+      
+      # Get dates for missing files
+      for (i in 1:length(files_missing)){
+        if (i == 1) dates <- mat.or.vec(nr = length(files_missing), nc = 1)
+        dates[i] <- as.character(ymd(gsub("^([0-9]*).*", "\\1", files_missing[i])))
+      }
+      
+      # Add dates of missing files to the missing file report
+      missing_report$Date <- dates
   # End of function
 }
 
