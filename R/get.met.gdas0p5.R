@@ -401,6 +401,16 @@ get.met.gdas0p5 <- function(files = NULL,
     # Determine whether all of the requested files are available on the server
     all_files_available <- ifelse(all(the_list %in% listing), TRUE, FALSE)
     
+    # Determine which files are missing
+    if (all_files_available == FALSE){
+      for (i in 1:length(the_list)){
+        if (i == 1) files_missing <- vector(mode = "character", length = 0)
+        if (the_list[i] %in% listing){
+          NULL
+        } else {
+          files_missing <- c(files_missing, the_list[i])
+        }
+      }
   # End of function
 }
 
