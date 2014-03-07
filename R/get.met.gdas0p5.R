@@ -18,7 +18,7 @@ get.met.gdas0p5 <- function(files = NULL,
   listing <- as.vector(read.table(paste(path_met_files, "listing", sep = ''),
                                   sep = "\n")[,1])
   
-  # Download list of GDAS1 met files by name
+  # Download list of GDAS0p5 met files by name
   if (!is.null(files)){
     
     # Determine whether all listed files are available
