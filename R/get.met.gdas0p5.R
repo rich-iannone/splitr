@@ -194,6 +194,9 @@ get.met.gdas0p5 <- function(files = NULL,
     
   }
   
+  # Download list of GDAS0p5 met files for one or more months
+  if (!is.null(months)){
+    
   # End of function
 }
 
