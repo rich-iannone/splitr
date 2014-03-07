@@ -164,9 +164,13 @@ get.met.gdas0p5 <- function(files = NULL,
       
       # Add dates of missing files to the missing file report
       missing_report$Date <- dates
+      
+      # Filter list of files to obtain
+      the_list <- setdiff(the_list, files_missing)
+      
+    }
     
     # Download the requested files from the server
-    
     for (i in 1:length(the_list)){
       download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
                                 the_list[i], sep = ''),
