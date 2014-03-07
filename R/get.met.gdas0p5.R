@@ -351,6 +351,18 @@ get.met.gdas0p5 <- function(files = NULL,
       the_list <- setdiff(the_list, files_missing)
       
     }
+    
+    # Download the requested files from the server
+    for (i in 1:length(the_list)){
+      download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
+                                the_list[i], sep = ''),
+                    destfile = paste(path_met_files, the_list[i], sep = ''),
+                    method = "auto",
+                    quiet = FALSE,
+                    mode = "w",
+                    cacheOK = TRUE)
+      
+    }
   # End of function
 }
 
