@@ -14,6 +14,10 @@ get.met.gdas0p5 <- function(files = NULL,
                 mode = "w",
                 cacheOK = TRUE)
   
+  # Create object 'listing' as a vector with all filenames available on the FTP server
+  listing <- as.vector(read.table(paste(path_met_files, "listing", sep = ''),
+                                  sep = "\n")[,1])
+  
   
   
 }
