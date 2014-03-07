@@ -427,6 +427,11 @@ get.met.gdas0p5 <- function(files = NULL,
       
       # Add dates of missing files to the missing file report
       missing_report$Date <- dates
+      
+      # Filter list of files to obtain
+      the_list <- setdiff(the_list, files_missing)
+      
+    }
   # End of function
 }
 
