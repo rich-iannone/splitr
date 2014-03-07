@@ -14,7 +14,7 @@ install_github('SplitR', 'rich-iannone')
 
 ## Description
 
-SplitR allows you set up and run HYSPLIT in a very fast, easy, and organized manner. You easily set up a few or, perhaps, thousands of trajectory or dispersion runs using a single function. Because SplitR is an R interface to HYSPLIT, we can take store output in data frames, analyze the output (e.g., perform cluster analyses, generate and save plots, etc.). The packages sets up the folders, gets the HYSPLIT binaries, automates the downloading and storage of meteorological data files, and encourages you to make presets for dispersion model runs.
+SplitR allows you set up and run HYSPLIT in a very fast, easy, and organized manner. You easily set up a few or, perhaps, thousands of trajectory or dispersion runs using a single function. Because SplitR is an R interface to HYSPLIT, we can  store output in data frames, analyze the output (e.g., perform cluster analyses, generate and save plots, etc.). The package sets up the folders, gets the HYSPLIT binaries, automates the downloading and storage of meteorological data files, and encourages you to make presets for dispersion model runs.
 
 This package is in active development but is quite usable at present. Getting to a `Complete Hysplit` situation has never been this enjoyable before.
 
