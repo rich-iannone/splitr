@@ -379,6 +379,24 @@ get.met.gdas0p5 <- function(files = NULL,
   # Download list of GDAS0p5 met files for one or days
   if (!is.null(days)){
     
+    # Create a list of filenames to compare with those currently available
+    # on the NOAA FTP server
+    for (i in 1:length(days)){
+      if (i == 1) the_list <- vector(mode = "character", length = 0)
+      
+      the_day <- as.numeric(gsub("^[0-9]*-[0-9][0-9]-([0-9][0-9])", "\\1", days[i]))
+      the_month <- as.numeric(gsub("^[0-9]*-([0-9][0-9])-.*", "\\1", days[i]))
+      the_year <- as.numeric(gsub("^([0-9]*).*", "\\1", days[i]))
+      
+      # Determine whether this is a valid date
+      
+      # Construct the filename and add it to 'the_list'
+      the_list <- c(the_list, paste(the_year,
+                                    formatC(the_month, width = 2, format = "d", flag = "0"),
+                                    formatC(the_day, width = 2, format = "d", flag = "0"),
+                                    "_gdas0p5", sep = ""))
+      
+    }
   # End of function
 }
 
