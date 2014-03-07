@@ -23,6 +23,21 @@ get.met.gdas0p5 <- function(files = NULL,
     
     # Determine whether all listed files are available
     files_available <- ifelse(all(files %in% listing), TRUE, FALSE)
+    
+    # If all requested files are available on the server, download those files
+    if (files_available == TRUE){
+      
+      for (i in 1:length(files)){
+        download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
+                                  files[i], sep = ''),
+                      destfile = paste(path_met_files, files[i], sep = ''),
+                      method = "auto",
+                      quiet = FALSE,
+                      mode = "w",
+                      cacheOK = TRUE)
+      }
+    }
+  }
   
   
 }
