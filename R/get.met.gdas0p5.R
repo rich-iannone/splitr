@@ -197,6 +197,126 @@ get.met.gdas0p5 <- function(files = NULL,
   # Download list of GDAS0p5 met files for one or more months
   if (!is.null(months)){
     
+    # Create a list of filenames to compare with those currently available
+    # on the NOAA FTP server
+    for (i in 1:length(months)){
+      
+      if (i == 1) the_list <- vector(mode = "character", length = 0)
+      
+      the_month <- as.numeric(gsub("^([0-9]*).*", "\\1", months[i]))
+      the_year <- as.numeric(gsub("^[0-9][0-9]-([0-9]*)", "\\1", months[i]))
+      
+      if(the_month == 1){
+        jan <- seq(1, 31, 1)
+        for (j in 1:length(jan)){
+          the_list <- c(the_list, paste(the_year, "01",
+                                        formatC(j, width = 2, format = "d", flag = "0"),
+                                        "_gdas0p5", sep = ""))
+        }
+      }
+      
+      if(the_month == 2){
+        if (the_year %% 4 != 0) feb <- seq(1, 29, 1)
+        if (the_year %% 4 == 0) feb <- seq(1, 28, 1)
+        for (j in 1:length(feb)){
+          the_list <- c(the_list, paste(the_year, "02",
+                                        formatC(j, width = 2, format = "d", flag = "0"),
+                                        "_gdas0p5", sep = ""))
+        }
+      }
+      
+      if(the_month == 3){
+        mar <- seq(1, 31, 1)
+        for (j in 1:length(mar)){
+          the_list <- c(the_list, paste(the_year, "03",
+                                        formatC(j, width = 2, format = "d", flag = "0"),
+                                        "_gdas0p5", sep = ""))
+        }
+      }
+      
+      if(the_month == 4){
+        apr <- seq(1, 30, 1)
+        for (j in 1:length(apr)){
+          the_list <- c(the_list, paste(the_year, "04",
+                                        formatC(j, width = 2, format = "d", flag = "0"),
+                                        "_gdas0p5", sep = ""))
+        }
+      }
+      
+      if(the_month == 5){
+        may <- seq(1, 31, 1)
+        for (j in 1:length(may)){
+          the_list <- c(the_list, paste(the_year, "05",
+                                        formatC(j, width = 2, format = "d", flag = "0"),
+                                        "_gdas0p5", sep = ""))
+        }
+      }
+      
+      if(the_month == 6){
+        jun <- seq(1, 30, 1)
+        for (j in 1:length(jun)){
+          the_list <- c(the_list, paste(the_year, "06",
+                                        formatC(j, width = 2, format = "d", flag = "0"),
+                                        "_gdas0p5", sep = ""))
+        }
+      }
+      
+      if(the_month == 7){
+        jul <- seq(1, 31, 1)
+        for (j in 1:length(jul)){
+          the_list <- c(the_list, paste(the_year, "07",
+                                        formatC(j, width = 2, format = "d", flag = "0"),
+                                        "_gdas0p5", sep = ""))
+        }
+      }
+      
+      if(the_month == 8){
+        aug <- seq(1, 31, 1)
+        for (j in 1:length(aug)){
+          the_list <- c(the_list, paste(the_year, "08",
+                                        formatC(j, width = 2, format = "d", flag = "0"),
+                                        "_gdas0p5", sep = ""))
+        }
+      }
+      
+      if(the_month == 9){
+        sep <- seq(1, 30, 1)
+        for (j in 1:length(sep)){
+          the_list <- c(the_list, paste(the_year, "09",
+                                        formatC(j, width = 2, format = "d", flag = "0"),
+                                        "_gdas0p5", sep = ""))
+        }
+      }
+      
+      if(the_month == 10){
+        oct <- seq(1, 31, 1)
+        for (j in 1:length(oct)){
+          the_list <- c(the_list, paste(the_year, "10",
+                                        formatC(j, width = 2, format = "d", flag = "0"),
+                                        "_gdas0p5", sep = ""))
+        }
+      }
+      
+      if(the_month == 11){
+        nov <- seq(1, 30, 1)
+        for (j in 1:length(nov)){
+          the_list <- c(the_list, paste(the_year, "11",
+                                        formatC(j, width = 2, format = "d", flag = "0"),
+                                        "_gdas0p5", sep = ""))
+        }
+      }
+      
+      if(the_month == 12){
+        dec <- seq(1, 31, 1)
+        for (j in 1:length(dec)){
+          the_list <- c(the_list, paste(the_year, "12",
+                                        formatC(j, width = 2, format = "d", flag = "0"),
+                                        "_gdas0p5", sep = ""))
+        }
+      }
+      
+    }
+    
   # End of function
 }
 
