@@ -182,6 +182,16 @@ get.met.gdas0p5 <- function(files = NULL,
       
     }
     
+    # Write file that contains report of missing files
+    if (exists("missing_report")){
+      write.table(missing_report,
+                  file = paste(path_met_files,
+                               "Missing GDAS 0.5 Files - ", 
+                               format(Sys.time(), "%B %d %Y %H_%M_%S"),
+                               sep = ''),
+                  quote = FALSE, row.names = FALSE)
+    }
+    
   }
   
   # End of function
