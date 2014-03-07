@@ -153,4 +153,4 @@ get.met.gdas0p5 <- function(files = NULL,
     
   }
   
-}
+  # End of function
