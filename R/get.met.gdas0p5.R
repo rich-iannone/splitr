@@ -21,6 +21,8 @@ get.met.gdas0p5 <- function(files = NULL,
   # Download list of GDAS1 met files by name
   if (!is.null(files)){
     
+    # Determine whether all listed files are available
+    files_available <- ifelse(all(files %in% listing), TRUE, FALSE)
   
   
 }
