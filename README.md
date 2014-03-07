@@ -18,6 +18,7 @@ SplitR allows you set up and run HYSPLIT in a very fast, easy, and organized man
 
 This package is in active development but is quite usable at present. Getting to a `Complete Hysplit` situation has never been this enjoyable before.
 
+
 ## Features
 
 - simple setup of trajectory and dispersion model runs (forward or backward)
