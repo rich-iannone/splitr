@@ -170,19 +170,28 @@ project.open <- function(list_select = TRUE, project_name = NULL){
         return("Okay, let's stay in the current project")
       }      
     }
+    
+    # If currently in the /SplitR folder, allow the user to select a project
+    if (current_wd == current_wd_project &
+          grepl("/Documents/SplitR", current_wd, perl = TRUE) == TRUE){
+      
+      project_number_to_open <-
+        readline(paste("Which project number would you like to open? "))
+      project_number_to_open <- as.numeric(project_number_to_open)
+      
+      # Validate input
+      if(!(project_number_to_open %in% project_numbers)){
+        return("That is not a valid project number.")
+      }
+      
+      # Change the working directory to that of the project to open
+      setwd(project.list(display_paths = TRUE)[project_number_to_open,3])
+      
+      # Clear out objects in the global workspace; except 'list_select' and 'project'
+      rm(list = ls())
+      list_select <- TRUE
+      project_name <- NULL
 
-    # Change the working directory to that of the project to open
-    setwd(project.list(display_paths = TRUE)[project_number_to_open,3])
-    
-    # Clear out objects in the global workspace; except 'list_select' and 'project'
-    rm(list = ls())
-    list_select <- TRUE
-    project <- NULL
-    
-#     # Load the .Rdata file in the new project, if available
-#     if(file.exists(paste(getwd(), "/.Rdata", sep = '')) == TRUE){
-#       load(".RData", .GlobalEnv)
-#     }
   }
   
   if (list_select == FALSE & !is.null(project)) {
