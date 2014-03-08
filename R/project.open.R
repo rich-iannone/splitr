@@ -33,6 +33,26 @@ project.open <- function(list_select = TRUE, project_name = NULL){
   # Get available project numbers
   project_numbers <- seq(from = 1, to = nrow(project.list()), by = 1)
   
+  # If a project name is specified, go to that project
+  if (!is.null(project_name)){
+    
+    # Match provided project name to an existing project name
+    for (i in 1:nrow(project.list())){
+      if (project_name == project.list()[i,1]) match_number <- i
+    }
+    
+    # If there is a match, change the working directory to that of the project to open
+    if (exists("match_number")){
+    setwd(project.list(display_paths = TRUE)[match_number,3])
+    }
+    
+    # If there is no match, stop with message
+    if (!exists("match_number")){
+      stop("There isn't a project with that name.")
+    }
+    
+  }
+  
   # Determine the current project number
   #
   # Get the current wd, strip the path to the project subfolder level
