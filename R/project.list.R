@@ -41,6 +41,11 @@ project.list <- function(display_paths = FALSE){
       return(project_list_withpaths)
     }
     
+    # If there is no data in the 'SplitR.projects' file, state that there are no projects
+    if (file.info(paste(SplitR_path, "/Projects/SplitR.projects", sep = ''))[1,1] == 0){
+    print("There are no projects defined")
+    
+    }
   }
   
 }
