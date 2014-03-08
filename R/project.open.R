@@ -1,4 +1,4 @@
-project.open <- function(list_select = TRUE, project = NULL){ 
+project.open <- function(list_select = TRUE, project_name = NULL){ 
   
   # Check for existence of Documents folder in user home folder
   if(length(grep("/Documents$",
