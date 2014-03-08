@@ -1,7 +1,7 @@
 \name{Get GDAS1 meteorology data files}
 \alias{get.met.gdas1}
 \title{
-Get GDAS 1-degree meteorology data files from the NOAA FTP server 
+Get GDAS 1-degree meteorology data files from NOAA 
 }
 \description{
 This function downloads GDAS1 meteorology data files from the NOAA FTP server and saves them, by default, to "~/Documents/SplitR/Met". Files can be downloaded either by specifying a list of filenames, or through bulk download of a month or year of files. 
