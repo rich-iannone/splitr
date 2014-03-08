@@ -1,6 +1,6 @@
 Package: SplitR
 Type: Package
-Title: Highly efficient trajectory and dispersion modelling with NOAA HYSPLIT
+Title: Use the HYSPLIT model inside R and do more with it
 Version: 0.17
 Date: 2014-03-07
 Author: Richard Iannone <riannone@me.com>
