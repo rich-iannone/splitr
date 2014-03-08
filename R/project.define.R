@@ -85,7 +85,7 @@ project.define <- function(project_name){
       file.path(paste(SplitR_path, "/Projects/", long_project_name, sep = '')), "\"\n",
       sep = '',
       file = paste(file.path(paste(SplitR_path, "/Projects/", sep = '')),
-                   ".SplitR_projects", sep = ''),
+                   "SplitR.projects", sep = ''),
       append = TRUE)
   #
   #  
