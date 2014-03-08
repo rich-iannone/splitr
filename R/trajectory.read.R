@@ -14,18 +14,18 @@ trajectory.read <- function(path_output_files,
                                                        ".*$", sep = ''))
   } else if (is.null(year) & !is.null(start_height_m_AGL)) {
     trajectory_file_list <- list.files(path = path_output_files,
-                                      pattern = paste("^.*?height_",
-                                                      gsub("^[0-9][0-9]", "",
-                                                           as.character(year)),
-                                                      ".*$", sep = ''))
+                                       pattern = paste("^.*?height_",
+                                                       gsub("^[0-9][0-9]", "",
+                                                            as.character(year)),
+                                                       ".*$", sep = ''))
   } else if (!is.null(year) & !is.null(start_height_m_AGL)) {
-  trajectory_file_list <- list.files(path = path_output_files,
-                                     pattern = paste("^traj.*?)-",
-                                                     gsub("^[0-9][0-9]", "",
-                                                          as.character(year)),
-                                                     ".*?height_",
-                                                     as.character(start_height_m_AGL),
-                                                     "-.*$", sep = ''))
+    trajectory_file_list <- list.files(path = path_output_files,
+                                       pattern = paste("^traj.*?)-",
+                                                       gsub("^[0-9][0-9]", "",
+                                                            as.character(year)),
+                                                       ".*?height_",
+                                                       as.character(start_height_m_AGL),
+                                                       "-.*$", sep = ''))
   }
   
   # Initialize empty data frame with 12 named columns
