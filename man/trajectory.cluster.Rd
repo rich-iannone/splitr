@@ -1,7 +1,7 @@
 \name{Perform cluster analysis on HYSPLIT trajectories}
 \alias{trajectory.cluster}
 \title{
-Perform cluster analysis HYSPLIT trajectory output files already processed into a data frame.
+Perform cluster analysis for HYSPLIT trajectory output files already processed into a data frame.
 }
 \description{
 The function takes a data frame that was produced from HYSPLIT backtrajectory output files using the 'trajectory.read' function. The function will amend the data frame with cluster information, where the  number of clusters is specified. Furthermore, the cluster trajectories can be plotted onto a map.  
