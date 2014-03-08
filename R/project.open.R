@@ -15,9 +15,11 @@ project.open <- function(list_select = TRUE, project_name = NULL){
   
   # If the SplitR folder exists, get its path; if it doesn't exist, stop the function
   if (SplitR_dir_exists == TRUE) {
+    
     # Get path to SplitR folder
     SplitR_path <- file.path(paste(documents_folder_path, "/SplitR", sep = ''))
   } else if (SplitR_dir_exists == FALSE) {
+    
     # Stop function if the path doesn't exist
     stop("The SplitR folder doesn't exist. Please set up with 'SplitR.init' function.")
   }
@@ -123,7 +125,7 @@ project.open <- function(list_select = TRUE, project_name = NULL){
         }      
       }
     }
-        
+    
     # Allow user to open another selectable project by number
     
     if (exists("in_project_number") & exists("selectable_project_numbers")){
@@ -141,14 +143,14 @@ project.open <- function(list_select = TRUE, project_name = NULL){
         }
       }
     }
-      
+    
     # If currently in a project, ask to close that project before switching to the next
     if(grepl("*/Documents/SplitR/Projects/*", getwd()) == TRUE){
       close_current_project <- readline("Close the current project? [y/n] ")
       
       # Validate input
       if(!(close_current_project %in% c("y", "n", "yes", "no", "yeah", "nope",
-                                "yep", "sure", "nah", "false"))){
+                                        "yep", "sure", "nah", "false"))){
         return("I need a yes or no answer.")
       }
       
@@ -163,7 +165,7 @@ project.open <- function(list_select = TRUE, project_name = NULL){
       }
       
       if(close_current_project == "y"){    
-      NULL
+        NULL
       } else if (close_current_project == "n"){
         return("Okay, let's stay in the current project")
       }      
