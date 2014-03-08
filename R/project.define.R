@@ -12,7 +12,7 @@ project.define <- function(project_name){
   #
   # 
   
-  #Check existence of Documents folder in user home folder
+  # Check existence of Documents folder in user home folder
   if(length(grep("/Documents$",
                  list.dirs(path = "~", full.names = TRUE,
                            recursive = FALSE))) > 0) {
