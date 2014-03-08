@@ -26,10 +26,10 @@ project.open <- function(list_select = TRUE, project_name = NULL){
   current_wd <- getwd()
   
   # If the current working directory is outside of ~/SplitR, set it to that
-#   if (current_wd) {
-#     
-#   }
-  
+  if (grepl("/Documents/SplitR", current_wd, perl = TRUE) == FALSE) {
+    setwd("~/Documents/SplitR/Projects")
+  }
+
   # Get available project numbers
   project_numbers <- seq(from = 1, to = nrow(project.list()), by = 1)
   
