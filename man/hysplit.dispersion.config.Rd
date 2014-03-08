@@ -1,7 +1,7 @@
-\name{Create configuration file for dispersion runs}
+\name{Create config file for dispersion runs}
 \alias{hysplit.dispersion.config}
 \title{
-Create or modify the configuration file used for HYSPLIT dispersion models
+Create/modify HYSPLIT dispersion config file
 }
 \description{
 
