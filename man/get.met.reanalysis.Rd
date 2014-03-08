@@ -1,7 +1,7 @@
 \name{Get reanalysis meteorology data files}
 \alias{get.met.reanalysis}
 \title{
-Get reanalysis meteorology data files from the NOAA FTP server 
+Get reanalysis meteorology data files from NOAA 
 }
 \description{
 This function downloads reanalysis meteorology data files from the NOAA FTP server and saves them, by default, to "~/Documents/SplitR/Met". Files can be downloaded either by specifying a list of filenames (in the form of "RP[YYYY][MM].gbl") or through bulk download of a year of files. 
