@@ -77,7 +77,7 @@ project.define <- function(project_name){
   #
   #---- Create project folder
   
-  #---- Add to .SplitR_projects document
+  #---- Add to SplitR.projects document
   #
   #
   cat(project_name, ",",
