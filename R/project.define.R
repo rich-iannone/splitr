@@ -47,6 +47,13 @@ project.define <- function(project_name){
   #
   #
   
+  # Check to see if the provided project name is a duplicate of existing project names
+  if (file.info(paste(SplitR_path, "/Projects/SplitR.projects", sep = ''))[1,1] > 0){
+    if (tolower(project_name) %in% tolower(project.list()[,1])) {
+      stop("That name is already in the project list. Choose another name")
+    }
+  }
+  
   # Construct a long project name based on the input string and date/time of creation 
   project_create_date <- Sys.time()
     
