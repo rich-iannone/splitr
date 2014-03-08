@@ -192,9 +192,12 @@ project.open <- function(list_select = TRUE, project_name = NULL){
       list_select <- TRUE
       project_name <- NULL
 
+    }
+    
+    if (list_select == FALSE & !is.null(project_name)) {
+      
+    }
+    
   }
   
-  if (list_select == FALSE & !is.null(project)) {
-    
-  }  
 }
