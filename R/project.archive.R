@@ -62,3 +62,6 @@ project.archive <- function( ){
       
       # Get the absolute path of the destination
       absolute_path_destination <- gsub("Projects", "Archive", absolute_path_origin)
+      
+      # Get folder name of the orgin/destination
+      
