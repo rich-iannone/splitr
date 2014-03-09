@@ -38,3 +38,8 @@ project.archive <- function( ){
       # Include column names
       colnames(project_list) <- c("Project Name", "Date Created", "Location")
       
+      # Either format the list of project with or without the project paths, depending
+      # on 'display_paths' value
+      project_list_nopaths <- project_list
+      project_list_nopaths[,2] <- as.POSIXct(project_list_nopaths[,2], origin = "1970-01-01")
+      project_list_nopaths[,3] <- NULL
