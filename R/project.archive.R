@@ -31,15 +31,14 @@ project.archive <- function( ){
     # If there is data in the 'SplitR.projects' file, read it and display a list
     if (file.info(paste(SplitR_path, "/Projects/SplitR.projects", sep = ''))[1,1] > 0){
       
-      # Read SplitR.projects file as a data frame
+      # Read 'SplitR.projects' file as a data frame
       project_list <- read.csv(paste(SplitR_path, "/Projects/SplitR.projects", sep = ''),
                                header = FALSE, stringsAsFactors = FALSE)
       
       # Include column names
       colnames(project_list) <- c("Project Name", "Date Created", "Location")
       
-      # Either format the list of project with or without the project paths, depending
-      # on 'display_paths' value
+      # Format the list of project without the absolute project paths
       project_list_nopaths <- project_list
       project_list_nopaths[,2] <- as.POSIXct(project_list_nopaths[,2], origin = "1970-01-01")
       project_list_nopaths[,3] <- NULL
@@ -66,8 +65,7 @@ project.archive <- function( ){
       # Get folder name of the orgin/destination
       
       
-      # Move contents
-      
+      # Move contents of archived project to the 'Archive' folder
       system(paste("cd ", SplitR_path, "/Archive ; mkdir \"", absolute_path_destination, "\" ; mv \"",
                    absolute_path_origin, "/*\" \"", absolute_path_destination, "\"",
                    sep = ''))
