@@ -49,3 +49,10 @@ project.archive <- function( ){
       project_number_to_archive <-
         readline(paste("Which project number would you like to archive? "))
       project_number_to_archive <- as.numeric(project_number_to_archive)
+      
+      # Create an 'Archive' folder if one doesn't already exist in the 'SplitR' folder
+      if ("Archive" %in% list.dirs(path = SplitR_path, full.names = FALSE, recursive = FALSE)){
+        NULL
+      } else {
+        system(paste("cd ", SplitR_path, " ; ", "mkdir Archive", sep = ''))
+      }
