@@ -56,3 +56,9 @@ project.archive <- function( ){
       } else {
         system(paste("cd ", SplitR_path, " ; ", "mkdir Archive", sep = ''))
       }
+      
+      # Get absolute path of project folder to archive
+      absolute_path_origin <- project_list[project_number_to_archive,3]
+      
+      # Get the absolute path of the destination
+      absolute_path_destination <- gsub("Projects", "Archive", absolute_path_origin)
