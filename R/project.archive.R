@@ -18,3 +18,12 @@ project.archive <- function( ){
     
     # Get path to SplitR folder
     SplitR_path <- file.path(paste(documents_folder_path, "/SplitR", sep = ''))
+    
+    # Determine if SplitR.projects file exists
+    if ("SplitR.projects" %in% list.files(path = paste(SplitR_path, "/Projects/", sep = ''))){
+      NULL
+    } else {
+      cat(file = paste(file.path(paste(SplitR_path, "/Projects/", sep = '')),
+                       "SplitR.projects", sep = ''),
+          append = FALSE)
+    }
