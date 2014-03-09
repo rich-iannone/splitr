@@ -27,3 +27,7 @@ project.archive <- function( ){
                        "SplitR.projects", sep = ''),
           append = FALSE)
     }
+    
+    # If there is data in the 'SplitR.projects' file, read it and display a list
+    if (file.info(paste(SplitR_path, "/Projects/SplitR.projects", sep = ''))[1,1] > 0){
+      
