@@ -65,3 +65,12 @@ project.archive <- function( ){
       
       # Get folder name of the orgin/destination
       
+      
+      # Move contents
+      
+      system(paste("cd ", SplitR_path, "/Archive ; mkdir \"", absolute_path_destination, "\" ; mv \"",
+                   absolute_path_origin, "/*\" \"", absolute_path_destination, "\"",
+                   sep = ''))
+      
+      
+      
