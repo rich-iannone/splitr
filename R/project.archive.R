@@ -43,3 +43,9 @@ project.archive <- function( ){
       project_list_nopaths <- project_list
       project_list_nopaths[,2] <- as.POSIXct(project_list_nopaths[,2], origin = "1970-01-01")
       project_list_nopaths[,3] <- NULL
+      
+      # Ask which project should be archived
+      print(project_list_nopaths)
+      project_number_to_archive <-
+        readline(paste("Which project number would you like to archive? "))
+      project_number_to_archive <- as.numeric(project_number_to_archive)
