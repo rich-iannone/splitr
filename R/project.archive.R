@@ -31,3 +31,10 @@ project.archive <- function( ){
     # If there is data in the 'SplitR.projects' file, read it and display a list
     if (file.info(paste(SplitR_path, "/Projects/SplitR.projects", sep = ''))[1,1] > 0){
       
+      # Read SplitR.projects file as a data frame
+      project_list <- read.csv(paste(SplitR_path, "/Projects/SplitR.projects", sep = ''),
+                               header = FALSE, stringsAsFactors = FALSE)
+      
+      # Include column names
+      colnames(project_list) <- c("Project Name", "Date Created", "Location")
+      
