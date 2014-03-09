@@ -12,3 +12,7 @@ project.archive <- function( ){
     ifelse(length(list.dirs(path = paste(documents_folder_path,
                                          "/SplitR", sep = ''),
                             full.names = TRUE, recursive = FALSE)) > 0, TRUE, FALSE)
+  
+  # Perform remainder of script if the SplitR folder exists
+  if (SplitR_dir_exists == TRUE) {
+    
