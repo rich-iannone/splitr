@@ -91,6 +91,11 @@ project.archive <- function( ){
                             recursive = FALSE, ignore.case = FALSE,
                             include.dirs = FALSE, no.. = TRUE)) == 0){
         
+        # Remove empty folder from the 'Projects' folder
+        system(paste("cd ~; cd Documents/SplitR/Projects ; rmdir '",
+                     folder_name_project_to_archive, "'",
+                     sep = ''))
+        
       
     }
     
