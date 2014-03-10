@@ -20,10 +20,10 @@ hysplit.trajectory(start_lat_deg,
                    run_range = NULL,
                    run_years = NULL,
                    daily_hours_to_start,
-                   path_met_files,
-                   path_output_files,
-                   path_wd,
-                   path_executable) 
+                   path_met_files = "~/Documents/SplitR/Met/",
+                   path_output_files = "~/Documents/SplitR/Output/",
+                   path_wd = "~/Documents/SplitR/Working/",
+                   path_executable = "~/Documents/SplitR/Exec/") 
 }
 \arguments{
   \item{start_lat_deg}{
