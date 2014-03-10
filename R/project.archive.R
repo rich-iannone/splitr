@@ -1,4 +1,4 @@
-project.archive <- function( ){ 
+project.archive <- function(){ 
   
   # Check for existence of Documents folder in user home folder
   if(length(grep("/Documents$",
