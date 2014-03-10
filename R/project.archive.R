@@ -62,6 +62,11 @@ project.archive <- function( ){
       # Get folder name of project to archive
       folder_name_project_to_archive <- gsub("^.*/(.*)$", "\\1", absolute_path_origin)
       
+      # Determine that there are files to move before performing the move
+      if (length(list.files(path = absolute_path_origin, pattern = NULL,
+                            all.files = TRUE, full.names = FALSE,
+                            recursive = FALSE, ignore.case = FALSE,
+                            include.dirs = FALSE, no.. = TRUE)) != 0){
       
       
     }
