@@ -117,6 +117,7 @@ project.archive <- function(){
     }
     
     # If there is no data in the 'SplitR.projects' file, state that there are no projects
+
     if (!exists("empty_project_removed") & !exists("project_removed")){
       if (file.info(paste(SplitR_path, "/Projects/SplitR.projects", sep = ''))[1,1] == 0){
         print("There are no projects defined.")
