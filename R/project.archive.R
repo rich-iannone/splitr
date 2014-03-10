@@ -59,6 +59,8 @@ project.archive <- function( ){
       # Get absolute path of project folder to archive
       absolute_path_origin <- project_list[project_number_to_archive,3]
       
+      # Get folder name of project to archive
+      folder_name_project_to_archive <- gsub("^.*/(.*)$", "\\1", absolute_path_origin)
       
       
       
