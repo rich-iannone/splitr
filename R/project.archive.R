@@ -86,6 +86,11 @@ project.archive <- function( ){
         
       }
       
+      if (length(list.files(path = absolute_path_origin, pattern = NULL,
+                            all.files = TRUE, full.names = FALSE,
+                            recursive = FALSE, ignore.case = FALSE,
+                            include.dirs = FALSE, no.. = TRUE)) == 0){
+        
       
     }
     
