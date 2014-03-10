@@ -106,6 +106,9 @@ project.archive <- function(){
                                  "SplitR.projects", sep = ''), sep = ",",
                     append = FALSE, quote = FALSE, row.names = FALSE, col.names = FALSE)
         
+        # Add an object to indicate that an empty project was removed
+        empty_project_removed <- TRUE
+        
       }
       
     }
