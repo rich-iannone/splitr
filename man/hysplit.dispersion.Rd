@@ -78,13 +78,13 @@ the numbers corresponding to the stored grid presets. These presets are specifie
 a full path should be provided for the location of the meteorological data files relevant to the model options chosen. By default, the location '~/Documents/SplitR/Met' is chosen.
 }
   \item{path_output_files}{
-a full path should be provided for a location that the trajectory output files will be written.  By default, the location '~/Documents/SplitR/Output' is chosen.
+a full path should be provided for a location that the trajectory output files will be written. By default, the location '~/Documents/SplitR/Output' is chosen.
 }
   \item{path_wd}{
-a full path should be provided for the HYSPLIT working directory; the CONTROL file for each model run will be written to and read from this location.  By default, the location '~/Documents/SplitR/Working' is chosen.
+a full path should be provided for the HYSPLIT working directory; the CONTROL file for each model run will be written to and read from this location. By default, the location '~/Documents/SplitR/Working' is chosen.
 }
   \item{path_executable}{
-the full path and name of the HYSPLIT executable file for trajectory runs must be provided.  By default, the location '~/Documents/SplitR/Exec' is chosen.
+the full path and name of the HYSPLIT executable file for trajectory runs must be provided. By default, the location '~/Documents/SplitR/Exec' is chosen.
 }
 }
 \details{
