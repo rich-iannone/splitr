@@ -84,6 +84,9 @@ project.archive <- function(){
                                  "SplitR.projects", sep = ''), sep = ",",
                     append = FALSE, quote = FALSE, row.names = FALSE, col.names = FALSE)
         
+        # Add an object to indicate that a project was removed
+        project_removed <- TRUE
+        
       }
       
       if (length(list.files(path = absolute_path_origin, pattern = NULL,
