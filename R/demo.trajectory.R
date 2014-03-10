@@ -4,6 +4,10 @@ demo.trajectory <- function(){
   # There are step-by-step prompts, showing the user which directories were made,
   # what functions were run, and where the output went
   
+  # First, delete any previous instances of the 'Demo Project' that were created
+  # when using this function previously
+  
+  
   # Welcome to the SplitR trajectory demo! The aim of this walkthrough
   # is give you all you need to run HYSPLIT trajectory runs.
   
