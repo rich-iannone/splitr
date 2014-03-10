@@ -38,6 +38,15 @@ demo.trajectory <- function(){
   
   getwd()
   
+  # Once a project is defined, we can define a series of trajectory runs
+  # using the 'hysplit.trajectory' function.
   
+  hysplit.trajectory(start_lat_deg = 42.83752, start_long_deg = -80.30364,
+                     start_height_m_AGL = 5, simulation_duration_h = 24,
+                     backtrajectory = FALSE, met_type = "reanalysis",
+                     vertical_motion_option = 0,
+                     top_of_model_domain_m = 20000,
+                     run_type = "day", run_days = "2012-03-12",
+                     daily_hours_to_start = c("00", "06", "12", "18"))
   
 }
