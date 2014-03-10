@@ -96,6 +96,17 @@ project.archive <- function( ){
                      folder_name_project_to_archive, "'",
                      sep = ''))
         
+        # Delete project entry in the 'SplitR.projects' file
+        SplitR_projects <- read.csv(paste(SplitR_path, "/Projects/SplitR.projects", sep = ''),
+                                    header = FALSE, stringsAsFactors = FALSE)
+        SplitR_projects <- SplitR_projects[-project_number_to_archive,]
+        
+        write.table(SplitR_projects,
+                    file = paste(file.path(paste(SplitR_path, "/Projects/", sep = '')),
+                                 "SplitR.projects", sep = ''), sep = ",",
+                    append = FALSE, quote = FALSE, row.names = FALSE, col.names = FALSE)
+        
+      }
       
     }
     
