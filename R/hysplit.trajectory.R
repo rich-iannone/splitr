@@ -198,7 +198,8 @@ hysplit.trajectory <- function(start_lat_deg,
       
       # Are the met files available on the selected path?
       met.file.df <- setNames(data.frame(mat.or.vec(nr = length(met), nc = 2)),
-                              nm = c("file","available?"))
+                              nm = c("file","available"))
+      
       for (k in 1:length(met)) {
         met.file.df[k, 1] <- met[k]
         met.file.df[k, 2] <- as.character(file.exists(paste(path_met_files, met[k], sep = '')))}
