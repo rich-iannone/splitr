@@ -293,7 +293,5 @@ hysplit.trajectory <- function(start_lat_deg,
     # Close the day loop
   }
   
-  return(met)
-  
   # Close the function
 }
