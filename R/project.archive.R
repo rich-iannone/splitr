@@ -49,6 +49,14 @@ project.archive <- function(project_name = NULL){
                                                  function(x) any(grepl(project_name, x))))
       }
       
+      # Ask which project should be archived if an exact name is not given
+      if (is.null(project_name)){
+        print(project_list_nopaths)
+        project_number_to_archive <-
+          readline(paste("Which project number would you like to archive? "))
+        project_number_to_archive <- as.numeric(project_number_to_archive)
+      }
+      
       # Create an 'Archive' folder if one doesn't already exist in the 'SplitR' folder
       if ("Archive" %in% list.dirs(path = SplitR_path, full.names = FALSE, recursive = FALSE)){
         NULL
