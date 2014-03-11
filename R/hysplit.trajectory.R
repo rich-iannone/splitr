@@ -208,6 +208,13 @@ hysplit.trajectory <- function(start_lat_deg,
       write.table(met.file.df, file = paste(path_wd, "met_file_list", sep = ''),
                   sep = ",", row.names = FALSE, col.names = FALSE, quote = FALSE,
                   append = FALSE)
+      
+      # Download the missing met files
+      if (FALSE %in% met.file.df[,2]){
+        files_to_get <- subset(met.file.df, available == FALSE)[,1]
+        get.met.reanalysis(files = files_to_get, path_met_files = path_met_files)
+      }
+      
       # Construct the output filename string for this model run
       output_filename <- paste("traj",
                                ifelse(backtrajectory == TRUE, '(back)', '(forward)'), "-",
