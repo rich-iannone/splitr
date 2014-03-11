@@ -43,11 +43,11 @@ project.archive <- function(project_name = NULL){
       project_list_nopaths[,2] <- as.POSIXct(project_list_nopaths[,2], origin = "1970-01-01")
       project_list_nopaths[,3] <- NULL
       
-      # Ask which project should be archived
-      print(project_list_nopaths)
-      project_number_to_archive <-
-        readline(paste("Which project number would you like to archive? "))
-      project_number_to_archive <- as.numeric(project_number_to_archive)
+      # Get a project number from the 'project_list_nopaths' df if an exact name is given
+      if (!is.null(project_name)){
+        project_number_to_archive <- which(apply(project_list_nopaths, 2,
+                                                 function(x) any(grepl(project_name, x))))
+      }
       
       # Create an 'Archive' folder if one doesn't already exist in the 'SplitR' folder
       if ("Archive" %in% list.dirs(path = SplitR_path, full.names = FALSE, recursive = FALSE)){
