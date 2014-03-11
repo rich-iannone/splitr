@@ -36,7 +36,7 @@ project.archive <- function(project_name = NULL){
                                header = FALSE, stringsAsFactors = FALSE)
       
       # Include column names
-      colnames(project_list) <- c("Project Name", "Date Created", "Location")
+      colnames(project_list) <- c("Project.Name", "Date.Created", "Location")
       
       # Format the list of project without the absolute project paths
       project_list_nopaths <- project_list
