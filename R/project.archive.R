@@ -79,7 +79,8 @@ project.archive <- function(project_name = NULL){
         # Move contents of archived project to the 'Archive' folder
         system(paste("cd ~; cd Documents/SplitR/Archive ; mkdir '", folder_name_project_to_archive,
                      "' ; cd ../Projects ; cp '", folder_name_project_to_archive, "'/* '../Archive/",
-                     folder_name_project_to_archive, "'",
+                     folder_name_project_to_archive, "' ; cd Documents/SplitR/Archive ; ",
+                     "cd '", folder_name_project_to_archive, "' ; rm *",
                      sep = ''))
         
         # Delete project entry in the 'SplitR.projects' file
