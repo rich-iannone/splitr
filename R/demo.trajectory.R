@@ -78,7 +78,7 @@ demo.trajectory <- function(){
                        sep = '')))
   
   if (step_5 == ""){
-    getwd()
+    print(getwd())
   }
 
   step_6 <-
