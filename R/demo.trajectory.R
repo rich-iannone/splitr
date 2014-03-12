@@ -3,7 +3,7 @@ demo.trajectory <- function(){
   # First, delete any previous instances of the 'Demo Project' that were created
   # when using this function previously
   
-  
+  project.archive("Demo Project")
   
   setwd("~/Documents/SplitR")
   
