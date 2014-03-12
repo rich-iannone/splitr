@@ -15,7 +15,7 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
                                species = c(1),
                                grids = c(1),
                                path_met_files = "~/Documents/SplitR/Met/",
-                               path_output_files = "~/Documents/SplitR/Output/",
+                               path_output_files = paste(getwd(), "/", sep = ''),
                                path_wd = "~/Documents/SplitR/Working/",
                                path_executable = "~/Documents/SplitR/Exec/"){ 
   
