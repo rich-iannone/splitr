@@ -101,7 +101,8 @@ project.archive <- function(project_name = NULL){
       if (length(list.files(path = absolute_path_origin, pattern = NULL,
                             all.files = TRUE, full.names = FALSE,
                             recursive = FALSE, ignore.case = FALSE,
-                            include.dirs = FALSE, no.. = TRUE)) == 0){
+                            include.dirs = FALSE, no.. = TRUE)) == 0 &
+            !exists("project_removed")){
         
         # Remove empty folder from the 'Projects' folder
         system(paste("cd ~; cd Documents/SplitR/Projects ; rmdir '",
