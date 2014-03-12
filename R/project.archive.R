@@ -83,6 +83,11 @@ project.archive <- function(project_name = NULL){
                      "cd '", folder_name_project_to_archive, "' ; rm *",
                      sep = ''))
         
+        # Remove empty folder from the 'Projects' folder
+        system(paste("cd ~; cd ~/Documents/SplitR/Projects ; rmdir '",
+                     folder_name_project_to_archive, "'",
+                     sep = ''))
+        
         # Delete project entry in the 'SplitR.projects' file
         SplitR_projects <- read.csv(paste(SplitR_path, "/Projects/SplitR.projects", sep = ''),
                                     header = FALSE, stringsAsFactors = FALSE)
