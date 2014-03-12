@@ -12,7 +12,7 @@ hysplit.trajectory <- function(start_lat_deg,
                                run_years = NULL,
                                daily_hours_to_start,
                                path_met_files = "~/Documents/SplitR/Met/",
-                               path_output_files = "~/Documents/SplitR/Output/",
+                               path_output_files = paste(getwd(), "/", sep = ''),
                                path_wd = "~/Documents/SplitR/Working/",
                                path_executable = "~/Documents/SplitR/Exec/") {
   
