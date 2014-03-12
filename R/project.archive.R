@@ -110,7 +110,7 @@ project.archive <- function(project_name = NULL){
             !exists("project_removed")){
         
         # Remove empty folder from the 'Projects' folder
-        system(paste("cd ~; cd Documents/SplitR/Projects ; rmdir '",
+        system(paste("cd ~; cd ~/Documents/SplitR/Projects ; rmdir '",
                      folder_name_project_to_archive, "'",
                      sep = ''))
         
