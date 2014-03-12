@@ -18,7 +18,9 @@ demo.trajectory <- function(){
   
   if (step_1 == "") cat()
   
-  paste(cat("Let's have a look at the the folders made from using the", "\n",
+  paste(cat("---------------------------------------------------------------", "\n",
+            "\n",
+            "Let's have a look at the the folders made from using the", "\n",
             "'SplitR.init' function.", "\n",
             "Five folders were made: Exec, Met, Output, Projects, and Working.", "\n",
             sep = ''))
@@ -28,7 +30,8 @@ demo.trajectory <- function(){
   dirs
   
   step_2 <-
-    readline(paste(cat("The first step toward running models is to define a project.", "\n",
+    readline(paste(cat("---------------------------------------------------------------", "\n",
+                       "The first step toward running models is to define a project.", "\n",
                        "Let's create a project and call it \"Demo Project\".", "\n",
                        "\n",
                        "Press <ENTER> to run the following:", "\n",
@@ -41,7 +44,8 @@ demo.trajectory <- function(){
   }
   
   step_3 <-
-    readline(paste(cat("You can see a list of all projects with 'project.list'", "\n",
+    readline(paste(cat("---------------------------------------------------------------", "\n",
+                       "You can see a list of all projects with 'project.list'", "\n",
                        "\n",
                        "Press <ENTER> to run the following:", "\n",
                        "\n",
@@ -53,7 +57,8 @@ demo.trajectory <- function(){
   }
   
   step_4 <-
-    readline(paste(cat("Once the project is defined, open that project with 'project.open'", "\n",
+    readline(paste(cat("---------------------------------------------------------------", "\n",
+                       "Once the project is defined, open that project with 'project.open'", "\n",
                        "\n",
                        "Press <ENTER> to run the following:", "\n",
                        "\n",
@@ -65,7 +70,8 @@ demo.trajectory <- function(){
   }
   
   step_5 <-
-    readline(paste(cat("You might notice that when using 'project.open', the working", "\n",
+    readline(paste(cat("---------------------------------------------------------------", "\n",
+                       "You might notice that when using 'project.open', the working", "\n",
                        "directory moves to that of the project.", "\n",
                        "\n",
                        "Press <ENTER> to continue.", "\n",
@@ -76,7 +82,8 @@ demo.trajectory <- function(){
   }
 
   step_6 <-
-    readline(paste(cat("Once a project is defined, we can define a series of trajectory", "\n",
+    readline(paste(cat("---------------------------------------------------------------", "\n",
+                       "Once a project is defined, we can define a series of trajectory", "\n",
                        "runs using the 'hysplit.trajectory' function. The necessary met", "\n",
                        "files will be downloaded automatically if they're not available.", "\n",
                        "\n",
