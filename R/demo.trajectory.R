@@ -8,13 +8,13 @@ demo.trajectory <- function(){
   setwd("~/Documents/SplitR")
   
   step_1 <-
-    readline(paste(cat("This demo will show you how a trajectory project is carried out", "\n",
+    readline(paste(cat("This demo will show you how a trajectory project is carried out.", "\n",
                        "There are step-by-step prompts, showing which directories were made,", "\n",
-                       "what functions were run, and where the output went.", "\n",
-                       "It'll give you all you need to set up HYSPLIT trajectory models.", "\n",
-                       "(N.B. increase the height of the console window as much you can.)", "\n",
+                       "what functions were run, and where the output was placed. It'll give", "\n",
+                       "you all that you need to set up some HYSPLIT trajectory models.", "\n",
+                       "(N.B. increase the height of the console as much you can.)", "\n",
                        "\n",
-                       "Press <ENTER> to continue.", "\n",
+                       "Press <ENTER> to continue.",
                        sep = '')))
   
   if (step_1 == "") cat()
@@ -83,7 +83,7 @@ demo.trajectory <- function(){
                        "--------------------------------------------------------------",
                        "-----------------", "\n",
                        "You might notice that when using 'project.open', the working ",
-                       "directory moves",
+                       "directory moves", "\n",
                        "to that of the project.", "\n",
                        "\n",
                        "Press <ENTER> to get the working directory", "\n",
@@ -99,7 +99,7 @@ demo.trajectory <- function(){
                        "-----------------", "\n",
                        "Once a project is defined, we can define a series of trajectory",
                        " runs using the ", "\n",
-                       "'hysplit.trajectory' function. The necessary met files will be",
+                       "'hysplit.trajectory' function. The necessary met files will be ",
                        "downloaded ", "\n",
                        "automatically if they're not available.", "\n",
                        "\n",
@@ -131,8 +131,8 @@ demo.trajectory <- function(){
                        "If you saw 'Complete Hysplit' (and you should be seeing it now), ",
                        "the trajectory", "\n",
                        "runs are now finished. The output files are in the project ",
-                       "folder", "\n",
-                       "('Demo Project' + a date string).", "\n",
+                       "folder with the", "\n",
+                       "naming ['Demo Project' + a date string].", "\n",
                        "\n",
                        "Press <ENTER> to show the generated output", "\n",
                        sep = '')))
