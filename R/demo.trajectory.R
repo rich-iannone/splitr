@@ -41,7 +41,7 @@ demo.trajectory <- function(){
                        "\n",
                        "Press <ENTER> to run the following:", "\n",
                        "\n",
-                       "project.define(\"Demo Project\")",
+                       "--> project.define(\"Demo Project\")",
                        sep = '')))
   
   if (step_2 == ""){
@@ -56,7 +56,7 @@ demo.trajectory <- function(){
                        "\n",
                        "Press <ENTER> to run the following:", "\n",
                        "\n",
-                       "project.list()",
+                       "--> project.list()",
                        sep = '')))
   
   if (step_3 == ""){
@@ -71,7 +71,7 @@ demo.trajectory <- function(){
                        "\n",
                        "Press <ENTER> to run the following:", "\n",
                        "\n",
-                       "project.open(project_name = \"Demo Project\")",
+                       "--> project.open(project_name = \"Demo Project\")",
                        sep = '')))
   
   if (step_4 == ""){
@@ -105,13 +105,13 @@ demo.trajectory <- function(){
                        "\n",
                        "Press <ENTER> to run the following:", "\n",
                        "\n",
-    "hysplit.trajectory(start_lat_deg = 42.83752, start_long_deg = -80.30364,
-                   start_height_m_AGL = 5, simulation_duration_h = 24,
-                   backtrajectory = FALSE, met_type = \"reanalysis\",
-                   vertical_motion_option = 0,
-                   top_of_model_domain_m = 20000,
-                   run_type = \"day\", run_day = \"2012-03-12\",
-                   daily_hours_to_start = c(\"00\", \"06\", \"12\", \"18\"))",
+    "--> hysplit.trajectory(start_lat_deg = 42.83752, start_long_deg = -80.30364,
+                       start_height_m_AGL = 5, simulation_duration_h = 24,
+                       backtrajectory = FALSE, met_type = \"reanalysis\",
+                       vertical_motion_option = 0,
+                       top_of_model_domain_m = 20000,
+                       run_type = \"day\", run_day = \"2012-03-12\",
+                       daily_hours_to_start = c(\"00\", \"06\", \"12\", \"18\"))",
     sep = '')))
   
   if (step_6 == ""){
