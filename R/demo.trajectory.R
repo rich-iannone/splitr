@@ -45,7 +45,7 @@ demo.trajectory <- function(){
                        sep = '')))
   
   if (step_2 == ""){
-    print(project.define("Demo Project"))
+    project.define("Demo Project")
   }
   
   step_3 <-
@@ -75,7 +75,7 @@ demo.trajectory <- function(){
                        sep = '')))
   
   if (step_4 == ""){
-    print(project.open(project_name = "Demo Project"))
+    project.open(project_name = "Demo Project")
   }
   
   step_5 <-
