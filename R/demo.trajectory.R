@@ -122,4 +122,24 @@ demo.trajectory <- function(){
                        daily_hours_to_start = c("00", "06", "12", "18"))
   }
   
+  step_7 <-
+    readline(paste(cat("\n",
+                       "--------------------------------------------------------------",
+                       "-----------------", "\n",
+                       "If you saw 'Complete Hysplit' (and you should be seeing it now),", "\n",
+                       "the trajectory runs are now finished.", "\n",
+                       "The output files are in the project folder ('Demo Project' +", "\n",
+                       "a date string)", "\n",
+                       "\n",
+                       "Press <ENTER> to continue.", "\n",
+                       sep = '')))
+  
+  if (step_7 == ""){                
+    project_list <- project.list(display_paths = TRUE)
+    files <- as.data.frame(list.files(path = project_list[project_list[,1] == "Demo Project"][[3]],
+                        recursive = FALSE))
+    colnames(files) <- "Files"
+    print(files)
+  }
+  
 }
