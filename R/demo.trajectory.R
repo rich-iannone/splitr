@@ -145,4 +145,16 @@ demo.trajectory <- function(){
     print(files)
   }
   
+  step_8 <-
+    readline(paste(cat("\n",
+                       "--------------------------------------------------------------",
+                       "-----------------", "\n",
+                       "This concludes the demo of a set of HYSPLIT trajectory runs. ",
+                       "Press <ENTER> to end the demo", "\n",
+                       sep = '')))
+  
+  if (step_8 == ""){                
+    cat()
+  }
+  
 }
