@@ -12,6 +12,7 @@ demo.trajectory <- function(){
                        "There are step-by-step prompts, showing which directories were made,", "\n",
                        "what functions were run, and where the output went.", "\n",
                        "It'll give you all you need to set up HYSPLIT trajectory models.", "\n",
+                       "(N.B. increase the height of the console window as much you can.)", "\n",
                        "\n",
                        "Press <ENTER> to continue.", "\n",
                        sep = '')))
