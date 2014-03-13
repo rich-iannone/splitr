@@ -3,7 +3,7 @@ demo.trajectory <- function(){
   # First, delete any previous instances of the 'Demo Project' that were created
   # when using this function previously
   
-  project.archive("Demo Project")
+  project.archive("Demo Traj Project")
   
   setwd("~/Documents/SplitR")
   
@@ -37,15 +37,15 @@ demo.trajectory <- function(){
                        "--------------------------------------------------------------",
                        "-----------------", "\n",
                        "The first step toward running models is to define a project.", "\n",
-                       "Let's create a project and call it \"Demo Project\".", "\n",
+                       "Let's create a project and call it \"Demo Traj Project\".", "\n",
                        "\n",
                        "Press <ENTER> to run the following:", "\n",
                        "\n",
-                       "--> project.define(\"Demo Project\")",
+                       "--> project.define(\"Demo Traj Project\")",
                        sep = '')))
   
   if (step_2 == ""){
-    project.define("Demo Project")
+    project.define("Demo Traj Project")
   }
   
   step_3 <-
@@ -71,11 +71,11 @@ demo.trajectory <- function(){
                        "\n",
                        "Press <ENTER> to run the following:", "\n",
                        "\n",
-                       "--> project.open(project_name = \"Demo Project\")",
+                       "--> project.open(project_name = \"Demo Traj Project\")",
                        sep = '')))
   
   if (step_4 == ""){
-    project.open(project_name = "Demo Project")
+    project.open(project_name = "Demo Traj Project")
   }
   
   step_5 <-
@@ -132,15 +132,16 @@ demo.trajectory <- function(){
                        "the trajectory", "\n",
                        "runs are now finished. The output files are in the project ",
                        "folder with the", "\n",
-                       "naming ['Demo Project' + a date string].", "\n",
+                       "naming ['Demo Traj Project' + a date string].", "\n",
                        "\n",
                        "Press <ENTER> to show the generated output", "\n",
                        sep = '')))
   
   if (step_7 == ""){                
     project_list <- project.list(display_paths = TRUE)
-    files <- as.data.frame(list.files(path = project_list[project_list[,1] == "Demo Project"][[3]],
-                        recursive = FALSE))
+    files <-
+      as.data.frame(list.files(path = project_list[project_list[,1] == "Demo Traj Project"][[3]],
+                               recursive = FALSE))
     colnames(files) <- "Files"
     print(files)
   }
