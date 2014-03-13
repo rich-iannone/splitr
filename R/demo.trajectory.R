@@ -24,6 +24,8 @@ demo.trajectory <- function(){
             "Let's have a look at the the folders made from using the", "\n",
             "'SplitR.init' function.", "\n",
             "Five folders were made: Exec, Met, Output, Projects, and Working.", "\n",
+            "(The Archive folder might also be there; it's generated with 'project.archive'.", "\n",
+            "\n",
             sep = ''))
   
   dirs <- as.data.frame(list.dirs(path = "~/Documents/SplitR", recursive = FALSE))
