@@ -1,4 +1,4 @@
-dispersion.preset.add <- function(type){
+dispersion.preset.add <- function(type, interactive = TRUE){
   
   require(lubridate)
   
