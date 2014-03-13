@@ -30,7 +30,7 @@ demo.trajectory <- function(){
   
   dirs <- as.data.frame(list.dirs(path = "~/Documents/SplitR", recursive = FALSE))
   colnames(dirs) <- "Folders"
-  dirs
+  print(dirs)
   
   step_2 <-
     readline(paste(cat("---------------------------------------------------------------", "\n",
@@ -43,7 +43,7 @@ demo.trajectory <- function(){
                        sep = '')))
   
   if (step_2 == ""){
-    project.define("Demo Project")
+    print(project.define("Demo Project"))
   }
   
   step_3 <-
@@ -56,7 +56,7 @@ demo.trajectory <- function(){
                        sep = '')))
   
   if (step_3 == ""){
-    project.list()
+    print(project.list())
   }
   
   step_4 <-
@@ -69,7 +69,7 @@ demo.trajectory <- function(){
                        sep = '')))
   
   if (step_4 == ""){
-    project.open(project_name = "Demo Project")
+    print(project.open(project_name = "Demo Project"))
   }
   
   step_5 <-
