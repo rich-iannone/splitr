@@ -13,6 +13,57 @@ dispersion.preset.add <- function(type, interactive = TRUE,
   
   if (interactive == FALSE & type == 'species'){
     
+    if (is.null(particle_pdiam)){
+      particle_pdiam <- 0.0
+    }
+    
+    if (is.null(particle_density)){
+      particle_density <- 0.0
+    }
+    
+    if (is.null(particle_shape_factor)){
+      particle_shape_factor <- 0.0
+    }
+    
+    if (is.null(ddep_velocity)){
+      ddep_velocity <- 0.0
+    }
+    
+    if (is.null(ddep_MW)){
+      ddep_MW <- 0.0
+    }
+    
+    if (is.null(ddep_A_ratio)){
+      ddep_A_ratio <- 0.0
+    }
+    
+    if (is.null(ddep_D_ratio)){
+      ddep_D_ratio <- 0.0
+    }
+    
+    if (is.null(ddep_Henrys_Law_coeff)){
+      ddep_Henrys_Law_coeff <- 0.0
+    }
+    
+    if (is.null(wdep_Henrys_Law_coeff)){
+      wdep_Henrys_Law_coeff <- 0.0
+    }
+    
+    if (is.null(wdep_in_cloud_dep)){
+      wdep_in_cloud_dep <- 0.0
+    }
+    
+    if (is.null(wdep_in_cloud_dep)){
+      wdep_below_cloud_dep <- 0.0
+    }
+    
+    if (is.null(rad_decay)){
+      rad_decay <- 0.0
+    }
+    
+    if (is.null(pollutant_resuspension_factor)){
+      pollutant_resuspension_factor <- 0.0
+    }
   # Define species (names, properties)
   if (interactive == TRUE & type == 'species'){
     
