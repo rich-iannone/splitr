@@ -91,6 +91,23 @@ dispersion.preset.add <- function(type, interactive = TRUE,
 
   if (interactive == FALSE & type == 'emissions'){
     
+    if (is.null(emissions_name)){
+      emissions_name <- paste("EMIS-",
+                              gsub(" ", "_", gsub(":", "_", format(Sys.time(), "%b %d %Y %X"))),
+                              sep = '')
+    }
+    
+    if (is.null(emissions_rate)){
+      emissions_rate <- "1"
+    }
+    
+    if (is.null(emissions_duration)){
+      emissions_duration <- "1"
+    }
+    
+    if (is.null(emissions_start_time_char)){
+      emissions_start_time <- "10 05 01 18 00"
+    }
   }
   
   if (interactive == FALSE & type == 'grids'){
