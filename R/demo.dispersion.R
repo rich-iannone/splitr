@@ -93,6 +93,22 @@ demo.dispersion <- function(){
     print(getwd())
   }
   
+  step_6 <-
+    readline(paste(cat("\n",
+                       "--------------------------------------------------------------",
+                       "-----------------", "\n",
+                       "Let's set up some presets for the dispersion runs. The first ",
+                       "is for the species.", "\n",
+                       "\n",
+                       "Press <ENTER> to set up a 'species' preset", "\n",
+                       sep = '')))
+  
+  if (step_6 == ""){
+    
+  }
+  
+  
+  
   
   step_10 <-
     readline(paste(cat("\n",
