@@ -91,6 +91,11 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     
   }
   
+  if (interactive == FALSE & type == 'grids'){
+    
+  }
+
+  
   # Define species (names, properties)
   if (interactive == TRUE & type == 'species'){
     
