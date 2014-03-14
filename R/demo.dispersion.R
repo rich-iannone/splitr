@@ -97,8 +97,8 @@ demo.dispersion <- function(){
     readline(paste(cat("\n",
                        "--------------------------------------------------------------",
                        "-----------------", "\n",
-                       "Let's set up some presets for the dispersion runs. The first ",
-                       "is for the species.", "\n",
+                       "Let's set up some presets for the model runs. The first is",
+                       " for the species.", "\n",
                        "\n",
                        "Press <ENTER> to set up a 'species' preset", "\n",
                        sep = '')))
