@@ -107,6 +107,22 @@ demo.dispersion <- function(){
     
   }
   
+  step_7 <-
+    readline(paste(cat("\n",
+                       "--------------------------------------------------------------",
+                       "-----------------", "\n",
+                       "Another preset that you can add is for emissions. This sets up",
+                       " the emission", "\n",
+                       "rate, the timing of the emissions, and the name of the",
+                       " emissions source.", "\n",
+                       "\n",
+                       "Press <ENTER> to set up an 'emissions' preset", "\n",
+                       sep = '')))
+  
+  if (step_7 == ""){
+    
+  }
+  
   
   
   
