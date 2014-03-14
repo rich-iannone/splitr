@@ -89,6 +89,6 @@ project.define <- function(project_name){
       append = TRUE)
   #
   #  
-  #---- Add to .SplitR_projects document
+  #---- Add to SplitR.projects document
   
 }
