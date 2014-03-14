@@ -1,4 +1,13 @@
-dispersion.preset.add <- function(type, interactive = TRUE){
+dispersion.preset.add <- function(type, interactive = TRUE,
+                                  species_name = NULL, particle_pdiam = NULL,
+                                  particle_density = NULL, particle_shape_factor = NULL,
+                                  ddep_velocity = NULL, ddep_MW = NULL,
+                                  ddep_A_ratio = NULL, ddep_D_ratio = NULL,
+                                  ddep_Henrys_Law_coeff = NULL,
+                                  wdep_Henrys_Law_coeff = NULL,
+                                  wdep_in_cloud_dep = NULL, wdep_below_cloud_dep = NULL,
+                                  rad_decay = NULL, pollutant_resuspension_factor = NULL
+                                  ){
   
   require(lubridate)
   
