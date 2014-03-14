@@ -109,19 +109,16 @@ dispersion.preset.add <- function(type, interactive = TRUE,
       emissions_start_time <- "10 05 01 18 00"
     }
     
-    
     # Write emissions preset to file
-    if (acceptable_emissions == "y"){
-      cat(paste("--- Emissions source named: ", emissions_name,
-                ", generated on ", Sys.time(), sep = ''), "\n",
-          toupper(gsub("^(....).*","\\1", emissions_name)), "\n",
-          emissions_rate, "\n",
-          emissions_duration, "\n",
-          emissions_start_time, "\n",
-          paste("---"), "\n",
-          file = "~/Documents/SplitR/emissions", append = TRUE,
-          sep = '')
-    }
+    cat(paste("--- Emissions source named: ", emissions_name,
+              ", generated on ", Sys.time(), sep = ''), "\n",
+        toupper(gsub("^(....).*","\\1", emissions_name)), "\n",
+        emissions_rate, "\n",
+        emissions_duration, "\n",
+        emissions_start_time, "\n",
+        paste("---"), "\n",
+        file = "~/Documents/SplitR/emissions", append = TRUE,
+        sep = '')
     
   }
   
