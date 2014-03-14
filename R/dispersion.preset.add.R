@@ -67,7 +67,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
       pollutant_resuspension_factor <- 0.0
     }
     
-    # Write preset to file
+    # Write species preset to file
     cat(paste("--- Species named: ", species_name,
               ", generated on ", Sys.time(), sep = ''), "\n",
         paste(particle_pdiam, " ",
