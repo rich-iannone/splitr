@@ -64,6 +64,28 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     if (is.null(pollutant_resuspension_factor)){
       pollutant_resuspension_factor <- 0.0
     }
+    
+    # Write preset to file
+    cat(paste("--- Species named: ", species_name,
+              ", generated on ", Sys.time(), sep = ''), "\n",
+        paste(particle_pdiam, " ",
+              particle_density, " ",
+              particle_shape_factor, sep = ''), "\n",
+        paste(ddep_velocity, " ",
+              ddep_MW, " ",
+              ddep_A_ratio, " ", 
+              ddep_D_ratio, " ", 
+              ddep_Henrys_Law_coeff, sep = ''), "\n",
+        paste(wdep_Henrys_Law_coeff, " ",
+              wdep_in_cloud_dep, " ",
+              wdep_below_cloud_dep, sep = ''), "\n",
+        rad_decay, "\n",
+        pollutant_resuspension_factor, "\n",
+        paste("---"), "\n",
+        file = "~/Documents/SplitR/species", append = TRUE,
+        sep = '')
+    
+  }
   # Define species (names, properties)
   if (interactive == TRUE & type == 'species'){
     
