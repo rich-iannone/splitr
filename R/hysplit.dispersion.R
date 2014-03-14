@@ -21,6 +21,8 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
   
   # Define package requirements
   require(lubridate)
+  require(maps)
+  require(mapdata)
   
   # Set parameters
   run_type <- run_type
