@@ -86,6 +86,11 @@ dispersion.preset.add <- function(type, interactive = TRUE,
         sep = '')
     
   }
+
+  if (interactive == FALSE & type == 'emissions'){
+    
+  }
+  
   # Define species (names, properties)
   if (interactive == TRUE & type == 'species'){
     
