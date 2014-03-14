@@ -697,7 +697,7 @@ dispersion.preset.add <- function(type, interactive = TRUE){
     }
     
     # Automatically assign the location of the 'grids' folder
-    grid_folder <- "~/Documents/SplitR/Output/"
+    grid_folder <- "~/Documents/SplitR/Working/"
     
     # Automatically assign the output grid file name
     grid_filename <- grid_name
