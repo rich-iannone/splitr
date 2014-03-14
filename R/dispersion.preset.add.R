@@ -11,6 +11,8 @@ dispersion.preset.add <- function(type, interactive = TRUE,
   
   require(lubridate)
   
+  if (interactive == FALSE & type == 'species'){
+    
   # Define species (names, properties)
   if (interactive == TRUE & type == 'species'){
     
