@@ -88,7 +88,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
         sep = '')
     
   }
-
+  
   if (interactive == FALSE & type == 'emissions'){
     
     if (is.null(emissions_name)){
@@ -128,7 +128,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
   if (interactive == FALSE & type == 'grids'){
     
   }
-
+  
   
   # Define species (names, properties)
   if (interactive == TRUE & type == 'species'){
@@ -203,7 +203,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
                              sep = '')))
         if (ddep_A_ratio == "") ddep_A_ratio <- 0.0
         if (ddep_A_ratio >= 0) ddep_A_ratio <- as.numeric(ddep_A_ratio)
-          
+        
         # Ask to assign value to 'ddep_D_ratio'
         ddep_D_ratio <-
           readline(paste(cat("Category: Dry Deposition", "\n",
@@ -213,7 +213,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
                              sep = '')))
         if (ddep_D_ratio == "") ddep_D_ratio <- 0.0
         if (ddep_D_ratio >= 0) ddep_D_ratio <- as.numeric(ddep_D_ratio)
-          
+        
         # Ask to assign value to 'ddep_Henrys_Law_coeff'
         ddep_Henrys_Law_coeff <-
           readline(paste(cat("Category: Dry Deposition", "\n",
@@ -224,7 +224,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
         if (ddep_Henrys_Law_coeff == "") ddep_Henrys_Law_coeff <- 0.0
         if (ddep_Henrys_Law_coeff >= 0) ddep_Henrys_Law_coeff <-
           as.numeric(ddep_Henrys_Law_coeff)
-          
+        
         # Ask to assign value to 'wdep_Henrys_Law_coeff' 
         wdep_Henrys_Law_coeff <-
           readline(paste(cat("Category: Wet Deposition", "\n",
@@ -235,7 +235,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
         if (wdep_Henrys_Law_coeff == "") wdep_Henrys_Law_coeff <- 0.0
         if (wdep_Henrys_Law_coeff >= 0) wdep_Henrys_Law_coeff <-
           as.numeric(wdep_Henrys_Law_coeff)
-          
+        
         # Ask to assign value to 'wdep_in_cloud_dep'  
         wdep_in_cloud_dep <-
           readline(paste(cat("Category: Wet Deposition", "\n",
@@ -246,7 +246,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
         if (wdep_in_cloud_dep == "") wdep_in_cloud_dep <- 0.0
         if (wdep_in_cloud_dep >= 0) wdep_in_cloud_dep <-
           as.numeric(wdep_in_cloud_dep)
-          
+        
         # Ask to assign value to 'wdep_below_cloud_dep'  
         wdep_below_cloud_dep <-
           readline(paste(cat("Category: Wet Deposition", "\n",
@@ -257,7 +257,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
         if (wdep_below_cloud_dep == "") wdep_below_cloud_dep <- 0.0
         if (wdep_below_cloud_dep >= 0) wdep_below_cloud_dep <-
           as.numeric(wdep_below_cloud_dep)
-          
+        
         # Ask to assign value to 'rad_decay'
         rad_decay <-
           readline(paste(cat("Category: Radioactive Decay", "\n",
@@ -267,7 +267,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
                              sep = '')))
         if (rad_decay == "") rad_decay <- 0.0
         if (rad_decay >= 0) rad_decay <- as.numeric(rad_decay)
-          
+        
         # Ask to assign value to 'pollutant_resuspension_factor'  
         pollutant_resuspension_factor <-
           readline(paste(cat("Category: Pollutant Resuspension", "\n",
@@ -464,10 +464,10 @@ dispersion.preset.add <- function(type, interactive = TRUE,
                          " | D ratio: ", ddep_D_ratio,
                          " | Henry's Law: ", ddep_Henrys_Law_coeff, " M/a",
                          ifelse(ddep_velocity == 0 &
-                                ddep_MW == 0 &
-                                ddep_A_ratio == 0 &
-                                ddep_D_ratio == 0 &
-                                ddep_Henrys_Law_coeff == 0,
+                                  ddep_MW == 0 &
+                                  ddep_A_ratio == 0 &
+                                  ddep_D_ratio == 0 &
+                                  ddep_Henrys_Law_coeff == 0,
                                 paste(" ——no dry deposition"), paste("")),
                          "\n",
                          "Wet Deposition // ",
@@ -520,7 +520,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
   if (interactive == TRUE & type == 'emissions'){
-  
+    
     # Ask for the name of the emissions source
     emissions_name <-
       readline("What is the name of the emissions source? ")
@@ -538,7 +538,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
                          "(3) Press <ENTER> to match run and sampling starting times",
                          "\n",
                          sep = '')))
-        
+    
     # Determine the format of the supplied input and divide into types to resolve into hours
     # Validate the input of the date and time string
     if (grepl("[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-9][0-9]",
@@ -571,14 +571,14 @@ dispersion.preset.add <- function(type, interactive = TRUE,
         emissions_start_time_char <- as.character(gsub("^[0-9][0-9]", "", emissions_start_time_char))
       }
     } 
-      
+    
     # Work with case where 'emissions_start_time_type' is duration in hours
     if (exists("emissions_start_time_type") &
           emissions_start_time_type ==  "start_time_hours"){
       
       # Get the numeric part of the supplied string, which is the number of hours
       emissions_start_time_hours <- as.numeric(gsub("^([0-9]+)[ ]?h$", "\\1",
-                                              emissions_start_time, perl = TRUE))
+                                                    emissions_start_time, perl = TRUE))
       
       emissions_start_time_char <- paste("00 00 00 ",
                                          formatC(emissions_start_time_hours,
@@ -593,7 +593,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
       
       # Get the numeric part of the supplied string, which is the number of hours
       emissions_start_time_days <- as.numeric(gsub("^([0-9]+)[ ]?d$", "\\1",
-                                              emissions_start_time, perl = TRUE)) * 24
+                                                   emissions_start_time, perl = TRUE)) * 24
       
       emissions_start_time_char <- paste("00 00 ",
                                          formatC(emissions_start_time_days,
@@ -653,7 +653,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
         
         # Get the difference in hours
         emissions_duration_diff_hours <- emissions_duration_diff[[1]] * 24
-    
+        
         emissions_duration <- emissions_duration_diff_hours
       }
     }
@@ -664,7 +664,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
       
       # Get the numeric part of the supplied string, which is the number of hours
       emissions_duration <- as.numeric(gsub("^([0-9]+)[ ]?h$", "\\1",
-                                 emissions_duration, perl = TRUE))
+                                            emissions_duration, perl = TRUE))
     }
     
     # Work with case where 'emissions_duration_type' is a duration in days
@@ -846,26 +846,26 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     
     # Assign as string to 'grid_number_vertical'
     grid_number_vertical_string <- as.character(grid_number_vertical)
-   
+    
     # Ask to assign the height of each vertical level
     grid_heights <-
       readline(paste(cat(if(grid_number_vertical == 1){
-                           paste("For the single level specified, does that refer to the",
-                                 "ground (deposition layer) or some height ")
-                         },
-                         if(grid_number_vertical == 1) paste("\n"),
-                         if(grid_number_vertical == 1) paste("above the ground?"),
-                         if(grid_number_vertical == 1) paste("\n"),
-                         if(grid_number_vertical == 1){
-                           paste("Press <ENTER> to assign level to the ground layer, or,",
-                                 " provide a height in meters above ground level: ",
-                                 sep = '')
-                         },
-                         if(grid_number_vertical > 1){
-                           paste("For the ", grid_number_vertical, " levels specified, provide ",
-                                 "a list of heights in meters above ground level: ", sep = '')
-                         },
-                         sep = '')))
+        paste("For the single level specified, does that refer to the",
+              "ground (deposition layer) or some height ")
+      },
+      if(grid_number_vertical == 1) paste("\n"),
+      if(grid_number_vertical == 1) paste("above the ground?"),
+      if(grid_number_vertical == 1) paste("\n"),
+      if(grid_number_vertical == 1){
+        paste("Press <ENTER> to assign level to the ground layer, or,",
+              " provide a height in meters above ground level: ",
+              sep = '')
+      },
+      if(grid_number_vertical > 1){
+        paste("For the ", grid_number_vertical, " levels specified, provide ",
+              "a list of heights in meters above ground level: ", sep = '')
+      },
+      sep = '')))
     
     if (grid_number_vertical == 1 & grid_heights == '') grid_heights <- 0
     if (grid_number_vertical > 1 & grid_heights == ''){
@@ -874,8 +874,8 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     
     # Get input string into a vector object
     if (grid_heights != 0){
-    grid_heights_values <- unlist(strsplit(grid_heights, "[, | |,]"))
-    grid_heights_values <- as.numeric(grid_heights_values[grid_heights_values != ""])
+      grid_heights_values <- unlist(strsplit(grid_heights, "[, | |,]"))
+      grid_heights_values <- as.numeric(grid_heights_values[grid_heights_values != ""])
     }
     
     # Verify that the values are in ascending order; sort ascending if not sorted
@@ -942,7 +942,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
                                "00:00",
                                sep = '')
     }
-
+    
     # Validate the input of the date and time string
     if (grepl("[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-9][0-9]",
               grid_start_time, perl = TRUE) == TRUE) {
@@ -951,7 +951,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
                      grid_start_time, perl = TRUE) == FALSE) {
       grid_start_time_valid_1 <- FALSE
     }
-
+    
     # Determine whether the supplied date/time string yields a valid POSIXct date/time
     if (class(ymd_hms(paste(grid_start_time, ":00", sep = '')))[1] == "POSIXct"){
       grid_start_time_valid_2 <- TRUE
@@ -1108,9 +1108,9 @@ dispersion.preset.add <- function(type, interactive = TRUE,
           file = "~/Documents/SplitR/grids", append = TRUE,
           sep = '')
     }
-
+    
     # Close grids block
   }
-    
+  
   # Close function
 }
