@@ -6,8 +6,10 @@ dispersion.preset.add <- function(type, interactive = TRUE,
                                   ddep_Henrys_Law_coeff = NULL,
                                   wdep_Henrys_Law_coeff = NULL,
                                   wdep_in_cloud_dep = NULL, wdep_below_cloud_dep = NULL,
-                                  rad_decay = NULL, pollutant_resuspension_factor = NULL
-                                  ){
+                                  rad_decay = NULL, pollutant_resuspension_factor = NULL,
+                                  emissions_name = NULL, emissions_rate = NULL,
+                                  emissions_duration = NULL, emissions_start_time = NULL 
+){
   
   require(lubridate)
   
