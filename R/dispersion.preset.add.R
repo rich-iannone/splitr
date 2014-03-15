@@ -124,6 +124,33 @@ dispersion.preset.add <- function(type, interactive = TRUE,
   
   if (interactive == FALSE & type == 'grids'){
     
+#     grid_center
+#     grid_spacing
+#     grid_span
+#     grid_folder
+#     grid_filename
+#     grid_number_vertical
+#     grid_heights_string_list_space_sep                
+#     grid_start_time_char
+#     grid_end_time_char
+    
+    # Write grids preset to file
+    cat(paste("--- Grid named: ", grid_name,
+              ", generated on ", Sys.time(), sep = ''), "\n",
+        grid_center, "\n",
+        grid_spacing, "\n",
+        grid_span, "\n",
+        grid_folder, "\n",
+        grid_filename, "\n",
+        grid_number_vertical, "\n",
+        grid_heights_string_list_space_sep, "\n",                
+        grid_start_time_char, "\n",
+        grid_end_time_char, "\n",
+        sampling_interval_type_no, " ", sampling_interval_rate_char, "\n",
+        paste("---"), "\n",
+        file = "~/Documents/SplitR/grids", append = TRUE,
+        sep = '')
+
   }
   
   
