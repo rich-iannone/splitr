@@ -179,16 +179,15 @@ dispersion.preset.add <- function(type, interactive = TRUE,
         grid_folder, "\n",
         grid_filename, "\n",
         grid_number_vertical, "\n",
-        grid_heights_string_list_space_sep, "\n",                
-        grid_start_time_char, "\n",
-        grid_end_time_char, "\n",
-        sampling_interval_type_no, " ", sampling_interval_rate_char, "\n",
+        grid_heights, "\n",                
+        grid_start_time, "\n",
+        grid_end_time, "\n",
+        sampling_interval_type_rate, "\n",
         paste("---"), "\n",
         file = "~/Documents/SplitR/grids", append = TRUE,
         sep = '')
 
   }
-  
   
   # Define species (names, properties)
   if (interactive == TRUE & type == 'species'){
