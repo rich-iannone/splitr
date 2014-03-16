@@ -20,15 +20,15 @@ dispersion.preset.add <- function(type, interactive = TRUE,
   if (interactive == FALSE & type == 'species'){
     
     if (is.null(particle_pdiam)){
-      particle_pdiam <- 0.0
+      particle_pdiam <- 15
     }
     
     if (is.null(particle_density)){
-      particle_density <- 0.0
+      particle_density <- 1
     }
     
     if (is.null(particle_shape_factor)){
-      particle_shape_factor <- 0.0
+      particle_shape_factor <- 1
     }
     
     if (is.null(ddep_velocity)){
