@@ -8,8 +8,12 @@ dispersion.preset.add <- function(type, interactive = TRUE,
                                   wdep_in_cloud_dep = NULL, wdep_below_cloud_dep = NULL,
                                   rad_decay = NULL, pollutant_resuspension_factor = NULL,
                                   emissions_name = NULL, emissions_rate = NULL,
-                                  emissions_duration = NULL, emissions_start_time = NULL 
-){
+                                  emissions_duration = NULL, emissions_start_time = NULL,
+                                  grid_center = NULL, grid_spacing = NULL, 
+                                  grid_span = NULL, grid_folder = NULL,
+                                  grid_filename = NULL, grid_number_vertical = NULL,
+                                  grid_heights = NULL, grid_start_time = NULL, 
+                                  grid_end_time = NULL, sampling_interval_type_rate = NULL){
   
   require(lubridate)
   
