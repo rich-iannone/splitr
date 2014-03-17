@@ -101,6 +101,9 @@ demo.dispersion <- function(){
                        " for the species.", "\n",
                        "\n",
                        "Press <ENTER> to set up a 'species' preset", "\n",
+                       "\n",
+     "--> dispersion.preset.add(\"species\", interactive = FALSE,
+                          species_name = \"Demo\")",
                        sep = '')))
   
   if (step_6 == ""){
@@ -117,6 +120,9 @@ demo.dispersion <- function(){
                        " emissions source.", "\n",
                        "\n",
                        "Press <ENTER> to set up an 'emissions' preset", "\n",
+                       "\n",
+     "--> dispersion.preset.add(\"emissions\", interactive = FALSE,
+                          emissions_name = \"Demo\")",
                        sep = '')))
   
   if (step_7 == ""){
