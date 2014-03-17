@@ -129,6 +129,17 @@ demo.dispersion <- function(){
     
   }
   
+  step_8 <-
+    readline(paste(cat("\n",
+                       "--------------------------------------------------------------",
+                       "-----------------", "\n",
+                       "The last preset type is that for the sampling grids. This sets",
+                       " up the grids", "\n",
+                       "\n",
+                       "Press <ENTER> to set up an 'grids' preset", "\n",
+                       "\n",
+                       "--> dispersion.preset.add(\"grids\", interactive = FALSE)",
+                       sep = '')))
   
   
   
