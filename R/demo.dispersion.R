@@ -107,7 +107,8 @@ demo.dispersion <- function(){
                        sep = '')))
   
   if (step_6 == ""){
-    
+    dispersion.preset.add("species", interactive = FALSE,
+                          species_name = "Demo")
   }
   
   step_7 <-
@@ -126,7 +127,8 @@ demo.dispersion <- function(){
                        sep = '')))
   
   if (step_7 == ""){
-    
+    dispersion.preset.add("emissions", interactive = FALSE,
+                          emissions_name = "Demo")
   }
   
   step_8 <-
@@ -141,8 +143,11 @@ demo.dispersion <- function(){
                        "--> dispersion.preset.add(\"grids\", interactive = FALSE)",
                        sep = '')))
   
+  if (step_8 == ""){
+    dispersion.preset.add("grids", interactive = FALSE)
+  }
   
-  
+
   step_10 <-
     readline(paste(cat("\n",
                        "--------------------------------------------------------------",
