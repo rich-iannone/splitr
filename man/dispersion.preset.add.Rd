@@ -46,12 +46,10 @@ the type of preset to add. The three types are "emissions", "grids", and "specie
 Richard Iannone
 }
 \examples{
-# Add a preset for a 'emissions' input
+# Interactively add a preset for a 'emissions' input
 dispersion.preset.add("emissions")
 
-# Add a preset for a 'grids' input
-dispersion.preset.add("grids")
-
-# Add a preset for a 'species' input
-dispersion.preset.add("species")
+# Add a default preset for a 'species' input
+dispersion.preset.add("species", interactive = TRUE,
+                      species_name = 'default')
 }
