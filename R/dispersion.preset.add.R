@@ -179,7 +179,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
       grid_end_time <- "10 05 15 18 00"
     }
     
-    if (is.null(grid_end_time)){
+    if (is.null(sampling_interval_type_rate)){
       sampling_interval_type_rate <- "0 06 00"
     }
     
