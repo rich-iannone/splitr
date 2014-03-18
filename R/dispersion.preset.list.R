@@ -208,13 +208,6 @@ dispersion.preset.list <- function(read = NULL, search = NULL){
       
     }
     
-    # Display list of grids presets
-      paste(cat("Here are the current presets for grids", "\n",
-                         "--------------------------------------", "\n",
-                         paste(oneline_output()),
-                         "--------------------------------------", "\n",
-                         "\n", sep = ''))
-
     # End grids list
   }
   
@@ -241,6 +234,7 @@ dispersion.preset.list <- function(read = NULL, search = NULL){
       vector.from_file <- as.vector(from_file[min(block):max(block),])
       
       list.from_file[[i]] <- vector.from_file
+      
     }
     
     # Extract the listing number from the search string
