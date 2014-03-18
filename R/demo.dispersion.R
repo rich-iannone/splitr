@@ -140,11 +140,13 @@ demo.dispersion <- function(){
                        "\n",
                        "Press <ENTER> to set up an 'grids' preset", "\n",
                        "\n",
-                       "--> dispersion.preset.add(\"grids\", interactive = FALSE)",
+     "--> dispersion.preset.add(\"grids\", interactive = FALSE,
+                          grid_name = \"Demo\")",
                        sep = '')))
   
   if (step_8 == ""){
-    dispersion.preset.add("grids", interactive = FALSE)
+    dispersion.preset.add("grids", interactive = FALSE,
+                          grid_name = "Demo")
   }
   
 
