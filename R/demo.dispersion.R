@@ -179,7 +179,9 @@ demo.dispersion <- function(){
                        simulation_duration_h = 12, backward_running = FALSE,
                        met_type = "reanalysis",
                        vertical_motion_option = 0, top_of_model_domain_m = 20000,
-                       grids = c(1), species = c(1), emissions = c(1),
+                       grids = dispersion.preset.list("grids", "Demo"),
+                       species = dispersion.preset.list("species", "Demo"),
+                       emissions = dispersion.preset.list("emissions", "Demo"),
                        run_type = "range", run_range = c("2010-05-01", "2010-05-01"),
                        daily_hours_to_start = "18")
   }
