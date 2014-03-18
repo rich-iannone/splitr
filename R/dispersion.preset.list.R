@@ -148,6 +148,16 @@ dispersion.preset.list <- function(read = NULL, search = NULL){
         the_name <- gsub("^.*: (.*),.*", "\\1", the_name)
         names <- c(names, the_name)
       }
+      
+      # If a search term provided, search for that name in 'names'
+      for (i in 1:length(names)){
+        if (search == names[i]) list_number <- i
+      }
+      
+      if (exists("list_number")) return(list_number)
+      
+      if (!exists("list_number")) stop("The search term was not found in the preset list.")
+      
     }
     
     # Create function to output oneline index calls and newline markers
