@@ -66,7 +66,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
       wdep_in_cloud_dep <- 0.0
     }
     
-    if (is.null(wdep_in_cloud_dep)){
+    if (is.null(wdep_below_cloud_dep)){
       wdep_below_cloud_dep <- 0.0
     }
     
