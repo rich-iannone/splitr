@@ -160,15 +160,29 @@ dispersion.preset.list <- function(read = NULL, search = NULL){
       
     }
     
-    # Create function to output oneline index calls and newline markers
-    oneline_output <- function(){
-      for (i in 1:number_of_entries){
+    if (is.null(search)){
+      
+      # Create block of oneline summaries for each of the presets
+      for (i in seq_of_entries){
         if (i == 1) {
-          oneline_paste <- vector(mode = "character", length = number_of_entries)
-          oneline_to_paste <- vector(mode = "character", length = 0)
+          oneline <- vector(mode = "character", length = number_of_entries)
         }
-        oneline_paste[i] <- paste(oneline[i], "\n", sep = '')
-        oneline_to_paste <- c(oneline_to_paste, oneline_paste[i]) 
+        oneline[i] <- paste("(", i, ") ",
+                            gsub("^--- Grid named: ([a-zA-Z0-9]*),.*",
+                                 "\\1",
+                                 list.from_file[[i]][1]),
+                            " / C: ",
+                            gsub("$", "º", gsub(" ", "º, ", list.from_file[[i]][2])),
+                            " / I: ",
+                            gsub("$", "º", gsub(" ", "º, ", list.from_file[[i]][3])),
+                            " / S: ",
+                            gsub("$", "º", gsub(" ", "º, ", list.from_file[[i]][4])),
+                            " / ", list.from_file[[i]][7], " lv",
+                            " / s->e: ",
+                            list.from_file[[i]][9], " - ", list.from_file[[i]][10],
+                            " / avg: ",
+                            list.from_file[[i]][11],
+                            sep = '')
       }
       
       return(oneline_to_paste)
