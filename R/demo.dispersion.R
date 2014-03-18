@@ -176,7 +176,7 @@ demo.dispersion <- function(){
   if (step_10 == ""){
     hysplit.dispersion(start_lat_deg = 37.5, start_long_deg = -100.0,
                        start_height_m_AGL = 5,
-                       simulation_duration_h = 72, backward_running = FALSE,
+                       simulation_duration_h = 12, backward_running = FALSE,
                        met_type = "reanalysis",
                        vertical_motion_option = 0, top_of_model_domain_m = 20000,
                        grids = c(1), species = c(1), emissions = c(1),
