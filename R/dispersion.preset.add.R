@@ -134,6 +134,12 @@ dispersion.preset.add <- function(type, interactive = TRUE,
   }
   
   if (interactive == FALSE & type == 'grids'){
+   
+    if (is.null(grid_name)){
+      grid_name <- paste("Grid-",
+                     gsub(" ", "_", gsub(":", "_", format(Sys.time(), "%b %d %Y %X"))),
+                     sep = '')
+    }
     
     if (is.null(grid_center)){
       grid_center <- "37.5 -100"
