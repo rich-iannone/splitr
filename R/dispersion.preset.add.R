@@ -116,7 +116,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
       emissions_duration <- "1"
     }
     
-    if (is.null(emissions_start_time_char)){
+    if (is.null(emissions_start_time)){
       emissions_start_time <- "10 05 01 18 00"
     }
     
