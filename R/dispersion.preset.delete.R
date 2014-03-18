@@ -26,16 +26,16 @@ dispersion.preset.delete <- function(read = NULL, numbers = NULL, interactive = 
       }
       
       if (read == "1"){ 
-      read <- "emissions"
+        read <- "emissions"
       } else if (read == "2"){
         read <- "grids"  
       } else if (read == "3"){
         read <- "species"
       }
       
-#       if (read %in% !c("emissions", "grids", "species")){
-#         stop("Please select from \"emissions\", \"grids\", or \"species\"")
-#       }
+      #       if (read %in% !c("emissions", "grids", "species")){
+      #         stop("Please select from \"emissions\", \"grids\", or \"species\"")
+      #       }
       
     }
     
@@ -326,6 +326,6 @@ dispersion.preset.delete <- function(read = NULL, numbers = NULL, interactive = 
 }
 
 
-    
+
 
 
