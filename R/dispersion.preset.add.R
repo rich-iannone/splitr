@@ -103,7 +103,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
   if (interactive == FALSE & type == 'emissions'){
     
     if (is.null(emissions_name)){
-      emissions_name <- paste("EMIS-",
+      emissions_name <- paste("Emis-",
                               gsub(" ", "_", gsub(":", "_", format(Sys.time(), "%b %d %Y %X"))),
                               sep = '')
     }
