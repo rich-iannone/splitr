@@ -237,8 +237,28 @@ dispersion.preset.list <- function(read = NULL, search = NULL){
       
     }
     
-    # Extract the listing number from the search string
-    print(list.from_file)
+    # Get a list of listing numbers from the search string
+    if (!is.null(search)){
+      
+      for (i in 1:length(list.from_file)){
+        if (i == 1) names <- vector(mode = "character", length = 0)
+        the_name <- list.from_file[[i]][1]
+        the_name <- gsub("^.*: (.*),.*", "\\1", the_name)
+        names <- c(names, the_name)
+      }
+      
+      # If a search term provided, search for that name in 'names'
+      for (i in 1:length(names)){
+        if (search == names[i]) list_number <- i
+      }
+      
+      if (exists("list_number")) return(list_number)
+      
+      if (!exists("list_number")) stop("The search term was not found in the preset list.")
+      
+    }
+    
+    if (is.null(search)){
     
     # Create block of oneline summaries for each of the presets
     for (i in seq_of_entries){
@@ -283,6 +303,8 @@ dispersion.preset.list <- function(read = NULL, search = NULL){
                          "------------------------------------", "\n",
                          "\n", sep = ''))
 
+    }
+    
     # End species list
   }
   
