@@ -20,6 +20,12 @@ dispersion.preset.add <- function(type, interactive = TRUE,
   
   if (interactive == FALSE & type == 'species'){
     
+    if (is.null(species_name)){
+      species_name <- paste("Spec-",
+                            gsub(" ", "_", gsub(":", "_", format(Sys.time(), "%b %d %Y %X"))),
+                            sep = '')
+    }
+    
     if (is.null(particle_pdiam)){
       particle_pdiam <- 15
     }
