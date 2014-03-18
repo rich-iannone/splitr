@@ -44,32 +44,18 @@ dispersion.preset.list <- function(read = NULL, search = NULL){
       vector.from_file <- as.vector(from_file[min(block):max(block),])
       
       list.from_file[[i]] <- vector.from_file
+      
     }
     
-    # Extract the listing number from the search string
-    for (i in 1:length(list.from_file)){
-      if (i == 1) names <- vector(mode = "character", length = 0)
-      the_name <- list.from_file[[i]][1]
-      the_name <- gsub("^.*: (.*),.*", "\\1", the_name)
-      names <- c(names, the_name)
-    }
-    
-    # Create block of oneline summaries for each of the presets
-    for (i in seq_of_entries){
-      if (i == 1) {
-        oneline <- vector(mode = "character", length = number_of_entries)
+    # Get a list of listing numbers from the search string
+    if (!is.null(search)){
+      
+      for (i in 1:length(list.from_file)){
+        if (i == 1) names <- vector(mode = "character", length = 0)
+        the_name <- list.from_file[[i]][1]
+        the_name <- gsub("^.*: (.*),.*", "\\1", the_name)
+        names <- c(names, the_name)
       }
-      oneline[i] <- paste("(", i, ") ",
-                          gsub("^--- Emissions source named: ([a-zA-Z0-9]*),.*",
-                               "\\1",
-                               list.from_file[[i]][1]),
-                          " / Rate: ",
-                          list.from_file[[i]][3], " (mass units)/h",
-                          " / Duration: ",
-                          list.from_file[[i]][4], " h",
-                          " / Release: ",
-                          list.from_file[[i]][5],
-                          sep = '')
     }
     
     # Create function to output oneline index calls and newline markers
