@@ -154,7 +154,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     }
     
     if (is.null(grid_folder)){
-      grid_folder <- "~/Documents/SplitR/Working"
+      grid_folder <- "~/Documents/SplitR/Working/"
     }
     
     if (is.null(grid_filename)){
