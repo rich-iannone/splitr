@@ -185,7 +185,6 @@ dispersion.preset.list <- function(read = NULL, search = NULL){
                             sep = '')
       }
       
-      return(oneline_to_paste)
     }
     
     # Display list of grids presets
