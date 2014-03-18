@@ -139,30 +139,15 @@ dispersion.preset.list <- function(read = NULL, search = NULL){
       
     }
     
-    # Extract the listing number from the search string
-    print(list.from_file)
-    
-    # Create block of oneline summaries for each of the presets
-    for (i in seq_of_entries){
-      if (i == 1) {
-        oneline <- vector(mode = "character", length = number_of_entries)
+    # Get a list of listing numbers from the search string
+    if (!is.null(search)){
+      
+      for (i in 1:length(list.from_file)){
+        if (i == 1) names <- vector(mode = "character", length = 0)
+        the_name <- list.from_file[[i]][1]
+        the_name <- gsub("^.*: (.*),.*", "\\1", the_name)
+        names <- c(names, the_name)
       }
-      oneline[i] <- paste("(", i, ") ",
-                          gsub("^--- Grid named: ([a-zA-Z0-9]*),.*",
-                               "\\1",
-                               list.from_file[[i]][1]),
-                          " / C: ",
-                          gsub("$", "º", gsub(" ", "º, ", list.from_file[[i]][2])),
-                          " / I: ",
-                          gsub("$", "º", gsub(" ", "º, ", list.from_file[[i]][3])),
-                          " / S: ",
-                          gsub("$", "º", gsub(" ", "º, ", list.from_file[[i]][4])),
-                          " / ", list.from_file[[i]][7], " lv",
-                          " / s->e: ",
-                          list.from_file[[i]][9], " - ", list.from_file[[i]][10],
-                          " / avg: ",
-                          list.from_file[[i]][11],
-                          sep = '')
     }
     
     # Create function to output oneline index calls and newline markers
