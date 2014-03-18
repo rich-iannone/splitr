@@ -9,11 +9,12 @@ dispersion.preset.add <- function(type, interactive = TRUE,
                                   rad_decay = NULL, pollutant_resuspension_factor = NULL,
                                   emissions_name = NULL, emissions_rate = NULL,
                                   emissions_duration = NULL, emissions_start_time = NULL,
-                                  grid_center = NULL, grid_spacing = NULL, 
-                                  grid_span = NULL, grid_folder = NULL,
-                                  grid_filename = NULL, grid_number_vertical = NULL,
-                                  grid_heights = NULL, grid_start_time = NULL, 
-                                  grid_end_time = NULL, sampling_interval_type_rate = NULL){
+                                  grid_name = NULL, grid_center = NULL,
+                                  grid_spacing = NULL, grid_span = NULL,
+                                  grid_folder = NULL, grid_filename = NULL,
+                                  grid_number_vertical = NULL, grid_heights = NULL,
+                                  grid_start_time = NULL, grid_end_time = NULL,
+                                  sampling_interval_type_rate = NULL){
   
   require(lubridate)
   
