@@ -185,6 +185,27 @@ dispersion.preset.list <- function(read = NULL, search = NULL){
                             sep = '')
       }
       
+      # Create function to output oneline index calls and newline markers
+      oneline_output <- function(){
+        for (i in 1:number_of_entries){
+          if (i == 1) {
+            oneline_paste <- vector(mode = "character", length = number_of_entries)
+            oneline_to_paste <- vector(mode = "character", length = 0)
+          }
+          oneline_paste[i] <- paste(oneline[i], "\n", sep = '')
+          oneline_to_paste <- c(oneline_to_paste, oneline_paste[i]) 
+        }
+        
+        return(oneline_to_paste)
+      }
+      
+      # Display list of grids presets
+      paste(cat("Here are the current presets for grids", "\n",
+                "--------------------------------------", "\n",
+                paste(oneline_output()),
+                "--------------------------------------", "\n",
+                "\n", sep = ''))
+      
     }
     
     # Display list of grids presets
