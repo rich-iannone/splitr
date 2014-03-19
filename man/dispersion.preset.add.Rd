@@ -5,6 +5,8 @@ Add a preset for HYSPLIT dispersion model runs
 }
 \description{
 The function allows for the setting of presets specific to dispersion runs. Presets are effectively blocks of parameters that are stored on the disk. Having presets is useful because these groups of parameters can be called in different dispersion runs (and across projects) without having to specify dozens of parameters with every type of run. Furthermore, dispersion runs can utilize multiple presets of each type simply by calling the identifier for each preset (e.g., multiple predefined emissions locations can be added to a run or series of runs with a numeric vector). The presets are divided into three groups: "emissions", "grids", and "species". Each preset has a plaintext file that resides on disk of the same name (located in the SplitR folder). For removing presets from the associated files, the interactive function dispersion.preset.delete() can be used.
+
+The primary means of using this function is to do so interactively, where prompts advise on the parameter types for which values are required. However, the function allows for non-interactively entering parameters for a single preset in a function call. Use of the function in this way requires some knowledge of the structure of the CONTROL file and how the different blocks for "emissions", "grids", and "species" are composed. The different parameters are entered as strings and the function does not perform validation on the supplied inputs. Omitted parameters for a given preset type, however, are given default values.
 }
 \usage{
 dispersion.preset.add(type, interactive = TRUE,
