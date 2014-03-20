@@ -44,6 +44,54 @@ dispersion.preset.add(type, interactive = TRUE,
   \item{type}{
 the type of preset to add. The three types are "emissions", "grids", and "species". Only a single type can be specified. Once specified, the function interactively asks for input on the parameters specific to each preset.
 }
+  \item{interactive}{
+determines whether the function should run in an interactive mode, prompting the for input on which kinds of values to supply for each parameter.
+}
+  \item{species_name}{
+a case sensitive name that identifies the species preset. The use of a name is useful since presets can be referenced by this name when using the 'dispersion.preset.list' function.
+}
+  \item{particle_pdiam}{
+the particle diameter in units of µm.
+}
+  \item{particle_density}{
+the particle density in units of g/cm3.
+}
+  \item{particle_shape_factor}{
+the particle shape factor as a value between 0-1.
+}
+  \item{ddep_velocity}{
+the dry deposition velocity in units of m/s.
+}
+  \item{ddep_MW}{
+the molecular weight in units of g/mol.
+}
+  \item{ddep_A_ratio}{
+the dry deposition A ratio.
+}
+  \item{ddep_D_ratio}{
+the dry deposition D ratio.
+}
+  \item{ddep_Henrys_Law_coeff}{
+the Henry's Law value associated with dry deposition.
+}
+  \item{wdep_Henrys_Law_coeff}{
+the Henry's Law value associated with wet deposition.
+}
+  \item{wdep_in_cloud_dep}{
+the in-cloud wet deposition rate in units of L/L.
+}
+  \item{wdep_below_cloud_dep}{
+the below cloud wet deposition rate in units of 1/s.
+}
+  \item{rad_decay}{
+the rate of radioactive decay, in units of days.
+}
+  \item{pollutant_resuspension_factor}{
+the pollutant resuspension factor in units of 1/m.
+}
+  \item{emissions_name}{
+a case sensitive name that identifies the emissions preset. The use of a name is useful since presets can be referenced by this name when using the 'dispersion.preset.list' function.
+}
 }
 \author{
 Richard Iannone
