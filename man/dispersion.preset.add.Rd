@@ -92,6 +92,9 @@ the pollutant resuspension factor in units of 1/m.
   \item{emissions_name}{
 a case sensitive name that identifies the emissions preset. The use of a name is useful since presets can be referenced by this name when using the 'dispersion.preset.list' function.
 }
+  \item{emissions_rate}{
+the rate of emissions for the pollutant in mass units per hour.
+}
 }
 \author{
 Richard Iannone
