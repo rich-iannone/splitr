@@ -95,6 +95,45 @@ a case sensitive name that identifies the emissions preset. The use of a name is
   \item{emissions_rate}{
 the rate of emissions for the pollutant in mass units per hour.
 }
+  \item{emissions_duration}{
+the duration of emissions in hours.
+}
+  \item{emissions_start_time}{
+a string specifying the start of emissions in the format "YY MM DD HH MM".
+}
+  \item{grid_name}{
+a case sensitive name that identifies the grid preset. The use of a name is useful since presets can be referenced by this name when using the 'dispersion.preset.list' function.
+}
+  \item{grid_center}{
+the center of the grid, specified in a string containing latitude and longitude in decimal degrees.
+}
+  \item{grid_spacing}{
+the spacing between adjacent grid points, specified in a string containing decimal degree units of latitude and longitude.
+}
+  \item{grid_span}{
+the span of the grid, specified in a string containing decimal degree units of latitude and longitude.
+}
+  \item{grid_folder}{
+the location for which the grid output files will be written. The default is "~/Documents/SplitR/Working/".
+}
+  \item{grid_filename}{
+the name of the output grid file for each dispersion model run. This is normally given a self-describing name, based on parameters for the model run.
+}
+  \item{grid_number_vertical}{
+the number of vertical levels for the grid.
+}
+  \item{grid_heights}{
+the heights assigned to each level, for which the total number of levels is given in the 'grid_number_vertical' argument.
+}
+  \item{grid_start_time}{
+a string specifying the start of sampling emissions by the grid. Should be provided in the format "YY MM DD HH MM".
+}
+  \item{grid_end_time}{
+a string specifying the end of sampling emissions by the grid. Should be provided in the format "YY MM DD HH MM".
+}
+  \item{sampling_interval_type_rate}{
+a sting that specifies the type of sampling, and the rate by which sampling occurs ("HH MM").
+}
 }
 \author{
 Richard Iannone
