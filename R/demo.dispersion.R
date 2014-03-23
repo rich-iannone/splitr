@@ -208,5 +208,16 @@ demo.dispersion <- function(){
     print(files)
   }
   
+  step_12 <-
+    readline(paste(cat("\n",
+                       "--------------------------------------------------------------",
+                       "-----------------", "\n",
+                       "This concludes the demo of a set of HYSPLIT dispersion runs. ", "\n",
+                       "Press <ENTER> to end the demo", "\n",
+                       sep = '')))
+  
+  if (step_12 == ""){                
+    cat()
+  }
   
 }
