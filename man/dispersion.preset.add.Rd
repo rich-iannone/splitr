@@ -143,6 +143,17 @@ Richard Iannone
 dispersion.preset.add("emissions")
 
 # Add a default preset for a 'species' input
-dispersion.preset.add("species", interactive = TRUE,
+dispersion.preset.add("species", interactive = FALSE,
                       species_name = 'default')
+                      
+# Add a preset for a 'grids' input
+dispersion.preset.add("grids", interactive = FALSE,
+                      grid_name = "MainGrid",
+                      grid_center = "36.5 -122.4",
+                      grid_spacing = "0.05 0.05", 
+                      grid_span = "20 20",
+                      grid_number_vertical = 5,
+                      grid_heights = "0 200 400 800 1200",
+                      grid_start_time = "12 02 01 12 00", 
+                      grid_end_time = "12 02 08 12 00")
 }
