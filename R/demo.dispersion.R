@@ -186,4 +186,27 @@ demo.dispersion <- function(){
                        daily_hours_to_start = "18")
   }
   
+  step_11 <-
+    readline(paste(cat("\n",
+                       "--------------------------------------------------------------",
+                       "-----------------", "\n",
+                       "If you saw 'Complete Hysplit' (and you should be seeing it now), ",
+                       "the dispersion", "\n",
+                       "runs are now finished. The output files are in the project ",
+                       "folder with the", "\n",
+                       "naming ['Demo Disp Project' + a date string].", "\n",
+                       "\n",
+                       "Press <ENTER> to show the generated output", "\n",
+                       sep = '')))
+  
+  if (step_11 == ""){                
+    project_list <- project.list(display_paths = TRUE)
+    files <-
+      as.data.frame(list.files(path = project_list[project_list[,1] == "Demo Disp Project"][[3]],
+                               recursive = FALSE))
+    colnames(files) <- "Files"
+    print(files)
+  }
+  
+  
 }
