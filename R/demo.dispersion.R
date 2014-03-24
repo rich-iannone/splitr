@@ -150,7 +150,7 @@ demo.dispersion <- function(){
   }
   
 
-  step_10 <-
+  step_9 <-
     readline(paste(cat("\n",
                        "--------------------------------------------------------------",
                        "-----------------", "\n",
@@ -173,7 +173,7 @@ demo.dispersion <- function(){
                        daily_hours_to_start = \"18\")",
                        sep = '')))
   
-  if (step_10 == ""){
+  if (step_9 == ""){
     hysplit.dispersion(start_lat_deg = 37.5, start_long_deg = -100.0,
                        start_height_m_AGL = 5,
                        simulation_duration_h = 12, backward_running = FALSE,
@@ -186,7 +186,7 @@ demo.dispersion <- function(){
                        daily_hours_to_start = "18")
   }
   
-  step_11 <-
+  step_10 <-
     readline(paste(cat("\n",
                        "--------------------------------------------------------------",
                        "-----------------", "\n",
@@ -199,7 +199,7 @@ demo.dispersion <- function(){
                        "Press <ENTER> to show the generated output", "\n",
                        sep = '')))
   
-  if (step_11 == ""){                
+  if (step_10 == ""){                
     project_list <- project.list(display_paths = TRUE)
     files <-
       as.data.frame(list.files(path = project_list[project_list[,1] == "Demo Disp Project"][[3]],
@@ -208,7 +208,7 @@ demo.dispersion <- function(){
     print(files)
   }
   
-  step_12 <-
+  step_11 <-
     readline(paste(cat("\n",
                        "--------------------------------------------------------------",
                        "-----------------", "\n",
@@ -216,7 +216,7 @@ demo.dispersion <- function(){
                        "Press <ENTER> to end the demo", "\n",
                        sep = '')))
   
-  if (step_12 == ""){                
+  if (step_11 == ""){                
     cat()
   }
   
