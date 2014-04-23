@@ -17,7 +17,8 @@ get.met.forecast.nam <- function(path_met_files = "~/Documents/SplitR/Met/"){
   if (today %in% forecast_dirs){
     download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/forecast/",
                               today, "/hysplit.t00z.namf", sep = ''),
-                  destfile = paste(path_met_files, files[i], sep = ''),
+                  destfile = paste(path_met_files, paste(today, ".t00z.namf", sep = ''),
+                                   sep = ''),
                   method = "auto",
                   quiet = FALSE,
                   mode = "w",
