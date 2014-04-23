@@ -7,6 +7,8 @@ get.met.forecast.nam <- function(path_met_files = "~/Documents/SplitR/Met/"){
     grep("^[0-9].*$",
          unlist(strsplit(getURL("ftp://arlftp.arlhq.noaa.gov/forecast/",
                                 dirlistonly = TRUE), "\n")), value = TRUE)
-    
+  
+  # Get today's date and write in format equivalent to FTP directories 
+  today <- gsub("-", "", Sys.Date())
   
 }
