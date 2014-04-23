@@ -3,9 +3,9 @@ demo.trajectory <- function(){
   # First, delete any previous instances of the 'Demo Traj Project' that were created
   # when using this function previously
   
-  project.archive("Demo Traj Project")
-  
   setwd("~/Documents/SplitR")
+  
+  project.archive("Demo Traj Project")
   
   step_1 <-
     readline(paste(cat("This demo will show you how a trajectory project is carried out.", "\n",
