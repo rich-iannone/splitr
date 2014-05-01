@@ -71,5 +71,10 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
       simulation_duration_h, "\n",
       file = paste(path_wd, "CONTROL", sep = ''),
       sep = '', append = TRUE)
+  
+  # Write vertical motion option to 'CONTROL'
+  cat(vertical_motion_option, "\n",
+      file = paste(path_wd, "CONTROL", sep = ''),
+      sep = '', append = TRUE)
   # Close the function
 }
