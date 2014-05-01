@@ -98,5 +98,10 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
       file = paste(path_wd, "CONTROL", sep = ''),
       sep = '', append = TRUE)
   
+  # Write name of output filename to 'CONTROL'
+  cat(output_filename, "\n",
+      file = paste(path_wd, "CONTROL", sep = ''),
+      sep = '', append = TRUE)
+  
   # Close the function
 }
