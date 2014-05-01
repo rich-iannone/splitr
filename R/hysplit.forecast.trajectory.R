@@ -65,5 +65,11 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
       start_height_m_AGL, "\n",
       file = paste(path_wd, "CONTROL", sep = ''),
       sep = '', append = TRUE)
+  
+  # Write direction and number of simulation hours to 'CONTROL'
+  cat(ifelse(backtrajectory == TRUE, "-", ""),
+      simulation_duration_h, "\n",
+      file = paste(path_wd, "CONTROL", sep = ''),
+      sep = '', append = TRUE)
   # Close the function
 }
