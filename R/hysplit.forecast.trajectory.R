@@ -33,5 +33,17 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
                                       full.names = TRUE) == FALSE) {
     get.met.forecast.nam(path_met_files)
   }
+  
+  # Construct the output filename string for this model run
+  output_filename <- paste("traj-forecast",
+                           ifelse(backtrajectory == TRUE, '(back)', '(forward)'), "-",
+                           start_year_GMT, "-",
+                           start_month_GMT, "-",
+                           start_day_GMT, "-",
+                           start_hour_GMT, "-",
+                           "lat_", start_lat_deg, "_",
+                           "long_",start_long_deg, "-",
+                           "height_",start_height_m_AGL, "-",
+                           simulation_duration_h, "h", sep = '')
   # Close the function
 }
