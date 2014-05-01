@@ -107,5 +107,8 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
   # Execute the model run
   system(paste("(cd ", path_wd, " && ", path_executable, "hyts_std)", sep = ''))
   
+  # Copy files from 'Working' to current project folder
+  system(paste("(cd ", path_wd, " && mv traj* '", path_output_files, "')", sep = ''))
+  
   # Close the function
 }
