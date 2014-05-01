@@ -17,6 +17,11 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
   require(lubridate)
   
 
+  # Reset path for output files to 'Output' folder if not in a project
+  if (grepl("Documents/SplitR/Projects/.*_[0-9][0-9][0-9][0-9]-.*",
+            path_output_files) == FALSE){
+    path_output_files <- "~/Documents/SplitR/Output/"
+  }
   
   # Close the function
 }
