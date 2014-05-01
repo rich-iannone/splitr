@@ -58,5 +58,12 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
   cat(no_starting_locations, "\n",
       file = paste(path_wd, "CONTROL", sep = ''),
       sep = '', append = TRUE)
+  
+  # Write starting latitude, longitude, height AGL to 'CONTROL'
+  cat(start_lat_deg, " ", 
+      start_long_deg, " ", 
+      start_height_m_AGL, "\n",
+      file = paste(path_wd, "CONTROL", sep = ''),
+      sep = '', append = TRUE)
   # Close the function
 }
