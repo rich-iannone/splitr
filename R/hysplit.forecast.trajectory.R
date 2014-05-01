@@ -23,5 +23,7 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
     path_output_files <- "~/Documents/SplitR/Output/"
   }
   
+  # Set number of starting locations to 1 for this function
+  no_starting_locations <- 1
   # Close the function
 }
