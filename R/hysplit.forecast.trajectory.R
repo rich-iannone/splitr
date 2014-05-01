@@ -82,5 +82,9 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
       file = paste(path_wd, "CONTROL", sep = ''),
       sep = '', append = TRUE)
   
+  # Write number of met files used to 'CONTROL'
+  cat("1", "\n",
+      file = paste(path_wd, "CONTROL", sep = ''),
+      sep = '', append = TRUE)
   # Close the function
 }
