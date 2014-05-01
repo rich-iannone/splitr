@@ -45,5 +45,13 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
                            "long_",start_long_deg, "-",
                            "height_",start_height_m_AGL, "-",
                            simulation_duration_h, "h", sep = '')
+  
+  # Write start year, month, day, hour to 'CONTROL'
+  cat(start_year_GMT, " ", 
+      start_month_GMT, " ",
+      start_day_GMT, " ",
+      start_hour_GMT, "\n",
+      file = paste(path_wd, "CONTROL", sep = ''),
+      sep = '', append = FALSE)
   # Close the function
 }
