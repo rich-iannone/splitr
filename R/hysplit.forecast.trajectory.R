@@ -26,14 +26,21 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
   # Set number of starting locations to 1 for this function
   no_starting_locations <- 1
 
-  # If the most recent NAM forecast met file isn't already available, get the file
-  today <- gsub("-", "", Sys.Date())
+  # Obtain the appropriate forecast met files, depending on user selection
   
-  if (paste(path.expand(path_met_files), paste(today, ".t00z.namf", sep = ''),
-            sep = '') %in% list.files(path = gsub("/$", "", path_met_files),
-                                      full.names = TRUE) == FALSE) {
-    get.met.forecast.nam(path_met_files)
+  if (met_type == "nam"){
+    
+    # If the most recent NAM forecast met file isn't already available, get the file
+    today <- gsub("-", "", Sys.Date())
+    
+    if (paste(path.expand(path_met_files), paste(today, ".t00z.namf", sep = ''),
+              sep = '') %in% list.files(path = gsub("/$", "", path_met_files),
+                                        full.names = TRUE) == FALSE) {
+      get.met.forecast.nam(path_met_files)
+    }
+    
   }
+  
   
   # Construct the output filename string for this model run
   output_filename <- paste("traj-forecast",
