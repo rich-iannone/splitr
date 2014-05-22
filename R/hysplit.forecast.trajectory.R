@@ -112,11 +112,24 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
       sep = '', append = TRUE)
   
   # CONTROL file is now complete and in the working directory
-  # Execute the model run
+  # Execute the model run; the system call will be different whether
+  # the platform in win or unix
+  
+  if (.Platform == "unix"){
   system(paste("(cd ", path_wd, " && ", path_executable, "hyts_std)", sep = ''))
   
   # Copy files from 'Working' to current project folder
   system(paste("(cd ", path_wd, " && mv traj* '", path_output_files, "')", sep = ''))
+  }
+  
+  if (.Platform == "win"){
+#     system(paste("(cd ", path_wd, " && ", path_executable, "hyts_std)", sep = ''))
+#     
+#     # Copy files from 'Working' to current project folder
+#     system(paste("(cd ", path_wd, " && mv traj* '", path_output_files, "')", sep = ''))
+  }
+  
+  
   
   # Close the function
 }
