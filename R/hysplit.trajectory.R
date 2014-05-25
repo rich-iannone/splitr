@@ -291,7 +291,13 @@ hysplit.trajectory <- function(start_lat_deg,
       
       # CONTROL file is now complete and in the working directory
       # Execute the model run
-      system(paste("(cd ", path_wd, " && ", path_executable, "hyts_std)", sep = ''))
+      if (.Platform == "unix"){
+        system(paste("(cd ", path_wd, " && ", path_executable, "hyts_std)", sep = ''))
+      }
+      
+      if (.Platform == "win"){
+        shell(paste("(cd ", path_wd, " && ", path_executable, "hyts_std)", sep = ''))
+      }
       
       # Close the hour loop  
     }
