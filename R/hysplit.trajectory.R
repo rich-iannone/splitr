@@ -20,9 +20,11 @@ hysplit.trajectory <- function(start_lat_deg,
   require(lubridate)
   
   # Reset path for output files to 'Output' folder if not in a project
-  if (grepl("Documents/SplitR/Projects/.*_[0-9][0-9][0-9][0-9]-.*",
-            path_output_files) == FALSE){
-    path_output_files <- "~/Documents/SplitR/Output/"
+  if (.Platform$OS.type == "unix"){
+    if (grepl("Documents/SplitR/Projects/.*_[0-9][0-9][0-9][0-9]-.*",
+              path_output_files) == FALSE){
+      path_output_files <- "~/Documents/SplitR/Output/"
+    }
   }
   
   # Set number of starting locations to 1 for this function
