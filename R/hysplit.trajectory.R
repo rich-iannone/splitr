@@ -257,61 +257,126 @@ hysplit.trajectory <- function(start_lat_deg,
                                "height_",start_height_m_AGL, "-",
                                simulation_duration_h, "h", sep = '')
       
-      # Write start year, month, day, hour to 'CONTROL'
-      cat(start_year_GMT, " ", 
-          start_month_GMT, " ",
-          start_day_GMT, " ",
-          start_hour_GMT, "\n",
-          file = paste(path_wd, "CONTROL", sep = ''),
-          sep = '', append = FALSE)
+      if (.Platform$OS.type == "unix"){
+        
+        # Write start year, month, day, hour to 'CONTROL'
+        cat(start_year_GMT, " ", 
+            start_month_GMT, " ",
+            start_day_GMT, " ",
+            start_hour_GMT, "\n",
+            file = paste(path_wd, "CONTROL", sep = ''),
+            sep = '', append = FALSE)
+        
+        #Write number of starting locations to 'CONTROL'
+        cat(no_starting_locations, "\n",
+            file = paste(path_wd, "CONTROL", sep = ''),
+            sep = '', append = TRUE)
+        
+        # Write starting latitude, longitude, height AGL to 'CONTROL'
+        cat(start_lat_deg, " ", 
+            start_long_deg, " ", 
+            start_height_m_AGL, "\n",
+            file = paste(path_wd, "CONTROL", sep = ''),
+            sep = '', append = TRUE)
+        
+        # Write direction and number of simulation hours to 'CONTROL'
+        cat(ifelse(backtrajectory == TRUE, "-", ""),
+            simulation_duration_h, "\n",
+            file = paste(path_wd, "CONTROL", sep = ''),
+            sep = '', append = TRUE)
+        
+        # Write vertical motion option to 'CONTROL'
+        cat(vertical_motion_option, "\n",
+            file = paste(path_wd, "CONTROL", sep = ''),
+            sep = '', append = TRUE)
+        
+        # Write top of model domain in meters to 'CONTROL'
+        cat(top_of_model_domain_m, "\n",
+            file = paste(path_wd, "CONTROL", sep = ''),
+            sep = '', append = TRUE)
+        
+        # Write number of met files used to 'CONTROL'
+        cat(length(met), "\n",
+            file = paste(path_wd, "CONTROL", sep = ''),
+            sep = '', append = TRUE)
+        
+        # Write met file paths to 'CONTROL'
+        for (i in 1:length(met)){
+          cat(path_met_files, "\n", met[i], "\n", file = paste(path_wd, "CONTROL", sep = ''),
+              sep = '', append = TRUE)}
+        
+        # Write path for trajectory output files to 'CONTROL'
+        cat(path_wd, "\n",
+            file = paste(path_wd, "CONTROL", sep = ''),
+            sep = '', append = TRUE)
+        
+        # Write name of output filename to 'CONTROL'
+        cat(output_filename, "\n",
+            file = paste(path_wd, "CONTROL", sep = ''),
+            sep = '', append = TRUE)
+        
+      }
       
-      #Write number of starting locations to 'CONTROL'
-      cat(no_starting_locations, "\n",
-          file = paste(path_wd, "CONTROL", sep = ''),
-          sep = '', append = TRUE)
-      
-      # Write starting latitude, longitude, height AGL to 'CONTROL'
-      cat(start_lat_deg, " ", 
-          start_long_deg, " ", 
-          start_height_m_AGL, "\n",
-          file = paste(path_wd, "CONTROL", sep = ''),
-          sep = '', append = TRUE)
-      
-      # Write direction and number of simulation hours to 'CONTROL'
-      cat(ifelse(backtrajectory == TRUE, "-", ""),
-          simulation_duration_h, "\n",
-          file = paste(path_wd, "CONTROL", sep = ''),
-          sep = '', append = TRUE)
-      
-      # Write vertical motion option to 'CONTROL'
-      cat(vertical_motion_option, "\n",
-          file = paste(path_wd, "CONTROL", sep = ''),
-          sep = '', append = TRUE)
-      
-      # Write top of model domain in meters to 'CONTROL'
-      cat(top_of_model_domain_m, "\n",
-          file = paste(path_wd, "CONTROL", sep = ''),
-          sep = '', append = TRUE)
-      
-      # Write number of met files used to 'CONTROL'
-      cat(length(met), "\n",
-          file = paste(path_wd, "CONTROL", sep = ''),
-          sep = '', append = TRUE)
-      
-      # Write met file paths to 'CONTROL'
-      for (i in 1:length(met)){
-        cat(path_met_files, "\n", met[i], "\n", file = paste(path_wd, "CONTROL", sep = ''),
-            sep = '', append = TRUE)}
-      
-      # Write path for trajectory output files to 'CONTROL'
-      cat(path_wd, "\n",
-          file = paste(path_wd, "CONTROL", sep = ''),
-          sep = '', append = TRUE)
-      
-      # Write name of output filename to 'CONTROL'
-      cat(output_filename, "\n",
-          file = paste(path_wd, "CONTROL", sep = ''),
-          sep = '', append = TRUE)
+      if (.Platform$OS.type == "windows"){
+        
+        # Write start year, month, day, hour to 'CONTROL'
+        cat(start_year_GMT, " ", 
+            start_month_GMT, " ",
+            start_day_GMT, " ",
+            start_hour_GMT, "\n",
+            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            sep = '', append = FALSE)
+        
+        #Write number of starting locations to 'CONTROL'
+        cat(no_starting_locations, "\n",
+            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            sep = '', append = TRUE)
+        
+        # Write starting latitude, longitude, height AGL to 'CONTROL'
+        cat(start_lat_deg, " ", 
+            start_long_deg, " ", 
+            start_height_m_AGL, "\n",
+            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            sep = '', append = TRUE)
+        
+        # Write direction and number of simulation hours to 'CONTROL'
+        cat(ifelse(backtrajectory == TRUE, "-", ""),
+            simulation_duration_h, "\n",
+            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            sep = '', append = TRUE)
+        
+        # Write vertical motion option to 'CONTROL'
+        cat(vertical_motion_option, "\n",
+            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            sep = '', append = TRUE)
+        
+        # Write top of model domain in meters to 'CONTROL'
+        cat(top_of_model_domain_m, "\n",
+            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            sep = '', append = TRUE)
+        
+        # Write number of met files used to 'CONTROL'
+        cat(length(met), "\n",
+            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            sep = '', append = TRUE)
+        
+        # Write met file paths to 'CONTROL'
+        for (i in 1:length(met)){
+          cat(path_met_files, "\n", met[i], "\n",
+              file = paste(path_wd, "\\", "CONTROL", sep = ''),
+              sep = '', append = TRUE)}
+        
+        # Write path for trajectory output files to 'CONTROL'
+        cat(path_wd, "\n",
+            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            sep = '', append = TRUE)
+        
+        # Write name of output filename to 'CONTROL'
+        cat(output_filename, "\n",
+            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            sep = '', append = TRUE)
+        
+      }
       
       # CONTROL file is now complete and in the working directory
       # Execute the model run
