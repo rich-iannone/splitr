@@ -293,11 +293,11 @@ hysplit.trajectory <- function(start_lat_deg,
       
       # CONTROL file is now complete and in the working directory
       # Execute the model run
-      if (.Platform == "unix"){
+      if (.Platform$OS.type == "unix"){
         system(paste("(cd ", path_wd, " && ", path_executable, "hyts_std)", sep = ''))
       }
       
-      if (.Platform == "win"){
+      if (.Platform$OS.type == "windows"){
         shell(paste("(cd ", path_wd, " && ", path_executable, "hyts_std)", sep = ''))
       }
       
@@ -308,11 +308,11 @@ hysplit.trajectory <- function(start_lat_deg,
   }
   
   # Copy files from 'Working' to current project folder
-  if (.Platform == "unix"){
+  if (.Platform$OS.type == "unix"){
     system(paste("(cd ", path_wd, " && mv traj* '", path_output_files, "')", sep = ''))
   }
   
-  if (.Platform == "win"){
+  if (.Platform$OS.type == "windows"){
 
   }
   
