@@ -26,10 +26,10 @@ an integer indicating the number of clusters to calculate.
 a boolean that determines whether a cluster trajectory plot will be produced.
 }
   \item{type}{
-determines how the data are conditioned before plotting. The setting of "default" produces a single plot with all of the input data. The option “season" will produce four plots: one for each season. The option “year” will produce a plot for each year of data. The option “weekday” will produce a plot with weekday data only. Cluster calculations will be carried out for cut data in each level of "type".
+determines how the data are conditioned before plotting. The setting of "default" produces a single plot with all of the input data. The option "season" will produce four plots: one for each season. The option "year" will produce a plot for each year of data. The option "weekday" will produce a plot with weekday data only. Cluster calculations will be carried out for cut data in each level of "type".
 }
   \item{cols}{
-determines the colours to be used for plotting. Options include “default”, “heat”, “increment”, “jet”. There are also RColorBrewer colour options. A vector list of colour names can be supplied, where the length of list must match the integer supplied in the 'n.cluster' argument.
+determines the colours to be used for plotting. Options include "default", "heat", "increment", "jet". There are also RColorBrewer colour options. A vector list of colour names can be supplied, where the length of list must match the integer supplied in the "n.cluster" argument.
 }
   \item{split.after}{
 a boolean that allows for trajectories being calculated for each level of type independently or extracted after the cluster calculations have been applied to the whole data set.
