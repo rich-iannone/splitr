@@ -306,7 +306,14 @@ hysplit.trajectory <- function(start_lat_deg,
   }
   
   # Copy files from 'Working' to current project folder
-  system(paste("(cd ", path_wd, " && mv traj* '", path_output_files, "')", sep = ''))
+  if (.Platform == "unix"){
+    system(paste("(cd ", path_wd, " && mv traj* '", path_output_files, "')", sep = ''))
+  }
+  
+  if (.Platform == "win"){
+
+  }
+  
   
   # Close the function
 }
