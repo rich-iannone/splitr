@@ -8,7 +8,7 @@ get.met.reanalysis <- function(files = NULL,
     
     for (i in 1:length(files)){
       
-      if (.Platform$OS.type == "win"){
+      if (.Platform$OS.type == "windows"){
         download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/",
                                   files[i], sep = ''),
                       destfile = paste(path_met_files,
@@ -63,7 +63,7 @@ get.met.reanalysis <- function(files = NULL,
           
         }
         
-        if (.Platform$OS.type == "win"){
+        if (.Platform$OS.type == "windows"){
           
           download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/RP",
                                     years[i],
