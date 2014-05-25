@@ -7,13 +7,31 @@ get.met.reanalysis <- function(files = NULL,
   if (!is.null(files)){
     
     for (i in 1:length(files)){
-      download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/",
-                                files[i], sep = ''),
-                    destfile = paste(path_met_files, files[i], sep = ''),
-                    method = "auto",
-                    quiet = FALSE,
-                    mode = "w",
-                    cacheOK = TRUE)
+      
+      if (.Platform$OS.type == "win"){
+        download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/",
+                                  files[i], sep = ''),
+                      destfile = paste(path_met_files,
+                                       "\\", files[i], sep = ''),
+                      method = "auto",
+                      quiet = FALSE,
+                      mode = "w",
+                      cacheOK = TRUE)
+      }
+      
+      if (.Platform$OS.type == "unix"){
+        
+        download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/",
+                                  files[i], sep = ''),
+                      destfile = paste(path_met_files,
+                                       files[i], sep = ''),
+                      method = "auto",
+                      quiet = FALSE,
+                      mode = "w",
+                      cacheOK = TRUE)
+        
+      }
+      
     }
     
   }
@@ -22,22 +40,49 @@ get.met.reanalysis <- function(files = NULL,
   if (!is.null(years)){
     
     for (i in 1:length(years)){
+      
       for (j in 1:12){
-        download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/RP",
-                                  years[i],
-                                  formatC(j, width = 2, format = "d", flag = "0"),
-                                  ".gbl",
-                                  sep = ''),
-                      destfile = paste(path_met_files,
-                                       "RP",
-                                       years[i],
-                                       formatC(j, width = 2, format = "d", flag = "0"),
-                                       ".gbl",
-                                       sep = ''),
-                      method = "auto",
-                      quiet = FALSE,
-                      mode = "w",
-                      cacheOK = TRUE)
+        
+        if (.Platform$OS.type == "unix"){
+          
+          download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/RP",
+                                    years[i],
+                                    formatC(j, width = 2, format = "d", flag = "0"),
+                                    ".gbl",
+                                    sep = ''),
+                        destfile = paste(path_met_files,
+                                         "RP",
+                                         years[i],
+                                         formatC(j, width = 2, format = "d", flag = "0"),
+                                         ".gbl",
+                                         sep = ''),
+                        method = "auto",
+                        quiet = FALSE,
+                        mode = "w",
+                        cacheOK = TRUE)
+          
+        }
+        
+        if (.Platform$OS.type == "win"){
+          
+          download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/RP",
+                                    years[i],
+                                    formatC(j, width = 2, format = "d", flag = "0"),
+                                    ".gbl",
+                                    sep = ''),
+                        destfile = paste(path_met_files, "//",
+                                         "RP",
+                                         years[i],
+                                         formatC(j, width = 2, format = "d", flag = "0"),
+                                         ".gbl",
+                                         sep = ''),
+                        method = "auto",
+                        quiet = FALSE,
+                        mode = "w",
+                        cacheOK = TRUE)
+          
+        }
+        
       }
   
     }
