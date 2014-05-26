@@ -221,9 +221,19 @@ hysplit.trajectory <- function(start_lat_deg,
         
         # Download the missing met files
         if (FALSE %in% met.file.df[,2]){
+          
           files_to_get <- subset(met.file.df, available == FALSE)[,1]
-          get.met.reanalysis(files = files_to_get, path_met_files = path_met_files)
+          
+          if (met_type == "reanalysis"){
+            get.met.reanalysis(files = files_to_get, path_met_files = path_met_files)
+          }
+          
+          if (met_type == "gdas1"){
+            get.met.gdas1(files = files_to_get, path_met_files = path_met_files)
+          }
+          
         }
+        
       }
       
       if (.Platform$OS.type == "windows"){
@@ -240,9 +250,19 @@ hysplit.trajectory <- function(start_lat_deg,
         
         # Download the missing met files
         if (FALSE %in% met.file.df[,2]){
+          
           files_to_get <- subset(met.file.df, available == FALSE)[,1]
-          get.met.reanalysis(files = files_to_get, path_met_files = path_met_files)
+          
+          if (met_type == "reanalysis"){
+            get.met.reanalysis(files = files_to_get, path_met_files = path_met_files)
+          }
+          
+          if (met_type == "gdas1"){
+            get.met.gdas1(files = files_to_get, path_met_files = path_met_files)
+          }
+          
         }
+        
       }
       
       # Construct the output filename string for this model run
