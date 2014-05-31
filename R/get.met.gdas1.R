@@ -12,7 +12,7 @@ get.met.gdas1 <- function(files = NULL,
                     destfile = paste(path_met_files, files[i], sep = ''),
                     method = "auto",
                     quiet = FALSE,
-                    mode = "w",
+                    mode = "wb",
                     cacheOK = TRUE)
     }
     
@@ -46,7 +46,7 @@ get.met.gdas1 <- function(files = NULL,
                     destfile = paste(path_met_files, the_files[i], sep = ''),
                     method = "auto",
                     quiet = FALSE,
-                    mode = "w",
+                    mode = "wb",
                     cacheOK = TRUE)
     }
     
@@ -99,7 +99,7 @@ get.met.gdas1 <- function(files = NULL,
                     destfile = paste(path_met_files, the_files[i], sep = ''),
                     method = "auto",
                     quiet = FALSE,
-                    mode = "w",
+                    mode = "wb",
                     cacheOK = TRUE)
     }
     

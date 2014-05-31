@@ -15,7 +15,7 @@ get.met.reanalysis <- function(files = NULL,
                                        "\\", files[i], sep = ''),
                       method = "auto",
                       quiet = FALSE,
-                      mode = "w",
+                      mode = "wb",
                       cacheOK = TRUE)
       }
       
@@ -27,7 +27,7 @@ get.met.reanalysis <- function(files = NULL,
                                        files[i], sep = ''),
                       method = "auto",
                       quiet = FALSE,
-                      mode = "w",
+                      mode = "wb",
                       cacheOK = TRUE)
         
       }
@@ -58,7 +58,7 @@ get.met.reanalysis <- function(files = NULL,
                                          sep = ''),
                         method = "auto",
                         quiet = FALSE,
-                        mode = "w",
+                        mode = "wb",
                         cacheOK = TRUE)
           
         }
@@ -78,7 +78,7 @@ get.met.reanalysis <- function(files = NULL,
                                          sep = ''),
                         method = "auto",
                         quiet = FALSE,
-                        mode = "w",
+                        mode = "wb",
                         cacheOK = TRUE)
           
         }

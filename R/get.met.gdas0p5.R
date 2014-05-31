@@ -13,7 +13,7 @@ get.met.gdas0p5 <- function(files = NULL,
                 destfile = paste(path_met_files, "listing", sep = ''),
                 method = "auto",
                 quiet = TRUE,
-                mode = "w",
+                mode = "wb",
                 cacheOK = TRUE)
   
   # Create object 'listing' as a vector with all filenames available on the FTP server
@@ -35,7 +35,7 @@ get.met.gdas0p5 <- function(files = NULL,
                       destfile = paste(path_met_files, files[i], sep = ''),
                       method = "auto",
                       quiet = FALSE,
-                      mode = "w",
+                      mode = "wb",
                       cacheOK = TRUE)
       }
     }
@@ -177,7 +177,7 @@ get.met.gdas0p5 <- function(files = NULL,
                     destfile = paste(path_met_files, the_list[i], sep = ''),
                     method = "auto",
                     quiet = FALSE,
-                    mode = "w",
+                    mode = "wb",
                     cacheOK = TRUE)
       
     }
@@ -359,7 +359,7 @@ get.met.gdas0p5 <- function(files = NULL,
                     destfile = paste(path_met_files, the_list[i], sep = ''),
                     method = "auto",
                     quiet = FALSE,
-                    mode = "w",
+                    mode = "wb",
                     cacheOK = TRUE)
       
     }
@@ -440,7 +440,7 @@ get.met.gdas0p5 <- function(files = NULL,
                     destfile = paste(path_met_files, the_list[i], sep = ''),
                     method = "auto",
                     quiet = FALSE,
-                    mode = "w",
+                    mode = "wb",
                     cacheOK = TRUE)
       
     }
