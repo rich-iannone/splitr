@@ -241,10 +241,10 @@ hysplit.trajectory <- function(start_lat_deg,
         for (k in 1:length(met)) {
           met.file.df[k, 1] <- met[k]
           met.file.df[k, 2] <- as.character(file.exists(paste(path_met_files,
-                                                              "\\", met[k], sep = '')))}
+                                                              met[k], sep = '')))}
         
         # Write the met file availability to file
-        write.table(met.file.df, file = paste(path_wd, "\\", "met_file_list", sep = ''),
+        write.table(met.file.df, file = paste(path_wd, "met_file_list", sep = ''),
                     sep = ",", row.names = FALSE, col.names = FALSE, quote = FALSE,
                     append = FALSE)
         
