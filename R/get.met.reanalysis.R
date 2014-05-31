@@ -16,7 +16,7 @@ get.met.reanalysis <- function(files = NULL,
                       method = "auto",
                       quiet = FALSE,
                       mode = "wb",
-                      cacheOK = TRUE)
+                      cacheOK = FALSE)
       }
       
       if (.Platform$OS.type == "unix"){
@@ -28,7 +28,7 @@ get.met.reanalysis <- function(files = NULL,
                       method = "auto",
                       quiet = FALSE,
                       mode = "wb",
-                      cacheOK = TRUE)
+                      cacheOK = FALSE)
         
       }
       
@@ -59,7 +59,7 @@ get.met.reanalysis <- function(files = NULL,
                         method = "auto",
                         quiet = FALSE,
                         mode = "wb",
-                        cacheOK = TRUE)
+                        cacheOK = FALSE)
           
         }
         
@@ -79,7 +79,7 @@ get.met.reanalysis <- function(files = NULL,
                         method = "auto",
                         quiet = FALSE,
                         mode = "wb",
-                        cacheOK = TRUE)
+                        cacheOK = FALSE)
           
         }
         

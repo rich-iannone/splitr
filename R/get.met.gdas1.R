@@ -13,7 +13,7 @@ get.met.gdas1 <- function(files = NULL,
                     method = "auto",
                     quiet = FALSE,
                     mode = "wb",
-                    cacheOK = TRUE)
+                    cacheOK = FALSE)
     }
     
   }
@@ -47,7 +47,7 @@ get.met.gdas1 <- function(files = NULL,
                     method = "auto",
                     quiet = FALSE,
                     mode = "wb",
-                    cacheOK = TRUE)
+                    cacheOK = FALSE)
     }
     
   }
@@ -100,7 +100,7 @@ get.met.gdas1 <- function(files = NULL,
                     method = "auto",
                     quiet = FALSE,
                     mode = "wb",
-                    cacheOK = TRUE)
+                    cacheOK = FALSE)
     }
     
   }

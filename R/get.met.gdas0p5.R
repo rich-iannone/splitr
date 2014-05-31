@@ -14,7 +14,7 @@ get.met.gdas0p5 <- function(files = NULL,
                 method = "auto",
                 quiet = TRUE,
                 mode = "wb",
-                cacheOK = TRUE)
+                cacheOK = FALSE)
   
   # Create object 'listing' as a vector with all filenames available on the FTP server
   listing <- as.vector(read.table(paste(path_met_files, "listing", sep = ''),
@@ -36,7 +36,7 @@ get.met.gdas0p5 <- function(files = NULL,
                       method = "auto",
                       quiet = FALSE,
                       mode = "wb",
-                      cacheOK = TRUE)
+                      cacheOK = FALSE)
       }
     }
   }
@@ -178,7 +178,7 @@ get.met.gdas0p5 <- function(files = NULL,
                     method = "auto",
                     quiet = FALSE,
                     mode = "wb",
-                    cacheOK = TRUE)
+                    cacheOK = FALSE)
       
     }
     
@@ -360,7 +360,7 @@ get.met.gdas0p5 <- function(files = NULL,
                     method = "auto",
                     quiet = FALSE,
                     mode = "wb",
-                    cacheOK = TRUE)
+                    cacheOK = FALSE)
       
     }
     
@@ -441,7 +441,7 @@ get.met.gdas0p5 <- function(files = NULL,
                     method = "auto",
                     quiet = FALSE,
                     mode = "wb",
-                    cacheOK = TRUE)
+                    cacheOK = FALSE)
       
     }
     
