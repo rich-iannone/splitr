@@ -7,4 +7,5 @@ Author: Richard Iannone <riannone@me.com>
 Maintainer: Richard Iannone <riannone@me.com>
 Description: These functions make running HYSPLIT an uncomplicated affair.
 License: MIT
+Depends: stats, utils, graphics, grDevices, R (>= 3.0.0), maps, mapdata, plyr, lubridate, RCurl, cluster, openair
 
