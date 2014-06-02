@@ -89,7 +89,7 @@ trajPlot(trajectory.df, map.fill = FALSE)
 
 Here are the trajectories from those model runs:
 
-<img src="inst/trajectories.png" width="45%">
+<img src="inst/trajectories.png" width="75%">
 
 
 ## Future Additions to SplitR
