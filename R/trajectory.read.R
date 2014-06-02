@@ -5,7 +5,8 @@ trajectory.read <- function(path_output_files,
   # Generate the file list
   # Use 'pattern' argument to select specific year or starting heights
   if (is.null(year) & is.null(start_height_m_AGL)) {
-    trajectory_file_list <- list.files(path = path_output_files)
+    trajectory_file_list <- list.files(path = path_output_files,
+                                       pattern = "^traj.*")
   } else if (!is.null(year) & is.null(start_height_m_AGL)) {
     trajectory_file_list <- list.files(path = path_output_files,
                                        pattern = paste("^traj.*?)-",
