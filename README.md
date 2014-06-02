@@ -95,7 +95,7 @@ Here are the trajectories from those model runs:
 ## Future Additions to SplitR
 
 - greater support for different types of meteorological data files
-- merging of trajectories with pollutant concentration data for advanced air quality analyses
+- options for merging data frames of backtrajectories with pollutant concentrations for advanced air quality analyses
 - statistical summaries for dispersion of particles
 - ensemble model runs
 - capability for the starting location to be moving during successive model runs
