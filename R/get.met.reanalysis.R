@@ -2,6 +2,8 @@ get.met.reanalysis <- function(files = NULL,
                                years = NULL,
                                path_met_files = "~/Documents/SplitR/Met/"){ 
   
+  # Add require statements
+  require(RCurl) 
   
   # Download list of reanalysis met files by name
   if (!is.null(files)){

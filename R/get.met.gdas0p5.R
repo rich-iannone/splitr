@@ -4,6 +4,8 @@ get.met.gdas0p5 <- function(files = NULL,
                             days = NULL,
                             path_met_files = "~/Documents/SplitR/Met/"){
   
+  # Add require statements
+  require(RCurl) 
   require(lubridate)
   
   # Download the 'listing' file from NOAA server

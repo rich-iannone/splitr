@@ -3,6 +3,9 @@ get.met.gdas1 <- function(files = NULL,
                           months = NULL,
                           path_met_files = "~/Documents/SplitR/Met/"){
   
+  # Add require statements
+  require(RCurl) 
+  
   # Download list of GDAS1 met files by name
   if (!is.null(files)){
     
