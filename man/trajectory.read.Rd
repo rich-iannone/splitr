@@ -7,12 +7,12 @@ Read HYSPLIT trajectory output files into data frame for further analysis.
 The function takes HYSPLIT trajectory output files in a specified output directory and processes all files into a data frame object. The resulting data frame is useful for plotting of trajectories and for conducting statistical analyses such as clustering.  
 }
 \usage{
-trajectory.read(path_trajectory_files,
+trajectory.read(path_output_files,
                 year = NULL,
                 start_height_m_AGL = NULL)
 }
 \arguments{
-  \item{path_trajectory_files}{
+  \item{path_output_files}{
 a full path should be provided for a location that contains all relevant trajectory output files.
 }
   \item{year}{
@@ -27,12 +27,12 @@ Richard Iannone
 }
 \examples{
 # Process all trajectory output files in the specified output directory
-trajectory.df <- trajectory.read(path_trajectory_files =
+trajectory.df <- trajectory.read(path_output_files =
                                  "~/hysplit/trajectory")
 
 # Process trajectory output files in the same folder but only those
 # files from 2002 with a starting height of 500 m
-trajectory.df <- trajectory.read(path_trajectory_files =
+trajectory.df <- trajectory.read(path_output_files =
                                  "~/hysplit/trajectory",
                                  year = 2002,
                                  start_height_m_AGL = 500)
