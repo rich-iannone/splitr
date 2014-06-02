@@ -38,7 +38,7 @@ Take note of the paths for the HYSPLIT executables and` working directory (in th
 
 ## Example for Running a Series of HYSPLIT Trajectory Runs
 
-To perform a series HYSPLIT trajectory model runs in a Windows environment. Try the following:
+To perform a series HYSPLIT trajectory model runs, use the SplitR `hysplit.trajectory` function:
 
 ```coffee
 hysplit.trajectory(start_lat_deg = 42.83752, start_long_deg = -80.30364,
@@ -55,7 +55,7 @@ hysplit.trajectory(start_lat_deg = 42.83752, start_long_deg = -80.30364,
                    path_executable = "C:\\Users\\[username]\\Desktop\\hysplit4\\exec\\") 
 ```
 
-This use of `hysplit.trajectory` sets up four trajectory runs that start at 00:00, 06:00, 12:00, and 18:00 UTC on March 12, 2012. These initial times are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours_to_start = c("00", "06", "12", "18")`. The model runs are forward runs (moving forward in time, set here using `backtrajectory = FALSE`) and not backtrajectory runs (set with `backtrajectory = TRUE`). These runs are 24 h in duration (`simulation_duration_h = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `start_lat_deg = 42.83752` and `start_long_deg = -80.30364`; the starting height of 5 m above ground level is set by `start_height_m_AGL = 5`. The meteorological options include the type of met data to use (1º GDAS data is used here--with `met_type = "gdas1"`-- but there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting), the vertical motion option (here, set as `vertical_motion_option = 0`), and, the top of the model domain in meters (`top_of_model_domain_m = 20000`). Four paths require specification:
+This use of `hysplit.trajectory` sets up four trajectory runs that start at 00:00, 06:00, 12:00, and 18:00 UTC on March 12, 2012. These initial times are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours_to_start = c("00", "06", "12", "18")`. The model runs are forward runs (moving forward in time, set here using `backtrajectory = FALSE`) and not backtrajectory runs (set with `backtrajectory = TRUE`). These runs are 24 h in duration (`simulation_duration_h = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `start_lat_deg = 42.83752` and `start_long_deg = -80.30364`; the starting height of 5 m above ground level is set by `start_height_m_AGL = 5`. The meteorological options include the type of met data to use (1º GDAS data is used herewith `met_type = "gdas1"`-- but there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting), the vertical motion option (here, set as `vertical_motion_option = 0`), and, the top of the model domain in meters (`top_of_model_domain_m = 20000`). Four paths require specification:
 
 - path to the meteorological data files (`path_met_files`)
 - path to the output files (`path_output_files`)
@@ -65,6 +65,32 @@ This use of `hysplit.trajectory` sets up four trajectory runs that start at 00:0
 All paths should exist (i.e., SplitR won't create directories) and the paths provided in the above `hysplit.trajectory()` example should serve as recommendations for these path settings. If running in a Mac OS X environment, use appropriate paths with forward slashes (paths using a tilde are acceptable).
 
 The necessary meteorological data files relevant to the period being modelled with be downloaded from the NOAA FTP server (arlftp.arlhq.noaa.gov) if they are not present in the directory specified as the `path_met_files` argument. Note that SplitR does not currently provide an option to automatically delete these downloaded data files after the relevant model runs have been completed, so, keep in mind that available disk space may be issue with longer sequences of model runs (e.g., a GDAS1 met file for a week-long period can take up to 600 MB of disk space).
+
+After this, 4 files should be generated and residing in the 'working' folder:
+
+- `traj(forward)-12-03-12-00-lat_42.83752_long_-80.30364-height_5-24h`
+- `traj(forward)-12-03-12-06-lat_42.83752_long_-80.30364-height_5-24h`
+- `traj(forward)-12-03-12-12-lat_42.83752_long_-80.30364-height_5-24h`
+- `traj(forward)-12-03-12-18-lat_42.83752_long_-80.30364-height_5-24h`
+
+A data frame can be generated from these output files using the SplitR `trajectory.read` function:
+
+```coffee
+trajectory.df <- trajectory.read(path_output_files = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\",
+                                 year = NULL,
+                                 start_height_m_AGL = NULL)
+```
+
+With this data frame, statistical analyses for the trajectories can be generated (e.g., average heights of trajectories after specified time periods, etc.). Furthermore, the `trajectory.df` data frame is fully compatible with the excellent 'openair' package that is available on CRAN. Plotting of the trajectory output data frame requires use of openair's `trajPlot` function:
+
+```coffee
+trajPlot(trajectory.df, map.fill = FALSE)
+```
+
+Here are the trajectories from those model runs:
+
+<img src="inst/trajectories.png" width="45%">
+
 
 ## Future Additions to SplitR
 
