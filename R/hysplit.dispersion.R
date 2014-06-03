@@ -382,7 +382,7 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
       }
       
       if (.Platform$OS.type == "windows"){        
-        temp_file_list <- list.files(path = path_wd, pattern = "*._ps.csv",
+        temp_file_list <- list.files(path = path_wd, pattern = "*._ps.txt",
                                      full.names = TRUE)
         
         for (i in 1:length(temp_file_list)){
