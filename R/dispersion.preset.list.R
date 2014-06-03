@@ -1,4 +1,5 @@
-dispersion.preset.list <- function(read = NULL, search = NULL){
+dispersion.preset.list <- function(read = NULL, search = NULL,
+                                   path_wd = "~/Documents/SplitR/Working/"){
   
   # If an argument for read was not provided, prompt the user to select a preset class
   if (is.null(read)){
