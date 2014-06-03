@@ -12,16 +12,15 @@ hysplit.dispersion.config <- function(path_wd = "~/Documents/SplitR/Working/"){
       " maxpar = 10000,", " cpack = 1,", " cmass = 0,", " dxf = 1.0,", " dyf = 1.0,",
       " dzf = 0.01,", " ichem = 0,", " maxdim = 1,", " kspl = 1,", " krnd = 6,",
       " frhs = 1.0,", " frvs = 0.01,", " frts = 0.10,", " frhmax = 3.0,", " splitf = 1.0,",
-      " /", sep = "\n", file = paste(path_wd, "SETUP.CFG", sep = '')
-      
-      # Create ASCDATA.CFG file and place in working directory
-      cat("-90.0  -180.0  lat/lon of lower left corner (last record in file)",
-          "1.0  1.0	lat/lon spacing in degrees between data points",
-          "180  360	lat/lon number of data points",
-          "2  	default land use category",
-          "0.2  	default roughness length (meters)",
-          "'.'  directory location of data files",
-          sep = "\n", file = paste(path_wd, "ASCDATA.CFG", sep = '')
-          
+      " /", sep = "\n", file = paste(path_wd, "SETUP.CFG", sep = ''))
+  
+  # Create ASCDATA.CFG file and place in working directory
+  cat("-90.0  -180.0  lat/lon of lower left corner (last record in file)",
+      "1.0  1.0	lat/lon spacing in degrees between data points",
+      "180  360	lat/lon number of data points",
+      "2  	default land use category",
+      "0.2  	default roughness length (meters)",
+      "'.'  directory location of data files",
+      sep = "\n", file = paste(path_wd, "ASCDATA.CFG", sep = ''))
+  
 }
-                                      
