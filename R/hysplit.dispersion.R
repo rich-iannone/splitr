@@ -373,11 +373,6 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
                      sep = ''))
       }
       
-      if (.Platform$OS.type == "windows"){
-        shell(paste("(cd ", path_wd, " && rename *_ps.txt *_ps.csv",
-                    sep = ''))
-      }
-      
       # Remove the 'END' string near the end of each .csv file
       
       if (.Platform$OS.type == "unix"){
