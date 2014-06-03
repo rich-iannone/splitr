@@ -381,6 +381,19 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
                      sep = ''))
       }
       
+      if (.Platform$OS.type == "windows"){        
+        temp_file_list <- list.files(path = path_wd, pattern = "*._ps.csv",
+                                     full.names = TRUE)
+        
+        for (i in 1:length(temp_file_list)){
+          temp_lines <- readLines(temp_file_list[i])
+          temp_lines <- temp_lines[-(length(temp_lines))]
+          write.table(temp_lines, file = temp_file_list[i],
+                      col.names = FALSE, row.names = FALSE, quote = FALSE)
+        }
+        
+      }
+      
       # Create list of particle positions for each hour of the model run
       for (i in 1:simulation_duration_h){
         if (i == 1) particle_positions <- vector(mode = "list",
