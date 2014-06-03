@@ -1,5 +1,4 @@
-hysplit.dispersion.config <- function(create_default_config = TRUE,
-                                      interactive_mode = FALSE){
+hysplit.dispersion.config <- function(path_wd = "~/Documents/SplitR/Working/"){
   
   # Create default configuration file for dispersion runs and place it in the
   # working directory
