@@ -38,7 +38,8 @@ dispersion.preset.add(type, interactive = TRUE,
                       grid_heights = NULL,
                       grid_start_time = NULL, 
                       grid_end_time = NULL,
-                      sampling_interval_type_rate = NULL)
+                      sampling_interval_type_rate = NULL,
+                      path_wd = "~/Documents/SplitR/Working/")
 }
 \arguments{
   \item{type}{
@@ -133,6 +134,9 @@ a string specifying the end of sampling emissions by the grid. Should be provide
 }
   \item{sampling_interval_type_rate}{
 a sting that specifies the type of sampling, and the rate by which sampling occurs ("HH MM").
+}
+  \item{path_wd}{
+a full path should be provided for the HYSPLIT working directory since presets will reside in this folder.
 }
 }
 \author{
