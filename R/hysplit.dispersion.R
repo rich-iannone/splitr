@@ -318,37 +318,75 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
       
       # CONTROL file is now complete and in the working directory
       # Execute the model run
-      system(paste("(cd ", path_wd, " && ", path_executable, "hycs_std)",
-                   sep = ''))
+      
+      if (.Platform$OS.type == "unix"){
+        system(paste("(cd ", path_wd, " && ", path_executable, "hycs_std)",
+                     sep = ''))
+      }
+      
+      if (.Platform$OS.type == "windows"){
+        shell(paste("(cd ", path_wd, " && ", path_executable, "hycs_std)",
+                     sep = ''))
+      }
       
       # Extract the particle positions at every hour
-      system(paste("(cd ", path_wd, " && ", path_executable, "parhplot -iPARDUMP -a1)",
-                   sep = ''))
+      
+      if (.Platform$OS.type == "unix"){
+        system(paste("(cd ", path_wd, " && ", path_executable, "parhplot -iPARDUMP -a1)",
+                     sep = ''))
+      }
+      
+      if (.Platform$OS.type == "windows"){
+        shell(paste("(cd ", path_wd, " && ", path_executable, "parhplot -iPARDUMP -a1)",
+                     sep = ''))
+      }
       
       # Remove the .att files from the working directory
-      system(paste("(cd ", path_wd, " && rm GIS_part*.att)",
-                   sep = ''))
+      
+      if (.Platform$OS.type == "unix"){
+        system(paste("(cd ", path_wd, " && rm GIS_part*.att)",
+                     sep = ''))
+      }
+      
+      if (.Platform$OS.type == "windows"){
+        shell(paste("(cd ", path_wd, " && del GIS_part*.att)",
+                     sep = ''))
+      }
       
       # Remove the postscript plot from the working directory
-      system(paste("(cd ", path_wd, " && rm parhplot.ps)",
-                   sep = ''))
+      
+      if (.Platform$OS.type == "unix"){
+        system(paste("(cd ", path_wd, " && rm parhplot.ps)",
+                     sep = ''))
+      }
+      
+      if (.Platform$OS.type == "windows"){
+        system(paste("(cd ", path_wd, " && del parhplot.ps)",
+                     sep = ''))
+      }
       
       # Rename the .txt files as .csv files
-      system(paste("(cd ", path_wd, " && for files in GIS*.txt;",
-                   " do mv \"$files\" \"${files%.txt}.csv\"; done)",
-                   sep = ''))
+      
+      if (.Platform$OS.type == "unix"){
+        system(paste("(cd ", path_wd, " && for files in GIS*.txt;",
+                     " do mv \"$files\" \"${files%.txt}.csv\"; done)",
+                     sep = ''))
+      }
       
       # Remove the 'END' string near the end of each .csv file
-      system(paste("(cd ", path_wd, " && sed -i .bk 's/END//g'",
-                   " GIS_part_*.csv; rm *.bk)",
-                   sep = ''))
+      
+      if (.Platform$OS.type == "unix"){
+        system(paste("(cd ", path_wd, " && sed -i .bk 's/END//g'",
+                     " GIS_part_*.csv; rm *.bk)",
+                     sep = ''))
+      }
       
       # Create list of particle positions for each hour of the model run
       for (i in 1:simulation_duration_h){
         if (i == 1) particle_positions <- vector(mode = "list",
                                                  length = simulation_duration_h)
         particle_positions[[i]] <-
-          read.csv(paste("~/Documents/SplitR/Working/GIS_part_",
+          read.csv(paste(path_wd, "GIS_part_",
                          formatC(i, width = 3, format = "d", flag = "0"),
                          "_ps.csv", sep = ''),
                    col.names = c("p_no", "longitude", "latitude", "height_mAGL"))
@@ -379,8 +417,11 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
       }
       
       # Move the .csv files from the working directory to the output folder
-      system(paste("(cd ", path_wd, " && mv GIS_part*.csv '", path_output_files, "')",
-                   sep = ''))
+      
+      if (.Platform$OS.type == "unix"){
+        system(paste("(cd ", path_wd, " && mv GIS_part*.csv '", path_output_files, "')",
+                     sep = ''))
+      }
       
       # Create a particle graphic for each hour and place in the output folder
       for (i in 1:simulation_duration_h){
