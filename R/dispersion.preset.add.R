@@ -14,7 +14,8 @@ dispersion.preset.add <- function(type, interactive = TRUE,
                                   grid_folder = NULL, grid_filename = NULL,
                                   grid_number_vertical = NULL, grid_heights = NULL,
                                   grid_start_time = NULL, grid_end_time = NULL,
-                                  sampling_interval_type_rate = NULL){
+                                  sampling_interval_type_rate = NULL,
+                                  path_wd = "~/Documents/SplitR/Working/"){
   
   require(lubridate)
   
