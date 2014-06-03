@@ -25,7 +25,7 @@ dispersion.preset.list <- function(read = NULL, search = NULL,
   if (read == "emissions"){
     
     # Read the 'emissions' file line by line and place into a vector object
-    from_file <- as.vector(read.table("~/Documents/SplitR/emissions", sep = "\n"))
+    from_file <- as.vector(read.table(paste(path_wd, "emissions", sep = ''), sep = "\n"))
     
     # Get the total number of preset entries available in the file
     number_of_entries <- nrow(from_file) / 6
@@ -117,7 +117,7 @@ dispersion.preset.list <- function(read = NULL, search = NULL,
   if (read == "grids"){
     
     # Read the 'grids' file line by line and place into a vector object
-    from_file <- as.vector(read.table("~/Documents/SplitR/grids", sep = "\n"))
+    from_file <- as.vector(read.table(paste(path_wd, "grids", sep = ''), sep = "\n"))
     
     # Get the total number of preset entries available in the file
     number_of_entries <- nrow(from_file) / 12
@@ -215,7 +215,7 @@ dispersion.preset.list <- function(read = NULL, search = NULL,
   if (read == "species"){
     
     # Read the 'species' file line by line and place into a vector object
-    from_file <- as.vector(read.table("~/Documents/SplitR/species", sep = "\n"))
+    from_file <- as.vector(read.table(paste(path_wd, "species", sep = ''), sep = "\n"))
     
     # Get the total number of preset entries available in the file
     number_of_entries <- nrow(from_file) / 7
