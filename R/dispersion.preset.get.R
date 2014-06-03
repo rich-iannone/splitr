@@ -19,7 +19,7 @@ dispersion.preset.get <- function(read, numbers,
     
     if (length(numbers) == 1){
     
-    from_file <- as.vector(read.table("~/Documents/SplitR/emissions", sep = "\n"))
+    from_file <- as.vector(read.table(paste(path_wd, "emissions", sep = ''), sep = "\n"))
     
     number_of_entries <- nrow(from_file) / 6
     
@@ -45,7 +45,7 @@ dispersion.preset.get <- function(read, numbers,
     
     if (length(numbers) > 1){
       
-      from_file <- as.vector(read.table("~/Documents/SplitR/emissions", sep = "\n"))
+      from_file <- as.vector(read.table(paste(path_wd, "emissions", sep = ''), sep = "\n"))
       
       number_of_entries <- nrow(from_file) / 6
       
@@ -81,7 +81,7 @@ dispersion.preset.get <- function(read, numbers,
     
     if (length(numbers) == 1){
       
-      from_file <- as.vector(read.table("~/Documents/SplitR/grids", sep = "\n"))
+      from_file <- as.vector(read.table(paste(path_wd, "grids", sep = ''), sep = "\n"))
       
       number_of_entries <- nrow(from_file) / 12
       
@@ -107,7 +107,7 @@ dispersion.preset.get <- function(read, numbers,
     
     if (length(numbers) > 1){
       
-      from_file <- as.vector(read.table("~/Documents/SplitR/grids", sep = "\n"))
+      from_file <- as.vector(read.table(paste(path_wd, "grids", sep = ''), sep = "\n"))
       
       number_of_entries <- nrow(from_file) / 12
       
@@ -143,7 +143,7 @@ dispersion.preset.get <- function(read, numbers,
     
     if (length(numbers) == 1){
       
-      from_file <- as.vector(read.table("~/Documents/SplitR/species", sep = "\n"))
+      from_file <- as.vector(read.table(paste(path_wd, "species", sep = ''), sep = "\n"))
       
       number_of_entries <- nrow(from_file) / 7
       
@@ -169,7 +169,7 @@ dispersion.preset.get <- function(read, numbers,
     
     if (length(numbers) > 1){
       
-      from_file <- as.vector(read.table("~/Documents/SplitR/species", sep = "\n"))
+      from_file <- as.vector(read.table(paste(path_wd, "species", sep = ''), sep = "\n"))
       
       number_of_entries <- nrow(from_file) / 7
       
