@@ -1,4 +1,5 @@
-dispersion.preset.get <- function(read, numbers){
+dispersion.preset.get <- function(read, numbers,
+                                  path_wd = "~/Documents/SplitR/Working/"){
     
   # Validate supplied digits for duplicates
   no_duplicates <- ifelse(anyDuplicated(numbers) == 0,
