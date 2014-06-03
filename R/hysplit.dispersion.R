@@ -326,7 +326,7 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
       
       if (.Platform$OS.type == "windows"){
         shell(paste("(cd ", path_wd, " && ", path_executable, "hycs_std)",
-                     sep = ''))
+                    sep = ''))
       }
       
       # Extract the particle positions at every hour
@@ -338,7 +338,7 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
       
       if (.Platform$OS.type == "windows"){
         shell(paste("(cd ", path_wd, " && ", path_executable, "parhplot -iPARDUMP -a1)",
-                     sep = ''))
+                    sep = ''))
       }
       
       # Remove the .att files from the working directory
@@ -350,7 +350,7 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
       
       if (.Platform$OS.type == "windows"){
         shell(paste("(cd ", path_wd, " && del GIS_part*.att)",
-                     sep = ''))
+                    sep = ''))
       }
       
       # Remove the postscript plot from the working directory
