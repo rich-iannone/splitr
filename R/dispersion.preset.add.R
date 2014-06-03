@@ -942,7 +942,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     
     if (grid_number_vertical == 1 & grid_heights == '') grid_heights <- 0
     if (grid_number_vertical > 1 & grid_heights == ''){
-      grid_heights <- seq(0, 200*grid_number_vertical, by = 200)
+      grid_heights <- seq(0, 200 * grid_number_vertical, by = 200)
     }
     
     # Get input string into a vector object
