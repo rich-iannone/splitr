@@ -96,7 +96,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
         rad_decay, "\n",
         pollutant_resuspension_factor, "\n",
         paste("---"), "\n",
-        file = "~/Documents/SplitR/species", append = TRUE,
+        file = paste(path_wd, "species", sep = ''), append = TRUE,
         sep = '')
     
   }
@@ -129,7 +129,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
         emissions_duration, "\n",
         emissions_start_time, "\n",
         paste("---"), "\n",
-        file = "~/Documents/SplitR/emissions", append = TRUE,
+        file = paste(path_wd, "emissions", sep = ''), append = TRUE,
         sep = '')
     
   }
@@ -155,7 +155,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     }
     
     if (is.null(grid_folder)){
-      grid_folder <- "~/Documents/SplitR/Working/"
+      grid_folder <- path_wd
     }
     
     if (is.null(grid_filename)){
@@ -198,7 +198,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
         grid_end_time, "\n",
         sampling_interval_type_rate, "\n",
         paste("---"), "\n",
-        file = "~/Documents/SplitR/grids", append = TRUE,
+        file = paste(path_wd, "grids", sep = ''), append = TRUE,
         sep = '')
 
   }
@@ -583,7 +583,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
           rad_decay, "\n",
           pollutant_resuspension_factor, "\n",
           paste("---"), "\n",
-          file = "~/Documents/SplitR/species", append = TRUE,
+          file = paste(path_wd, "species", sep = ''), append = TRUE,
           sep = '')
     }
     
@@ -778,7 +778,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
           emissions_duration, "\n",
           emissions_start_time_char, "\n",
           paste("---"), "\n",
-          file = "~/Documents/SplitR/emissions", append = TRUE,
+          file = paste(path_wd, "emissions", sep = ''), append = TRUE,
           sep = '')
     }
     
@@ -898,7 +898,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     }
     
     # Automatically assign the location of the 'grids' folder
-    grid_folder <- "~/Documents/SplitR/Working/"
+    grid_folder <- path_wd
     
     # Automatically assign the output grid file name
     grid_filename <- grid_name
@@ -1178,7 +1178,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
           grid_end_time_char, "\n",
           sampling_interval_type_no, " ", sampling_interval_rate_char, "\n",
           paste("---"), "\n",
-          file = "~/Documents/SplitR/grids", append = TRUE,
+          file = paste(path_wd, "grids", sep = ''), append = TRUE,
           sep = '')
     }
     
