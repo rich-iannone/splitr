@@ -795,7 +795,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     # Ask to assign value to 'grid_center'
     grid_center <-
       readline(paste(cat("Provide the center of the grid.", "\n",
-                         "Units: degrees. Default: 49.289328º, -123.117665º.", "\n",
+                         "Units: degrees. Default: 49.289328, -123.117665.", "\n",
                          "Provide the latitude and longitude (<ENTER> for default values): ",
                          sep = '')))
     
@@ -826,7 +826,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     grid_spacing <-
       readline(paste(cat("Provide the spacing of adjacent grid points in the x and y directions.",
                          "\n",
-                         "Units: degrees. Default: 0.05º, 0.05º.", "\n",
+                         "Units: degrees. Default: 0.05, 0.05.", "\n",
                          "Provide latitude and longitude intervals (<ENTER> for default values): ",
                          sep = '')))
     
@@ -857,7 +857,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     grid_span <-
       readline(paste(cat("Provide the total span of the grid in the x and y directions.",
                          "\n",
-                         "Units: degrees. Default: 1.00º, 1.00º.", "\n",
+                         "Units: degrees. Default: 1.00, 1.00.", "\n",
                          "Provide latitude and longitude values (<ENTER> for default values): ",
                          sep = '')))
     
