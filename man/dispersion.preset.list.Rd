@@ -7,7 +7,7 @@ Get a list of presets, search for preset by name
 This function allows you to generate a simple list of presets of a given type. If no type is provided, the user is prompted to enter a type. The list is presented as a series of oneline summaries that are numbered in the order they appear in their respective files. This numbering is important, as the 'hysplit.dispersion' function calls presets by these numbers. It is possible to search for a preset of a certain type by its name through use of the 'search' argument. If there is an exact match by name, then the number associated with that preset is returned.
 }
 \usage{
-dispersion.preset.list(read, search)
+dispersion.preset.list(read, search, path_wd = "~/Documents/SplitR/Working/")
 }
 \arguments{
   \item{read}{
@@ -15,6 +15,9 @@ the type of preset to get. The three preset types are "emissions", "grids", and 
 }
   \item{search}{
 a search term corresponding to the name of a preset of the type provided within the argument 'read'. If an exact match is found (case-sensitive), then the number corresponding to the matched preset is provided.
+}
+  \item{path_wd}{
+a full path should be provided for the HYSPLIT working directory since the preset files for "emissions", "grids", and "species" will reside there.
 }
 }
 \author{
