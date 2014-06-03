@@ -361,8 +361,8 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
       }
       
       if (.Platform$OS.type == "windows"){
-        system(paste("(cd ", path_wd, " && del parhplot.ps)",
-                     sep = ''))
+        shell(paste("(cd ", path_wd, " && del parhplot.ps)",
+                    sep = ''))
       }
       
       # Rename the .txt files as .csv files
