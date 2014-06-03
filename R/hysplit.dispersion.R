@@ -388,7 +388,7 @@ hysplit.dispersion <- function(start_lat_deg = 49.289328,
         for (i in 1:length(temp_file_list)){
           temp_lines <- readLines(temp_file_list[i])
           temp_lines <- temp_lines[-(length(temp_lines))]
-          write.table(temp_lines, file = temp_file_list[i],
+          write.table(temp_lines, file = gsub("txt", "csv", temp_file_list[i]),
                       col.names = FALSE, row.names = FALSE, quote = FALSE)
         }
         
