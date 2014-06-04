@@ -100,7 +100,7 @@ Before performing any dispersion model runs in SplitR, you need to initialize th
 hysplit.dispersion.config(path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
 ```
 
-Presets for 'species', 'grids', and 'emissions' then need to be set. All additions of presets are made with the use of the `dispersion.preset.add`. That function can be run interactively with `interactive = TRUE` and remembering to set the `type` argumemnt as either `type = "species"`, `type = "grids"`, or `type = "emissions"`. Examples of interactive sessions are given below.
+Presets for 'species', 'grids', and 'emissions' then need to be set. All additions of presets are made with the use of the `dispersion.preset.add`. That function can be run interactively with `interactive = TRUE` and remembering to set the `type` argumemnt as either `type = "species"`, `type = "grids"`, or `type = "emissions"`. Here is an example of an interactive session for creating a 'species' preset is given below.
 
 ```coffee
 dispersion.preset.add(type = "species", interactive = TRUE,
@@ -123,7 +123,7 @@ This is what will be set. Okay? [y/n]: <y>
 
 ```
 
-Also, the function can be set non-interactively:
+Also, the function can be used to create a 'species' preset non-interactively:
 
 ```coffee
 dispersion.preset.add(type = "species", interactive = FALSE,
@@ -144,7 +144,166 @@ dispersion.preset.add(type = "species", interactive = FALSE,
                       path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
 ```
 
+Interactively creating a 'grids' preset looks like this:
 
+```coffee
+dispersion.preset.add(type = 'grids', interactive = TRUE,
+                      path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+
+What is the name of the grid? <"grid">
+
+Provide the center of the grid.
+Units: degrees. Default: 49.289328, -123.117665.
+Provide the latitude and longitude (<ENTER> for default values):
+<42.83752, -80.30364>
+
+Provide the spacing of adjacent grid points in the x and y directions.
+Units: degrees. Default: 0.05, 0.05.
+Provide latitude and longitude intervals (<ENTER> for default values):
+<0.05, 0.05>
+
+Provide the total span of the grid in the x and y directions.
+Units: degrees. Default: 1.00, 1.00.
+Provide latitude and longitude values (<ENTER> for default values): 
+<1.00, 1.00>
+
+Provide the number of vertical levels in the concentration grid.
+This number includes the deposition layer (with height = 0 m AGL)
+Default: 1.
+Provide a postive integer (<ENTER> for default value): 
+<1>
+
+For the single level specified, does that refer to the ground (deposition layer) or some height 
+above the ground?
+Press <ENTER> to assign level to the ground layer, or, provide a height in meters above ground level: 
+<ENTER>
+
+Provide a date and time for the start of grid sampling.
+Use the format YYYY-MM-DD HH:MM (<ENTER> for default value)
+<2012-03-12 00:00>
+
+Provide a date and time for the end of grid sampling.
+Use the format YYYY-MM-DD HH:MM (<ENTER> for default value)
+<2012-03-13 00:00>
+
+Provide the type of grid sampling to perform.
+Choices are: (1) averaging, (2) snapshot, or (3) maximum
+Press <ENTER> to assign the 'averaging' method
+<1>
+
+Provide the grid sampling measurement frequency.
+Use the format HH:MM
+Press <ENTER> to assign a 1-hour measurement frequency
+<01:00>
+
+The plan. Adding grid: "grid"
+----------------------------------
+            Grid Center: 42.83752Âº, -80.30364Âº
+           Grid Spacing: 0.05Âº, 0.05Âº
+              Grid Span: 1Âº, 1Âº
+ No. of Vertical Levels: 1
+           Grid Heights: 0 m
+      Start of Sampling: 2012-03-13 00:00
+        End of Sampling: 2012-03-13 00:00
+        Sampling Method: 0
+     Sampling Frequency: 1 h
+----------------------------------
+This is what will be set. Okay? [y/n]: 
+<y>
+```
+
+Also, the 'grids' preset be set non-interactively like this:
+
+```coffee
+dispersion.preset.add(type = 'grids', interactive = FALSE,
+                       grid_name = "grid",
+                       grid_center = "42.83752 -80.30364",
+                       grid_spacing = "0.05 0.05",
+                       grid_span = "1 1",
+                       grid_folder = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\",
+                       grid_filename = "grid",
+                       grid_number_vertical = "1",
+                       grid_heights = "0",
+                       grid_start_time = "12 03 12 00 00",
+                       grid_end_time = "12 03 13 00 00",
+                       sampling_interval_type_rate = "1 01 00",
+                       path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+```
+
+Interactively creating an 'emissions' preset looks like this:
+
+```coffee
+dispersion.preset.add(type = 'emissions', interactive = TRUE,
+                      path_wd = "C:\\Users\\riannone\\Desktop\\hysplit4\\working\\")
+
+What is the name of the emissions source? <test>
+
+Provide the starting date and time.
+Several options available:
+(1) Use defined time in the format YYYY-MM-DD HH:MM
+(2) Provide the number of hours or days after start of run (# h, or # d)
+(3) Press <ENTER> to match run and sampling starting times
+<2012-03-12 00:00>
+
+Provide either a time duration in hours
+or days, or, provide an ending date and time.
+Use the formats # h, # d, or YYYY-MM-DD HH:MM
+<1 d>
+
+Provide the rate of emissions in mass units per hour.
+<35>
+
+The plan. Adding emissions source: test
+----------------------------------
+Start Date/Time: 2012-03-12 00:00
+       Duration: 24 h
+ Emissions Rate: 35 (mass units)/h
+----------------------------------
+This is what will be set. Okay? [y/n]: 
+<y>
+```
+
+For the non-interactive creation of an 'emissions' preset:
+
+```coffee
+dispersion.preset.add(type = 'emissions', interactive = FALSE,
+                      emissions_name = "test",
+                      emissions_rate = 35,
+                      emissions_duration = 24,
+                      emissions_start_time = "12 03 12 00 00",
+                      path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+```
+
+Once the presets have been created, they can be read using the `dispersion.preset.list` function by specifying the type of present (using the read argument) and providing the path of the working directory. For the 'species' presets:
+
+```coffee
+# List the dispersion 'species' presets
+dispersion.preset.list(read = 'species',
+                       path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+
+Here are the current species presets
+------------------------------------
+(1) test / Particle: 0 0 0 / DDep: 0 0 0 0 0 / WDep: 0 0 0 / RD: 0 / RS: 0
+------------------------------------
+
+dispersion.preset.list(read = 'grids',
+                       path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+
+Here are the current presets for grids
+--------------------------------------
+(1) grid / C: 42.83752, -80.30364 / I: 0.05, 0.05 / S: 1, 1 / 1 lv / s->e: 12 03 12 00 00 - 12 03 13 00 00 / avg: 1 01 00
+--------------------------------------
+
+dispersion.preset.list(read = 'emissions',
+                       path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+
+Here are the current presets for emissions
+------------------------------------------
+(1) test / Rate: 35 (mass units)/h / Duration: 24 h / Release: 12 03 12 00 00
+------------------------------------------
+```
+
+Adding more presets of any type will simply add items to each list provided by the `dispersion.preset.list` function.
 
 To perform a series HYSPLIT dispersion model runs, use the SplitR `hysplit.dispersion` function:
 
