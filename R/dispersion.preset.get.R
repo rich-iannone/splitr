@@ -10,7 +10,6 @@ dispersion.preset.get <- function(read, numbers,
     stop("The provided presets contain duplicate values.")
   }
   
-  
   # Read in and extract values from the different preset files that are available
   # These preset files are: 'emissions', 'grids', and 'species'
   
@@ -202,4 +201,3 @@ dispersion.preset.get <- function(read, numbers,
   
   # End of function
 }
-  
