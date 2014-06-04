@@ -3,6 +3,7 @@ get.met.edas40 <- function(files = NULL,
                            months = NULL,
                            path_met_files = "~/Documents/SplitR/Met/"){
   
+  # Add require statements
   require(lubridate)
   
   # Download the 'listing' file from NOAA server

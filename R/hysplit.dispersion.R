@@ -19,7 +19,7 @@ hysplit.dispersion <- function(start_lat_deg,
                                path_wd = "~/Documents/SplitR/Working/",
                                path_executable = "~/Documents/SplitR/Exec/"){ 
   
-  # Define package requirements
+  # Add require statements
   require(lubridate)
   require(maps)
   require(mapdata)

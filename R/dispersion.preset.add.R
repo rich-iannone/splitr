@@ -30,6 +30,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
                                   sampling_interval_type_rate = NULL,
                                   path_wd = "~/Documents/SplitR/Working/"){
   
+  # Add require statements
   require(lubridate)
   
   if (interactive == FALSE & type == 'species'){

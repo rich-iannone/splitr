@@ -16,7 +16,7 @@ hysplit.trajectory <- function(start_lat_deg,
                                path_wd = "~/Documents/SplitR/Working/",
                                path_executable = "~/Documents/SplitR/Exec/") {
   
-  # Define package requirements
+  # Add require statements
   require(lubridate)
   
   # Reset path for output files to 'Output' folder if not in a project
