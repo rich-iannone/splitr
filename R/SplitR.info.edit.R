@@ -1,7 +1,7 @@
 SplitR.info.edit <- function(mode = "add",
-                            heading,
-                            string,
-                            line_number){
+                             heading,
+                             string,
+                             line_number){
   
   # Number each of the headings using a switch statement
   heading_order <- switch(heading,
