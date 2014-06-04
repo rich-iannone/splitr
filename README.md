@@ -49,10 +49,10 @@ hysplit.trajectory(start_lat_deg = 42.83752, start_long_deg = -80.30364,
                    top_of_model_domain_m = 20000,
                    run_type = "day", run_day = "2012-03-12",
                    daily_hours_to_start = c("00", "06", "12", "18"),
-                   path_met_files =  "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\",
-                   path_output_files = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\",
-                   path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\",
-                   path_executable = "C:\\Users\\[username]\\Desktop\\hysplit4\\exec\\") 
+                   path_met_files =  "C:\\Users\\[username]\\hysplit4\\working\\",
+                   path_output_files = "C:\\Users\\[username]\\hysplit4\\working\\",
+                   path_wd = "C:\\Users\\[username]\\hysplit4\\working\\",
+                   path_executable = "C:\\Users\\[username]\\hysplit4\\exec\\") 
 ```
 
 This use of `hysplit.trajectory` sets up four trajectory runs that start at 00:00, 06:00, 12:00, and 18:00 UTC on March 12, 2012. These initial times are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours_to_start = c("00", "06", "12", "18")`. The model runs are forward runs (moving forward in time, set here using `backtrajectory = FALSE`) and not backtrajectory runs (set with `backtrajectory = TRUE`). These runs are 24 h in duration (`simulation_duration_h = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `start_lat_deg = 42.83752` and `start_long_deg = -80.30364`; the starting height of 5 m above ground level is set by `start_height_m_AGL = 5`. The meteorological options include the type of met data to use (1º GDAS data is used here with `met_type = "gdas1"`--there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting), the vertical motion option (here, set as `vertical_motion_option = 0` which instructs HYSPLIT to use the vertical motion available in the met data files), and, the top of the model domain (set as 20,000 meters with `top_of_model_domain_m = 20000`). Four paths require specification:
@@ -76,7 +76,7 @@ After this, four files should be generated and residing in the 'working' folder:
 A data frame can be generated from these output files using the SplitR `trajectory.read` function:
 
 ```coffee
-trajectory.df <- trajectory.read(path_output_files = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\",
+trajectory.df <- trajectory.read(path_output_files = "C:\\Users\\[username]\\hysplit4\\working\\",
                                  year = NULL,
                                  start_height_m_AGL = NULL)
 ```
@@ -97,14 +97,14 @@ Here are the trajectories from those model runs:
 Before performing any dispersion model runs in SplitR, you need to initialize the working directory with a SETUP.CFG file:
 
 ```coffee
-hysplit.dispersion.config(path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+hysplit.dispersion.config(path_wd = "C:\\Users\\[username]\\hysplit4\\working\\")
 ```
 
 Presets for 'species', 'grids', and 'emissions' then need to be set. All additions of presets are made with the use of the `dispersion.preset.add`. That function can be run interactively with `interactive = TRUE` and remembering to set the `type` argumemnt as either `type = "species"`, `type = "grids"`, or `type = "emissions"`. Here is an example of an interactive session for creating a 'species' preset is given below.
 
 ```coffee
 dispersion.preset.add(type = "species", interactive = TRUE,
-                      path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+                      path_wd = "C:\\Users\\[username]\\hysplit4\\working\\")
 
 What is the name of the species?  <test>
 Is the species a gas or particle? [gas/particle] <gas>
@@ -141,14 +141,14 @@ dispersion.preset.add(type = "species", interactive = FALSE,
                       wdep_below_cloud_dep = 0,
                       rad_decay = 0,
                       pollutant_resuspension_factor = 0,
-                      path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+                      path_wd = "C:\\Users\\[username]\\hysplit4\\working\\")
 ```
 
 Interactively creating a 'grids' preset looks like this:
 
 ```coffee
 dispersion.preset.add(type = 'grids', interactive = TRUE,
-                      path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+                      path_wd = "C:\\Users\\[username]\\hysplit4\\working\\")
 
 What is the name of the grid? <"grid">
 
@@ -220,21 +220,21 @@ dispersion.preset.add(type = 'grids', interactive = FALSE,
                        grid_center = "42.83752 -80.30364",
                        grid_spacing = "0.05 0.05",
                        grid_span = "1 1",
-                       grid_folder = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\",
+                       grid_folder = "C:\\Users\\[username]\\hysplit4\\working\\",
                        grid_filename = "grid",
                        grid_number_vertical = "1",
                        grid_heights = "0",
                        grid_start_time = "12 03 12 00 00",
                        grid_end_time = "12 03 13 00 00",
                        sampling_interval_type_rate = "1 01 00",
-                       path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+                       path_wd = "C:\\Users\\[username]\\hysplit4\\working\\")
 ```
 
 Interactively creating an 'emissions' preset looks like this:
 
 ```coffee
 dispersion.preset.add(type = 'emissions', interactive = TRUE,
-                      path_wd = "C:\\Users\\riannone\\Desktop\\hysplit4\\working\\")
+                      path_wd = "C:\\Users\\riannone\\hysplit4\\working\\")
 
 What is the name of the emissions source? <test>
 
@@ -271,7 +271,7 @@ dispersion.preset.add(type = 'emissions', interactive = FALSE,
                       emissions_rate = 35,
                       emissions_duration = 24,
                       emissions_start_time = "12 03 12 00 00",
-                      path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+                      path_wd = "C:\\Users\\[username]\\hysplit4\\working\\")
 ```
 
 Once the presets have been created, they can be read using the `dispersion.preset.list` function by specifying the type of present (using the read argument) and providing the path of the working directory. For the 'species' presets:
@@ -279,7 +279,7 @@ Once the presets have been created, they can be read using the `dispersion.prese
 ```coffee
 # List the dispersion 'species' presets
 dispersion.preset.list(read = 'species',
-                       path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+                       path_wd = "C:\\Users\\[username]\\hysplit4\\working\\")
 
 Here are the current species presets
 ------------------------------------
@@ -287,7 +287,7 @@ Here are the current species presets
 ------------------------------------
 
 dispersion.preset.list(read = 'grids',
-                       path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+                       path_wd = "C:\\Users\\[username]\\hysplit4\\working\\")
 
 Here are the current presets for grids
 --------------------------------------
@@ -295,7 +295,7 @@ Here are the current presets for grids
 --------------------------------------
 
 dispersion.preset.list(read = 'emissions',
-                       path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+                       path_wd = "C:\\Users\\[username]\\hysplit4\\working\\")
 
 Here are the current presets for emissions
 ------------------------------------------
@@ -322,10 +322,10 @@ hysplit.dispersion(start_lat_deg = 42.83752, start_long_deg = -80.30364,
                    emissions = c(1),
                    species = c(1),
                    grids = c(1),
-                   path_met_files =  "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\",
-                   path_output_files = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\",
-                   path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\",
-                   path_executable = "C:\\Users\\[username]\\Desktop\\hysplit4\\exec\\") 
+                   path_met_files =  "C:\\Users\\[username]\\hysplit4\\working\\",
+                   path_output_files = "C:\\Users\\[username]\\hysplit4\\working\\",
+                   path_wd = "C:\\Users\\[username]\\hysplit4\\working\\",
+                   path_executable = "C:\\Users\\[username]\\hysplit4\\exec\\") 
 ```
 
 After this, 24 CSV files with particle position will become available in the working directory:
