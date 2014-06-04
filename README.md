@@ -328,8 +328,21 @@ hysplit.dispersion(start_lat_deg = 42.83752, start_long_deg = -80.30364,
                    path_executable = "C:\\Users\\[username]\\Desktop\\hysplit4\\exec\\") 
 ```
 
+After this, 24 CSV files with particle position will become available in the working directory:
 
+- `GIS_part_[001]_ps.csv`
 
+Also, there will be 24 .jpg image files with particles overlaid onto a map at each hour of the model run:
+
+- `map---disp(forward)-12-03-12-00-lat_42.83752_long_-80.30364-height_5-24h-[001].jpg`
+
+A binary file containing gridded concentrations will be available in the working directory:
+
+- `grid--disp(forward)-12-03-12-00-lat_42.83752_long_-80.30364-height_5-24h`
+
+Finally, a binary PARDUMP file will be written:
+
+- `PARDUMP`
 
 ## Future Additions to SplitR
 
