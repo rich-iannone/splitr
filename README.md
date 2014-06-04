@@ -92,6 +92,86 @@ Here are the trajectories from those model runs:
 <img src="inst/trajectories.png" width="75%">
 
 
+## Example for Running a Series of HYSPLIT Dispersion Runs
+
+Before performing any dispersion model runs in SplitR, you need to initialize the working directory with a SETUP.CFG file:
+
+```coffee
+hysplit.dispersion.config(path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+```
+
+Presets for 'species', 'grids', and 'emissions' then need to be set. All additions of presets are made with the use of the `dispersion.preset.add`. That function can be run interactively with `interactive = TRUE` and remembering to set the `type` argumemnt as either `type = "species"`, `type = "grids"`, or `type = "emissions"`. Examples of interactive sessions are given below.
+
+```coffee
+dispersion.preset.add(type = "species", interactive = TRUE,
+                      path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+
+What is the name of the species?  <test>
+Is the species a gas or particle? [gas/particle] <gas>
+Use the default parameters for a gas-phase species? [y/n] <y>
+The plan. Adding species: test
+-------------------------
+Particle Properties // diameter: 0 µm | density: 0 g/cm3 | shape factor: 0 -- not a particle species
+Dry Deposition // deposition velocity: 0 m/s | molecular weight: 0 g/mol
+                  A ratio: 0 | D ratio: 0 | Henry's Law: 0 M/a -- no dry deposition
+Wet Deposition // Henry's Law coeff.: 0 M/a | in-cloud deposition: 0 L/L
+                  below-cloud deposition: 0 1/s -- no wet deposition
+Radioactive Decay // half-life: 0 days
+Pollutant Resuspension // factor: 0 1/m
+------------------------------
+This is what will be set. Okay? [y/n]: <y>
+
+```
+
+Also, the function can be set non-interactively:
+
+```coffee
+dispersion.preset.add(type = "species", interactive = FALSE,
+                      species_name = "test",
+                      particle_pdiam = 0,
+                      particle_density = 0,
+                      particle_shape_factor = 0,
+                      ddep_velocity = 0,
+                      ddep_MW = 0,
+                      ddep_A_ratio = 0,
+                      ddep_D_ratio = 0,
+                      ddep_Henrys_Law_coeff = 0,
+                      wdep_Henrys_Law_coeff = 0,
+                      wdep_in_cloud_dep = 0,
+                      wdep_below_cloud_dep = 0,
+                      rad_decay = 0,
+                      pollutant_resuspension_factor = 0,
+                      path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\")
+```
+
+
+
+To perform a series HYSPLIT dispersion model runs, use the SplitR `hysplit.dispersion` function:
+
+```coffee
+hysplit.dispersion(start_lat_deg = 42.83752, start_long_deg = -80.30364,
+                   start_height_m_AGL = 5, simulation_duration_h = 24,
+                   backward_running = FALSE,
+                   met_type = "gdas1",
+                   vertical_motion_option = 0,
+                   top_of_model_domain_m = 20000,
+                   run_type = "day",
+                   run_day = "2012-03-12",
+                   run_range = NULL,
+                   run_years = NULL,
+                   daily_hours_to_start = "00",
+                   emissions = c(1),
+                   species = c(1),
+                   grids = c(1),
+                   path_met_files =  "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\",
+                   path_output_files = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\",
+                   path_wd = "C:\\Users\\[username]\\Desktop\\hysplit4\\working\\",
+                   path_executable = "C:\\Users\\[username]\\Desktop\\hysplit4\\exec\\") 
+```
+
+
+
+
 ## Future Additions to SplitR
 
 - greater support for different types of meteorological data files
