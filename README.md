@@ -340,9 +340,7 @@ A binary file containing gridded concentrations will be available in the working
 
 - `grid--disp(forward)-12-03-12-00-lat_42.83752_long_-80.30364-height_5-24h`
 
-Finally, a binary PARDUMP file will be written:
-
-- `PARDUMP`
+Finally, a binary `PARDUMP` file will be written.
 
 Here is a snapshot of the dispersion particles at hour 16 of 24:
 
