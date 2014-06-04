@@ -344,6 +344,10 @@ Finally, a binary PARDUMP file will be written:
 
 - `PARDUMP`
 
+Here is a snapshot of the dispersion particles at hour 16 of 24:
+
+<img src="inst/dispersion-Simcoe-hour16.jpg" width="75%">
+
 ## Future Additions to SplitR
 
 - greater support for different types of meteorological data files
