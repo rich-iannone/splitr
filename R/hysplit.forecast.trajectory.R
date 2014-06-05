@@ -107,6 +107,9 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
   cat(path_met_files, "\n",
       file = paste(path_wd, "CONTROL", sep = ''),
       sep = '', append = TRUE)
+  
+  # Write file name for met file
+  cat(paste(today, ".t00z.namf", sep = ''), "\n",
       file = paste(path_wd, "CONTROL", sep = ''),
       sep = '', append = TRUE)
   
