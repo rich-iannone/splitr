@@ -34,9 +34,9 @@ For Windows installations, there are both [registered](http://ready.arl.noaa.gov
 
 For a Mac OS X installation, there is a [single package](http://ready.arl.noaa.gov/hyreg/HYSPLIT_applehysp.php) that has all functionality included.
 
-Take note of the paths for the HYSPLIT executables and` working directory (in the subfolders 'exec' and 'working'). You can optionally create additional subfolders for locating HYSPLIT-ready meteorological data files, or, opt to place those in the HYSPLIT working directory.
+Take note of the paths for the HYSPLIT executables and the working directory (in the subfolders 'exec' and 'working'). You can optionally create additional subfolders for locating HYSPLIT-ready meteorological data files, or, opt to place those in the HYSPLIT working directory.
 
-## Example for Running a Series of HYSPLIT Trajectory Runs
+## Example: HYSPLIT Trajectory Runs
 
 To perform a series HYSPLIT trajectory model runs, use the SplitR `hysplit.trajectory` function:
 
@@ -92,7 +92,7 @@ Here are the trajectories from those model runs:
 <img src="inst/trajectories.png" width="75%">
 
 
-## Example for Running a Series of HYSPLIT Dispersion Runs
+## Example: HYSPLIT Dispersion Runs
 
 Before performing any dispersion model runs in SplitR, you need to initialize the working directory with a SETUP.CFG file:
 
@@ -198,9 +198,9 @@ Press <ENTER> to assign a 1-hour measurement frequency
 
 The plan. Adding grid: "grid"
 ----------------------------------
-            Grid Center: 42.83752Âº, -80.30364Âº
-           Grid Spacing: 0.05Âº, 0.05Âº
-              Grid Span: 1Âº, 1Âº
+            Grid Center: 42.83752, -80.30364
+           Grid Spacing: 0.05, 0.05
+              Grid Span: 1, 1
  No. of Vertical Levels: 1
            Grid Heights: 0 m
       Start of Sampling: 2012-03-13 00:00
@@ -316,8 +316,6 @@ hysplit.dispersion(start_lat_deg = 42.83752, start_long_deg = -80.30364,
                    top_of_model_domain_m = 20000,
                    run_type = "day",
                    run_day = "2012-03-12",
-                   run_range = NULL,
-                   run_years = NULL,
                    daily_hours_to_start = "00",
                    emissions = c(1),
                    species = c(1),
@@ -328,7 +326,32 @@ hysplit.dispersion(start_lat_deg = 42.83752, start_long_deg = -80.30364,
                    path_executable = "C:\\hysplit4\\exec\\") 
 ```
 
-After this, 24 CSV files with particle position will become available in the working directory:
+This use of `hysplit.dispersion` sets up a single dispersion run that starts at 00:00 UTC on March 12, 2012. These initial times are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours_to_start = "00"`. The model run is a forward run (moving forward in time, set here using `backward_running = FALSE`) and not backwards (set with `backward_running = TRUE`). Essentially, running in forward mode means the starting location is a source of emissions; running backward means that the starting location is a receptor. This run has been set to be modelled for 24 h (`simulation_duration_h = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `start_lat_deg = 42.83752` and `start_long_deg = -80.30364`; the starting height of 5 m above ground level is set by `start_height_m_AGL = 5`. The meteorological options include the type of met data to use (1º GDAS data is used here with `met_type = "gdas1"`--there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting), the vertical motion option (here, set as `vertical_motion_option = 0` which instructs HYSPLIT to use the vertical motion available in the met data files), and, the top of the model domain (set as 20,000 meters with `top_of_model_domain_m = 20000`).
+
+Remember those presets that were added earlier? They are called up in the `emissions`, `species`, and `grids` arguments. The `c(1)` value provided for each of those corresponds to the first preset of each type of preset. If you ever need to remind yourself of which presets are currently in the system, use `dispersion.preset.list` function. Moreover, that function has an interactive mode! Just invoke it and supply just the path for the working directory:
+
+```coffee
+dispersion.preset.list(path_wd = "C:\\hysplit4\\working\\")
+
+Which preset type would you like to list?
+Choices are: (1) emissions, (2) grids, (3) species
+Press <ENTER> to exit
+<1>
+
+Here are the current presets for emissions
+------------------------------------------
+(1) test / Rate: 1 (mass units)/h / Duration: 336 h / Release: 12 03 22 00 00
+------------------------------------------
+```
+
+Back to the `hysplit.dispersion` function. Four paths require specification:
+
+- path to the meteorological data files (`path_met_files`)
+- path to the output files (`path_output_files`)
+- path to the working directory (`path_wd`)
+- path to the executable directory, specifically here to that path containing the `hyts_std` executable (`path_executable`)
+
+After executing this function (and possibly waiting awhile, since met files will need to be downloaded), 24 CSV files with particle position will become available in the working directory:
 
 - `GIS_part_[001]_ps.csv`
 
@@ -339,6 +362,14 @@ Also, there will be 24 .jpg image files with particles overlaid onto a map at ea
 A binary file containing gridded concentrations will be available in the working directory:
 
 - `grid--disp(forward)-12-03-12-00-lat_42.83752_long_-80.30364-height_5-24h`
+
+The met files that were automatically downloaded will remain in the working directory:
+
+- `gdas1.mar12.w1`
+- `gdas1.mar12.w2`
+- `gdas1.mar12.w3`
+- `gdas1.mar12.w4`
+- `gdas1.mar12.w5`
 
 Finally, a binary `PARDUMP` file will be written.
 
