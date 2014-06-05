@@ -234,7 +234,7 @@ Interactively creating an 'emissions' preset looks like this:
 
 ```coffee
 dispersion.preset.add(type = 'emissions', interactive = TRUE,
-                      path_wd = "C:\\Users\\riannone\\hysplit4\\working\\")
+                      path_wd = "C:\\hysplit4\\working\\")
 
 What is the name of the emissions source? <test>
 
