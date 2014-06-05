@@ -1,7 +1,7 @@
 SplitR
 ======
 
-SplitR is a package that's great for conducting trajectory and dispersion modelling with [NOAA HYSPLIT](http://ready.arl.noaa.gov/HYSPLIT.php).
+SplitR is an R package that's great for conducting trajectory and dispersion modelling with [NOAA HYSPLIT](http://ready.arl.noaa.gov/HYSPLIT.php).
 
 ## Installation
 
@@ -14,25 +14,23 @@ install_github('SplitR', 'rich-iannone')
 
 ## Description
 
-SplitR allows you set up and run HYSPLIT in a very fast, easy, and organized manner. You easily set up a few or, perhaps, thousands of trajectory or dispersion runs by using a single function. Because SplitR is an R interface to HYSPLIT, we can store output in data frames and take advantage of the vast selection of R packages to perform cluster analyses, generate and save plots, and more. This package simplifies the process of running HYSPLIT models by automating the downloading and storage of meteorological data files, providing a simple means to initiate a range of runs, and by providing outputs that can be easily applied to statistical analysis.
+SplitR allows you set up and run HYSPLIT in a very fast, easy, and organized manner. You can set up a few or, perhaps, thousands of trajectory or dispersion runs by using a single function. Because SplitR is an R interface to HYSPLIT, we can store output in data frames and take advantage of the vast selection of R packages to perform cluster analyses, generate and save plots, and more. This package simplifies the process of running HYSPLIT models by automating the downloading and storage of meteorological data files, providing a simple means to initiate a range of runs, and by providing outputs that can be easily applied to statistical analyses.
 
 This package is in active development but is quite usable at present. Some of its features are:
 
-- automatic downloading and installation of HYSPLIT binary executables
-- organization of modelling presets and output through the SplitR project framework
-- automated retrieval of meteorological data files
 - simple setup of trajectory and dispersion model runs (forward or backward)
+- automated retrieval of meteorological data files
+- organization of modelling presets and model output
 - numerous batching options: set up models to run continuously with multiple start times throughout a single year, several years, or a predefined time range
 - trajectory plotting and visualization of particle positions in dispersion runs
-- clustering of trajectories and plotting of clusters
 
 ## Setup
 
 Use of SplitR requires a basic installation of HYSPLIT, as obtained from the Air Resources Laboratory (ARL) of the National Oceanic and Atmospheric Administration (NOAA) [READY website](http://ready.arl.noaa.gov/HYSPLIT.php). 
 
-For Windows installations, there are both [registered](http://ready.arl.noaa.gov/hyreg/HYSPLIT_pchysplit.php) and [unregistered](http://ready.arl.noaa.gov/HYSPLIT_hytrial.php) versions of the HYSPLIT package. The only difference in functionality between the two packages is that the unregistered version cannot perform model runs with forecast meteorological data. Either of the packages comes with an installer that will place the main HYSPLIT folder (named 'hysplit') in the location of your choice. Within this main folder, there are 15 subdirectories.
+For Windows installations, there are both [registered](http://ready.arl.noaa.gov/hyreg/HYSPLIT_pchysplit.php) and [unregistered](http://ready.arl.noaa.gov/HYSPLIT_hytrial.php) versions of HYSPLIT. The only difference in functionality between the two is that the unregistered version cannot perform model runs with forecast meteorological data. SplitR has the capability to perform forecast model runs so obtain the registered version if you intend to use that functionality. Regardless of version, both come with a standard installer that will place the main HYSPLIT folder (named 'hysplit') in the location of your choice. Within this main folder, there are 15 subdirectories.
 
-For a Mac OS X installation, there is a [single package](http://ready.arl.noaa.gov/hyreg/HYSPLIT_applehysp.php) that has all functionality included.
+For a Mac OS X installation, there is a [single distribution](http://ready.arl.noaa.gov/hyreg/HYSPLIT_applehysp.php) that has all functionality included.
 
 Take note of the paths for the HYSPLIT executables and the working directory (in the subfolders 'exec' and 'working'). You can optionally create additional subfolders for locating HYSPLIT-ready meteorological data files, or, opt to place those in the HYSPLIT working directory.
 
@@ -344,7 +342,26 @@ Here are the current presets for emissions
 ------------------------------------------
 ```
 
-Back to the `hysplit.dispersion` function. Four paths require specification:
+While adding presets is generally a good thing to do, there may come a point where you would like to delete some of the presets. This can be done with the `dispersion.preset.delete` function. It can be done interactively, which is probably the safer method:
+
+```coffee
+dispersion.preset.delete(path_wd = "C:\\hysplit4\\working\\")
+
+What type of preset would you like to delete?
+Choices are: (1) emissions, (2) grids, (3) species
+Press <ENTER> for no deletion. Otherwise, enter a number or type
+<1>
+
+Here are the current presets for emissions
+------------------------------------------
+(1) test / Rate: 1 (mass units)/h / Duration: 336 h / Release: 12 03 22 00 00
+------------------------------------------
+Which preset number should be deleted?
+Press <ENTER> for no deletion. Otherwise, enter a number. 
+<1>
+```
+
+Getting back to the `hysplit.dispersion` function, four paths require specification:
 
 - path to the meteorological data files (`path_met_files`)
 - path to the output files (`path_output_files`)
