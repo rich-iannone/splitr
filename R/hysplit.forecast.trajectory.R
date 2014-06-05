@@ -118,7 +118,7 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
   # Execute the model run; the system call will be different whether
   # the platform in win or unix
   
-  if (.Platform == "unix"){
+  if (.Platform$OS.type == "unix"){
   system(paste("(cd ", path_wd, " && ", path_executable, "hyts_std)", sep = ''))
   
   # Copy files from 'Working' to current project folder
