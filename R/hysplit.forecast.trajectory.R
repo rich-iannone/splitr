@@ -125,14 +125,12 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
   system(paste("(cd ", path_wd, " && mv traj* '", path_output_files, "')", sep = ''))
   }
   
-  if (.Platform == "win"){
-#     system(paste("(cd ", path_wd, " && ", path_executable, "hyts_std)", sep = ''))
-#     
-#     # Copy files from 'Working' to current project folder
-#     system(paste("(cd ", path_wd, " && mv traj* '", path_output_files, "')", sep = ''))
+  if (.Platform$OS.type == "windows"){
+     shell(paste("(cd ", path_wd, " && ", path_executable, "hyts_std)", sep = ''))
+     
+     # Copy files from 'Working' to the output folder
+     shell(paste("(cd ", path_wd, " && move traj* '", path_output_files, "')", sep = ''))
   }
-  
-  
   
   # Close the function
 }
