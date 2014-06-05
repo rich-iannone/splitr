@@ -40,8 +40,15 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
       get.met.forecast.nam(path_met_files = path_met_files)
     }
     
-  }
-  
+    start_year_GMT <- year(Sys.Date())
+    
+    start_month_GMT <- formatC(month(Sys.Date()),
+                               width = 2, format = "d", flag = "0")
+    
+    start_day_GMT <- formatC(day(Sys.Date()),
+                             width = 2, format = "d", flag = "0")
+    
+    start_hour_GMT <- run_start_hour
   
   # Construct the output filename string for this model run
   output_filename <- paste("traj-forecast",
