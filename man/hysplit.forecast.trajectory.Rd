@@ -7,22 +7,22 @@ Conduct a HYSPLIT forecast trajectory run.
 The function executes a HYSPLIT forecast trajectory run using NAM forecast meteorological data (CONUS, 12 km, 3 hrly, pressure levels, 48 h).
 }
 \usage{
-hysplit.trajectory(start_lat_deg,
-                   start_long_deg,
-                   start_height_m_AGL,
-                   simulation_duration_h = 24,
-                   backtrajectory = FALSE,
-                   met_type = "nam",
-                   forecast_cycle = "latest",
-                   vertical_motion_option = 0,
-                   top_of_model_domain_m = 20000,
-                   run_start = NULL,
-                   daily_hours_to_start,
-                   path_met_files = "~/Documents/SplitR/Met/",
-                   path_output_files = paste(getwd(), "/", sep = ''),
-                   path_wd = "~/Documents/SplitR/Working/",
-                   path_executable = "~/Documents/SplitR/Exec/")
-                   
+hysplit.forecast.trajectory(start_lat_deg,
+                            start_long_deg,
+                            start_height_m_AGL,
+                            simulation_duration_h = 24,
+                            backtrajectory = FALSE,
+                            met_type = "nam",
+                            forecast_cycle = "latest",
+                            vertical_motion_option = 0,
+                            top_of_model_domain_m = 20000,
+                            run_start = NULL,
+                            daily_hours_to_start,
+                            path_met_files = "~/Documents/SplitR/Met/",
+                            path_output_files = paste(getwd(), "/", sep = ''),
+                            path_wd = "~/Documents/SplitR/Working/",
+                            path_executable = "~/Documents/SplitR/Exec/")
+                            
 }
 \arguments{
   \item{start_lat_deg}{
