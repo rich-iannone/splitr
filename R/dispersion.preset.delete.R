@@ -314,7 +314,6 @@ dispersion.preset.delete <- function(read = NULL,
       write.table(unlist(list.from_file), paste(path_wd, "species", sep = ''), sep = "\n",
                   quote = FALSE, row.names = FALSE, col.names = FALSE)
       
-      
       # End species deletion
     }
     
@@ -323,8 +322,3 @@ dispersion.preset.delete <- function(read = NULL,
   
   # End of function
 }
-
-
-
-
-
