@@ -41,7 +41,7 @@ dispersion.preset.delete <- function(read = NULL,
     if (read == "emissions"){
       
       # Read the 'emissions' file line by line and place into a vector object
-      from_file <- as.vector(read.table("~/Documents/SplitR/emissions", sep = "\n"))
+      from_file <- as.vector(read.table(paste(path_wd, "emissions", sep = ''), sep = "\n"))
       
       # Get the total number of preset entries available in the file
       number_of_entries <- nrow(from_file) / 6
@@ -122,7 +122,7 @@ dispersion.preset.delete <- function(read = NULL,
       
       # Rewrite the list of presets to the preset file from the modified local copy of presets
       # (containing all presets except the one that was removed)
-      write.table(unlist(list.from_file), "~/Documents/SplitR/emissions", sep = "\n",
+      write.table(unlist(list.from_file), paste(path_wd, "emissions", sep = ''), sep = "\n",
                   quote = FALSE, row.names = FALSE, col.names = FALSE)
       
       # End emissions deletion
@@ -131,7 +131,7 @@ dispersion.preset.delete <- function(read = NULL,
     if (read == "grids"){
       
       # Read the 'grids' file line by line and place into a vector object
-      from_file <- as.vector(read.table("~/Documents/SplitR/grids", sep = "\n"))
+      from_file <- as.vector(read.table(paste(path_wd, "grids", sep = ''), sep = "\n"))
       
       # Get the total number of preset entries available in the file
       number_of_entries <- nrow(from_file) / 12
@@ -217,7 +217,7 @@ dispersion.preset.delete <- function(read = NULL,
       
       # Rewrite the list of presets to the preset file from the modified local copy of presets
       # (containing all presets except the one that was removed)
-      write.table(unlist(list.from_file), "~/Documents/SplitR/grids", sep = "\n",
+      write.table(unlist(list.from_file), paste(path_wd, "grids", sep = ''), sep = "\n",
                   quote = FALSE, row.names = FALSE, col.names = FALSE)
       
       # End grids deletion
@@ -226,7 +226,7 @@ dispersion.preset.delete <- function(read = NULL,
     if (read == "species"){
       
       # Read the 'species' file line by line and place into a vector object
-      from_file <- as.vector(read.table("~/Documents/SplitR/species", sep = "\n"))
+      from_file <- as.vector(read.table(paste(path_wd, "species", sep = ''), sep = "\n"))
       
       # Get the total number of preset entries available in the file
       number_of_entries <- nrow(from_file) / 7
@@ -311,7 +311,7 @@ dispersion.preset.delete <- function(read = NULL,
       
       # Rewrite the list of presets to the preset file from the modified local copy of presets
       # (containing all presets except the one that was removed)
-      write.table(unlist(list.from_file), "~/Documents/SplitR/species", sep = "\n",
+      write.table(unlist(list.from_file), paste(path_wd, "species", sep = ''), sep = "\n",
                   quote = FALSE, row.names = FALSE, col.names = FALSE)
       
       
