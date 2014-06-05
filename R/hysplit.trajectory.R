@@ -415,7 +415,7 @@ hysplit.trajectory <- function(start_lat_deg,
     # Close the day loop
   }
   
-  # Copy files from 'Working' to current project folder
+  # Copy files from 'Working' to the output folder
   if (.Platform$OS.type == "unix"){
     system(paste("(cd ", path_wd, " && mv traj* '", path_output_files, "')", sep = ''))
   }
