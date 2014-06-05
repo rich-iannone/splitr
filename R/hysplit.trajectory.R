@@ -322,7 +322,8 @@ hysplit.trajectory <- function(start_lat_deg,
         
         # Write met file paths to 'CONTROL'
         for (i in 1:length(met)){
-          cat(path_met_files, "\n", met[i], "\n", file = paste(path_wd, "CONTROL", sep = ''),
+          cat(path_met_files, "\n", met[i], "\n",
+              file = paste(path_wd, "CONTROL", sep = ''),
               sep = '', append = TRUE)}
         
         # Write path for trajectory output files to 'CONTROL'
