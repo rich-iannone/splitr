@@ -1,7 +1,7 @@
 hysplit.forecast.trajectory <- function(start_lat_deg,
                                         start_long_deg,
                                         start_height_m_AGL,
-                                        simulation_duration_h = 24,
+                                        simulation_duration_h = 12,
                                         backtrajectory = FALSE,
                                         met_type = "nam",
                                         forecast_cycle = "latest",
