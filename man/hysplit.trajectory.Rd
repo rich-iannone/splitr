@@ -1,4 +1,4 @@
-\name{Conduct HYSPLIT Runs}
+\name{Conduct HYSPLIT Trajectory Runs}
 \alias{hysplit.trajectory}
 \title{
 Conduct a single or multiple HYSPLIT trajectory runs.
