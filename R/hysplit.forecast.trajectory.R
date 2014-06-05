@@ -38,7 +38,7 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
     if (paste(path.expand(path_met_files), paste(today, ".t00z.namf", sep = ''),
               sep = '') %in% list.files(path = gsub("/$", "", path_met_files),
                                         full.names = TRUE) == FALSE) {
-      get.met.forecast.nam(path_met_files)
+      get.met.forecast.nam(path_met_files = path_met_files)
     }
     
   }
