@@ -424,6 +424,5 @@ hysplit.trajectory <- function(start_lat_deg,
 
   }
   
-  
   # Close the function
 }
