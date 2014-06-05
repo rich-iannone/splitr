@@ -36,10 +36,6 @@ dispersion.preset.delete <- function(read = NULL,
         read <- "species"
       }
       
-      #       if (read %in% !c("emissions", "grids", "species")){
-      #         stop("Please select from \"emissions\", \"grids\", or \"species\"")
-      #       }
-      
     }
     
     if (read == "emissions"){
