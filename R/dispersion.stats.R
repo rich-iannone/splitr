@@ -1,4 +1,4 @@
-dispersion.stats <- function(dispersion_df){
+dispersion.stats <- function(dispersion_df, stats){
   
   # Get five-number stats for heights at each hour
   for (i in 1:length(unique(dispersion_df$hour))){
