@@ -28,10 +28,8 @@ dispersion.stats <- function(dispersion_df, stats){
       
     }
     
-    dispersion.height <- subset(dispersion_df, hour == hours[i])
-    stats_small_table <- as.data.frame(mat.or.vec(nr = 1, nc = 6))
-    colnames(stats_small_table) <- c("min", "lower_hinge", "median",
-                                     "upper_hinge", "max", "hour")
+    # Return the stats table containing the five number summary at every hour
+    return(stats_table)
     
     stats_small_table$min <- fivenum(dispersion.height$height, na.rm = TRUE)[1]
     stats_small_table$lower_hinge <- fivenum(dispersion.height$height, na.rm = TRUE)[2]
