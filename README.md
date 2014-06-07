@@ -7,7 +7,7 @@ SplitR is an R package that's great for conducting trajectory and dispersion mod
 
 Easy installation of SplitR from GitHub is entirely possible with the `devtools` package:
 
-```coffee
+```R
 require(devtools)
 install_github('SplitR', 'rich-iannone')
 ```
@@ -38,7 +38,7 @@ Take note of the paths for the HYSPLIT executables and the working directory (in
 
 To perform a series HYSPLIT trajectory model runs, use the SplitR `hysplit.trajectory` function:
 
-```coffee
+```R
 hysplit.trajectory(start_lat_deg = 42.83752, start_long_deg = -80.30364,
                    start_height_m_AGL = 5, simulation_duration_h = 24,
                    backtrajectory = FALSE,
@@ -73,7 +73,7 @@ After this, four files should be generated and residing in the 'working' folder:
 
 A data frame can be generated from these output files using the SplitR `trajectory.read` function:
 
-```coffee
+```R
 trajectory.df <- trajectory.read(path_output_files = "C:\\hysplit4\\working\\",
                                  year = NULL,
                                  start_height_m_AGL = NULL)
@@ -81,7 +81,7 @@ trajectory.df <- trajectory.read(path_output_files = "C:\\hysplit4\\working\\",
 
 With this data frame, statistical analyses for the trajectories can be generated (e.g., average heights of trajectories after specified time periods, etc.). Furthermore, the `trajectory.df` data frame is fully compatible with the excellent 'openair' package that is available on CRAN. Plotting of the trajectory output data frame requires use of openair's `trajPlot` function:
 
-```coffee
+```R
 trajPlot(trajectory.df, map.fill = FALSE)
 ```
 
@@ -94,13 +94,13 @@ Here are the trajectories from those model runs:
 
 Before performing any dispersion model runs in SplitR, you need to initialize the working directory with a SETUP.CFG file:
 
-```coffee
+```R
 hysplit.dispersion.config(path_wd = "C:\\hysplit4\\working\\")
 ```
 
 Presets for 'species', 'grids', and 'emissions' then need to be set. All additions of presets are made with the use of the `dispersion.preset.add`. That function can be run interactively with `interactive = TRUE` and remembering to set the `type` argumemnt as either `type = "species"`, `type = "grids"`, or `type = "emissions"`. Here is an example of an interactive session for creating a 'species' preset is given below.
 
-```coffee
+```R
 dispersion.preset.add(type = "species", interactive = TRUE,
                       path_wd = "C:\\hysplit4\\working\\")
 
@@ -123,7 +123,7 @@ This is what will be set. Okay? [y/n]: <y>
 
 Also, the function can be used to create a 'species' preset non-interactively:
 
-```coffee
+```R
 dispersion.preset.add(type = "species", interactive = FALSE,
                       species_name = "test",
                       particle_pdiam = 0,
@@ -144,7 +144,7 @@ dispersion.preset.add(type = "species", interactive = FALSE,
 
 Interactively creating a 'grids' preset looks like this:
 
-```coffee
+```R
 dispersion.preset.add(type = 'grids', interactive = TRUE,
                       path_wd = "C:\\hysplit4\\working\\")
 
@@ -212,7 +212,7 @@ This is what will be set. Okay? [y/n]:
 
 Also, the 'grids' preset be set non-interactively like this:
 
-```coffee
+```R
 dispersion.preset.add(type = 'grids', interactive = FALSE,
                        grid_name = "grid",
                        grid_center = "42.83752 -80.30364",
@@ -230,7 +230,7 @@ dispersion.preset.add(type = 'grids', interactive = FALSE,
 
 Interactively creating an 'emissions' preset looks like this:
 
-```coffee
+```R
 dispersion.preset.add(type = 'emissions', interactive = TRUE,
                       path_wd = "C:\\hysplit4\\working\\")
 
@@ -263,7 +263,7 @@ This is what will be set. Okay? [y/n]:
 
 For the non-interactive creation of an 'emissions' preset:
 
-```coffee
+```R
 dispersion.preset.add(type = 'emissions', interactive = FALSE,
                       emissions_name = "test",
                       emissions_rate = 35,
@@ -274,7 +274,7 @@ dispersion.preset.add(type = 'emissions', interactive = FALSE,
 
 Once the presets have been created, they can be read using the `dispersion.preset.list` function by specifying the type of present (using the read argument) and providing the path of the working directory. For the 'species' presets:
 
-```coffee
+```R
 # List the dispersion 'species' presets
 dispersion.preset.list(read = 'species',
                        path_wd = "C:\\hysplit4\\working\\")
@@ -305,7 +305,7 @@ Adding more presets of any type will simply add items to each list provided by t
 
 To perform a series HYSPLIT dispersion model runs, use the SplitR `hysplit.dispersion` function:
 
-```coffee
+```R
 hysplit.dispersion(start_lat_deg = 42.83752, start_long_deg = -80.30364,
                    start_height_m_AGL = 5, simulation_duration_h = 24,
                    backward_running = FALSE,
@@ -328,7 +328,7 @@ This use of `hysplit.dispersion` sets up a single dispersion run that starts at 
 
 Remember those presets that were added earlier? They are called up in the `emissions`, `species`, and `grids` arguments. The `c(1)` value provided for each of those corresponds to the first preset of each type of preset. If you ever need to remind yourself of which presets are currently in the system, use `dispersion.preset.list` function. Moreover, that function has an interactive mode! Just invoke it and supply just the path for the working directory:
 
-```coffee
+```R
 dispersion.preset.list(path_wd = "C:\\hysplit4\\working\\")
 
 Which preset type would you like to list?
@@ -344,7 +344,7 @@ Here are the current presets for emissions
 
 While adding presets is generally a good thing to do, there may come a point where you would like to delete some of the presets. This can be done with the `dispersion.preset.delete` function. It can be done interactively, which is probably the safer method:
 
-```coffee
+```R
 dispersion.preset.delete(path_wd = "C:\\hysplit4\\working\\")
 
 What type of preset would you like to delete?
