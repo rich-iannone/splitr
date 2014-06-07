@@ -31,12 +31,56 @@ dispersion.stats <- function(dispersion_df, stats){
     # Return the stats table containing the five number summary at every hour
     return(stats_table)
     
-    
-    stats_table <- rbind(stats_table, stats_small_table)
-    
   }
   
-  # Return the stats table containing the five number summary at every hour
-  return(stats_table)
+  
+  if ("through_region" %in% stats){
+    
+    # Get the number of particles located in a polygon at each hour
+    lat_lower <- 48.00
+    lat_upper <- 52.00
+    
+    lon_lower <- -122.2768
+    lon_upper <- -120.00
+    
+    height_lower <- 10
+    height_upper <- 5000
+    
+    
+    for (i in 1:length(unique(dispersion_df$hour))){
+      
+      if (i == 1){
+        hours <- sort(unique(dispersion_df$hour))
+        stats_table <- as.data.frame(mat.or.vec(nr = 0, nc = 4))
+        colnames(stats_table) <- c("total_no_particles", "no_particles_in_region",
+                                   "pct_particles_in_region", "hour")
+      }
+      
+      dispersion.hour <- subset(dispersion_df, hour == hours[i])
+      
+      dispersion.hour.within <- subset(dispersion.hour, lon >= lon_lower)
+      dispersion.hour.within <- subset(dispersion.hour.within, lon <= lon_upper)
+      dispersion.hour.within <- subset(dispersion.hour.within, lat >= lat_lower)
+      dispersion.hour.within <- subset(dispersion.hour.within, lat <= lat_upper)
+      dispersion.hour.within <- subset(dispersion.hour.within, height >= height_lower)
+      dispersion.hour.within <- subset(dispersion.hour.within, height <= height_upper)
+      
+      stats_small_table <- as.data.frame(mat.or.vec(nr = 1, nc = 4))
+      colnames(stats_small_table) <- c("total_no_particles", "no_particles_in_region",
+                                       "pct_particles_in_region", "hour")
+      
+      stats_small_table$total_no_particles <- nrow(dispersion.hour)
+      stats_small_table$no_particles_in_region <- nrow(dispersion.hour.within)
+      stats_small_table$pct_particles_in_region <-
+        round(((nrow(dispersion.hour.within) / nrow(dispersion.hour)) * 100), digits = 2)
+      stats_small_table$hour <- i
+      
+      stats_table <- rbind(stats_table, stats_small_table)
+    }
+    
+    # Return the stats table containing the particles within region at every hour
+    return(stats_table)
+    
+  }
   
 }
