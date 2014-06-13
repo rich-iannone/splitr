@@ -218,6 +218,10 @@ hysplit.dispersion <- function(start_lat_deg,
       # data files for Feb in leap years)
       if(exists("met")) met <- met[!met %in% c(0)]
       
+      # Are the met files available on the selected path?
+      met.file.df <- setNames(data.frame(mat.or.vec(nr = length(met), nc = 2)),
+                              nm = c("file","available"))
+      
       
       # Construct the output filename string for this model run
       output_filename <- paste("--disp",
