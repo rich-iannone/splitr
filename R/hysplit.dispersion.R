@@ -222,6 +222,34 @@ hysplit.dispersion <- function(start_lat_deg,
       met.file.df <- setNames(data.frame(mat.or.vec(nr = length(met), nc = 2)),
                               nm = c("file","available"))
       
+      if (.Platform$OS.type == "unix"){
+        
+        for (k in 1:length(met)) {
+          met.file.df[k, 1] <- met[k]
+          met.file.df[k, 2] <- as.character(file.exists(paste(path_met_files, met[k], sep = '')))}
+        
+        # Write the met file availability to file
+        write.table(met.file.df, file = paste(path_wd, "met_file_list", sep = ''),
+                    sep = ",", row.names = FALSE, col.names = FALSE, quote = FALSE,
+                    append = FALSE)
+        
+        # Download the missing met files
+        if (FALSE %in% met.file.df[,2]){
+          
+          files_to_get <- subset(met.file.df, available == FALSE)[,1]
+          
+          if (met_type == "reanalysis"){
+            get.met.reanalysis(files = files_to_get, path_met_files = path_met_files)
+          }
+          
+          if (met_type == "gdas1"){
+            get.met.gdas1(files = files_to_get, path_met_files = path_met_files)
+          }
+          
+        }
+        
+      }
+      
       
       # Construct the output filename string for this model run
       output_filename <- paste("--disp",
