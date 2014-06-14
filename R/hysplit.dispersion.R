@@ -14,10 +14,10 @@ hysplit.dispersion <- function(start_lat_deg,
                                emissions = c(1),
                                species = c(1),
                                grids = c(1),
-                               path_met_files = "~/Documents/SplitR/Met/",
-                               path_output_files = paste(getwd(), "/", sep = ''),
-                               path_wd = "~/Documents/SplitR/Working/",
-                               path_executable = "~/Documents/SplitR/Exec/"){ 
+                               path_met_files,
+                               path_output_files,
+                               path_wd,
+                               path_executable){ 
   
   # Add require statements
   require(lubridate)
