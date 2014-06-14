@@ -78,11 +78,9 @@ trajectory.read <- function(path_output_files,
     # Close the trajectory file loop  
   }
   
-  # Return the traj.df object
   return(traj.df)
-  
-  # Close the function
+
 }
 
-
+}
 
