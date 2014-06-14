@@ -83,3 +83,6 @@ trajectory.read <- function(path_output_files,
   
   # Close the function
 }
+
+
+
