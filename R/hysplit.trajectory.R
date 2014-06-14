@@ -11,10 +11,10 @@ hysplit.trajectory <- function(start_lat_deg,
                                run_range = NULL,
                                run_years = NULL,
                                daily_hours_to_start,
-                               path_met_files = "~/Documents/SplitR/Met/",
-                               path_output_files = paste(getwd(), "/", sep = ''),
-                               path_wd = "~/Documents/SplitR/Working/",
-                               path_executable = "~/Documents/SplitR/Exec/") {
+                               path_met_files,
+                               path_output_files,
+                               path_wd,
+                               path_executable) {
   
   # Add require statements
   require(lubridate)
