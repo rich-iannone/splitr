@@ -1,3 +1,12 @@
+#' Read HYSPLIT dispersion output files
+#'
+#' @param path_output_files 
+#' @export dispersion.read
+#' @examples
+#' # Process all dispersion output files in the specified output directory
+#' dispersion.df <- dispersion.read(path_output_files =
+#'                                  "~/hysplit/trajectory")
+
 dispersion.read <- function(path_output_files){  
   
   # Generate the file list
