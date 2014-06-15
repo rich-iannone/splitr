@@ -8,10 +8,11 @@ hysplit.forecast.trajectory <- function(start_lat_deg,
                                         vertical_motion_option = 0,
                                         top_of_model_domain_m = 20000,
                                         run_start,
-                                        path_met_files = "~/Documents/SplitR/Met/",
-                                        path_output_files = paste(getwd(), "/", sep = ''),
-                                        path_wd = "~/Documents/SplitR/Working/",
-                                        path_executable = "~/Documents/SplitR/Exec/") {
+                                        path_met_files,
+                                        path_output_files,
+                                        path_wd,
+                                        path_executable) {
+  
   
   # Define package requirements
   require(lubridate)
