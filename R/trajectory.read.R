@@ -98,8 +98,5 @@ trajectory.read <- function(path_output_files,
   }
   
   return(traj.df)
-
+  
 }
-
-}
-
