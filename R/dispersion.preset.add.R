@@ -1,3 +1,57 @@
+#' Add dispersion preset information
+#'
+#' @param type 
+#' @param interactive 
+#' @param species_name 
+#' @param particle_pdiam 
+#' @param particle_density 
+#' @param particle_shape_factor 
+#' @param ddep_velocity 
+#' @param ddep_MW 
+#' @param ddep_A_ratio 
+#' @param ddep_D_ratio 
+#' @param ddep_Henrys_Law_coeff 
+#' @param wdep_Henrys_Law_coeff 
+#' @param wdep_in_cloud_dep 
+#' @param wdep_below_cloud_dep 
+#' @param rad_decay 
+#' @param pollutant_resuspension_factor 
+#' @param emissions_name 
+#' @param emissions_rate 
+#' @param emissions_duration 
+#' @param emissions_start_time 
+#' @param grid_name 
+#' @param grid_center 
+#' @param grid_spacing 
+#' @param grid_span 
+#' @param grid_folder 
+#' @param grid_filename 
+#' @param grid_number_vertical 
+#' @param grid_heights 
+#' @param grid_start_time 
+#' @param grid_end_time 
+#' @param sampling_interval_type_rate 
+#' @param path_wd 
+#' @export dispersion.preset.add
+#' @examples
+#' # Interactively add a preset for a 'emissions' input
+#' dispersion.preset.add("emissions")
+#' 
+#' # Add a default preset for a 'species' input
+#' dispersion.preset.add("species", interactive = FALSE,
+#'                       species_name = 'default')
+#' 
+#' # Add a preset for a 'grids' input
+#' dispersion.preset.add("grids", interactive = FALSE,
+#'                       grid_name = "MainGrid",
+#'                       grid_center = "36.5 -122.4",
+#'                       grid_spacing = "0.05 0.05", 
+#'                       grid_span = "20 20",
+#'                       grid_number_vertical = 5,
+#'                       grid_heights = "0 200 400 800 1200",
+#'                       grid_start_time = "12 02 01 12 00", 
+#'                       grid_end_time = "12 02 08 12 00")
+
 dispersion.preset.add <- function(type, interactive = TRUE,
                                   species_name = NULL,
                                   particle_pdiam = NULL,
