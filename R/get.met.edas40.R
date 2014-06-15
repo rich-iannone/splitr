@@ -1,3 +1,14 @@
+#' Get EDAS40 meteorology data files
+#'
+#' @param files 
+#' @param years 
+#' @param months 
+#' @param path_met_files  
+#' @export get.met.edas40
+#' @examples
+#' # Download a year of EDAS40 data files
+#' get.met.edas40(years = 2012)
+
 get.met.edas40 <- function(files = NULL,
                            years = NULL,
                            months = NULL,
