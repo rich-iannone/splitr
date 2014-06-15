@@ -421,7 +421,7 @@ hysplit.trajectory <- function(start_lat_deg,
   }
   
   if (.Platform$OS.type == "windows"){
-
+    
   }
   
   # Close the function
