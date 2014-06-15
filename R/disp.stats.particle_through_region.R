@@ -3,7 +3,8 @@ disp.stats.particle_through_region <- function(dispersion_df,
                                                lat,
                                                lon,
                                                heights){
-    
+
+  
   if ("frequencies" %in% stats){
     
     # Validate that the 'lat', 'lon', and 'heights' objects exist
