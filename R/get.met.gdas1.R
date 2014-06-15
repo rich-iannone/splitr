@@ -1,3 +1,11 @@
+#' Get GDAS1 meteorology data files
+#'
+#' @param files 
+#' @param years 
+#' @param months 
+#' @param path_met_files 
+#' @export get.met.gdas1
+
 get.met.gdas1 <- function(files = NULL,
                           years = NULL,
                           months = NULL,
