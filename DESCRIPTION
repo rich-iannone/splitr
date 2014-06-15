@@ -1,8 +1,8 @@
 Package: SplitR
 Type: Package
 Title: Use the HYSPLIT model inside R and do more with it
-Version: 0.18
-Date: 2014-06-01
+Version: 0.19
+Date: 2014-06-15
 Author: Richard Iannone <riannone@me.com>
 Maintainer: Richard Iannone <riannone@me.com>
 Description: These functions make running HYSPLIT an uncomplicated affair.
