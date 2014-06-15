@@ -1,3 +1,16 @@
+#' Get list of presets
+#'
+#' @param read the type of preset to get. The three preset types are "emissions", "grids", and "species". Only a single type can be specified.
+#' @param search a search term corresponding to the name of a preset of the type provided within the argument 'read'. If an exact match is found (case-sensitive), then the number corresponding to the matched preset is provided.
+#' @param path_wd 
+#' @export dispersion.preset.list
+#' @examples
+#' # Get a list of 'species' presets
+#' dispersion.preset.list(read = "species")
+#' 
+#' # Find the number for the 'emissions' preset named 'E134'
+#' dispersion.preset.list(read = "emissions", search = "E134")
+
 dispersion.preset.list <- function(read = NULL, search = NULL,
                                    path_wd = "~/Documents/SplitR/Working/"){
   
