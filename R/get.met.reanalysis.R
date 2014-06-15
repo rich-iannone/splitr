@@ -1,3 +1,10 @@
+#' Get reanalysis meteorology data files
+#'
+#' @param files 
+#' @param years 
+#' @param path_met_files 
+#' @export get.met.reanalysis
+
 get.met.reanalysis <- function(files = NULL,
                                years = NULL,
                                path_met_files = "~/Documents/SplitR/Met/"){ 
