@@ -1,3 +1,20 @@
+#' Remove dispersion preset information
+#'
+#' @param read 
+#' @param numbers 
+#' @param interactive 
+#' @param path_wd 
+#' @export dispersion.preset.delete
+#' @examples
+#' # Delete an 'emissions' preset
+#' dispersion.preset.delete("emissions")
+#' 
+#' # Delete a 'grids' preset
+#' dispersion.preset.delete("grids")
+#' 
+#' # Delete a 'species' preset
+#' dispersion.preset.delete("species")
+
 dispersion.preset.delete <- function(read = NULL,
                                      numbers = NULL,
                                      interactive = TRUE,
