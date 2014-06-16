@@ -39,6 +39,6 @@ hysplit.forecast.trajectory(start_lat_deg, start_long_deg, start_height_m_AGL,
 \item{path_executable}{the full path and name of the HYSPLIT executable file for trajectory runs must be provided. By default, the location '~/Documents/SplitR/Exec' is chosen.}
 }
 \description{
-Conduct HYSPLIT forecast trajectory runs
+The function executes a HYSPLIT forecast trajectory run using NAM forecast meteorological data (CONUS, 12 km, 3 hrly, pressure levels, 48 h).
 }
 
