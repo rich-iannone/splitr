@@ -11,7 +11,7 @@ disp.stats.particle_heights(dispersion_df, stats)
 \item{stats}{the type of statistical analysis to perform. Currently, "fivenum" is available.}
 }
 \description{
-Get statistics for dispersed particle heights
+This function computes statistics focussed on the heights of particles at every time interval.
 }
 \examples{
 # Get a five-number statistical summary of particle heights at every hour
