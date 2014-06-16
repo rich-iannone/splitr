@@ -84,7 +84,7 @@ dispersion.preset.add(type, interactive = TRUE, species_name = NULL,
 \item{path_wd}{}
 }
 \description{
-Add dispersion preset information
+The function allows for the setting of presets specific to dispersion runs. Presets are effectively blocks of parameters that are stored on the disk. Having presets is useful because these groups of parameters can be called in different dispersion runs (and across projects) without having to specify dozens of parameters with every type of run. Furthermore, dispersion runs can utilize multiple presets of each type simply by calling the identifier for each preset (e.g., multiple predefined emissions locations can be added to a run or series of runs with a numeric vector). The presets are divided into three groups: 'emissions', 'grids', and 'species'. Each preset has a plaintext file that resides on disk of the same name (located in the SplitR folder). For removing presets from the associated files, the interactive function 'dispersion.preset.delete' can be used.
 }
 \examples{
 # Interactively add a preset for a 'emissions' input
