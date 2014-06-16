@@ -1,5 +1,5 @@
 #' Conduct HYSPLIT forecast trajectory runs
-#'
+#' @description The function executes a HYSPLIT forecast trajectory run using NAM forecast meteorological data (CONUS, 12 km, 3 hrly, pressure levels, 48 h).
 #' @param start_lat_deg the starting latitude (in decimal degrees) for the model run(s)
 #' @param start_long_deg the starting longitude (in decimal degrees) for the model run(s)
 #' @param start_height_m_AGL the starting height (in meters above ground level) for the model run(s)
