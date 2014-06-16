@@ -14,6 +14,6 @@ get.met.reanalysis(files = NULL, years = NULL,
 \item{path_met_files}{}
 }
 \description{
-Get reanalysis meteorology data files
+This function downloads reanalysis meteorology data files from the NOAA FTP server and saves them to a specified folder. Files can be downloaded either by specifying a list of filenames (in the form of "RP[YYYY][MM].gbl") or through bulk download of a year of files.
 }
 
