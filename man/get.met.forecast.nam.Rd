@@ -9,6 +9,6 @@ get.met.forecast.nam(path_met_files = "~/Documents/SplitR/Met/")
 \item{path_met_files}{}
 }
 \description{
-Read NAM meteorological forecast data files
+This function downloads NAM meteorology forecast data files from the NOAA FTP server and saves them to a specified folder.
 }
 
