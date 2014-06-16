@@ -1,5 +1,5 @@
 #' Read NAM meteorological forecast data files
-#'
+#' @description This function downloads NAM meteorology forecast data files from the NOAA FTP server and saves them to a specified folder.
 #' @param path_met_files 
 #' @export get.met.forecast.nam
 
