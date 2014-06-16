@@ -8,12 +8,15 @@ dispersion.read(path_output_files)
 \arguments{
 \item{path_output_files}{}
 }
+\value{
+data frame with hourly particle positions
+}
 \description{
-Read HYSPLIT dispersion output files
+The function takes HYSPLIT dispersion output files in a specified output directory and processes all files into a data frame object.
 }
 \examples{
 # Process all dispersion output files in the specified output directory
 dispersion.df <- dispersion.read(path_output_files =
-                                 "~/hysplit/trajectory")
+                                 "~/hysplit/dispersion/")
 }
 
