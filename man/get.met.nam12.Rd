@@ -16,6 +16,6 @@ get.met.nam12(files = NULL, years = NULL, months = NULL,
 \item{path_met_files}{}
 }
 \description{
-Get NAM12 meteorology data files
+This function downloads NAM12 meteorology data files from the NOAA FTP server and saves them to a specified folder. Files can be downloaded either by specifying a list of filenames (in the form of "RP[YYYY][MM].gbl") or through bulk download of a year of files.
 }
 
