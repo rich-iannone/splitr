@@ -1,6 +1,7 @@
 #' Read HYSPLIT dispersion output files
 #' @description The function takes HYSPLIT dispersion output files in a specified output directory and processes all files into a data frame object.
 #' @param path_output_files 
+#' @return data frame with hourly particle positions
 #' @export dispersion.read
 #' @examples
 #' # Process all dispersion output files in the specified output directory
