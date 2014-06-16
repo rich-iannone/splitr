@@ -1,6 +1,6 @@
 #' Create config file for dispersion runs
-#'
-#' @param path_wd 
+#' @description This function creates a default SETUP.CFG configuration file and places it in the user-specified 'working' folder. This file must be located in the working directory before any HYSPLIT dispersion models can be run.
+#' @param path_wd
 #' @export hysplit.dispersion.config
 #' @examples
 #' # Create a default SETUP.CFG file for dispersion runs
