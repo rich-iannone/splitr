@@ -17,7 +17,7 @@ disp.stats.particle_through_region(dispersion_df, stats, lat, lon, heights)
 \item{heights}{a numeric vector containing height bounds}
 }
 \description{
-Get statistics for dispersed particles travelling through a specified region
+This function computes statistics focussed on particles travelling through a specified volume of air.
 }
 \examples{
 # Get a statistical summary of particles available in region every hour
