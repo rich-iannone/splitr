@@ -6,7 +6,7 @@
 #' @examples
 #' # Process all dispersion output files in the specified output directory
 #' dispersion.df <- dispersion.read(path_output_files =
-#'                                  "~/hysplit/trajectory")
+#'                                  "~/hysplit/dispersion/")
 
 dispersion.read <- function(path_output_files){  
   
