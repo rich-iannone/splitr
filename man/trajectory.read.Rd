@@ -16,7 +16,7 @@ trajectory.read(path_output_files, year = NULL, start_height_m_AGL = NULL)
 data frame with several wind trajectory parameters
 }
 \description{
-Read HYSPLIT trajectory output files
+The function takes HYSPLIT trajectory output files in a specified output directory and processes all files into a data frame object.
 }
 \examples{
 # Process all trajectory output files in the specified output directory
