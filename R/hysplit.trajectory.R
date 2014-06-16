@@ -1,5 +1,5 @@
 #' Conduct HYSPLIT trajectory runs
-#'
+#' @description The function executes single/multiple forward or backward HYSPLIT trajectory runs using specified meteorological datasets.
 #' @param start_lat_deg the starting latitude (in decimal degrees) for the model run(s)
 #' @param start_long_deg the starting longitude (in decimal degrees) for the model run(s)
 #' @param start_height_m_AGL the starting height (in meters above ground level) for the model run(s)
