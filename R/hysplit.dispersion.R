@@ -7,8 +7,8 @@
 #' @param backward_running an option to select whether the dispersion runs should be running forward in time (the default) or in a backward running state.
 #' @param met_type an option to select meteorological data files. The options are "gdas1" (Global Data Assimilation System 1-degree resolution data) and 'reanalysis' (NCAR/NCEP global reanalysis data).
 #' @param vertical_motion_option a numbered option to select the method used to simulation vertical motion. The methods are: (0) input model data, (1) isobaric, (2) isentropic, (3) constant density, (4) isosigma, (5) from divergence, (6) remap MSL to AGL, (7) average data, and (8) damped magnitude.
-#' @param top_of_model_domain_m 
-#' @param run_type 
+#' @param top_of_model_domain_m the upper limit of the model domain in meters.
+#' @param run_type used to select whether models should be run for a single day ("day"), for one or more years ("years"), or within a specified date range ("range").
 #' @param run_day used when 'run_type' of 'day' is selected. The date format should be provided here as "YYYY-MM-DD".
 #' @param run_range used when 'run_type' of 'range' is selected. The date format should be provided here as "c("YYYY-MM-DD", "YYYY-MM-DD")".
 #' @param run_years used when 'run_type' of 'years' is selected. The format should either be a single year ("YYYY") or a range of years ("YYYY-YYYY").
