@@ -25,6 +25,8 @@ hysplit.trajectory(start_lat_deg, start_long_deg, start_height_m_AGL,
 
 \item{vertical_motion_option}{a numbered option to select the method used to simulation vertical motion. The methods are: (0) input model data, (1) isobaric, (2) isentropic, (3) constant density, (4) isosigma, (5) from divergence, (6) remap MSL to AGL, (7) average data, and (8) damped magnitude.}
 
+\item{top_of_model_domain_m}{upper limit of the model domain in meters.}
+
 \item{run_type}{used to select whether models should be run for a single day ("day"), for one or more years ("years"), or within a specified date range ("range").}
 
 \item{run_day}{used when 'run_type' of 'day' is selected. The date format should be provided here as "YYYY-MM-DD".}
@@ -44,7 +46,7 @@ hysplit.trajectory(start_lat_deg, start_long_deg, start_height_m_AGL,
 \item{path_executable}{the full path and name of the HYSPLIT executable file for trajectory runs must be provided. By default, the location '~/Documents/SplitR/Exec' is chosen.}
 }
 \description{
-Conduct HYSPLIT trajectory runs
+The function executes single/multiple forward or backward HYSPLIT trajectory runs using specified meteorological datasets.
 }
 \examples{
 # test run type of 'years' with forward trajectory using NCEP/NCAR reanalaysis data
