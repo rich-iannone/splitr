@@ -3,7 +3,7 @@
 \alias{get.met.forecast.nam}
 \title{Read NAM meteorological forecast data files}
 \usage{
-get.met.forecast.nam(path_met_files = "~/Documents/SplitR/Met/")
+get.met.forecast.nam(path_met_files)
 }
 \arguments{
 \item{path_met_files}{}
