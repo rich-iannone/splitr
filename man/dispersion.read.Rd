@@ -6,7 +6,7 @@
 dispersion.read(path_output_files)
 }
 \arguments{
-\item{path_output_files}{}
+\item{path_output_files}{the absolute path of the dispersion output files is to be provided.}
 }
 \value{
 data frame with hourly particle positions
