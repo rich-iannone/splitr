@@ -308,8 +308,8 @@ hysplit.trajectory <- function(traj_name = NULL,
                                start_month_GMT, "-",
                                start_day_GMT, "-",
                                start_hour_GMT, "-",
-                               "lat_", start_lat_deg, "_",
-                               "long_",start_long_deg, "-",
+                               "lat_", gsub(".", "-", start_lat_deg), "_",
+                               "long_", gsub(".", "-", start_long_deg), "-",
                                "height_",start_height_m_AGL, "-",
                                simulation_duration_h, "h", sep = '')
       
