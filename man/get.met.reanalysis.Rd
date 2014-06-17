@@ -3,15 +3,14 @@
 \alias{get.met.reanalysis}
 \title{Get reanalysis meteorology data files}
 \usage{
-get.met.reanalysis(files = NULL, years = NULL,
-  path_met_files = "~/Documents/SplitR/Met/")
+get.met.reanalysis(files = NULL, years = NULL, path_met_files)
 }
 \arguments{
-\item{files}{}
+\item{files}{a vector list of exact filenames for the reanalysis files.}
 
-\item{years}{}
+\item{years}{a vector list of years for which reanalysis files are to be obtained via FTP.}
 
-\item{path_met_files}{}
+\item{path_met_files}{a full path should be provided for the location of the meteorological data files; downloaded files will be saved in this location.}
 }
 \description{
 This function downloads reanalysis meteorology data files from the NOAA FTP server and saves them to a specified folder. Files can be downloaded either by specifying a list of filenames (in the form of "RP[YYYY][MM].gbl") or through bulk download of a year of files.
