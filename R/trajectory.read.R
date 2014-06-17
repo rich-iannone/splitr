@@ -38,6 +38,8 @@ trajectory.read <- function(archive,
                 gsub("^.*/(.*)$", "\\1", archive), sep = ''))
   }
   
+  trajectory_file_list <- list.files(trajectory_file_dir)
+  
   if (is.null(year) & is.null(start_height_m_AGL)) {
     trajectory_file_list <- list.files(path = path_output_files,
                                        pattern = "^traj.*")
