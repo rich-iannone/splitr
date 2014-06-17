@@ -41,8 +41,6 @@ trajectory.read <- function(archive_folder,
 
   }
   
-  
-  
   # Optionally filter list of files by using 'year' or 'start_height_m_AGL' arguments,
   # or both
   if (is.null(year) & is.null(start_height_m_AGL)) {
@@ -82,9 +80,18 @@ trajectory.read <- function(archive_folder,
     # For each trajectory file, read each line and determine where the variable-length
     # header ends
     column.widths <- c(92)
-    traj_temp <- read.fwf(paste("file://", path.expand(trajectory_file_dir), "/",
-                                trajectory_file_list[i], sep = ''),
-                          widths = column.widths)
+    
+    if (.Platform$OS.type == "unix"){
+      traj_temp <- read.fwf(paste("file://", path.expand(trajectory_file_dir), "/",
+                                  trajectory_file_list[i], sep = ''),
+                            widths = column.widths)
+    }
+    
+    if (.Platform$OS.type == "windows"){
+      traj_temp <- read.fwf(paste("file://", path.expand(archive_folder), "/",
+                                  trajectory_file_list[i], sep = ''),
+                            widths = column.widths)
+    }
     
     for (j in 1:nrow(traj_temp)) {
       if(length(grep("PRESSURE", traj_temp[j,1])) != 0) skip_up_to_line <- j
@@ -93,10 +100,20 @@ trajectory.read <- function(archive_folder,
     column.widths <- c(6, 6, 6, 6, 6, 6, 6, 6,
                        8, 9, 9, 9, 9)
     
-    traj <- read.fwf(paste("file://", path.expand(trajectory_file_dir), "/",
-                           trajectory_file_list[i], sep = ''),
-                     skip = skip_up_to_line,
-                     widths = column.widths)
+    if (.Platform$OS.type == "unix"){
+      traj <- read.fwf(paste("file://", path.expand(trajectory_file_dir), "/",
+                             trajectory_file_list[i], sep = ''),
+                       skip = skip_up_to_line,
+                       widths = column.widths)
+    }
+    
+    if (.Platform$OS.type == "windows"){
+      traj <- read.fwf(paste("file://", path.expand(archive_folder), "/",
+                             trajectory_file_list[i], sep = ''),
+                       skip = skip_up_to_line,
+                       widths = column.widths)
+    }
+    
     names(traj) <- c("first", "receptor", "year", "month", "day", "hour", "zero1", "zero2", 
                      "hour.inc", "lat", "lon", "height", "pressure")
     traj$first <- NULL
