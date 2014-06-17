@@ -460,9 +460,6 @@ hysplit.trajectory <- function(traj_name = NULL,
     filename <- paste(traj_name, "--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
   }
   
-  if (.Platform$OS.type == "windows"){
-    
-  }
   
   # Close the function
 }
