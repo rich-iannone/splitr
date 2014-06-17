@@ -11,6 +11,8 @@ hysplit.trajectory(traj_name = NULL, start_lat_deg, start_long_deg,
   path_executable)
 }
 \arguments{
+\item{traj_name}{an optional, descriptive name for the output file collection}
+
 \item{start_lat_deg}{the starting latitude (in decimal degrees) for the model run(s)}
 
 \item{start_long_deg}{the starting longitude (in decimal degrees) for the model run(s)}
@@ -50,7 +52,8 @@ The function executes single/multiple forward or backward HYSPLIT trajectory run
 }
 \examples{
 # test run type of 'years' with forward trajectory using NCEP/NCAR reanalaysis data
-hysplit.trajectory(start_lat_deg = 50.108,
+hysplit.trajectory(traj_name = "second",
+                   start_lat_deg = 50.108,
                    start_long_deg = -122.942,
                    start_height_m_AGL = 200.0,
                    simulation_duration_h = 96,
