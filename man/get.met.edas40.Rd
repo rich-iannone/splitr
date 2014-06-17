@@ -3,8 +3,7 @@
 \alias{get.met.edas40}
 \title{Get EDAS40 meteorology data files}
 \usage{
-get.met.edas40(files = NULL, years = NULL, months = NULL,
-  path_met_files = "~/Documents/SplitR/Met/")
+get.met.edas40(files = NULL, years = NULL, months = NULL, path_met_files)
 }
 \arguments{
 \item{files}{}
