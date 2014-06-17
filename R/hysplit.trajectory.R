@@ -36,7 +36,8 @@
 #'                    path_wd = "~/HYSPLIT4/working/",
 #'                    path_executable = "~/HYSPLIT4/exec/hyts_std")
 
-hysplit.trajectory <- function(start_lat_deg,
+hysplit.trajectory <- function(traj_name = NULL,
+                               start_lat_deg,
                                start_long_deg,
                                start_height_m_AGL,
                                simulation_duration_h = 24,
