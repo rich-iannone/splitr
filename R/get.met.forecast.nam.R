@@ -3,7 +3,7 @@
 #' @param path_met_files 
 #' @export get.met.forecast.nam
 
-get.met.forecast.nam <- function(path_met_files = "~/Documents/SplitR/Met/"){
+get.met.forecast.nam <- function(path_met_files){
   
   # Add require statements
   require(RCurl) 
