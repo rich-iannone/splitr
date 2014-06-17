@@ -21,7 +21,8 @@
 #' @export hysplit.trajectory
 #' @examples
 #' # test run type of 'years' with forward trajectory using NCEP/NCAR reanalaysis data
-#' hysplit.trajectory(start_lat_deg = 50.108,
+#' hysplit.trajectory(traj_name = "second",
+#'                    start_lat_deg = 50.108,
 #'                    start_long_deg = -122.942,
 #'                    start_height_m_AGL = 200.0,
 #'                    simulation_duration_h = 96,
