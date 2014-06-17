@@ -313,6 +313,8 @@ hysplit.trajectory <- function(traj_name = NULL,
                                "height_",start_height_m_AGL, "-",
                                simulation_duration_h, "h", sep = '')
       
+      all_trajectory_files <- c(all_trajectory_files, output_filename)
+      
       if (.Platform$OS.type == "unix"){
         
         # Write start year, month, day, hour to 'CONTROL'
