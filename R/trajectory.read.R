@@ -17,7 +17,7 @@
 #'                                  year = 2002,
 #'                                  start_height_m_AGL = 500)
 
-trajectory.read <- function(path_output_files,
+trajectory.read <- function(archive,
                             year = NULL,
                             start_height_m_AGL = NULL){  
   
