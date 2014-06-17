@@ -469,6 +469,23 @@ hysplit.trajectory <- function(traj_name = NULL,
     
   }
   
+  if (.Platform$OS.type == "windows"){
+    
+    if (is.null(traj_name)){
+      folder_name <- paste("traj--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
+    } else if (!is.null(traj_name)){
+      folder_name <- paste(traj_name, "--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
+    }
+    
+    # Perform the movement of all trajectory files into a folder residing to the output directory
+    dir.create(path = paste(path_output_files, folder_name, sep = ''))
+    
+    for (i in 1:length(all_trajectory_files)){
+    shell(paste("(cd ", path_wd, " && move ", all_trajectory_files[i], " ",
+                paste(path_output_files, folder_name, sep = ''), sep = ''))
+    }
+    
+  }
   
   # Close the function
 }
