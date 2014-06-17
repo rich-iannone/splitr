@@ -454,15 +454,20 @@ hysplit.trajectory <- function(traj_name = NULL,
   }
   
   # Generate name of archive zip file
-  if (is.null(traj_name)){
-    filename <- paste("traj--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
-  } else if (!is.null(traj_name)){
-    filename <- paste(traj_name, "--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
-  }
   
-  # Perform the archiving of all trajectory files and move to the output directory
-  zip(zipfile = paste(path_output_files, filename, ".zip", sep = ''),
-      files = all_trajectory_files)
+  if (.Platform$OS.type == "unix"){
+    
+    if (is.null(traj_name)){
+      filename <- paste("traj--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
+    } else if (!is.null(traj_name)){
+      filename <- paste(traj_name, "--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
+    }
+    
+    # Perform the archiving of all trajectory files and move to the output directory
+    zip(zipfile = paste(path_output_files, filename, ".zip", sep = ''),
+        files = all_trajectory_files)
+    
+  }
   
   
   # Close the function
