@@ -79,7 +79,7 @@ trajectory.read <- function(archive,
     # For each trajectory file, read each line and determine where the variable-length
     # header ends
     column.widths <- c(92)
-    traj_temp <- read.fwf(paste("file://", path.expand(path_output_files), "/",
+    traj_temp <- read.fwf(paste("file://", path.expand(trajectory_file_dir), "/",
                                 trajectory_file_list[i], sep = ''),
                           widths = column.widths)
     
@@ -90,7 +90,7 @@ trajectory.read <- function(archive,
     column.widths <- c(6, 6, 6, 6, 6, 6, 6, 6,
                        8, 9, 9, 9, 9)
     
-    traj <- read.fwf(paste("file://", path.expand(path_output_files), "/",
+    traj <- read.fwf(paste("file://", path.expand(trajectory_file_dir), "/",
                            trajectory_file_list[i], sep = ''),
                      skip = skip_up_to_line,
                      widths = column.widths)
