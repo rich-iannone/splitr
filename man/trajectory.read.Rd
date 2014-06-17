@@ -3,7 +3,7 @@
 \alias{trajectory.read}
 \title{Read HYSPLIT trajectory output files}
 \usage{
-trajectory.read(path_output_files, year = NULL, start_height_m_AGL = NULL)
+trajectory.read(archive, year = NULL, start_height_m_AGL = NULL)
 }
 \arguments{
 \item{path_output_files}{a full path should be provided for a location that contains all relevant trajectory output files.}
