@@ -281,23 +281,33 @@ Once the presets have been created, they can be read using the `dispersion.prese
 # List the dispersion 'species' presets
 dispersion.preset.list(read = 'species',
                        path_wd = "C:\\hysplit4\\working\\")
+```
 
+```
 Here are the current species presets
 ------------------------------------
 (1) test / Particle: 0 0 0 / DDep: 0 0 0 0 0 / WDep: 0 0 0 / RD: 0 / RS: 0
 ------------------------------------
+```
 
+```R
 dispersion.preset.list(read = 'grids',
                        path_wd = "C:\\hysplit4\\working\\")
+```
 
+```
 Here are the current presets for grids
 --------------------------------------
 (1) grid / C: 42.83752, -80.30364 / I: 0.05, 0.05 / S: 1, 1 / 1 lv / s->e: 12 03 12 00 00 - 12 03 13 00 00 / avg: 1 01 00
 --------------------------------------
+```
 
+```R
 dispersion.preset.list(read = 'emissions',
                        path_wd = "C:\\hysplit4\\working\\")
+```
 
+```
 Here are the current presets for emissions
 ------------------------------------------
 (1) test / Rate: 35 (mass units)/h / Duration: 24 h / Release: 12 03 12 00 00
@@ -306,7 +316,7 @@ Here are the current presets for emissions
 
 Adding more presets of any type will simply add items to each list provided by the `dispersion.preset.list` function.
 
-To perform a series HYSPLIT dispersion model runs, use the SplitR `hysplit.dispersion` function:
+To perform a HYSPLIT dispersion model run, use the SplitR `hysplit.dispersion` function:
 
 ```R
 hysplit.dispersion(start_lat_deg = 42.83752, start_long_deg = -80.30364,
@@ -333,7 +343,9 @@ Remember those presets that were added earlier? They are called up in the `emiss
 
 ```R
 dispersion.preset.list(path_wd = "C:\\hysplit4\\working\\")
+```
 
+```
 Which preset type would you like to list?
 Choices are: (1) emissions, (2) grids, (3) species
 Press <ENTER> to exit
@@ -349,7 +361,9 @@ While adding presets is generally a good thing to do, there may come a point whe
 
 ```R
 dispersion.preset.delete(path_wd = "C:\\hysplit4\\working\\")
+```
 
+```
 What type of preset would you like to delete?
 Choices are: (1) emissions, (2) grids, (3) species
 Press <ENTER> for no deletion. Otherwise, enter a number or type
