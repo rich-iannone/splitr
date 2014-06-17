@@ -41,7 +41,7 @@ trajectory.read <- function(archive_folder,
 
   }
   
-  trajectory_file_list <- list.files(trajectory_file_dir)
+  
   
   # Optionally filter list of files by using 'year' or 'start_height_m_AGL' arguments,
   # or both
