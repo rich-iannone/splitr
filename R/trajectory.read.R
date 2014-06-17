@@ -21,8 +21,9 @@ trajectory.read <- function(archive,
                             year = NULL,
                             start_height_m_AGL = NULL){  
   
-  # Generate the file list
-  # Use 'pattern' argument to select specific year or starting heights
+  # Generate the file list from the archive
+  trajectory_file_dir <- tempdir()
+    
   if (is.null(year) & is.null(start_height_m_AGL)) {
     trajectory_file_list <- list.files(path = path_output_files,
                                        pattern = "^traj.*")
