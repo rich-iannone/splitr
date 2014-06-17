@@ -3,8 +3,7 @@
 \alias{get.met.gdas1}
 \title{Get GDAS1 meteorology data files}
 \usage{
-get.met.gdas1(files = NULL, years = NULL, months = NULL,
-  path_met_files = "~/Documents/SplitR/Met/")
+get.met.gdas1(files = NULL, years = NULL, months = NULL, path_met_files)
 }
 \arguments{
 \item{files}{}
