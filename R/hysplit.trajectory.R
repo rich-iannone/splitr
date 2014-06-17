@@ -302,8 +302,8 @@ hysplit.trajectory <- function(traj_name = NULL,
       }
       
       # Construct the output filename string for this model run
-      output_filename <- paste("traj",
-                               ifelse(backtrajectory == TRUE, '(back)', '(forward)'), "-",
+      output_filename <- paste("traj-",
+                               ifelse(backtrajectory == TRUE, 'back--', 'forward--'), "-",
                                start_year_GMT, "-",
                                start_month_GMT, "-",
                                start_day_GMT, "-",
