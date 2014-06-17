@@ -61,16 +61,7 @@ hysplit.dispersion <- function(start_lat_deg,
   require(lubridate)
   require(maps)
   require(mapdata)
-  
-  # Reset path for output files to 'Output' folder if not in a project
-  # Reset path for output files to 'Output' folder if not in a project
-  if (.Platform$OS.type == "unix"){
-    if (grepl("Documents/SplitR/Projects/.*_[0-9][0-9][0-9][0-9]-.*",
-              path_output_files) == FALSE){
-      path_output_files <- "~/Documents/SplitR/Output/"
-    }
-  }
-  
+    
   # Set parameters
   run_type <- run_type
   run_day <- run_day
