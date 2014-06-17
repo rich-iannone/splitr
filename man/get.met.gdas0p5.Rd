@@ -18,6 +18,6 @@ get.met.gdas0p5(files = NULL, years = NULL, months = NULL, days = NULL,
 \item{path_met_files}{}
 }
 \description{
-This function downloads GDAS0.5 meteorology data files from the NOAA FTP server and saves them, by default, to "~/Documents/SplitR/Met". Files can be downloaded either by specifying a list of filenames (in the form of "RP[YYYY][MM].gbl") or through bulk download of a year of files.
+This function downloads GDAS0.5 meteorology data files from the NOAA FTP server and saves them to a specified folder. Files can be downloaded either by specifying a list of filenames (in the form of "RP[YYYY][MM].gbl") or through bulk download of a year of files.
 }
 
