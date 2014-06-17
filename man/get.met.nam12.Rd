@@ -3,8 +3,7 @@
 \alias{get.met.nam12}
 \title{Get NAM12 meteorology data files}
 \usage{
-get.met.nam12(files = NULL, years = NULL, months = NULL,
-  path_met_files = "~/Documents/SplitR/Met/")
+get.met.nam12(files = NULL, years = NULL, months = NULL, path_met_files)
 }
 \arguments{
 \item{files}{}
