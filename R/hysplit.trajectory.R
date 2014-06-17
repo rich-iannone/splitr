@@ -58,12 +58,13 @@ hysplit.trajectory <- function(traj_name = NULL,
   # Add require statements
   require(lubridate)
   
+  # Set working directory for R to the HYSPLIT working directory
+  setwd(path_wd)
   
   # Set number of starting locations to 1 for this function
   no_starting_locations <- 1
   
   # Determine whether the run_years input is a single year or a range
-  
   if(exists("run_years")) run_years_single_range <-
     ifelse(nchar(run_years) == 4, "single", "range") 
   
