@@ -39,7 +39,8 @@ Take note of the paths for the HYSPLIT executables and the working directory (in
 To perform a series HYSPLIT trajectory model runs, use the SplitR `hysplit.trajectory` function:
 
 ```R
-hysplit.trajectory(start_lat_deg = 42.83752, start_long_deg = -80.30364,
+hysplit.trajectory(traj_name = "t2",
+                   start_lat_deg = 42.83752, start_long_deg = -80.30364,
                    start_height_m_AGL = 5, simulation_duration_h = 24,
                    backtrajectory = FALSE,
                    met_type = "gdas1",
@@ -47,8 +48,8 @@ hysplit.trajectory(start_lat_deg = 42.83752, start_long_deg = -80.30364,
                    top_of_model_domain_m = 20000,
                    run_type = "day", run_day = "2012-03-12",
                    daily_hours_to_start = c("00", "06", "12", "18"),
-                   path_met_files =  "C:\\hysplit4\\working\\",
-                   path_output_files = "C:\\hysplit4\\working\\",
+                   path_met_files =  "C:\\hysplit4\\met\\",
+                   path_output_files = "C:\\hysplit4\\output\\",
                    path_wd = "C:\\hysplit4\\working\\",
                    path_executable = "C:\\hysplit4\\exec\\") 
 ```
@@ -64,17 +65,19 @@ All paths should exist (i.e., SplitR won't create directories) and the paths pro
 
 The necessary meteorological data files relevant to the period being modelled will be downloaded from the NOAA FTP server (arlftp.arlhq.noaa.gov) if they are not present in the directory specified as the `path_met_files` argument. Note that SplitR does not currently provide an option to automatically delete these downloaded data files after the relevant model runs have been completed, so, keep in mind that available disk space may be issue with longer sequences of model runs (e.g., a GDAS1 met file for a week-long period can take up to 600 MB of disk space).
 
-After this, four files should be generated and residing in the 'working' folder:
+After this, four files should be generated:
 
 - `traj(forward)-12-03-12-00-lat_42.83752_long_-80.30364-height_5-24h`
 - `traj(forward)-12-03-12-06-lat_42.83752_long_-80.30364-height_5-24h`
 - `traj(forward)-12-03-12-12-lat_42.83752_long_-80.30364-height_5-24h`
 - `traj(forward)-12-03-12-18-lat_42.83752_long_-80.30364-height_5-24h`
 
+On Mac/Linux, these files will be associated with a .zip archive that is named according to the value of `traj_name` (if provided) and the date/time of execution. The location of the archive will be that of the path provided in the `path_output_files` argument.
+
 A data frame can be generated from these output files using the SplitR `trajectory.read` function:
 
 ```R
-trajectory.df <- trajectory.read(path_output_files = "C:\\hysplit4\\working\\",
+trajectory.df <- trajectory.read(archive_folder = "C:\\hysplit4\\working\\t2--2014-06-17--02-39-29",
                                  year = NULL,
                                  start_height_m_AGL = NULL)
 ```
