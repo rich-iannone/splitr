@@ -4,7 +4,7 @@
 \title{Get GDAS0.5 meteorology data files}
 \usage{
 get.met.gdas0p5(files = NULL, years = NULL, months = NULL, days = NULL,
-  path_met_files = "~/Documents/SplitR/Met/")
+  path_met_files)
 }
 \arguments{
 \item{files}{}
