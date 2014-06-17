@@ -85,6 +85,9 @@ hysplit.trajectory <- function(traj_name = NULL,
                          by = 86400)
   } else {stop("A run type has not been selected")}
   
+  # Initialize a vector that will contain names for all files generated
+  all_trajectory_files <- vector(mode = "character", length = 0)
+  
   # Make loop with all run days
   for (i in 1:length(list_run_days)) {
     
