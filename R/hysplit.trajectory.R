@@ -453,6 +453,11 @@ hysplit.trajectory <- function(traj_name = NULL,
     # Close the day loop
   }
   
+  # Generate name of archive zip file
+  if (is.null(traj_name)){
+    filename <- paste("traj--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
+  } else if (!is.null(traj_name)){
+    filename <- paste(traj_name, "--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
   }
   
   if (.Platform$OS.type == "windows"){
