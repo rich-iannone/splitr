@@ -3,10 +3,10 @@
 \alias{hysplit.dispersion.config}
 \title{Create config file for dispersion runs}
 \usage{
-hysplit.dispersion.config(path_wd = "~/Documents/SplitR/Working/")
+hysplit.dispersion.config(path_wd)
 }
 \arguments{
-\item{path_wd}{}
+\item{path_wd}{a full path should be provided for the HYSPLIT working directory.}
 }
 \description{
 This function creates a default SETUP.CFG configuration file and places it in the user-specified 'working' folder. This file must be located in the working directory before any HYSPLIT dispersion models can be run.
