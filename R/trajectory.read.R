@@ -43,29 +43,61 @@ trajectory.read <- function(archive_folder,
   
   # Optionally filter list of files by using 'year' or 'start_height_m_AGL' arguments,
   # or both
-  if (is.null(year) & is.null(start_height_m_AGL)) {
-    trajectory_file_list <- list.files(path = trajectory_file_dir,
-                                       pattern = "^traj.*")
-  } else if (!is.null(year) & is.null(start_height_m_AGL)) {
-    trajectory_file_list <- list.files(path = trajectory_file_dirs,
-                                       pattern = paste("^traj.*?)-",
-                                                       gsub("^[0-9][0-9]", "",
-                                                            as.character(year)),
-                                                       ".*$", sep = ''))
-  } else if (is.null(year) & !is.null(start_height_m_AGL)) {
-    trajectory_file_list <- list.files(path = trajectory_file_dir,
-                                       pattern = paste("^.*?height_",
-                                                       gsub("^[0-9][0-9]", "",
-                                                            as.character(year)),
-                                                       ".*$", sep = ''))
-  } else if (!is.null(year) & !is.null(start_height_m_AGL)) {
-    trajectory_file_list <- list.files(path = trajectory_file_dir,
-                                       pattern = paste("^traj.*?)-",
-                                                       gsub("^[0-9][0-9]", "",
-                                                            as.character(year)),
-                                                       ".*?height_",
-                                                       as.character(start_height_m_AGL),
-                                                       "-.*$", sep = ''))
+  
+  if (.Platform$OS.type == "unix"){
+    if (is.null(year) & is.null(start_height_m_AGL)) {
+      trajectory_file_list <- list.files(path = trajectory_file_dir,
+                                         pattern = "^traj.*")
+    } else if (!is.null(year) & is.null(start_height_m_AGL)) {
+      trajectory_file_list <- list.files(path = trajectory_file_dirs,
+                                         pattern = paste("^traj.*?)-",
+                                                         gsub("^[0-9][0-9]", "",
+                                                              as.character(year)),
+                                                         ".*$", sep = ''))
+    } else if (is.null(year) & !is.null(start_height_m_AGL)) {
+      trajectory_file_list <- list.files(path = trajectory_file_dir,
+                                         pattern = paste("^.*?height_",
+                                                         gsub("^[0-9][0-9]", "",
+                                                              as.character(year)),
+                                                         ".*$", sep = ''))
+    } else if (!is.null(year) & !is.null(start_height_m_AGL)) {
+      trajectory_file_list <- list.files(path = trajectory_file_dir,
+                                         pattern = paste("^traj.*?)-",
+                                                         gsub("^[0-9][0-9]", "",
+                                                              as.character(year)),
+                                                         ".*?height_",
+                                                         as.character(start_height_m_AGL),
+                                                         "-.*$", sep = ''))
+    }
+    
+  }
+  
+  if (.Platform$OS.type == "windows"){
+    if (is.null(year) & is.null(start_height_m_AGL)) {
+      trajectory_file_list <- list.files(path = archive_folder,
+                                         pattern = "^traj.*")
+    } else if (!is.null(year) & is.null(start_height_m_AGL)) {
+      trajectory_file_list <- list.files(path = archive_folder,
+                                         pattern = paste("^traj.*?)-",
+                                                         gsub("^[0-9][0-9]", "",
+                                                              as.character(year)),
+                                                         ".*$", sep = ''))
+    } else if (is.null(year) & !is.null(start_height_m_AGL)) {
+      trajectory_file_list <- list.files(path = archive_folder,
+                                         pattern = paste("^.*?height_",
+                                                         gsub("^[0-9][0-9]", "",
+                                                              as.character(year)),
+                                                         ".*$", sep = ''))
+    } else if (!is.null(year) & !is.null(start_height_m_AGL)) {
+      trajectory_file_list <- list.files(path = archive_folder,
+                                         pattern = paste("^traj.*?)-",
+                                                         gsub("^[0-9][0-9]", "",
+                                                              as.character(year)),
+                                                         ".*?height_",
+                                                         as.character(start_height_m_AGL),
+                                                         "-.*$", sep = ''))
+    }
+    
   }
   
   # Initialize empty data frame with 12 named columns
