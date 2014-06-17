@@ -453,9 +453,6 @@ hysplit.trajectory <- function(traj_name = NULL,
     # Close the day loop
   }
   
-  # Copy files from 'Working' to the output folder
-  if (.Platform$OS.type == "unix"){
-    system(paste("(cd ", path_wd, " && mv traj* '", path_output_files, "')", sep = ''))
   }
   
   if (.Platform$OS.type == "windows"){
