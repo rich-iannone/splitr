@@ -34,7 +34,7 @@ trajectory.read <- function(archive_folder,
     
   }
   
-  # Use Windows shell commands to unzip files to temporary directory
+  # In Windows implementation, list files from specified folder
   if (.Platform$OS.type == "windows"){
     
     trajectory_file_list <- list.files(archive_folder)
