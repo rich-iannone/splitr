@@ -40,23 +40,25 @@ trajectory.read <- function(archive,
   
   trajectory_file_list <- list.files(trajectory_file_dir)
   
+  # Optionally filter list of files by using 'year' or 'start_height_m_AGL' arguments,
+  # or both
   if (is.null(year) & is.null(start_height_m_AGL)) {
-    trajectory_file_list <- list.files(path = path_output_files,
+    trajectory_file_list <- list.files(path = trajectory_file_dir,
                                        pattern = "^traj.*")
   } else if (!is.null(year) & is.null(start_height_m_AGL)) {
-    trajectory_file_list <- list.files(path = path_output_files,
+    trajectory_file_list <- list.files(path = trajectory_file_dirs,
                                        pattern = paste("^traj.*?)-",
                                                        gsub("^[0-9][0-9]", "",
                                                             as.character(year)),
                                                        ".*$", sep = ''))
   } else if (is.null(year) & !is.null(start_height_m_AGL)) {
-    trajectory_file_list <- list.files(path = path_output_files,
+    trajectory_file_list <- list.files(path = trajectory_file_dir,
                                        pattern = paste("^.*?height_",
                                                        gsub("^[0-9][0-9]", "",
                                                             as.character(year)),
                                                        ".*$", sep = ''))
   } else if (!is.null(year) & !is.null(start_height_m_AGL)) {
-    trajectory_file_list <- list.files(path = path_output_files,
+    trajectory_file_list <- list.files(path = trajectory_file_dir,
                                        pattern = paste("^traj.*?)-",
                                                        gsub("^[0-9][0-9]", "",
                                                             as.character(year)),
