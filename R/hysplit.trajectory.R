@@ -481,7 +481,7 @@ hysplit.trajectory <- function(traj_name = NULL,
     dir.create(path = paste(path_output_files, folder_name, sep = ''))
     
     for (i in 1:length(all_trajectory_files)){
-    shell(paste("(cd ", path_wd, " && move ", all_trajectory_files[i], " ",
+    shell(paste("(cd ", path_wd, " && move '", all_trajectory_files[i], "' ",
                 paste(path_output_files, folder_name, sep = ''), sep = ''))
     }
     
