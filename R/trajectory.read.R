@@ -24,6 +24,13 @@ trajectory.read <- function(archive,
   # Generate the file list from the archive
   trajectory_file_dir <- tempdir()
     
+  # Use UNIX system commands to unzip files to temporary directory
+  if (.Platform$OS.type == "unix"){
+    system(paste("cd '", gsub("(^.*/).*$", "\\1", path.expand(archive)), "' ; unzip -d '",
+                 trajectory_file_dir, "' ",
+                 gsub("^.*/(.*)$", "\\1", path.expand(archive)), sep = ''))
+  }
+  
   if (is.null(year) & is.null(start_height_m_AGL)) {
     trajectory_file_list <- list.files(path = path_output_files,
                                        pattern = "^traj.*")
