@@ -106,7 +106,9 @@ Presets for 'species', 'grids', and 'emissions' then need to be set. All additio
 ```R
 dispersion.preset.add(type = "species", interactive = TRUE,
                       path_wd = "C:\\hysplit4\\working\\")
+```
 
+```
 What is the name of the species?  <test>
 Is the species a gas or particle? [gas/particle] <gas>
 Use the default parameters for a gas-phase species? [y/n] <y>
@@ -121,7 +123,6 @@ Radioactive Decay // half-life: 0 days
 Pollutant Resuspension // factor: 0 1/m
 ------------------------------
 This is what will be set. Okay? [y/n]: <y>
-
 ```
 
 Also, the function can be used to create a 'species' preset non-interactively:
@@ -150,7 +151,9 @@ Interactively creating a 'grids' preset looks like this:
 ```R
 dispersion.preset.add(type = 'grids', interactive = TRUE,
                       path_wd = "C:\\hysplit4\\working\\")
+```
 
+```
 What is the name of the grid? <"grid">
 
 Provide the center of the grid.
@@ -236,7 +239,9 @@ Interactively creating an 'emissions' preset looks like this:
 ```R
 dispersion.preset.add(type = 'emissions', interactive = TRUE,
                       path_wd = "C:\\hysplit4\\working\\")
+```
 
+```
 What is the name of the emissions source? <test>
 
 Provide the starting date and time.
@@ -278,7 +283,6 @@ dispersion.preset.add(type = 'emissions', interactive = FALSE,
 Once the presets have been created, they can be read using the `dispersion.preset.list` function by specifying the type of present (using the read argument) and providing the path of the working directory. For the 'species' presets:
 
 ```R
-# List the dispersion 'species' presets
 dispersion.preset.list(read = 'species',
                        path_wd = "C:\\hysplit4\\working\\")
 ```
