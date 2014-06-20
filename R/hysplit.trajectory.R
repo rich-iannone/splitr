@@ -1,6 +1,7 @@
 #' Conduct HYSPLIT trajectory runs
 #' @description The function executes single/multiple forward or backward HYSPLIT trajectory runs using specified meteorological datasets.
 #' @param traj_name an optional, descriptive name for the output file collection
+#' @param return_traj_df an option to return a data frame with trajectory data.
 #' @param start_lat_deg the starting latitude (in decimal degrees) for the model run(s)
 #' @param start_long_deg the starting longitude (in decimal degrees) for the model run(s)
 #' @param start_height_m_AGL the starting height (in meters above ground level) for the model run(s)
@@ -22,6 +23,7 @@
 #' @examples
 #' # test run type of 'years' with forward trajectory using NCEP/NCAR reanalaysis data
 #' hysplit.trajectory(traj_name = "second",
+#'                    return_traj_df = FALSE,
 #'                    start_lat_deg = 50.108,
 #'                    start_long_deg = -122.942,
 #'                    start_height_m_AGL = 200.0,
@@ -39,6 +41,7 @@
 #'                    path_executable = "~/HYSPLIT4/exec/hyts_std")
 
 hysplit.trajectory <- function(traj_name = NULL,
+                               return_traj_df = TRUE,
                                start_lat_deg,
                                start_long_deg,
                                start_height_m_AGL,
@@ -469,6 +472,13 @@ hysplit.trajectory <- function(traj_name = NULL,
     zip(zipfile = paste(path_output_files, filename, ".zip", sep = ''),
         files = all_trajectory_files)
     
+    # Return a trajectory data frame if it is requested
+    if (return_traj_df == TRUE){
+      traj.df <- trajectory.read(archive_folder =
+                        paste(path_output_files, filename, ".zip", sep = ''))
+      return(traj.df)
+    }
+    
   }
   
   if (.Platform$OS.type == "windows"){
@@ -485,6 +495,13 @@ hysplit.trajectory <- function(traj_name = NULL,
     for (i in 1:length(all_trajectory_files)){
     shell(paste("(cd ", path_wd, " && move ", all_trajectory_files[i], " ",
                 paste(path_output_files, folder_name, sep = ''), ")", sep = ''))
+    }
+    
+    # Return a trajectory data frame if it is requested
+    if (return_traj_df == TRUE){
+      traj.df <- trajectory.read(archive_folder =
+                                   paste(path_output_files, folder_name, sep = ''))
+      return(traj.df)
     }
     
   }
