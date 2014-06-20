@@ -48,19 +48,21 @@ To perform a series HYSPLIT trajectory model runs, use the SplitR `hysplit.traje
 ```{r}
 require(SplitR)
 
-hysplit.trajectory(traj_name = "third",
-                   start_lat_deg = 49.5, start_long_deg = -125.30364,
-                   start_height_m_AGL = 5, simulation_duration_h = 24,
-                   backtrajectory = TRUE, met_type = "gdas1",
-                   vertical_motion_option = 0,
-                   top_of_model_domain_m = 20000,
-                   run_type = "range",
-                   run_range = c("2012-03-15", "2012-03-16"),
-                   daily_hours_to_start = c("00", "03", "06", "09", "12", "15", "18", "21"),
-                   path_met_files = "/Users/riannone/Documents/SplitR/Met/",
-                   path_output_files = "/Users/riannone/Documents/SplitR/Output/",
-                   path_wd = "/Users/riannone/Documents/SplitR/Working/",
-                   path_executable ="/Users/riannone/Documents/SplitR/Exec/")
+traj.df <- 
+  hysplit.trajectory(traj_name = "third",
+                     return_traj_df = TRUE,
+                     start_lat_deg = 49.5, start_long_deg = -125.30364,
+                     start_height_m_AGL = 5, simulation_duration_h = 24,
+                     backtrajectory = TRUE, met_type = "gdas1",
+                     vertical_motion_option = 0,
+                     top_of_model_domain_m = 20000,
+                     run_type = "range",
+                     run_range = c("2012-03-15", "2012-03-16"),
+                     daily_hours_to_start = c("00", "03", "06", "09", "12", "15", "18", "21"),
+                     path_met_files = "/Users/riannone/Documents/SplitR/Met/",
+                     path_output_files = "/Users/riannone/Documents/SplitR/Output/",
+                     path_wd = "/Users/riannone/Documents/SplitR/Working/",
+                     path_executable ="/Users/riannone/Documents/SplitR/Exec/")
 ```
 
 This use of `hysplit.trajectory` sets up four trajectory runs that start at 00:00, 06:00, 12:00, and 18:00 UTC on March 12, 2012. These initial times are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours_to_start = c("00", "06", "12", "18")`. The model runs are forward runs (moving forward in time, set here using `backtrajectory = FALSE`) and not backtrajectory runs (set with `backtrajectory = TRUE`). These runs are 24 h in duration (`simulation_duration_h = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `start_lat_deg = 42.83752` and `start_long_deg = -80.30364`; the starting height of 5 m above ground level is set by `start_height_m_AGL = 5`. The meteorological options include the type of met data to use (1º GDAS data is used here with `met_type = "gdas1"`--there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting), the vertical motion option (here, set as `vertical_motion_option = 0` which instructs HYSPLIT to use the vertical motion available in the met data files), and, the top of the model domain (set as 20,000 meters with `top_of_model_domain_m = 20000`). Four paths require specification:
