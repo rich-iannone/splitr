@@ -63,7 +63,7 @@ This use of `hysplit.trajectory` sets up four trajectory runs that start at 00:0
 - path to the working directory (`path_wd`)
 - path to the executable directory, specifically here to that path containing the `hyts_std` executable (`path_executable`)
 
-All paths should exist (i.e., SplitR won't create directories) and the paths provided in the above `hysplit.trajectory()` example should serve as examples for these path settings. If running in a Mac or Linux environment, use appropriate paths with forward slashes (paths using a tilde are acceptable).
+All paths should exist (i.e., SplitR won't create directories) and the paths provided in the above `hysplit.trajectory()` example should serve as examples for these path settings. If running in a Mac or Linux environment, use appropriate paths with forward slashes (paths incorporating a tilde are acceptable).
 
 The necessary meteorological data files relevant to the period being modelled will be downloaded from the NOAA FTP server (arlftp.arlhq.noaa.gov) if they are not present in the directory specified as the `path_met_files` argument. Note that SplitR does not currently provide an option to automatically delete these downloaded data files after the relevant model runs have been completed, so, keep in mind that available disk space may be issue with longer sequences of model runs (e.g., a GDAS1 met file for a week-long period can take up to 600 MB of disk space).
 
