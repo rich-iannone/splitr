@@ -3,15 +3,17 @@
 \alias{hysplit.trajectory}
 \title{Conduct HYSPLIT trajectory runs}
 \usage{
-hysplit.trajectory(traj_name = NULL, start_lat_deg, start_long_deg,
-  start_height_m_AGL, simulation_duration_h = 24, backtrajectory = FALSE,
-  met_type, vertical_motion_option = 0, top_of_model_domain_m = 20000,
-  run_type, run_day = NULL, run_range = NULL, run_years = NULL,
-  daily_hours_to_start, path_met_files, path_output_files, path_wd,
-  path_executable)
+hysplit.trajectory(traj_name = NULL, return_traj_df = TRUE, start_lat_deg,
+  start_long_deg, start_height_m_AGL, simulation_duration_h = 24,
+  backtrajectory = FALSE, met_type, vertical_motion_option = 0,
+  top_of_model_domain_m = 20000, run_type, run_day = NULL,
+  run_range = NULL, run_years = NULL, daily_hours_to_start, path_met_files,
+  path_output_files, path_wd, path_executable)
 }
 \arguments{
 \item{traj_name}{an optional, descriptive name for the output file collection}
+
+\item{return_traj_df}{an option to return a data frame with trajectory data.}
 
 \item{start_lat_deg}{the starting latitude (in decimal degrees) for the model run(s)}
 
@@ -53,6 +55,7 @@ The function executes single/multiple forward or backward HYSPLIT trajectory run
 \examples{
 # test run type of 'years' with forward trajectory using NCEP/NCAR reanalaysis data
 hysplit.trajectory(traj_name = "second",
+                   return_traj_df = FALSE,
                    start_lat_deg = 50.108,
                    start_long_deg = -122.942,
                    start_height_m_AGL = 200.0,
