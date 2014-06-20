@@ -39,22 +39,24 @@ Take note of the paths for the HYSPLIT executables and the working directory (in
 To perform a series HYSPLIT trajectory model runs, use the SplitR `hysplit.trajectory` function:
 
 ```R
-hysplit.trajectory(traj_name = "t2",
-                   start_lat_deg = 42.83752, start_long_deg = -80.30364,
-                   start_height_m_AGL = 5, simulation_duration_h = 24,
-                   backtrajectory = FALSE,
-                   met_type = "gdas1",
-                   vertical_motion_option = 0,
-                   top_of_model_domain_m = 20000,
-                   run_type = "day", run_day = "2012-03-12",
-                   daily_hours_to_start = c("00", "06", "12", "18"),
-                   path_met_files =  "C:\\hysplit4\\met\\",
-                   path_output_files = "C:\\hysplit4\\output\\",
-                   path_wd = "C:\\hysplit4\\working\\",
-                   path_executable = "C:\\hysplit4\\exec\\") 
+trajectory.df <- 
+  hysplit.trajectory(traj_name = "t2",
+                     return_traj_df = TRUE,
+                     start_lat_deg = 42.83752, start_long_deg = -80.30364,
+                     start_height_m_AGL = 5, simulation_duration_h = 24,
+                     backtrajectory = FALSE,
+                     met_type = "gdas1",
+                     vertical_motion_option = 0,
+                     top_of_model_domain_m = 20000,
+                     run_type = "day", run_day = "2012-03-12",
+                     daily_hours_to_start = c("00", "06", "12", "18"),
+                     path_met_files =  "C:\\hysplit4\\met\\",
+                     path_output_files = "C:\\hysplit4\\output\\",
+                     path_wd = "C:\\hysplit4\\working\\",
+                     path_executable = "C:\\hysplit4\\exec\\") 
 ```
 
-This use of `hysplit.trajectory` sets up four trajectory runs that start at 00:00, 06:00, 12:00, and 18:00 UTC on March 12, 2012. These initial times are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours_to_start = c("00", "06", "12", "18")`. The model runs are forward runs (moving forward in time, set here using `backtrajectory = FALSE`) and not backtrajectory runs (set with `backtrajectory = TRUE`). These runs are 24 h in duration (`simulation_duration_h = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `start_lat_deg = 42.83752` and `start_long_deg = -80.30364`; the starting height of 5 m above ground level is set by `start_height_m_AGL = 5`. The meteorological options include the type of met data to use (1º GDAS data is used here with `met_type = "gdas1"`--there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting), the vertical motion option (here, set as `vertical_motion_option = 0` which instructs HYSPLIT to use the vertical motion available in the met data files), and, the top of the model domain (set as 20,000 meters with `top_of_model_domain_m = 20000`). Four paths require specification:
+This use of `hysplit.trajectory` sets up four trajectory runs that start at 00:00, 06:00, 12:00, and 18:00 UTC on March 12, 2012. The `traj_name` argument allows for the inclusion of a descriptive name for the set of runs. Setting `return_traj_df` to `TRUE` will instruct the function to return a data frame containing detailed trajectory information. Such a data frame (named here as the object `traj.df`) will be useful for further analyses. The initial times for the model runs are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours_to_start = c("00", "06", "12", "18")`. The model runs are forward runs (moving forward in time, set here using `backtrajectory = FALSE`) and not backtrajectory runs (set with `backtrajectory = TRUE`). These runs are 24 h in duration (`simulation_duration_h = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `start_lat_deg = 42.83752` and `start_long_deg = -80.30364`; the starting height of 5 m above ground level is set by `start_height_m_AGL = 5`. The meteorological options include the type of met data to use (1º GDAS data is used here with `met_type = "gdas1"`--there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting), the vertical motion option (here, set as `vertical_motion_option = 0` which instructs HYSPLIT to use the vertical motion available in the met data files), and, the top of the model domain (set as 20,000 meters with `top_of_model_domain_m = 20000`). Four paths require specification:
 
 - path to the meteorological data files (`path_met_files`)
 - path to the output files (`path_output_files`)
@@ -72,17 +74,16 @@ After this, four files should be generated:
 - `traj(forward)-12-03-12-12-lat_42.83752_long_-80.30364-height_5-24h`
 - `traj(forward)-12-03-12-18-lat_42.83752_long_-80.30364-height_5-24h`
 
-On Mac/Linux, these files will be associated with a .zip archive that is named according to the value of `traj_name` (if provided) and the date/time of execution. The location of the archive will be that of the path provided in the `path_output_files` argument.
+On Mac/Linux, these files will be associated with a .zip archive that is named according to the value of `traj_name` (if provided) and the date/time of execution. The location of the archive will be that of the path provided in the `path_output_files` argument. In a Windows environment, a similarly named *folder* will be created in the path provided in the `path_output_files` argument and that will contain the output files.
 
-A data frame can be generated from these output files using the SplitR `trajectory.read` function:
+If the the option to generate a data frame of trajectory information wasn't taken during the invocation of `hysplit.trajectory`, this can be done later by using the SplitR `trajectory.read` function:
 
 ```R
 trajectory.df <- trajectory.read(archive_folder = "C:\\hysplit4\\working\\t2--2014-06-17--02-39-29",
                                  year = NULL,
                                  start_height_m_AGL = NULL)
 ```
-
-With this data frame, statistical analyses for the trajectories can be generated (e.g., average heights of trajectories after specified time periods, etc.). Furthermore, the `trajectory.df` data frame is fully compatible with the excellent 'openair' package that is available on CRAN. Plotting of the trajectory output data frame requires use of openair's `trajPlot` function:
+Here, the name of the archive or folder is specified in the `archive_folder` argument. With the resultant data frame, statistical analyses for the trajectories can be generated (e.g., average heights of trajectories after specified time periods, etc.). Furthermore, the `trajectory.df` data frame is fully compatible with the excellent 'openair' package that is available on CRAN. Plotting of the trajectory output data frame requires use of openair's `trajPlot` function:
 
 ```R
 trajPlot(trajectory.df, map.fill = FALSE)
