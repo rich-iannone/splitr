@@ -7,12 +7,12 @@
 #' @export trajectory.read
 #' @examples
 #' # Process all trajectory output files in the specified output directory
-#' trajectory.df <- trajectory.read(archive =
+#' trajectory.df <- trajectory.read(archive_folder =
 #'                                  "~/hysplit/output/traj--2014-06-16--23-58-44.zip")
 #' 
 #' # Process trajectory output files in the same folder but only those
 #' # files from 2002 with a starting height of 500 m
-#' trajectory.df <- trajectory.read(archive =
+#' trajectory.df <- trajectory.read(archive_folder =
 #'                                    "~/hysplit/output/traj--2014-06-16--23-58-44.zip",
 #'                                  year = 2002,
 #'                                  start_height_m_AGL = 500)
@@ -26,9 +26,9 @@ trajectory.read <- function(archive_folder,
     
   # Use UNIX system commands to unzip files to temporary directory
   if (.Platform$OS.type == "unix"){
-    system(paste("cd '", gsub("(^.*/).*$", "\\1", path.expand(archive)), "' ; unzip -d '",
+    system(paste("cd '", gsub("(^.*/).*$", "\\1", path.expand(archive_folder)), "' ; unzip -d '",
                  trajectory_file_dir, "' ",
-                 gsub("^.*/(.*)$", "\\1", path.expand(archive)), sep = ''))
+                 gsub("^.*/(.*)$", "\\1", path.expand(archive_folder)), sep = ''))
     
     trajectory_file_list <- list.files(trajectory_file_dir)
     
