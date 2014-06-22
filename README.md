@@ -32,7 +32,7 @@ For Windows installations, there are both [registered](http://ready.arl.noaa.gov
 
 For a Mac OS X installation, there is a [single distribution](http://ready.arl.noaa.gov/hyreg/HYSPLIT_applehysp.php) that has all functionality included.
 
-Take note of the paths for the HYSPLIT executables and the working directory (in the subfolders 'exec' and 'working'). You can optionally create additional subfolders for locating HYSPLIT-ready meteorological data files, or, opt to place those in the HYSPLIT working directory.
+Take note of the paths for the HYSPLIT executables and the working directory (in the subfolders 'exec' and 'working'). You can optionally create additional subfolders for locating HYSPLIT-ready meteorological data files, or, opt to place those in the HYSPLIT working directory. The examples below assume a Windows installation of HYSPLIT in the directory `C:\hysplit4\`. If working from the examples, please modify the example paths accordingly to match your platform and HYSPLIT folder paths.
 
 ## Example: HYSPLIT Trajectory Runs
 
