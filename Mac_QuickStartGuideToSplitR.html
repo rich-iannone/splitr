@@ -11,7 +11,7 @@
 
 <meta name="author" content="Richard Iannone" />
 
-<meta name="date" content="2014-06-19" />
+<meta name="date" content="2014-06-21" />
 
 <title>Quick Start Guide to SplitR</title>
 
@@ -56,7 +56,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <div id="header">
 <h1 class="title">Quick Start Guide to SplitR</h1>
 <h4 class="author"><em>Richard Iannone</em></h4>
-<h4 class="date"><em>June 19, 2014</em></h4>
+<h4 class="date"><em>June 21, 2014</em></h4>
 </div>
 
 
@@ -91,9 +91,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <div id="example-hysplit-trajectory-runs" class="section level2">
 <h2>Example: HYSPLIT Trajectory Runs</h2>
 <p>To perform a series HYSPLIT trajectory model runs, use the SplitR <code>hysplit.trajectory</code> function:</p>
-<pre class="r"><code>require(SplitR)
-
-trajectory.df &lt;- 
+<pre class="r"><code>trajectory.df &lt;- 
   hysplit.trajectory(traj_name = &quot;third&quot;,
                      return_traj_df = TRUE,
                      start_lat_deg = 49.5, start_long_deg = -125.30364,
@@ -104,10 +102,10 @@ trajectory.df &lt;-
                      run_type = &quot;range&quot;,
                      run_range = c(&quot;2012-03-15&quot;, &quot;2012-03-16&quot;),
                      daily_hours_to_start = c(&quot;00&quot;, &quot;03&quot;, &quot;06&quot;, &quot;09&quot;, &quot;12&quot;, &quot;15&quot;, &quot;18&quot;, &quot;21&quot;),
-                     path_met_files = &quot;~/Documents/SplitR/Met/&quot;,
-                     path_output_files = &quot;~/Documents/SplitR/Output/&quot;,
-                     path_wd = &quot;~/Documents/SplitR/Working/&quot;,
-                     path_executable =&quot;~Documents/SplitR/Exec/&quot;)</code></pre>
+                     path_met_files = &quot;~/Documents/Hysplit/Met/&quot;,
+                     path_output_files = &quot;~/Documents/Hysplit/Output/&quot;,
+                     path_wd = &quot;~/Documents/Hysplit/Working/&quot;,
+                     path_executable =&quot;~/Documents/Hysplit/Exec/&quot;)</code></pre>
 <p>This use of <code>hysplit.trajectory</code> sets up four trajectory runs that start at 00:00, 06:00, 12:00, and 18:00 UTC on March 12, 2012. The <code>traj_name</code> argument allows for the inclusion of a descriptive name for the set of runs. Setting <code>return_traj_df</code> to <code>TRUE</code> will instruct the function to return a data frame containing detailed trajectory information. Such a data frame (named here as the object <code>trajectory.df</code>) will be useful for conducting further analyses. The initial times for the model runs are set using <code>run_type = &quot;day&quot;</code>, <code>run_day = &quot;2012-03-12&quot;</code>, and <code>daily_hours_to_start = c(&quot;00&quot;, &quot;06&quot;, &quot;12&quot;, &quot;18&quot;)</code>. The model runs are forward runs (moving forward in time, set here using <code>backtrajectory = FALSE</code>) and not backtrajectory runs (set with <code>backtrajectory = TRUE</code>). These runs are 24 h in duration (<code>simulation_duration_h = 24</code>). The starting location of 42.83752ºN and 80.30364ºW is set using <code>start_lat_deg = 42.83752</code> and <code>start_long_deg = -80.30364</code>; the starting height of 5 m above ground level is set by <code>start_height_m_AGL = 5</code>. The meteorological options include the type of met data to use (1º GDAS data is used here with <code>met_type = &quot;gdas1&quot;</code>–there is also the option to use NCEP reanalysis data with the <code>met_type = &quot;reanalysis&quot;</code> setting), the vertical motion option (here, set as <code>vertical_motion_option = 0</code> which instructs HYSPLIT to use the vertical motion available in the met data files), and, the top of the model domain (set as 20,000 meters with <code>top_of_model_domain_m = 20000</code>). Four paths require specification:</p>
 <ul>
 <li>path to the meteorological data files (<code>path_met_files</code>)</li>
@@ -127,19 +125,15 @@ trajectory.df &lt;-
 <p>On Mac/Linux, these files will be associated with a .zip archive that is named according to the value of <code>traj_name</code> (if provided) and the date/time of execution. The location of the archive will be that of the path provided in the <code>path_output_files</code> argument.</p>
 <p>If the the option to generate a data frame of trajectory information wasn’t taken during the invocation of <code>hysplit.trajectory</code>, this can be done later by using the SplitR <code>trajectory.read</code> function.</p>
 <p>With this data frame, statistical analyses for the trajectories can be generated (e.g., average heights of trajectories after specified time periods, etc.). Furthermore, the <code>trajectory.df</code> data frame is fully compatible with the excellent ‘openair’ package that is available on CRAN. Plotting of the trajectory output data frame requires use of openair’s <code>trajPlot</code> function:</p>
-<pre class="r"><code>require(openair)
-require(maps)
-require(mapdata)
-
-trajPlot(trajectory.df, map.fill = FALSE)</code></pre>
+<pre class="r"><code>trajPlot(trajectory.df, map.fill = FALSE)</code></pre>
 </div>
 <div id="example-hysplit-dispersion-runs" class="section level2">
 <h2>Example: HYSPLIT Dispersion Runs</h2>
 <p>Before performing any dispersion model runs in SplitR, you need to initialize the working directory with a SETUP.CFG file:</p>
-<pre class="r"><code>hysplit.dispersion.config(path_wd = &quot;~/Documents/SplitR/Working/&quot;)</code></pre>
+<pre class="r"><code>hysplit.dispersion.config(path_wd = &quot;~/Documents/Hysplit/Working/&quot;)</code></pre>
 <p>Presets for ‘species’, ‘grids’, and ‘emissions’ then need to be set. All additions of presets are made with the use of the <code>dispersion.preset.add</code>. That function can be run interactively with <code>interactive = TRUE</code> and remembering to set the <code>type</code> argumemnt as either <code>type = &quot;species&quot;</code>, <code>type = &quot;grids&quot;</code>, or <code>type = &quot;emissions&quot;</code>. Here is an example of an interactive session for creating a ‘species’ preset is given below.</p>
 <pre class="r"><code>dispersion.preset.add(type = &quot;species&quot;, interactive = TRUE,
-                      path_wd = &quot;~/Documents/SplitR/Working/&quot;)</code></pre>
+                      path_wd = &quot;~/Documents/Hysplit/Working/&quot;)</code></pre>
 <pre><code>What is the name of the species?  &lt;test&gt;
 Is the species a gas or particle? [gas/particle] &lt;gas&gt;
 Use the default parameters for a gas-phase species? [y/n] &lt;y&gt;
@@ -170,10 +164,10 @@ This is what will be set. Okay? [y/n]: &lt;y&gt;</code></pre>
                       wdep_below_cloud_dep = 0,
                       rad_decay = 0,
                       pollutant_resuspension_factor = 0,
-                      path_wd = &quot;~/Documents/SplitR/Working/&quot;)</code></pre>
+                      path_wd = &quot;~/Documents/Hysplit/Working/&quot;)</code></pre>
 <p>Interactively creating a ‘grids’ preset looks like this:</p>
 <pre class="r"><code>dispersion.preset.add(type = 'grids', interactive = TRUE,
-                      path_wd = &quot;~/Documents/SplitR/Working/&quot;)</code></pre>
+                      path_wd = &quot;~/Documents/Hysplit/Working/&quot;)</code></pre>
 <pre><code>What is the name of the grid? &lt;&quot;grid&quot;&gt;
 
 Provide the center of the grid.
@@ -247,10 +241,10 @@ This is what will be set. Okay? [y/n]:
                        grid_start_time = &quot;12 03 12 00 00&quot;,
                        grid_end_time = &quot;12 03 13 00 00&quot;,
                        sampling_interval_type_rate = &quot;1 01 00&quot;,
-                       path_wd = &quot;~/Documents/SplitR/Working/&quot;)</code></pre>
+                       path_wd = &quot;~/Documents/Hysplit/Working/&quot;)</code></pre>
 <p>Interactively creating an ‘emissions’ preset looks like this:</p>
 <pre class="r"><code>dispersion.preset.add(type = 'emissions', interactive = TRUE,
-                      path_wd = &quot;~/Documents/SplitR/Working/&quot;)</code></pre>
+                      path_wd = &quot;~/Documents/Hysplit/Working/&quot;)</code></pre>
 <pre><code>What is the name of the emissions source? &lt;test&gt;
 
 Provide the starting date and time.
@@ -282,22 +276,22 @@ This is what will be set. Okay? [y/n]:
                       emissions_rate = 35,
                       emissions_duration = 24,
                       emissions_start_time = &quot;12 03 12 00 00&quot;,
-                      path_wd = &quot;~/Documents/SplitR/Working/&quot;)</code></pre>
+                      path_wd = &quot;~/Documents/Hysplit/Working/&quot;)</code></pre>
 <p>Once the presets have been created, they can be read using the <code>dispersion.preset.list</code> function by specifying the type of present (using the read argument) and providing the path of the working directory. For the ‘species’ presets:</p>
 <pre class="r"><code>dispersion.preset.list(read = 'species',
-                       path_wd = &quot;~/Documents/SplitR/Working/&quot;)</code></pre>
+                       path_wd = &quot;~/Documents/Hysplit/Working/&quot;)</code></pre>
 <pre><code>Here are the current species presets
 ------------------------------------
 (1) test / Particle: 0 0 0 / DDep: 0 0 0 0 0 / WDep: 0 0 0 / RD: 0 / RS: 0
 ------------------------------------</code></pre>
 <pre class="r"><code>dispersion.preset.list(read = 'grids',
-                       path_wd = &quot;~/Documents/SplitR/Working/&quot;)</code></pre>
+                       path_wd = &quot;~/Documents/Hysplit/Working/&quot;)</code></pre>
 <pre><code>Here are the current presets for grids
 --------------------------------------
 (1) grid / C: 42.83752, -80.30364 / I: 0.05, 0.05 / S: 1, 1 / 1 lv / s-&gt;e: 12 03 12 00 00 - 12 03 13 00 00 / avg: 1 01 00
 --------------------------------------</code></pre>
 <pre class="r"><code>dispersion.preset.list(read = 'emissions',
-                       path_wd = &quot;~/Documents/SplitR/Working/&quot;)</code></pre>
+                       path_wd = &quot;~/Documents/Hysplit/Working/&quot;)</code></pre>
 <pre><code>Here are the current presets for emissions
 ------------------------------------------
 (1) test / Rate: 35 (mass units)/h / Duration: 24 h / Release: 12 03 12 00 00
@@ -316,13 +310,13 @@ This is what will be set. Okay? [y/n]:
                    emissions = c(1),
                    species = c(1),
                    grids = c(1),
-                   path_met_files = &quot;~/Documents/SplitR/Met/&quot;,
-                   path_output_files = &quot;~/Documents/SplitR/Output/&quot;,
-                   path_wd = &quot;~/Documents/SplitR/Working/&quot;,
-                   path_executable =&quot;~Documents/SplitR/Exec/&quot;)</code></pre>
+                   path_met_files = &quot;~/Documents/Hysplit/Met/&quot;,
+                   path_output_files = &quot;~/Documents/Hysplit/Output/&quot;,
+                   path_wd = &quot;~/Documents/Hysplit/Working/&quot;,
+                   path_executable =&quot;~/Documents/Hysplit/Exec/&quot;)</code></pre>
 <p>This use of <code>hysplit.dispersion</code> sets up a single dispersion run that starts at 00:00 UTC on March 12, 2012. These initial times are set using <code>run_type = &quot;day&quot;</code>, <code>run_day = &quot;2012-03-12&quot;</code>, and <code>daily_hours_to_start = &quot;00&quot;</code>. The model run is a forward run (moving forward in time, set here using <code>backward_running = FALSE</code>) and not backwards (set with <code>backward_running = TRUE</code>). Essentially, running in forward mode means the starting location is a source of emissions; running backward means that the starting location is a receptor. This run has been set to be modelled for 24 h (<code>simulation_duration_h = 24</code>). The starting location of 42.83752ºN and 80.30364ºW is set using <code>start_lat_deg = 42.83752</code> and <code>start_long_deg = -80.30364</code>; the starting height of 5 m above ground level is set by <code>start_height_m_AGL = 5</code>. The meteorological options include the type of met data to use (1º GDAS data is used here with <code>met_type = &quot;gdas1&quot;</code>–there is also the option to use NCEP reanalysis data with the <code>met_type = &quot;reanalysis&quot;</code> setting), the vertical motion option (here, set as <code>vertical_motion_option = 0</code> which instructs HYSPLIT to use the vertical motion available in the met data files), and, the top of the model domain (set as 20,000 meters with <code>top_of_model_domain_m = 20000</code>).</p>
 <p>Remember those presets that were added earlier? They are called up in the <code>emissions</code>, <code>species</code>, and <code>grids</code> arguments. The <code>c(1)</code> value provided for each of those corresponds to the first preset of each type of preset. If you ever need to remind yourself of which presets are currently in the system, use <code>dispersion.preset.list</code> function. Moreover, that function has an interactive mode! Just invoke it and supply just the path for the working directory:</p>
-<pre class="r"><code>dispersion.preset.list(path_wd = &quot;~/Documents/SplitR/Working/&quot;)</code></pre>
+<pre class="r"><code>dispersion.preset.list(path_wd = &quot;~/Documents/Hysplit/Working/&quot;)</code></pre>
 <pre><code>Which preset type would you like to list?
 Choices are: (1) emissions, (2) grids, (3) species
 Press &lt;ENTER&gt; to exit
@@ -333,7 +327,7 @@ Here are the current presets for emissions
 (1) test / Rate: 1 (mass units)/h / Duration: 336 h / Release: 12 03 22 00 00
 ------------------------------------------</code></pre>
 <p>While adding presets is generally a good thing to do, there may come a point where you would like to delete some of the presets. This can be done with the <code>dispersion.preset.delete</code> function. It can be done interactively, which is probably the safer method:</p>
-<pre class="r"><code>dispersion.preset.delete(path_wd = &quot;~/Documents/SplitR/Working/&quot;)</code></pre>
+<pre class="r"><code>dispersion.preset.delete(path_wd = &quot;~/Documents/Hysplit/Working/&quot;)</code></pre>
 <pre><code>What type of preset would you like to delete?
 Choices are: (1) emissions, (2) grids, (3) species
 Press &lt;ENTER&gt; for no deletion. Otherwise, enter a number or type
