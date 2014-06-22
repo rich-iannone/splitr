@@ -99,7 +99,7 @@ Before performing any dispersion model runs in SplitR, you need to initialize th
 hysplit.dispersion.config(path_wd = paste(Sys.getenv()["HOME"], "\\Hysplit\\Working\\", sep = ''))
 ```
 
-Presets for 'species', 'grids', and 'emissions' then need to be set. All additions of presets are made with the use of the `dispersion.preset.add`. That function can be run interactively with `interactive = TRUE` and remembering to set the `type` argumemnt as either `type = "species"`, `type = "grids"`, or `type = "emissions"`. Here is an example of an interactive session for creating a 'species' preset is given below.
+Presets for 'species', 'grids', and 'emissions' then need to be set. All additions of presets are made with the use of the `dispersion.preset.add`. That function can be run interactively with `interactive = TRUE` and remembering to set the `type` argumemnt as either `type = "species"`, `type = "grids"`, or `type = "emissions"`. An example of an interactive session for creating a 'species' preset is given below (angled brackets represent user input).
 
 ```{r, eval = FALSE}
 dispersion.preset.add(type = "species", interactive = TRUE,
