@@ -29,5 +29,8 @@ trajectory.list <- function(output_folder){
     
     trajectory_output_df[i,1] <- i
     
+    trajectory_output_df[i,2] <- gsub("^([^--]+)--.*", "\\1", file_list[i])
+    
+    
 }
 
