@@ -80,5 +80,7 @@ trajectory.list <- function(output_folder){
     trajectory_output_df[i,3] <- paste(as.character(datetime), " (",
                                        time_description, ")", sep = '')
     
+    rm(datetime, time_description)
+    
 }
 
