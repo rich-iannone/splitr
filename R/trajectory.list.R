@@ -7,5 +7,19 @@
 
 trajectory.list <- function(output_folder){
   
+  output_folder <- "~/Documents/SplitR/Output"
+  
+  if (.Platform$OS.type == "unix"){
+    
+    file_list <- list.files(path = output_folder, pattern = ".zip")
+    
+  }
+  
+  if (.Platform$OS.type == "windows"){
+    
+    dir_list <- list.dirs(path = output_folder, recursive = FALSE)
+    
+  }
+  
 }
 
