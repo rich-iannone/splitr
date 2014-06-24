@@ -45,5 +45,37 @@ trajectory.list <- function(output_folder){
                             sec = gsub("^.+--.+--[0-9][0-9]-[0-9][0-9]-([0-9][0-9]).zip",
                                        "\\1", file_list[i]),
                             tz = "")
+    
+    if (difftime(Sys.time(), datetime, units = "hours")[[1]] >= 24){
+      
+      if (difftime(Sys.time(), datetime, units = "days")[[1]] %% 1 >= 0.8){
+        time_description <- paste("almost ",
+                                  ceiling(difftime(Sys.time(), datetime, units = "days")[[1]]),
+                                  " days ago", sep = '')
+      } else if (difftime(Sys.time(), datetime, units = "days")[[1]] %% 1 >= 0.2 &
+                   difftime(Sys.time(), datetime, units = "days")[[1]] %% 1 < 0.8){
+        time_description <- paste("approx ", 
+                                  floor(difftime(Sys.time(), datetime, units = "days")[[1]]),
+                                  " days ago", sep = '')
+      } else {
+        time_description <- paste("just over ", 
+                                  floor(difftime(Sys.time(), datetime, units = "days")[[1]]),
+                                  " days ago", sep = '')
+      }
+      
+    } else if (difftime(Sys.time(), datetime, units = "hours")[[1]] < 24 &
+                 difftime(Sys.time(), datetime, units = "hours")[[1]] >= 1){
+      time_description <- paste("about ",
+                                floor(difftime(Sys.time(), datetime, units = "hours")[[1]]),
+                                " hours ago", sep = '')
+    } else if (difftime(Sys.time(), datetime, units = "hours")[[1]] < 1 &
+                 difftime(Sys.time(), datetime, units = "mins")[[1]] >= 1){
+      time_description <- paste("about ",
+                                floor(difftime(Sys.time(), datetime, units = "mins")[[1]]),
+                                " minutes ago", sep = '')
+    } else {
+      time_description <- paste("less than 1 min ago", sep = '')
+    }
+    
 }
 
