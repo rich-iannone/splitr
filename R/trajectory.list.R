@@ -82,5 +82,12 @@ trajectory.list <- function(output_folder){
     
     rm(datetime, time_description)
     
+    trajectory_output_df[i,4] <- as.numeric(system(paste("unzip -l ",
+                                                         list.files(path = output_folder,
+                                                                    pattern = ".zip",
+                                                                    full.names = TRUE)[i],
+                                                         " | wc -l", sep = ''),
+                                                   intern = TRUE))
+    
 }
 
