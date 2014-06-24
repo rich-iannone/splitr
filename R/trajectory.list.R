@@ -25,5 +25,7 @@ trajectory.list <- function(output_folder){
   colnames(trajectory_output_df) <- c("No.", "Name", "Creation Date and Time",
                                       "Data Count", "Location", "Height, m")
   
+  for (i in 1:length(file_list)){
+    
 }
 
