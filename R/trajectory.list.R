@@ -12,16 +12,16 @@ trajectory.list <- function(output_folder){
   if (.Platform$OS.type == "unix"){
     
     file_list <- list.files(path = output_folder, pattern = ".zip")
+    trajectory_output_df <- as.data.frame(mat.or.vec(nr = length(file_list), nc = 6))
     
   }
   
   if (.Platform$OS.type == "windows"){
     
     dir_list <- list.dirs(path = output_folder, recursive = FALSE)
-    
+    trajectory_output_df <- as.data.frame(mat.or.vec(nr = length(dir_list), nc = 6))
   }
   
-  trajectory_output_df <- as.data.frame(mat.or.vec(nr = length(file_list), nc = 6))
   colnames(trajectory_output_df) <- c("No.", "Name", "Creation Date and Time",
                                       "Data Count", "Location", "Height, m")
   
@@ -29,22 +29,45 @@ trajectory.list <- function(output_folder){
     
     trajectory_output_df[i,1] <- i
     
-    trajectory_output_df[i,2] <- gsub("^([^--]+)--.*", "\\1", file_list[i])
-    
-    
-    datetime <- ISOdatetime(year = gsub("^.+--([0-9][0-9][0-9][0-9])-[0-9][0-9]-[0-9][0-9]-.*",
-                                        "\\1", file_list[i]),
-                            month = gsub("^.+--[0-9][0-9][0-9][0-9]-([0-9][0-9])-[0-9][0-9]-.*",
+    if (.Platform$OS.type == "unix"){
+      
+      trajectory_output_df[i,2] <- gsub("^([^--]+)--.*", "\\1", file_list[i])
+      
+      datetime <- ISOdatetime(year = gsub("^.+--([0-9][0-9][0-9][0-9])-[0-9][0-9]-[0-9][0-9]-.*",
+                                          "\\1", file_list[i]),
+                              month = gsub("^.+--[0-9][0-9][0-9][0-9]-([0-9][0-9])-[0-9][0-9]-.*",
+                                           "\\1", file_list[i]),
+                              day = gsub("^.+--[0-9][0-9][0-9][0-9]-[0-9][0-9]-([0-9][0-9])-.*",
                                          "\\1", file_list[i]),
-                            day = gsub("^.+--[0-9][0-9][0-9][0-9]-[0-9][0-9]-([0-9][0-9])-.*",
-                                       "\\1", file_list[i]),
-                            hour = gsub("^.+--.+--([0-9][0-9])-[0-9][0-9]-[0-9][0-9].zip",
-                                        "\\1", file_list[i]),
-                            min = gsub("^.+--.+--[0-9][0-9]-([0-9][0-9])-[0-9][0-9].zip",
-                                       "\\1", file_list[i]),
-                            sec = gsub("^.+--.+--[0-9][0-9]-[0-9][0-9]-([0-9][0-9]).zip",
-                                       "\\1", file_list[i]),
-                            tz = "")
+                              hour = gsub("^.+--.+--([0-9][0-9])-[0-9][0-9]-[0-9][0-9].zip",
+                                          "\\1", file_list[i]),
+                              min = gsub("^.+--.+--[0-9][0-9]-([0-9][0-9])-[0-9][0-9].zip",
+                                         "\\1", file_list[i]),
+                              sec = gsub("^.+--.+--[0-9][0-9]-[0-9][0-9]-([0-9][0-9]).zip",
+                                         "\\1", file_list[i]),
+                              tz = "")
+      
+    }
+    
+    if (.Platform$OS.type == "windows"){
+      
+      trajectory_output_df[i,2] <- gsub("^([^--]+)--.*", "\\1", dir_list[i])
+      
+      datetime <- ISOdatetime(year = gsub("^.+--([0-9][0-9][0-9][0-9])-[0-9][0-9]-[0-9][0-9]-.*",
+                                          "\\1", dir_list[i]),
+                              month = gsub("^.+--[0-9][0-9][0-9][0-9]-([0-9][0-9])-[0-9][0-9]-.*",
+                                           "\\1", dir_list[i]),
+                              day = gsub("^.+--[0-9][0-9][0-9][0-9]-[0-9][0-9]-([0-9][0-9])-.*",
+                                         "\\1", dir_list[i]),
+                              hour = gsub("^.+--.+--([0-9][0-9])-[0-9][0-9]-[0-9][0-9].zip",
+                                          "\\1", dir_list[i]),
+                              min = gsub("^.+--.+--[0-9][0-9]-([0-9][0-9])-[0-9][0-9].zip",
+                                         "\\1", dir_list[i]),
+                              sec = gsub("^.+--.+--[0-9][0-9]-[0-9][0-9]-([0-9][0-9]).zip",
+                                         "\\1", dir_list[i]),
+                              tz = "")
+      
+    }
     
     if (difftime(Sys.time(), datetime, units = "hours")[[1]] >= 24){
       
@@ -82,40 +105,41 @@ trajectory.list <- function(output_folder){
     
     rm(datetime, time_description)
     
-    trajectory_output_df[i,4] <- as.numeric(system(paste("unzip -l ",
-                                                         list.files(path = output_folder,
-                                                                    pattern = ".zip",
-                                                                    full.names = TRUE)[i],
-                                                         " | wc -l", sep = ''),
-                                                   intern = TRUE))
-    
-    lat <- gsub("^.*lat_([0-9\\.-]*)_.*", "\\1",
-                system(paste("unzip -l ",
-                             list.files(path = output_folder,
-                                        pattern = ".zip",
-                                        full.names = TRUE)[i],
-                             " | ls | less", sep = ''), intern = TRUE)[1])
-    
-    lon <- gsub("^.*long_([0-9\\.-]*)-height.*", "\\1",
-                system(paste("unzip -l ",
-                             list.files(path = output_folder,
-                                        pattern = ".zip",
-                                        full.names = TRUE)[i],
-                             " | ls | less", sep = ''), intern = TRUE)[1])
-    
-    trajectory_output_df[i,5] <- paste(lat, ", ", lon, sep = '')
-    
-    trajectory_output_df[i,6] <- as.numeric(gsub("^.*height_([0-9\\.-]*)-.*", "\\1",
-                                                 system(paste("unzip -l ",
-                                                              list.files(path = output_folder,
-                                                                         pattern = ".zip",
-                                                                         full.names = TRUE)[i],
-                                                              " | ls | less", sep = ''), intern = TRUE)[1]))
-    
+    if (.Platform$OS.type == "unix"){
+      
+      trajectory_output_df[i,4] <- as.numeric(system(paste("unzip -l ",
+                                                           list.files(path = output_folder,
+                                                                      pattern = ".zip",
+                                                                      full.names = TRUE)[i],
+                                                           " | wc -l", sep = ''),
+                                                     intern = TRUE))
+      
+      lat <- gsub("^.*lat_([0-9\\.-]*)_.*", "\\1",
+                  system(paste("unzip -l ",
+                               list.files(path = output_folder,
+                                          pattern = ".zip",
+                                          full.names = TRUE)[i],
+                               " | ls | less", sep = ''), intern = TRUE)[1])
+      
+      lon <- gsub("^.*long_([0-9\\.-]*)-height.*", "\\1",
+                  system(paste("unzip -l ",
+                               list.files(path = output_folder,
+                                          pattern = ".zip",
+                                          full.names = TRUE)[i],
+                               " | ls | less", sep = ''), intern = TRUE)[1])
+      
+      trajectory_output_df[i,5] <- paste(lat, ", ", lon, sep = '')
+      
+      trajectory_output_df[i,6] <- as.numeric(gsub("^.*height_([0-9\\.-]*)-.*", "\\1",
+                                                   system(paste("unzip -l ",
+                                                                list.files(path = output_folder,
+                                                                           pattern = ".zip",
+                                                                           full.names = TRUE)[i],
+                                                                " | ls | less", sep = ''), intern = TRUE)[1]))
+      
+    }
     
   }
-  
-  
   
 }
 
