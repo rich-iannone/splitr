@@ -105,5 +105,18 @@ trajectory.list <- function(output_folder){
     
     trajectory_output_df[i,5] <- paste(lat, ", ", lon, sep = '')
     
+    trajectory_output_df[i,6] <- as.numeric(gsub("^.*height_([0-9\\.-]*)-.*", "\\1",
+                                                 system(paste("unzip -l ",
+                                                              list.files(path = output_folder,
+                                                                         pattern = ".zip",
+                                                                         full.names = TRUE)[i],
+                                                              " | ls | less", sep = ''), intern = TRUE)[1]))
+    
+    
+  }
+  
+  
+  
 }
+
 
