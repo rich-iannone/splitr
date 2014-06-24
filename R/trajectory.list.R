@@ -27,5 +27,7 @@ trajectory.list <- function(output_folder){
   
   for (i in 1:length(file_list)){
     
+    trajectory_output_df[i,1] <- i
+    
 }
 
