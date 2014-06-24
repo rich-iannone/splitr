@@ -77,5 +77,8 @@ trajectory.list <- function(output_folder){
       time_description <- paste("less than 1 min ago", sep = '')
     }
     
+    trajectory_output_df[i,3] <- paste(as.character(datetime), " (",
+                                       time_description, ")", sep = '')
+    
 }
 
