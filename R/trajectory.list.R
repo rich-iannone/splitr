@@ -89,5 +89,21 @@ trajectory.list <- function(output_folder){
                                                          " | wc -l", sep = ''),
                                                    intern = TRUE))
     
+    lat <- gsub("^.*lat_([0-9\\.-]*)_.*", "\\1",
+                system(paste("unzip -l ",
+                             list.files(path = output_folder,
+                                        pattern = ".zip",
+                                        full.names = TRUE)[i],
+                             " | ls | less", sep = ''), intern = TRUE)[1])
+    
+    lon <- gsub("^.*long_([0-9\\.-]*)-height.*", "\\1",
+                system(paste("unzip -l ",
+                             list.files(path = output_folder,
+                                        pattern = ".zip",
+                                        full.names = TRUE)[i],
+                             " | ls | less", sep = ''), intern = TRUE)[1])
+    
+    trajectory_output_df[i,5] <- paste(lat, ", ", lon, sep = '')
+    
 }
 
