@@ -20,12 +20,12 @@ The function takes HYSPLIT trajectory output files in a specified output directo
 }
 \examples{
 # Process all trajectory output files in the specified output directory
-trajectory.df <- trajectory.read(archive =
+trajectory.df <- trajectory.read(archive_folder =
                                  "~/hysplit/output/traj--2014-06-16--23-58-44.zip")
 
 # Process trajectory output files in the same folder but only those
 # files from 2002 with a starting height of 500 m
-trajectory.df <- trajectory.read(archive =
+trajectory.df <- trajectory.read(archive_folder =
                                    "~/hysplit/output/traj--2014-06-16--23-58-44.zip",
                                  year = 2002,
                                  start_height_m_AGL = 500)
