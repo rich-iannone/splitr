@@ -4,10 +4,9 @@
 #' @return data frame with information on trajectory model output data archives
 #' @export trajectory.list
 
-
 trajectory.list <- function(output_folder){
   
-  output_folder <- "~/Documents/SplitR/Output"
+  setwd(output_folder)
   
   if (.Platform$OS.type == "unix"){
     
@@ -130,7 +129,7 @@ trajectory.list <- function(output_folder){
       
       trajectory_output_df[i,5] <- paste(lat, ", ", lon, sep = '')
       
-      trajectory_output_df[i,6] <- as.numeric(gsub("^.*height_([0-9\\.-]*)-.*", "\\1",
+      trajectory_output_df[i,6] <- as.numeric(gsub("^.*height_(.*)-.*", "\\1",
                                                    system(paste("unzip -l ",
                                                                 list.files(path = output_folder,
                                                                            pattern = ".zip",
@@ -140,6 +139,8 @@ trajectory.list <- function(output_folder){
     }
     
   }
+  
+  return(trajectory_output_df)
   
 }
 
