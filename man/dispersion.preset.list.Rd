@@ -3,8 +3,7 @@
 \alias{dispersion.preset.list}
 \title{Get list of presets}
 \usage{
-dispersion.preset.list(read = NULL, search = NULL,
-  path_wd = "~/Documents/SplitR/Working/")
+dispersion.preset.list(read = NULL, search = NULL, path_wd)
 }
 \arguments{
 \item{read}{the type of preset to get. The three preset types are "emissions", "grids", and "species". Only a single type can be specified.}
@@ -18,9 +17,11 @@ This function allows you to generate a simple list of presets of a given type. I
 }
 \examples{
 # Get a list of 'species' presets
-dispersion.preset.list(read = "species")
+dispersion.preset.list(read = "species",
+                       path_wd = "C:\\\\hysplit4\\\\working\\\\")
 
 # Find the number for the 'emissions' preset named 'E134'
-dispersion.preset.list(read = "emissions", search = "E134")
+dispersion.preset.list(read = "emissions", search = "E134",
+                       path_wd = "~/Documents/Hysplit/working/")
 }
 
