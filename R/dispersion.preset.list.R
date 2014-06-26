@@ -6,13 +6,15 @@
 #' @export dispersion.preset.list
 #' @examples
 #' # Get a list of 'species' presets
-#' dispersion.preset.list(read = "species")
+#' dispersion.preset.list(read = "species",
+#'                        path_wd = "C:\\hysplit4\\working\\")
 #' 
 #' # Find the number for the 'emissions' preset named 'E134'
-#' dispersion.preset.list(read = "emissions", search = "E134")
+#' dispersion.preset.list(read = "emissions", search = "E134",
+#'                        path_wd = "~/Documents/Hysplit/working/")
 
 dispersion.preset.list <- function(read = NULL, search = NULL,
-                                   path_wd = "~/Documents/SplitR/Working/"){
+                                   path_wd){
   
   # If an argument for read was not provided, prompt the user to select a preset class
   if (is.null(read)){
