@@ -18,7 +18,7 @@
 dispersion.preset.delete <- function(read = NULL,
                                      numbers = NULL,
                                      interactive = TRUE,
-                                     path_wd = "~/Documents/SplitR/Working/"){
+                                     path_wd){
   
   # Validate supplied digits for duplicates
   if (!is.null(numbers)){
