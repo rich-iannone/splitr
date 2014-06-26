@@ -6,23 +6,21 @@
 
 trajectory.list <- function(output_folder){
   
-  setwd(output_folder)
-  
   if (.Platform$OS.type == "unix"){
     
     file_list <- list.files(path = output_folder, pattern = ".zip")
-    trajectory_output_df <- as.data.frame(mat.or.vec(nr = length(file_list), nc = 6))
+    trajectory_output_df <- as.data.frame(mat.or.vec(nr = length(file_list), nc = 5))
     
   }
   
   if (.Platform$OS.type == "windows"){
     
     dir_list <- list.dirs(path = output_folder, recursive = FALSE)
-    trajectory_output_df <- as.data.frame(mat.or.vec(nr = length(dir_list), nc = 6))
+    trajectory_output_df <- as.data.frame(mat.or.vec(nr = length(dir_list), nc = 5))
   }
   
   colnames(trajectory_output_df) <- c("No.", "Name", "Creation Date and Time",
-                                      "Data Count", "Location", "Height, m")
+                                      "Data Count", "Location")
   
   for (i in 1:length(file_list)){
     
@@ -104,44 +102,36 @@ trajectory.list <- function(output_folder){
     
     rm(datetime, time_description)
     
-    if (.Platform$OS.type == "unix"){
-      
-      trajectory_output_df[i,4] <- as.numeric(system(paste("unzip -l ",
-                                                           list.files(path = output_folder,
-                                                                      pattern = ".zip",
-                                                                      full.names = TRUE)[i],
-                                                           " | wc -l", sep = ''),
-                                                     intern = TRUE))
-      
-      lat <- gsub("^.*lat_([0-9\\.-]*)_.*", "\\1",
-                  system(paste("unzip -l ",
-                               list.files(path = output_folder,
-                                          pattern = ".zip",
-                                          full.names = TRUE)[i],
-                               " | ls | less", sep = ''), intern = TRUE)[1])
-      
-      lon <- gsub("^.*long_([0-9\\.-]*)-height.*", "\\1",
-                  system(paste("unzip -l ",
-                               list.files(path = output_folder,
-                                          pattern = ".zip",
-                                          full.names = TRUE)[i],
-                               " | ls | less", sep = ''), intern = TRUE)[1])
-      
-      trajectory_output_df[i,5] <- paste(lat, ", ", lon, sep = '')
-      
-      trajectory_output_df[i,6] <- as.numeric(gsub("^.*height_(.*)-.*", "\\1",
-                                                   system(paste("unzip -l ",
-                                                                list.files(path = output_folder,
-                                                                           pattern = ".zip",
-                                                                           full.names = TRUE)[i],
-                                                                " | ls | less", sep = ''), intern = TRUE)[1]))
-      
-    }
+    #     if (.Platform$OS.type == "unix"){
+    #       
+    #       trajectory_output_df[i,4] <- as.numeric(system(paste("unzip -l ",
+    #                                                            list.files(path = output_folder,
+    #                                                                       pattern = ".zip",
+    #                                                                       full.names = TRUE)[i],
+    #                                                            " | wc -l", sep = ''),
+    #                                                      intern = TRUE))
+    #       
+    #       lat <- gsub("^.*lat_([0-9\\.-]*)_.*", "\\1",
+    #                   system(paste("unzip -l ",
+    #                                list.files(path = output_folder,
+    #                                           pattern = ".zip",
+    #                                           full.names = TRUE)[i],
+    #                                " | ls | less", sep = ''), intern = TRUE)[1])
+    #       
+    #       lon <- gsub("^.*long_([0-9\\.-]*)-height.*", "\\1",
+    #                   system(paste("unzip -l ",
+    #                                list.files(path = output_folder,
+    #                                           pattern = ".zip",
+    #                                           full.names = TRUE)[i],
+    #                                " | ls | less", sep = ''), intern = TRUE)[1])
+    #       
+    #       trajectory_output_df[i,5] <- paste(lat, ", ", lon, sep = '')
+    #       
+    #     }
     
   }
   
   return(trajectory_output_df)
   
 }
-
 
