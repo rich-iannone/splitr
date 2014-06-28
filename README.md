@@ -26,7 +26,7 @@ This package is in active development but is quite usable at present. Some of it
 
 ## Setup
 
-Use of SplitR requires a basic installation of HYSPLIT, as obtained from the Air Resources Laboratory (ARL) of the National Oceanic and Atmospheric Administration (NOAA) [READY website](http://ready.arl.noaa.gov/HYSPLIT.php). 
+Use of SplitR requires the installation of HYSPLIT. It can be obtained from the Air Resources Laboratory (ARL) of the National Oceanic and Atmospheric Administration (NOAA) [READY website](http://ready.arl.noaa.gov/HYSPLIT.php). 
 
 For Windows installations, there are both [registered](http://ready.arl.noaa.gov/hyreg/HYSPLIT_pchysplit.php) and [unregistered](http://ready.arl.noaa.gov/HYSPLIT_hytrial.php) versions of HYSPLIT. The only difference in functionality between the two is that the unregistered version cannot perform model runs with forecast meteorological data. SplitR has the capability to perform forecast model runs so obtain the registered version if you intend to use that functionality. Regardless of version, both come with a standard installer that will place the main HYSPLIT folder (named 'hysplit') in the location of your choice. Within this main folder, there are 15 subdirectories.
 
