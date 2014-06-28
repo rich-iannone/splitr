@@ -4,7 +4,7 @@
 \title{Remove dispersion preset information}
 \usage{
 dispersion.preset.delete(read = NULL, numbers = NULL, interactive = TRUE,
-  path_wd = "~/Documents/SplitR/Working/")
+  path_wd)
 }
 \arguments{
 \item{read}{}
