@@ -6,7 +6,7 @@
 get.met.forecast.nam(path_met_files)
 }
 \arguments{
-\item{path_met_files}{}
+\item{path_met_files}{a full path should be provided for the location of the meteorological data files; downloaded files will be saved in this location.}
 }
 \description{
 This function downloads NAM meteorology forecast data files from the NOAA FTP server and saves them to a specified folder.
