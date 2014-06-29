@@ -421,6 +421,6 @@ Here is a snapshot of the dispersion particles at hour 16 of 24:
 - greater support for different types of meteorological data files
 - improved graphics for trajectory and dispersion model run output
 - options for merging data frames of backtrajectories with pollutant concentrations for advanced air quality analyses
-- statistical summaries for dispersion of particles
+- statistical summaries for trajectories and dispersion of particles
 - ensemble model runs
 - capability for the starting location to be moving during successive model runs
