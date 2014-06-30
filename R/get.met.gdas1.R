@@ -3,7 +3,7 @@
 #' @param files a vector list of exact filenames for the GDAS1 files.
 #' @param years a vector list of years for which GDAS1 files are to be obtained via FTP.
 #' @param months a vector list of months for which GDAS1 files are to be obtained via FTP. 
-#' @param path_met_files 
+#' @param path_met_files a full path should be provided for the location of the meteorological data files; downloaded files will be saved in this location.
 #' @export get.met.gdas1
 
 get.met.gdas1 <- function(files = NULL,
