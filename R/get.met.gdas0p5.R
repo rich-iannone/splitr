@@ -2,8 +2,8 @@
 #' @description This function downloads GDAS0.5 meteorology data files from the NOAA FTP server and saves them to a specified folder. Files can be downloaded either by specifying a list of filenames (in the form of "RP[YYYY][MM].gbl") or through bulk download of a year of files.
 #' @param files a vector list of exact filenames for the GDAS0.5 files.
 #' @param years a vector list of years for which GDAS0.5 files are to be obtained via FTP.
-#' @param months 
-#' @param days 
+#' @param months a vector list of months for which GDAS0.5 files are to be obtained via FTP.
+#' @param days a vector list of days for which GDAS0.5 files are to be obtained via FTP.
 #' @param path_met_files 
 #' @export get.met.gdas0p5
 
