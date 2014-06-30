@@ -1,6 +1,6 @@
 #' Get EDAS40 meteorology data files
 #' @description This function downloads EDAS40 meteorology data files from the NOAA FTP server and saves them to a specified folder. Files can be downloaded either by specifying a list of filenames (in the form of "RP[YYYY][MM].gbl") or through bulk download of a year of files.
-#' @param files 
+#' @param files a vector list of exact filenames for the EDAS40 files.
 #' @param years 
 #' @param months 
 #' @param path_met_files  
