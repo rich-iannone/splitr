@@ -5,6 +5,7 @@
 #' @param path_wd a full path should be provided for the HYSPLIT working directory since presets will normally reside in this folder.
 #' @export dispersion.preset.list
 #' @examples
+#' \dontrun{}
 #' # Get a list of 'species' presets
 #' dispersion.preset.list(read = "species",
 #'                        path_wd = "C:\\hysplit4\\working\\")
@@ -12,6 +13,7 @@
 #' # Find the number for the 'emissions' preset named 'E134'
 #' dispersion.preset.list(read = "emissions", search = "E134",
 #'                        path_wd = "~/Documents/Hysplit/working/")
+#'}
 
 dispersion.preset.list <- function(read = NULL, search = NULL,
                                    path_wd){
