@@ -6,8 +6,10 @@
 #' @param path_met_files  a full path should be provided for the location of the meteorological data files; downloaded files will be saved in this location.
 #' @export get.met.edas40
 #' @examples
+#' \dontrun{
 #' # Download a year of EDAS40 data files
 #' get.met.edas40(years = 2012)
+#' }
 
 get.met.edas40 <- function(files = NULL,
                            years = NULL,

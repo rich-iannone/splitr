@@ -4,9 +4,11 @@
 #' @param stats the type of statistical analysis to perform. Currently, "fivenum" is available.
 #' @export disp.stats.particle_heights
 #' @examples
+#' \dontrun{
 #' # Get a five-number statistical summary of particle heights at every hour
 #' disp.stats.particle_heights(dispersion_df = disp_output,
 #'                             stats = "fivenum")
+#'}
 
 disp.stats.particle_heights <- function(dispersion_df, stats){
   

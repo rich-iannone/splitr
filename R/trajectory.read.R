@@ -6,6 +6,7 @@
 #' @return data frame with several wind trajectory parameters
 #' @export trajectory.read
 #' @examples
+#' \dontrun{
 #' # Process all trajectory output files in the specified output directory
 #' trajectory.df <- trajectory.read(archive_folder =
 #'                                  "~/hysplit/output/traj--2014-06-16--23-58-44.zip")
@@ -16,6 +17,7 @@
 #'                                    "~/hysplit/output/traj--2014-06-16--23-58-44.zip",
 #'                                  year = 2002,
 #'                                  start_height_m_AGL = 500)
+#'}
 
 trajectory.read <- function(archive_folder,
                             year = NULL,

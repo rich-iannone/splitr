@@ -3,8 +3,10 @@
 #' @param path_wd a full path should be provided for the HYSPLIT working directory.
 #' @export hysplit.dispersion.config
 #' @examples
+#' \dontrun{
 #' # Create a default SETUP.CFG file for dispersion runs
 #' hysplit.dispersion.config(path_wd = "C://hysplit//working//")
+#' }
 
 hysplit.dispersion.config <- function(path_wd){
   

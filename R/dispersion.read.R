@@ -4,9 +4,11 @@
 #' @return data frame with hourly particle positions
 #' @export dispersion.read
 #' @examples
+#' \dontrun{
 #' # Process all dispersion output files in the specified output directory
 #' dispersion.df <- dispersion.read(path_output_files =
 #'                                  "~/hysplit/dispersion/")
+#'}
 
 dispersion.read <- function(path_output_files){  
   

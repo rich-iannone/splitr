@@ -5,12 +5,14 @@
 #' @param path_wd a full path should be provided for the HYSPLIT working directory since presets will normally reside in this folder.
 #' @export dispersion.preset.get
 #' @examples
+#' \dontrun{
 #' # The hysplit.dispersion() function obtains presets for
 #' # "emissions", "grids", and "species" while assembling
 #' # a CONTROL file
 #' dispersion.preset.get(read = "emissions", numbers = emissions)
 #' dispersion.preset.get(read = "grids", numbers = grids)
 #' dispersion.preset.get(read = "species", numbers = species)
+#' }
 
 dispersion.preset.get <- function(read, numbers,
                                   path_wd = "~/Documents/SplitR/Working/"){

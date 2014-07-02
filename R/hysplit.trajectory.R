@@ -21,6 +21,7 @@
 #' @param path_executable the full path and name of the HYSPLIT executable file for trajectory runs must be provided. By default, the location '~/Documents/SplitR/Exec' is chosen.
 #' @export hysplit.trajectory
 #' @examples
+#' \dontrun{
 #' # test run type of 'years' with forward trajectory using NCEP/NCAR reanalaysis data
 #' hysplit.trajectory(traj_name = "second",
 #'                    return_traj_df = FALSE,
@@ -39,6 +40,7 @@
 #'                    path_output_files = "~/HYSPLIT4/output_trajectory/",
 #'                    path_wd = "~/HYSPLIT4/working/",
 #'                    path_executable = "~/HYSPLIT4/exec/hyts_std")
+#'}
 
 hysplit.trajectory <- function(traj_name = NULL,
                                return_traj_df = TRUE,

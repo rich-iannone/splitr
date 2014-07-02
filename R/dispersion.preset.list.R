@@ -5,7 +5,7 @@
 #' @param path_wd a full path should be provided for the HYSPLIT working directory since presets will normally reside in this folder.
 #' @export dispersion.preset.list
 #' @examples
-#' \dontrun{}
+#' \dontrun{
 #' # Get a list of 'species' presets
 #' dispersion.preset.list(read = "species",
 #'                        path_wd = "C:\\hysplit4\\working\\")

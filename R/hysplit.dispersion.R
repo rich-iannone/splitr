@@ -22,6 +22,7 @@
 #' @param path_executable the full path and name of the HYSPLIT executable file for trajectory runs must be provided.
 #' @export hysplit.dispersion 
 #' @examples
+#' \dontrun{
 #' # Perform a dispersion run lasting 12 hours over two consecutive days, both starting at midnight
 #' # Grid presets 1 and 2 will be used as sampling grids
 #' # Presets for species and emissions default to the first in each of those sets
@@ -35,6 +36,7 @@
 #'                    path_output_files = "~/Documents/SplitR/Output/",
 #'                    path_wd = "~/Documents/SplitR/Working/",
 #'                    path_executable = "~/Documents/SplitR/Exec/hycs_std")
+#'}
 
 hysplit.dispersion <- function(start_lat_deg,
                                start_long_deg,

@@ -34,6 +34,7 @@
 #' @param path_wd a full path should be provided for the HYSPLIT working directory since presets will reside in this folder.
 #' @export dispersion.preset.add
 #' @examples
+#' \dontrun{
 #' # Interactively add a preset for a 'emissions' input
 #' dispersion.preset.add("emissions")
 #' 
@@ -51,6 +52,7 @@
 #'                       grid_heights = "0 200 400 800 1200",
 #'                       grid_start_time = "12 02 01 12 00", 
 #'                       grid_end_time = "12 02 08 12 00")
+#'}
 
 dispersion.preset.add <- function(type, interactive = TRUE,
                                   species_name = NULL,

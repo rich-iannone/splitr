@@ -6,6 +6,7 @@
 #' @param path_wd a full path should be provided for the HYSPLIT working directory since presets will normally reside in this folder.
 #' @export dispersion.preset.delete
 #' @examples
+#' \dontrun{
 #' # Delete an 'emissions' preset
 #' dispersion.preset.delete("emissions")
 #' 
@@ -14,6 +15,7 @@
 #' 
 #' # Delete a 'species' preset
 #' dispersion.preset.delete("species")
+#' }
 
 dispersion.preset.delete <- function(read = NULL,
                                      numbers = NULL,
