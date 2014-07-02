@@ -16,6 +16,7 @@ dispersion.preset.list(read = NULL, search = NULL, path_wd)
 This function allows you to generate a simple list of presets of a given type. If no type is provided, the user is prompted to enter a type. The list is presented as a series of oneline summaries that are numbered in the order they appear in their respective files. This numbering is important, as the 'hysplit.dispersion' function calls presets by these numbers. It is possible to search for a preset of a certain type by its name through use of the 'search' argument. If there is an exact match by name, then the number associated with that preset is returned.
 }
 \examples{
+\dontrun{
 # Get a list of 'species' presets
 dispersion.preset.list(read = "species",
                        path_wd = "C:\\\\hysplit4\\\\working\\\\")
@@ -23,5 +24,6 @@ dispersion.preset.list(read = "species",
 # Find the number for the 'emissions' preset named 'E134'
 dispersion.preset.list(read = "emissions", search = "E134",
                        path_wd = "~/Documents/Hysplit/working/")
+}
 }
 

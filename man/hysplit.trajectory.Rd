@@ -53,6 +53,7 @@ hysplit.trajectory(traj_name = NULL, return_traj_df = TRUE, start_lat_deg,
 The function executes single/multiple forward or backward HYSPLIT trajectory runs using specified meteorological datasets.
 }
 \examples{
+\dontrun{
 # test run type of 'years' with forward trajectory using NCEP/NCAR reanalaysis data
 hysplit.trajectory(traj_name = "second",
                    return_traj_df = FALSE,
@@ -71,5 +72,6 @@ hysplit.trajectory(traj_name = "second",
                    path_output_files = "~/HYSPLIT4/output_trajectory/",
                    path_wd = "~/HYSPLIT4/working/",
                    path_executable = "~/HYSPLIT4/exec/hyts_std")
+}
 }
 

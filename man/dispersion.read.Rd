@@ -15,8 +15,10 @@ data frame with hourly particle positions
 The function takes HYSPLIT dispersion output files in a specified output directory and processes all files into a data frame object.
 }
 \examples{
+\dontrun{
 # Process all dispersion output files in the specified output directory
 dispersion.df <- dispersion.read(path_output_files =
                                  "~/hysplit/dispersion/")
+}
 }
 

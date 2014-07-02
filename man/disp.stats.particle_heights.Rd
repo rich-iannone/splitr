@@ -14,8 +14,10 @@ disp.stats.particle_heights(dispersion_df, stats)
 This function computes statistics focussed on the heights of particles at every time interval.
 }
 \examples{
+\dontrun{
 # Get a five-number statistical summary of particle heights at every hour
 disp.stats.particle_heights(dispersion_df = disp_output,
                             stats = "fivenum")
+}
 }
 

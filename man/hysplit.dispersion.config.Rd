@@ -12,7 +12,9 @@ hysplit.dispersion.config(path_wd)
 This function creates a default SETUP.CFG configuration file and places it in the user-specified 'working' folder. This file must be located in the working directory before any HYSPLIT dispersion models can be run.
 }
 \examples{
+\dontrun{
 # Create a default SETUP.CFG file for dispersion runs
 hysplit.dispersion.config(path_wd = "C://hysplit//working//")
+}
 }
 

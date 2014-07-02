@@ -18,7 +18,9 @@ get.met.edas40(files = NULL, years = NULL, months = NULL, path_met_files)
 This function downloads EDAS40 meteorology data files from the NOAA FTP server and saves them to a specified folder. Files can be downloaded either by specifying a list of filenames (in the form of "RP[YYYY][MM].gbl") or through bulk download of a year of files.
 }
 \examples{
+\dontrun{
 # Download a year of EDAS40 data files
 get.met.edas40(years = 2012)
+}
 }
 

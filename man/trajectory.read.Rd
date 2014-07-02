@@ -19,6 +19,7 @@ data frame with several wind trajectory parameters
 The function takes HYSPLIT trajectory output files in a specified output directory and processes all files into a data frame object.
 }
 \examples{
+\dontrun{
 # Process all trajectory output files in the specified output directory
 trajectory.df <- trajectory.read(archive_folder =
                                  "~/hysplit/output/traj--2014-06-16--23-58-44.zip")
@@ -29,5 +30,6 @@ trajectory.df <- trajectory.read(archive_folder =
                                    "~/hysplit/output/traj--2014-06-16--23-58-44.zip",
                                  year = 2002,
                                  start_height_m_AGL = 500)
+}
 }
 
