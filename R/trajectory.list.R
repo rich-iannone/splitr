@@ -74,7 +74,7 @@ trajectory.list <- function(output_folder){
                                   " days ago", sep = '')
       } else if (difftime(Sys.time(), datetime, units = "days")[[1]] %% 1 >= 0.2 &
                    difftime(Sys.time(), datetime, units = "days")[[1]] %% 1 < 0.8){
-        time_description <- paste("approx ", 
+        time_description <- paste("ca. ", 
                                   floor(difftime(Sys.time(), datetime, units = "days")[[1]]),
                                   " days ago", sep = '')
       } else {
