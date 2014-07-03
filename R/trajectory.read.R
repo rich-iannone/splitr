@@ -30,7 +30,8 @@ trajectory.read <- function(archive_folder,
   if (.Platform$OS.type == "unix"){
     system(paste("cd '", gsub("(^.*/).*$", "\\1", path.expand(archive_folder)), "' ; unzip -d '",
                  trajectory_file_dir, "' ",
-                 gsub("^.*/(.*)$", "\\1", path.expand(archive_folder)), sep = ''))
+                 gsub("^.*/(.*)$", "\\1", path.expand(archive_folder)), sep = ''),
+           show.outut.on.console = FALSE)
     
     trajectory_file_list <- list.files(trajectory_file_dir)
     
