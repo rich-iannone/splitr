@@ -3,7 +3,7 @@
 \alias{dispersion.read}
 \title{Read HYSPLIT dispersion output files}
 \usage{
-dispersion.read(path_output_files)
+dispersion.read(output_folder)
 }
 \arguments{
 \item{path_output_files}{the absolute path of the dispersion output files is to be provided.}
@@ -12,7 +12,7 @@ dispersion.read(path_output_files)
 data frame with hourly particle positions
 }
 \description{
-The function takes HYSPLIT dispersion output files in a specified output directory and processes all files into a data frame object.
+The function takes HYSPLIT dispersion output files in a specified output directory or dispersion archive and processes all files into a data frame object.
 }
 \examples{
 \dontrun{
