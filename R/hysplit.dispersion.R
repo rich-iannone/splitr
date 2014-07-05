@@ -37,8 +37,9 @@
 #'                    path_wd = "~/Documents/SplitR/Working/",
 #'                    path_executable = "~/Documents/SplitR/Exec/hycs_std")
 #'}
-
-hysplit.dispersion <- function(start_lat_deg,
+# Include dispersion name
+hysplit.dispersion <- function(disp_name = NULL,
+                               start_lat_deg,
                                start_long_deg,
                                start_height_m_AGL,
                                simulation_duration_h = 24,
