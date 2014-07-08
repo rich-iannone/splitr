@@ -518,6 +518,25 @@ hysplit.dispersion <- function(disp_name = NULL,
       # Move the .csv files from the working directory to the output folder
       
       if (.Platform$OS.type == "unix"){
+#         system(paste("(cd ", path_wd, " && mv GIS_part*.csv '", path_output_files, "')",
+#                      sep = ''))
+#         
+        if (is.null(disp_name)){
+          folder_name <- paste("disp--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
+        } else if (!is.null(disp_name)){
+          folder_name <- paste(disp_name, "--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
+        }
+        
+        # Perform the movement of all dispersion files into a folder residing in the
+        # output directory
+        dir.create(path = paste(path_output_files, folder_name, sep = ''))
+        
+        system(paste("(cd ", path_wd, " && mv GIS_part*.csv '", path_output_files, folder_name,
+                     "')", sep = ''))
+        
+      }
+      
+      if (.Platform$OS.type == "windows"){
         system(paste("(cd ", path_wd, " && mv GIS_part*.csv '", path_output_files, "')",
                      sep = ''))
       }
