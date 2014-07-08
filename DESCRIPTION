@@ -17,4 +17,5 @@ Depends:
     lubridate,
     RCurl,
     cluster,
-    openair
+    maps,
+    mapdata
