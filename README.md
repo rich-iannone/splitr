@@ -419,7 +419,8 @@ Here is a snapshot of the dispersion particles at hour 16 of 24:
 ## Future Additions to SplitR
 
 - greater support for different types of meteorological data files
-- improved graphics for trajectory and dispersion model run output
+- support for dispersion from line sources
+- improved graphics for trajectory and dispersion model run outputs
 - options for merging data frames of backtrajectories with pollutant concentrations for advanced air quality analyses
 - statistical summaries for trajectories and dispersion of particles
 - ensemble model runs
