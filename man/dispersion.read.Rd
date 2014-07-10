@@ -3,7 +3,7 @@
 \alias{dispersion.read}
 \title{Read HYSPLIT dispersion output files}
 \usage{
-dispersion.read(output_folder)
+dispersion.read(archive_folder)
 }
 \arguments{
 \item{path_output_files}{the absolute path of the dispersion output files is to be provided.}

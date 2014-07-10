@@ -13,7 +13,7 @@ hysplit.trajectory(traj_name = NULL, return_traj_df = TRUE, start_lat_deg,
 \arguments{
 \item{traj_name}{an optional, descriptive name for the output file collection}
 
-\item{return_traj_df}{an option to return a data frame with trajectory data.}
+\item{return_traj_df}{an option to return a data frame with trajectory data}
 
 \item{start_lat_deg}{the starting latitude (in decimal degrees) for the model run(s)}
 

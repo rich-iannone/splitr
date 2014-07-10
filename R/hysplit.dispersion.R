@@ -1,5 +1,7 @@
 #' Conduct HYSPLIT dispersion runs
 #' @description The function executes single/multiple forward or backward HYSPLIT dispersion runs using specified meteorological datasets.
+#' @param disp_name an optional, descriptive name for the output file collection
+#' @param return_disp_df an option to return a data frame with dispersion data
 #' @param start_lat_deg the starting latitude (in decimal degrees) for the model run(s)
 #' @param start_long_deg the starting longitude (in decimal degrees) for the model run(s)
 #' @param start_height_m_AGL the starting height (in meters above ground level) for the model run(s)
@@ -39,6 +41,7 @@
 #'}
 # Include dispersion name
 hysplit.dispersion <- function(disp_name = NULL,
+                               return_disp_df = TRUE,
                                start_lat_deg,
                                start_long_deg,
                                start_height_m_AGL,
@@ -64,7 +67,7 @@ hysplit.dispersion <- function(disp_name = NULL,
   require(lubridate)
   require(maps)
   require(mapdata)
-    
+  
   # Set parameters
   run_type <- run_type
   run_day <- run_day
@@ -518,9 +521,9 @@ hysplit.dispersion <- function(disp_name = NULL,
       # Move the .csv files from the working directory to the output folder
       
       if (.Platform$OS.type == "unix"){
-#         system(paste("(cd ", path_wd, " && mv GIS_part*.csv '", path_output_files, "')",
-#                      sep = ''))
-#         
+        #         system(paste("(cd ", path_wd, " && mv GIS_part*.csv '", path_output_files, "')",
+        #                      sep = ''))
+        #         
         if (is.null(disp_name)){
           folder_name <- paste("disp--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
         } else if (!is.null(disp_name)){
@@ -745,6 +748,14 @@ hysplit.dispersion <- function(disp_name = NULL,
     
     # Close the day loop 
   }
+  
+  # Return a dispersion data frame if it is requested
+  if (return_disp_df == TRUE){
+    disp.df <- dispersion.read(archive_folder =
+                                 paste(path_output_files, folder_name, sep = ''))
+    return(disp.df)
+  }
+  
   
 }
 
