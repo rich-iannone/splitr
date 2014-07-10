@@ -11,32 +11,12 @@
 #'}
 
 dispersion.read <- function(archive_folder){  
+
   
-  # Use UNIX system commands to unzip files to temporary directory
-  if (.Platform$OS.type == "unix"){
-    
-    # Create a temporary directory for extraction of archive
-    trajectory_file_dir <- tempdir()
-    
-    # Extract the dispersion archive to the temporary directory
-    system(paste("cd '", gsub("(^.*/).*$", "\\1", path.expand(archive_folder)), "' ; unzip -d '",
-                 trajectory_file_dir, "' ",
-                 gsub("^.*/(.*)$", "\\1", path.expand(archive_folder)), sep = ''),
-           show.output.on.console = FALSE)
-    
-    trajectory_file_list <- list.files(trajectory_file_dir)
-    
-  }
-  
-  
-  # In Windows implementation, list files from specified folder
-  if (.Platform$OS.type == "windows"){
-  
-  dispersion_file_list <- list.files(path = output_folder,
+  dispersion_file_list <- list.files(path = archive_folder,
                                      pattern = "^GIS_part_[0-9][0-9][0-9]_ps.csv",
                                      full.names = TRUE)
-  
-  }
+
   
   # Get each CSV file into a single data frame
   for (i in 1:length(dispersion_file_list)){
