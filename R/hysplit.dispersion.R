@@ -2,6 +2,7 @@
 #' @description The function executes single/multiple forward or backward HYSPLIT dispersion runs using specified meteorological datasets.
 #' @param disp_name an optional, descriptive name for the output file collection
 #' @param return_disp_df an option to return a data frame with dispersion data
+#' @param write_disp_CSV an option to write disperison data to a CSV file
 #' @param start_lat_deg the starting latitude (in decimal degrees) for the model run(s)
 #' @param start_long_deg the starting longitude (in decimal degrees) for the model run(s)
 #' @param start_height_m_AGL the starting height (in meters above ground level) for the model run(s)
@@ -39,9 +40,10 @@
 #'                    path_wd = "~/Documents/SplitR/Working/",
 #'                    path_executable = "~/Documents/SplitR/Exec/hycs_std")
 #'}
-# Include dispersion name
+
 hysplit.dispersion <- function(disp_name = NULL,
                                return_disp_df = TRUE,
+                               write_disp_CSV = TRUE,
                                start_lat_deg,
                                start_long_deg,
                                start_height_m_AGL,
@@ -749,13 +751,29 @@ hysplit.dispersion <- function(disp_name = NULL,
     # Close the day loop 
   }
   
+  # Write the dispersion data frame to a CSV if it is requested
+  if (write_disp_CSV == TRUE){
+    disp.df <- dispersion.read(archive_folder =
+                                 paste(path_output_files, folder_name, sep = ''))
+    
+    if (.Platform$OS.type == "unix"){
+      write.table(disp.df, file = paste(path_output_files, folder_name, "/dispersion.csv", sep = ''),
+                  sep = ",", row.names = FALSE)
+    }
+    
+    if (.Platform$OS.type == "windows"){
+      write.table(disp.df, file = paste(path_output_files, folder_name, "\\dispersion.csv", sep = ''),
+                  sep = ",", row.names = FALSE)
+    }
+    
+  }
+  
   # Return a dispersion data frame if it is requested
   if (return_disp_df == TRUE){
     disp.df <- dispersion.read(archive_folder =
                                  paste(path_output_files, folder_name, sep = ''))
     return(disp.df)
   }
-  
   
 }
 

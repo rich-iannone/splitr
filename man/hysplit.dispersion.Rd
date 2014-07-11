@@ -3,19 +3,21 @@
 \alias{hysplit.dispersion}
 \title{Conduct HYSPLIT dispersion runs}
 \usage{
-hysplit.dispersion(disp_name = NULL, return_disp_df = TRUE, start_lat_deg,
-  start_long_deg, start_height_m_AGL, simulation_duration_h = 24,
-  backward_running = FALSE, met_type = "reanalysis",
-  vertical_motion_option = 0, top_of_model_domain_m = 20000,
-  run_type = "day", run_day = "2013-02-01", run_range = c("2013-02-01",
-  "2013-02-10"), run_years = "2013", daily_hours_to_start = "00",
-  emissions = c(1), species = c(1), grids = c(1), path_met_files,
-  path_output_files, path_wd, path_executable)
+hysplit.dispersion(disp_name = NULL, return_disp_df = TRUE,
+  write_disp_CSV = TRUE, start_lat_deg, start_long_deg, start_height_m_AGL,
+  simulation_duration_h = 24, backward_running = FALSE,
+  met_type = "reanalysis", vertical_motion_option = 0,
+  top_of_model_domain_m = 20000, run_type = "day", run_day = "2013-02-01",
+  run_range = c("2013-02-01", "2013-02-10"), run_years = "2013",
+  daily_hours_to_start = "00", emissions = c(1), species = c(1),
+  grids = c(1), path_met_files, path_output_files, path_wd, path_executable)
 }
 \arguments{
 \item{disp_name}{an optional, descriptive name for the output file collection}
 
 \item{return_disp_df}{an option to return a data frame with dispersion data}
+
+\item{write_disp_CSV}{an option to write disperison data to a CSV file}
 
 \item{start_lat_deg}{the starting latitude (in decimal degrees) for the model run(s)}
 
