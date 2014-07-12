@@ -3,6 +3,7 @@
 #' @param disp_name an optional, descriptive name for the output file collection
 #' @param return_disp_df an option to return a data frame with dispersion data
 #' @param write_disp_CSV an option to write disperison data to a CSV file
+#' @param plot_maps an option to plot maps of the dispersion particles
 #' @param start_lat_deg the starting latitude (in decimal degrees) for the model run(s)
 #' @param start_long_deg the starting longitude (in decimal degrees) for the model run(s)
 #' @param start_height_m_AGL the starting height (in meters above ground level) for the model run(s)
