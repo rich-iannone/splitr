@@ -776,5 +776,11 @@ hysplit.dispersion <- function(disp_name = NULL,
     return(disp.df)
   }
   
+  # Plot a map of the dispersion data if it is requested
+  if (plot_maps == TRUE){
+    
+  }
+  
+  
 }
 
