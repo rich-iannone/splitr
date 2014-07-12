@@ -44,6 +44,7 @@
 hysplit.dispersion <- function(disp_name = NULL,
                                return_disp_df = TRUE,
                                write_disp_CSV = TRUE,
+                               plot_maps = TRUE,
                                start_lat_deg,
                                start_long_deg,
                                start_height_m_AGL,
