@@ -4,8 +4,8 @@
 \title{Conduct HYSPLIT dispersion runs}
 \usage{
 hysplit.dispersion(disp_name = NULL, return_disp_df = TRUE,
-  write_disp_CSV = TRUE, start_lat_deg, start_long_deg, start_height_m_AGL,
-  simulation_duration_h = 24, backward_running = FALSE,
+  write_disp_CSV = TRUE, plot_maps = TRUE, start_lat_deg, start_long_deg,
+  start_height_m_AGL, simulation_duration_h = 24, backward_running = FALSE,
   met_type = "reanalysis", vertical_motion_option = 0,
   top_of_model_domain_m = 20000, run_type = "day", run_day = "2013-02-01",
   run_range = c("2013-02-01", "2013-02-10"), run_years = "2013",
@@ -18,6 +18,8 @@ hysplit.dispersion(disp_name = NULL, return_disp_df = TRUE,
 \item{return_disp_df}{an option to return a data frame with dispersion data}
 
 \item{write_disp_CSV}{an option to write disperison data to a CSV file}
+
+\item{plot_maps}{an option to plot maps of the dispersion particles}
 
 \item{start_lat_deg}{the starting latitude (in decimal degrees) for the model run(s)}
 
@@ -67,7 +69,10 @@ The function executes single/multiple forward or backward HYSPLIT dispersion run
 # Perform a dispersion run lasting 12 hours over two consecutive days, both starting at midnight
 # Grid presets 1 and 2 will be used as sampling grids
 # Presets for species and emissions default to the first in each of those sets
-hysplit.dispersion(start_lat_deg = 49.289328, start_long_deg = -123.117665,
+hysplit.dispersion(disp_name = "example",
+                   return_disp_df = FALSE,
+                   write_disp_CSV = TRUE,
+                   start_lat_deg = 49.289328, start_long_deg = -123.117665,
                    start_height_m_AGL = 15,
                    simulation_duration_h = 12, backward_running = FALSE, met_type = "reanalysis",
                    vertical_motion_option = 0, top_of_model_domain_m = 2000, grids = c(1,2),
