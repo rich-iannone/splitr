@@ -77,6 +77,7 @@ hysplit.dispersion <- function(disp_name = NULL,
   require(lubridate)
   require(maps)
   require(mapdata)
+  require(ggmap)
   
   # Set parameters
   run_type <- run_type
