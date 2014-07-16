@@ -787,19 +787,25 @@ hysplit.dispersion <- function(disp_name = NULL,
   # Plot a map of the dispersion data if it is requested
   if (plot_maps == TRUE){
     
+    bbox <- make_bbox(lon = disp.df$lon, lat = disp.df$lat)
     
-#     bbox <- make_bbox(lon = disp.df$lon, lat = disp.df$lat)
-#     
-#     map <- get_map(location = bbox, maptype = "terrain",
-#                    source = "osm")
+    map <- get_map(location = bbox, maptype = "terrain",
+                   source = "osm")
     
-#     ggmap(ggmap = map)
+    disp.hour <- subset(disp.df, hour == 1)
     
-    g <- ggplot(subset(disp.df, hour == 1), aes(x = lon, y = lat)) +
-      geom_point(shape = 19, alpha = 1/4) +
-      scale_colour_hue(l = 50) +
-      geom_smooth(method = lm) +
-      geom_point(x = 42.83752, y = -80.30364, shape = 1, alpha = 1)
+    ggmap(ggmap = map) +
+      geom_point(aes(x = disp.hour$lon,
+                     y = disp.hour$lat,
+                     size = 0.5 * disp.hour$height/10000,
+                     alpha = 0.1)) +
+      geom_smooth(aes(x = disp.hour$lon,
+                      y = disp.hour$lat), method = lm) +
+      geom_point(x = 42.83752, y = -80.30364, shape = 1, alpha = 1) +
+      theme(legend.position = "none")
+    
+    
+    disp.df$lon[disp.df$hour == 1]
     
   }
   
