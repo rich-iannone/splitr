@@ -4,6 +4,7 @@
 *-Ex.R
 *.Rproj
 *.CFG
+*Temp.png
 .Rproj.user
 README.html
 .Rdata
