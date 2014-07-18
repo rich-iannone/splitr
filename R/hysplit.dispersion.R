@@ -103,9 +103,6 @@ hysplit.dispersion <- function(disp_name = NULL,
   
   writeLines(setup.cfg, paste(path_wd, "SETUP.CFG", sep = ''))
   
-  #   # Determine whether the run_years input is a single year or a range
-  #   if(exists("run_years")) run_years_single_range <-
-  #     ifelse(nchar(run_years) == 4, "single", "range") 
   
   # Make a vector list of run days in POSIXct format
   if (exists("run_type") & run_type == "day" & exists("run_day")){
