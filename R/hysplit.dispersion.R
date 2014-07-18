@@ -591,8 +591,10 @@ hysplit.dispersion <- function(disp_name = NULL,
         geom_point(x = start_lat_deg, y = start_long_deg, shape = 1, alpha = 1) +
         theme(legend.position = "none")
       
-      ggsave(filename = paste("dispersion-map-h", h, ".png"),
-             path = path_output_files)
+      ggsave(filename = paste("dispersion-map-h", h, ".pdf", sep = ''),
+             device = pdf,
+             path = paste(path_output_files, folder_name, sep = ''),
+             width = 8, height = 6)
       
     }
     
