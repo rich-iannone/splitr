@@ -536,8 +536,10 @@ hysplit.dispersion <- function(disp_name = NULL,
     # Close the day loop 
   }
   
+  
   # Write the dispersion data frame to a CSV if it is requested
   if (write_disp_CSV == TRUE){
+    
     disp.df <- dispersion.read(archive_folder =
                                  paste(path_output_files, folder_name, sep = ''))
     
@@ -549,15 +551,19 @@ hysplit.dispersion <- function(disp_name = NULL,
     if (.Platform$OS.type == "windows"){
       write.table(disp.df, file = paste(path_output_files, folder_name, "\\dispersion.csv", sep = ''),
                   sep = ",", row.names = FALSE)
+      
     }
     
   }
   
   # Return a dispersion data frame if it is requested
   if (return_disp_df == TRUE){
+    
     disp.df <- dispersion.read(archive_folder =
                                  paste(path_output_files, folder_name, sep = ''))
+    
     return(disp.df)
+    
   }
   
   # Plot a map of the dispersion data if it is requested
