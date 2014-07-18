@@ -569,6 +569,9 @@ hysplit.dispersion <- function(disp_name = NULL,
   # Plot a map of the dispersion data if it is requested
   if (plot_maps == TRUE){
     
+    disp.df <- dispersion.read(archive_folder =
+                                 paste(path_output_files, folder_name, sep = ''))
+    
     bbox <- make_bbox(lon = disp.df$lon, lat = disp.df$lat)
     
     map <- get_map(location = bbox, maptype = "terrain",
