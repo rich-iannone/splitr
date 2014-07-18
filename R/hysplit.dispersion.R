@@ -505,43 +505,7 @@ hysplit.dispersion <- function(disp_name = NULL,
         
       }
       
-      # Create list of particle positions for each hour of the model run
-      for (i in 1:simulation_duration_h){
-        if (i == 1) particle_positions <- vector(mode = "list",
-                                                 length = simulation_duration_h)
-        particle_positions[[i]] <-
-          read.csv(paste(path_wd, "GIS_part_",
-                         formatC(i, width = 3, format = "d", flag = "0"),
-                         "_ps.csv", sep = ''),
-                   col.names = c("p_no", "longitude", "latitude", "height_mAGL"))
-      }
-      
-      # Get limits of latitude and longitude
-      for (i in 1:simulation_duration_h){
-        if (i == 1){
-          min_longitude <- vector(mode = "numeric", length = simulation_duration_h)
-          max_longitude <- vector(mode = "numeric", length = simulation_duration_h)
-          min_latitude <- vector(mode = "numeric", length = simulation_duration_h)
-          max_latitude <- vector(mode = "numeric", length = simulation_duration_h)    
-        }
-        
-        min_longitude[i] <- min(particle_positions[[i]]$longitude)
-        max_longitude[i] <- max(particle_positions[[i]]$longitude)
-        min_latitude[i] <- min(particle_positions[[i]]$latitude)
-        max_latitude[i] <- max(particle_positions[[i]]$latitude)
-        
-        if (i == simulation_duration_h){
-          min_longitude_i <- min(min_longitude)
-          max_longitude_i <- max(max_longitude)
-          min_latitude_i <- min(min_latitude)
-          max_latitude_i <- max(max_latitude)
-          
-          rm(min_longitude, max_longitude, min_latitude, max_latitude, i)
-        }
-      }
-      
       # Move the .csv files from the working directory to the output folder
-      
       if (.Platform$OS.type == "unix"){
         #         system(paste("(cd ", path_wd, " && mv GIS_part*.csv '", path_output_files, "')",
         #                      sep = ''))
