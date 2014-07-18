@@ -7,10 +7,11 @@ hysplit.dispersion(disp_name = NULL, return_disp_df = TRUE,
   write_disp_CSV = TRUE, plot_maps = TRUE, start_lat_deg, start_long_deg,
   start_height_m_AGL, simulation_duration_h = 24, backward_running = FALSE,
   met_type = "reanalysis", vertical_motion_option = 0,
-  top_of_model_domain_m = 20000, run_type = "day", run_day = "2013-02-01",
-  run_range = c("2013-02-01", "2013-02-10"), run_years = "2013",
-  daily_hours_to_start = "00", emissions = c(1), species = c(1),
-  grids = c(1), path_met_files, path_output_files, path_wd, path_executable)
+  top_of_model_domain_m = 20000, number_of_particles = 2500,
+  run_type = "day", run_day = "2013-02-01", run_range = c("2013-02-01",
+  "2013-02-10"), run_years = "2013", daily_hours_to_start = "00",
+  emissions = c(1), species = c(1), grids = c(1), path_met_files,
+  path_output_files, path_wd, path_executable)
 }
 \arguments{
 \item{disp_name}{an optional, descriptive name for the output file collection}
@@ -36,6 +37,8 @@ hysplit.dispersion(disp_name = NULL, return_disp_df = TRUE,
 \item{vertical_motion_option}{a numbered option to select the method used to simulation vertical motion. The methods are: (0) input model data, (1) isobaric, (2) isentropic, (3) constant density, (4) isosigma, (5) from divergence, (6) remap MSL to AGL, (7) average data, and (8) damped magnitude.}
 
 \item{top_of_model_domain_m}{the upper limit of the model domain in meters.}
+
+\item{number_of_particles}{the number of particles released by a source during a model run}
 
 \item{run_type}{used to select whether models should be run for a single day ("day"), for one or more years ("years"), or within a specified date range ("range").}
 
