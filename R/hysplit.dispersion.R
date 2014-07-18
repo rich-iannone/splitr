@@ -577,7 +577,7 @@ hysplit.dispersion <- function(disp_name = NULL,
     map <- get_map(location = bbox, maptype = "terrain",
                    source = "osm")
     
-    for (h in 1:length(simulation_duration_h)){
+    for (h in 1:simulation_duration_h){
       
       disp.hour <- subset(disp.df, hour == h)
       
