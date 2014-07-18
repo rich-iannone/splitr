@@ -90,7 +90,7 @@ hysplit.dispersion <- function(disp_name = NULL,
   # Set number of starting locations to 1 for this function
   no_starting_locations <- 1
   
-  # Set number of particles in SETUP.CFG file
+  # Set number of particles to 1 in the SETUP.CFG file
   setup.cfg <- readLines(paste(path_wd, "SETUP.CFG", sep = ''))
   setup.cfg <- gsub(" numpar = ([0-9]*),",
                     paste(" numpar = ", number_of_particles, sep = ''),
