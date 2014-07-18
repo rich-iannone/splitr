@@ -103,6 +103,7 @@ hysplit.dispersion <- function(disp_name = NULL,
   
   writeLines(setup.cfg, paste(path_wd, "SETUP.CFG", sep = ''))
   
+  rm(setup.cfg)
   
   # Make a vector list of run days in POSIXct format
   if (exists("run_type") & run_type == "day" & exists("run_day")){
