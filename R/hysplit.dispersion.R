@@ -577,17 +577,24 @@ hysplit.dispersion <- function(disp_name = NULL,
     map <- get_map(location = bbox, maptype = "terrain",
                    source = "osm")
     
-    disp.hour <- subset(disp.df, hour == 1)
-    
-    ggmap(ggmap = map) +
-      geom_point(aes(x = disp.hour$lon,
-                     y = disp.hour$lat,
-                     size = 0.5 * disp.hour$height/10000,
-                     alpha = 0.1)) +
-      geom_smooth(aes(x = disp.hour$lon,
-                      y = disp.hour$lat), method = lm) +
-      geom_point(x = 42.83752, y = -80.30364, shape = 1, alpha = 1) +
-      theme(legend.position = "none")
+    for (h in 1:length(simulation_duration_h)){
+      
+      disp.hour <- subset(disp.df, hour == h)
+      
+      gg <- ggmap(ggmap = map) +
+        geom_point(aes(x = disp.hour$lon,
+                       y = disp.hour$lat,
+                       size = 0.5 * disp.hour$height/10000,
+                       alpha = 0.1)) +
+        geom_smooth(aes(x = disp.hour$lon,
+                        y = disp.hour$lat), method = lm) +
+        geom_point(x = start_lat_deg, y = start_long_deg, shape = 1, alpha = 1) +
+        theme(legend.position = "none")
+      
+      ggsave(filename = paste("dispersion-map-h", h, ".png"),
+             path = path_output_files)
+      
+    }
     
   }
   
