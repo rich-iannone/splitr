@@ -126,6 +126,8 @@ hysplit.dispersion <- function(disp_name = NULL,
                                     origin = "1970-01-01", tz = "UTC"),
                          by = 86400)}
   
+  
+  
   # Make loop with all run days
   for (i in 1:length(list_run_days)) {
     
@@ -433,7 +435,6 @@ hysplit.dispersion <- function(disp_name = NULL,
       
       # CONTROL file is now complete and in the working directory
       # Execute the model run
-      
       if (.Platform$OS.type == "unix"){
         system(paste("(cd ", path_wd, " && ", path_executable, "hycs_std)",
                      sep = ''))
@@ -445,7 +446,6 @@ hysplit.dispersion <- function(disp_name = NULL,
       }
       
       # Extract the particle positions at every hour
-      
       if (.Platform$OS.type == "unix"){
         system(paste("(cd ", path_wd, " && ", path_executable, "parhplot -iPARDUMP -a1)",
                      sep = ''))
@@ -457,7 +457,6 @@ hysplit.dispersion <- function(disp_name = NULL,
       }
       
       # Remove the .att files from the working directory
-      
       if (.Platform$OS.type == "unix"){
         system(paste("(cd ", path_wd, " && rm GIS_part*.att)",
                      sep = ''))
@@ -469,7 +468,6 @@ hysplit.dispersion <- function(disp_name = NULL,
       }
       
       # Remove the postscript plot from the working directory
-      
       if (.Platform$OS.type == "unix"){
         system(paste("(cd ", path_wd, " && rm parhplot.ps)",
                      sep = ''))
@@ -481,7 +479,6 @@ hysplit.dispersion <- function(disp_name = NULL,
       }
       
       # Rename the .txt files as .csv files
-      
       if (.Platform$OS.type == "unix"){
         system(paste("(cd ", path_wd, " && for files in GIS*.txt;",
                      " do mv \"$files\" \"${files%.txt}.csv\"; done)",
@@ -489,7 +486,6 @@ hysplit.dispersion <- function(disp_name = NULL,
       }
       
       # Remove the 'END' string near the end of each .csv file
-      
       if (.Platform$OS.type == "unix"){
         system(paste("(cd ", path_wd, " && sed -i .bk 's/END//g'",
                      " GIS_part_*.csv; rm *.bk)",
