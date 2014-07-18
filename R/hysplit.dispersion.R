@@ -60,6 +60,7 @@ hysplit.dispersion <- function(disp_name = NULL,
                                met_type = "reanalysis",
                                vertical_motion_option = 0,
                                top_of_model_domain_m = 20000,
+                               number_of_particles = 2500,
                                run_type = "day",
                                run_day = "2013-02-01",
                                run_range = c("2013-02-01", "2013-02-10"),
@@ -84,7 +85,15 @@ hysplit.dispersion <- function(disp_name = NULL,
   run_day <- run_day
   
   # Set number of starting locations to 1 for this function
-  no_starting_locations <- 1  
+  no_starting_locations <- 1
+  
+  # Set number of particles in SETUP.CFG file
+  setup.cfg <- readLines(paste(path_wd, "SETUP.CFG", sep = ''))
+  setup.cfg <- gsub(" numpar = ([0-9]*),",
+                    paste(" numpar = ", number_of_particles, sep = ''),
+                    setup.cfg)
+  writeLines(setup.cfg, paste(path_wd, "SETUP.CFG", sep = ''))
+  rm(setup.cfg)
   
   #   # Determine whether the run_years input is a single year or a range
   #   if(exists("run_years")) run_years_single_range <-
@@ -804,12 +813,7 @@ hysplit.dispersion <- function(disp_name = NULL,
       geom_point(x = 42.83752, y = -80.30364, shape = 1, alpha = 1) +
       theme(legend.position = "none")
     
-    
-    disp.df$lon[disp.df$hour == 1]
-    
   }
-  
-  
   
 }
 
