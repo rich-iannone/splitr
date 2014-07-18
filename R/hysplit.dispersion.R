@@ -92,11 +92,16 @@ hysplit.dispersion <- function(disp_name = NULL,
   
   # Set number of particles to 1 in the SETUP.CFG file
   setup.cfg <- readLines(paste(path_wd, "SETUP.CFG", sep = ''))
+  
   setup.cfg <- gsub(" numpar = ([0-9]*),",
-                    paste(" numpar = ", number_of_particles, sep = ''),
+                    paste(" numpar = ", number_of_particles, ",", sep = ''),
                     setup.cfg)
+  
+  setup.cfg <- gsub(" maxpar = ([0-9]*),",
+                    paste(" maxpar = ", max_particles, ",", sep = ''),
+                    setup.cfg)
+  
   writeLines(setup.cfg, paste(path_wd, "SETUP.CFG", sep = ''))
-  rm(setup.cfg)
   
   #   # Determine whether the run_years input is a single year or a range
   #   if(exists("run_years")) run_years_single_range <-
