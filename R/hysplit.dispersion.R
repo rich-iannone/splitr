@@ -3,7 +3,6 @@
 #' @param disp_name an optional, descriptive name for the output file collection
 #' @param return_disp_df an option to return a data frame with dispersion data
 #' @param write_disp_CSV an option to write disperison data to a CSV file
-#' @param plot_maps an option to plot maps of the dispersion particles
 #' @param start_lat_deg the starting latitude (in decimal degrees) for the model run(s)
 #' @param start_long_deg the starting longitude (in decimal degrees) for the model run(s)
 #' @param start_height_m_AGL the starting height (in meters above ground level) for the model run(s)
@@ -53,7 +52,6 @@
 hysplit.dispersion <- function(disp_name = NULL,
                                return_disp_df = TRUE,
                                write_disp_CSV = TRUE,
-                               plot_maps = TRUE,
                                start_lat_deg,
                                start_long_deg,
                                start_height_m_AGL,
@@ -556,41 +554,6 @@ hysplit.dispersion <- function(disp_name = NULL,
     
   }
   
-  # Plot a map of the dispersion data if it is requested
-  if (plot_maps == TRUE){
-    
-    disp.df <- dispersion.read(archive_folder =
-                                 paste(path_output_files, folder_name, sep = ''))
-    
-    bbox <- make_bbox(lon = disp.df$lon, lat = disp.df$lat)
-    
-    map <- get_map(location = bbox, maptype = "terrain",
-                   source = "osm")
-    
-    for (h in 1:simulation_duration_h){
-      
-      disp.hour <- subset(disp.df, hour == h)
-      
-      gg <- ggmap(ggmap = map) +
-        geom_point(aes(x = disp.hour$lon,
-                       y = disp.hour$lat,
-                       size = 0.5 * disp.hour$height/10000,
-                       alpha = 0.1)) +
-        geom_smooth(aes(x = disp.hour$lon,
-                        y = disp.hour$lat), method = lm) +
-        geom_point(x = start_lat_deg, y = start_long_deg, shape = 1, alpha = 1) +
-        theme(legend.position = "none")
-      
-      ggsave(filename = paste("dispersion-map-h", h, ".pdf", sep = ''),
-             device = pdf,
-             path = paste(path_output_files, folder_name, sep = ''),
-             width = 8, height = 6)
-      
-    }
-    
-  }
-  
-  
   # Return a dispersion data frame if it is requested
   if (return_disp_df == TRUE){
     
@@ -600,7 +563,5 @@ hysplit.dispersion <- function(disp_name = NULL,
     return(disp.df)
     
   }
-  
-
   
 }
