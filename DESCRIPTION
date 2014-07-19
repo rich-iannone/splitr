@@ -14,6 +14,7 @@ Depends:
     grDevices,
     R (>= 3.0.0),
     plyr,
+    ggplot2,
     lubridate,
     RCurl,
     cluster,
