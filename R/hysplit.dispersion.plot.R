@@ -1,5 +1,7 @@
-hysplit.dispersion.plot <- function(dispersion_df,
-                                    hours){
+hysplit.dispersion.plot <- function(hours = 'all', 
+                                    dispersion_df = NULL,
+                                    disp_name = NULL,
+                                    path_output_files = NULL){
   
   
 }
