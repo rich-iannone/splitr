@@ -4,8 +4,8 @@
 \title{Conduct HYSPLIT dispersion runs}
 \usage{
 hysplit.dispersion(disp_name = NULL, return_disp_df = TRUE,
-  write_disp_CSV = TRUE, plot_maps = TRUE, start_lat_deg, start_long_deg,
-  start_height_m_AGL, simulation_duration_h = 24, backward_running = FALSE,
+  write_disp_CSV = TRUE, start_lat_deg, start_long_deg, start_height_m_AGL,
+  simulation_duration_h = 24, backward_running = FALSE,
   met_type = "reanalysis", vertical_motion_option = 0,
   top_of_model_domain_m = 20000, number_of_particles = 2500,
   max_particles = 10000, run_type = "day", run_day = "2013-02-01",
@@ -19,8 +19,6 @@ hysplit.dispersion(disp_name = NULL, return_disp_df = TRUE,
 \item{return_disp_df}{an option to return a data frame with dispersion data}
 
 \item{write_disp_CSV}{an option to write disperison data to a CSV file}
-
-\item{plot_maps}{an option to plot maps of the dispersion particles}
 
 \item{start_lat_deg}{the starting latitude (in decimal degrees) for the model run(s)}
 
