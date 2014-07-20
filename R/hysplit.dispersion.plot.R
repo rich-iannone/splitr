@@ -1,4 +1,10 @@
-hysplit.dispersion.plot <- function(hours = 'all', 
+#' Plot HYSPLIT dispersion model output onto maps
+#' @description The function plots hourly outputs of dispersed particles onto maps.
+#' @param hour specification of hours of dispersion data to plot.
+#' @param dispersion_df optionally specify a data frame with dispersion data as an input.
+#' @param disp_name name of previously stored dispersion project.
+#' @param path_output_files a full path for a location that the dispersion output files were written.
+#' @export hysplit.dispersion.plot
                                     dispersion_df = NULL,
                                     disp_name = NULL,
                                     path_output_files = NULL){
