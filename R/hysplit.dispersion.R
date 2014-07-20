@@ -22,9 +22,9 @@
 #' @param species the numbers corresponding to the stored species presets. These presets are specified using the function 'hysplit.dispersion.define("species")'.
 #' @param grids the numbers corresponding to the stored grid presets. These presets are specified using the function 'hysplit.dispersion.define("grids")'.
 #' @param path_met_files a full path should be provided for the location of the meteorological data files relevant to the model options chosen.
-#' @param path_output_files a full path should be provided for a location that the trajectory output files will be written.
+#' @param path_output_files a full path should be provided for a location that the dispersion output files will be written.
 #' @param path_wd a full path should be provided for the HYSPLIT working directory; the CONTROL file for each model run will be written to and read from this location.
-#' @param path_executable the full path and name of the HYSPLIT executable file for trajectory runs must be provided.
+#' @param path_executable the full path and name of the HYSPLIT executable file for dispersion runs must be provided.
 #' @export hysplit.dispersion 
 #' @examples
 #' \dontrun{
