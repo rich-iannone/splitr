@@ -12,6 +12,14 @@ hysplit.dispersion.plot <- function(hours = 'all',
                                     path_output_files = NULL){
   
   
+  # If 'hours' argument has 'all' (default), determine the ending hour from
+  # the dispersion data frame
+  if (hours = 'all'){
+   
+    last_hour <- max(dispersion_df$hour)
+  
+  }
+  
   # Plot a map of the dispersion data
   bbox <- make_bbox(lon = dispersion_df$lon, lat = dispersion_df$lat)
   
