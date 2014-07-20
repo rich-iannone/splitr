@@ -5,6 +5,8 @@
 #' @param disp_name name of previously stored dispersion project.
 #' @param path_output_files a full path for a location that the dispersion output files were written.
 #' @export hysplit.dispersion.plot
+
+hysplit.dispersion.plot <- function(hours = 'all',
                                     dispersion_df = NULL,
                                     disp_name = NULL,
                                     path_output_files = NULL){
