@@ -50,22 +50,24 @@ hysplit.dispersion.plot <- function(hours = 'all',
   map <- get_map(location = bbox, maptype = "terrain",
                  source = "osm")
   
-  for (i in 1:last_hour){}
-  
-  disp.hour.df <- subset(dispersion_df, hour == i)
-  
-  gg <- ggmap(ggmap = map) +
-    geom_point(aes(x = disp.hour.df$lon,
-                   y = disp.hour.df$lat,
-                   size = 0.5 * disp.df$height/10000,
-                   alpha = 0.1)) +
-    geom_smooth(aes(x = disp.hour.df$lon,
-                    y = disp.hour.df$lat), method = lm) +
-    theme(legend.position = "none")
-  
-  ggsave(filename = paste("dispersion-map-h", i, ".pdf", sep = ''),
-         device = pdf,
-         path = paste(path_output_files, folder_name, sep = ''),
-         width = 8, height = 6)
+  for (i in 1:last_hour){
+    
+    dispersion_df_hour <- subset(dispersion_df, hour == i)
+    
+    gg <- ggmap(ggmap = map) +
+      geom_point(aes(x = dispersion_df_hour$lon,
+                     y = dispersion_df_hour$lat,
+                     size = 0.5 * dispersion_df$height/10000,
+                     alpha = 0.1)) +
+      geom_smooth(aes(x = dispersion_df_hour$lon,
+                      y = dispersion_df_hour$lat), method = lm) +
+      theme(legend.position = "none")
+    
+    ggsave(filename = paste("dispersion-map-h", i, ".pdf", sep = ''),
+           device = pdf,
+           path = paste(path_output_files, folder_name, sep = ''),
+           width = 8, height = 6)
+    
+  }
   
 }
