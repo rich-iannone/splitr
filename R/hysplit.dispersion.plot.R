@@ -11,7 +11,31 @@ hysplit.dispersion.plot <- function(hours = 'all',
                                     disp_name = NULL,
                                     path_output_files = NULL){
   
+  # Obtain the appropriate dispersion data frame; if the value supplied to 'dispersion_df' is not
+  # null (and if a valid data frame object is given) use it as the dispersion_df
   
+  if (!is.null(dispersion)){
+    
+    if (names(disp.df) == c("particle_no", "lon", "lat", "height", "hour")){
+      
+      valid_names <- TRUE
+      
+    }
+    
+    if (is.integer(disp.df[,1]) &
+          is.numeric(disp.df[,2]) &
+          is.numeric(disp.df[,3]) &
+          is.numeric(disp.df[,4]) &
+          is.numeric(disp.df[,5])) valid_classes <- TRUE
+    
+    if (valid_names == FALSE | valid_classes == FALSE){
+      
+      stop("The supplied data frame is not a valid dispersion df object.")
+      
+    }
+    
+  }
+    
   # If 'hours' argument has 'all' (default), determine the ending hour from
   # the dispersion data frame
   if (hours = 'all'){
