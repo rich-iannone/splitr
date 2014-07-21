@@ -14,19 +14,19 @@ hysplit.dispersion.plot <- function(hours = 'all',
   # Obtain the appropriate dispersion data frame; if the value supplied to 'dispersion_df' is not
   # null (and if a valid data frame object is given) use it as the dispersion_df
   
-  if (!is.null(dispersion)){
+  if (!is.null(dispersion_df)){
     
-    if (names(disp.df) == c("particle_no", "lon", "lat", "height", "hour")){
+    if (names(dispersion_df) == c("particle_no", "lon", "lat", "height", "hour")){
       
       valid_names <- TRUE
       
     }
     
-    if (is.integer(disp.df[,1]) &
-          is.numeric(disp.df[,2]) &
-          is.numeric(disp.df[,3]) &
-          is.numeric(disp.df[,4]) &
-          is.numeric(disp.df[,5])) valid_classes <- TRUE
+    if (is.integer(dispersion_df[,1]) &
+          is.numeric(dispersion_df[,2]) &
+          is.numeric(dispersion_df[,3]) &
+          is.numeric(dispersion_df[,4]) &
+          is.numeric(dispersion_df[,5])) valid_classes <- TRUE
     
     if (valid_names == FALSE | valid_classes == FALSE){
       
