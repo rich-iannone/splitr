@@ -43,6 +43,29 @@ hysplit.dispersion.plot <- function(hours = 'all',
     
   }
   
+  if (is.null(dispersion_df) & !is.null(folder_name)){
+    
+    folder_name <- "dispersion--2014-07-21--07-19-17\\"
+    
+    if (.Platform$OS.type == "unix"){
+      
+      csv_absolute_path <- gsub("//", "/", paste(folder_name, "/dispersion.csv", sep = ''))
+    
+    }
+    
+    if (.Platform$OS.type == "windows"){
+      
+      if (grepl("\\\\", folder_name)) folder_name <- gsub("\\\\", "", folder_name)
+      
+      csv_absolute_path <- paste(folder_name, "\\dispersion.csv", sep = '')
+      
+    }
+    
+    dispersion_df <- read.csv(csv_absolute_path,
+                              header = TRUE, stringsAsFactors = FALSE)
+    
+  }
+  
   # If 'hours' argument has 'all' (default), determine the ending hour from
   # the dispersion data frame
   if (hours == 'all'){
