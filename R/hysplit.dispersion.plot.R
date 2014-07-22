@@ -5,6 +5,11 @@
 #' @param disp_name name of previously stored dispersion project.
 #' @param path_output_files a full path for a location that the dispersion output files were written.
 #' @export hysplit.dispersion.plot
+#' @examples
+#' \dontrun{
+#' hysplit.dispersion.plot(hours = 'all',
+#'                         dispersion_df = disp.df,
+#'                         path_output_files = "~/Documents/SplitR/Output/Plots/")
 
 hysplit.dispersion.plot <- function(hours = 'all',
                                     dispersion_df = NULL,
