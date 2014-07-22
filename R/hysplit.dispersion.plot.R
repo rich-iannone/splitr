@@ -14,7 +14,8 @@
 
 hysplit.dispersion.plot <- function(hours = 'all',
                                     dispersion_df = NULL,
-                                    disp_name = NULL,
+                                    folder_name = NULL,
+                                    map_output_name = NULL,
                                     path_output_files = NULL){
   
   # Obtain the appropriate dispersion data frame; if the value supplied to 'dispersion_df' is not
