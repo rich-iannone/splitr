@@ -10,6 +10,7 @@
 #' hysplit.dispersion.plot(hours = 'all',
 #'                         dispersion_df = disp.df,
 #'                         path_output_files = "~/Documents/SplitR/Output/Plots/")
+#'}
 
 hysplit.dispersion.plot <- function(hours = 'all',
                                     dispersion_df = NULL,
