@@ -75,6 +75,15 @@ hysplit.dispersion.plot <- function(hours = 'all',
     hours <- 1:last_hour
     
     }
+  
+  # If value for 'hours' argument contains a vector list, validate that vector to ensure
+  # those hours are within the range of hours in the dispersion data frame
+  if (is.vector(hours)){
+    
+    hours_dispersion_df <- unique(dispersion_df$hour)
+    
+    hours <- hours[which(hours %in% hours_dispersion_df)]
+    
   }
   
   # Plot a map of the dispersion data
