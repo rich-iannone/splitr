@@ -4,18 +4,28 @@
 \title{Plot HYSPLIT dispersion model output onto maps}
 \usage{
 hysplit.dispersion.plot(hours = "all", dispersion_df = NULL,
-  disp_name = NULL, path_output_files = NULL)
+  folder_name = NULL, map_output_name = NULL, path_output_files = NULL)
 }
 \arguments{
-\item{hour}{specification of hours of dispersion data to plot.}
+\item{hours}{specification of hours of dispersion data to plot.}
 
 \item{dispersion_df}{optionally specify a data frame with dispersion data as an input.}
 
-\item{disp_name}{name of previously stored dispersion project.}
+\item{folder_name}{name of a folder containing a dispersion data frame.}
+
+\item{map_output_name}{a partial identifier prepended to the output map files.}
 
 \item{path_output_files}{a full path for a location that the dispersion output files were written.}
 }
 \description{
 The function plots hourly outputs of dispersed particles onto maps.
+}
+\examples{
+\dontrun{
+hysplit.dispersion.plot(hours = "all",
+                        dispersion_df = disp.df,
+                        map_output_name = "new map",
+                        path_output_files = "~/Documents/SplitR/Output/Plots/")
+}
 }
 
