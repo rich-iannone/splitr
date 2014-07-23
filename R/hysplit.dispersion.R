@@ -124,8 +124,6 @@ hysplit.dispersion <- function(disp_name = NULL,
                                     origin = "1970-01-01", tz = "UTC"),
                          by = 86400)}
   
-  
-  
   # Make loop with all run days
   for (i in 1:length(list_run_days)) {
     
@@ -139,7 +137,6 @@ hysplit.dispersion <- function(disp_name = NULL,
     
     start_day_GMT <- formatC(as.numeric(day(list_run_days[i])),
                              width = 2, format = "d", flag = "0")
-    
     
     # Make nested loop with daily beginning hours
     for (j in daily_hours_to_start) {    
@@ -499,20 +496,23 @@ hysplit.dispersion <- function(disp_name = NULL,
           temp_lines <- temp_lines[-(length(temp_lines))]
           write.table(temp_lines, file = gsub("txt", "csv", temp_file_list[i]),
                       col.names = FALSE, row.names = FALSE, quote = FALSE)
+        
         }
         
       }
       
       # Move the .csv files from the working directory to the output folder
       if (.Platform$OS.type == "unix"){
-        #         system(paste("(cd ", path_wd, " && mv GIS_part*.csv '", path_output_files, "')",
-        #                      sep = ''))
-        #         
+
         if (is.null(disp_name)){
+          
           folder_name <- paste("disp--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
-        } else if (!is.null(disp_name)){
-          folder_name <- paste(disp_name, "--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
-        }
+
+          } else if (!is.null(disp_name)){
+          
+            folder_name <- paste(disp_name, "--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
+        
+          }
         
         # Perform the movement of all dispersion files into a folder residing in the
         # output directory
@@ -524,6 +524,7 @@ hysplit.dispersion <- function(disp_name = NULL,
       }
       
       if (.Platform$OS.type == "windows"){
+        
         system(paste("(cd ", path_wd, " && mv GIS_part*.csv '", path_output_files, "')",
                      sep = ''))
       }
@@ -542,14 +543,17 @@ hysplit.dispersion <- function(disp_name = NULL,
                                  paste(path_output_files, folder_name, sep = ''))
     
     if (.Platform$OS.type == "unix"){
+     
       write.table(disp.df, file = paste(path_output_files, folder_name, "/dispersion.csv", sep = ''),
                   sep = ",", row.names = FALSE)
+    
     }
     
     if (.Platform$OS.type == "windows"){
+    
       write.table(disp.df, file = paste(path_output_files, folder_name, "\\dispersion.csv", sep = ''),
                   sep = ",", row.names = FALSE)
-      
+
     }
     
   }
