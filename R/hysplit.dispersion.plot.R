@@ -104,6 +104,13 @@ hysplit.dispersion.plot <- function(hours = 'all',
       theme(legend.position = "none")
     
     
+    if (is.null(map_output_name)){
+      
+      ggsave(filename = paste("dispersion-map-h", hours[i], ".pdf", sep = ''),
+             device = pdf,
+             path = paste(path_output_files, sep = ''),
+             width = 8, height = 6)
+      
     } else if (!is.null(map_output_name)){
 
       ggsave(filename = paste(map_output_name, "-dispersion-map-h", i, ".pdf", sep = ''),
