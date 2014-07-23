@@ -92,7 +92,7 @@ hysplit.dispersion.plot <- function(hours = 'all',
   map <- get_map(location = bbox, maptype = "terrain",
                  source = "osm")
   
-  for (i in 1:last_hour){
+  for (i in hours){
     
     dispersion_df_hour <- subset(dispersion_df, hour == i)
     
