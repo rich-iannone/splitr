@@ -72,6 +72,8 @@ hysplit.dispersion.plot <- function(hours = 'all',
     
     last_hour <- max(dispersion_df$hour)
     
+    hours <- 1:last_hour
+    
   }
   
   # Plot a map of the dispersion data
