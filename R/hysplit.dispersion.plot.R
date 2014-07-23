@@ -47,8 +47,6 @@ hysplit.dispersion.plot <- function(hours = 'all',
   
   if (is.null(dispersion_df) & !is.null(folder_name)){
     
-    folder_name <- "dispersion--2014-07-21--07-19-17\\"
-    
     if (.Platform$OS.type == "unix"){
       
       csv_absolute_path <- gsub("//", "/", paste(folder_name, "/dispersion.csv", sep = ''))
