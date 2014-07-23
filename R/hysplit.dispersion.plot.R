@@ -8,8 +8,9 @@
 #' @export hysplit.dispersion.plot
 #' @examples
 #' \dontrun{
-#' hysplit.dispersion.plot(hours = 'all',
+#' hysplit.dispersion.plot(hours = "all",
 #'                         dispersion_df = disp.df,
+#'                         map_output_name = "new map",
 #'                         path_output_files = "~/Documents/SplitR/Output/Plots/")
 #'}
 
