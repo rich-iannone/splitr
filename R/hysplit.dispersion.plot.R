@@ -98,9 +98,7 @@ hysplit.dispersion.plot <- function(hours = 'all',
     
     gg <- ggmap(ggmap = map) +
       geom_point(aes(x = dispersion_df_hour$lon,
-                     y = dispersion_df_hour$lat,
-                     size = 0.5 * dispersion_df$height/10000,
-                     alpha = 0.1)) +
+                     y = dispersion_df_hour$lat)) +
       geom_smooth(aes(x = dispersion_df_hour$lon,
                       y = dispersion_df_hour$lat), method = lm) +
       theme(legend.position = "none")
