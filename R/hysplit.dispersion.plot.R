@@ -102,14 +102,7 @@ hysplit.dispersion.plot <- function(hours = 'all',
       geom_smooth(aes(x = dispersion_df_hour$lon,
                       y = dispersion_df_hour$lat), method = lm) +
       theme(legend.position = "none")
-     
     
-    if (is.null(map_output_name)){
-     
-    ggsave(filename = paste("dispersion-map-h", i, ".pdf", sep = ''),
-           device = pdf,
-           path = paste(path_output_files, folder_name, sep = ''),
-           width = 8, height = 6)
     
     } else if (!is.null(map_output_name)){
 
