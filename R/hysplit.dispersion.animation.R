@@ -13,6 +13,15 @@ hysplit.dispersion.animation <- function(path_plot_files,
   # Construct a string with glob to pass into the ffmpeg call
   
   
+  # Render and write the MP4 movie using FFMPEG
+  if (.Platform$OS.type == "unix"){
+    
+    system(paste("ffmpeg -r ", frame_rate, " -pattern_type glob -i '",
+                 dispersion_plot_glob, "' -c:v libx264 ", movie_output_name, ".mp4"),
+           sep = '')
+  
+  }
+  
   
   
 }
