@@ -6,7 +6,7 @@ hysplit.dispersion.animation <- function(path_plot_files,
   # Convert PDF files to 400 ppi JPEG files using ImageMagick
   
 
-  # Crop the resulting JPEG files
+  # Crop the resulting JPEG files to the correct aspect ratio
   
   
   # Construct a string with glob to pass into the ffmpeg call
