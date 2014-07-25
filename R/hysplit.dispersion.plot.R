@@ -50,7 +50,7 @@ hysplit.dispersion.plot <- function(hours = 'all',
     if (.Platform$OS.type == "unix"){
       
       csv_absolute_path <- gsub("//", "/", paste(folder_name, "/dispersion.csv", sep = ''))
-    
+      
     }
     
     if (.Platform$OS.type == "windows"){
@@ -74,7 +74,7 @@ hysplit.dispersion.plot <- function(hours = 'all',
     
     hours <- 1:last_hour
     
-    }
+  }
   
   # If value for 'hours' argument contains a vector list, validate that vector to ensure
   # those hours are within the range of hours in the dispersion data frame
