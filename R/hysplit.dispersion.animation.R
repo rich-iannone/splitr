@@ -50,6 +50,12 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     
   }
   
+  # Build on the 'dispersion_df' data frame by identifying each particle by hour
+  # of release; first determine number of particles released from source per hour
+  particles_released_per_hour <- nrow(subset(dispersion_df, hour == 1))
+  
+  # For each hour of particle positions in the 'dispersion_df' data frame, classify
+  # the particles by the hour of release
   # Convert PDF files to 400 ppi JPEG files using ImageMagick
   
 
