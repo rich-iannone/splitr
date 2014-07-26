@@ -1,4 +1,5 @@
-hysplit.dispersion.animation <- function(path_plot_files,
+hysplit.dispersion.animation <- function(dispersion_df = NULL,
+                                         folder_name = NULL,
                                          frame_rate = 5,
                                          movie_output_name = NULL,
                                          path_output_files = NULL){
