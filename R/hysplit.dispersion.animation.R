@@ -68,6 +68,12 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
       
     }
     
+    for (j in 1:i){
+      
+      dispersion_df_hour_start <- c(dispersion_df_hour_start,
+                                    rep(j, times = particles_released_per_hour))
+      
+    }
     
   }
   
