@@ -61,6 +61,12 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   # the particles by the hour of release
   for (i in 1:total_hours){
     
+    if (i == 1) {
+      
+      dispersion_df_hour_start <- vector(mode = "numeric", length = 0)
+      particle_id <- vector(mode = "numeric", length = 0)
+      
+    }
     
     
   }
