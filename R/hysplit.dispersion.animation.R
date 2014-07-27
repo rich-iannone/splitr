@@ -75,6 +75,13 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
       
     }
     
+    for (k in i:1)
+      particle_id <- c(particle_id,
+                       seq(from = ((k - 1) * particles_released_per_hour) + 1,
+                           to = (k * particles_released_per_hour),
+                           by = 1))
+    
+    
   }
   
   # Convert PDF files to 400 ppi JPEG files using ImageMagick
