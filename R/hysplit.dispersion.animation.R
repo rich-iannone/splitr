@@ -82,7 +82,19 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                            by = 1))
     
     
+    if (i == total_hours){
+      
+      # Add 'hour_start' and 'particle_id' vectors to 'dispersion_df' data frame
+      dispersion_df$hour_start <- dispersion_df_hour_start
+      dispersion_df$particle_id <- particle_id
+      
+      # Remove vectors objects from memory
+      rm(dispersion_df_hour_start, particle_id)
+      
+    }
+    
   }
+
   
   # Convert PDF files to 400 ppi JPEG files using ImageMagick
   
@@ -102,3 +114,4 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     
   }
   
+}
