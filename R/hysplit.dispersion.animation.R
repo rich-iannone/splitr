@@ -54,6 +54,9 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   # of release; first determine number of particles released from source per hour
   particles_released_per_hour <- nrow(subset(dispersion_df, hour == 1))
   
+  # Determine the total number of hours
+  total_hours <- max(dispersion_df$hour)
+  
   # For each hour of particle positions in the 'dispersion_df' data frame, classify
   # the particles by the hour of release
   for (i in 1:max(dispersion_df$hour)){
