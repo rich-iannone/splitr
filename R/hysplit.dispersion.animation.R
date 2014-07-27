@@ -75,7 +75,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
       
     }
     
-    for (k in i:1)
+    for (k in 1:i)
       particle_id <- c(particle_id,
                        seq(from = ((k - 1) * particles_released_per_hour) + 1,
                            to = (k * particles_released_per_hour),
