@@ -1,9 +1,11 @@
 hysplit.dispersion.animation <- function(dispersion_df = NULL,
+                                         start_lat_deg,
+                                         start_long_deg,
                                          folder_name = NULL,
                                          frame_rate = 5,
                                          movie_output_name = NULL,
                                          path_output_files = NULL){
-  
+    
   # Obtain the appropriate dispersion data frame; if the value supplied to 'dispersion_df' is not
   # null (and if a valid data frame object is given) use it as the dispersion_df
   
