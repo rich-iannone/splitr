@@ -100,6 +100,14 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   # Begin loop to generate a large dataframe with minutely particle positions
   for (i in 1:max(unique(dispersion_df$particle_id))){
     
+    # Initialize a long data frame for single particle movements for every particle
+    if (i == 1){
+      
+      particle_df <- as.data.frame(mat.or.vec(nr = 0, nc = 5))
+      colnames(particle_df) <- c("particle_id", "lon", "lat", "hour", "hour_start")
+      
+    }
+    
 
   
   
