@@ -97,6 +97,9 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     
   }
   
+  # Begin loop to generate a large dataframe with minutely particle positions
+  for (i in 1:max(unique(dispersion_df$particle_id))){
+    
 
   
   
