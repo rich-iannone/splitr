@@ -158,4 +158,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   # Get the system time to append to graphics files
   output_time <- format(Sys.time(), "%Y-%m-%d--%H-%M-%S")
   
+  # Generate an image from particles at every fractional hour
+  for (i in 1:length(fractional_hours)){
+    
 }
