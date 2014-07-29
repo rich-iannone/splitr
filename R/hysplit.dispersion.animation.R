@@ -108,6 +108,11 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
       
     }
     
+    # Generate a vector of evenly spaced time increments for the duration of the particle history
+    vector_hour <- seq(from = min(dispersion_df[dispersion_df$particle_no == i, ][,5]) - 1,
+                       to = max(dispersion_df[dispersion_df$particle_no == i, ][,5]) - (1/60),
+                       by = 1/60)
+        
 
   
   
