@@ -147,4 +147,8 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   
   # Obtain vector of unique, sorted, fractional hours in 'particle_df'
   fractional_hours <- sort(unique(particle_df$hour))
+  
+  # Determine the extent of particle dispersion
+  bbox <- make_bbox(lon = particle_df$lon, lat = particle_df$lat)
+  
 }
