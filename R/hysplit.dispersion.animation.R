@@ -155,4 +155,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   map <- get_map(location = bbox, maptype = "terrain",
                  source = "osm")
   
+  # Get the system time to append to graphics files
+  output_time <- format(Sys.time(), "%Y-%m-%d--%H-%M-%S")
+  
 }
