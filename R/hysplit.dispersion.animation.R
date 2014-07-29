@@ -151,6 +151,8 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     system(paste("ffmpeg -r ", frame_rate, " -pattern_type glob -i '",
                  dispersion_plot_glob, "' -c:v libx264 ", movie_output_name, ".mp4"),
            sep = '')
+    # Bind 'df_from_vectors' data frame into long data frame 'particle_df'
+    particle_df <- rbind(particle_df, df_from_vectors)
     
   }
   
