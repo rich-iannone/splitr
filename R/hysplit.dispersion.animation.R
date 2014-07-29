@@ -143,6 +143,10 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   
   # Render and write the MP4 movie using FFMPEG
   if (.Platform$OS.type == "unix"){
+    # Bind vectors into a data frame
+    df_from_vectors <- cbind(vector_particle_id, vector_lon, vector_lat,
+                             vector_hour, vector_hour_start)
+    colnames(df_from_vectors) <- names(particle_df)
     
     system(paste("ffmpeg -r ", frame_rate, " -pattern_type glob -i '",
                  dispersion_plot_glob, "' -c:v libx264 ", movie_output_name, ".mp4"),
