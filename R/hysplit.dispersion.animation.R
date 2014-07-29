@@ -126,6 +126,9 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     # Repeat the particle ID within the df
     vector_particle_id <- rep(i, length(vector_lon))
     
+    # Repeat the particle start hour within the df
+    vector_hour_start <- rep(unique(dispersion_df[dispersion_df$particle_no == i, ][,6]),
+                             length(vector_lon))
 
   
   
