@@ -113,7 +113,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     vector_hour <- seq(from = min(dispersion_df[dispersion_df$particle_no == i, ][,5]) - 1,
                        to = max(dispersion_df[dispersion_df$particle_no == i, ][,5]) - (1/60),
                        by = 1/60)
-        
+    
     # Use 'spline' function to generate latitude and longitude particle positions for every
     # minute of travel from the source location
     vector_lon <- spline(x = c(start_long_deg, dispersion_df[dispersion_df$particle_no == i, ][,2]),
@@ -130,7 +130,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     # Repeat the particle start hour within the df
     vector_hour_start <- rep(unique(dispersion_df[dispersion_df$particle_no == i, ][,6]),
                              length(vector_lon))
-
+    
     # Bind vectors into a data frame
     df_from_vectors <- cbind(vector_particle_id, vector_lon, vector_lat,
                              vector_hour, vector_hour_start)
