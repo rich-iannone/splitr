@@ -141,4 +141,8 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     
   }
   
+  # Remove objects from memory
+  rm(df_from_vectors, vector_hour, vector_hour_start,
+     vector_lat, vector_lon, vector_particle_id, particles_released_per_hour, i)
+  
 }
