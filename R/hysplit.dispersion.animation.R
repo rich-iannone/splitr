@@ -151,4 +151,8 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   # Determine the extent of particle dispersion
   bbox <- make_bbox(lon = particle_df$lon, lat = particle_df$lat)
   
+  # Get a map that encompasses the bounds of the dispersion data
+  map <- get_map(location = bbox, maptype = "terrain",
+                 source = "osm")
+  
 }
