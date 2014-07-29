@@ -113,6 +113,16 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                        to = max(dispersion_df[dispersion_df$particle_no == i, ][,5]) - (1/60),
                        by = 1/60)
         
+    # Use 'spline' function to generate latitude and longitude particle positions for every
+    # minute of travel from the source location
+    vector_lon <- spline(x = c(start_long_deg, dispersion_df[dispersion_df$particle_no == i, ][,2]),
+                         y = c(start_lat_deg, dispersion_df[dispersion_df$particle_no == i, ][,3]),
+                         n = length(dispersion_df[dispersion_df$particle_no == i, ][,2]) * 60)[[1]]
+    
+    vector_lat <- spline(x = c(start_long_deg, dispersion_df[dispersion_df$particle_no == i, ][,2]),
+                         y = c(start_lat_deg, dispersion_df[dispersion_df$particle_no == i, ][,3]),
+                         n = length(dispersion_df[dispersion_df$particle_no == i, ][,2]) * 60)[[2]]
+    
 
   
   
