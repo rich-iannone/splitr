@@ -180,4 +180,16 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
            path = paste(path_output_files, sep = ''),
            width = 8, height = 6)
     
+    # Convert PDF file to a JPEG file using ImageMagick, cropping whitespace
+    system(paste("cd ", path_output_files, " ; ", IM_exec_path,
+                 " -verbose -density 150 -trim ",
+                 paste("dispersion-map-", output_time, "-",
+                       formatC(i, width = 6, flag = "0"),
+                       ".pdf", sep = ''),
+                 " -quality 100 -sharpen 0x1.0 ",
+                 paste("dispersion-map-", output_time, "-",
+                       formatC(i, width = 6, flag = "0"),
+                       ".jpg", sep = ''),
+                 sep = ''))
+    
 }
