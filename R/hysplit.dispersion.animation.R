@@ -91,8 +91,8 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
       dispersion_df$hour_start <- dispersion_df_hour_start
       dispersion_df$particle_id <- particle_id
       
-      Remove vectors objects from memory
-      rm(dispersion_df_hour_start, particle_id)
+      # Remove vectors objects from memory
+      rm(dispersion_df_hour_start, particle_id, i, j, k)
       
     }
     
