@@ -5,7 +5,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                                          frame_rate = 5,
                                          movie_output_name = NULL,
                                          path_output_files = NULL){
-    
+  
   # Obtain the appropriate dispersion data frame; if the value supplied to 'dispersion_df' is not
   # null (and if a valid data frame object is given) use it as the dispersion_df
   
@@ -91,7 +91,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
       dispersion_df$particle_id <- particle_id
       
       Remove vectors objects from memory
-            rm(dispersion_df_hour_start, particle_id)
+      rm(dispersion_df_hour_start, particle_id)
       
     }
     
@@ -130,30 +130,32 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     vector_hour_start <- rep(unique(dispersion_df[dispersion_df$particle_no == i, ][,6]),
                              length(vector_lon))
 
-  
-  
-  # Convert PDF files to 400 ppi JPEG files using ImageMagick
-  
-  
-  # Crop the resulting JPEG files to the correct aspect ratio
-  
-  
-  # Construct a string with glob to pass into the ffmpeg call
-  
-  
-  # Render and write the MP4 movie using FFMPEG
-  if (.Platform$OS.type == "unix"){
     # Bind vectors into a data frame
     df_from_vectors <- cbind(vector_particle_id, vector_lon, vector_lat,
                              vector_hour, vector_hour_start)
     colnames(df_from_vectors) <- names(particle_df)
     
-    system(paste("ffmpeg -r ", frame_rate, " -pattern_type glob -i '",
-                 dispersion_plot_glob, "' -c:v libx264 ", movie_output_name, ".mp4"),
-           sep = '')
     # Bind 'df_from_vectors' data frame into long data frame 'particle_df'
     particle_df <- rbind(particle_df, df_from_vectors)
     
   }
+
+# Convert PDF files to 400 ppi JPEG files using ImageMagick
+
+
+# Crop the resulting JPEG files to the correct aspect ratio
+
+
+# Construct a string with glob to pass into the ffmpeg call
+
+
+# Render and write the MP4 movie using FFMPEG
+if (.Platform$OS.type == "unix"){
   
+  system(paste("ffmpeg -r ", frame_rate, " -pattern_type glob -i '",
+               dispersion_plot_glob, "' -c:v libx264 ", movie_output_name, ".mp4"),
+         sep = '')
+  
+}
+
 }
