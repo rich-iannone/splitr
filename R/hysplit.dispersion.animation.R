@@ -201,4 +201,8 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     
   }
   
+  # Construct a string with glob to pass into the ffmpeg call
+  dispersion_plot_glob <- paste("dispersion-map-", output_time, "-*",
+                                ".jpg", sep = '')
+  
 }
