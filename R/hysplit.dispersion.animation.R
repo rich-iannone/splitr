@@ -192,4 +192,13 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                        ".jpg", sep = ''),
                  sep = ''))
     
+    # Remove the PDF file from disk
+    system(paste("cd ", path_output_files, " ; rm ", 
+                 paste("dispersion-map-", output_time, "-",
+                       formatC(i, width = 6, flag = "0"),
+                       ".pdf", sep = ''),
+                 sep = ''))
+    
+  }
+  
 }
