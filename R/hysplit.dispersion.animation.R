@@ -161,4 +161,6 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   # Generate an image from particles at every fractional hour
   for (i in 1:length(fractional_hours)){
     
+    # Create a data frame that is a subset by fractional hour
+    particle_df_time <- subset(particle_df, hour == fractional_hours[i])
 }
