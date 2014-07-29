@@ -4,6 +4,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                                          folder_name = NULL,
                                          frame_rate = 5,
                                          movie_output_name = NULL,
+                                         IM_exec_path = "/opt/local/bin/convert",
                                          path_output_files = NULL){
   
   # Obtain the appropriate dispersion data frame; if the value supplied to 'dispersion_df' is not
