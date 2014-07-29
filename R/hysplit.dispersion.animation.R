@@ -172,4 +172,12 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                       y = particle_df_time$lat), method = lm) +
       theme(legend.position = "none")
     
+    # Save the image to disk
+    ggsave(filename = paste("dispersion-map-", output_time, "-",
+                            formatC(i, width = 6, flag = "0"),
+                            ".pdf", sep = ''),
+           device = pdf,
+           path = paste(path_output_files, sep = ''),
+           width = 8, height = 6)
+    
 }
