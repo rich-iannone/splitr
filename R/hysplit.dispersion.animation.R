@@ -174,6 +174,25 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   # Round the 'hour' column in 'particle_df' to 2 decimal places
   particle_df$hour <- round(particle_df$hour, 2)
   
+  # Write the 'particle_df' data frame to a CSV file if it is requested
+  if (write_particle_CSV == TRUE){
+        
+    if (.Platform$OS.type == "unix"){
+      
+      write.table(particle_df, file = paste(df_folder_path, "/particle.csv", sep = ''),
+                  sep = ",", row.names = FALSE)
+      
+    }
+    
+    if (.Platform$OS.type == "windows"){
+      
+      write.table(particle_df, file = paste(df_folder_path, "\\particle.csv", sep = ''),
+                  sep = ",", row.names = FALSE)
+      
+    }
+    
+  }  
+  
   # Obtain vector of unique, sorted, fractional hours in 'particle_df'
   fractional_hours <- sort(unique(particle_df$hour))
   
