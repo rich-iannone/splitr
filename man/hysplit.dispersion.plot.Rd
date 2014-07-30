@@ -4,14 +4,14 @@
 \title{Plot HYSPLIT dispersion model output onto maps}
 \usage{
 hysplit.dispersion.plot(hours = "all", dispersion_df = NULL,
-  folder_name = NULL, map_output_name = NULL, path_output_files = NULL)
+  df_folder_path = NULL, map_output_name = NULL, path_output_files = NULL)
 }
 \arguments{
 \item{hours}{specification of hours of dispersion data to plot.}
 
 \item{dispersion_df}{optionally specify a data frame with dispersion data as an input.}
 
-\item{folder_name}{name of a folder containing a dispersion data frame.}
+\item{df_folder_path}{absolute path of the folder containing a dispersion data frame.}
 
 \item{map_output_name}{a partial identifier prepended to the output map files.}
 
