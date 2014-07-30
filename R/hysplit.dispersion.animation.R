@@ -9,6 +9,18 @@
 #' @param IM_exec_path an absolute system path for the ImageMagick 'convert' command.
 #' @param path_output_files a full path for a location that the dispersion output files were written.
 #' @export hysplit.dispersion.animation
+#' @examples
+#' \dontrun{
+#' # Create an MP4 movie from a data frame returned by the 'hysplit.dispersion' function
+#' hysplit.dispersion.animation(dispersion_df = disp.df,
+#'                              start_lat_deg = 42.83752,
+#'                              start_long_deg = -80.30364,
+#'                              frame_rate = 60,
+#'                              movie_output_name = "dispersion-movie",
+#'                              IM_exec_path = "/opt/local/bin/convert",
+#'                              path_output_files = "~/Documents/SplitR/Output/Movies/"
+#'}
+
 hysplit.dispersion.animation <- function(dispersion_df = NULL,
                                          start_lat_deg,
                                          start_long_deg,
