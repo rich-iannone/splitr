@@ -1,3 +1,4 @@
+#' Create an animated movie from HYSPLIT dispersion model output
 hysplit.dispersion.animation <- function(dispersion_df = NULL,
                                          start_lat_deg,
                                          start_long_deg,
