@@ -8,6 +8,7 @@
 #' @export hysplit.dispersion.plot
 #' @examples
 #' \dontrun{
+#' # Make a set of hourly plots from a dispersion data frame
 #' hysplit.dispersion.plot(hours = "all",
 #'                         dispersion_df = disp.df,
 #'                         map_output_name = "new map",
