@@ -245,8 +245,9 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   # Render and write the MP4 movie using ffmpeg
   if (.Platform$OS.type == "unix"){
     
-    system(paste("cd ", path_output_files, " ;ffmpeg -r ", frame_rate, " -pattern_type glob -i '",
-                 dispersion_plot_glob, "' -c:v libx264 ", movie_output_name, ".mp4",
+    system(paste("cd ", path_output_files, " ; ffmpeg -f image2 -start_number 1 -i '",
+                 dispersion_plot_glob, "' -r ", frame_rate, " ",
+                 movie_output_name, ".mov",
                  sep = ''))
     
   }
