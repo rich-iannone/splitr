@@ -8,6 +8,7 @@
 #' @param movie_output_name the desired filename for the generate MP4 movie.
 #' @param IM_exec_path an absolute system path for the ImageMagick 'convert' command.
 #' @param path_output_files a full path for a location that the dispersion output files were written.
+#' @export hysplit.dispersion.animation
 hysplit.dispersion.animation <- function(dispersion_df = NULL,
                                          start_lat_deg,
                                          start_long_deg,
