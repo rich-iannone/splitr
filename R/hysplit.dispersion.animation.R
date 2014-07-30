@@ -4,6 +4,7 @@
 #' @param start_lat_deg the starting latitude (in decimal degrees) for the model run(s).
 #' @param start_long_deg the starting longitude (in decimal degrees) for the model run(s).
 #' @param df_folder_path absolute path of the folder containing a dispersion data frame.
+#' @param map_type selection provider of base maps for plotting. Choices are 'osm' (Open Street Map) and 'stamen' (Stamen Maps).
 #' @param frame_rate the desired frame rate of the generated MP4 movie file.
 #' @param movie_output_name the desired filename for the generate MP4 movie.
 #' @param IM_exec_path an absolute system path for the ImageMagick 'convert' command.
