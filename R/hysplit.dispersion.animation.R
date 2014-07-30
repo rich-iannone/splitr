@@ -1,5 +1,13 @@
 #' Create an animated movie from HYSPLIT dispersion model output
 #' @description Create a movie file of dispersed particles from a dispersion data frame
+#' @param dispersion_df specification of hours of dispersion data to plot.
+#' @param start_lat_deg the starting latitude (in decimal degrees) for the model run(s).
+#' @param start_long_deg the starting longitude (in decimal degrees) for the model run(s).
+#' @param df_folder_path absolute path of the folder containing a dispersion data frame.
+#' @param frame_rate the desired frame rate of the generated MP4 movie file.
+#' @param movie_output_name the desired filename for the generate MP4 movie.
+#' @param IM_exec_path an absolute system path for the ImageMagick 'convert' command.
+#' @param path_output_files a full path for a location that the dispersion output files were written.
 hysplit.dispersion.animation <- function(dispersion_df = NULL,
                                          start_lat_deg,
                                          start_long_deg,
