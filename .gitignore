@@ -5,6 +5,7 @@
 *.Rproj
 *.CFG
 *Temp.png
+*.mp4
 .Rproj.user
 README.html
 .Rdata
