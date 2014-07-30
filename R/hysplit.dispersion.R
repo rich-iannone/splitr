@@ -1,18 +1,18 @@
 #' Conduct HYSPLIT dispersion runs
 #' @description The function executes single/multiple forward or backward HYSPLIT dispersion runs using specified meteorological datasets.
-#' @param disp_name an optional, descriptive name for the output file collection
-#' @param return_disp_df an option to return a data frame with dispersion data
-#' @param write_disp_CSV an option to write disperison data to a CSV file
-#' @param start_lat_deg the starting latitude (in decimal degrees) for the model run(s)
-#' @param start_long_deg the starting longitude (in decimal degrees) for the model run(s)
-#' @param start_height_m_AGL the starting height (in meters above ground level) for the model run(s)
-#' @param simulation_duration_h the duration of each model run (either forward or backward) in hours
+#' @param disp_name an optional, descriptive name for the output file collection.
+#' @param return_disp_df an option to return a data frame with dispersion data.
+#' @param write_disp_CSV an option to write disperison data to a CSV file.
+#' @param start_lat_deg the starting latitude (in decimal degrees) for the model run(s).
+#' @param start_long_deg the starting longitude (in decimal degrees) for the model run(s).
+#' @param start_height_m_AGL the starting height (in meters above ground level) for the model run(s).
+#' @param simulation_duration_h the duration of each model run (either forward or backward) in hours.
 #' @param backward_running an option to select whether the dispersion runs should be running forward in time (the default) or in a backward running state.
 #' @param met_type an option to select meteorological data files. The options are "gdas1" (Global Data Assimilation System 1-degree resolution data) and 'reanalysis' (NCAR/NCEP global reanalysis data).
 #' @param vertical_motion_option a numbered option to select the method used to simulation vertical motion. The methods are: (0) input model data, (1) isobaric, (2) isentropic, (3) constant density, (4) isosigma, (5) from divergence, (6) remap MSL to AGL, (7) average data, and (8) damped magnitude.
-#' @param top_of_model_domain_m the upper limit of the model domain in meters
-#' @param number_of_particles the number of particles released by source during each release cycle
-#' @param max_particles the number of particles released by a source during a model run
+#' @param top_of_model_domain_m the upper limit of the model domain in meters.
+#' @param number_of_particles the number of particles released by source during each release cycle.
+#' @param max_particles the number of particles released by a source during a model run.
 #' @param run_type used to select whether models should be run for a single day ("day"), for one or more years ("years"), or within a specified date range ("range").
 #' @param run_day used when 'run_type' of 'day' is selected. The date format should be provided here as "YYYY-MM-DD".
 #' @param run_range used when 'run_type' of 'range' is selected. The date format should be provided here as "c("YYYY-MM-DD", "YYYY-MM-DD")".
