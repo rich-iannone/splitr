@@ -178,9 +178,19 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   # Determine the extent of particle dispersion
   bbox <- make_bbox(lon = particle_df$lon, lat = particle_df$lat)
   
-  # Get a map that encompasses the bounds of the dispersion data
-  map <- get_map(location = bbox, maptype = "terrain",
-                 source = "osm")
+  # If chosen, a Stamen 'toner' style map that encompasses the bounds
+  # of the dispersion data will be downloaded
+  if (map_type == "stamen"){
+    map <- get_map(location = bbox, maptype = "toner",
+                   source = "stamen")
+  }
+  
+  # If chosen, an Open Street Maps 'terrain' style map that encompasses
+  # the bounds of the dispersion data will be downloaded
+  if (map_type == "osm"){
+    map <- get_map(location = bbox, maptype = "terrain",
+                   source = "osm")
+  }
   
   # Get the system time to append to graphics files
   output_time <- format(Sys.time(), "%Y-%m-%d--%H-%M-%S")
