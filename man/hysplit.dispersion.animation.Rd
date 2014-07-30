@@ -4,8 +4,8 @@
 \title{Create an animated movie from HYSPLIT dispersion model output}
 \usage{
 hysplit.dispersion.animation(dispersion_df = NULL, start_lat_deg,
-  start_long_deg, df_folder_path = NULL, map_type = "stamen",
-  frame_rate = 30, movie_output_name = NULL,
+  start_long_deg, df_folder_path = NULL, write_particle_CSV = FALSE,
+  map_type = "stamen", frame_rate = 30, movie_output_name = NULL,
   IM_exec_path = "/opt/local/bin/convert", path_output_files = NULL)
 }
 \arguments{
@@ -16,6 +16,8 @@ hysplit.dispersion.animation(dispersion_df = NULL, start_lat_deg,
 \item{start_long_deg}{the starting longitude (in decimal degrees) for the model run(s).}
 
 \item{df_folder_path}{absolute path of the folder containing a dispersion data frame.}
+
+\item{write_particle_CSV}{an option to write the subhourly particle dispersion data to a CSV file.}
 
 \item{map_type}{selection provider of base maps for plotting. Choices are 'osm' (Open Street Map) and 'stamen' (Stamen Maps).}
 

@@ -14,19 +14,19 @@ hysplit.dispersion(disp_name = NULL, return_disp_df = TRUE,
   grids = c(1), path_met_files, path_output_files, path_wd, path_executable)
 }
 \arguments{
-\item{disp_name}{an optional, descriptive name for the output file collection}
+\item{disp_name}{an optional, descriptive name for the output file collection.}
 
-\item{return_disp_df}{an option to return a data frame with dispersion data}
+\item{return_disp_df}{an option to return a data frame with dispersion data.}
 
-\item{write_disp_CSV}{an option to write disperison data to a CSV file}
+\item{write_disp_CSV}{an option to write disperison data to a CSV file.}
 
-\item{start_lat_deg}{the starting latitude (in decimal degrees) for the model run(s)}
+\item{start_lat_deg}{the starting latitude (in decimal degrees) for the model run(s).}
 
-\item{start_long_deg}{the starting longitude (in decimal degrees) for the model run(s)}
+\item{start_long_deg}{the starting longitude (in decimal degrees) for the model run(s).}
 
-\item{start_height_m_AGL}{the starting height (in meters above ground level) for the model run(s)}
+\item{start_height_m_AGL}{the starting height (in meters above ground level) for the model run(s).}
 
-\item{simulation_duration_h}{the duration of each model run (either forward or backward) in hours}
+\item{simulation_duration_h}{the duration of each model run (either forward or backward) in hours.}
 
 \item{backward_running}{an option to select whether the dispersion runs should be running forward in time (the default) or in a backward running state.}
 
@@ -34,11 +34,11 @@ hysplit.dispersion(disp_name = NULL, return_disp_df = TRUE,
 
 \item{vertical_motion_option}{a numbered option to select the method used to simulation vertical motion. The methods are: (0) input model data, (1) isobaric, (2) isentropic, (3) constant density, (4) isosigma, (5) from divergence, (6) remap MSL to AGL, (7) average data, and (8) damped magnitude.}
 
-\item{top_of_model_domain_m}{the upper limit of the model domain in meters}
+\item{top_of_model_domain_m}{the upper limit of the model domain in meters.}
 
-\item{number_of_particles}{the number of particles released by source during each release cycle}
+\item{number_of_particles}{the number of particles released by source during each release cycle.}
 
-\item{max_particles}{the number of particles released by a source during a model run}
+\item{max_particles}{the number of particles released by a source during a model run.}
 
 \item{run_type}{used to select whether models should be run for a single day ("day"), for one or more years ("years"), or within a specified date range ("range").}
 
