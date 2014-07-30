@@ -168,6 +168,9 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   rm(df_from_vectors, vector_hour, vector_hour_start,
      vector_lat, vector_lon, vector_particle_id, particles_released_per_hour, i)
   
+  # Round the 'hour' column in 'particle_df' to 2 decimal places
+  particle_df$hour <- round(particle_df$hour, 2)
+  
   # Obtain vector of unique, sorted, fractional hours in 'particle_df'
   fractional_hours <- sort(unique(particle_df$hour))
   
