@@ -26,6 +26,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                                          start_long_deg,
                                          folder_name = NULL,
                                          frame_rate = 5,
+                                         frame_rate = 30,
                                          movie_output_name = NULL,
                                          IM_exec_path = "/opt/local/bin/convert",
                                          path_output_files = NULL){
