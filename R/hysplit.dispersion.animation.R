@@ -1,4 +1,5 @@
 #' Create an animated movie from HYSPLIT dispersion model output
+#' @description Create a movie file of dispersed particles from a dispersion data frame
 hysplit.dispersion.animation <- function(dispersion_df = NULL,
                                          start_lat_deg,
                                          start_long_deg,
