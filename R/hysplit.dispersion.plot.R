@@ -16,7 +16,7 @@
 
 hysplit.dispersion.plot <- function(hours = 'all',
                                     dispersion_df = NULL,
-                                    folder_name = NULL,
+                                    df_folder_path = NULL,
                                     map_output_name = NULL,
                                     path_output_files = NULL){
   
