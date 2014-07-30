@@ -4,9 +4,9 @@
 \title{Create an animated movie from HYSPLIT dispersion model output}
 \usage{
 hysplit.dispersion.animation(dispersion_df = NULL, start_lat_deg,
-  start_long_deg, df_folder_path = NULL, frame_rate = 30,
-  movie_output_name = NULL, IM_exec_path = "/opt/local/bin/convert",
-  path_output_files = NULL)
+  start_long_deg, df_folder_path = NULL, map_type = "stamen",
+  frame_rate = 30, movie_output_name = NULL,
+  IM_exec_path = "/opt/local/bin/convert", path_output_files = NULL)
 }
 \arguments{
 \item{dispersion_df}{specification of hours of dispersion data to plot.}
@@ -16,6 +16,8 @@ hysplit.dispersion.animation(dispersion_df = NULL, start_lat_deg,
 \item{start_long_deg}{the starting longitude (in decimal degrees) for the model run(s).}
 
 \item{df_folder_path}{absolute path of the folder containing a dispersion data frame.}
+
+\item{map_type}{selection provider of base maps for plotting. Choices are 'osm' (Open Street Map) and 'stamen' (Stamen Maps).}
 
 \item{frame_rate}{the desired frame rate of the generated MP4 movie file.}
 
