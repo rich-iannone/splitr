@@ -85,6 +85,9 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     
   }
   
+  # Determine the extent of particle dispersion
+  bbox <- make_bbox(lon = dispersion_df$lon, lat = dispersion_df$lat)
+  
   # Build on the 'dispersion_df' data frame by identifying each particle by hour
   # of release; first determine number of particles released from source per hour
   particles_released_per_hour <- nrow(subset(dispersion_df, hour == 1))
@@ -201,9 +204,6 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   
   # Obtain vector of unique, sorted, fractional hours in 'particle_df'
   fractional_hours <- sort(unique(particle_df$hour))
-  
-  # Determine the extent of particle dispersion
-  bbox <- make_bbox(lon = particle_df$lon, lat = particle_df$lat)
   
   # If chosen, a Stamen 'toner' style map that encompasses the bounds
   # of the dispersion data will be downloaded
