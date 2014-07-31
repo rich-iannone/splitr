@@ -3,6 +3,7 @@
 #' @param dispersion_df specification of hours of dispersion data to plot.
 #' @param start_lat_deg the starting latitude (in decimal degrees) for the model run(s).
 #' @param start_long_deg the starting longitude (in decimal degrees) for the model run(s).
+#' @param start_height_m_AGL the starting height (in meters above ground level) for the model run(s).
 #' @param df_folder_path absolute path of the folder containing a dispersion data frame.
 #' @param write_particle_CSV an option to write the subhourly particle dispersion data to a CSV file.
 #' @param map_type selection provider of base maps for plotting. Choices are 'osm' (Open Street Map) and 'stamen' (Stamen Maps).
