@@ -36,6 +36,9 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                                          IM_exec_path = "/opt/local/bin/convert",
                                          path_output_files = NULL){
   
+  # Add require statements
+  require(labeling)
+  
   # Obtain the appropriate dispersion data frame; if the value supplied to 'dispersion_df' is not
   # null (and if a valid data frame object is given) use it as the dispersion_df
   
