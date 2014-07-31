@@ -159,6 +159,11 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                          y = c(start_lat_deg, dispersion_df[dispersion_df$particle_no == i, ][,3]),
                          n = length(dispersion_df[dispersion_df$particle_no == i, ][,2]) * 60)[[2]]
     
+    # Use 'spline' function to generate particle heights for every minute of travel from the
+    # source location
+    vector_hgt <- spline(x = c(start_height_m_AGL, dispersion_df[dispersion_df$particle_no == i, ][,4]),
+                         n = length(dispersion_df[dispersion_df$particle_no == i, ][,2]) * 60)[[2]]
+    
     # Repeat the particle ID within the df
     vector_particle_id <- rep(i, length(vector_lon))
     
