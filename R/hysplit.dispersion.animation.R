@@ -225,10 +225,16 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     
     # Generate a ggplot object from the subset data frame 'particle_df_time'
     gg <- ggmap(ggmap = map) +
+      geom_point(aes(x = start_lat_deg,
+                     y = start_long_deg),
+                 colour = "blue", size = 50) +
       geom_point(aes(x = particle_df_time$lon,
-                     y = particle_df_time$lat)) +
+                     y = particle_df_time$lat),
+                 colour = particle_df_time$height,
+                 size = particle_df_time$height/200,
+                 alpha = 0.5) +
       geom_smooth(aes(x = particle_df_time$lon,
-                      y = particle_df_time$lat), method = lm) +
+                      y = particle_df_time$lat), method = loess) +
       theme(legend.position = "none")
     
     # Save the image to disk
