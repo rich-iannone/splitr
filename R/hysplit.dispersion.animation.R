@@ -139,8 +139,8 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     # Initialize a long data frame for single particle movements for every particle
     if (i == 1){
       
-      particle_df <- as.data.frame(mat.or.vec(nr = 0, nc = 5))
-      colnames(particle_df) <- c("particle_id", "lon", "lat", "hour", "hour_start")
+      particle_df <- as.data.frame(mat.or.vec(nr = 0, nc = 6))
+      colnames(particle_df) <- c("particle_id", "lon", "lat", "height", "hour", "hour_start")
       
     }
     
