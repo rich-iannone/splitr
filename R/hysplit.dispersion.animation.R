@@ -241,11 +241,10 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
       geom_point(aes(x = start_lat_deg,
                      y = start_long_deg),
                  colour = "blue", size = 50) +
-      geom_point(aes(x = particle_df_time$lon,
-                     y = particle_df_time$lat),
-                 colour = particle_df_time$height,
-                 size = particle_df_time$height/200,
-                 alpha = 0.5) +
+      geom_point(data = particle_df_time, aes(x = lon, y = lat, colour = height,
+                 size = particle_df_time$height, alpha = 0.5)) +
+      #scale_colour_gradient(low = "green", high = "darkred") +
+      scale_colour_gradient(low = "green", high = "darkred", trans = "sqrt") +
       geom_smooth(aes(x = particle_df_time$lon,
                       y = particle_df_time$lat), method = loess) +
       theme(legend.position = "none")
