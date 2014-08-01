@@ -172,7 +172,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                              length(vector_lon))
     
     # Bind vectors into a data frame
-    df_from_vectors <- cbind(vector_particle_id, vector_lon, vector_lat,
+    df_from_vectors <- cbind(vector_particle_id, vector_lon, vector_lat, vector_hgt,
                              vector_hour, vector_hour_start)
     colnames(df_from_vectors) <- names(particle_df)
     
