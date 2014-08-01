@@ -180,9 +180,9 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     particle_df <- rbind(particle_df, df_from_vectors)
     
   }
-  
+
   # Remove objects from memory
-  rm(df_from_vectors, vector_hour, vector_hour_start,
+  rm(df_from_vectors, vector_hour, vector_hour_start, vector_hgt,
      vector_lat, vector_lon, vector_particle_id, particles_released_per_hour, i)
   
   # Round the 'hour' column in 'particle_df' to 2 decimal places
@@ -193,7 +193,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   
   # Write the 'particle_df' data frame to a CSV file if it is requested
   if (write_particle_CSV == TRUE){
-        
+    
     if (.Platform$OS.type == "unix"){
       
       write.table(particle_df, file = paste(df_folder_path, "/particle.csv", sep = ''),
