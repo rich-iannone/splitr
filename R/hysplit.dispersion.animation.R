@@ -188,6 +188,9 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   # Round the 'hour' column in 'particle_df' to 2 decimal places
   particle_df$hour <- round(particle_df$hour, 2)
   
+  # Round the 'height' column in 'particle_df' to 0 decimal places
+  particle_df$height <- round(particle_df$height, 0)
+  
   # Write the 'particle_df' data frame to a CSV file if it is requested
   if (write_particle_CSV == TRUE){
         
