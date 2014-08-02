@@ -146,23 +146,23 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     
     # Generate a vector of evenly spaced time increments for the duration of the particle history
     vector_hour <- seq(from = min(dispersion_df[dispersion_df$particle_no == i, ][,5]) - 1,
-                       to = max(dispersion_df[dispersion_df$particle_no == i, ][,5]) - (1/60),
-                       by = 1/60)
+                       to = max(dispersion_df[dispersion_df$particle_no == i, ][,5]) - (1/100),
+                       by = 1/100)
     
     # Use 'spline' function to generate latitude and longitude particle positions for every
     # minute of travel from the source location
     vector_lon <- spline(x = c(start_long_deg, dispersion_df[dispersion_df$particle_no == i, ][,2]),
                          y = c(start_lat_deg, dispersion_df[dispersion_df$particle_no == i, ][,3]),
-                         n = length(dispersion_df[dispersion_df$particle_no == i, ][,2]) * 60)[[1]]
+                         n = length(dispersion_df[dispersion_df$particle_no == i, ][,2]) * 100)[[1]]
     
     vector_lat <- spline(x = c(start_long_deg, dispersion_df[dispersion_df$particle_no == i, ][,2]),
                          y = c(start_lat_deg, dispersion_df[dispersion_df$particle_no == i, ][,3]),
-                         n = length(dispersion_df[dispersion_df$particle_no == i, ][,2]) * 60)[[2]]
+                         n = length(dispersion_df[dispersion_df$particle_no == i, ][,2]) * 100)[[2]]
     
     # Use 'spline' function to generate particle heights for every minute of travel from the
     # source location
     vector_hgt <- spline(x = c(start_height_m_AGL, dispersion_df[dispersion_df$particle_no == i, ][,4]),
-                         n = length(dispersion_df[dispersion_df$particle_no == i, ][,2]) * 60)[[2]]
+                         n = length(dispersion_df[dispersion_df$particle_no == i, ][,2]) * 100)[[2]]
     
     # Repeat the particle ID within the df
     vector_particle_id <- rep(i, length(vector_lon))
