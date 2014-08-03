@@ -244,10 +244,21 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
       geom_point(data = particle_df_time, aes(x = lon, y = lat, colour = height,
                  size = particle_df_time$height, alpha = 0.5)) +
       #scale_colour_gradient(low = "green", high = "darkred") +
-      scale_colour_gradient(low = "green", high = "darkred", trans = "sqrt") +
+      scale_colour_gradient(low = "green", high = "darkred", trans = "sqrt",
+                            limits = c(0, 10000)) +
       geom_smooth(aes(x = particle_df_time$lon,
                       y = particle_df_time$lat), method = loess) +
       theme(legend.position = "none")
+    
+    # Generate a timeline abscissa
+#     gg_time <- unique(particle_df_time$hour)
+    
+    
+    
+    # Obtain particle heights along the loess smoother line
+    
+    
+    
     
     # Save the image to disk
     ggsave(filename = paste("dispersion-map-", output_time, "-",
@@ -281,7 +292,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   # Construct a string with glob to pass into the ffmpeg call
   dispersion_plot_glob <- paste("dispersion-map-", output_time, "-%06d.jpg",
                                 sep = '')
-  
+
   # Render and write the MP4 movie using ffmpeg
   if (.Platform$OS.type == "unix"){
     
@@ -289,7 +300,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                  dispersion_plot_glob, "' -r ", frame_rate, " ",
                  movie_output_name, ".mov",
                  sep = ''))
-    
+
   }
   
 }
