@@ -196,7 +196,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     
     if (.Platform$OS.type == "unix"){
       
-      write.table(particle_df, file = paste(df_folder_path, "/particle.csv", sep = ''),
+      write.table(particle_df, file = paste(path_output_files, "/particle.csv", sep = ''),
                   sep = ",", row.names = FALSE)
       
     }
