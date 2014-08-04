@@ -292,7 +292,12 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   # Construct a string with glob to pass into the ffmpeg call
   dispersion_plot_glob <- paste("dispersion-map-", output_time, "-%06d.jpg",
                                 sep = '')
-
+  
+  # Construct the movie name
+  if (movie_output_name == NULL){
+    movie_output_name <- paste("dispersion_movie__", output_time, sep = "")
+  }
+  
   # Render and write the MP4 movie using ffmpeg
   if (.Platform$OS.type == "unix"){
     
@@ -300,7 +305,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                  dispersion_plot_glob, "' -r ", frame_rate, " ",
                  movie_output_name, ".mov",
                  sep = ''))
-
+    
   }
   
 }
