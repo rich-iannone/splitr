@@ -180,7 +180,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     particle_df <- rbind(particle_df, df_from_vectors)
     
   }
-
+  
   # Remove objects from memory
   rm(df_from_vectors, vector_hour, vector_hour_start, vector_hgt,
      vector_lat, vector_lon, vector_particle_id, particles_released_per_hour, i)
@@ -242,16 +242,16 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                      y = start_long_deg),
                  colour = "blue", size = 50) +
       geom_point(data = particle_df_time, aes(x = lon, y = lat, colour = height,
-                 size = particle_df_time$height, alpha = 0.5)) +
+                                              size = particle_df_time$height, alpha = 0.5)) +
       #scale_colour_gradient(low = "green", high = "darkred") +
       scale_colour_gradient(low = "green", high = "darkred", trans = "sqrt",
-                            limits = c(0, 10000)) +
+                            limits = c(0, 5000)) +
       geom_smooth(aes(x = particle_df_time$lon,
                       y = particle_df_time$lat), method = loess) +
       theme(legend.position = "none")
     
     # Generate a timeline abscissa
-#     gg_time <- unique(particle_df_time$hour)
+    #     gg_time <- unique(particle_df_time$hour)
     
     
     
