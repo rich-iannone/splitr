@@ -303,6 +303,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     
     system(paste("cd ", path_output_files, " ; ffmpeg -f image2 -start_number 1 -i '",
                  dispersion_plot_glob, "' -r ", frame_rate, " ",
+                 "-vcodec libx264 -pix_fmt yuv420p ",
                  movie_output_name, ".mov",
                  sep = ''))
     
