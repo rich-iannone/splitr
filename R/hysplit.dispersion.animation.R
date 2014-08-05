@@ -299,8 +299,10 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                                 sep = '')
   
   # Construct the movie name
-  if (movie_output_name == NULL){
+  if (is.null(movie_output_name)){
+    
     movie_output_name <- paste("dispersion_movie__", output_time, sep = "")
+    
   }
   
   # If a movie name is provided, ensure that the filename won't be duplicated
