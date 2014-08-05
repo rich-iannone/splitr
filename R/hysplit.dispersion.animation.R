@@ -25,10 +25,10 @@
 #'}
 
 hysplit.dispersion.animation <- function(dispersion_df = NULL,
+                                         df_folder_path = NULL,
                                          start_lat_deg,
                                          start_long_deg,
                                          start_height_m_AGL,
-                                         df_folder_path = NULL,
                                          write_particle_CSV = FALSE,
                                          map_type = "stamen",
                                          frame_rate = 30,
