@@ -248,7 +248,6 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                  colour = "blue", size = 50) +
       geom_point(data = particle_df_time, aes(x = lon, y = lat, colour = height,
                                               size = particle_df_time$height, alpha = 0.5)) +
-      #scale_colour_gradient(low = "green", high = "darkred") +
       scale_colour_gradient(low = "green", high = "darkred", trans = "sqrt",
                             limits = c(0, 5000)) +
       geom_smooth(aes(x = particle_df_time$lon,
@@ -309,7 +308,6 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   if (!is.null(movie_output_name)){
     
     if (paste(movie_output_name, ".mov", sep = '') %in%
-          
           list.files(path = path_output_files)){
       
       movie_output_name <- paste(movie_output_name, "-",
