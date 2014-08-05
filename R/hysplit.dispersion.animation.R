@@ -298,6 +298,20 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     movie_output_name <- paste("dispersion_movie__", output_time, sep = "")
   }
   
+  # If a movie name is provided, ensure that the filename won't be duplicated
+  if (!is.null(movie_output_name)){
+    
+    if (paste(movie_output_name, ".mov", sep = '') %in%
+          
+          list.files(path = path_output_files)){
+      
+      movie_output_name <- paste(movie_output_name, "-",
+                                 output_time, sep = '')
+      
+    }
+    
+  }  
+  
   # Render and write the MP4 movie using ffmpeg
   if (.Platform$OS.type == "unix"){
     
