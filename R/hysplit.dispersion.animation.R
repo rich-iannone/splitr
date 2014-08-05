@@ -34,7 +34,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                                          frame_rate = 30,
                                          movie_output_name = NULL,
                                          IM_exec_path = "/opt/local/bin/convert",
-                                         path_output_files = NULL){
+                                         path_output_files){
   
   # Add require statements
   require(labeling)
