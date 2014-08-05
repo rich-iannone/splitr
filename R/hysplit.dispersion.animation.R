@@ -39,6 +39,11 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   # Add require statements
   require(labeling)
   
+  # Stop function if no path for output files is provided
+  if (!exists("path_output_files")){
+    stop("There must be a path for output files specified.") 
+  }
+  
   # Obtain the appropriate dispersion data frame; if the value supplied to 'dispersion_df' is not
   # null (and if a valid data frame object is given) use it as the dispersion_df
   
