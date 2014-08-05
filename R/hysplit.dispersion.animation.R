@@ -250,8 +250,9 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                                               size = particle_df_time$height, alpha = 0.5)) +
       scale_colour_gradient(low = "green", high = "darkred", trans = "sqrt",
                             limits = c(0, 5000)) +
-      geom_smooth(aes(x = particle_df_time$lon,
-                      y = particle_df_time$lat), method = loess) +
+      geom_smooth(aes(x = c(start_long_deg, particle_df_time$lon),
+                      y = c(c(start_lat_deg, particle_df_time$lat),
+                            method = loess) +
       theme(legend.position = "none")
     
     # Generate a timeline abscissa
