@@ -115,6 +115,20 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     
   }
   
+  # If chosen, a Stamen 'toner' style map that encompasses the bounds
+  # of the dispersion data will be downloaded
+  if (map_type == "stamen"){
+    map <- get_map(location = bbox, maptype = "toner",
+                   source = "stamen")
+  }
+  
+  # If chosen, an Open Street Maps 'terrain' style map that encompasses
+  # the bounds of the dispersion data will be downloaded
+  if (map_type == "osm"){
+    map <- get_map(location = bbox, maptype = "terrain",
+                   source = "osm")
+  }
+  
   # Build on the 'dispersion_df' data frame by identifying each particle by hour
   # of release; first determine number of particles released from source per hour
   particles_released_per_hour <- nrow(subset(dispersion_df, hour == 1))
@@ -239,20 +253,6 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   
   # Obtain vector of unique, sorted, fractional hours in 'particle_df'
   fractional_hours <- sort(unique(particle_df$hour))
-  
-  # If chosen, a Stamen 'toner' style map that encompasses the bounds
-  # of the dispersion data will be downloaded
-  if (map_type == "stamen"){
-    map <- get_map(location = bbox, maptype = "toner",
-                   source = "stamen")
-  }
-  
-  # If chosen, an Open Street Maps 'terrain' style map that encompasses
-  # the bounds of the dispersion data will be downloaded
-  if (map_type == "osm"){
-    map <- get_map(location = bbox, maptype = "terrain",
-                   source = "osm")
-  }
   
   # Get the system time to append to graphics files
   output_time <- format(Sys.time(), "%Y-%m-%d--%H-%M-%S")
