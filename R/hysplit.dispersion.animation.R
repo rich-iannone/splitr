@@ -43,7 +43,9 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   
   # Stop function if no path for output files is provided
   if (!exists("path_output_files")){
+    
     stop("There must be a path for output files specified.") 
+  
   }
   
   # Obtain the appropriate dispersion data frame; if the value supplied to 'dispersion_df' is not
@@ -94,6 +96,24 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   
   # Determine the extent of particle dispersion
   bbox <- make_bbox(lon = dispersion_df$lon, lat = dispersion_df$lat)
+  
+  # Make the bounding box a square through padding
+  bbox_width <- abs(bbox[[3]] - bbox[[1]])
+  bbox_height <- abs(bbox[[4]] - bbox[[2]])  
+  
+  if (bbox_height < bbox_width){
+    
+    bbox[[4]] <- bbox[[4]] + ((bbox_width - bbox_height)/2)
+    bbox[[2]] <- bbox[[2]] - ((bbox_width - bbox_height)/2)
+  
+  }
+  
+  if (bbox_height > bbox_width){
+    
+    bbox[[3]] <- bbox[[3]] + ((bbox_height - bbox_width)/2)
+    bbox[[1]] <- bbox[[1]] - ((bbox_height - bbox_width)/2)
+    
+  }
   
   # Build on the 'dispersion_df' data frame by identifying each particle by hour
   # of release; first determine number of particles released from source per hour
