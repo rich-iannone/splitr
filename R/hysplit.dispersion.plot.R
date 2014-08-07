@@ -28,7 +28,8 @@ hysplit.dispersion.plot <- function(hours = 'all',
   
   if (!is.null(dispersion_df)){
     
-    if (names(dispersion_df) == c("particle_no", "lon", "lat", "height", "hour")){
+    if (all(c("particle_no", "lon", "lat", "height",
+          "hour", "hour_start", "particle_id") %in% names(dispersion_df))){
       
       valid_names <- TRUE
       
