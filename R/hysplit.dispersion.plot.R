@@ -3,6 +3,7 @@
 #' @param hours specification of hours of dispersion data to plot.
 #' @param dispersion_df optionally specify a data frame with dispersion data as an input.
 #' @param df_folder_path absolute path of the folder containing a dispersion data frame.
+#' @param map_type selection provider of base maps for plotting. Choices are 'osm' (Open Street Map) and 'stamen' (Stamen Maps).
 #' @param map_output_name a partial identifier prepended to the output map files.
 #' @param path_output_files a full path for a location that the dispersion output files were written.
 #' @export hysplit.dispersion.plot
