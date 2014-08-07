@@ -4,7 +4,8 @@
 \title{Plot HYSPLIT dispersion model output onto maps}
 \usage{
 hysplit.dispersion.plot(hours = "all", dispersion_df = NULL,
-  df_folder_path = NULL, map_output_name = NULL, path_output_files = NULL)
+  df_folder_path = NULL, map_type = "stamen", map_output_name = NULL,
+  path_output_files = NULL)
 }
 \arguments{
 \item{hours}{specification of hours of dispersion data to plot.}
@@ -12,6 +13,8 @@ hysplit.dispersion.plot(hours = "all", dispersion_df = NULL,
 \item{dispersion_df}{optionally specify a data frame with dispersion data as an input.}
 
 \item{df_folder_path}{absolute path of the folder containing a dispersion data frame.}
+
+\item{map_type}{selection provider of base maps for plotting. Choices are 'osm' (Open Street Map) and 'stamen' (Stamen Maps).}
 
 \item{map_output_name}{a partial identifier prepended to the output map files.}
 
