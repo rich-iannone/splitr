@@ -273,16 +273,11 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     
     # Generate a ggplot object from the subset data frame 'particle_df_time'
     gg <- ggmap(ggmap = map) +
-      geom_point(aes(x = start_lat_deg,
-                     y = start_long_deg),
-                 colour = "blue", size = 50) +
-      geom_point(data = particle_df_time, aes(x = lon, y = lat, colour = height,
-                                              size = particle_df_time$height, alpha = 0.5)) +
+      geom_point(data = smooth_xyh, aes(x = smooth_x, y = smooth_y, colour = smooth_h,
+                                              size = smooth_h, alpha = 0.5)) +
       scale_colour_gradient(low = "green", high = "darkred", trans = "sqrt",
                             limits = c(0, 5000)) +
-      geom_smooth(aes(x = c(start_long_deg, particle_df_time$lon),
-                      y = c(start_lat_deg, particle_df_time$lat),
-                      method = loess)) +
+      geom_smooth(data = smooth_xyh, aes(x = smooth_x, y = smooth_y, stat = "smooth")) +
       theme(legend.position = "none")
     
     # Generate a timeline abscissa
