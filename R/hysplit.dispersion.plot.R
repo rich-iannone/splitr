@@ -28,18 +28,15 @@ hysplit.dispersion.plot <- function(hours = 'all',
   
   if (!is.null(dispersion_df)){
     
-    if (all(c("particle_no", "lon", "lat", "height",
-          "hour", "hour_start", "particle_id") %in% names(dispersion_df))){
-      
-      valid_names <- TRUE
-      
-    }
+    valid_names <- ifelse(all(c("particle_no", "lon", "lat", "height",
+                                "hour", "hour_start", "particle_id") %in%
+                                names(dispersion_df)), TRUE, FALSE)
     
-    if (is.integer(dispersion_df[,1]) &
-          is.numeric(dispersion_df[,2]) &
-          is.numeric(dispersion_df[,3]) &
-          is.numeric(dispersion_df[,4]) &
-          is.numeric(dispersion_df[,5])) valid_classes <- TRUE
+    valid_classes <- ifelse(all(is.integer(dispersion_df[,1]) &
+                                  is.numeric(dispersion_df[,2]) &
+                                  is.numeric(dispersion_df[,3]) &
+                                  is.numeric(dispersion_df[,4]) &
+                                  is.numeric(dispersion_df[,5])), TRUE, FALSE)
     
     if (valid_names == FALSE | valid_classes == FALSE){
       
@@ -92,7 +89,7 @@ hysplit.dispersion.plot <- function(hours = 'all',
   
   # Plot a map of the dispersion data
   bbox <- make_bbox(lon = dispersion_df$lon, lat = dispersion_df$lat)
-    
+  
   # If chosen, a Stamen 'toner' style map that encompasses the bounds
   # of the dispersion data will be downloaded
   if (map_type == "stamen"){
