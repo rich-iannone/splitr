@@ -90,9 +90,20 @@ hysplit.dispersion.plot <- function(hours = 'all',
   
   # Plot a map of the dispersion data
   bbox <- make_bbox(lon = dispersion_df$lon, lat = dispersion_df$lat)
+    
+  # If chosen, a Stamen 'toner' style map that encompasses the bounds
+  # of the dispersion data will be downloaded
+  if (map_type == "stamen"){
+    map <- get_map(location = bbox, maptype = "toner",
+                   source = "stamen")
+  }
   
-  map <- get_map(location = bbox, maptype = "terrain",
-                 source = "osm")
+  # If chosen, an Open Street Maps 'terrain' style map that encompasses
+  # the bounds of the dispersion data will be downloaded
+  if (map_type == "osm"){
+    map <- get_map(location = bbox, maptype = "terrain",
+                   source = "osm")
+  }
   
   for (i in hours){
     
