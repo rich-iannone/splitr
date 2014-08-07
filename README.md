@@ -412,9 +412,17 @@ The met files that were automatically downloaded will remain in the working dire
 
 Finally, a binary `PARDUMP` file will be written.
 
-Here is a snapshot of the dispersion particles at hour 16 of 24:
+One or more snapshot plots of the data can be generated using the 'hysplit.dispersion.plot' function. If a dispersion data frame is available, the function can be called to reference that data and generate particle plots at every hour of the model run:
 
-<img src="inst/dispersion-Simcoe-hour16.jpg" width="75%">
+```R
+hysplit.dispersion.plot(hours = 'all',
+                        dispersion_df = disp.df,
+                        map_output_name = "map3",
+                        path_output_files = "C:\\hysplit4\\output\\")
+
+```
+
+
 
 ## Future Additions to SplitR
 
