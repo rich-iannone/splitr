@@ -417,9 +417,19 @@ One or more snapshot plots of the data can be generated using the 'hysplit.dispe
 ```R
 hysplit.dispersion.plot(hours = 'all',
                         dispersion_df = disp.df,
-                        map_output_name = "map3",
+                        map_type = "stamen",
+                        map_output_name = "map1",
                         path_output_files = "C:\\hysplit4\\output\\")
+```
 
+If the dispersion data has been saved to disk (usually as the file 'dispersion.csv' in a subfolder for the run), it's possible to point to that file in the `hysplit.dispersion.plot` call:
+
+```R
+hysplit.dispersion.plot(hours = 'all',
+                        df_folder_path = "C:\\hysplit4\\output\\dispersion--2014-08-03--13-42-28\\",
+                        map_type = "stamen",
+                        map_output_name = "map2",
+                        path_output_files = "C:\\hysplit4\\output\\dispersion--2014-08-03--13-42-28\\")
 ```
 
 
