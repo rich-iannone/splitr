@@ -90,6 +90,34 @@ hysplit.dispersion.plot <- function(hours = 'all',
   # Determine the extent of particle dispersion
   bbox_data <- make_bbox(lon = dispersion_df$lon, lat = dispersion_df$lat)
   
+  # Create 'bounding_box' function to provide a square bounding box that's defined
+  # by the center-point lat/lon, and the distance away in kilometers
+  bounding_box <- function(lat, lon, dist, in.miles = TRUE){
+    
+    if (in.miles){
+      ang_rad <- function(miles) miles/3958.756  
+    } else {
+      ang_rad <- function(miles) miles/1000 
+    }
+    ang_rad <- function(dist_km) dist_km/1000
+    `%+/-%` <- function(x, margin){x + c(-1, +1) * margin}
+    deg2rad <- function(x) x/(180/pi)
+    rad2deg <- function(x) x*(180/pi)
+    lat_range <- function(latr, r) rad2deg(latr %+/-% r)
+    lon_range <- function(lonr, dlon) rad2deg(lonr %+/-% dlon)
+    
+    r <- ang_rad(dist)
+    latr <- deg2rad(lat)
+    lonr <- deg2rad(lon)
+    dlon <- asin(sin(r)/cos(latr))
+    
+    m <- matrix(c(lon_range(lonr = lonr, dlon = dlon),
+                  lat_range(latr = latr, r = r)), nrow = 2, byrow = TRUE)
+    
+    dimnames(m) <- list(c("lng", "lat"), c("min", "max"))
+    m
+    
+  }
   # If chosen, a Stamen 'toner' style map that encompasses the bounds
   # of the dispersion data will be downloaded
   if (map_type == "stamen"){
