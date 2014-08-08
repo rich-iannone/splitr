@@ -95,7 +95,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   }
   
   # Determine the extent of particle dispersion
-  bbox <- make_bbox(lon = dispersion_df$lon, lat = dispersion_df$lat)
+  bbox_data <- make_bbox(lon = dispersion_df$lon, lat = dispersion_df$lat)
   
   # Make the bounding box a square through padding
   bbox_width <- abs(bbox[[3]] - bbox[[1]])
