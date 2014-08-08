@@ -97,11 +97,6 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   # Determine the extent of particle dispersion
   bbox_data <- make_bbox(lon = dispersion_df$lon, lat = dispersion_df$lat)
   
-  # Make the bounding box a square through padding
-  bbox_width <- abs(bbox[[3]] - bbox[[1]])
-  bbox_height <- abs(bbox[[4]] - bbox[[2]])  
-  
-  if (bbox_height < bbox_width){
   # Create 'bounding_box' function to provide a square bounding box that's defined
   # by the center-point lat/lon, and the distance away in either miles or kilometers
   bounding_box <- function(lat, lon, dist, in.miles = TRUE){
