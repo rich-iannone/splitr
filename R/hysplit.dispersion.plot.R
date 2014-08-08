@@ -149,7 +149,7 @@ hysplit.dispersion.plot <- function(hours = 'all',
     rm(hour_x, hour_y, hour_h)
     
     # Generate a ggplot object from the 'df_xyh' data frame
-    gg <- ggmap(ggmap = map) +
+    gg <- ggmap(ggmap = map, extent = "device") +
       geom_point(data = df_xyh, aes(x = hour_x, y = hour_y, colour = hour_h,
                                     size = hour_h, alpha = 0.5)) +
       scale_colour_gradient(low = "green", high = "darkred", trans = "sqrt",
