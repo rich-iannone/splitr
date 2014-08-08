@@ -263,15 +263,18 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     # Create a data frame that is a subset by fractional hour
     particle_df_time <- subset(particle_df, hour == fractional_hours[i])
     
+    # Extract columns from 'particle_df_time' and prepend the starting values
     smooth_x <- c(start_long_deg, particle_df_time$lon)
     smooth_y <- c(start_lat_deg, particle_df_time$lat)
     smooth_h <- c(start_height_m_AGL, particle_df_time$height)
     
+    # Create a data frame from the 3 vectors
     smooth_xyh <- as.data.frame(cbind(smooth_x, smooth_y, smooth_h))
     
+    # Remove vector objects from memory
     rm(smooth_x, smooth_y, smooth_h)
     
-    # Generate a ggplot object from the subset data frame 'particle_df_time'
+    # Generate a ggplot object from the 'smooth_xyh' data frame
     gg <- ggmap(ggmap = map) +
       geom_point(data = smooth_xyh, aes(x = smooth_x, y = smooth_y, colour = smooth_h,
                                               size = smooth_h, alpha = 0.5)) +
