@@ -106,27 +106,31 @@ hysplit.dispersion.plot <- function(hours = 'all',
   
   for (i in hours){
     
+    # Create a data frame that is a subset by hour
     dispersion_df_hour <- subset(dispersion_df, hour == i)
     
+    hour_x <- dispersion_df_hour$lon
+    hour_y <- dispersion_df_hour$lat
+    hour_h <- dispersion_df_hour$height
+    
+    df_xyh <- as.data.frame(cbind(hour_x, hour_y, hour_h))
+    
+    # Remove vector objects from memory
+    rm(hour_x, hour_y, hour_h)
+    
+    # Generate a ggplot object from the 'df_xyh' data frame
     gg <- ggmap(ggmap = map) +
-      geom_point(data = dispersion_df_hour,
-                 aes(x = dispersion_df_hour$lon,
-                     y = dispersion_df_hour$lat,
-                     colour = dispersion_df_hour$height,
-                     size = dispersion_df_hour$height,
-                     alpha = 0.5)) +
+      geom_point(data = df_xyh, aes(x = hour_x, y = hour_y, colour = hour_h,
+                                    size = hour_h, alpha = 0.5)) +
       scale_colour_gradient(low = "green", high = "darkred", trans = "sqrt",
                             limits = c(0, 5000)) +
-      geom_smooth(data = dispersion_df_hour,
-                  aes(x = dispersion_df_hour$lon,
-                      y = dispersion_df_hour$lat,
-                      stat = "smooth"),
+      geom_smooth(data = df_xyh, aes(x = hour_x, y = hour_y, stat = "smooth"),
                   method = "loess") +
       theme(legend.position = "none",
             axis.line = element_blank(), axis.ticks = element_blank(), 
             axis.title.x = element_blank(), axis.title.y = element_blank(), axis.text.y = element_blank(), 
             axis.text.x = element_blank(), axis.text.y = element_blank(), axis.text.y = element_blank())
-        
+    
     if (is.null(map_output_name)){
       
       ggsave(filename = paste("dispersion-map-h", hours[i], ".pdf", sep = ''),
