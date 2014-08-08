@@ -109,13 +109,24 @@ hysplit.dispersion.plot <- function(hours = 'all',
     dispersion_df_hour <- subset(dispersion_df, hour == i)
     
     gg <- ggmap(ggmap = map) +
-      geom_point(aes(x = dispersion_df_hour$lon,
-                     y = dispersion_df_hour$lat)) +
-      geom_smooth(aes(x = dispersion_df_hour$lon,
-                      y = dispersion_df_hour$lat), method = lm) +
-      theme(legend.position = "none")
-    
-    
+      geom_point(data = dispersion_df_hour,
+                 aes(x = dispersion_df_hour$lon,
+                     y = dispersion_df_hour$lat,
+                     colour = dispersion_df_hour$height,
+                     size = dispersion_df_hour$height,
+                     alpha = 0.5)) +
+      scale_colour_gradient(low = "green", high = "darkred", trans = "sqrt",
+                            limits = c(0, 5000)) +
+      geom_smooth(data = dispersion_df_hour,
+                  aes(x = dispersion_df_hour$lon,
+                      y = dispersion_df_hour$lat,
+                      stat = "smooth"),
+                  method = "loess") +
+      theme(legend.position = "none",
+            axis.line = element_blank(), axis.ticks = element_blank(), 
+            axis.title.x = element_blank(), axis.title.y = element_blank(), axis.text.y = element_blank(), 
+            axis.text.x = element_blank(), axis.text.y = element_blank(), axis.text.y = element_blank())
+        
     if (is.null(map_output_name)){
       
       ggsave(filename = paste("dispersion-map-h", hours[i], ".pdf", sep = ''),
