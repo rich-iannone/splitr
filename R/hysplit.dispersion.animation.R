@@ -152,14 +152,16 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
   # If chosen, a Stamen 'toner' style map that encompasses the bounds
   # of the dispersion data will be downloaded
   if (map_type == "stamen"){
-    map <- get_map(location = bbox, maptype = "toner",
+    map <- get_map(location = bbox_map,
+                   maptype = "toner",
                    source = "stamen")
   }
   
   # If chosen, an Open Street Maps 'terrain' style map that encompasses
   # the bounds of the dispersion data will be downloaded
   if (map_type == "osm"){
-    map <- get_map(location = bbox, maptype = "terrain",
+    map <- get_map(location = bbox_map,
+                   maptype = "terrain",
                    source = "osm")
   }
   
