@@ -126,10 +126,7 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
     
   }
   
-  if (bbox_height > bbox_width){
     
-    bbox[[3]] <- bbox[[3]] + ((bbox_height - bbox_width)/2)
-    bbox[[1]] <- bbox[[1]] - ((bbox_height - bbox_width)/2)
     
   }
   
