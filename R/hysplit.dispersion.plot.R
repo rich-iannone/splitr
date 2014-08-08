@@ -118,6 +118,28 @@ hysplit.dispersion.plot <- function(hours = 'all',
     m
     
   }
+  
+  # Determine the distance away from the center-point to generate a bounding box
+  # for the map image that encompasses the bounding box for the dispersion data;
+  # this will keep generating new 'bbox_map' objects until the map extents are
+  # greater than the data extents
+  for (i in seq(from = 0.2, to = 1000, by = 0.2)){
+    
+    bbox_map <- bounding_box(lon = (bbox_data[[1]] + bbox_data[[3]])/2,
+                             lat = (bbox_data[[2]] + bbox_data[[4]])/2,
+                             i, in.miles = FALSE)
+    
+    if (bbox_map[1] <= bbox_data[[1]] &
+          bbox_map[2] >= bbox_data[[3]] &
+          bbox_map[3] <= bbox_data[[2]] &
+          bbox_map[4] >= bbox_data[[4]]){
+      
+      break()
+      
+    }
+    
+  }
+  
   # If chosen, a Stamen 'toner' style map that encompasses the bounds
   # of the dispersion data will be downloaded
   if (map_type == "stamen"){
