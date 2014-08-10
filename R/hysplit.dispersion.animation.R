@@ -323,16 +323,6 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
           axis.title.x = element_blank(), axis.title.y = element_blank(), axis.text.y = element_blank(), 
           axis.text.x = element_blank(), axis.text.y = element_blank(), axis.text.y = element_blank())
     
-    # Generate a timeline abscissa
-    #     gg_time <- unique(particle_df_time$hour)
-    
-    
-    
-    # Obtain particle heights along the loess smoother line
-    
-    
-    
-    
     # Save the image to disk
     ggsave(filename = paste("dispersion-map-", output_time, "-",
                             formatC(i, width = 6, flag = "0"),
