@@ -349,6 +349,17 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                        formatC(i, width = 6, flag = "0"),
                        ".pdf", sep = ''),
                  sep = ''))
+
+    # Compose image with text elements using ImageMagick
+    #ImageMagick experiments
+    system(paste("cd ", path_output_files, " ; ", IM_exec_path, " -background white -fill black ",
+                 "-font Helvetica ",
+                 "-pointsize 24 ",
+                 "-gravity West ",
+                 "-size 563x1126 ",
+                 "label:\"", "\\n",
+                 "\" ",
+                 "label.jpg", sep = ''))
     
   }
   
