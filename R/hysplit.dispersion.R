@@ -564,7 +564,7 @@ hysplit.dispersion <- function(disp_name = NULL,
     disp.df <- dispersion.read(archive_folder =
                                  paste(path_output_files, folder_name, sep = ''))
     
-    return(disp.df)
+    invisible(disp.df)
     
   }
   
