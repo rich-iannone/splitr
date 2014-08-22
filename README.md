@@ -1,5 +1,4 @@
-SplitR
-======
+<img src="inst/SplitR.png" width="75%">
 
 SplitR is an R package that's great for conducting trajectory and dispersion modelling with [NOAA HYSPLIT](http://ready.arl.noaa.gov/HYSPLIT.php).
 
