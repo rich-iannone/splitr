@@ -144,8 +144,8 @@ trajectory.read <- function(archive_folder,
     }
     
     if (.Platform$OS.type == "windows"){
-      traj <- read.fwf(paste("file://", path.expand(archive_folder),  "/",
-                             trajectory_file_list[i], sep = ''),
+      traj <- read.fwf(paste0("file://", path.expand(archive_folder),  "/",
+                             trajectory_file_list[i]),
                        skip = skip_up_to_line,
                        widths = column.widths)
     }
