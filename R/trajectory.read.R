@@ -94,12 +94,12 @@ trajectory.read <- function(archive_folder,
                                                          ".*$"))
     } else if (!is.null(year) & !is.null(start_height_m_AGL)) {
       trajectory_file_list <- list.files(path = archive_folder,
-                                         pattern = paste("^traj.*?)-",
+                                         pattern = paste0("^traj.*?)-",
                                                          gsub("^[0-9][0-9]", "",
                                                               as.character(year)),
                                                          ".*?height_",
                                                          as.character(start_height_m_AGL),
-                                                         "-.*$", sep = ''))
+                                                         "-.*$"))
     }
     
   }
