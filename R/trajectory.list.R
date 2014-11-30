@@ -78,9 +78,9 @@ trajectory.list <- function(output_folder){
                                   floor(difftime(Sys.time(), datetime, units = "days")[[1]]),
                                   " days ago")
       } else {
-        time_description <- paste("just over ", 
+        time_description <- paste0("just over ", 
                                   floor(difftime(Sys.time(), datetime, units = "days")[[1]]),
-                                  " days ago", sep = '')
+                                  " days ago")
       }
       
     } else if (difftime(Sys.time(), datetime, units = "hours")[[1]] < 24 &
