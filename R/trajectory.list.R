@@ -94,7 +94,7 @@ trajectory.list <- function(output_folder){
                                 floor(difftime(Sys.time(), datetime, units = "mins")[[1]]),
                                 " minutes ago")
     } else {
-      time_description <- paste("less than 1 min ago", sep = '')
+      time_description <- paste0("less than 1 min ago")
     }
     
     trajectory_output_df[i,3] <- paste(as.character(datetime), " (",
