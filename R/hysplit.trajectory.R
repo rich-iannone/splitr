@@ -117,13 +117,12 @@ hysplit.trajectory <- function(traj_name = NULL,
       #--- Determine which met files are required for this run
       
       # Determine the start time of the model run
-      start_time_GMT <- ymd_hms(paste(ifelse(start_year_GMT > 50,
-                                             paste("19", start_year_GMT, sep = ''),
-                                             start_year_GMT), "-",
-                                      start_month_GMT, "-",
-                                      start_day_GMT, " ",
-                                      start_hour_GMT, ":00:00",
-                                      sep = ''))
+      start_time_GMT <- ymd_hms(paste0(ifelse(start_year_GMT > 50,
+                                              paste0("19", start_year_GMT),
+                                              start_year_GMT), "-",
+                                       start_month_GMT, "-",
+                                       start_day_GMT, " ",
+                                       start_hour_GMT, ":00:00"))
       # Determine the end time of the model run
       end_time_GMT <- as.POSIXct(ifelse(backtrajectory == TRUE, 
                                         start_time_GMT - (simulation_duration_h * 3600),
