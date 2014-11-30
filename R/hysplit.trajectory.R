@@ -83,7 +83,7 @@ hysplit.trajectory <- function(traj_name = NULL,
                          as.POSIXct(run_range[2], origin = "1970-01-01", tz = "UTC"),
                          by = 86400)
   } else if (run_type == "years") {
-    list_run_days <- seq(as.POSIXct(paste(substr(run_years, 1, 4),"-01-01", sep = ''), 
+    list_run_days <- seq(as.POSIXct(paste0(substr(run_years, 1, 4),"-01-01"), 
                                     origin = "1970-01-01", tz = "UTC"),
                          as.POSIXct(ifelse(run_years_single_range == "single",
                                            paste(substr(run_years, 1, 4),"-12-31",sep = ''),
