@@ -163,84 +163,83 @@ hysplit.trajectory <- function(traj_name = NULL,
       # Trap leap-year condition of missing .w5 met file for February in a '0' list value
       if (case_within_month == TRUE &
             met_type == "gdas1") met <- 
-        c(paste("gdas1.",
-                substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                substr(year(start_time_GMT), 3, 4), ".w1", sep = ''),                                      
-          paste("gdas1.",
-                substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                substr(year(start_time_GMT), 3, 4), ".w2", sep = ''),
-          paste("gdas1.",
-                substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                substr(year(start_time_GMT), 3, 4), ".w3", sep = ''),
-          paste("gdas1.",
-                substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                substr(year(start_time_GMT), 3, 4), ".w4", sep = ''),
+        c(paste0("gdas1.",
+                 substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+                 substr(year(start_time_GMT), 3, 4), ".w1"),                                      
+          paste0("gdas1.",
+                 substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+                 substr(year(start_time_GMT), 3, 4), ".w2"),
+          paste0("gdas1.",
+                 substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+                 substr(year(start_time_GMT), 3, 4), ".w3"),
+          paste0("gdas1.",
+                 substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+                 substr(year(start_time_GMT), 3, 4), ".w4"),
           ifelse(month(start_time_GMT) == 2 &
                    leap_year == TRUE, 0,
-                 paste("gdas1.",
-                       substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                       substr(year(start_time_GMT), 3, 4), ".w5", sep = '')))
+                 paste0("gdas1.",
+                        substr(tolower(format(start_time_GMT, "%B")), 1, 3),
+                        substr(year(start_time_GMT), 3, 4), ".w5")))
       
       if (case_over_year == TRUE &
             met_type == "gdas1") met <- 
-        c(paste("gdas1.dec",
-                substr(year(end_time_GMT), 3, 4), ".w3", sep = ''),                                      
-          paste("gdas1.dec",
-                substr(year(end_time_GMT), 3, 4), ".w4", sep = ''),
-          paste("gdas1.dec",
-                substr(year(end_time_GMT), 3, 4), ".w5", sep = ''),
-          paste("gdas1.jan",
-                substr(year(start_time_GMT), 3, 4), ".w1", sep = ''),
-          paste("gdas1.jan",
-                substr(year(start_time_GMT), 3, 4), ".w2", sep = ''),
-          paste("gdas1.jan",
-                substr(year(start_time_GMT), 3, 4), ".w3", sep = ''))
+        c(paste0("gdas1.dec",
+                substr(year(end_time_GMT), 3, 4), ".w3"),                                      
+          paste0("gdas1.dec",
+                substr(year(end_time_GMT), 3, 4), ".w4"),
+          paste0("gdas1.dec",
+                substr(year(end_time_GMT), 3, 4), ".w5"),
+          paste0("gdas1.jan",
+                substr(year(start_time_GMT), 3, 4), ".w1"),
+          paste0("gdas1.jan",
+                substr(year(start_time_GMT), 3, 4), ".w2"),
+          paste0("gdas1.jan",
+                substr(year(start_time_GMT), 3, 4), ".w3"))
       
       if (case_over_month == TRUE &
             met_type == "gdas1") met <-
-        c(paste("gdas1.",
+        c(paste0("gdas1.",
                 substr(tolower(format(end_time_GMT, "%B")), 1, 3),
-                substr(year(end_time_GMT), 3, 4), ".w3", sep = ''),                                      
-          paste("gdas1.",
+                substr(year(end_time_GMT), 3, 4), ".w3"),                                      
+          paste0("gdas1.",
                 substr(tolower(format(end_time_GMT, "%B")), 1, 3),
-                substr(year(end_time_GMT), 3, 4), ".w4", sep = ''),
+                substr(year(end_time_GMT), 3, 4), ".w4"),
           ifelse(month(end_time_GMT) == 2 &
                    leap_year == TRUE, 0,
-                 paste("gdas1.",
+                 paste0("gdas1.",
                        substr(tolower(format(end_time_GMT, "%B")), 1, 3),
-                       substr(year(end_time_GMT), 3, 4), ".w5", sep = '')),
-          paste("gdas1.",
+                       substr(year(end_time_GMT), 3, 4), ".w5")),
+          paste0("gdas1.",
                 substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                substr(year(start_time_GMT), 3, 4), ".w1", sep = ''),
-          paste("gdas1.",
+                substr(year(start_time_GMT), 3, 4), ".w1"),
+          paste0("gdas1.",
                 substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                substr(year(start_time_GMT), 3, 4), ".w2", sep = ''),
-          paste("gdas1.",
+                substr(year(start_time_GMT), 3, 4), ".w2"),
+          paste0("gdas1.",
                 substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                substr(year(start_time_GMT), 3, 4), ".w3", sep = ''))
+                substr(year(start_time_GMT), 3, 4), ".w3"))
       
       # Get vector lists of met files applicable to run from the NCEP/NCAR reanalysis dataset
       if (met_type == "reanalysis") met <- 
-        c(paste("RP",
+        c(paste0("RP",
                 ifelse(start_month_GMT == "01",
                        year(start_time_GMT) - 1,
                        year(start_time_GMT)),
                 ifelse(start_month_GMT == "01", "12",
-                       formatC(month(start_time_GMT)-1, width = 2, format = "d", flag = "0")),
-                ".gbl",
-                sep = ''),
-          paste("RP",
+                       formatC(month(start_time_GMT) - 1,
+                               width = 2, format = "d", flag = "0")),
+                ".gbl"),
+          paste0("RP",
                 year(start_time_GMT),
-                start_month_GMT, ".gbl",
-                sep = ''),
-          paste("RP",
+                start_month_GMT, ".gbl"),
+          paste0("RP",
                 ifelse(start_month_GMT == "12",
                        year(start_time_GMT) + 1,
                        year(start_time_GMT)),
                 ifelse(start_month_GMT == "12", "01",
-                       formatC(month(start_time_GMT)+1, width = 2, format = "d", flag = "0")),
-                ".gbl",
-                sep = ''))
+                       formatC(month(start_time_GMT) + 1,
+                               width = 2, format = "d", flag = "0")),
+                ".gbl"))
       
       # Remove list values containing '0' (representing missing .w5
       # data files for Feb in leap years)
@@ -254,10 +253,10 @@ hysplit.trajectory <- function(traj_name = NULL,
         
         for (k in 1:length(met)) {
           met.file.df[k, 1] <- met[k]
-          met.file.df[k, 2] <- as.character(file.exists(paste(path_met_files, met[k], sep = '')))}
+          met.file.df[k, 2] <- as.character(file.exists(paste0(path_met_files, met[k])))}
         
         # Write the met file availability to file
-        write.table(met.file.df, file = paste(path_wd, "met_file_list", sep = ''),
+        write.table(met.file.df, file = paste0(path_wd, "met_file_list"),
                     sep = ",", row.names = FALSE, col.names = FALSE, quote = FALSE,
                     append = FALSE)
         
@@ -282,11 +281,11 @@ hysplit.trajectory <- function(traj_name = NULL,
         
         for (k in 1:length(met)) {
           met.file.df[k, 1] <- met[k]
-          met.file.df[k, 2] <- as.character(file.exists(paste(path_met_files,
-                                                              met[k], sep = '')))}
+          met.file.df[k, 2] <- as.character(file.exists(paste0(path_met_files,
+                                                              met[k])))}
         
         # Write the met file availability to file
-        write.table(met.file.df, file = paste(path_wd, "met_file_list", sep = ''),
+        write.table(met.file.df, file = paste0(path_wd, "met_file_list"),
                     sep = ",", row.names = FALSE, col.names = FALSE, quote = FALSE,
                     append = FALSE)
         
@@ -308,7 +307,7 @@ hysplit.trajectory <- function(traj_name = NULL,
       }
       
       # Construct the output filename string for this model run
-      output_filename <- paste("traj-",
+      output_filename <- paste0("traj-",
                                ifelse(backtrajectory == TRUE, 'back--', 'forward--'), "-",
                                start_year_GMT, "-",
                                start_month_GMT, "-",
@@ -317,7 +316,7 @@ hysplit.trajectory <- function(traj_name = NULL,
                                "lat_", gsub("\\.", "-", start_lat_deg), "_",
                                "long_", gsub("\\.", "-", start_long_deg), "-",
                                "height_",start_height_m_AGL, "-",
-                               simulation_duration_h, "h", sep = '')
+                               simulation_duration_h, "h")
       
       all_trajectory_files <- c(all_trajectory_files, output_filename)
       
@@ -328,58 +327,57 @@ hysplit.trajectory <- function(traj_name = NULL,
             start_month_GMT, " ",
             start_day_GMT, " ",
             start_hour_GMT, "\n",
-            file = paste(path_wd, "CONTROL", sep = ''),
+            file = paste0(path_wd, "CONTROL"),
             sep = '', append = FALSE)
         
         #Write number of starting locations to 'CONTROL'
         cat(no_starting_locations, "\n",
-            file = paste(path_wd, "CONTROL", sep = ''),
+            file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)
         
         # Write starting latitude, longitude, height AGL to 'CONTROL'
         cat(start_lat_deg, " ", 
             start_long_deg, " ", 
             start_height_m_AGL, "\n",
-            file = paste(path_wd, "CONTROL", sep = ''),
+            file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)
         
         # Write direction and number of simulation hours to 'CONTROL'
         cat(ifelse(backtrajectory == TRUE, "-", ""),
             simulation_duration_h, "\n",
-            file = paste(path_wd, "CONTROL", sep = ''),
+            file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)
         
         # Write vertical motion option to 'CONTROL'
         cat(vertical_motion_option, "\n",
-            file = paste(path_wd, "CONTROL", sep = ''),
+            file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)
         
         # Write top of model domain in meters to 'CONTROL'
         cat(top_of_model_domain_m, "\n",
-            file = paste(path_wd, "CONTROL", sep = ''),
+            file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)
         
         # Write number of met files used to 'CONTROL'
         cat(length(met), "\n",
-            file = paste(path_wd, "CONTROL", sep = ''),
+            file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)
         
         # Write met file paths to 'CONTROL'
         for (i in 1:length(met)){
           cat(path_met_files, "\n", met[i], "\n",
-              file = paste(path_wd, "CONTROL", sep = ''),
+              file = paste0(path_wd, "CONTROL"),
               sep = '', append = TRUE)}
         
         # Write path for trajectory output files to 'CONTROL'
         cat(path_wd, "\n",
-            file = paste(path_wd, "CONTROL", sep = ''),
+            file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)
         
         # Write name of output filename to 'CONTROL'
         cat(output_filename, "\n",
-            file = paste(path_wd, "CONTROL", sep = ''),
+            file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)
-        
       }
       
       if (.Platform$OS.type == "windows"){
@@ -389,56 +387,56 @@ hysplit.trajectory <- function(traj_name = NULL,
             start_month_GMT, " ",
             start_day_GMT, " ",
             start_hour_GMT, "\n",
-            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = FALSE)
         
         #Write number of starting locations to 'CONTROL'
         cat(no_starting_locations, "\n",
-            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = TRUE)
         
         # Write starting latitude, longitude, height AGL to 'CONTROL'
         cat(start_lat_deg, " ", 
             start_long_deg, " ", 
             start_height_m_AGL, "\n",
-            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = TRUE)
         
         # Write direction and number of simulation hours to 'CONTROL'
         cat(ifelse(backtrajectory == TRUE, "-", ""),
             simulation_duration_h, "\n",
-            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = TRUE)
         
         # Write vertical motion option to 'CONTROL'
         cat(vertical_motion_option, "\n",
-            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = TRUE)
         
         # Write top of model domain in meters to 'CONTROL'
         cat(top_of_model_domain_m, "\n",
-            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = TRUE)
         
         # Write number of met files used to 'CONTROL'
         cat(length(met), "\n",
-            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = TRUE)
         
         # Write met file paths to 'CONTROL'
         for (i in 1:length(met)){
           cat(path_met_files, "\n", met[i], "\n",
-              file = paste(path_wd, "\\", "CONTROL", sep = ''),
+              file = paste0(path_wd, "\\", "CONTROL"),
               sep = '', append = TRUE)}
         
         # Write path for trajectory output files to 'CONTROL'
         cat(path_wd, "\n",
-            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = TRUE)
         
         # Write name of output filename to 'CONTROL'
         cat(output_filename, "\n",
-            file = paste(path_wd, "\\", "CONTROL", sep = ''),
+            file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = TRUE)
         
       }
@@ -446,11 +444,11 @@ hysplit.trajectory <- function(traj_name = NULL,
       # CONTROL file is now complete and in the working directory
       # Execute the model run
       if (.Platform$OS.type == "unix"){
-        system(paste("(cd ", path_wd, " && ", path_executable, "hyts_std)", sep = ''))
+        system(paste0("(cd ", path_wd, " && ", path_executable, "hyts_std)"))
       }
       
       if (.Platform$OS.type == "windows"){
-        shell(paste("(cd ", path_wd, " && ", path_executable, "hyts_std)", sep = ''))
+        shell(paste0("(cd ", path_wd, " && ", path_executable, "hyts_std)"))
       }
       
       # Close the hour loop  
@@ -464,44 +462,43 @@ hysplit.trajectory <- function(traj_name = NULL,
   if (.Platform$OS.type == "unix"){
     
     if (is.null(traj_name)){
-      filename <- paste("traj--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
+      filename <- paste0("traj--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"))  
     } else if (!is.null(traj_name)){
-      filename <- paste(traj_name, "--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
+      filename <- paste0(traj_name, "--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"))  
     }
     
     # Perform the archiving of all trajectory files and move to the output directory
-    zip(zipfile = paste(path_output_files, filename, ".zip", sep = ''),
+    zip(zipfile = paste0(path_output_files, filename, ".zip"),
         files = all_trajectory_files)
     
     # Return a trajectory data frame if it is requested
     if (return_traj_df == TRUE){
       traj.df <- trajectory.read(archive_folder =
-                        paste(path_output_files, filename, ".zip", sep = ''))
+                                   paste0(path_output_files, filename, ".zip"))
       return(traj.df)
     }
-    
   }
   
   if (.Platform$OS.type == "windows"){
     
     if (is.null(traj_name)){
-      folder_name <- paste("traj--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
+      folder_name <- paste0("traj--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"))  
     } else if (!is.null(traj_name)){
-      folder_name <- paste(traj_name, "--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"), sep = '')  
+      folder_name <- paste0(traj_name, "--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"))  
     }
     
     # Perform the movement of all trajectory files into a folder residing to the output directory
-    dir.create(path = paste(path_output_files, folder_name, sep = ''))
+    dir.create(path = paste0(path_output_files, folder_name))
     
     for (i in 1:length(all_trajectory_files)){
-    shell(paste("(cd ", path_wd, " && move ", all_trajectory_files[i], " ",
-                paste(path_output_files, folder_name, sep = ''), ")", sep = ''))
+      shell(paste0("(cd ", path_wd, " && move ", all_trajectory_files[i], " ",
+                  paste0(path_output_files, folder_name), ")"))
     }
     
     # Return a trajectory data frame if it is requested
     if (return_traj_df == TRUE){
       traj.df <- trajectory.read(archive_folder =
-                                   paste(path_output_files, folder_name, sep = ''))
+                                   paste0(path_output_files, folder_name))
       return(traj.df)
     }
     
