@@ -90,9 +90,9 @@ trajectory.list <- function(output_folder){
                                 " hours ago")
     } else if (difftime(Sys.time(), datetime, units = "hours")[[1]] < 1 &
                  difftime(Sys.time(), datetime, units = "mins")[[1]] >= 1){
-      time_description <- paste("about ",
+      time_description <- paste0("about ",
                                 floor(difftime(Sys.time(), datetime, units = "mins")[[1]]),
-                                " minutes ago", sep = '')
+                                " minutes ago")
     } else {
       time_description <- paste("less than 1 min ago", sep = '')
     }
