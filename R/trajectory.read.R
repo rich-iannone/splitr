@@ -137,8 +137,8 @@ trajectory.read <- function(archive_folder,
                        8, 9, 9, 9, 9)
     
     if (.Platform$OS.type == "unix"){
-      traj <- read.fwf(paste("file://", path.expand(trajectory_file_dir), "/",
-                             trajectory_file_list[i], sep = ''),
+      traj <- read.fwf(paste0("file://", path.expand(trajectory_file_dir), "/",
+                             trajectory_file_list[i]),
                        skip = skip_up_to_line,
                        widths = column.widths)
     }
