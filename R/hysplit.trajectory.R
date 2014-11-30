@@ -130,9 +130,9 @@ hysplit.trajectory <- function(traj_name = NULL,
                                  origin = "1970-01-01", tz = "UTC")
       
       # Determine whether the start year is a leap year
-      leap_year <- leap_year(ymd(paste(start_year_GMT, "-",
-                                       start_month_GMT, "-",
-                                       start_day_GMT, sep = '')))
+      leap_year <- leap_year(ymd(paste0(start_year_GMT, "-",
+                                        start_month_GMT, "-",
+                                        start_day_GMT)))
       
       # Determine whether the beginning and end of the current run
       # crosses over a calendar year
