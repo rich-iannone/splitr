@@ -104,11 +104,11 @@ trajectory.list <- function(output_folder){
     
         if (.Platform$OS.type == "unix"){
           
-          trajectory_output_df[i,4] <- as.numeric(system(paste("unzip -l ",
+          trajectory_output_df[i,4] <- as.numeric(system(paste0("unzip -l ",
                                                                list.files(path = output_folder,
                                                                           pattern = ".zip",
                                                                           full.names = TRUE)[i],
-                                                               " | wc -l", sep = ''),
+                                                               " | wc -l"),
                                                          intern = TRUE))
           
     #       lat <- gsub("^.*lat_([0-9\\.-]*)_.*", "\\1",
