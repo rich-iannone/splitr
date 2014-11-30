@@ -118,8 +118,8 @@ trajectory.read <- function(archive_folder,
     column.widths <- c(92)
     
     if (.Platform$OS.type == "unix"){
-      traj_temp <- read.fwf(paste("file://", path.expand(trajectory_file_dir), "/",
-                                  trajectory_file_list[i], sep = ''),
+      traj_temp <- read.fwf(paste0("file://", path.expand(trajectory_file_dir), "/",
+                                  trajectory_file_list[i]),
                             widths = column.widths)
     }
     
