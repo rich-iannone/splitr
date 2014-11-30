@@ -86,8 +86,8 @@ hysplit.trajectory <- function(traj_name = NULL,
     list_run_days <- seq(as.POSIXct(paste0(substr(run_years, 1, 4),"-01-01"), 
                                     origin = "1970-01-01", tz = "UTC"),
                          as.POSIXct(ifelse(run_years_single_range == "single",
-                                           paste(substr(run_years, 1, 4),"-12-31",sep = ''),
-                                           paste(substr(run_years, 6, 9),"-12-31",sep = '')), 
+                                           paste0(substr(run_years, 1, 4),"-12-31"),
+                                           paste0(substr(run_years, 6, 9),"-12-31")), 
                                     origin = "1970-01-01", tz = "UTC"),
                          by = 86400)
   } else {stop("A run type has not been selected")}
