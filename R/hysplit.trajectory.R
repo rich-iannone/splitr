@@ -60,7 +60,7 @@ hysplit.trajectory <- function(traj_name = NULL,
                                path_met_files,
                                path_output_files,
                                path_wd,
-                               path_executable) {
+                               path_executable){
   
   # Add require statements
   require(lubridate)
@@ -96,7 +96,7 @@ hysplit.trajectory <- function(traj_name = NULL,
   all_trajectory_files <- vector(mode = "character", length = 0)
   
   # Make loop with all run days
-  for (i in 1:length(list_run_days)) {
+  for (i in 1:length(list_run_days)){
     
     # Define starting time parameters
     start_year_GMT <- substr(as.character(year(list_run_days[i])),3,4)
@@ -110,7 +110,7 @@ hysplit.trajectory <- function(traj_name = NULL,
                              width = 2, format = "d", flag = "0")
     
     # Make nested loop with daily beginning hours
-    for (j in daily_hours_to_start) {    
+    for (j in daily_hours_to_start){    
       
       start_hour_GMT <- j
       
@@ -271,10 +271,8 @@ hysplit.trajectory <- function(traj_name = NULL,
           
           if (met_type == "gdas1"){
             get.met.gdas1(files = files_to_get, path_met_files = path_met_files)
-          }
-          
+          } 
         }
-        
       }
       
       if (.Platform$OS.type == "windows"){
@@ -300,10 +298,8 @@ hysplit.trajectory <- function(traj_name = NULL,
           
           if (met_type == "gdas1"){
             get.met.gdas1(files = files_to_get, path_met_files = path_met_files)
-          }
-          
+          } 
         }
-        
       }
       
       # Construct the output filename string for this model run
@@ -438,7 +434,6 @@ hysplit.trajectory <- function(traj_name = NULL,
         cat(output_filename, "\n",
             file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = TRUE)
-        
       }
       
       # CONTROL file is now complete and in the working directory
