@@ -496,8 +496,5 @@ hysplit.trajectory <- function(traj_name = NULL,
                                    paste0(path_output_files, folder_name))
       return(traj.df)
     }
-    
   }
-  
-  # Close the function
 }
