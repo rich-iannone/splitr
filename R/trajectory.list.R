@@ -10,7 +10,6 @@ trajectory.list <- function(output_folder){
     
     file_list <- list.files(path = output_folder, pattern = ".zip")
     trajectory_output_df <- as.data.frame(mat.or.vec(nr = length(file_list), nc = 4))
-    
   }
   
   if (.Platform$OS.type == "windows"){
@@ -43,7 +42,6 @@ trajectory.list <- function(output_folder){
                               sec = gsub("^.+--.+--[0-9][0-9]-[0-9][0-9]-([0-9][0-9]).zip",
                                          "\\1", file_list[i]),
                               tz = "")
-      
     }
     
     if (.Platform$OS.type == "windows"){
@@ -63,7 +61,6 @@ trajectory.list <- function(output_folder){
                               sec = gsub("^.+--.+--[0-9][0-9]-[0-9][0-9]-([0-9][0-9]).zip",
                                          "\\1", dir_list[i]),
                               tz = "")
-      
     }
     
     if (difftime(Sys.time(), datetime, units = "hours")[[1]] >= 24){
@@ -128,10 +125,7 @@ trajectory.list <- function(output_folder){
     #       trajectory_output_df[i,5] <- paste(lat, ", ", lon, sep = '')
     #       
         }
-    
   }
   
-  return(trajectory_output_df)
-  
+  return(trajectory_output_df)  
 }
-
