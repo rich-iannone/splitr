@@ -18,20 +18,20 @@
 #' @param run_range used when 'run_type' of 'range' is selected. The date format should be provided here as "c("YYYY-MM-DD", "YYYY-MM-DD")".
 #' @param run_years used when 'run_type' of 'years' is selected. The format should either be a single year ("YYYY") or a range of years ("YYYY-YYYY").
 #' @param daily_hours_to_start should consist of a single daily hour in the format "HH", or, several daily hours in the format "c("HH", "HH", "HH", ...)".
-#' @param emissions the numbers corresponding to the stored emissions presets. These presets are specified using the function 'hysplit.dispersion.define("emissions")'.
-#' @param species the numbers corresponding to the stored species presets. These presets are specified using the function 'hysplit.dispersion.define("species")'.
-#' @param grids the numbers corresponding to the stored grid presets. These presets are specified using the function 'hysplit.dispersion.define("grids")'.
+#' @param emissions the numbers corresponding to the stored emissions presets. These presets are specified using the function 'hysplit_dispersion_define("emissions")'.
+#' @param species the numbers corresponding to the stored species presets. These presets are specified using the function 'hysplit_dispersion_define("species")'.
+#' @param grids the numbers corresponding to the stored grid presets. These presets are specified using the function 'hysplit_dispersion_define("grids")'.
 #' @param path_met_files a full path should be provided for the location of the meteorological data files relevant to the model options chosen.
 #' @param path_output_files a full path should be provided for a location that the dispersion output files will be written.
 #' @param path_wd a full path should be provided for the HYSPLIT working directory; the CONTROL file for each model run will be written to and read from this location.
 #' @param path_executable the full path and name of the HYSPLIT executable file for dispersion runs must be provided.
-#' @export hysplit.dispersion 
+#' @export hysplit_dispersion 
 #' @examples
 #' \dontrun{
 #' # Perform a dispersion run lasting 12 hours over two consecutive days, both starting at midnight
 #' # Grid presets 1 and 2 will be used as sampling grids
 #' # Presets for species and emissions are set to the first (this is also the default)
-#' hysplit.dispersion(disp_name = "example",
+#' hysplit_dispersion(disp_name = "example",
 #'                    return_disp_df = FALSE,
 #'                    write_disp_CSV = TRUE,
 #'                    start_lat_deg = 49.289328, start_long_deg = -123.117665,
