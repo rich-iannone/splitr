@@ -19,11 +19,11 @@
 #' @param path_output_files a full path should be provided for a location that the trajectory output files will be written. By default, the location '~/Documents/SplitR/Output' is chosen.
 #' @param path_wd a full path should be provided for the HYSPLIT working directory; the CONTROL file for each model run will be written to and read from this location. By default, the location '~/Documents/SplitR/Working' is chosen.
 #' @param path_executable the full path and name of the HYSPLIT executable file for trajectory runs must be provided. By default, the location '~/Documents/SplitR/Exec' is chosen.
-#' @export hysplit.trajectory
+#' @export hysplit_trajectory
 #' @examples
 #' \dontrun{
 #' # test run type of 'years' with forward trajectory using NCEP/NCAR reanalaysis data
-#' hysplit.trajectory(traj_name = "second",
+#' hysplit_trajectory(traj_name = "second",
 #'                    return_traj_df = FALSE,
 #'                    start_lat_deg = 50.108,
 #'                    start_long_deg = -122.942,
@@ -42,7 +42,7 @@
 #'                    path_executable = "~/HYSPLIT4/exec/hyts_std")
 #'}
 
-hysplit.trajectory <- function(traj_name = NULL,
+hysplit_trajectory <- function(traj_name = NULL,
                                return_traj_df = TRUE,
                                start_lat_deg,
                                start_long_deg,
