@@ -256,12 +256,10 @@ hysplit_dispersion <- function(disp_name = NULL,
                  ifelse(start_month_GMT == "01", "12",
                         formatC(month(start_time_GMT) - 1,
                                 width = 2, format = "d", flag = "0")),
-                 ".gbl",
-                 sep = ''),
+                 ".gbl"),
           paste0("RP",
                  year(start_time_GMT),
-                 start_month_GMT, ".gbl",
-                 sep = ''),
+                 start_month_GMT, ".gbl"),
           paste0("RP",
                  ifelse(start_month_GMT == "12",
                         year(start_time_GMT) + 1,
@@ -269,8 +267,7 @@ hysplit_dispersion <- function(disp_name = NULL,
                  ifelse(start_month_GMT == "12", "01",
                         formatC(month(start_time_GMT) + 1,
                                 width = 2, format = "d", flag = "0")),
-                 ".gbl",
-                 sep = ''))
+                 ".gbl"))
       
       # Remove list values containing '0' (representing missing .w5
       # data files for Feb in leap years)
