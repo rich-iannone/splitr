@@ -275,7 +275,7 @@ hysplit_dispersion <- function(disp_name = NULL,
       
       # Are the met files available on the selected path?
       met.file.df <- setNames(data.frame(mat.or.vec(nr = length(met), nc = 2)),
-                              nm = c("file","available"))
+                              nm = c("file", "available"))
       
       if (.Platform$OS.type == "unix"){
         
@@ -294,11 +294,11 @@ hysplit_dispersion <- function(disp_name = NULL,
           files_to_get <- subset(met.file.df, available == FALSE)[,1]
           
           if (met_type == "reanalysis"){
-            get.met.reanalysis(files = files_to_get, path_met_files = path_met_files)
+            get_met_reanalysis(files = files_to_get, path_met_files = path_met_files)
           }
           
           if (met_type == "gdas1"){
-            get.met.gdas1(files = files_to_get, path_met_files = path_met_files)
+            get_met_gdas1(files = files_to_get, path_met_files = path_met_files)
           } 
         }
       }
@@ -321,11 +321,11 @@ hysplit_dispersion <- function(disp_name = NULL,
           files_to_get <- subset(met.file.df, available == FALSE)[,1]
           
           if (met_type == "reanalysis"){
-            get.met.reanalysis(files = files_to_get, path_met_files = path_met_files)
+            get_met_reanalysis(files = files_to_get, path_met_files = path_met_files)
           }
           
           if (met_type == "gdas1"){
-            get.met.gdas1(files = files_to_get, path_met_files = path_met_files)
+            get_met_gdas1(files = files_to_get, path_met_files = path_met_files)
           } 
         }
       }
@@ -390,7 +390,7 @@ hysplit_dispersion <- function(disp_name = NULL,
             sep = '', append = TRUE)}
       
       # Write emissions blocks to 'CONTROL'
-      for (i in 1:length(dispersion.preset.get("emissions", emissions, path_wd = path_wd))){
+      for (i in 1:length(dispersion_preset_get("emissions", emissions, path_wd = path_wd))){
         cat(dispersion.preset.get("emissions", emissions, path_wd = path_wd)[i], "\n",
             file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)}
@@ -398,7 +398,7 @@ hysplit_dispersion <- function(disp_name = NULL,
       # Write grid blocks to 'CONTROL'
       
       # Get vector text elements through reading selected elements from 'grids' file
-      grids_text <- dispersion.preset.get("grids", grids, path_wd = path_wd)
+      grids_text <- dispersion_preset_get("grids", grids, path_wd = path_wd)
       
       # Get vector text indices that contain the short name(s) of the grid(s)
       gridnames_indices <- seq(from = 1 + 5, to = length(grids_text) - 5, by = 10)
@@ -416,8 +416,8 @@ hysplit_dispersion <- function(disp_name = NULL,
             sep = '', append = TRUE)}
       
       # Write species blocks to 'CONTROL'
-      for (i in 1:length(dispersion.preset.get("species", species, path_wd = path_wd))){
-        cat(dispersion.preset.get("species", species, path_wd = path_wd)[i], "\n",
+      for (i in 1:length(dispersion_preset_get("species", species, path_wd = path_wd))){
+        cat(dispersion_preset_get("species", species, path_wd = path_wd)[i], "\n",
             file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)}
       
