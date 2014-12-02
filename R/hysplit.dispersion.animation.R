@@ -351,17 +351,18 @@ hysplit.dispersion.animation <- function(dispersion_df = NULL,
                  sep = ''))
 
     # Compose image with text elements using ImageMagick
-    #ImageMagick experiments
-    system(paste("cd ", path_output_files, " ; ", IM_exec_path, " -background white -fill black ",
-                 "-font Helvetica ",
-                 "-pointsize 24 ",
-                 "-gravity West ",
-                 "-size 563x1126 ",
-                 "label:\"",
-                 "Start: ", "March 12, 2014 00:00 UTC" , "\\n",
-                 "End: ", "March 12, 2014 08:00 UTC" , "\\n",
-                 "\" ",
-                 "label.jpg", sep = ''))
+#     system(paste("cd ", path_output_files, " ; ", IM_exec_path, " -background white -fill black ",
+#                  "-pointsize 24 ",
+#                  "-gravity West ",
+#                  "-size 563x1126 ",
+#                  "label:\"",
+#                  "Start: ", "March 12, 2014 00:00 UTC" , "\\n",
+#                  "End: ", "March 12, 2014 08:00 UTC" , "\\n",
+#                  "Total Time: ", "8 hours" , "\\n",
+#                  "Maximum Distance: ", "45.3 km" , "\\n",
+#                  "Maximum Height: ", "2502 m ASL" , "\\n",
+#                  "\" ",
+#                  "label.jpg", sep = ''))
   }
   
   # Construct a string with glob to pass into the ffmpeg call
