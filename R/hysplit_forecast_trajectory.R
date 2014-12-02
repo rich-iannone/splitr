@@ -14,9 +14,9 @@
 #' @param path_output_files a full path should be provided for a location that the trajectory output files will be written. By default, the location '~/Documents/SplitR/Output' is chosen.
 #' @param path_wd a full path should be provided for the HYSPLIT working directory; the CONTROL file for each model run will be written to and read from this location. By default, the location '~/Documents/SplitR/Working' is chosen.
 #' @param path_executable the full path and name of the HYSPLIT executable file for trajectory runs must be provided. By default, the location '~/Documents/SplitR/Exec' is chosen.
-#' @export hysplit.forecast.trajectory
+#' @export hysplit_forecast_trajectory
 
-hysplit.forecast.trajectory <- function(start_lat_deg,
+hysplit_forecast_trajectory <- function(start_lat_deg,
                                         start_long_deg,
                                         start_height_m_AGL,
                                         simulation_duration_h = 12,
