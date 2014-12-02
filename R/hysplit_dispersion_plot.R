@@ -6,17 +6,17 @@
 #' @param map_type selection provider of base maps for plotting. Choices are 'osm' (Open Street Map) and 'stamen' (Stamen Maps).
 #' @param map_output_name a partial identifier prepended to the output map files.
 #' @param path_output_files a full path for a location that the dispersion output files were written.
-#' @export hysplit.dispersion.plot
+#' @export hysplit_dispersion_plot
 #' @examples
 #' \dontrun{
 #' # Make a set of hourly plots from a dispersion data frame
-#' hysplit.dispersion.plot(hours = "all",
+#' hysplit_dispersion_plot(hours = "all",
 #'                         dispersion_df = disp.df,
 #'                         map_output_name = "new map",
 #'                         path_output_files = "~/Documents/SplitR/Output/Plots/")
 #'}
 
-hysplit.dispersion.plot <- function(hours = 'all',
+hysplit_dispersion_plot <- function(hours = 'all',
                                     dispersion_df = NULL,
                                     df_folder_path = NULL,
                                     map_type = "stamen",
@@ -38,53 +38,37 @@ hysplit.dispersion.plot <- function(hours = 'all',
                                   is.numeric(dispersion_df[,4]) &
                                   is.numeric(dispersion_df[,5])), TRUE, FALSE)
     
-    if (valid_names == FALSE | valid_classes == FALSE){
-      
+    if (valid_names == FALSE | valid_classes == FALSE){ 
       stop("The supplied data frame is not a valid dispersion df object.")
-      
     }
-    
   }
   
   if (is.null(dispersion_df) & !is.null(df_folder_path)){
-    
     if (.Platform$OS.type == "unix"){
-      
       csv_absolute_path <- gsub("//", "/", paste(df_folder_path, "/dispersion.csv", sep = ''))
-      
     }
     
     if (.Platform$OS.type == "windows"){
-      
       if (grepl("\\\\", df_folder_path)) df_folder_path <- gsub("\\\\", "", df_folder_path)
-      
       csv_absolute_path <- paste(df_folder_path, "\\dispersion.csv", sep = '')
-      
     }
     
     dispersion_df <- read.csv(csv_absolute_path,
                               header = TRUE, stringsAsFactors = FALSE)
-    
   }
   
   # If value for 'hours' argument contains 'all' (default), determine the ending hour from
   # the dispersion data frame
   if (hours == 'all'){
-    
     last_hour <- max(dispersion_df$hour)
-    
     hours <- 1:last_hour
-    
   }
   
   # If value for 'hours' argument contains a vector list, validate that vector to ensure
   # those hours are within the range of hours in the dispersion data frame
   if (is.vector(hours)){
-    
     hours_dispersion_df <- unique(dispersion_df$hour)
-    
     hours <- hours[which(hours %in% hours_dispersion_df)]
-    
   }
   
   # Determine the extent of particle dispersion
@@ -116,7 +100,6 @@ hysplit.dispersion.plot <- function(hours = 'all',
     
     dimnames(m) <- list(c("lng", "lat"), c("min", "max"))
     m
-    
   }
   
   # Determine the distance away from the center-point to generate a bounding box
@@ -135,9 +118,7 @@ hysplit.dispersion.plot <- function(hours = 'all',
           bbox_map[4] >= bbox_data[[4]]){
       
       break()
-      
     }
-    
   }
   
   # If chosen, a Stamen 'toner' style map that encompasses the bounds
@@ -184,21 +165,15 @@ hysplit.dispersion.plot <- function(hours = 'all',
             axis.text.x = element_blank(), axis.text.y = element_blank(), axis.text.y = element_blank())
     
     if (is.null(map_output_name)){
-      
       ggsave(filename = paste("dispersion-map-h", hours[i], ".pdf", sep = ''),
              device = pdf,
-             path = paste(path_output_files, sep = ''),
+             path = paste0(path_output_files),
              width = 8, height = 8)
-      
     } else if (!is.null(map_output_name)){
-      
       ggsave(filename = paste(map_output_name, "-dispersion-map-h", hours[i], ".pdf", sep = ''),
              device = pdf,
-             path = paste(path_output_files, sep = ''),
-             width = 8, height = 8)
-      
+             path = paste0(path_output_files),
+             width = 8, height = 8)   
     }
-    
   }
-  
 }
