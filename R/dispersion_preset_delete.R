@@ -4,20 +4,20 @@
 #' @param numbers the values corresponding to the presets of a specified type (provided as the 'read' character argument) to be deleted. The argument is to be provided as a single numeric value or numeric vector. Any values provided for this argument will be ignored if 'interactive' is set to TRUE (the default). The numbers correspond to the order in which the presets appear in each of the 'emissions', 'grids', or 'species' plaintext files.
 #' @param interactive determines whether the function should run in an interactive mode, prompting the for input on which presets to delete. One-line summaries of presets for a specific type are presented to guide the user on which items are available for deletion. If the interactive mode is selected (it is the default mode), no values for the 'numbers' need to be supplied.
 #' @param path_wd a full path should be provided for the HYSPLIT working directory since presets will normally reside in this folder.
-#' @export dispersion.preset.delete
+#' @export dispersion_preset_delete
 #' @examples
 #' \dontrun{
 #' # Delete an 'emissions' preset
-#' dispersion.preset.delete("emissions")
+#' dispersion_preset_delete("emissions")
 #' 
 #' # Delete a 'grids' preset
-#' dispersion.preset.delete("grids")
+#' dispersion_preset_delete("grids")
 #' 
 #' # Delete a 'species' preset
-#' dispersion.preset.delete("species")
+#' dispersion_preset_delete("species")
 #' }
 
-dispersion.preset.delete <- function(read = NULL,
+dispersion_preset_delete <- function(read = NULL,
                                      numbers = NULL,
                                      interactive = TRUE,
                                      path_wd){
