@@ -5,9 +5,9 @@
 #' @param months a vector list of months for which GDAS0.5 files are to be obtained via FTP.
 #' @param days a vector list of days for which GDAS0.5 files are to be obtained via FTP.
 #' @param path_met_files a full path should be provided for the location of the meteorological data files; downloaded files will be saved in this location.
-#' @export get.met.gdas0p5
+#' @export get_met_gdas0p5
 
-get.met.gdas0p5 <- function(files = NULL,
+get_met_gdas0p5 <- function(files = NULL,
                             years = NULL,
                             months = NULL,
                             days = NULL,

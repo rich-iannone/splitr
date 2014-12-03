@@ -1,9 +1,9 @@
 #' Read NAM meteorological forecast data files
 #' @description This function downloads NAM meteorology forecast data files from the NOAA FTP server and saves them to a specified folder.
 #' @param path_met_files a full path should be provided for the location of the meteorological data files; downloaded files will be saved in this location.
-#' @export get.met.forecast.nam
+#' @export get_met_forecast_nam
 
-get.met.forecast.nam <- function(path_met_files){
+get_met_forecast.nam <- function(path_met_files){
   
   # Add require statements
   require(RCurl) 
