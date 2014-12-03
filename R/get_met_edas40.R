@@ -21,9 +21,9 @@ get_met_edas40 <- function(files = NULL,
   
   # Download the 'listing' file from NOAA server
   # It contains a list of EDAS40 files currently available on the server
-  download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/edas40/",
-                            "listing", sep = ''),
-                destfile = paste(path_met_files, "listing", sep = ''),
+  download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/edas40/",
+                            "listing"),
+                destfile = paste0(path_met_files, "listing"),
                 method = "auto",
                 quiet = TRUE,
                 mode = "w",
