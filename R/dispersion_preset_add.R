@@ -54,7 +54,7 @@
 #'                       grid_end_time = "12 02 08 12 00")
 #'}
 
-dispersion.preset.add <- function(type, interactive = TRUE,
+dispersion_preset_add <- function(type, interactive = TRUE,
                                   species_name = NULL,
                                   particle_pdiam = NULL,
                                   particle_density = NULL,
@@ -92,9 +92,8 @@ dispersion.preset.add <- function(type, interactive = TRUE,
   if (interactive == FALSE & type == 'species'){
     
     if (is.null(species_name)){
-      species_name <- paste("Spec-",
-                            gsub(" ", "_", gsub(":", "_", format(Sys.time(), "%b %d %Y %X"))),
-                            sep = '')
+      species_name <- paste0("Spec-",
+                            gsub(" ", "_", gsub(":", "_", format(Sys.time(), "%b %d %Y %X"))))
     }
     
     if (is.null(particle_pdiam)){
@@ -150,23 +149,23 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     }
     
     # Write species preset to file
-    cat(paste("--- Species named: ", species_name,
-              ", generated on ", Sys.time(), sep = ''), "\n",
-        paste(particle_pdiam, " ",
+    cat(paste0("--- Species named: ", species_name,
+              ", generated on ", Sys.time()), "\n",
+        paste0(particle_pdiam, " ",
               particle_density, " ",
-              particle_shape_factor, sep = ''), "\n",
-        paste(ddep_velocity, " ",
+              particle_shape_factor), "\n",
+        paste0(ddep_velocity, " ",
               ddep_MW, " ",
               ddep_A_ratio, " ", 
               ddep_D_ratio, " ", 
-              ddep_Henrys_Law_coeff, sep = ''), "\n",
-        paste(wdep_Henrys_Law_coeff, " ",
+              ddep_Henrys_Law_coeff), "\n",
+        paste0(wdep_Henrys_Law_coeff, " ",
               wdep_in_cloud_dep, " ",
-              wdep_below_cloud_dep, sep = ''), "\n",
+              wdep_below_cloud_dep), "\n",
         rad_decay, "\n",
         pollutant_resuspension_factor, "\n",
         paste("---"), "\n",
-        file = paste(path_wd, "species", sep = ''), append = TRUE,
+        file = paste0(path_wd, "species"), append = TRUE,
         sep = '')
     
   }
@@ -192,14 +191,14 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     }
     
     # Write emissions preset to file
-    cat(paste("--- Emissions source named: ", emissions_name,
-              ", generated on ", Sys.time(), sep = ''), "\n",
+    cat(paste0("--- Emissions source named: ", emissions_name,
+              ", generated on ", Sys.time()), "\n",
         gsub("^(....).*","\\1", emissions_name), "\n",
         emissions_rate, "\n",
         emissions_duration, "\n",
         emissions_start_time, "\n",
         paste("---"), "\n",
-        file = paste(path_wd, "emissions", sep = ''), append = TRUE,
+        file = paste0(path_wd, "emissions"), append = TRUE,
         sep = '')
     
   }
@@ -237,9 +236,9 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     }
     
     if (is.null(grid_heights)){
-      grid_heights <- paste("0 5 10 50 100 1000 2000 3000 4000 5000 6000 7000 8000 ",
+      grid_heights <- paste0("0 5 10 50 100 1000 2000 3000 4000 5000 6000 7000 8000 ",
                             "9000 10000 11000 12000 13000 14000 15000 16000 17000 ",
-                            "18000 19000 20000", sep = '')
+                            "18000 19000 20000")
     }
     
     if (is.null(grid_start_time)){
@@ -255,8 +254,8 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     }
     
     # Write grids preset to file
-    cat(paste("--- Grid named: ", grid_name,
-              ", generated on ", Sys.time(), sep = ''), "\n",
+    cat(paste0("--- Grid named: ", grid_name,
+              ", generated on ", Sys.time()), "\n",
         grid_center, "\n",
         grid_spacing, "\n",
         grid_span, "\n",
@@ -268,7 +267,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
         grid_end_time, "\n",
         sampling_interval_type_rate, "\n",
         paste("---"), "\n",
-        file = paste(path_wd, "grids", sep = ''), append = TRUE,
+        file = paste0(path_wd, "grids"), append = TRUE,
         sep = '')
 
   }
@@ -637,23 +636,23 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     # If acceptable, add the emissions source and the options to the list of emissions
     # sources in the project folder
     if (acceptable_species == "y"){
-      cat(paste("--- Species named: ", species_name,
-                ", generated on ", Sys.time(), sep = ''), "\n",
-          paste(particle_pdiam, " ",
+      cat(paste0("--- Species named: ", species_name,
+                ", generated on ", Sys.time()), "\n",
+          paste0(particle_pdiam, " ",
                 particle_density, " ",
-                particle_shape_factor, sep = ''), "\n",
-          paste(ddep_velocity, " ",
+                particle_shape_factor), "\n",
+          paste0(ddep_velocity, " ",
                 ddep_MW, " ",
                 ddep_A_ratio, " ", 
                 ddep_D_ratio, " ", 
-                ddep_Henrys_Law_coeff, sep = ''), "\n",
-          paste(wdep_Henrys_Law_coeff, " ",
+                ddep_Henrys_Law_coeff), "\n",
+          paste0(wdep_Henrys_Law_coeff, " ",
                 wdep_in_cloud_dep, " ",
-                wdep_below_cloud_dep, sep = ''), "\n",
+                wdep_below_cloud_dep), "\n",
           rad_decay, "\n",
           pollutant_resuspension_factor, "\n",
           paste("---"), "\n",
-          file = paste(path_wd, "species", sep = ''), append = TRUE,
+          file = paste0(path_wd, "species"), append = TRUE,
           sep = '')
     }
     
@@ -700,9 +699,9 @@ dispersion.preset.add <- function(type, interactive = TRUE,
           emissions_start_time_type ==  "starting_date_time"){
       
       # Determine whether the supplied date/time string yields a valid POSIXct date/time
-      if (class(ymd_hms(paste(emissions_start_time, ":00", sep = '')))[1] == "POSIXct"){
+      if (class(ymd_hms(paste0(emissions_start_time, ":00")))[1] == "POSIXct"){
         emissions_start_time_valid <- TRUE
-      } else if (is.na(ymd_hms(paste(emissions_start_time, ":00", sep = '')))){
+      } else if (is.na(ymd_hms(paste0(emissions_start_time, ":00")))){
         emissions_start_time_valid <- FALSE
       }
       
@@ -723,11 +722,11 @@ dispersion.preset.add <- function(type, interactive = TRUE,
       emissions_start_time_hours <- as.numeric(gsub("^([0-9]+)[ ]?h$", "\\1",
                                                     emissions_start_time, perl = TRUE))
       
-      emissions_start_time_char <- paste("00 00 00 ",
+      emissions_start_time_char <- paste0("00 00 00 ",
                                          formatC(emissions_start_time_hours,
                                                  width = 2, format = "d",
                                                  flag = "0"),
-                                         " 00", sep = '')
+                                         " 00")
     }
     
     # Work with case where 'emissions_start_time_type' is a duration in days
@@ -738,11 +737,11 @@ dispersion.preset.add <- function(type, interactive = TRUE,
       emissions_start_time_days <- as.numeric(gsub("^([0-9]+)[ ]?d$", "\\1",
                                                    emissions_start_time, perl = TRUE)) * 24
       
-      emissions_start_time_char <- paste("00 00 ",
+      emissions_start_time_char <- paste0("00 00 ",
                                          formatC(emissions_start_time_days,
                                                  width = 2, format = "d",
                                                  flag = "0"),
-                                         " 00 00", sep = '')  
+                                         " 00 00")  
     }
     
     # Work with case where 'emissions_start_time_type' is a starting time with the model
@@ -776,19 +775,19 @@ dispersion.preset.add <- function(type, interactive = TRUE,
           emissions_duration_type ==  "ending_date_time"){
       
       # Determine whether the supplied date/time string yields a valid POSIXct date/time
-      if (class(ymd_hms(paste(emissions_duration, ":00", sep = '')))[1] == "POSIXct"){
+      if (class(ymd_hms(paste0(emissions_duration, ":00")))[1] == "POSIXct"){
         emissions_duration_valid <- TRUE
-      } else if (is.na(ymd_hms(paste(emissions_duration, ":00", sep = '')))){
+      } else if (is.na(ymd_hms(paste0(emissions_duration, ":00")))){
         emissions_duration_valid <- FALSE
       }
       
       if (emissions_duration_valid == TRUE){
         
         # Get ending date/time as a POSIXct date/time object
-        emissions_end_POSIXct <- ymd_hms(paste(emissions_duration, ":00", sep = ''))
+        emissions_end_POSIXct <- ymd_hms(paste0(emissions_duration, ":00"))
         
         # Get starting date/time as a POSIXct date/time object
-        emissions_start_POSIXct <- ymd_hms(paste(emissions_start_time, ":00", sep = ''))
+        emissions_start_POSIXct <- ymd_hms(paste0(emissions_start_time, ":00"))
         
         # Get the difference in days between the starting and ending times
         # Creates a 'difftime' object
@@ -841,14 +840,14 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     # If acceptable, add the emissions source and the options to the list of emissions
     # sources in the project folder
     if (acceptable_emissions == "y"){
-      cat(paste("--- Emissions source named: ", emissions_name,
-                ", generated on ", Sys.time(), sep = ''), "\n",
+      cat(paste0("--- Emissions source named: ", emissions_name,
+                ", generated on ", Sys.time()), "\n",
           gsub("^(....).*","\\1", emissions_name), "\n",
           emissions_rate, "\n",
           emissions_duration, "\n",
           emissions_start_time_char, "\n",
           paste("---"), "\n",
-          file = paste(path_wd, "emissions", sep = ''), append = TRUE,
+          file = paste0(path_wd, "emissions"), append = TRUE,
           sep = '')
     }
     
@@ -889,7 +888,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     if (exists("grid_center_lat_valid") & grid_center_lat_valid == TRUE &
           exists("grid_center_lon_valid") & grid_center_lon_valid == TRUE){
       grid_center <- paste(grid_center_lat, grid_center_lon, sep = ' ')
-      grid_center_char <- paste(grid_center_lat, ", ", grid_center_lon, sep = '') 
+      grid_center_char <- paste0(grid_center_lat, ", ", grid_center_lon) 
     }
     
     # Ask to assign value to 'grid_spacing'
@@ -920,7 +919,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     if (exists("grid_spacing_lat_valid") & grid_spacing_lat_valid == TRUE &
           exists("grid_spacing_lon_valid") & grid_spacing_lon_valid == TRUE){
       grid_spacing <- paste(grid_spacing_lat, grid_spacing_lon, sep = ' ')
-      grid_spacing_char <- paste(grid_spacing_lat, ", ", grid_spacing_lon, sep = '')
+      grid_spacing_char <- paste0(grid_spacing_lat, ", ", grid_spacing_lon)
     }
     
     # Ask to assign value to 'grid_span'
@@ -963,7 +962,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
       if (grid_span_lat_valid == TRUE &
             grid_span_lon_valid == TRUE){
         grid_span <- paste(grid_span_lat, grid_span_lon, sep = ' ')
-        grid_span_char <- paste(grid_span_lat, ", ", grid_span_lon, sep = '')
+        grid_span_char <- paste0(grid_span_lat, ", ", grid_span_lon)
       } 
     }
     
@@ -1005,8 +1004,8 @@ dispersion.preset.add <- function(type, interactive = TRUE,
               sep = '')
       },
       if(grid_number_vertical > 1){
-        paste("For the ", grid_number_vertical, " levels specified, provide ",
-              "a list of heights in meters above ground level: ", sep = '')
+        paste0("For the ", grid_number_vertical, " levels specified, provide ",
+              "a list of heights in meters above ground level: ")
       },
       sep = '')))
     
@@ -1096,9 +1095,9 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     }
     
     # Determine whether the supplied date/time string yields a valid POSIXct date/time
-    if (class(ymd_hms(paste(grid_start_time, ":00", sep = '')))[1] == "POSIXct"){
+    if (class(ymd_hms(paste0(grid_start_time, ":00")))[1] == "POSIXct"){
       grid_start_time_valid_2 <- TRUE
-    } else if (is.na(ymd_hms(paste(grid_start_time, ":00", sep = '')))){
+    } else if (is.na(ymd_hms(paste0(grid_start_time, ":00")))){
       grid_start_time_valid_2 <- FALSE
     }
     
@@ -1140,9 +1139,9 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     }
     
     # Determine whether the supplied date/time string yields a valid POSIXct date/time
-    if (class(ymd_hms(paste(grid_start_time, ":00", sep = '')))[1] == "POSIXct"){
+    if (class(ymd_hms(paste0(grid_start_time, ":00")))[1] == "POSIXct"){
       grid_end_time_valid_2 <- TRUE
-    } else if (is.na(ymd_hms(paste(grid_start_time, ":00", sep = '')))){
+    } else if (is.na(ymd_hms(paste0(grid_start_time, ":00")))){
       grid_end_time_valid_2 <- FALSE
     }
     
@@ -1224,9 +1223,9 @@ dispersion.preset.add <- function(type, interactive = TRUE,
         as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[1],
         " h",
         ifelse(as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[2]
-               == 0, paste(""), paste(
+               == 0, paste(""), paste0(
                  as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[2],
-                 " m", sep = '')),
+                 " m")),
         "\n",
         "----------------------------------", "\n",
         "This is what will be set. Okay? [y/n]: ",
@@ -1235,8 +1234,8 @@ dispersion.preset.add <- function(type, interactive = TRUE,
     # If acceptable, add the grid and the options to the list of grids in the
     # project folder
     if (acceptable_grid == "y"){
-      cat(paste("--- Grid named: ", grid_name,
-                ", generated on ", Sys.time(), sep = ''), "\n",
+      cat(paste0("--- Grid named: ", grid_name,
+                ", generated on ", Sys.time()), "\n",
           grid_center, "\n",
           grid_spacing, "\n",
           grid_span, "\n",
@@ -1248,7 +1247,7 @@ dispersion.preset.add <- function(type, interactive = TRUE,
           grid_end_time_char, "\n",
           sampling_interval_type_no, " ", sampling_interval_rate_char, "\n",
           paste("---"), "\n",
-          file = paste(path_wd, "grids", sep = ''), append = TRUE,
+          file = paste0(path_wd, "grids"), append = TRUE,
           sep = '')
     }
     
