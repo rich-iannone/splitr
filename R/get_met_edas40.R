@@ -28,6 +28,4 @@ get_met_edas40 <- function(files = NULL,
                 quiet = TRUE,
                 mode = "w",
                 cacheOK = TRUE)
-  
-  
 }
