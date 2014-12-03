@@ -1,20 +1,20 @@
 #' Get requested preset information
-#' @description This is a helper function that is used by the 'hysplit.dispersion' function. Arguments pertaining to the preset numbers for 'emissions', 'grids', and 'species' in the 'hysplit.dispersion' function are passed to the associated 'numbers' argument in three instances of the 'dispersion.preset.get' function. Each function call creates a block of text that is used for construction of a CONTROL file that is used in conjunction with the HYSPLIT dispersion model executable.
+#' @description This is a helper function that is used by the 'hysplit.dispersion' function. Arguments pertaining to the preset numbers for 'emissions', 'grids', and 'species' in the 'hysplit.dispersion' function are passed to the associated 'numbers' argument in three instances of the 'dispersion_preset_get' function. Each function call creates a block of text that is used for construction of a CONTROL file that is used in conjunction with the HYSPLIT dispersion model executable.
 #' @param read the type of preset to get. The three preset types are "emissions", "grids", and "species". Only a single type can be specified.
 #' @param numbers the values corresponding to the presets of a specified type (provided as the 'read' character argument) to be retrieved. The argument is to be provided as a single numeric value or numeric vector. The numbers correspond to the order in which the presets appear in each of the 'emissions', 'grids', or 'species' plaintext files.
 #' @param path_wd a full path should be provided for the HYSPLIT working directory since presets will normally reside in this folder.
-#' @export dispersion.preset.get
+#' @export dispersion_preset_get
 #' @examples
 #' \dontrun{
 #' # The hysplit.dispersion() function obtains presets for
 #' # "emissions", "grids", and "species" while assembling
 #' # a CONTROL file
-#' dispersion.preset.get(read = "emissions", numbers = emissions)
-#' dispersion.preset.get(read = "grids", numbers = grids)
-#' dispersion.preset.get(read = "species", numbers = species)
+#' dispersion_preset_get(read = "emissions", numbers = emissions)
+#' dispersion_preset_get(read = "grids", numbers = grids)
+#' dispersion_preset_get(read = "species", numbers = species)
 #' }
 
-dispersion.preset.get <- function(read, numbers,
+dispersion_preset_get <- function(read, numbers,
                                   path_wd = "~/Documents/SplitR/Working/"){
     
   # Validate supplied digits for duplicates
