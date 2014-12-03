@@ -309,9 +309,5 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
                          "------------------------------------", "\n",
                          "\n"))
     }
-    
-    # End species list
   }
-  
-  # End of function
 }
