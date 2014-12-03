@@ -43,20 +43,15 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
   
   # Stop function if no path for output files is provided
   if (!exists("path_output_files")){
-    
     stop("There must be a path for output files specified.") 
-  
   }
   
   # Obtain the appropriate dispersion data frame; if the value supplied to 'dispersion_df' is not
   # null (and if a valid data frame object is given) use it as the dispersion_df
   
   if (!is.null(dispersion_df)){
-    
     if (names(dispersion_df) == c("particle_no", "lon", "lat", "height", "hour")){
-      
       valid_names <- TRUE
-      
     }
     
     if (is.integer(dispersion_df[,1]) &
@@ -66,15 +61,11 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
           is.numeric(dispersion_df[,5])) valid_classes <- TRUE
     
     if (valid_names == FALSE | valid_classes == FALSE){
-      
-      stop("The supplied data frame is not a valid dispersion df object.")
-      
+      stop("The supplied data frame is not a valid dispersion df object.") 
     }
-    
   }
   
   if (is.null(dispersion_df) & !is.null(df_folder_path)){
-    
     if (.Platform$OS.type == "unix"){
       csv_absolute_path <- gsub("//", "/", paste0(df_folder_path, "/dispersion.csv"))
     }
@@ -86,7 +77,6 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
     
     dispersion_df <- read.csv(csv_absolute_path,
                               header = TRUE, stringsAsFactors = FALSE)
-    
   }
   
   # Determine the extent of particle dispersion
@@ -118,7 +108,6 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
     
     dimnames(m) <- list(c("lng", "lat"), c("min", "max"))
     m
-    
   }
   
   # Determine the distance away from the center-point to generate a bounding box
@@ -137,11 +126,8 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
           bbox_map[2] >= bbox_data[[3]] &
           bbox_map[3] <= bbox_data[[2]] &
           bbox_map[4] >= bbox_data[[4]]){
-     
       break()
-    
     }
-    
   }
   
   # If chosen, a Stamen 'toner' style map that encompasses the bounds
@@ -171,18 +157,14 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
   # the particles by the hour of release
   for (i in 1:total_hours){
     
-    if (i == 1) {
-      
+    if (i == 1){
       dispersion_df_hour_start <- vector(mode = "numeric", length = 0)
       particle_id <- vector(mode = "numeric", length = 0)
-      
     }
     
     for (j in 1:i){
-      
       dispersion_df_hour_start <- c(dispersion_df_hour_start,
                                     rep(j, times = particles_released_per_hour))
-      
     }
     
     for (k in 1:i)
@@ -190,7 +172,6 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
                        seq(from = ((k - 1) * particles_released_per_hour) + 1,
                            to = (k * particles_released_per_hour),
                            by = 1))
-    
     
     if (i == total_hours){
       
@@ -200,9 +181,7 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
       
       # Remove vectors objects from memory
       rm(dispersion_df_hour_start, particle_id, i, j, k)
-      
     }
-    
   }
   
   # Begin loop to generate a large dataframe with minutely particle positions
@@ -210,10 +189,8 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
     
     # Initialize a long data frame for single particle movements for every particle
     if (i == 1){
-      
       particle_df <- as.data.frame(mat.or.vec(nr = 0, nc = 6))
       colnames(particle_df) <- c("particle_id", "lon", "lat", "height", "hour", "hour_start")
-      
     }
     
     # Generate a vector of evenly spaced time increments for the duration of the particle history
@@ -250,7 +227,6 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
     
     # Bind 'df_from_vectors' data frame into long data frame 'particle_df'
     particle_df <- rbind(particle_df, df_from_vectors)
-    
   }
   
   # Remove objects from memory
@@ -376,5 +352,4 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
                  "-vcodec libx264 -pix_fmt yuv420p ",
                  movie_output_name, ".mov"))
   }
-  
 }
