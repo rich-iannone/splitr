@@ -19,16 +19,16 @@ get_met_gdas0p5 <- function(files = NULL,
   
   # Download the 'listing' file from NOAA server
   # It contains a list of GDAS0p5 files currently available on the server
-  download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/gdas0p5/",
-                            "listing", sep = ''),
-                destfile = paste(path_met_files, "listing", sep = ''),
+  download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/gdas0p5/",
+                            "listing"),
+                destfile = paste0(path_met_files, "listing"),
                 method = "auto",
                 quiet = TRUE,
                 mode = "wb",
                 cacheOK = FALSE)
   
   # Create object 'listing' as a vector with all filenames available on the FTP server
-  listing <- as.vector(read.table(paste(path_met_files, "listing", sep = ''),
+  listing <- as.vector(read.table(paste0(path_met_files, "listing"),
                                   sep = "\n")[,1])
   
   # Download list of GDAS0p5 met files by name
@@ -41,9 +41,9 @@ get_met_gdas0p5 <- function(files = NULL,
     if (files_available == TRUE){
       
       for (i in 1:length(files)){
-        download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
-                                  files[i], sep = ''),
-                      destfile = paste(path_met_files, files[i], sep = ''),
+        download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
+                                  files[i]),
+                      destfile = paste0(path_met_files, files[i]),
                       method = "auto",
                       quiet = FALSE,
                       mode = "wb",
@@ -62,87 +62,87 @@ get_met_gdas0p5 <- function(files = NULL,
       
       jan <- seq(1, 31, 1)
       for (j in 1:length(jan)){
-        the_list <- c(the_list, paste(years[i], "01",
+        the_list <- c(the_list, paste0(years[i], "01",
                                       formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5", sep = ""))
+                                      "_gdas0p5"))
       }
       
       if (years[i] %% 4 != 0) feb <- seq(1, 29, 1)
       if (years[i] %% 4 == 0) feb <- seq(1, 28, 1)
       for (j in 1:length(feb)){
-        the_list <- c(the_list, paste(years[i], "02",
+        the_list <- c(the_list, paste0(years[i], "02",
                                       formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5", sep = ""))
+                                      "_gdas0p5"))
       }
       
       mar <- seq(1, 31, 1)
       for (j in 1:length(mar)){
-        the_list <- c(the_list, paste(years[i], "03",
+        the_list <- c(the_list, paste0(years[i], "03",
                                       formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5", sep = ""))
+                                      "_gdas0p5"))
       }
       
       apr <- seq(1, 30, 1)
       for (j in 1:length(apr)){
-        the_list <- c(the_list, paste(years[i], "04",
+        the_list <- c(the_list, paste0(years[i], "04",
                                       formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5", sep = ""))
+                                      "_gdas0p5"))
       }
       
       may <- seq(1, 31, 1)
       for (j in 1:length(may)){
-        the_list <- c(the_list, paste(years[i], "05",
+        the_list <- c(the_list, paste0(years[i], "05",
                                       formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5", sep = ""))
+                                      "_gdas0p5"))
       }
       
       jun <- seq(1, 30, 1)
       for (j in 1:length(jun)){
-        the_list <- c(the_list, paste(years[i], "06",
+        the_list <- c(the_list, paste0(years[i], "06",
                                       formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5", sep = ""))
+                                      "_gdas0p5"))
       }
       
       jul <- seq(1, 31, 1)
       for (j in 1:length(jul)){
-        the_list <- c(the_list, paste(years[i], "07",
+        the_list <- c(the_list, paste0(years[i], "07",
                                       formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5", sep = ""))
+                                      "_gdas0p5"))
       }
       
       aug <- seq(1, 31, 1)
       for (j in 1:length(aug)){
-        the_list <- c(the_list, paste(years[i], "08",
+        the_list <- c(the_list, paste0(years[i], "08",
                                       formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5", sep = ""))
+                                      "_gdas0p5"))
       }
       
       sep <- seq(1, 30, 1)
       for (j in 1:length(sep)){
-        the_list <- c(the_list, paste(years[i], "09",
+        the_list <- c(the_list, paste0(years[i], "09",
                                       formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5", sep = ""))
+                                      "_gdas0p5"))
       }
       
       oct <- seq(1, 31, 1)
       for (j in 1:length(oct)){
-        the_list <- c(the_list, paste(years[i], "10",
+        the_list <- c(the_list, paste0(years[i], "10",
                                       formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5", sep = ""))
+                                      "_gdas0p5"))
       }
       
       nov <- seq(1, 30, 1)
       for (j in 1:length(nov)){
-        the_list <- c(the_list, paste(years[i], "11",
+        the_list <- c(the_list, paste0(years[i], "11",
                                       formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5", sep = ""))
+                                      "_gdas0p5"))
       }
       
       dec <- seq(1, 31, 1)
       for (j in 1:length(dec)){
-        the_list <- c(the_list, paste(years[i], "12",
+        the_list <- c(the_list, paste0(years[i], "12",
                                       formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5", sep = ""))
+                                      "_gdas0p5"))
       }
     }
     
@@ -178,19 +178,17 @@ get_met_gdas0p5 <- function(files = NULL,
       
       # Filter list of files to obtain
       the_list <- setdiff(the_list, files_missing)
-      
     }
     
     # Download the requested files from the server
     for (i in 1:length(the_list)){
-      download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
-                                the_list[i], sep = ''),
-                    destfile = paste(path_met_files, the_list[i], sep = ''),
+      download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
+                                the_list[i]),
+                    destfile = paste0(path_met_files, the_list[i]),
                     method = "auto",
                     quiet = FALSE,
                     mode = "wb",
                     cacheOK = FALSE)
-      
     }
     
     # Write file that contains report of missing files
@@ -202,7 +200,6 @@ get_met_gdas0p5 <- function(files = NULL,
                                sep = ''),
                   quote = FALSE, row.names = FALSE)
     }
-    
   }
   
   # Download list of GDAS0p5 met files for one or more months
@@ -220,9 +217,9 @@ get_met_gdas0p5 <- function(files = NULL,
       if(the_month == 1){
         jan <- seq(1, 31, 1)
         for (j in 1:length(jan)){
-          the_list <- c(the_list, paste(the_year, "01",
+          the_list <- c(the_list, paste0(the_year, "01",
                                         formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5", sep = ""))
+                                        "_gdas0p5"))
         }
       }
       
@@ -230,102 +227,101 @@ get_met_gdas0p5 <- function(files = NULL,
         if (the_year %% 4 != 0) feb <- seq(1, 29, 1)
         if (the_year %% 4 == 0) feb <- seq(1, 28, 1)
         for (j in 1:length(feb)){
-          the_list <- c(the_list, paste(the_year, "02",
+          the_list <- c(the_list, paste0(the_year, "02",
                                         formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5", sep = ""))
+                                        "_gdas0p5"))
         }
       }
       
       if(the_month == 3){
         mar <- seq(1, 31, 1)
         for (j in 1:length(mar)){
-          the_list <- c(the_list, paste(the_year, "03",
+          the_list <- c(the_list, paste0(the_year, "03",
                                         formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5", sep = ""))
+                                        "_gdas0p5"))
         }
       }
       
       if(the_month == 4){
         apr <- seq(1, 30, 1)
         for (j in 1:length(apr)){
-          the_list <- c(the_list, paste(the_year, "04",
+          the_list <- c(the_list, paste0(the_year, "04",
                                         formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5", sep = ""))
+                                        "_gdas0p5"))
         }
       }
       
       if(the_month == 5){
         may <- seq(1, 31, 1)
         for (j in 1:length(may)){
-          the_list <- c(the_list, paste(the_year, "05",
+          the_list <- c(the_list, paste0(the_year, "05",
                                         formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5", sep = ""))
+                                        "_gdas0p5"))
         }
       }
       
       if(the_month == 6){
         jun <- seq(1, 30, 1)
         for (j in 1:length(jun)){
-          the_list <- c(the_list, paste(the_year, "06",
+          the_list <- c(the_list, paste0(the_year, "06",
                                         formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5", sep = ""))
+                                        "_gdas0p5"))
         }
       }
       
       if(the_month == 7){
         jul <- seq(1, 31, 1)
         for (j in 1:length(jul)){
-          the_list <- c(the_list, paste(the_year, "07",
+          the_list <- c(the_list, paste0(the_year, "07",
                                         formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5", sep = ""))
+                                        "_gdas0p5"))
         }
       }
       
       if(the_month == 8){
         aug <- seq(1, 31, 1)
         for (j in 1:length(aug)){
-          the_list <- c(the_list, paste(the_year, "08",
+          the_list <- c(the_list, paste0(the_year, "08",
                                         formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5", sep = ""))
+                                        "_gdas0p5"))
         }
       }
       
       if(the_month == 9){
         sep <- seq(1, 30, 1)
         for (j in 1:length(sep)){
-          the_list <- c(the_list, paste(the_year, "09",
+          the_list <- c(the_list, paste0(the_year, "09",
                                         formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5", sep = ""))
+                                        "_gdas0p5"))
         }
       }
       
       if(the_month == 10){
         oct <- seq(1, 31, 1)
         for (j in 1:length(oct)){
-          the_list <- c(the_list, paste(the_year, "10",
+          the_list <- c(the_list, paste0(the_year, "10",
                                         formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5", sep = ""))
+                                        "_gdas0p5"))
         }
       }
       
       if(the_month == 11){
         nov <- seq(1, 30, 1)
         for (j in 1:length(nov)){
-          the_list <- c(the_list, paste(the_year, "11",
+          the_list <- c(the_list, paste0(the_year, "11",
                                         formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5", sep = ""))
+                                        "_gdas0p5"))
         }
       }
       
       if(the_month == 12){
         dec <- seq(1, 31, 1)
         for (j in 1:length(dec)){
-          the_list <- c(the_list, paste(the_year, "12",
+          the_list <- c(the_list, paste0(the_year, "12",
                                         formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5", sep = ""))
+                                        "_gdas0p5"))
         }
       }
-      
     }
     
     # Determine whether all of the requested files are available on the server
@@ -359,20 +355,18 @@ get_met_gdas0p5 <- function(files = NULL,
       missing_report$Date <- dates
       
       # Filter list of files to obtain
-      the_list <- setdiff(the_list, files_missing)
-      
+      the_list <- setdiff(the_list, files_missing) 
     }
     
     # Download the requested files from the server
     for (i in 1:length(the_list)){
-      download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
-                                the_list[i], sep = ''),
-                    destfile = paste(path_met_files, the_list[i], sep = ''),
+      download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
+                                the_list[i]),
+                    destfile = paste0(path_met_files, the_list[i]),
                     method = "auto",
                     quiet = FALSE,
                     mode = "wb",
                     cacheOK = FALSE)
-      
     }
     
     # Write file that contains report of missing files
@@ -383,8 +377,7 @@ get_met_gdas0p5 <- function(files = NULL,
                                format(Sys.time(), "%B %d %Y %H_%M_%S"),
                                sep = ''),
                   quote = FALSE, row.names = FALSE)
-    }
-    
+    } 
   }
   
   # Download list of GDAS0p5 met files for one or days
@@ -402,11 +395,10 @@ get_met_gdas0p5 <- function(files = NULL,
       # Determine whether this is a valid date
       
       # Construct the filename and add it to 'the_list'
-      the_list <- c(the_list, paste(the_year,
+      the_list <- c(the_list, paste0(the_year,
                                     formatC(the_month, width = 2, format = "d", flag = "0"),
                                     formatC(the_day, width = 2, format = "d", flag = "0"),
-                                    "_gdas0p5", sep = ""))
-      
+                                    "_gdas0p5"))
     }
     
     # Determine whether all of the requested files are available on the server
@@ -441,19 +433,17 @@ get_met_gdas0p5 <- function(files = NULL,
       
       # Filter list of files to obtain
       the_list <- setdiff(the_list, files_missing)
-      
     }
     
     # Download the requested files from the server
     for (i in 1:length(the_list)){
-      download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
-                                the_list[i], sep = ''),
-                    destfile = paste(path_met_files, the_list[i], sep = ''),
+      download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
+                                the_list[i]),
+                    destfile = paste0(path_met_files, the_list[i]),
                     method = "auto",
                     quiet = FALSE,
                     mode = "wb",
                     cacheOK = FALSE)
-      
     }
     
     # Write file that contains report of missing files
@@ -465,10 +455,5 @@ get_met_gdas0p5 <- function(files = NULL,
                                sep = ''),
                   quote = FALSE, row.names = FALSE)
     }
-
   }
-
-  # End of function
 }
-
-
