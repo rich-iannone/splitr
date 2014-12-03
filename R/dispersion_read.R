@@ -2,15 +2,15 @@
 #' @description The function takes HYSPLIT dispersion output files in a specified output directory or dispersion archive and processes all files into a data frame object.
 #' @param path_output_files the absolute path of the dispersion output files is to be provided.
 #' @return data frame with hourly particle positions
-#' @export dispersion.read
+#' @export dispersion_read
 #' @examples
 #' \dontrun{
 #' # Process all dispersion output files in the specified output directory
-#' dispersion.df <- dispersion.read(path_output_files =
+#' dispersion.df <- dispersion_read(path_output_files =
 #'                                  "~/hysplit/dispersion/")
 #'}
 
-dispersion.read <- function(archive_folder){  
+dispersion_read <- function(archive_folder){  
 
   
   dispersion_file_list <- list.files(path = archive_folder,
