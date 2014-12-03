@@ -21,14 +21,12 @@ get_met_forecast.nam <- function(path_met_files){
   # -- CONUS, 12 km, 3 hrly, pressure levels, 48 h forecast
   
   if (today %in% forecast_dirs){
-    download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/forecast/",
-                              today, "/hysplit.t00z.namf", sep = ''),
-                  destfile = paste(path_met_files, paste(today, ".t00z.namf", sep = ''),
-                                   sep = ''),
+    download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/forecast/",
+                              today, "/hysplit.t00z.namf"),
+                  destfile = paste0(path_met_files, paste0(today, ".t00z.namf")),
                   method = "auto",
                   quiet = FALSE,
                   mode = "w",
                   cacheOK = TRUE)
-  }
-  
+  } 
 }
