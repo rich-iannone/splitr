@@ -18,10 +18,10 @@ get_met_reanalysis <- function(files = NULL,
     for (i in 1:length(files)){
       
       if (.Platform$OS.type == "windows"){
-        download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/",
-                                  files[i], sep = ''),
-                      destfile = paste(path_met_files,
-                                       "\\", files[i], sep = ''),
+        download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/",
+                                  files[i]),
+                      destfile = paste0(path_met_files,
+                                       "\\", files[i]),
                       method = "auto",
                       quiet = FALSE,
                       mode = "wb",
@@ -30,19 +30,16 @@ get_met_reanalysis <- function(files = NULL,
       
       if (.Platform$OS.type == "unix"){
         
-        download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/",
-                                  files[i], sep = ''),
-                      destfile = paste(path_met_files,
-                                       files[i], sep = ''),
+        download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/",
+                                  files[i]),
+                      destfile = paste0(path_met_files,
+                                       files[i]),
                       method = "auto",
                       quiet = FALSE,
                       mode = "wb",
-                      cacheOK = FALSE)
-        
-      }
-      
+                      cacheOK = FALSE) 
+      } 
     }
-    
   }
   
   # Download one or more years of reanalysis met files
@@ -54,48 +51,38 @@ get_met_reanalysis <- function(files = NULL,
         
         if (.Platform$OS.type == "unix"){
           
-          download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/RP",
+          download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/RP",
                                     years[i],
                                     formatC(j, width = 2, format = "d", flag = "0"),
-                                    ".gbl",
-                                    sep = ''),
-                        destfile = paste(path_met_files,
+                                    ".gbl"),
+                        destfile = paste0(path_met_files,
                                          "RP",
                                          years[i],
                                          formatC(j, width = 2, format = "d", flag = "0"),
-                                         ".gbl",
-                                         sep = ''),
+                                         ".gbl"),
                         method = "auto",
                         quiet = FALSE,
                         mode = "wb",
                         cacheOK = FALSE)
-          
         }
         
         if (.Platform$OS.type == "windows"){
           
-          download.file(url = paste("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/RP",
+          download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/RP",
                                     years[i],
                                     formatC(j, width = 2, format = "d", flag = "0"),
-                                    ".gbl",
-                                    sep = ''),
-                        destfile = paste(path_met_files, "//",
+                                    ".gbl"),
+                        destfile = paste0(path_met_files, "//",
                                          "RP",
                                          years[i],
                                          formatC(j, width = 2, format = "d", flag = "0"),
-                                         ".gbl",
-                                         sep = ''),
+                                         ".gbl"),
                         method = "auto",
                         quiet = FALSE,
                         mode = "wb",
                         cacheOK = FALSE)
-          
         }
-        
       }
-  
     }
-    
   }
-  
 }
