@@ -3,9 +3,9 @@
 #' @param files a vector list of exact filenames for the reanalysis files.
 #' @param years a vector list of years for which reanalysis files are to be obtained via FTP.
 #' @param path_met_files a full path should be provided for the location of the meteorological data files; downloaded files will be saved in this location.
-#' @export get.met.reanalysis
+#' @export get_met_reanalysis
 
-get.met.reanalysis <- function(files = NULL,
+get_met_reanalysis <- function(files = NULL,
                                years = NULL,
                                path_met_files){ 
   
