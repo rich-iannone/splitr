@@ -12,12 +12,10 @@
 
 dispersion_read <- function(archive_folder){  
 
-  
   dispersion_file_list <- list.files(path = archive_folder,
                                      pattern = "^GIS_part_[0-9][0-9][0-9]_ps.csv",
                                      full.names = TRUE)
 
-  
   # Get each CSV file into a single data frame
   for (i in 1:length(dispersion_file_list)){
     if (i == 1){
@@ -31,6 +29,5 @@ dispersion_read <- function(archive_folder){
   }
   
   # Return the data frame
-  return(dispersion)
-    
+  return(dispersion)    
 }
