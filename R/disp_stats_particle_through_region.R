@@ -5,18 +5,18 @@
 #' @param lat a numeric vector containing latitude bounds
 #' @param lon a numeric vector containing longitude bounds
 #' @param heights a numeric vector containing height bounds
-#' @export disp.stats.particle_through_region
+#' @export disp_stats_particle_through_region
 #' @examples
 #' \dontrun{
 #' # Get a statistical summary of particles available in region every hour
-#' disp.stats.particle_through_region(dispersion_df = disp_output,
+#' disp_stats_particle_through_region(dispersion_df = disp_output,
 #'                                    stats = "frequencies",
 #'                                    lat = c(49.05, 49.50),
 #'                                    lon = c(-127.2, -128.0),
 #'                                    heights = c(0, 1000))
 #'}
 
-disp.stats.particle_through_region <- function(dispersion_df,
+disp_stats_particle_through_region <- function(dispersion_df,
                                                stats,
                                                lat,
                                                lon,
