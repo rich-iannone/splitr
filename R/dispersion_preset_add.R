@@ -32,18 +32,18 @@
 #' @param grid_end_time a string specifying the end of sampling emissions by the grid. Should be provided in the format "YY MM DD HH MM".
 #' @param sampling_interval_type_rate a sting that specifies the type of sampling, and the rate by which sampling occurs ("HH MM").
 #' @param path_wd a full path should be provided for the HYSPLIT working directory since presets will reside in this folder.
-#' @export dispersion.preset.add
+#' @export dispersion_preset_add
 #' @examples
 #' \dontrun{
 #' # Interactively add a preset for a 'emissions' input
-#' dispersion.preset.add("emissions")
+#' dispersion_preset_add("emissions")
 #' 
 #' # Add a default preset for a 'species' input
-#' dispersion.preset.add("species", interactive = FALSE,
+#' dispersion_preset_add("species", interactive = FALSE,
 #'                       species_name = 'default')
 #' 
 #' # Add a preset for a 'grids' input
-#' dispersion.preset.add("grids", interactive = FALSE,
+#' dispersion_preset_add("grids", interactive = FALSE,
 #'                       grid_name = "MainGrid",
 #'                       grid_center = "36.5 -122.4",
 #'                       grid_spacing = "0.05 0.05", 
