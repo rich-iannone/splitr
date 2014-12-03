@@ -60,7 +60,7 @@ dispersion_preset_delete <- function(read = NULL,
     if (read == "emissions"){
       
       # Read the 'emissions' file line by line and place into a vector object
-      from_file <- as.vector(read.table(paste(path_wd, "emissions", sep = ''), sep = "\n"))
+      from_file <- as.vector(read.table(paste0(path_wd, "emissions"), sep = "\n"))
       
       # Get the total number of preset entries available in the file
       number_of_entries <- nrow(from_file) / 6
@@ -107,7 +107,7 @@ dispersion_preset_delete <- function(read = NULL,
             oneline_paste <- vector(mode = "character", length = number_of_entries)
             oneline_to_paste <- vector(mode = "character", length = 0)
           }
-          oneline_paste[i] <- paste(oneline[i], "\n", sep = '')
+          oneline_paste[i] <- paste0(oneline[i], "\n")
           oneline_to_paste <- c(oneline_to_paste, oneline_paste[i]) 
         }
         
@@ -141,7 +141,7 @@ dispersion_preset_delete <- function(read = NULL,
       
       # Rewrite the list of presets to the preset file from the modified local copy of presets
       # (containing all presets except the one that was removed)
-      write.table(unlist(list.from_file), paste(path_wd, "emissions", sep = ''), sep = "\n",
+      write.table(unlist(list.from_file), paste0(path_wd, "emissions"), sep = "\n",
                   quote = FALSE, row.names = FALSE, col.names = FALSE)
       
       # End emissions deletion
@@ -150,7 +150,7 @@ dispersion_preset_delete <- function(read = NULL,
     if (read == "grids"){
       
       # Read the 'grids' file line by line and place into a vector object
-      from_file <- as.vector(read.table(paste(path_wd, "grids", sep = ''), sep = "\n"))
+      from_file <- as.vector(read.table(paste0(path_wd, "grids"), sep = "\n"))
       
       # Get the total number of preset entries available in the file
       number_of_entries <- nrow(from_file) / 12
@@ -202,7 +202,7 @@ dispersion_preset_delete <- function(read = NULL,
             oneline_paste <- vector(mode = "character", length = number_of_entries)
             oneline_to_paste <- vector(mode = "character", length = 0)
           }
-          oneline_paste[i] <- paste(oneline[i], "\n", sep = '')
+          oneline_paste[i] <- paste0(oneline[i], "\n")
           oneline_to_paste <- c(oneline_to_paste, oneline_paste[i]) 
         }
         
@@ -236,7 +236,7 @@ dispersion_preset_delete <- function(read = NULL,
       
       # Rewrite the list of presets to the preset file from the modified local copy of presets
       # (containing all presets except the one that was removed)
-      write.table(unlist(list.from_file), paste(path_wd, "grids", sep = ''), sep = "\n",
+      write.table(unlist(list.from_file), paste0(path_wd, "grids"), sep = "\n",
                   quote = FALSE, row.names = FALSE, col.names = FALSE)
       
       # End grids deletion
@@ -245,7 +245,7 @@ dispersion_preset_delete <- function(read = NULL,
     if (read == "species"){
       
       # Read the 'species' file line by line and place into a vector object
-      from_file <- as.vector(read.table(paste(path_wd, "species", sep = ''), sep = "\n"))
+      from_file <- as.vector(read.table(paste0(path_wd, "species"), sep = "\n"))
       
       # Get the total number of preset entries available in the file
       number_of_entries <- nrow(from_file) / 7
@@ -296,7 +296,7 @@ dispersion_preset_delete <- function(read = NULL,
             oneline_paste <- vector(mode = "character", length = number_of_entries)
             oneline_to_paste <- vector(mode = "character", length = 0)
           }
-          oneline_paste[i] <- paste(oneline[i], "\n", sep = '')
+          oneline_paste[i] <- paste0(oneline[i], "\n")
           oneline_to_paste <- c(oneline_to_paste, oneline_paste[i]) 
         }
         
@@ -330,7 +330,7 @@ dispersion_preset_delete <- function(read = NULL,
       
       # Rewrite the list of presets to the preset file from the modified local copy of presets
       # (containing all presets except the one that was removed)
-      write.table(unlist(list.from_file), paste(path_wd, "species", sep = ''), sep = "\n",
+      write.table(unlist(list.from_file), paste0(path_wd, "species"), sep = "\n",
                   quote = FALSE, row.names = FALSE, col.names = FALSE)
       
       # End species deletion
