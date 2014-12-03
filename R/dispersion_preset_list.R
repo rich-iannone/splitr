@@ -21,10 +21,9 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
   # If an argument for read was not provided, prompt the user to select a preset class
   if (is.null(read)){
     read <-
-      readline(paste(cat("Which preset type would you like to list?", "\n",
+      readline(paste0(cat("Which preset type would you like to list?", "\n",
                          "Choices are: (1) emissions, (2) grids, (3) species","\n",
-                         "Press <ENTER> to exit",
-                         sep = '')))
+                         "Press <ENTER> to exit")))
     if (read == ""){
       stop("Nothing selected so no preset listing is provided.")
     }
@@ -36,13 +35,12 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
     } else if (read == "3"){
       read <- "species"
     }
-    
   }
   
   if (read == "emissions"){
     
     # Read the 'emissions' file line by line and place into a vector object
-    from_file <- as.vector(read.table(paste(path_wd, "emissions", sep = ''), sep = "\n"))
+    from_file <- as.vector(read.table(paste0(path_wd, "emissions"), sep = "\n"))
     
     # Get the total number of preset entries available in the file
     number_of_entries <- nrow(from_file) / 6
@@ -62,7 +60,6 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
       vector.from_file <- as.vector(from_file[min(block):max(block),])
       
       list.from_file[[i]] <- vector.from_file
-      
     }
     
     # Get a list of listing numbers from the search string
@@ -83,7 +80,6 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
       if (exists("list_number")) return(list_number)
       
       if (!exists("list_number")) stop("The search term was not found in the preset list.")
-      
     }
     
     if (is.null(search)){
@@ -93,7 +89,7 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
         if (i == 1) {
           oneline <- vector(mode = "character", length = number_of_entries)
         }
-        oneline[i] <- paste("(", i, ") ",
+        oneline[i] <- paste0("(", i, ") ",
                             gsub("^--- Emissions source named: ([a-zA-Z0-9]*),.*",
                                  "\\1",
                                  list.from_file[[i]][1]),
@@ -102,8 +98,7 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
                             " / Duration: ",
                             list.from_file[[i]][4], " h",
                             " / Release: ",
-                            list.from_file[[i]][5],
-                            sep = '')
+                            list.from_file[[i]][5])
       }
       
       # Create function to output oneline index calls and newline markers
@@ -113,7 +108,7 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
             oneline_paste <- vector(mode = "character", length = number_of_entries)
             oneline_to_paste <- vector(mode = "character", length = 0)
           }
-          oneline_paste[i] <- paste(oneline[i], "\n", sep = '')
+          oneline_paste[i] <- paste0(oneline[i], "\n")
           oneline_to_paste <- c(oneline_to_paste, oneline_paste[i]) 
         }
         
@@ -121,11 +116,11 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
       }
       
       # Display list of emissions presets
-      paste(cat("Here are the current presets for emissions", "\n",
+      paste0(cat("Here are the current presets for emissions", "\n",
                 "------------------------------------------", "\n",
                 paste(oneline_output()),
                 "------------------------------------------", "\n",
-                "\n", sep = ''))
+                "\n"))
     }
   
     # End emissions list
@@ -134,7 +129,7 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
   if (read == "grids"){
     
     # Read the 'grids' file line by line and place into a vector object
-    from_file <- as.vector(read.table(paste(path_wd, "grids", sep = ''), sep = "\n"))
+    from_file <- as.vector(read.table(paste0(path_wd, "grids"), sep = "\n"))
     
     # Get the total number of preset entries available in the file
     number_of_entries <- nrow(from_file) / 12
@@ -154,7 +149,6 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
       vector.from_file <- as.vector(from_file[min(block):max(block),])
       
       list.from_file[[i]] <- vector.from_file
-      
     }
     
     # Get a list of listing numbers from the search string
@@ -175,7 +169,6 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
       if (exists("list_number")) return(list_number)
       
       if (!exists("list_number")) stop("The search term was not found in the preset list.")
-      
     }
     
     if (is.null(search)){
@@ -185,7 +178,7 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
         if (i == 1) {
           oneline <- vector(mode = "character", length = number_of_entries)
         }
-        oneline[i] <- paste("(", i, ") ",
+        oneline[i] <- paste0("(", i, ") ",
                             gsub("^--- Grid named: ([a-zA-Z0-9]*),.*",
                                  "\\1",
                                  list.from_file[[i]][1]),
@@ -199,8 +192,7 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
                             " / s->e: ",
                             list.from_file[[i]][9], " - ", list.from_file[[i]][10],
                             " / avg: ",
-                            list.from_file[[i]][11],
-                            sep = '')
+                            list.from_file[[i]][11])
       }
       
       # Create function to output oneline index calls and newline markers
@@ -210,7 +202,7 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
             oneline_paste <- vector(mode = "character", length = number_of_entries)
             oneline_to_paste <- vector(mode = "character", length = 0)
           }
-          oneline_paste[i] <- paste(oneline[i], "\n", sep = '')
+          oneline_paste[i] <- paste0(oneline[i], "\n")
           oneline_to_paste <- c(oneline_to_paste, oneline_paste[i]) 
         }
         
@@ -218,12 +210,11 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
       }
       
       # Display list of grids presets
-      paste(cat("Here are the current presets for grids", "\n",
+      paste0(cat("Here are the current presets for grids", "\n",
                 "--------------------------------------", "\n",
                 paste(oneline_output()),
                 "--------------------------------------", "\n",
-                "\n", sep = ''))
-      
+                "\n"))
     }
     
     # End grids list
@@ -232,7 +223,7 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
   if (read == "species"){
     
     # Read the 'species' file line by line and place into a vector object
-    from_file <- as.vector(read.table(paste(path_wd, "species", sep = ''), sep = "\n"))
+    from_file <- as.vector(read.table(paste0(path_wd, "species"), sep = "\n"))
     
     # Get the total number of preset entries available in the file
     number_of_entries <- nrow(from_file) / 7
@@ -252,7 +243,6 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
       vector.from_file <- as.vector(from_file[min(block):max(block),])
       
       list.from_file[[i]] <- vector.from_file
-      
     }
     
     # Get a list of listing numbers from the search string
@@ -273,7 +263,6 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
       if (exists("list_number")) return(list_number)
       
       if (!exists("list_number")) stop("The search term was not found in the preset list.")
-      
     }
     
     if (is.null(search)){
@@ -283,7 +272,7 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
       if (i == 1) {
         oneline <- vector(mode = "character", length = number_of_entries)
       }
-      oneline[i] <- paste("(", i, ") ",
+      oneline[i] <- paste0("(", i, ") ",
                           gsub("^--- Species named: ([a-zA-Z0-9]*),.*",
                                "\\1",
                                list.from_file[[i]][1]),
@@ -296,8 +285,7 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
                           " / RD: ",
                           list.from_file[[i]][5],
                           " / RS: ",
-                          list.from_file[[i]][6],
-                          sep = '')
+                          list.from_file[[i]][6])
     }
     
     # Create function to output oneline index calls and newline markers
@@ -307,7 +295,7 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
           oneline_paste <- vector(mode = "character", length = number_of_entries)
           oneline_to_paste <- vector(mode = "character", length = 0)
         }
-        oneline_paste[i] <- paste(oneline[i], "\n", sep = '')
+        oneline_paste[i] <- paste0(oneline[i], "\n")
         oneline_to_paste <- c(oneline_to_paste, oneline_paste[i]) 
       }
       
@@ -315,12 +303,11 @@ dispersion_preset_list <- function(read = NULL, search = NULL,
     }
     
     # Display list of species presets
-      paste(cat("Here are the current species presets", "\n",
+      paste0(cat("Here are the current species presets", "\n",
                          "------------------------------------", "\n",
                          paste(oneline_output()),
                          "------------------------------------", "\n",
-                         "\n", sep = ''))
-
+                         "\n"))
     }
     
     # End species list
