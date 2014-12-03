@@ -11,11 +11,11 @@
 #' @param movie_output_name the desired filename for the generate MP4 movie.
 #' @param IM_exec_path an absolute system path for the ImageMagick 'convert' command.
 #' @param path_output_files a full path for a location that the dispersion output files were written.
-#' @export hysplit.dispersion.animation
+#' @export hysplit_dispersion_animation
 #' @examples
 #' \dontrun{
 #' # Create an MP4 movie from a data frame returned by the 'hysplit.dispersion' function
-#' hysplit.dispersion.animation(dispersion_df = disp.df,
+#' hysplit_dispersion_animation(dispersion_df = disp.df,
 #'                              start_lat_deg = 42.83752,
 #'                              start_long_deg = -80.30364,
 #'                              start_height_m_AGL = 15,
