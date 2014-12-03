@@ -3,19 +3,19 @@
 #' @param read the type of preset to get. The three preset types are "emissions", "grids", and "species". Only a single type can be specified.
 #' @param search a search term corresponding to the name of a preset of the type provided within the argument 'read'. If an exact match is found (case-sensitive), then the number corresponding to the matched preset is provided.
 #' @param path_wd a full path should be provided for the HYSPLIT working directory since presets will normally reside in this folder.
-#' @export dispersion.preset.list
+#' @export dispersion_preset_list
 #' @examples
 #' \dontrun{
 #' # Get a list of 'species' presets
-#' dispersion.preset.list(read = "species",
+#' dispersion_preset_list(read = "species",
 #'                        path_wd = "C:\\hysplit4\\working\\")
 #' 
 #' # Find the number for the 'emissions' preset named 'E134'
-#' dispersion.preset.list(read = "emissions", search = "E134",
+#' dispersion_preset_list(read = "emissions", search = "E134",
 #'                        path_wd = "~/Documents/Hysplit/working/")
 #'}
 
-dispersion.preset.list <- function(read = NULL, search = NULL,
+dispersion_preset_list <- function(read = NULL, search = NULL,
                                    path_wd){
   
   # If an argument for read was not provided, prompt the user to select a preset class
