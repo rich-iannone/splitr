@@ -76,17 +76,12 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
   if (is.null(dispersion_df) & !is.null(df_folder_path)){
     
     if (.Platform$OS.type == "unix"){
-      
-      csv_absolute_path <- gsub("//", "/", paste(df_folder_path, "/dispersion.csv", sep = ''))
-      
+      csv_absolute_path <- gsub("//", "/", paste0(df_folder_path, "/dispersion.csv"))
     }
     
     if (.Platform$OS.type == "windows"){
-      
       if (grepl("\\\\", df_folder_path)) df_folder_path <- gsub("\\\\", "", df_folder_path)
-      
-      csv_absolute_path <- paste(df_folder_path, "\\dispersion.csv", sep = '')
-      
+      csv_absolute_path <- paste0(df_folder_path, "\\dispersion.csv")
     }
     
     dispersion_df <- read.csv(csv_absolute_path,
