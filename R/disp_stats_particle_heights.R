@@ -2,15 +2,15 @@
 #' @description This function computes statistics focussed on the heights of particles at every time interval.
 #' @param dispersion_df a data frame generated from dispersion output data returned from the 'dispersion.read' function.
 #' @param stats the type of statistical analysis to perform. Currently, "fivenum" is available.
-#' @export disp.stats.particle_heights
+#' @export disp_stats_particle_heights
 #' @examples
 #' \dontrun{
 #' # Get a five-number statistical summary of particle heights at every hour
-#' disp.stats.particle_heights(dispersion_df = disp_output,
+#' disp_stats_particle_heights(dispersion_df = disp_output,
 #'                             stats = "fivenum")
 #'}
 
-disp.stats.particle_heights <- function(dispersion_df, stats){
+disp_stats_particle_heights <- function(dispersion_df, stats){
   
   if ("fivenum" %in% stats){
     
