@@ -4,9 +4,9 @@
 #' @param years a vector list of years for which NAM12 files are to be obtained via FTP.
 #' @param months a vector list of months for which NAM12 files are to be obtained via FTP.
 #' @param path_met_files a full path should be provided for the location of the meteorological data files; downloaded files will be saved in this location.
-#' @export get.met.nam12
+#' @export get_met_nam12
 
-get.met.nam12 <- function(files = NULL,
+get_met_nam12 <- function(files = NULL,
                           years = NULL,
                           months = NULL,
                           path_met_files){
