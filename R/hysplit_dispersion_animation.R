@@ -270,21 +270,15 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
   
   # Write the 'particle_df' data frame to a CSV file if it is requested
   if (write_particle_CSV == TRUE){
-    
     if (.Platform$OS.type == "unix"){
-      
-      write.table(particle_df, file = paste(path_output_files, "/particle.csv", sep = ''),
+      write.table(particle_df, file = paste0(path_output_files, "/particle.csv"),
                   sep = ",", row.names = FALSE)
-      
     }
     
     if (.Platform$OS.type == "windows"){
-      
-      write.table(particle_df, file = paste(path_output_files, "\\particle.csv", sep = ''),
+      write.table(particle_df, file = paste0(path_output_files, "\\particle.csv"),
                   sep = ",", row.names = FALSE)
-      
     }
-    
   }  
   
   # Obtain vector of unique, sorted, fractional hours in 'particle_df'
@@ -324,34 +318,32 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
           axis.text.x = element_blank(), axis.text.y = element_blank(), axis.text.y = element_blank())
     
     # Save the image to disk
-    ggsave(filename = paste("dispersion-map-", output_time, "-",
+    ggsave(filename = paste0("dispersion-map-", output_time, "-",
                             formatC(i, width = 6, flag = "0"),
-                            ".pdf", sep = ''),
+                            ".pdf"),
            device = pdf,
-           path = paste(path_output_files, sep = ''),
+           path = path_output_files,
            width = 8, height = 8)
     
     # Convert PDF file to a JPEG file using ImageMagick, cropping whitespace
-    system(paste("cd ", path_output_files, " ; ", IM_exec_path,
+    system(paste0("cd ", path_output_files, " ; ", IM_exec_path,
                  " -verbose -density 150 -trim ",
-                 paste("dispersion-map-", output_time, "-",
+                 paste0("dispersion-map-", output_time, "-",
                        formatC(i, width = 6, flag = "0"),
-                       ".pdf", sep = ''),
+                       ".pdf"),
                  " -quality 100 -sharpen 0x1.0 ",
-                 paste("dispersion-map-", output_time, "-",
+                 paste0("dispersion-map-", output_time, "-",
                        formatC(i, width = 6, flag = "0"),
-                       ".jpg", sep = ''),
-                 sep = ''))
+                       ".jpg")))
     
     # Remove the PDF file from disk
-    system(paste("cd ", path_output_files, " ; rm ", 
-                 paste("dispersion-map-", output_time, "-",
+    system(paste0("cd ", path_output_files, " ; rm ", 
+                 paste0("dispersion-map-", output_time, "-",
                        formatC(i, width = 6, flag = "0"),
-                       ".pdf", sep = ''),
-                 sep = ''))
+                       ".pdf")))
 
     # Compose image with text elements using ImageMagick
-#     system(paste("cd ", path_output_files, " ; ", IM_exec_path, " -background white -fill black ",
+#     system(paste0("cd ", path_output_files, " ; ", IM_exec_path, " -background white -fill black ",
 #                  "-pointsize 24 ",
 #                  "-gravity West ",
 #                  "-size 563x1126 ",
@@ -362,42 +354,32 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
 #                  "Maximum Distance: ", "45.3 km" , "\\n",
 #                  "Maximum Height: ", "2502 m ASL" , "\\n",
 #                  "\" ",
-#                  "label.jpg", sep = ''))
+#                  "label.jpg"))
   }
   
   # Construct a string with glob to pass into the ffmpeg call
-  dispersion_plot_glob <- paste("dispersion-map-", output_time, "-%06d.jpg",
-                                sep = '')
+  dispersion_plot_glob <- paste0("dispersion-map-", output_time, "-%06d.jpg")
   
   # Construct the movie name
   if (is.null(movie_output_name)){
-    
-    movie_output_name <- paste("dispersion_movie__", output_time, sep = "")
-    
+    movie_output_name <- paste0("dispersion_movie__", output_time)
   }
   
   # If a movie name is provided, ensure that the filename won't be duplicated
   if (!is.null(movie_output_name)){
     
-    if (paste(movie_output_name, ".mov", sep = '') %in%
-          list.files(path = path_output_files)){
-      
-      movie_output_name <- paste(movie_output_name, "-",
-                                 output_time, sep = '')
-      
+    if (paste0(movie_output_name, ".mov") %in%
+          list.files(path = path_output_files)){ 
+      movie_output_name <- paste0(movie_output_name, "-", output_time)
     }
-    
   }  
   
   # Render and write the MP4 movie using ffmpeg
   if (.Platform$OS.type == "unix"){
-    
-    system(paste("cd ", path_output_files, " ; ffmpeg -f image2 -start_number 1 -i '",
+    system(paste0("cd ", path_output_files, " ; ffmpeg -f image2 -start_number 1 -i '",
                  dispersion_plot_glob, "' -r ", frame_rate, " ",
                  "-vcodec libx264 -pix_fmt yuv420p ",
-                 movie_output_name, ".mov",
-                 sep = ''))
-    
+                 movie_output_name, ".mov"))
   }
   
 }
