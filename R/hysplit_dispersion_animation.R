@@ -26,7 +26,7 @@
 #'                              path_output_files = "~/Documents/SplitR/Output/Movies/"
 #'}
 
-hysplit.dispersion.animation <- function(dispersion_df = NULL,
+hysplit_dispersion_animation <- function(dispersion_df = NULL,
                                          df_folder_path = NULL,
                                          start_lat_deg,
                                          start_long_deg,
