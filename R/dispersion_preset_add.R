@@ -1,8 +1,8 @@
 #' Add dispersion preset information
-#' @description The function allows for the setting of presets specific to dispersion runs. Presets are effectively blocks of parameters that are stored on the disk. Having presets is useful because these groups of parameters can be called in different dispersion runs (and across projects) without having to specify dozens of parameters with every type of run. Furthermore, dispersion runs can utilize multiple presets of each type simply by calling the identifier for each preset (e.g., multiple predefined emissions locations can be added to a run or series of runs with a numeric vector). The presets are divided into three groups: 'emissions', 'grids', and 'species'. Each preset has a plaintext file that resides on disk of the same name (located in the SplitR folder). For removing presets from the associated files, the interactive function 'dispersion.preset.delete' can be used.
+#' @description The function allows for the setting of presets specific to dispersion runs. Presets are effectively blocks of parameters that are stored on the disk. Having presets is useful because these groups of parameters can be called in different dispersion runs (and across projects) without having to specify dozens of parameters with every type of run. Furthermore, dispersion runs can utilize multiple presets of each type simply by calling the identifier for each preset (e.g., multiple predefined emissions locations can be added to a run or series of runs with a numeric vector). The presets are divided into three groups: 'emissions', 'grids', and 'species'. Each preset has a plaintext file that resides on disk of the same name (located in the SplitR folder). For removing presets from the associated files, the interactive function 'dispersion_preset_delete' can be used.
 #' @param type the type of preset to add. The three types are "emissions", "grids", and "species". Only a single type can be specified. Once specified, the function interactively asks for input on the parameters specific to each preset.
 #' @param interactive determines whether the function should run in an interactive mode, prompting the for input on which kinds of values to supply for each parameter.
-#' @param species_name a case sensitive name that identifies the species preset. The use of a name is useful since presets can be referenced by this name when using the 'dispersion.preset.list' function.
+#' @param species_name a case sensitive name that identifies the species preset. The use of a name is useful since presets can be referenced by this name when using the 'dispersion_preset_list' function.
 #' @param particle_pdiam the particle diameter in units of µm.
 #' @param particle_density the particle density in units of g/cm3.
 #' @param particle_shape_factor the particle shape factor as a value between 0-1.
@@ -16,11 +16,11 @@
 #' @param wdep_below_cloud_dep the below cloud wet deposition rate in units of 1/s.
 #' @param rad_decay the rate of radioactive decay, in units of days.
 #' @param pollutant_resuspension_factor the pollutant resuspension factor in units of 1/m.
-#' @param emissions_name a case sensitive name that identifies the emissions preset. The use of a name is useful since presets can be referenced by this name when using the 'dispersion.preset.list' function.
+#' @param emissions_name a case sensitive name that identifies the emissions preset. The use of a name is useful since presets can be referenced by this name when using the 'dispersion_preset_list' function.
 #' @param emissions_rate the rate of emissions for the pollutant in mass units per hour.
 #' @param emissions_duration the duration of emissions in hours.
 #' @param emissions_start_time a string specifying the start of emissions in the format "YY MM DD HH MM".
-#' @param grid_name a case sensitive name that identifies the grid preset. The use of a name is useful since presets can be referenced by this name when using the 'dispersion.preset.list' function.
+#' @param grid_name a case sensitive name that identifies the grid preset. The use of a name is useful since presets can be referenced by this name when using the 'dispersion_preset_list' function.
 #' @param grid_center the center of the grid, specified in a string containing latitude and longitude in decimal degrees.
 #' @param grid_spacing the spacing between adjacent grid points, specified in a string containing decimal degree units of latitude and longitude.
 #' @param grid_span the span of the grid, specified in a string containing decimal degree units of latitude and longitude.
