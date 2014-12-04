@@ -37,13 +37,10 @@ disp_stats_particle_heights <- function(dispersion_df, stats){
       stats_small_table$hour <- i
       
       stats_table <- rbind(stats_table, stats_small_table)
-      
     }
     
     # Return the stats table containing the five number summary at every hour
     return(stats_table)
-    
   }
-  
 }
   
