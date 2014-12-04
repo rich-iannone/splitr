@@ -1,6 +1,6 @@
 #' Get statistics for dispersed particles travelling through a specified region
 #' @description This function computes statistics focussed on particles travelling through a specified volume of air.
-#' @param dispersion_df a data frame generated from dispersion output data returned from the 'dispersion.read' function.
+#' @param dispersion_df a data frame generated from dispersion output data returned from the 'dispersion_read' function.
 #' @param stats the type of statistical analysis to perform. Currently, "frequencies" is available.
 #' @param lat a numeric vector containing latitude bounds
 #' @param lon a numeric vector containing longitude bounds
