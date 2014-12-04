@@ -14,7 +14,7 @@
 #' @export hysplit_dispersion_animation
 #' @examples
 #' \dontrun{
-#' # Create an MP4 movie from a data frame returned by the 'hysplit.dispersion' function
+#' # Create an MP4 movie from a data frame returned by the 'hysplit_dispersion' function
 #' hysplit_dispersion_animation(dispersion_df = disp.df,
 #'                              start_lat_deg = 42.83752,
 #'                              start_long_deg = -80.30364,
