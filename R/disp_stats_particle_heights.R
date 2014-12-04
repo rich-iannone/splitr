@@ -1,6 +1,6 @@
 #' Get statistics for dispersed particle heights
 #' @description This function computes statistics focussed on the heights of particles at every time interval.
-#' @param dispersion_df a data frame generated from dispersion output data returned from the 'dispersion.read' function.
+#' @param dispersion_df a data frame generated from dispersion output data returned from the 'dispersion_read' function.
 #' @param stats the type of statistical analysis to perform. Currently, "fivenum" is available.
 #' @export disp_stats_particle_heights
 #' @examples
