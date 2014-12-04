@@ -3,7 +3,7 @@
 #' @param path_met_files a full path should be provided for the location of the meteorological data files; downloaded files will be saved in this location.
 #' @export get_met_forecast_nam
 
-get_met_forecast.nam <- function(path_met_files){
+get_met_forecast_nam <- function(path_met_files){
   
   # Add require statements
   require(RCurl) 
