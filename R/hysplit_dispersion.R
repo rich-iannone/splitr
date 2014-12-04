@@ -391,7 +391,7 @@ hysplit_dispersion <- function(disp_name = NULL,
       
       # Write emissions blocks to 'CONTROL'
       for (i in 1:length(dispersion_preset_get("emissions", emissions, path_wd = path_wd))){
-        cat(dispersion.preset.get("emissions", emissions, path_wd = path_wd)[i], "\n",
+        cat(dispersion_preset_get("emissions", emissions, path_wd = path_wd)[i], "\n",
             file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)}
       
