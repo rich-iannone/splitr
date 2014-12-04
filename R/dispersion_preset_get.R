@@ -33,29 +33,28 @@ dispersion_preset_get <- function(read, numbers,
   if (read == "emissions" & no_duplicates == TRUE) {
     
     if (length(numbers) == 1){
-    
-    from_file <- as.vector(read.table(paste0(path_wd, "emissions"), sep = "\n"))
-    
-    number_of_entries <- nrow(from_file) / 6
-    
-    # Validate supplied digits for being within range
-    in_range <- ifelse(all(numbers %in% 1:number_of_entries) == TRUE,
-                       TRUE, FALSE)
-    
-    if (in_range == FALSE) {
-      stop("The provided emissions preset is not within the range of available presets.")
-    }
-    
-    # Get the numbered block
-    block <- seq(from = ((numbers - 1) * 6) + 2,
-                 to = ((numbers - 1) * 6) + 5,
-                 by = 1)
-    
-    # Get vector of data elements for CONTROL script
-    emissions <- c(1, as.vector(from_file[min(block):max(block),]))
-    
-    return(emissions)
-    
+      
+      from_file <- as.vector(read.table(paste0(path_wd, "emissions"), sep = "\n"))
+      
+      number_of_entries <- nrow(from_file) / 6
+      
+      # Validate supplied digits for being within range
+      in_range <- ifelse(all(numbers %in% 1:number_of_entries) == TRUE,
+                         TRUE, FALSE)
+      
+      if (in_range == FALSE) {
+        stop("The provided emissions preset is not within the range of available presets.")
+      }
+      
+      # Get the numbered block
+      block <- seq(from = ((numbers - 1) * 6) + 2,
+                   to = ((numbers - 1) * 6) + 5,
+                   by = 1)
+      
+      # Get vector of data elements for CONTROL script
+      emissions <- c(1, as.vector(from_file[min(block):max(block),]))
+      
+      return(emissions)
     }
     
     if (length(numbers) > 1){
@@ -73,8 +72,8 @@ dispersion_preset_get <- function(read, numbers,
       # Cycle through 
       for (i in 1:number_of_requests){
         block <- seq(from = ((numbers[i] - 1) * 6) + 2,
-                               to = ((numbers[i] - 1) * 6) + 5,
-                               by = 1)
+                     to = ((numbers[i] - 1) * 6) + 5,
+                     by = 1)
         
         vector.from_file <- as.vector(from_file[min(block):max(block),])
         
@@ -85,12 +84,11 @@ dispersion_preset_get <- function(read, numbers,
       emissions <- c(number_of_requests, unlist(list.from_file))
       
       return(emissions)
- 
     }
     
     # End emissions extraction
   }
-      
+  
   # Reading and extracting elements from 'grids' file
   if (read == "grids" & no_duplicates == TRUE) {
     
@@ -117,7 +115,6 @@ dispersion_preset_get <- function(read, numbers,
       grids <- c(1, as.vector(from_file[min(block):max(block),]))
       
       return(grids)
-      
     }
     
     if (length(numbers) > 1){
@@ -135,8 +132,8 @@ dispersion_preset_get <- function(read, numbers,
       # Cycle through 
       for (i in 1:number_of_requests){
         block <- seq(from = ((numbers[i] - 1) * 12) + 2,
-                               to = ((numbers[i] - 1) * 12) + 11,
-                               by = 1)
+                     to = ((numbers[i] - 1) * 12) + 11,
+                     by = 1)
         
         vector.from_file <- as.vector(from_file[min(block):max(block),])
         
@@ -147,7 +144,6 @@ dispersion_preset_get <- function(read, numbers,
       grids <- c(number_of_requests, unlist(list.from_file))
       
       return(grids)
-      
     }
     
     # End grids extraction
@@ -179,7 +175,6 @@ dispersion_preset_get <- function(read, numbers,
       species <- c(1, as.vector(from_file[min(block):max(block),]))
       
       return(species)
-      
     }
     
     if (length(numbers) > 1){
@@ -209,7 +204,6 @@ dispersion_preset_get <- function(read, numbers,
       species <- c(number_of_requests, unlist(list.from_file))
       
       return(species)
-      
     }
     
     # End grids extraction
