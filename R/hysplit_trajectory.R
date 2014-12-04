@@ -266,11 +266,11 @@ hysplit_trajectory <- function(traj_name = NULL,
           files_to_get <- subset(met.file.df, available == FALSE)[,1]
           
           if (met_type == "reanalysis"){
-            get.met.reanalysis(files = files_to_get, path_met_files = path_met_files)
+            get_met_reanalysis(files = files_to_get, path_met_files = path_met_files)
           }
           
           if (met_type == "gdas1"){
-            get.met.gdas1(files = files_to_get, path_met_files = path_met_files)
+            get_met_gdas1(files = files_to_get, path_met_files = path_met_files)
           } 
         }
       }
@@ -293,11 +293,11 @@ hysplit_trajectory <- function(traj_name = NULL,
           files_to_get <- subset(met.file.df, available == FALSE)[,1]
           
           if (met_type == "reanalysis"){
-            get.met.reanalysis(files = files_to_get, path_met_files = path_met_files)
+            get_met_reanalysis(files = files_to_get, path_met_files = path_met_files)
           }
           
           if (met_type == "gdas1"){
-            get.met.gdas1(files = files_to_get, path_met_files = path_met_files)
+            get_met_gdas1(files = files_to_get, path_met_files = path_met_files)
           } 
         }
       }
@@ -468,7 +468,7 @@ hysplit_trajectory <- function(traj_name = NULL,
     
     # Return a trajectory data frame if it is requested
     if (return_traj_df == TRUE){
-      traj.df <- trajectory.read(archive_folder =
+      traj.df <- trajectory_read(archive_folder =
                                    paste0(path_output_files, filename, ".zip"))
       return(traj.df)
     }
@@ -492,7 +492,7 @@ hysplit_trajectory <- function(traj_name = NULL,
     
     # Return a trajectory data frame if it is requested
     if (return_traj_df == TRUE){
-      traj.df <- trajectory.read(archive_folder =
+      traj.df <- trajectory_read(archive_folder =
                                    paste0(path_output_files, folder_name))
       return(traj.df)
     }
