@@ -35,11 +35,11 @@ Take note of the paths for the HYSPLIT executables and the working directory (in
 
 ## Example: HYSPLIT Trajectory Runs
 
-To perform a series HYSPLIT trajectory model runs, use the SplitR `hysplit.trajectory` function:
+To perform a series HYSPLIT trajectory model runs, use the SplitR `hysplit_trajectory` function:
 
 ```R
 trajectory.df <- 
-  hysplit.trajectory(traj_name = "t2",
+  hysplit_trajectory(traj_name = "t2",
                      return_traj_df = TRUE,
                      start_lat_deg = 42.83752, start_long_deg = -80.30364,
                      start_height_m_AGL = 5, simulation_duration_h = 24,
@@ -55,14 +55,14 @@ trajectory.df <-
                      path_executable = "C:\\hysplit4\\exec\\") 
 ```
 
-This use of `hysplit.trajectory` sets up four trajectory runs that start at 00:00, 06:00, 12:00, and 18:00 UTC on March 12, 2012. The `traj_name` argument allows for the inclusion of a descriptive name for the set of runs. Setting `return_traj_df` to `TRUE` will instruct the function to return a data frame containing detailed trajectory information. Such a data frame (named here as the object `trajectory.df`) will be useful for conducting further analyses. The initial times for the model runs are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours_to_start = c("00", "06", "12", "18")`. The model runs are forward runs (moving forward in time, set here using `backtrajectory = FALSE`) and not backtrajectory runs (set with `backtrajectory = TRUE`). These runs are 24 h in duration (`simulation_duration_h = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `start_lat_deg = 42.83752` and `start_long_deg = -80.30364`; the starting height of 5 m above ground level is set by `start_height_m_AGL = 5`. The meteorological options include the type of met data to use (1º GDAS data is used here with `met_type = "gdas1"`--there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting), the vertical motion option (here, set as `vertical_motion_option = 0` which instructs HYSPLIT to use the vertical motion available in the met data files), and, the top of the model domain (set as 20,000 meters with `top_of_model_domain_m = 20000`). Four paths require specification:
+This use of `hysplit_trajectory` sets up four trajectory runs that start at 00:00, 06:00, 12:00, and 18:00 UTC on March 12, 2012. The `traj_name` argument allows for the inclusion of a descriptive name for the set of runs. Setting `return_traj_df` to `TRUE` will instruct the function to return a data frame containing detailed trajectory information. Such a data frame (named here as the object `trajectory.df`) will be useful for conducting further analyses. The initial times for the model runs are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours_to_start = c("00", "06", "12", "18")`. The model runs are forward runs (moving forward in time, set here using `backtrajectory = FALSE`) and not backtrajectory runs (set with `backtrajectory = TRUE`). These runs are 24 h in duration (`simulation_duration_h = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `start_lat_deg = 42.83752` and `start_long_deg = -80.30364`; the starting height of 5 m above ground level is set by `start_height_m_AGL = 5`. The meteorological options include the type of met data to use (1º GDAS data is used here with `met_type = "gdas1"`--there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting), the vertical motion option (here, set as `vertical_motion_option = 0` which instructs HYSPLIT to use the vertical motion available in the met data files), and, the top of the model domain (set as 20,000 meters with `top_of_model_domain_m = 20000`). Four paths require specification:
 
 - path to the meteorological data files (`path_met_files`)
 - path to the output files (`path_output_files`)
 - path to the working directory (`path_wd`)
 - path to the executable directory, specifically here to that path containing the `hyts_std` executable (`path_executable`)
 
-All paths should exist (i.e., SplitR won't create directories) and the paths provided in the above `hysplit.trajectory()` example should serve as examples for these path settings. If running in a Mac or Linux environment, use appropriate paths with forward slashes (paths incorporating a tilde are acceptable).
+All paths should exist (i.e., SplitR won't create directories) and the paths provided in the above `hysplit_trajectory()` example should serve as examples for these path settings. If running in a Mac or Linux environment, use appropriate paths with forward slashes (paths incorporating a tilde are acceptable).
 
 The necessary meteorological data files relevant to the period being modelled will be downloaded from the NOAA FTP server (arlftp.arlhq.noaa.gov) if they are not present in the directory specified as the `path_met_files` argument. Note that SplitR does not currently provide an option to automatically delete these downloaded data files after the relevant model runs have been completed, so, keep in mind that available disk space may be issue with longer sequences of model runs (e.g., a GDAS1 met file for a week-long period can take up to 600 MB of disk space).
 
@@ -75,10 +75,10 @@ After this, four files should be generated:
 
 On Mac/Linux, these files will be associated with a .zip archive that is named according to the value of `traj_name` (if provided) and the date/time of execution. The location of the archive will be that of the path provided in the `path_output_files` argument. In a Windows environment, a similarly named *folder* will be created in the path provided in the `path_output_files` argument and that will contain the output files.
 
-If the the option to generate a data frame of trajectory information wasn't taken during the invocation of `hysplit.trajectory`, this can be done later by using the SplitR `trajectory.read` function:
+If the the option to generate a data frame of trajectory information wasn't taken during the invocation of `hysplit_trajectory`, this can be done later by using the SplitR `trajectory_read` function:
 
 ```R
-trajectory.df <- trajectory.read(archive_folder = "C:\\hysplit4\\working\\t2--2014-06-17--02-39-29",
+trajectory.df <- trajectory_read(archive_folder = "C:\\hysplit4\\working\\t2--2014-06-17--02-39-29",
                                  year = NULL,
                                  start_height_m_AGL = NULL)
 ```
@@ -98,13 +98,13 @@ Here are the trajectories from those model runs:
 Before performing any dispersion model runs in SplitR, you need to initialize the working directory with a SETUP.CFG file:
 
 ```R
-hysplit.dispersion.config(path_wd = "C:\\hysplit4\\working\\")
+hysplit_dispersion_config(path_wd = "C:\\hysplit4\\working\\")
 ```
 
-Presets for 'species', 'grids', and 'emissions' then need to be set. All additions of presets are made with the use of the `dispersion.preset.add`. That function can be run interactively with `interactive = TRUE` and remembering to set the `type` argumemnt as either `type = "species"`, `type = "grids"`, or `type = "emissions"`. An example of an interactive session for creating a 'species' preset is given below (angled brackets represent user input).
+Presets for 'species', 'grids', and 'emissions' then need to be set. All additions of presets are made with the use of the `dispersion_preset_add`. That function can be run interactively with `interactive = TRUE` and remembering to set the `type` argumemnt as either `type = "species"`, `type = "grids"`, or `type = "emissions"`. An example of an interactive session for creating a 'species' preset is given below (angled brackets represent user input).
 
 ```R
-dispersion.preset.add(type = "species", interactive = TRUE,
+dispersion_preset_add(type = "species", interactive = TRUE,
                       path_wd = "C:\\hysplit4\\working\\")
 ```
 
@@ -128,7 +128,7 @@ This is what will be set. Okay? [y/n]: <y>
 Also, the function can be used to create a 'species' preset non-interactively:
 
 ```R
-dispersion.preset.add(type = "species", interactive = FALSE,
+dispersion_preset_add(type = "species", interactive = FALSE,
                       species_name = "test",
                       particle_pdiam = 0,
                       particle_density = 0,
@@ -149,7 +149,7 @@ dispersion.preset.add(type = "species", interactive = FALSE,
 Interactively creating a 'grids' preset looks like this:
 
 ```R
-dispersion.preset.add(type = 'grids', interactive = TRUE,
+dispersion_preset_add(type = 'grids', interactive = TRUE,
                       path_wd = "C:\\hysplit4\\working\\")
 ```
 
@@ -219,7 +219,7 @@ This is what will be set. Okay? [y/n]:
 Also, the 'grids' preset be set non-interactively like this:
 
 ```R
-dispersion.preset.add(type = 'grids', interactive = FALSE,
+dispersion_preset_add(type = 'grids', interactive = FALSE,
                        grid_name = "grid",
                        grid_center = "42.83752 -80.30364",
                        grid_spacing = "0.05 0.05",
@@ -237,7 +237,7 @@ dispersion.preset.add(type = 'grids', interactive = FALSE,
 Interactively creating an 'emissions' preset looks like this:
 
 ```R
-dispersion.preset.add(type = 'emissions', interactive = TRUE,
+dispersion_preset_add(type = 'emissions', interactive = TRUE,
                       path_wd = "C:\\hysplit4\\working\\")
 ```
 
@@ -272,7 +272,7 @@ This is what will be set. Okay? [y/n]:
 For the non-interactive creation of an 'emissions' preset:
 
 ```R
-dispersion.preset.add(type = 'emissions', interactive = FALSE,
+dispersion_preset_add(type = 'emissions', interactive = FALSE,
                       emissions_name = "test",
                       emissions_rate = 35,
                       emissions_duration = 24,
@@ -280,10 +280,10 @@ dispersion.preset.add(type = 'emissions', interactive = FALSE,
                       path_wd = "C:\\hysplit4\\working\\")
 ```
 
-Once the presets have been created, they can be read using the `dispersion.preset.list` function by specifying the type of present (using the read argument) and providing the path of the working directory. For the 'species' presets:
+Once the presets have been created, they can be read using the `dispersion_preset_list` function by specifying the type of present (using the read argument) and providing the path of the working directory. For the 'species' presets:
 
 ```R
-dispersion.preset.list(read = 'species',
+dispersion_preset_list(read = 'species',
                        path_wd = "C:\\hysplit4\\working\\")
 ```
 
@@ -295,7 +295,7 @@ Here are the current species presets
 ```
 
 ```R
-dispersion.preset.list(read = 'grids',
+dispersion_preset_list(read = 'grids',
                        path_wd = "C:\\hysplit4\\working\\")
 ```
 
@@ -307,7 +307,7 @@ Here are the current presets for grids
 ```
 
 ```R
-dispersion.preset.list(read = 'emissions',
+dispersion_preset_list(read = 'emissions',
                        path_wd = "C:\\hysplit4\\working\\")
 ```
 
@@ -318,12 +318,12 @@ Here are the current presets for emissions
 ------------------------------------------
 ```
 
-Adding more presets of any type will simply add items to each list provided by the `dispersion.preset.list` function.
+Adding more presets of any type will simply add items to each list provided by the `dispersion_preset_list` function.
 
-To perform a HYSPLIT dispersion model run, use the SplitR `hysplit.dispersion` function:
+To perform a HYSPLIT dispersion model run, use the SplitR `hysplit_dispersion` function:
 
 ```R
-hysplit.dispersion(start_lat_deg = 42.83752, start_long_deg = -80.30364,
+hysplit_dispersion(start_lat_deg = 42.83752, start_long_deg = -80.30364,
                    start_height_m_AGL = 5, simulation_duration_h = 24,
                    backward_running = FALSE,
                    met_type = "gdas1",
@@ -341,12 +341,12 @@ hysplit.dispersion(start_lat_deg = 42.83752, start_long_deg = -80.30364,
                    path_executable = "C:\\hysplit4\\exec\\") 
 ```
 
-This use of `hysplit.dispersion` sets up a single dispersion run that starts at 00:00 UTC on March 12, 2012. These initial times are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours_to_start = "00"`. The model run is a forward run (moving forward in time, set here using `backward_running = FALSE`) and not backwards (set with `backward_running = TRUE`). Essentially, running in forward mode means the starting location is a source of emissions; running backward means that the starting location is a receptor. This run has been set to be modelled for 24 h (`simulation_duration_h = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `start_lat_deg = 42.83752` and `start_long_deg = -80.30364`; the starting height of 5 m above ground level is set by `start_height_m_AGL = 5`. The meteorological options include the type of met data to use (1º GDAS data is used here with `met_type = "gdas1"`--there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting), the vertical motion option (here, set as `vertical_motion_option = 0` which instructs HYSPLIT to use the vertical motion available in the met data files), and, the top of the model domain (set as 20,000 meters with `top_of_model_domain_m = 20000`).
+This use of `hysplit_dispersion` sets up a single dispersion run that starts at 00:00 UTC on March 12, 2012. These initial times are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours_to_start = "00"`. The model run is a forward run (moving forward in time, set here using `backward_running = FALSE`) and not backwards (set with `backward_running = TRUE`). Essentially, running in forward mode means the starting location is a source of emissions; running backward means that the starting location is a receptor. This run has been set to be modelled for 24 h (`simulation_duration_h = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `start_lat_deg = 42.83752` and `start_long_deg = -80.30364`; the starting height of 5 m above ground level is set by `start_height_m_AGL = 5`. The meteorological options include the type of met data to use (1º GDAS data is used here with `met_type = "gdas1"`--there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting), the vertical motion option (here, set as `vertical_motion_option = 0` which instructs HYSPLIT to use the vertical motion available in the met data files), and, the top of the model domain (set as 20,000 meters with `top_of_model_domain_m = 20000`).
 
-Remember those presets that were added earlier? They are called up in the `emissions`, `species`, and `grids` arguments. The `c(1)` value provided for each of those corresponds to the first preset of each type of preset. If you ever need to remind yourself of which presets are currently in the system, use `dispersion.preset.list` function. Moreover, that function has an interactive mode! Just invoke it and supply just the path for the working directory:
+Remember those presets that were added earlier? They are called up in the `emissions`, `species`, and `grids` arguments. The `c(1)` value provided for each of those corresponds to the first preset of each type of preset. If you ever need to remind yourself of which presets are currently in the system, use `dispersion_preset_list` function. Moreover, that function has an interactive mode! Just invoke it and supply just the path for the working directory:
 
 ```R
-dispersion.preset.list(path_wd = "C:\\hysplit4\\working\\")
+dispersion_preset_list(path_wd = "C:\\hysplit4\\working\\")
 ```
 
 ```
@@ -361,10 +361,10 @@ Here are the current presets for emissions
 ------------------------------------------
 ```
 
-While adding presets is generally a good thing to do, there may come a point where you would like to delete some of the presets. This can be done with the `dispersion.preset.delete` function. It can be done interactively, which is probably the safer method:
+While adding presets is generally a good thing to do, there may come a point where you would like to delete some of the presets. This can be done with the `dispersion_preset_delete` function. It can be done interactively, which is probably the safer method:
 
 ```R
-dispersion.preset.delete(path_wd = "C:\\hysplit4\\working\\")
+dispersion_preset_delete(path_wd = "C:\\hysplit4\\working\\")
 ```
 
 ```
@@ -382,7 +382,7 @@ Press <ENTER> for no deletion. Otherwise, enter a number.
 <1>
 ```
 
-Getting back to the `hysplit.dispersion` function, four paths require specification:
+Getting back to the `hysplit_dispersion` function, four paths require specification:
 
 - path to the meteorological data files (`path_met_files`)
 - path to the output files (`path_output_files`)
@@ -411,20 +411,20 @@ The met files that were automatically downloaded will remain in the working dire
 
 Finally, a binary `PARDUMP` file will be written.
 
-One or more snapshot plots of the data can be generated using the 'hysplit.dispersion.plot' function. If a dispersion data frame is available, the function can be called to reference that data and generate particle plots at every hour of the model run:
+One or more snapshot plots of the data can be generated using the `hysplit_dispersion_plot` function. If a dispersion data frame is available, the function can be called to reference that data and generate particle plots at every hour of the model run:
 
 ```R
-hysplit.dispersion.plot(hours = 'all',
+hysplit_dispersion_plot(hours = 'all',
                         dispersion_df = disp.df,
                         map_type = "stamen",
                         map_output_name = "map1",
                         path_output_files = "C:\\hysplit4\\output\\")
 ```
 
-If the dispersion data has been saved to disk (usually as the file 'dispersion.csv' in a subfolder for the run), it's possible to point to that file in the `hysplit.dispersion.plot` call:
+If the dispersion data has been saved to disk (usually as the file 'dispersion.csv' in a subfolder for the run), it's possible to point to that file in the `hysplit_dispersion_plot` call:
 
 ```R
-hysplit.dispersion.plot(hours = 'all',
+hysplit_dispersion_plot(hours = 'all',
                         df_folder_path = "C:\\hysplit4\\output\\dispersion--2014-08-03--13-42-28\\",
                         map_type = "stamen",
                         map_output_name = "map2",
