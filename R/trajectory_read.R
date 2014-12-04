@@ -101,7 +101,6 @@ trajectory_read <- function(archive_folder,
                                                          as.character(start_height_m_AGL),
                                                          "-.*$"))
     }
-    
   }
   
   # Initialize empty data frame with 12 named columns
@@ -111,7 +110,7 @@ trajectory_read <- function(archive_folder,
                              "height", "pressure", "date2", "date"))
   
   # Make loop with all trajectory files
-  for (i in 1:length(trajectory_file_list)) {
+  for (i in 1:length(trajectory_file_list)){
     
     # For each trajectory file, read each line and determine where the variable-length
     # header ends
@@ -133,8 +132,7 @@ trajectory_read <- function(archive_folder,
       if(length(grep("PRESSURE", traj_temp[j,1])) != 0) skip_up_to_line <- j
     }
     
-    column.widths <- c(6, 6, 6, 6, 6, 6, 6, 6,
-                       8, 9, 9, 9, 9)
+    column.widths <- c(6, 6, 6, 6, 6, 6, 6, 6, 8, 9, 9, 9, 9)
     
     if (.Platform$OS.type == "unix"){
       traj <- read.fwf(paste0("file://", path.expand(trajectory_file_dir), "/",
@@ -157,10 +155,12 @@ trajectory_read <- function(archive_folder,
     traj$zero2 <- NULL
     
     date2 <- mat.or.vec(nr = nrow(traj), nc = 1)
-    for (k in 1:nrow(traj)) {
+    
+    for (k in 1:nrow(traj)){
       date2[k] <- ISOdatetime(ifelse(traj[1,2] < 50, traj[1,2] + 2000, traj[1,2] + 1900),
                               traj[1,3], traj[1,4], traj[1,5], min = 0, sec = 0, tz = "GMT") +
         traj$hour.inc[k] * 3600}
+    
     traj$date2 <- as.POSIXct(date2, origin = "1970-01-01", tz = "GMT")
     
     traj$date <- ISOdatetime(ifelse(traj[1,2] < 50, traj[1,2] + 2000, traj[1,2] + 1900),
@@ -173,5 +173,4 @@ trajectory_read <- function(archive_folder,
   }
   
   return(traj.df)
-  
 }
