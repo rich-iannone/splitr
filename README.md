@@ -2,6 +2,8 @@
 
 SplitR is an R package that's great for conducting trajectory and dispersion modelling with [NOAA HYSPLIT](http://ready.arl.noaa.gov/HYSPLIT.php).
 
+[![ScreenShot](https://raw.githubusercontent.com/rich-iannone/SplitR/master/inst/SplitR_Animation.png)](http://vimeo.com/104077733)
+
 ## Installation
 
 Easy installation of SplitR from GitHub is entirely possible with the `devtools` package:
