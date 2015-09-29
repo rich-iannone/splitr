@@ -44,18 +44,20 @@ trajectory_read <- function(archive_folder,
     system(paste0("unzip '", path.expand(archive_folder),
                   "' -d '", trajectory_file_dir, "'"))
     
+    # Create a file list for the endpoints files
+    trajectory_file_list <- 
+      list.files(trajectory_file_dir,
+                 pattern = "^traj-.*")
   }
   
   # In Windows implementation, list files from specified folder
   if (.Platform$OS.type == "windows"){
     
     trajectory_file_list <- list.files(archive_folder)
-
   }
   
   # Optionally filter list of files by using 'year' or 'start_height_m_AGL' arguments,
   # or both
-  
   if (.Platform$OS.type == "unix"){
     if (is.null(year) & is.null(start_height_m_AGL)) {
       
@@ -126,10 +128,11 @@ trajectory_read <- function(archive_folder,
   }
   
   # Initialize empty data frame with 12 named columns
-  traj.df <- setNames(data.frame(mat.or.vec(nr = 0, nc = 12)),
-                      nm = c("receptor", "year", "month", "day",
-                             "hour", "hour.inc", "lat", "lon", 
-                             "height", "pressure", "date2", "date"))
+  traj_df <- 
+    setNames(data.frame(mat.or.vec(nr = 0, nc = 12)),
+             nm = c("receptor", "year", "month", "day",
+                    "hour", "hour.inc", "lat", "lon", 
+                    "height", "pressure", "date2", "date"))
   
   # Make loop with all trajectory files
   for (i in 1:length(trajectory_file_list)){
@@ -139,15 +142,17 @@ trajectory_read <- function(archive_folder,
     column.widths <- c(92)
     
     if (.Platform$OS.type == "unix"){
-      traj_temp <- read.fwf(paste0("file://", path.expand(trajectory_file_dir), "/",
-                                  trajectory_file_list[i]),
-                            widths = column.widths)
+      traj_temp <- 
+        read.fwf(paste0("file://", path.expand(trajectory_file_dir), "/",
+                        trajectory_file_list[i]),
+                 widths = column.widths)
     }
     
     if (.Platform$OS.type == "windows"){
-      traj_temp <- read.fwf(paste0("file://", path.expand(archive_folder),  "/",
-                                  trajectory_file_list[i]),
-                            widths = column.widths)
+      traj_temp <- 
+        read.fwf(paste0("file://", path.expand(archive_folder),  "/",
+                        trajectory_file_list[i]),
+                 widths = column.widths)
     }
     
     for (j in 1:nrow(traj_temp)) {
@@ -157,42 +162,45 @@ trajectory_read <- function(archive_folder,
     column.widths <- c(6, 6, 6, 6, 6, 6, 6, 6, 8, 9, 9, 9, 9)
     
     if (.Platform$OS.type == "unix"){
-      traj <- read.fwf(paste0("file://", path.expand(trajectory_file_dir), "/",
-                             trajectory_file_list[i]),
-                       skip = skip_up_to_line,
-                       widths = column.widths)
+      traj <- 
+        read.fwf(paste0("file://", path.expand(trajectory_file_dir), "/",
+                        trajectory_file_list[i]),
+                 skip = skip_up_to_line,
+                 widths = column.widths)
     }
     
     if (.Platform$OS.type == "windows"){
-      traj <- read.fwf(paste0("file://", path.expand(archive_folder),  "/",
-                             trajectory_file_list[i]),
-                       skip = skip_up_to_line,
-                       widths = column.widths)
+      traj <- 
+        read.fwf(paste0("file://", path.expand(archive_folder),  "/",
+                        trajectory_file_list[i]),
+                 skip = skip_up_to_line,
+                 widths = column.widths)
     }
     
-    names(traj) <- c("first", "receptor", "year", "month", "day", "hour", "zero1", "zero2", 
-                     "hour.inc", "lat", "lon", "height", "pressure")
-    traj$first <- NULL
-    traj$zero1 <- NULL
-    traj$zero2 <- NULL
+    names(traj) <- 
+      c("first", "receptor", "year", "month", "day", "hour",
+        "zero1", "zero2", "hour.inc", "lat", "lon", "height", "pressure")
+    
+    traj$first <- traj$zero1 <- traj$zero2 <- NULL
     
     date2 <- mat.or.vec(nr = nrow(traj), nc = 1)
     
     for (k in 1:nrow(traj)){
-      date2[k] <- ISOdatetime(ifelse(traj[1,2] < 50, traj[1,2] + 2000, traj[1,2] + 1900),
-                              traj[1,3], traj[1,4], traj[1,5], min = 0, sec = 0, tz = "GMT") +
+      date2[k] <- 
+        ISOdatetime(ifelse(traj[1,2] < 50, traj[1,2] + 2000, traj[1,2] + 1900),
+                    traj[1,3], traj[1,4], traj[1,5], min = 0, sec = 0, tz = "GMT") +
         traj$hour.inc[k] * 3600}
     
-    traj$date2 <- as.POSIXct(date2, origin = "1970-01-01", tz = "GMT")
+    traj$date2 <-
+      as.POSIXct(date2, origin = "1970-01-01", tz = "GMT")
     
-    traj$date <- ISOdatetime(ifelse(traj[1,2] < 50, traj[1,2] + 2000, traj[1,2] + 1900),
-                             traj[1,3], traj[1,4], traj[1,5], min = 0, sec = 0, tz = "GMT")
+    traj$date <-
+      ISOdatetime(ifelse(traj[1,2] < 50, traj[1,2] + 2000, traj[1,2] + 1900),
+                  traj[1,3], traj[1,4], traj[1,5], min = 0, sec = 0, tz = "GMT")
     
     # Continuously bind data frames together to make a large df with all trajectory files
-    traj.df <- rbind(traj.df, traj)
-    
-    # Close the trajectory file loop  
+    traj_df <- rbind(traj_df, traj)
   }
   
-  return(traj.df)
+  return(traj_df)
 }
