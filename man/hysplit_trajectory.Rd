@@ -16,42 +16,68 @@ hysplit_trajectory(traj_name = NULL, return_traj_df = TRUE, start_lat_deg,
 
 \item{return_traj_df}{an option to return a data frame with trajectory data}
 
-\item{start_lat_deg}{the starting latitude (in decimal degrees) for the model run(s)}
+\item{start_lat_deg}{the starting latitude (in decimal degrees) for the model
+run(s)}
 
-\item{start_long_deg}{the starting longitude (in decimal degrees) for the model run(s)}
+\item{start_long_deg}{the starting longitude (in decimal degrees) for the
+model run(s)}
 
-\item{start_height_m_AGL}{the starting height (in meters above ground level) for the model run(s)}
+\item{start_height_m_AGL}{the starting height (in meters above ground level)
+for the model run(s)}
 
-\item{simulation_duration_h}{the duration of each model run (either forward or backward) in hours}
+\item{simulation_duration_h}{the duration of each model run (either forward
+or backward) in hours}
 
-\item{backtrajectory}{an option to select whether to conduct forward trajectory model runs or to generate backtrajectories}
+\item{backtrajectory}{an option to select whether to conduct forward
+trajectory model runs or to generate backtrajectories}
 
-\item{met_type}{an option to select meteorological data files. The options are "gdas1" (Global Data Assimilation System 1-degree resolution data) and 'reanalysis' (NCAR/NCEP global reanalysis data).}
+\item{met_type}{an option to select meteorological data files. The options
+are 'gdas1' (Global Data Assimilation System 1-degree resolution data) and
+'reanalysis' (NCAR/NCEP global reanalysis data).}
 
-\item{vertical_motion_option}{a numbered option to select the method used to simulation vertical motion. The methods are: (0) input model data, (1) isobaric, (2) isentropic, (3) constant density, (4) isosigma, (5) from divergence, (6) remap MSL to AGL, (7) average data, and (8) damped magnitude.}
+\item{vertical_motion_option}{a numbered option to select the method used to
+simulation vertical motion. The methods are: (0) input model data, (1)
+isobaric, (2) isentropic, (3) constant density, (4) isosigma, (5) from
+divergence, (6) remap MSL to AGL, (7) average data, and (8) damped magnitude.}
 
 \item{top_of_model_domain_m}{upper limit of the model domain in meters.}
 
-\item{run_type}{used to select whether models should be run for a single day ("day"), for one or more years ("years"), or within a specified date range ("range").}
+\item{run_type}{used to select whether models should be run for a single
+day ("day"), for one or more years ("years"), or within a specified date
+range ("range").}
 
-\item{run_day}{used when 'run_type' of 'day' is selected. The date format should be provided here as "YYYY-MM-DD".}
+\item{run_day}{used when 'run_type' of 'day' is selected. The date format
+should be provided here as "YYYY-MM-DD".}
 
-\item{run_range}{used when 'run_type' of 'range' is selected. The date format should be provided here as "c("YYYY-MM-DD", "YYYY-MM-DD")".}
+\item{run_range}{used when 'run_type' of 'range' is selected. The date
+format should be provided here as "c("YYYY-MM-DD", "YYYY-MM-DD")".}
 
-\item{run_years}{used when 'run_type' of 'years' is selected. The format should either be a single year ("YYYY") or a range of years ("YYYY-YYYY").}
+\item{run_years}{used when 'run_type' of 'years' is selected. The format
+should either be a single year ("YYYY") or a range of years ("YYYY-YYYY").}
 
-\item{daily_hours_to_start}{should consist of a single daily hour in the format "HH", or, several daily hours in the format "c("HH", "HH", ...)".}
+\item{daily_hours_to_start}{should consist of a single daily hour in the
+format "HH", or, several daily hours in the format "c("HH", "HH", ...)".}
 
-\item{path_met_files}{a full path should be provided for the location of the meteorological data files relevant to the model options chosen. By default, the location '~/Documents/SplitR/Met' is chosen.}
+\item{path_met_files}{a full path should be provided for the location of
+the meteorological data files relevant to the model options chosen. By
+default, the location '~/Documents/SplitR/Met' is chosen.}
 
-\item{path_output_files}{a full path should be provided for a location that the trajectory output files will be written. By default, the location '~/Documents/SplitR/Output' is chosen.}
+\item{path_output_files}{a full path should be provided for a location that
+the trajectory output files will be written. By default, the location
+'~/Documents/SplitR/Output' is chosen.}
 
-\item{path_wd}{a full path should be provided for the HYSPLIT working directory; the CONTROL file for each model run will be written to and read from this location. By default, the location '~/Documents/SplitR/Working' is chosen.}
+\item{path_wd}{a full path should be provided for the HYSPLIT working
+directory; the CONTROL file for each model run will be written to and read
+from this location. By default, the location '~/Documents/SplitR/Working'
+is chosen.}
 
-\item{path_executable}{the full path and name of the HYSPLIT executable file for trajectory runs must be provided. By default, the location '~/Documents/SplitR/Exec' is chosen.}
+\item{path_executable}{the full path and name of the HYSPLIT executable file
+for trajectory runs must be provided. By default, the location
+'~/Documents/SplitR/Exec' is chosen.}
 }
 \description{
-The function executes single/multiple forward or backward HYSPLIT trajectory runs using specified meteorological datasets.
+The function executes single/multiple forward or backward
+HYSPLIT trajectory runs using specified meteorological datasets.
 }
 \examples{
 \dontrun{
