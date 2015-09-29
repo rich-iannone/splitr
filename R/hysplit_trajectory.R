@@ -45,6 +45,7 @@
 #' @param path_executable the full path and name of the HYSPLIT executable file
 #' for trajectory runs must be provided. By default, the location
 #' '~/Documents/SplitR/Exec' is chosen.
+#' @import lubridate
 #' @export hysplit_trajectory
 #' @examples
 #' \dontrun{
