@@ -1,11 +1,20 @@
 # History files
 .Rhistory
+
 # Example code in package build process
 *-Ex.R
-*.Rproj
+
+# R data files from past sessions
+.Rdata
+
+# RStudio files
+.Rproj.user/
+.Rproj.user
+
+# Output files
+*.txt
+*.tif
 *.CFG
 *Temp.png
 *.mp4
-.Rproj.user
 README.html
-.Rdata
