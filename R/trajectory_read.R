@@ -58,56 +58,70 @@ trajectory_read <- function(archive_folder,
   
   if (.Platform$OS.type == "unix"){
     if (is.null(year) & is.null(start_height_m_AGL)) {
-      trajectory_file_list <- list.files(path = trajectory_file_dir,
-                                         pattern = "^traj.*")
+      
+      trajectory_file_list <- 
+        list.files(path = trajectory_file_dir,
+                   pattern = "^traj.*")
     } else if (!is.null(year) & is.null(start_height_m_AGL)) {
-      trajectory_file_list <- list.files(path = trajectory_file_dirs,
-                                         pattern = paste0("^traj.*?)-",
-                                                         gsub("^[0-9][0-9]", "",
-                                                              as.character(year)),
-                                                         ".*$"))
+      
+      trajectory_file_list <- 
+        list.files(path = trajectory_file_dirs,
+                   pattern = paste0("^traj.*?-",
+                                    gsub("^[0-9][0-9]", "",
+                                         as.character(year)),
+                                    ".*$"))
     } else if (is.null(year) & !is.null(start_height_m_AGL)) {
-      trajectory_file_list <- list.files(path = trajectory_file_dir,
-                                         pattern = paste0("^.*?height_",
-                                                         gsub("^[0-9][0-9]", "",
-                                                              as.character(year)),
-                                                         ".*$"))
+      
+      trajectory_file_list <- 
+        list.files(path = trajectory_file_dir,
+                   pattern = paste0("^.*?height_",
+                                    gsub("^[0-9][0-9]", "",
+                                         as.character(year)),
+                                    ".*$"))
     } else if (!is.null(year) & !is.null(start_height_m_AGL)) {
-      trajectory_file_list <- list.files(path = trajectory_file_dir,
-                                         pattern = paste0("^traj.*?)-",
-                                                         gsub("^[0-9][0-9]", "",
-                                                              as.character(year)),
-                                                         ".*?height_",
-                                                         as.character(start_height_m_AGL),
-                                                         "-.*$"))
+      
+      trajectory_file_list <- 
+        list.files(path = trajectory_file_dir,
+                   pattern = paste0("^traj.*?-",
+                                    gsub("^[0-9][0-9]", "",
+                                         as.character(year)),
+                                    ".*?height_",
+                                    as.character(start_height_m_AGL),
+                                    "-.*$"))
     }
-    
   }
   
   if (.Platform$OS.type == "windows"){
     if (is.null(year) & is.null(start_height_m_AGL)) {
-      trajectory_file_list <- list.files(path = archive_folder,
-                                         pattern = "^traj.*")
+      
+      trajectory_file_list <-
+        list.files(path = archive_folder,
+                   pattern = "^traj.*")
     } else if (!is.null(year) & is.null(start_height_m_AGL)) {
-      trajectory_file_list <- list.files(path = archive_folder,
-                                         pattern = paste0("^traj.*?)-",
-                                                         gsub("^[0-9][0-9]", "",
-                                                              as.character(year)),
-                                                         ".*$"))
+      
+      trajectory_file_list <- 
+        list.files(path = archive_folder,
+                   pattern = paste0("^traj.*?-",
+                                    gsub("^[0-9][0-9]", "",
+                                         as.character(year)),
+                                    ".*$"))
     } else if (is.null(year) & !is.null(start_height_m_AGL)) {
-      trajectory_file_list <- list.files(path = archive_folder,
-                                         pattern = paste0("^.*?height_",
-                                                         gsub("^[0-9][0-9]", "",
-                                                              as.character(year)),
-                                                         ".*$"))
+      
+      trajectory_file_list <- 
+        list.files(path = archive_folder,
+                   pattern = paste0("^.*?height_",
+                                    gsub("^[0-9][0-9]", "",
+                                         as.character(year)),
+                                    ".*$"))
     } else if (!is.null(year) & !is.null(start_height_m_AGL)) {
-      trajectory_file_list <- list.files(path = archive_folder,
-                                         pattern = paste0("^traj.*?)-",
-                                                         gsub("^[0-9][0-9]", "",
-                                                              as.character(year)),
-                                                         ".*?height_",
-                                                         as.character(start_height_m_AGL),
-                                                         "-.*$"))
+      trajectory_file_list <- 
+        list.files(path = archive_folder,
+                   pattern = paste0("^traj.*?-",
+                                    gsub("^[0-9][0-9]", "",
+                                         as.character(year)),
+                                    ".*?height_",
+                                    as.character(start_height_m_AGL),
+                                    "-.*$"))
     }
   }
   
