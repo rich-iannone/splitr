@@ -89,9 +89,6 @@ hysplit_trajectory <- function(traj_name = NULL,
                                path_wd,
                                path_executable){
   
-  # Add require statements
-  require(lubridate)
-  
   # Set working directory for R to the HYSPLIT working directory
   setwd(path_wd)
   
