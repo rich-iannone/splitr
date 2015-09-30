@@ -1,6 +1,6 @@
 <img src="inst/SplitR.png" width="100%">
 
-**SplitR** is an **R** package that's great for conducting trajectory and dispersion modelling with [NOAA HYSPLIT](http://ready.arl.noaa.gov/HYSPLIT.php).
+**SplitR** is an **R** package for conducting trajectory and dispersion modelling with [NOAA HYSPLIT](http://ready.arl.noaa.gov/HYSPLIT.php).
 
 ## Installation
 
@@ -13,9 +13,9 @@ install_github("rich-iannone/SplitR")
 
 ## Description
 
-SplitR allows you set up and run **HYSPLIT** in a very fast, easy, and organized manner. You can set up a few or, perhaps, thousands of trajectory or dispersion runs by using a single function. Because **SplitR** is an **R** interface to **HYSPLIT**, we can store output in data frames and take advantage of the vast selection of **R** packages to perform cluster analyses, generate and save plots, and more. This package simplifies the process of running **HYSPLIT** models by automating the downloading and storage of meteorological data files, providing a simple means to initiate a range of runs, and by providing outputs that can be easily applied to statistical analyses.
+**SplitR** allows you set up and run **HYSPLIT** in a very fast, easy, and organized manner. You can set up a few or, perhaps, thousands of trajectory or dispersion runs by using a single function. Because **SplitR** is an **R** interface to **HYSPLIT**, we can store output in data frames and take advantage of the vast selection of **R** packages to perform cluster analyses, generate and save plots, and more. This package simplifies the process of running **HYSPLIT** models by automating the downloading and storage of meteorological data files, providing a simple means to initiate a range of runs, and by providing outputs that can be easily applied to statistical analyses.
 
-This package is in active development but is quite usable at present. Some of its features are:
+Although this package is in active development, is quite usable at present. Some of its features are:
 
 - simple setup of trajectory and dispersion model runs (forward or backward)
 - automated retrieval of meteorological data files
