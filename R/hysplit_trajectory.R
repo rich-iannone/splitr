@@ -131,7 +131,7 @@ hysplit_trajectory <- function(traj_name = NULL,
   no_starting_locations <- 1
   
   # Determine whether the run_years input is a single year or a range
-  if(exists("run_years")) run_years_single_range <-
+  if (exists("run_years")) run_years_single_range <-
     ifelse(nchar(run_years) == 4, "single", "range") 
   
   # Make a vector list of run days in POSIXct format
@@ -160,8 +160,7 @@ hysplit_trajectory <- function(traj_name = NULL,
   }
   
   # Initialize a vector that will contain names for all files generated
-  all_trajectory_files <-
-    vector(mode = "character", length = 0)
+  all_trajectory_files <- vector(mode = "character", length = 0)
   
   # Make loop with all run days
   for (i in 1:length(list_run_days)){
@@ -319,23 +318,24 @@ hysplit_trajectory <- function(traj_name = NULL,
       
       # Remove list values containing '0' (representing missing .w5
       # data files for Feb in leap years)
-      if(exists("met")) met <- met[!met %in% c(0)]
+      if (exists("met")) met <- met[!met %in% c(0)]
       
       # Are the met files available on the selected path?
-      met.file.df <-
+      met_file_df <-
         setNames(data.frame(mat.or.vec(nr = length(met), nc = 2)),
                  nm = c("file","available"))
       
       if (.Platform$OS.type == "unix"){
         
         for (k in 1:length(met)) {
-          met.file.df[k, 1] <- met[k]
+          met_file_df[k, 1] <- met[k]
           
-          met.file.df[k, 2] <- 
-            as.character(file.exists(paste0(path_met_files, met[k])))}
+          met_file_df[k, 2] <- 
+            as.character(file.exists(paste0(path_met_files, met[k])))
+        }
         
         # Write the met file availability to file
-        write.table(met.file.df,
+        write.table(met_file_df,
                     file = paste0(path_wd, "met_file_list"),
                     sep = ",",
                     row.names = FALSE,
@@ -344,9 +344,9 @@ hysplit_trajectory <- function(traj_name = NULL,
                     append = FALSE)
         
         # Download the missing met files
-        if (FALSE %in% met.file.df[,2]){
+        if (FALSE %in% met_file_df[,2]){
           
-          files_to_get <- subset(met.file.df,
+          files_to_get <- subset(met_file_df,
                                  available == FALSE)[,1]
           
           if (met_type == "reanalysis"){
@@ -366,21 +366,21 @@ hysplit_trajectory <- function(traj_name = NULL,
       if (.Platform$OS.type == "windows"){
         
         for (k in 1:length(met)) {
-          met.file.df[k, 1] <- met[k]
+          met_file_df[k, 1] <- met[k]
           
-          met.file.df[k, 2] <-
+          met_file_df[k, 2] <-
             as.character(file.exists(paste0(path_met_files,
                                             met[k])))}
         
         # Write the met file availability to file
-        write.table(met.file.df, file = paste0(path_wd, "met_file_list"),
+        write.table(met_file_df, file = paste0(path_wd, "met_file_list"),
                     sep = ",", row.names = FALSE, col.names = FALSE, quote = FALSE,
                     append = FALSE)
         
         # Download the missing met files
-        if (FALSE %in% met.file.df[,2]){
+        if (FALSE %in% met_file_df[,2]){
           
-          files_to_get <- subset(met.file.df,
+          files_to_get <- subset(met_file_df,
                                  available == FALSE)[,1]
           
           if (met_type == "reanalysis"){
