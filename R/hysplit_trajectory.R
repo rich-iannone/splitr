@@ -119,6 +119,14 @@ hysplit_trajectory <- function(traj_name = NULL,
     }
   }
   
+  # Place ASCDATA.CFG in working directory
+  if (file.exists("ASCDATA.CFG") == FALSE){
+    
+    file.copy(from = system.file("ASCDATA.CFG",
+                                 package = "SplitR"),
+              to = path_wd)
+  }
+  
   # Set number of starting locations to 1 for this function
   no_starting_locations <- 1
   
