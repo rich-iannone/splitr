@@ -85,8 +85,6 @@ hysplit_trajectory <- function(traj_name = NULL,
                                path_wd = NULL,
                                path_executable = NULL){
   
-  # Set working directory for R to the HYSPLIT working directory
-  setwd(path_wd)
   
   # Set number of starting locations to 1 for this function
   no_starting_locations <- 1
