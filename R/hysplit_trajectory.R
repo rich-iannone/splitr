@@ -534,7 +534,20 @@ hysplit_trajectory <- function(traj_name = NULL,
       # CONTROL file is now complete and in the working directory
       # Execute the model run
       if (.Platform$OS.type == "unix"){
-        system(paste0("(cd ", path_wd, " && ", path_executable, "hyts_std)"))
+        
+        if (!is.null(path_executable)){
+          
+          system(paste0("(cd ", path_wd, " && ", path_executable, "hyts_std)"))
+        }
+        
+        if (is.null(path_executable)){
+          
+          system(paste0("(cd ", path_wd, " && ",
+                        system.file("osx/hyts_std",
+                                    package = "SplitR"),
+                        ")"))
+        }
+        
       }
       
       if (.Platform$OS.type == "windows"){
