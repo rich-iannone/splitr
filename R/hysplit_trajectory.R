@@ -85,6 +85,39 @@ hysplit_trajectory <- function(traj_name = NULL,
                                path_wd = NULL,
                                path_executable = NULL){
   
+  # Set default working directory for HYSPLIT
+  if (is.null(path_wd)){
+    
+    path_wd <- getwd()
+    
+    if (grepl(".*/$", path_wd) == FALSE){
+      
+      path_wd <- gsub("$", "/", path_wd)
+    }
+  }
+  
+  # Set default directory for met files
+  if (is.null(path_met_files)){
+    
+    path_met_files <- path_wd
+    
+    if (grepl(".*/$", path_met_files) == FALSE){
+      
+      path_met_files <- gsub("$", "/", path_met_files)
+    }
+    
+  }
+  
+  # Set default directory for output files
+  if (is.null(path_output_files)){
+    
+    path_output_files <- path_wd
+    
+    if (grepl(".*/$", path_output_files) == FALSE){
+      
+      path_output_files <- gsub("$", "/", path_output_files)
+    }
+  }
   
   # Set number of starting locations to 1 for this function
   no_starting_locations <- 1
