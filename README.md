@@ -8,7 +8,7 @@ Easy installation of **SplitR** from **GitHub** is entirely possible with the `d
 
 ```R
 library(devtools)
-install_github("rich-iannone/SplitR")
+devtools::install_github("rich-iannone/SplitR")
 ```
 
 ## Description
