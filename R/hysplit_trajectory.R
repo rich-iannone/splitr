@@ -91,50 +91,41 @@ hysplit_trajectory <- function(traj_name = NULL,
   
   # Set default working directory for HYSPLIT
   if (is.null(path_wd)){
-    
     path_wd <- getwd()
-    
     if (grepl(".*/$", path_wd) == FALSE){
-      
       path_wd <- gsub("$", "/", path_wd)
     }
   }
   
   # Set default directory for met files
   if (is.null(path_met_files)){
-    
     path_met_files <- path_wd
-    
     if (grepl(".*/$", path_met_files) == FALSE){
-      
       path_met_files <- gsub("$", "/", path_met_files)
     }
-    
   }
   
   # Set default directory for output files
   if (is.null(path_output_files)){
-    
     path_output_files <- path_wd
-    
     if (grepl(".*/$", path_output_files) == FALSE){
-      
       path_output_files <- gsub("$", "/", path_output_files)
     }
   }
   
   # Place ASCDATA.CFG in working directory
   if (file.exists("ASCDATA.CFG") == FALSE){
-    
     file.copy(from = system.file("ASCDATA.CFG",
                                  package = "SplitR"),
               to = path_wd)
   }
   
-  # Set number of starting locations to 1 for this function
+  # Set number of starting locations to 1 for
+  # this function
   no_starting_locations <- 1
   
-  # Determine whether the run_years input is a single year or a range
+  # Determine whether the run_years input is a single
+  # year or a range
   if (exists("run_years")) run_years_single_range <-
     ifelse(nchar(run_years) == 4, "single", "range") 
   
@@ -163,8 +154,10 @@ hysplit_trajectory <- function(traj_name = NULL,
     stop("A run type has not been selected")
   }
   
-  # Initialize a vector that will contain names for all files generated
-  all_trajectory_files <- vector(mode = "character", length = 0)
+  # Initialize a vector that will contain names for
+  # all files generated
+  all_trajectory_files <- vector(mode = "character",
+                                 length = 0)
   
   # Make loop with all run days
   for (i in 1:length(list_run_days)){
@@ -188,7 +181,8 @@ hysplit_trajectory <- function(traj_name = NULL,
       
       start_hour_GMT <- j
       
-      #--- Determine which met files are required for this run
+      #--- Determine which met files are required for
+      #    this run
       
       # Determine the start time of the model run
       start_time_GMT <-
@@ -211,17 +205,18 @@ hysplit_trajectory <- function(traj_name = NULL,
                              start_month_GMT, "-",
                              start_day_GMT)))
       
-      # Determine whether the beginning and end of the current run
-      # crosses over a calendar year
+      # Determine whether the beginning and end of the
+      # current run crosses over a calendar year
       number_of_calendar_years <-
         ifelse(year(start_time_GMT) == year(end_time_GMT), 1, 2)
       
-      # Determine whether the beginning and end of the current run
-      # crosses over a calendar month
+      # Determine whether the beginning and end of the
+      # current run crosses over a calendar month
       number_of_calendar_months <-
         ifelse(month(start_time_GMT) == month(end_time_GMT), 1, 2)
       
-      #--- Divide different requirements for met files into different cases
+      #--- Divide different requirements for met files
+      #    into different cases
       
       # Set the different cases to FALSE by default
       case_within_month <- FALSE
@@ -237,9 +232,11 @@ hysplit_trajectory <- function(traj_name = NULL,
         case_over_month <- TRUE
       } else { NULL }
       
-      #--- Get vector lists of met files applicable to run from GDAS 1-degree dataset
+      #--- Get vector lists of met files applicable to
+      # run from GDAS 1-degree dataset
       
-      # Trap leap-year condition of missing .w5 met file for February in a '0' list value
+      # Trap leap-year condition of missing .w5 met
+      # file for February in a '0' list value
       if (case_within_month == TRUE &
           met_type == "gdas1") met <- 
         c(paste0("gdas1.",
@@ -320,8 +317,8 @@ hysplit_trajectory <- function(traj_name = NULL,
                                 width = 2, format = "d", flag = "0")),
                  ".gbl"))
       
-      # Remove list values containing '0' (representing missing .w5
-      # data files for Feb in leap years)
+      # Remove list values containing '0' (representing
+      # missing .w5 data files for Feb in leap years)
       if (exists("met")) met <- met[!met %in% c(0)]
       
       # Are the met files available on the selected path?
@@ -377,8 +374,12 @@ hysplit_trajectory <- function(traj_name = NULL,
                                             met[k])))}
         
         # Write the met file availability to file
-        write.table(met_file_df, file = paste0(path_wd, "met_file_list"),
-                    sep = ",", row.names = FALSE, col.names = FALSE, quote = FALSE,
+        write.table(met_file_df,
+                    file = paste0(path_wd, "met_file_list"),
+                    sep = ",",
+                    row.names = FALSE,
+                    col.names = FALSE,
+                    quote = FALSE,
                     append = FALSE)
         
         # Download the missing met files
@@ -399,7 +400,8 @@ hysplit_trajectory <- function(traj_name = NULL,
         }
       }
       
-      # Construct the output filename string for this model run
+      # Construct the output filename string for this
+      # model run
       output_filename <-
         paste0("traj-",
                ifelse(backtrajectory == TRUE,
@@ -417,7 +419,8 @@ hysplit_trajectory <- function(traj_name = NULL,
       
       if (.Platform$OS.type == "unix"){
         
-        # Write start year, month, day, hour to 'CONTROL'
+        # Write start year, month, day, hour to
+        # 'CONTROL'
         cat(start_year_GMT, " ", 
             start_month_GMT, " ",
             start_day_GMT, " ",
@@ -430,14 +433,16 @@ hysplit_trajectory <- function(traj_name = NULL,
             file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)
         
-        # Write starting latitude, longitude, height AGL to 'CONTROL'
+        # Write starting latitude, longitude, height
+        # AGL to 'CONTROL'
         cat(start_lat_deg, " ", 
             start_long_deg, " ", 
             start_height_m_AGL, "\n",
             file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)
         
-        # Write direction and number of simulation hours to 'CONTROL'
+        # Write direction and number of simulation
+        # hours to 'CONTROL'
         cat(ifelse(backtrajectory == TRUE, "-", ""),
             simulation_duration_h, "\n",
             file = paste0(path_wd, "CONTROL"),
@@ -448,7 +453,8 @@ hysplit_trajectory <- function(traj_name = NULL,
             file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)
         
-        # Write top of model domain in meters to 'CONTROL'
+        # Write top of model domain in meters to
+        # 'CONTROL'
         cat(top_of_model_domain_m, "\n",
             file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)
@@ -464,7 +470,8 @@ hysplit_trajectory <- function(traj_name = NULL,
               file = paste0(path_wd, "CONTROL"),
               sep = '', append = TRUE)}
         
-        # Write path for trajectory output files to 'CONTROL'
+        # Write path for trajectory output files to
+        # 'CONTROL'
         cat(path_wd, "\n",
             file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)
@@ -477,7 +484,8 @@ hysplit_trajectory <- function(traj_name = NULL,
       
       if (.Platform$OS.type == "windows"){
         
-        # Write start year, month, day, hour to 'CONTROL'
+        # Write start year, month, day, hour to
+        # 'CONTROL'
         cat(start_year_GMT, " ", 
             start_month_GMT, " ",
             start_day_GMT, " ",
@@ -490,7 +498,8 @@ hysplit_trajectory <- function(traj_name = NULL,
             file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = TRUE)
         
-        # Write starting latitude, longitude, height AGL to 'CONTROL'
+        # Write starting latitude, longitude, height
+        # AGL to 'CONTROL'
         cat(start_lat_deg, " ", 
             start_long_deg, " ", 
             start_height_m_AGL, "\n",
