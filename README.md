@@ -1,4 +1,4 @@
-<img src="inst/SplitR.png" width="100%">
+<img src="inst/SplitR.png" width="70%">
 
 [![DOI](https://zenodo.org/badge/20543/rich-iannone/SplitR.svg)](https://zenodo.org/badge/latestdoi/20543/rich-iannone/SplitR)
 
