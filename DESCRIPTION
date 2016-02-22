@@ -5,7 +5,8 @@ Version: 0.3
 Date: 2015-09-29
 Author: Richard Iannone <riannone@me.com>
 Maintainer: Richard Iannone <riannone@me.com>
-Description: Run the NOAA HYSPLIT model in an R environment and analyze its output
+Description: Run the NOAA HYSPLIT model in an R environment and analyze its
+    output
 License: MIT
 Depends:
     stats,
@@ -19,3 +20,4 @@ Depends:
     cluster,
     maps,
     mapdata
+RoxygenNote: 5.0.1
