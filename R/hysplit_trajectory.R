@@ -17,56 +17,78 @@
 #' @param backtrajectory an option to select whether to
 #' conduct forward trajectory model runs or to generate
 #' backtrajectories.
-#' @param met_type an option to select meteorological data files. The options
-#' are 'gdas1' (Global Data Assimilation System 1-degree resolution data) and
-#' 'reanalysis' (NCAR/NCEP global reanalysis data). 
-#' @param vertical_motion_option a numbered option to select the method used to
-#' simulation vertical motion. The methods are: (0) input model data, (1)
-#' isobaric, (2) isentropic, (3) constant density, (4) isosigma, (5) from
-#' divergence, (6) remap MSL to AGL, (7) average data, and (8) damped magnitude. 
-#' @param top_of_model_domain_m upper limit of the model domain in meters.
-#' @param run_type used to select whether models should be run for a single
-#' day ("day"), for one or more years ("years"), or within a specified date
-#' range ("range").
-#' @param run_day used when 'run_type' of 'day' is selected. The date format
-#' should be provided here as "YYYY-MM-DD".
-#' @param run_range used when 'run_type' of 'range' is selected. The date
-#' format should be provided here as "c("YYYY-MM-DD", "YYYY-MM-DD")".
-#' @param run_years used when 'run_type' of 'years' is selected. The format
-#' should either be a single year ("YYYY") or a range of years ("YYYY-YYYY").
-#' @param daily_hours_to_start should consist of a single daily hour in the
-#' format "HH", or, several daily hours in the format "c("HH", "HH", ...)".
-#' @param path_met_files a full path should be provided for the location of
-#' the meteorological data files relevant to the model options chosen.
-#' @param path_output_files a full path should be provided for a location that
-#' the trajectory output files will be written.
-#' @param path_wd a full path should be provided for the HYSPLIT working
-#' directory; the CONTROL file for each model run will be written to and read
+#' @param met_type an option to select meteorological
+#' data files. The options are \code{gdas1} (Global
+#' Data Assimilation System 1-degree resolution data)
+#' and \code{reanalysis} (NCAR/NCEP global reanalysis
+#' data). 
+#' @param vertical_motion_option a numbered option to
+#' select the method used to simulation vertical
+#' motion. The methods are: \code{0} (input model
+#' data), \code{1} (isobaric), \code{2} (isentropic),
+#' \code{3} (constant density), \code{4} (isosigma),
+#' \code{5} (from divergence), \code{6} (remap MSL to
+#' AGL), \code{7} (average data), and \code{8} (damped
+#' magnitude). 
+#' @param top_of_model_domain_m the upper limit of the
+#' model domain in meters.
+#' @param run_type used to select whether models should
+#' be run for a single day (\code{day}), for one or
+#' more years (\code{years}), or within a specified
+#' date range (\code{range}).
+#' @param run_day used when the \code{run_type} of
+#' \code{day} is selected. The date format should be
+#' provided here in the format \code{YYYY-MM-DD}.
+#' @param run_range used when the \code{run_type} of
+#' \code{range} is selected. The date format should be
+#' provided here as a vector of length 2 in the form:
+#'  \code{c("YYYY-MM-DD", "YYYY-MM-DD")}.
+#' @param run_years used when the \code{run_type} of
+#' \code{years} is selected. The format should either
+#' be a single year (\code{YYYY}) or a range of years
+#' (\code{YYYY-YYYY}).
+#' @param daily_hours_to_start should consist of a
+#' single daily hour in the format \code{HH}, or,
+#' several daily hours as a vector in the format of
+#' \code{"c("HH", "HH", ...)"}.
+#' @param path_met_files a full path should be provided
+#' for the location of the meteorological data files
+#' relevant to the model options chosen.
+#' @param path_output_files a full path should be
+#' provided for a location that the trajectory output
+#' files will be written.
+#' @param path_wd a full path should be provided for
+#' the HYSPLIT working directory; the \code{CONTROL}
+#' file for each model run will be written to and read
 #' from this location.
-#' @param path_executable the full path and name of the HYSPLIT executable file
-#' for trajectory runs must be provided.
+#' @param path_executable the full path and name of the
+#' HYSPLIT executable file for trajectory runs must be
+#' provided here.
 #' @import lubridate
 #' @export hysplit_trajectory
 #' @examples
 #' \dontrun{
-#' # test run type of 'years' with forward trajectory using NCEP/NCAR reanalaysis data
-#' hysplit_trajectory(traj_name = "second",
-#'                    return_traj_df = FALSE,
-#'                    start_lat_deg = 50.108,
-#'                    start_long_deg = -122.942,
-#'                    start_height_m_AGL = 200.0,
-#'                    simulation_duration_h = 96,
-#'                    backtrajectory = FALSE,
-#'                    met_type = "reanalysis",
-#'                    vertical_motion_option = 0,
-#'                    top_of_model_domain_m = 20000,
-#'                    run_type = "years",
-#'                    run_years = "2004",
-#'                    daily_hours_to_start = c("03", "06", "09", "12", "15", "18", "21"),
-#'                    path_met_files = "~/HYSPLIT4/met/",
-#'                    path_output_files = "~/HYSPLIT4/output_trajectory/",
-#'                    path_wd = "~/HYSPLIT4/working/",
-#'                    path_executable = "~/HYSPLIT4/exec/hyts_std")
+#' # Test with a run type of `years` with a forward
+#' # trajectory using NCEP/NCAR reanalaysis data
+#' hysplit_trajectory(
+#'   traj_name = "second",
+#'   return_traj_df = FALSE,
+#'   start_lat_deg = 50.108,
+#'   start_long_deg = -122.942,
+#'   start_height_m_AGL = 200.0,
+#'   simulation_duration_h = 96,
+#'   backtrajectory = FALSE,
+#'   met_type = "reanalysis",
+#'   vertical_motion_option = 0,
+#'   top_of_model_domain_m = 20000,
+#'   run_type = "years",
+#'   run_years = "2004",
+#'   daily_hours_to_start = c("03", "06", "09", "12",
+#'                            "15", "18", "21"),
+#'   path_met_files = "~/hysplit4/met/",
+#'   path_output_files = "~/hysplit4/output_trajectory/",
+#'   path_wd = "~/hysplit4/working/",
+#'   path_executable = "~/hysplit4/exec/hyts_std")
 #'}
 
 hysplit_trajectory <- function(traj_name = NULL,
