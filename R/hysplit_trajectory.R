@@ -188,11 +188,9 @@ hysplit_trajectory <- function(traj_name = NULL,
     start_year_GMT <- 
       substr(as.character(year(list_run_days[i])),3,4)
     
-    
     start_month_GMT <-
       formatC(as.numeric(month(list_run_days[i])),
               width = 2, format = "d", flag = "0")
-    
     
     start_day_GMT <-
       formatC(as.numeric(day(list_run_days[i])),
@@ -246,7 +244,8 @@ hysplit_trajectory <- function(traj_name = NULL,
       case_over_month <- FALSE
       
       # Determine which of the three cases is true
-      if (number_of_calendar_years == 1 & number_of_calendar_months == 1) {
+      if (number_of_calendar_years == 1 & 
+          number_of_calendar_months == 1) {
         case_within_month <- TRUE
       } else if (number_of_calendar_years > 1) {
         case_over_year <- TRUE
@@ -317,7 +316,8 @@ hysplit_trajectory <- function(traj_name = NULL,
                  substr(tolower(format(start_time_GMT, "%B")), 1, 3),
                  substr(year(start_time_GMT), 3, 4), ".w3"))
       
-      # Get vector lists of met files applicable to run from the NCEP/NCAR reanalysis dataset
+      # Get vector lists of met files applicable to run
+      # from the NCEP/NCAR reanalysis dataset
       if (met_type == "reanalysis") met <- 
         c(paste0("RP",
                  ifelse(start_month_GMT == "01",
@@ -437,7 +437,8 @@ hysplit_trajectory <- function(traj_name = NULL,
                "height_",start_height_m_AGL, "-",
                simulation_duration_h, "h")
       
-      all_trajectory_files <- c(all_trajectory_files, output_filename)
+      all_trajectory_files <- 
+        c(all_trajectory_files, output_filename)
       
       if (.Platform$OS.type == "unix"){
         
@@ -450,7 +451,8 @@ hysplit_trajectory <- function(traj_name = NULL,
             file = paste0(path_wd, "CONTROL"),
             sep = '', append = FALSE)
         
-        #Write number of starting locations to 'CONTROL'
+        # Write number of starting locations to
+        # 'CONTROL'
         cat(no_starting_locations, "\n",
             file = paste0(path_wd, "CONTROL"),
             sep = '', append = TRUE)
@@ -515,7 +517,8 @@ hysplit_trajectory <- function(traj_name = NULL,
             file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = FALSE)
         
-        #Write number of starting locations to 'CONTROL'
+        # Write number of starting locations
+        # to 'CONTROL'
         cat(no_starting_locations, "\n",
             file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = TRUE)
@@ -528,7 +531,8 @@ hysplit_trajectory <- function(traj_name = NULL,
             file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = TRUE)
         
-        # Write direction and number of simulation hours to 'CONTROL'
+        # Write direction and number of simulation
+        # hours to 'CONTROL'
         cat(ifelse(backtrajectory == TRUE, "-", ""),
             simulation_duration_h, "\n",
             file = paste0(path_wd, "\\", "CONTROL"),
@@ -539,7 +543,8 @@ hysplit_trajectory <- function(traj_name = NULL,
             file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = TRUE)
         
-        # Write top of model domain in meters to 'CONTROL'
+        # Write top of model domain in meters to
+        # 'CONTROL'
         cat(top_of_model_domain_m, "\n",
             file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = TRUE)
@@ -555,7 +560,8 @@ hysplit_trajectory <- function(traj_name = NULL,
               file = paste0(path_wd, "\\", "CONTROL"),
               sep = '', append = TRUE)}
         
-        # Write path for trajectory output files to 'CONTROL'
+        # Write path for trajectory output files to
+        # 'CONTROL'
         cat(path_wd, "\n",
             file = paste0(path_wd, "\\", "CONTROL"),
             sep = '', append = TRUE)
@@ -566,13 +572,14 @@ hysplit_trajectory <- function(traj_name = NULL,
             sep = '', append = TRUE)
       }
       
-      # CONTROL file is now complete and in the working directory
-      # Execute the model run
+      # The CONTROL file is now complete and in the
+      # working directory, so, execute the model run
       if (.Platform$OS.type == "unix"){
         
         if (!is.null(path_executable)){
           
-          system(paste0("(cd ", path_wd, " && ", path_executable, "hyts_std)"))
+          system(paste0("(cd ", path_wd, " && ",
+                        path_executable, "hyts_std)"))
         }
         
         if (is.null(path_executable)){
@@ -582,17 +589,13 @@ hysplit_trajectory <- function(traj_name = NULL,
                                     package = "SplitR"),
                         ")"))
         }
-        
       }
       
       if (.Platform$OS.type == "windows"){
-        shell(paste0("(cd ", path_wd, " && ", path_executable, "hyts_std)"))
+        shell(paste0("(cd ", path_wd, " && ",
+                     path_executable, "hyts_std)"))
       }
-      
-      # Close the hour loop  
     }
-    
-    # Close the day loop
   }
   
   # Generate name of archive zip file
@@ -601,14 +604,19 @@ hysplit_trajectory <- function(traj_name = NULL,
     if (is.null(traj_name)){
       
       filename <-
-        paste0("traj--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"))  
+        paste0("traj--",
+               format(Sys.time(),
+                      "%Y-%m-%d--%H-%M-%S"))  
     } else if (!is.null(traj_name)){
       
       filename <-
-        paste0(traj_name, "--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"))  
+        paste0(traj_name, "--", 
+               format(Sys.time(),
+                      "%Y-%m-%d--%H-%M-%S"))  
     }
     
-    # Perform the archiving of all trajectory files and move to the output directory
+    # Perform the archiving of all trajectory files
+    # and move to the output directory
     zip(zipfile = paste0(path_output_files,
                          filename, ".zip"),
         files = all_trajectory_files)
@@ -628,27 +636,37 @@ hysplit_trajectory <- function(traj_name = NULL,
     
     if (is.null(traj_name)){
       
-      folder_name <- paste0("traj--",
-                            format(Sys.time(), "%Y-%m-%d--%H-%M-%S"))  
+      folder_name <- 
+        paste0("traj--",
+               format(Sys.time(),
+                      "%Y-%m-%d--%H-%M-%S"))  
     } else if (!is.null(traj_name)){
       
-      folder_name <- paste0(traj_name, "--",
-                            format(Sys.time(), "%Y-%m-%d--%H-%M-%S"))  
+      folder_name <- 
+        paste0(traj_name, "--",
+               format(Sys.time(),
+                      "%Y-%m-%d--%H-%M-%S"))  
     }
     
-    # Perform the movement of all trajectory files into a folder
-    # residing to the output directory
-    dir.create(path = paste0(path_output_files, folder_name))
+    # Perform the movement of all trajectory files
+    # into a folder residing to the output directory
+    dir.create(path = paste0(path_output_files,
+                             folder_name))
     
     for (i in 1:length(all_trajectory_files)){
-      shell(paste0("(cd ", path_wd, " && move ", all_trajectory_files[i], " ",
-                   paste0(path_output_files, folder_name), ")"))
+      shell(paste0("(cd ", path_wd, " && move ",
+                   all_trajectory_files[i], " ",
+                   paste0(path_output_files,
+                          folder_name),
+                   ")"))
     }
     
     # Return a trajectory data frame if it is requested
     if (return_traj_df == TRUE){
-      traj_df <- trajectory_read(archive_folder =
-                                   paste0(path_output_files, folder_name))
+      traj_df <- 
+        trajectory_read(archive_folder =
+                          paste0(path_output_files,
+                                 folder_name))
       return(traj_df)
     }
   }
