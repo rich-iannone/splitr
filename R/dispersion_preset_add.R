@@ -161,14 +161,15 @@ dispersion_preset_add <- function(type,
                                   sampling_interval_type_rate = NULL,
                                   path_wd){
   
-  # Add require statements
-  require(lubridate)
-  
-  if (interactive == FALSE & type == 'species'){
+  if (interactive == FALSE & type == "species"){
     
     if (is.null(species_name)){
-      species_name <- paste0("Spec-",
-                            gsub(" ", "_", gsub(":", "_", format(Sys.time(), "%b %d %Y %X"))))
+      species_name <-
+        paste0("Spec-",
+               gsub(" ", "_",
+                    gsub(":", "_",
+                         format(Sys.time(),
+                                "%b %d %Y %X"))))
     }
     
     if (is.null(particle_pdiam)){
@@ -225,32 +226,36 @@ dispersion_preset_add <- function(type,
     
     # Write species preset to file
     cat(paste0("--- Species named: ", species_name,
-              ", generated on ", Sys.time()), "\n",
+               ", generated on ", Sys.time()), "\n",
         paste0(particle_pdiam, " ",
-              particle_density, " ",
-              particle_shape_factor), "\n",
+               particle_density, " ",
+               particle_shape_factor), "\n",
         paste0(ddep_velocity, " ",
-              ddep_MW, " ",
-              ddep_A_ratio, " ", 
-              ddep_D_ratio, " ", 
-              ddep_Henrys_Law_coeff), "\n",
+               ddep_MW, " ",
+               ddep_A_ratio, " ", 
+               ddep_D_ratio, " ", 
+               ddep_Henrys_Law_coeff), "\n",
         paste0(wdep_Henrys_Law_coeff, " ",
-              wdep_in_cloud_dep, " ",
-              wdep_below_cloud_dep), "\n",
+               wdep_in_cloud_dep, " ",
+               wdep_below_cloud_dep), "\n",
         rad_decay, "\n",
         pollutant_resuspension_factor, "\n",
         paste("---"), "\n",
-        file = paste0(path_wd, "species"), append = TRUE,
-        sep = '')
+        file = paste0(path_wd, "species"),
+        append = TRUE,
+        sep = "")
     
   }
   
-  if (interactive == FALSE & type == 'emissions'){
+  if (interactive == FALSE & type == "emissions"){
     
     if (is.null(emissions_name)){
-      emissions_name <- paste("Emis-",
-                              gsub(" ", "_", gsub(":", "_", format(Sys.time(), "%b %d %Y %X"))),
-                              sep = '')
+      emissions_name <-
+        paste0("Emis-",
+               gsub(" ", "_",
+                    gsub(":", "_",
+                         format(Sys.time(),
+                                "%b %d %Y %X"))))
     }
     
     if (is.null(emissions_rate)){
@@ -266,24 +271,30 @@ dispersion_preset_add <- function(type,
     }
     
     # Write emissions preset to file
-    cat(paste0("--- Emissions source named: ", emissions_name,
-              ", generated on ", Sys.time()), "\n",
+    cat(paste0("--- Emissions source named: ",
+               emissions_name,
+               ", generated on ",
+               Sys.time()), "\n",
         gsub("^(....).*","\\1", emissions_name), "\n",
         emissions_rate, "\n",
         emissions_duration, "\n",
         emissions_start_time, "\n",
         paste("---"), "\n",
-        file = paste0(path_wd, "emissions"), append = TRUE,
-        sep = '')
+        file = paste0(path_wd, "emissions"),
+        append = TRUE,
+        sep = "")
     
   }
   
-  if (interactive == FALSE & type == 'grids'){
-   
+  if (interactive == FALSE & type == "grids"){
+    
     if (is.null(grid_name)){
-      grid_name <- paste("Grid-",
-                     gsub(" ", "_", gsub(":", "_", format(Sys.time(), "%b %d %Y %X"))),
-                     sep = '')
+      grid_name <-
+        paste0("Grid-",
+               gsub(" ", "_",
+                    gsub(":", "_",
+                         format(Sys.time(), 
+                                "%b %d %Y %X"))))
     }
     
     if (is.null(grid_center)){
@@ -311,9 +322,10 @@ dispersion_preset_add <- function(type,
     }
     
     if (is.null(grid_heights)){
-      grid_heights <- paste0("0 5 10 50 100 1000 2000 3000 4000 5000 6000 7000 8000 ",
-                            "9000 10000 11000 12000 13000 14000 15000 16000 17000 ",
-                            "18000 19000 20000")
+      grid_heights <- 
+        paste0("0 5 10 50 100 1000 2000 3000 4000 5000 6000 7000 8000 ",
+               "9000 10000 11000 12000 13000 14000 15000 16000 17000 ",
+               "18000 19000 20000")
     }
     
     if (is.null(grid_start_time)){
@@ -329,8 +341,10 @@ dispersion_preset_add <- function(type,
     }
     
     # Write grids preset to file
-    cat(paste0("--- Grid named: ", grid_name,
-              ", generated on ", Sys.time()), "\n",
+    cat(paste0("--- Grid named: ",
+               grid_name,
+               ", generated on ",
+               Sys.time()), "\n",
         grid_center, "\n",
         grid_spacing, "\n",
         grid_span, "\n",
@@ -342,13 +356,13 @@ dispersion_preset_add <- function(type,
         grid_end_time, "\n",
         sampling_interval_type_rate, "\n",
         paste("---"), "\n",
-        file = paste0(path_wd, "grids"), append = TRUE,
-        sep = '')
-
+        file = paste0(path_wd, "grids"),
+        append = TRUE,
+        sep = "")
   }
   
   # Define species (names, properties)
-  if (interactive == TRUE & type == 'species'){
+  if (interactive == TRUE & type == "species"){
     
     # Ask for the name of the species
     species_name <-
@@ -382,116 +396,149 @@ dispersion_preset_add <- function(type,
       
       if (species_type_gas_use_default == "n") {
         
-        # Automatically assign default value to 'particle_pdiam'
+        # Automatically assign default value to
+        # 'particle_pdiam'
         particle_pdiam <- 0.0
         
-        # Automatically assign default value to 'particle_density'
+        # Automatically assign default value to
+        # 'particle_density'
         particle_density <- 0.0
         
-        # Automatically assign default value to 'particle_shape_factor'
+        # Automatically assign default value to
+        # 'particle_shape_factor'
         particle_shape_factor <- 0.0
         
         # Ask to assign value to 'ddep_velocity'
         ddep_velocity <-
-          readline(paste(cat("Category: Dry Deposition", "\n",
-                             "Set the dry deposition velocity.", "\n",
-                             "Units: m/s. Default: 0 m/s.", "\n",
-                             "Provide a positive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Dry Deposition", "\n",
+                "Set the dry deposition velocity.", "\n",
+                "Units: m/s. Default: 0 m/s.", "\n",
+                "Provide a positive real number (<ENTER> for default value): ",
+                sep = "")))
         if (ddep_velocity == "") ddep_velocity <- 0.0
         if (ddep_velocity >= 0) ddep_velocity <- as.numeric(ddep_velocity)
         
         # Ask to assign value to 'ddep_MW'
         ddep_MW <-
-          readline(paste(cat("Category: Dry Deposition", "\n",
-                             "Set the molecular weight.", "\n",
-                             "Units: g/mol. Default: 0 g/mol.", "\n",
-                             "Provide a positive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Dry Deposition", "\n",
+                "Set the molecular weight.", "\n",
+                "Units: g/mol. Default: 0 g/mol.", "\n",
+                "Provide a positive real number (<ENTER> for default value): ",
+                sep = "")))
         if (ddep_MW == "") ddep_MW <- 0.0
         if (ddep_MW >= 0) ddep_MW <- as.numeric(ddep_MW)
         
         # Ask to assign value to 'ddep_A_ratio'
         ddep_A_ratio <-
-          readline(paste(cat("Category: Dry Deposition", "\n",
-                             "Set the surface reactivity ratio.", "\n",
-                             "Units: none. Default: 0.", "\n",
-                             "Provide a value between 0-1 (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Dry Deposition", "\n",
+                "Set the surface reactivity ratio.", "\n",
+                "Units: none. Default: 0.", "\n",
+                "Provide a value between 0-1 (<ENTER> for default value): ",
+                sep = "")))
         if (ddep_A_ratio == "") ddep_A_ratio <- 0.0
         if (ddep_A_ratio >= 0) ddep_A_ratio <- as.numeric(ddep_A_ratio)
         
         # Ask to assign value to 'ddep_D_ratio'
         ddep_D_ratio <-
-          readline(paste(cat("Category: Dry Deposition", "\n",
-                             "Set the diffusivity ratio.", "\n",
-                             "Units: none. Default: 0.", "\n",
-                             "Provide a positive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Dry Deposition", "\n",
+                "Set the diffusivity ratio.", "\n",
+                "Units: none. Default: 0.", "\n",
+                "Provide a positive real number (<ENTER> for default value): ",
+                sep = "")))
         if (ddep_D_ratio == "") ddep_D_ratio <- 0.0
         if (ddep_D_ratio >= 0) ddep_D_ratio <- as.numeric(ddep_D_ratio)
         
         # Ask to assign value to 'ddep_Henrys_Law_coeff'
         ddep_Henrys_Law_coeff <-
-          readline(paste(cat("Category: Dry Deposition", "\n",
-                             "Set the effective Henry's Law Constant.", "\n",
-                             "Units: M/atm. Default: 0.", "\n",
-                             "Provide a postive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Dry Deposition", "\n",
+                "Set the effective Henry's Law Constant.", "\n",
+                "Units: M/atm. Default: 0.", "\n",
+                "Provide a postive real number (<ENTER> for default value): ",
+                sep = "")))
         if (ddep_Henrys_Law_coeff == "") ddep_Henrys_Law_coeff <- 0.0
         if (ddep_Henrys_Law_coeff >= 0) ddep_Henrys_Law_coeff <-
           as.numeric(ddep_Henrys_Law_coeff)
         
         # Ask to assign value to 'wdep_Henrys_Law_coeff' 
         wdep_Henrys_Law_coeff <-
-          readline(paste(cat("Category: Wet Deposition", "\n",
-                             "Set the actual Henry's Law Constant.", "\n",
-                             "Units: M/atm. Default: 0.", "\n",
-                             "Provide a postive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Wet Deposition", "\n",
+                "Set the actual Henry's Law Constant.", "\n",
+                "Units: M/atm. Default: 0.", "\n",
+                "Provide a postive real number (<ENTER> for default value): ",
+                sep = "")))
         if (wdep_Henrys_Law_coeff == "") wdep_Henrys_Law_coeff <- 0.0
         if (wdep_Henrys_Law_coeff >= 0) wdep_Henrys_Law_coeff <-
           as.numeric(wdep_Henrys_Law_coeff)
         
         # Ask to assign value to 'wdep_in_cloud_dep'  
         wdep_in_cloud_dep <-
-          readline(paste(cat("Category: Wet Deposition", "\n",
-                             "Set the in-cloud deposition rate.", "\n",
-                             "Units: L/L. Default: 0.", "\n",
-                             "Provide a postive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Wet Deposition", "\n",
+                "Set the in-cloud deposition rate.", "\n",
+                "Units: L/L. Default: 0.", "\n",
+                "Provide a postive real number (<ENTER> for default value): ",
+                sep = "")))
         if (wdep_in_cloud_dep == "") wdep_in_cloud_dep <- 0.0
         if (wdep_in_cloud_dep >= 0) wdep_in_cloud_dep <-
           as.numeric(wdep_in_cloud_dep)
         
         # Ask to assign value to 'wdep_below_cloud_dep'  
         wdep_below_cloud_dep <-
-          readline(paste(cat("Category: Wet Deposition", "\n",
-                             "Set the below-cloud deposition rate.", "\n",
-                             "Units: 1/s. Default: 0.", "\n",
-                             "Provide a postive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Wet Deposition", "\n",
+                "Set the below-cloud deposition rate.", "\n",
+                "Units: 1/s. Default: 0.", "\n",
+                "Provide a postive real number (<ENTER> for default value): ",
+                sep = "")))
         if (wdep_below_cloud_dep == "") wdep_below_cloud_dep <- 0.0
         if (wdep_below_cloud_dep >= 0) wdep_below_cloud_dep <-
           as.numeric(wdep_below_cloud_dep)
         
         # Ask to assign value to 'rad_decay'
         rad_decay <-
-          readline(paste(cat("Category: Radioactive Decay", "\n",
-                             "Set the radioactive decay half-life.", "\n",
-                             "Units: days. Default: 0.", "\n",
-                             "Provide a postive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Radioactive Decay", "\n",
+                "Set the radioactive decay half-life.", "\n",
+                "Units: days. Default: 0.", "\n",
+                "Provide a postive real number (<ENTER> for default value): ",
+                sep = "")))
         if (rad_decay == "") rad_decay <- 0.0
         if (rad_decay >= 0) rad_decay <- as.numeric(rad_decay)
         
         # Ask to assign value to 'pollutant_resuspension_factor'  
         pollutant_resuspension_factor <-
-          readline(paste(cat("Category: Pollutant Resuspension", "\n",
-                             "Set the pollutant resuspension factor.", "\n",
-                             "Units: 1/m. Default: 0.", "\n",
-                             "Provide a postive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Pollutant Resuspension", "\n",
+                "Set the pollutant resuspension factor.", "\n",
+                "Units: 1/m. Default: 0.", "\n",
+                "Provide a postive real number (<ENTER> for default value): ",
+                sep = "")))
         if (pollutant_resuspension_factor == "") pollutant_resuspension_factor <- 0.0
         if (pollutant_resuspension_factor >= 0) pollutant_resuspension_factor <-
           as.numeric(pollutant_resuspension_factor)
@@ -520,140 +567,179 @@ dispersion_preset_add <- function(type,
         pollutant_resuspension_factor <- 0.0
       }
       
-      if (species_type_particle_use_default == "n") {
+      if (species_type_particle_use_default == "n"){
         
         # Ask to assign default value to 'particle_pdiam'
         particle_pdiam <-
-          readline(paste(cat("Category: Particle Properties", "\n",
-                             "Set the particle diameter.", "\n",
-                             "Units: µm. Default: 5 µm.", "\n",
-                             "Provide a positive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Particle Properties", "\n",
+                "Set the particle diameter.", "\n",
+                "Units: µm. Default: 5 µm.", "\n",
+                "Provide a positive real number (<ENTER> for default value): ",
+                sep = "")))
         if (particle_pdiam == "") particle_pdiam <- 5.0
         if (particle_pdiam >= 0) particle_pdiam <- as.numeric(particle_pdiam)
         
         # Ask to assign default value to 'particle_density'
         particle_density <-
-          readline(paste(cat("Category: Particle Properties", "\n",
-                             "Set the particle density.", "\n",
-                             "Units: g/cm3. Default: 6 g/cm3.", "\n",
-                             "Provide a positive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Particle Properties", "\n",
+                "Set the particle density.", "\n",
+                "Units: g/cm3. Default: 6 g/cm3.", "\n",
+                "Provide a positive real number (<ENTER> for default value): ",
+                sep = "")))
         if (particle_density == "") particle_density <- 6.0
         if (particle_density >= 0) particle_density <- as.numeric(particle_density)
         
         # Ask to assign default value to 'particle_shape_factor'
         particle_shape_factor <-
-          readline(paste(cat("Category: Particle Properties", "\n",
-                             "Set the particle shape factor.", "\n",
-                             "Units: none. Default: 1.", "\n",
-                             "Provide a value between 0-1 (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Particle Properties", "\n",
+                "Set the particle shape factor.", "\n",
+                "Units: none. Default: 1.", "\n",
+                "Provide a value between 0-1 (<ENTER> for default value): ",
+                sep = "")))
         if (particle_shape_factor == "") particle_shape_factor <- 1.0
         if (particle_shape_factor >= 0) particle_shape_factor <-
           as.numeric(particle_shape_factor)
         
         # Ask to assign value to 'ddep_velocity'
         ddep_velocity <-
-          readline(paste(cat("Category: Dry Deposition", "\n",
-                             "Set the dry deposition velocity.", "\n",
-                             "Units: m/s. Default: 0 m/s.", "\n",
-                             "Provide a positive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Dry Deposition", "\n",
+                "Set the dry deposition velocity.", "\n",
+                "Units: m/s. Default: 0 m/s.", "\n",
+                "Provide a positive real number (<ENTER> for default value): ",
+                sep = "")))
         if (ddep_velocity == "") ddep_velocity <- 0.0
         if (ddep_velocity >= 0) ddep_velocity <- as.numeric(ddep_velocity)
         
         # Ask to assign value to 'ddep_MW'
         ddep_MW <-
-          readline(paste(cat("Category: Dry Deposition", "\n",
-                             "Set the molecular weight.", "\n",
-                             "Units: g/mol. Default: 0 g/mol.", "\n",
-                             "Provide a positive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Dry Deposition", "\n",
+                "Set the molecular weight.", "\n",
+                "Units: g/mol. Default: 0 g/mol.", "\n",
+                "Provide a positive real number (<ENTER> for default value): ",
+                sep = "")))
         if (ddep_MW == "") ddep_MW <- 0.0
         if (ddep_MW >= 0) ddep_MW <- as.numeric(ddep_MW)
         
         # Ask to assign value to 'ddep_A_ratio'
         ddep_A_ratio <-
-          readline(paste(cat("Category: Dry Deposition", "\n",
-                             "Set the A ratio.", "\n",
-                             "Units: none. Default: 0.", "\n",
-                             "Provide a value between 0-1 (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Dry Deposition", "\n",
+                "Set the A ratio.", "\n",
+                "Units: none. Default: 0.", "\n",
+                "Provide a value between 0-1 (<ENTER> for default value): ",
+                sep = "")))
         if (ddep_A_ratio == "") ddep_A_ratio <- 0.0
         if (ddep_A_ratio >= 0) ddep_A_ratio <- as.numeric(ddep_A_ratio)
         
         # Ask to assign value to 'ddep_D_ratio'
         ddep_D_ratio <-
-          readline(paste(cat("Category: Dry Deposition", "\n",
-                             "Set the D ratio.", "\n",
-                             "Units: none. Default: 0.", "\n",
-                             "Provide a value between 0-1 (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Dry Deposition", "\n",
+                "Set the D ratio.", "\n",
+                "Units: none. Default: 0.", "\n",
+                "Provide a value between 0-1 (<ENTER> for default value): ",
+                sep = "")))
         if (ddep_D_ratio == "") ddep_D_ratio <- 0.0
         if (ddep_D_ratio >= 0) ddep_D_ratio <- as.numeric(ddep_D_ratio)
         
         # Ask to assign value to 'ddep_Henrys_Law_coeff'
         ddep_Henrys_Law_coeff <-
-          readline(paste(cat("Category: Dry Deposition", "\n",
-                             "Set the Henry's Law coefficient.", "\n",
-                             "Units: M/a. Default: 0.", "\n",
-                             "Provide a postive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Dry Deposition", "\n",
+                "Set the Henry's Law coefficient.", "\n",
+                "Units: M/a. Default: 0.", "\n",
+                "Provide a postive real number (<ENTER> for default value): ",
+                sep = "")))
         if (ddep_Henrys_Law_coeff == "") ddep_Henrys_Law_coeff <- 0.0
         if (ddep_Henrys_Law_coeff >= 0) ddep_Henrys_Law_coeff <-
           as.numeric(ddep_Henrys_Law_coeff)
         
         # Ask to assign value to 'wdep_Henrys_Law_coeff' 
         wdep_Henrys_Law_coeff <-
-          readline(paste(cat("Category: Wet Deposition", "\n",
-                             "Set the Henry's Law coefficient.", "\n",
-                             "Units: M/a. Default: 0.", "\n",
-                             "Provide a postive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Wet Deposition", "\n",
+                "Set the Henry's Law coefficient.", "\n",
+                "Units: M/a. Default: 0.", "\n",
+                "Provide a postive real number (<ENTER> for default value): ",
+                sep = "")))
         if (wdep_Henrys_Law_coeff == "") wdep_Henrys_Law_coeff <- 0.0
         if (wdep_Henrys_Law_coeff >= 0) wdep_Henrys_Law_coeff <-
           as.numeric(wdep_Henrys_Law_coeff)
         
         # Ask to assign value to 'wdep_in_cloud_dep'  
         wdep_in_cloud_dep <-
-          readline(paste(cat("Category: Wet Deposition", "\n",
-                             "Set the in-cloud deposition rate.", "\n",
-                             "Units: L/L. Default: 0.", "\n",
-                             "Provide a postive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Wet Deposition", "\n",
+                "Set the in-cloud deposition rate.", "\n",
+                "Units: L/L. Default: 0.", "\n",
+                "Provide a postive real number (<ENTER> for default value): ",
+                sep = "")))
         if (wdep_in_cloud_dep == "") wdep_in_cloud_dep <- 0.0
         if (wdep_in_cloud_dep >= 0) wdep_in_cloud_dep <-
           as.numeric(wdep_in_cloud_dep)
         
         # Ask to assign value to 'wdep_below_cloud_dep'  
         wdep_below_cloud_dep <-
-          readline(paste(cat("Category: Wet Deposition", "\n",
-                             "Set the below-cloud deposition rate.", "\n",
-                             "Units: 1/s. Default: 0.", "\n",
-                             "Provide a postive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Wet Deposition", "\n",
+                "Set the below-cloud deposition rate.", "\n",
+                "Units: 1/s. Default: 0.", "\n",
+                "Provide a postive real number (<ENTER> for default value): ",
+                sep = "")))
         if (wdep_below_cloud_dep == "") wdep_below_cloud_dep <- 0.0
         if (wdep_below_cloud_dep >= 0) wdep_below_cloud_dep <-
           as.numeric(wdep_below_cloud_dep)
         
         # Ask to assign value to 'rad_decay'
         rad_decay <-
-          readline(paste(cat("Category: Radioactive Decay", "\n",
-                             "Set the radioactive decay half-life.", "\n",
-                             "Units: days. Default: 0.", "\n",
-                             "Provide a postive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Radioactive Decay", "\n",
+                "Set the radioactive decay half-life.", "\n",
+                "Units: days. Default: 0.", "\n",
+                "Provide a postive real number (<ENTER> for default value): ",
+                sep = "")))
         if (rad_decay == "") rad_decay <- 0.0
         if (rad_decay >= 0) rad_decay <- as.numeric(rad_decay)
         
         # Ask to assign value to 'pollutant_resuspension_factor'  
         pollutant_resuspension_factor <-
-          readline(paste(cat("Category: Pollutant Resuspension", "\n",
-                             "Set the pollutant resuspension factor.", "\n",
-                             "Units: 1/m. Default: 0.", "\n",
-                             "Provide a postive real number (<ENTER> for default value): ",
-                             sep = '')))
+          readline(
+            paste(
+              cat(
+                "Category: Pollutant Resuspension", "\n",
+                "Set the pollutant resuspension factor.", "\n",
+                "Units: 1/m. Default: 0.", "\n",
+                "Provide a postive real number (<ENTER> for default value): ",
+                sep = "")))
         if (pollutant_resuspension_factor == "") pollutant_resuspension_factor <- 0.0
         if (pollutant_resuspension_factor >= 0) pollutant_resuspension_factor <-
           as.numeric(pollutant_resuspension_factor)
@@ -662,49 +748,52 @@ dispersion_preset_add <- function(type,
     
     # Provide a summary of the chosen options and ask if the chosen options are acceptable
     acceptable_species <-
-      readline(paste(cat("The plan. Adding species: ", species_name, "\n",
-                         "-------------------------", "\n", 
-                         "Particle Properties // ", 
-                         "diameter: ", particle_pdiam, " µm",
-                         " | density: ", particle_density, " g/cm3",
-                         " | shape factor: ", particle_shape_factor,
-                         ifelse(particle_pdiam == 0 &
-                                  particle_density == 0 &
-                                  particle_shape_factor == 0,
-                                paste(" ——not a particle species"), paste("")),
-                         "\n",
-                         "Dry Deposition // ",
-                         "deposition velocity: ", ddep_velocity, " m/s",
-                         " | molecular weight: ", ddep_MW, " g/mol", "\n",
-                         "                 ",
-                         " A ratio: ", ddep_A_ratio,
-                         " | D ratio: ", ddep_D_ratio,
-                         " | Henry's Law: ", ddep_Henrys_Law_coeff, " M/a",
-                         ifelse(ddep_velocity == 0 &
-                                  ddep_MW == 0 &
-                                  ddep_A_ratio == 0 &
-                                  ddep_D_ratio == 0 &
-                                  ddep_Henrys_Law_coeff == 0,
-                                paste(" ——no dry deposition"), paste("")),
-                         "\n",
-                         "Wet Deposition // ",
-                         "Henry's Law coeff.: ", wdep_Henrys_Law_coeff, " M/a",
-                         " | in-cloud deposition: ", wdep_in_cloud_dep, " L/L", "\n",
-                         "                ",
-                         "  below-cloud deposition: ", wdep_below_cloud_dep, " 1/s",
-                         ifelse(wdep_Henrys_Law_coeff == 0 &
-                                  wdep_in_cloud_dep == 0 &
-                                  wdep_below_cloud_dep == 0,
-                                paste(" ——no wet deposition"), paste("")),
-                         "\n",
-                         "Radioactive Decay // ",
-                         "half-life: ", rad_decay, " days",
-                         "\n",
-                         "Pollutant Resuspension // ",
-                         "factor: ", pollutant_resuspension_factor, " 1/m", "\n",
-                         "------------------------------", "\n",
-                         "This is what will be set. Okay? [y/n]: ",
-                         sep = '')))
+      readline(
+        paste(
+          cat(
+            "The plan. Adding species: ", species_name, "\n",
+            "-------------------------", "\n", 
+            "Particle Properties // ", 
+            "diameter: ", particle_pdiam, " µm",
+            " | density: ", particle_density, " g/cm3",
+            " | shape factor: ", particle_shape_factor,
+            ifelse(particle_pdiam == 0 &
+                     particle_density == 0 &
+                     particle_shape_factor == 0,
+                   paste(" ——not a particle species"), paste("")),
+            "\n",
+            "Dry Deposition // ",
+            "deposition velocity: ", ddep_velocity, " m/s",
+            " | molecular weight: ", ddep_MW, " g/mol", "\n",
+            "                 ",
+            " A ratio: ", ddep_A_ratio,
+            " | D ratio: ", ddep_D_ratio,
+            " | Henry's Law: ", ddep_Henrys_Law_coeff, " M/a",
+            ifelse(ddep_velocity == 0 &
+                     ddep_MW == 0 &
+                     ddep_A_ratio == 0 &
+                     ddep_D_ratio == 0 &
+                     ddep_Henrys_Law_coeff == 0,
+                   paste(" ——no dry deposition"), paste("")),
+            "\n",
+            "Wet Deposition // ",
+            "Henry's Law coeff.: ", wdep_Henrys_Law_coeff, " M/a",
+            " | in-cloud deposition: ", wdep_in_cloud_dep, " L/L", "\n",
+            "                ",
+            "  below-cloud deposition: ", wdep_below_cloud_dep, " 1/s",
+            ifelse(wdep_Henrys_Law_coeff == 0 &
+                     wdep_in_cloud_dep == 0 &
+                     wdep_below_cloud_dep == 0,
+                   paste(" ——no wet deposition"), paste("")),
+            "\n",
+            "Radioactive Decay // ",
+            "half-life: ", rad_decay, " days",
+            "\n",
+            "Pollutant Resuspension // ",
+            "factor: ", pollutant_resuspension_factor, " 1/m", "\n",
+            "------------------------------", "\n",
+            "This is what will be set. Okay? [y/n]: ",
+            sep = "")))
     
     # If acceptable, add the species and the options to the list of species
     # in the project folder
@@ -712,31 +801,29 @@ dispersion_preset_add <- function(type,
     # sources in the project folder
     if (acceptable_species == "y"){
       cat(paste0("--- Species named: ", species_name,
-                ", generated on ", Sys.time()), "\n",
+                 ", generated on ", Sys.time()), "\n",
           paste0(particle_pdiam, " ",
-                particle_density, " ",
-                particle_shape_factor), "\n",
+                 particle_density, " ",
+                 particle_shape_factor), "\n",
           paste0(ddep_velocity, " ",
-                ddep_MW, " ",
-                ddep_A_ratio, " ", 
-                ddep_D_ratio, " ", 
-                ddep_Henrys_Law_coeff), "\n",
+                 ddep_MW, " ",
+                 ddep_A_ratio, " ", 
+                 ddep_D_ratio, " ", 
+                 ddep_Henrys_Law_coeff), "\n",
           paste0(wdep_Henrys_Law_coeff, " ",
-                wdep_in_cloud_dep, " ",
-                wdep_below_cloud_dep), "\n",
+                 wdep_in_cloud_dep, " ",
+                 wdep_below_cloud_dep), "\n",
           rad_decay, "\n",
           pollutant_resuspension_factor, "\n",
           paste("---"), "\n",
           file = paste0(path_wd, "species"), append = TRUE,
-          sep = '')
+          sep = "")
     }
-    
-    # Close species block
   }
   
   # Define emissions (fixed location, rate, hours, start time, must tie to an already
   # defined species or define a new one here)
-  if (interactive == TRUE & type == 'emissions'){
+  if (interactive == TRUE & type == "emissions"){
     
     # Ask for the name of the emissions source
     emissions_name <-
@@ -744,17 +831,20 @@ dispersion_preset_add <- function(type,
     
     # Ask to assign value to 'emissions_start_time'  
     emissions_start_time <-
-      readline(paste(cat("Provide the starting date and time.",
-                         "\n",
-                         "Several options available:",
-                         "\n",
-                         "(1) Use defined time in the format YYYY-MM-DD HH:MM",
-                         "\n",
-                         "(2) Provide the number of hours or days after start of run (# h, or # d)",
-                         "\n",
-                         "(3) Press <ENTER> to match run and sampling starting times",
-                         "\n",
-                         sep = '')))
+      readline(
+        paste(
+          cat(
+            "Provide the starting date and time.",
+            "\n",
+            "Several options available:",
+            "\n",
+            "(1) Use defined time in the format YYYY-MM-DD HH:MM",
+            "\n",
+            "(2) Provide the number of hours or days after start of run (# h, or # d)",
+            "\n",
+            "(3) Press <ENTER> to match run and sampling starting times",
+            "\n",
+            sep = "")))
     
     # Determine the format of the supplied input and divide into types to resolve into hours
     # Validate the input of the date and time string
@@ -771,7 +861,7 @@ dispersion_preset_add <- function(type,
     
     # Work with case where 'emissions_start_time_type' is an end date and time
     if (exists("emissions_start_time_type") &
-          emissions_start_time_type ==  "starting_date_time"){
+        emissions_start_time_type ==  "starting_date_time"){
       
       # Determine whether the supplied date/time string yields a valid POSIXct date/time
       if (class(ymd_hms(paste0(emissions_start_time, ":00")))[1] == "POSIXct"){
@@ -783,71 +873,88 @@ dispersion_preset_add <- function(type,
       # If the entered date passes the validation test, assign it to
       # 'emissions_start_time_char'    
       if (emissions_start_time_valid == TRUE){
-        emissions_start_time_char <- as.character(gsub("-", " ", emissions_start_time))
-        emissions_start_time_char <- as.character(gsub(":", " ", emissions_start_time_char))
-        emissions_start_time_char <- as.character(gsub("^[0-9][0-9]", "", emissions_start_time_char))
+        emissions_start_time_char <-
+          as.character(gsub("-", " ", emissions_start_time))
+        emissions_start_time_char <-
+          as.character(gsub(":", " ", emissions_start_time_char))
+        emissions_start_time_char <-
+          as.character(gsub("^[0-9][0-9]", "", emissions_start_time_char))
       }
     } 
     
-    # Work with case where 'emissions_start_time_type' is duration in hours
+    # Work with case where 'emissions_start_time_type'
+    # is duration in hours
     if (exists("emissions_start_time_type") &
-          emissions_start_time_type ==  "start_time_hours"){
+        emissions_start_time_type ==  "start_time_hours"){
       
-      # Get the numeric part of the supplied string, which is the number of hours
-      emissions_start_time_hours <- as.numeric(gsub("^([0-9]+)[ ]?h$", "\\1",
-                                                    emissions_start_time, perl = TRUE))
+      # Get the numeric part of the supplied string,
+      # which is the number of hours
+      emissions_start_time_hours <-
+        as.numeric(gsub("^([0-9]+)[ ]?h$", "\\1",
+                        emissions_start_time, perl = TRUE))
       
-      emissions_start_time_char <- paste0("00 00 00 ",
-                                         formatC(emissions_start_time_hours,
-                                                 width = 2, format = "d",
-                                                 flag = "0"),
-                                         " 00")
+      emissions_start_time_char <- 
+        paste0("00 00 00 ",
+               formatC(emissions_start_time_hours,
+                       width = 2, format = "d",
+                       flag = "0"),
+               " 00")
     }
     
-    # Work with case where 'emissions_start_time_type' is a duration in days
+    # Work with case where 'emissions_start_time_type'
+    # is a duration in days
     if (exists("emissions_start_time_type") &
-          emissions_start_time_type ==  "start_time_days"){
+        emissions_start_time_type ==  "start_time_days"){
       
       # Get the numeric part of the supplied string, which is the number of hours
-      emissions_start_time_days <- as.numeric(gsub("^([0-9]+)[ ]?d$", "\\1",
-                                                   emissions_start_time, perl = TRUE)) * 24
+      emissions_start_time_days <- 
+        as.numeric(gsub("^([0-9]+)[ ]?d$", "\\1",
+                        emissions_start_time, perl = TRUE)) * 24
       
-      emissions_start_time_char <- paste0("00 00 ",
-                                         formatC(emissions_start_time_days,
-                                                 width = 2, format = "d",
-                                                 flag = "0"),
-                                         " 00 00")  
+      emissions_start_time_char <- 
+        paste0("00 00 ",
+               formatC(emissions_start_time_days,
+                       width = 2, format = "d",
+                       flag = "0"),
+               " 00 00")  
     }
     
-    # Work with case where 'emissions_start_time_type' is a starting time with the model
+    # Work with case where 'emissions_start_time_type'
+    # is a starting time with the model
     if (exists("emissions_start_time_type") &
-          emissions_start_time_type ==  "start_time_with_run"){
+        emissions_start_time_type == "start_time_with_run"){
       
-      # Get the numeric part of the supplied string, which is the number of hours
-      emissions_start_time_char <- paste("00 00 00 00 00",sep = '')
+      # Get the numeric part of the supplied string,
+      # which is the number of hours
+      emissions_start_time_char <-
+        paste0("00 00 00 00 00")
     }
     
     # Ask to assign value to 'emissions_duration'    
     emissions_duration <-
-      readline(paste(cat("Provide either a time duration in hours", "\n",
-                         "or days, or, provide an ending date and time.", "\n",
-                         "Use the formats # h, # d, or YYYY-MM-DD HH:MM", "\n",
-                         sep = '')))
+      readline(
+        paste(
+          cat(
+            "Provide either a time duration in hours", "\n",
+            "or days, or, provide an ending date and time.", "\n",
+            "Use the formats # h, # d, or YYYY-MM-DD HH:MM", "\n",
+            sep = "")))
     
-    # Determine the format of the supplied input and divide into types to resolve into hours
+    # Determine the format of the supplied input and
+    # divide into types to resolve into hours
     # Validate the input of the date and time string
     if (grepl("[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-9][0-9]",
-              emissions_duration, perl = TRUE) == TRUE){
+              emissions_duration, perl = TRUE)){
       emissions_duration_type <- "ending_date_time"
-    } else if (grepl("^[0-9]+[ ]?h$", emissions_duration, perl = TRUE) == TRUE){
+    } else if (grepl("^[0-9]+[ ]?h$", emissions_duration, perl = TRUE)){
       emissions_duration_type <- "duration_hours"
-    } else if (grepl("^[0-9]+[ ]?d$", emissions_duration, perl = TRUE) == TRUE){
+    } else if (grepl("^[0-9]+[ ]?d$", emissions_duration, perl = TRUE)){
       emissions_duration_type <- "duration_days"
     }
     
     # Work with case where 'emissions_duration_type' is an end date and time
     if (exists("emissions_duration_type") &
-          emissions_duration_type ==  "ending_date_time"){
+        emissions_duration_type ==  "ending_date_time"){
       
       # Determine whether the supplied date/time string yields a valid POSIXct date/time
       if (class(ymd_hms(paste0(emissions_duration, ":00")))[1] == "POSIXct"){
@@ -859,78 +966,101 @@ dispersion_preset_add <- function(type,
       if (emissions_duration_valid == TRUE){
         
         # Get ending date/time as a POSIXct date/time object
-        emissions_end_POSIXct <- ymd_hms(paste0(emissions_duration, ":00"))
+        emissions_end_POSIXct <-
+          ymd_hms(paste0(emissions_duration, ":00"))
         
         # Get starting date/time as a POSIXct date/time object
-        emissions_start_POSIXct <- ymd_hms(paste0(emissions_start_time, ":00"))
+        emissions_start_POSIXct <-
+          ymd_hms(paste0(emissions_start_time, ":00"))
         
-        # Get the difference in days between the starting and ending times
-        # Creates a 'difftime' object
-        emissions_duration_diff_days <- emissions_end_POSIXct - emissions_start_POSIXct
+        # Get the difference in days between the
+        # starting and ending times; creates a
+        # 'difftime' object
+        emissions_duration_diff_days <-
+          emissions_end_POSIXct - emissions_start_POSIXct
         
         # Get the difference in hours
-        emissions_duration_diff_hours <- emissions_duration_diff[[1]] * 24
+        emissions_duration_diff_hours <-
+          emissions_duration_diff[[1]] * 24
         
-        emissions_duration <- emissions_duration_diff_hours
+        emissions_duration <-
+          emissions_duration_diff_hours
       }
     }
     
-    # Work with case where 'emissions_duration_type' is duration in hours
+    # Work with case where 'emissions_duration_type'
+    # is a duration in hours
     if (exists("emissions_duration_type") &
-          emissions_duration_type ==  "duration_hours"){
+        emissions_duration_type == "duration_hours"){
       
-      # Get the numeric part of the supplied string, which is the number of hours
-      emissions_duration <- as.numeric(gsub("^([0-9]+)[ ]?h$", "\\1",
-                                            emissions_duration, perl = TRUE))
+      # Get the numeric part of the supplied string,
+      # which is the number of hours
+      emissions_duration <- 
+        as.numeric(gsub("^([0-9]+)[ ]?h$", "\\1",
+                        emissions_duration,
+                        perl = TRUE))
     }
     
-    # Work with case where 'emissions_duration_type' is a duration in days
+    # Work with case where 'emissions_duration_type'
+    # is a duration in days
     if (exists("emissions_duration_type") &
-          emissions_duration_type ==  "duration_days"){
+        emissions_duration_type ==  "duration_days"){
       
-      # Get the numeric part of the supplied string, which is the number of hours
-      emissions_duration <- as.numeric(gsub("^([0-9]+)[ ]?d$", "\\1",
-                                            emissions_duration, perl = TRUE)) * 24
+      # Get the numeric part of the supplied string,
+      # which is the number of hours
+      emissions_duration <- 
+        as.numeric(gsub("^([0-9]+)[ ]?d$", "\\1",
+                        emissions_duration,
+                        perl = TRUE)) * 24
     }
     
     # Ask to assign value to 'emissions_rate'    
     emissions_rate <-
-      round(as.numeric(readline(paste(cat("Provide the rate of emissions in mass units per hour.",
-                                          "\n",
-                                          sep = '')))), digits = 1)
+      round(
+        as.numeric(
+          readline(
+            paste(
+              cat(
+                "Provide the rate of emissions in mass units per hour.",
+                "\n",
+                sep = "")))), digits = 1)
     
-    # Provide a summary of the chosen options and ask if the chosen options are acceptable
+    # Provide a summary of the chosen options and ask
+    # if the chosen options are acceptable
     acceptable_emissions <-
-      readline(paste(cat("The plan. Adding emissions source: ", emissions_name, "\n",
-                         "----------------------------------", "\n", 
-                         "Start Date/Time: ", ifelse(emissions_start_time == "",
-                                                     paste("[start of model run]"),
-                                                     emissions_start_time), "\n",
-                         "       Duration: ", emissions_duration, " h", "\n",
-                         " Emissions Rate: ", emissions_rate, " (mass units)/h", "\n",
-                         "----------------------------------", "\n",
-                         "This is what will be set. Okay? [y/n]: ",
-                         sep = '')))
+      readline(
+        paste(
+          cat(
+            "The plan. Adding emissions source: ", emissions_name, "\n",
+            "----------------------------------", "\n", 
+            "Start Date/Time: ", ifelse(emissions_start_time == "",
+                                        paste("[start of model run]"),
+                                        emissions_start_time), "\n",
+            "       Duration: ", emissions_duration, " h", "\n",
+            " Emissions Rate: ", emissions_rate, " (mass units)/h", "\n",
+            "----------------------------------", "\n",
+            "This is what will be set. Okay? [y/n]: ",
+            sep = "")))
     
-    # If acceptable, add the emissions source and the options to the list of emissions
-    # sources in the project folder
+    # If acceptable, add the emissions source and the
+    # options to the list of emissions sources in the
+    # project folder
     if (acceptable_emissions == "y"){
       cat(paste0("--- Emissions source named: ", emissions_name,
-                ", generated on ", Sys.time()), "\n",
+                 ", generated on ", Sys.time()), "\n",
           gsub("^(....).*","\\1", emissions_name), "\n",
           emissions_rate, "\n",
           emissions_duration, "\n",
           emissions_start_time_char, "\n",
           paste("---"), "\n",
           file = paste0(path_wd, "emissions"), append = TRUE,
-          sep = '')
+          sep = "")
     }
-    
-    # Close emissions block
   }
   
-  # Define grids (fixed location, size/spacing, rate of sampling, sampling times)
-  if (interactive == TRUE & type == 'grids'){
+  # Define grids (fixed location, size/spacing, rate of
+  # sampling, sampling times)
+  if (interactive == TRUE & type == "grids"){
     
     # Ask for the name of the grid
     grid_name <-
@@ -938,19 +1068,26 @@ dispersion_preset_add <- function(type,
     
     # Ask to assign value to 'grid_center'
     grid_center <-
-      readline(paste(cat("Provide the center of the grid.", "\n",
-                         "Units: degrees. Default: 49.289328, -123.117665.", "\n",
-                         "Provide the latitude and longitude (<ENTER> for default values): ",
-                         sep = '')))
+      readline(
+        paste(
+          cat(
+            "Provide the center of the grid.", "\n",
+            "Units: degrees. Default: 49.289328, -123.117665.", "\n",
+            "Provide the latitude and longitude (<ENTER> for default values): ",
+            sep = "")))
     
-    # Assign default values of 49.289328 and -123.117665 if <ENTER> pressed
+    # Assign default values of 49.289328 and
+    # -123.117665 if <ENTER> pressed
     if (grid_center == "") grid_center <- "49.289328, -123.117665"
     
     # Get input string into a vector object of length 2
-    grid_center_coords <- unlist(strsplit(grid_center, "[, | |,]"))
-    grid_center_coords <- grid_center_coords[grid_center_coords != ""]
+    grid_center_coords <-
+      unlist(strsplit(grid_center, "[, | |,]"))
+    grid_center_coords <-
+      grid_center_coords[grid_center_coords != ""]
     
-    # Separate latitude and longitude into two separate numeric objects
+    # Separate latitude and longitude into two
+    # separate numeric objects
     grid_center_lat <- as.numeric(grid_center_coords[1])
     grid_center_lon <- as.numeric(grid_center_coords[2])
     
@@ -960,28 +1097,40 @@ dispersion_preset_add <- function(type,
     # Check longitude value and validate
     if (grid_center_lon >= -180 & grid_center_lon <= 180) grid_center_lon_valid <- TRUE    
     
-    if (exists("grid_center_lat_valid") & grid_center_lat_valid == TRUE &
-          exists("grid_center_lon_valid") & grid_center_lon_valid == TRUE){
-      grid_center <- paste(grid_center_lat, grid_center_lon, sep = ' ')
-      grid_center_char <- paste0(grid_center_lat, ", ", grid_center_lon) 
+    if (exists("grid_center_lat_valid") &
+        grid_center_lat_valid == TRUE &
+        exists("grid_center_lon_valid") &
+        grid_center_lon_valid == TRUE){
+      grid_center <-
+        paste(grid_center_lat, grid_center_lon,
+              sep = " ")
+      grid_center_char <-
+        paste0(grid_center_lat, ", ", grid_center_lon) 
     }
     
     # Ask to assign value to 'grid_spacing'
     grid_spacing <-
-      readline(paste(cat("Provide the spacing of adjacent grid points in the x and y directions.",
-                         "\n",
-                         "Units: degrees. Default: 0.05, 0.05.", "\n",
-                         "Provide latitude and longitude intervals (<ENTER> for default values): ",
-                         sep = '')))
+      readline(
+        paste(
+          cat(
+            "Provide the spacing of adjacent grid points in the x and y directions.",
+            "\n",
+            "Units: degrees. Default: 0.05, 0.05.", "\n",
+            "Provide latitude and longitude intervals (<ENTER> for default values): ",
+            sep = "")))
     
-    # Assign default values of 0.05 and 0.05 if <ENTER> pressed
+    # Assign default values of 0.05 and 0.05 if
+    # <ENTER> pressed
     if (grid_spacing == "") grid_spacing <- "0.05, 0.05"
     
     # Get input string into a vector object of length 2
-    grid_spacing_values <- unlist(strsplit(grid_spacing, "[, | |,]"))
-    grid_spacing_values <- grid_spacing_values[grid_spacing_values != ""]
+    grid_spacing_values <-
+      unlist(strsplit(grid_spacing, "[, | |,]"))
+    grid_spacing_values <-
+      grid_spacing_values[grid_spacing_values != ""]
     
-    # Separate latitude and longitude into two separate numeric objects
+    # Separate latitude and longitude into two
+    # separate numeric objects
     grid_spacing_lat <- as.numeric(grid_spacing_values[1])
     grid_spacing_lon <- as.numeric(grid_spacing_values[2])
     
@@ -991,26 +1140,33 @@ dispersion_preset_add <- function(type,
     # Check longitude grid spacing value and validate
     if (grid_spacing_lon > 0) grid_spacing_lon_valid <- TRUE   
     
-    if (exists("grid_spacing_lat_valid") & grid_spacing_lat_valid == TRUE &
-          exists("grid_spacing_lon_valid") & grid_spacing_lon_valid == TRUE){
-      grid_spacing <- paste(grid_spacing_lat, grid_spacing_lon, sep = ' ')
+    if (exists("grid_spacing_lat_valid") &
+        grid_spacing_lat_valid == TRUE &
+        exists("grid_spacing_lon_valid") &
+        grid_spacing_lon_valid == TRUE){
+      grid_spacing <- paste(grid_spacing_lat, grid_spacing_lon, sep = " ")
       grid_spacing_char <- paste0(grid_spacing_lat, ", ", grid_spacing_lon)
     }
     
     # Ask to assign value to 'grid_span'
     grid_span <-
-      readline(paste(cat("Provide the total span of the grid in the x and y directions.",
-                         "\n",
-                         "Units: degrees. Default: 1.00, 1.00.", "\n",
-                         "Provide latitude and longitude values (<ENTER> for default values): ",
-                         sep = '')))
+      readline(
+        paste(
+          cat(
+            "Provide the total span of the grid in the x and y directions.",
+            "\n",
+            "Units: degrees. Default: 1.00, 1.00.", "\n",
+            "Provide latitude and longitude values (<ENTER> for default values): ",
+            sep = "")))
     
     # Assign default values of 1.00, 1.00 if <ENTER> pressed
     if (grid_span == "") grid_span <- "1.00, 1.00"
     
     # Get input string into a vector object of length 2
-    grid_span_values <- unlist(strsplit(grid_span, "[, | |,]"))
-    grid_span_values <- grid_span_values[grid_span_values != ""]
+    grid_span_values <-
+      unlist(strsplit(grid_span, "[, | |,]"))
+    grid_span_values <-
+      grid_span_values[grid_span_values != ""]
     
     # Separate latitude and longitude into two separate numeric objects
     grid_span_lat <- as.numeric(grid_span_values[1])
@@ -1022,8 +1178,10 @@ dispersion_preset_add <- function(type,
     # Check longitude grid span value and validate
     if (grid_span_lon > 0) grid_span_lon_valid <- TRUE 
     
-    if (exists("grid_span_lat_valid") & grid_span_lat_valid == TRUE &
-          exists("grid_span_lon_valid") & grid_span_lon_valid == TRUE){
+    if (exists("grid_span_lat_valid") &
+        grid_span_lat_valid == TRUE &
+        exists("grid_span_lon_valid") &
+        grid_span_lon_valid == TRUE){
       
       # Check to see that grid span in y direction is a multiple of its grid spacing value
       if (grid_span_lat %% grid_spacing_lat == 0) grid_span_lat_valid <- TRUE
@@ -1035,69 +1193,83 @@ dispersion_preset_add <- function(type,
       
       # If the span values pass the validity tests, assign string to the 'grid_span' object
       if (grid_span_lat_valid == TRUE &
-            grid_span_lon_valid == TRUE){
-        grid_span <- paste(grid_span_lat, grid_span_lon, sep = ' ')
-        grid_span_char <- paste0(grid_span_lat, ", ", grid_span_lon)
+          grid_span_lon_valid == TRUE){
+        grid_span <-
+          paste(grid_span_lat, grid_span_lon, sep = " ")
+        grid_span_char <-
+          paste0(grid_span_lat, ", ", grid_span_lon)
       } 
     }
     
-    # Automatically assign the location of the 'grids' folder
+    # Automatically assign the location of the
+    # 'grids' folder
     grid_folder <- path_wd
     
     # Automatically assign the output grid file name
     grid_filename <- grid_name
     
-    # Ask to assign number of vertical levels 'grid_number_vertical'
+    # Ask to assign number of vertical levels
+    # 'grid_number_vertical'
     grid_number_vertical <-
-      readline(paste(cat("Provide the number of vertical levels in the concentration grid.",
-                         "\n",
-                         "This number includes the deposition layer (with height = 0 m AGL)",
-                         "\n",
-                         "Default: 1.", "\n",
-                         "Provide a postive integer (<ENTER> for default value): ",
-                         sep = '')))
+      readline(
+        paste(
+          cat(
+            "Provide the number of vertical levels in the concentration grid.",
+            "\n",
+            "This number includes the deposition layer (with height = 0 m AGL)",
+            "\n",
+            "Default: 1.", "\n",
+            "Provide a postive integer (<ENTER> for default value): ",
+            sep = "")))
     
     if (grid_number_vertical == "") grid_number_vertical <- 1
     if (grid_number_vertical >= 0) grid_number_vertical <-
       round(as.numeric(grid_number_vertical), digits = 0)
     
     # Assign as string to 'grid_number_vertical'
-    grid_number_vertical_string <- as.character(grid_number_vertical)
+    grid_number_vertical_string <-
+      as.character(grid_number_vertical)
     
     # Ask to assign the height of each vertical level
     grid_heights <-
-      readline(paste(cat(if(grid_number_vertical == 1){
-        paste("For the single level specified, does that refer to the",
-              "ground (deposition layer) or some height ")
-      },
-      if(grid_number_vertical == 1) paste("\n"),
-      if(grid_number_vertical == 1) paste("above the ground?"),
-      if(grid_number_vertical == 1) paste("\n"),
-      if(grid_number_vertical == 1){
-        paste("Press <ENTER> to assign level to the ground layer, or,",
-              " provide a height in meters above ground level: ",
-              sep = '')
-      },
-      if(grid_number_vertical > 1){
-        paste0("For the ", grid_number_vertical, " levels specified, provide ",
-              "a list of heights in meters above ground level: ")
-      },
-      sep = '')))
+      readline(
+        paste(
+          cat(
+            if(grid_number_vertical == 1){
+              paste("For the single level specified, does that refer to the",
+                    "ground (deposition layer) or some height ")
+            },
+            if(grid_number_vertical == 1) paste("\n"),
+            if(grid_number_vertical == 1) paste("above the ground?"),
+            if(grid_number_vertical == 1) paste("\n"),
+            if(grid_number_vertical == 1){
+              paste0("Press <ENTER> to assign level to the ground layer, or,",
+                     " provide a height in meters above ground level: ")
+            },
+            if(grid_number_vertical > 1){
+              paste0("For the ", grid_number_vertical, " levels specified, provide ",
+                     "a list of heights in meters above ground level: ")
+            },
+            sep = "")))
     
-    if (grid_number_vertical == 1 & grid_heights == '') grid_heights <- 0
-    if (grid_number_vertical > 1 & grid_heights == ''){
+    if (grid_number_vertical == 1 &
+        grid_heights == "") grid_heights <- 0
+    if (grid_number_vertical > 1 &
+        grid_heights == ""){
       grid_heights <- seq(0, 200 * grid_number_vertical, by = 200)
     }
     
     # Get input string into a vector object
     if (grid_heights != 0){
-      grid_heights_values <- unlist(strsplit(grid_heights, "[, | |,]"))
-      grid_heights_values <- as.numeric(grid_heights_values[grid_heights_values != ""])
+      grid_heights_values <-
+        unlist(strsplit(grid_heights, "[, | |,]"))
+      grid_heights_values <-
+        as.numeric(grid_heights_values[grid_heights_values != ""])
     }
     
     # Verify that the values are in ascending order; sort ascending if not sorted
     if (grid_heights != 0){
-      if (is.unsorted(grid_heights_values) == TRUE){
+      if (is.unsorted(grid_heights_values)){
         grid_heights_values <- sort(grid_heights_values)
       }
     }
@@ -1111,7 +1283,8 @@ dispersion_preset_add <- function(type,
     # object
     if (grid_heights != 0){
       if (!exists("grid_heights_values_duplicated")){
-        grid_heights_string <- as.character(grid_heights_values)
+        grid_heights_string <-
+          as.character(grid_heights_values)
       } 
     }
     
@@ -1123,14 +1296,14 @@ dispersion_preset_add <- function(type,
             grid_heights_string_list_comma_sep <- NULL
             grid_heights_string_list_space_sep <- NULL
           }
-          grid_heights_string_list_comma_sep <- paste(grid_heights_string_list_comma_sep,
-                                                      ifelse(i == 1, "", ", "),
-                                                      grid_heights_string[i],
-                                                      sep = '')
-          grid_heights_string_list_space_sep <- paste(grid_heights_string_list_space_sep,
-                                                      ifelse(i == 1, "", " "),
-                                                      grid_heights_string[i],
-                                                      sep = '')
+          grid_heights_string_list_comma_sep <-
+            paste0(grid_heights_string_list_comma_sep,
+                   ifelse(i == 1, "", ", "),
+                   grid_heights_string[i])
+          grid_heights_string_list_space_sep <-
+            paste0(grid_heights_string_list_space_sep,
+                   ifelse(i == 1, "", " "),
+                   grid_heights_string[i])
         }
       }
     }
@@ -1142,30 +1315,33 @@ dispersion_preset_add <- function(type,
     
     # Ask to assign value to 'grid_start_time'
     grid_start_time <-
-      readline(paste(cat("Provide a date and time for the start of grid sampling.",
-                         "\n",
-                         "Use the format YYYY-MM-DD HH:MM (<ENTER> for default value)",
-                         "\n",
-                         sep = '')))
+      readline(
+        paste(
+          cat(
+            "Provide a date and time for the start of grid sampling.",
+            "\n",
+            "Use the format YYYY-MM-DD HH:MM (<ENTER> for default value)",
+            "\n",
+            sep = "")))
     
     # Assign default starting date and time if <ENTER> pressed; this is the beginning
     # of the month prior (according to the current system date)
     if (grid_start_time == ""){
       grid_start_time <- unlist(strsplit(as.character(Sys.Date() %m-% months(1)), "-"))
       grid_start_time[3] <- "01"
-      grid_start_time <- paste(grid_start_time[1], "-",
-                               grid_start_time[2], "-",
-                               grid_start_time[3], " ",
-                               "00:00",
-                               sep = '')
+      grid_start_time <-
+        paste0(grid_start_time[1], "-",
+               grid_start_time[2], "-",
+               grid_start_time[3], " ",
+               "00:00")
     }
     
     # Validate the input of the date and time string
     if (grepl("[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-9][0-9]",
-              grid_start_time, perl = TRUE) == TRUE) {
+              grid_start_time, perl = TRUE)){
       grid_start_time_valid_1 <- TRUE
     } else if (grepl("[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-9][0-9]",
-                     grid_start_time, perl = TRUE) == FALSE) {
+                     grid_start_time, perl = TRUE) == FALSE){
       grid_start_time_valid_1 <- FALSE
     }
     
@@ -1178,66 +1354,89 @@ dispersion_preset_add <- function(type,
     
     # If the entered date passes both validation tests, assign it to 'grid_start_time_char'
     if (grid_start_time_valid_1 == TRUE &
-          grid_start_time_valid_2 == TRUE ) {
-      grid_start_time_char <- as.character(gsub("-", " ", grid_start_time))
-      grid_start_time_char <- as.character(gsub(":", " ", grid_start_time_char))
-      grid_start_time_char <- as.character(gsub("^[0-9][0-9]", "", grid_start_time_char))
+        grid_start_time_valid_2 == TRUE ) {
+      grid_start_time_char <-
+        as.character(gsub("-", " ",
+                          grid_start_time))
+      grid_start_time_char <-
+        as.character(gsub(":", " ",
+                          grid_start_time_char))
+      grid_start_time_char <-
+        as.character(gsub("^[0-9][0-9]", "",
+                          grid_start_time_char))
     }
     
     # Ask to assign value to 'grid_end_time'
     grid_end_time <-
-      readline(paste(cat("Provide a date and time for the end of grid sampling.",
-                         "\n",
-                         "Use the format YYYY-MM-DD HH:MM (<ENTER> for default value)",
-                         "\n",
-                         sep = '')))
+      readline(
+        paste(
+          cat(
+            "Provide a date and time for the end of grid sampling.",
+            "\n",
+            "Use the format YYYY-MM-DD HH:MM (<ENTER> for default value)",
+            "\n",
+            sep = "")))
     
-    # Assign default ending date and time if <ENTER> pressed; this is the second day
-    # of the month prior (according to the current system date)
+    # Assign default ending date and time if <ENTER>
+    # pressed; this is the second day of the month
+    # prior (according to the current system date)
     if (grid_end_time == ""){
-      grid_end_time <- unlist(strsplit(as.character(Sys.Date() %m-% months(1)), "-"))
+      grid_end_time <-
+        unlist(strsplit(as.character(Sys.Date() %m-% months(1)), "-"))
       grid_end_time[3] <- "02"
-      grid_end_time <- paste(grid_end_time[1], "-",
-                             grid_end_time[2], "-",
-                             grid_end_time[3], " ",
-                             "00:00",
-                             sep = '')
+      grid_end_time <- 
+        paste0(grid_end_time[1], "-",
+               grid_end_time[2], "-",
+               grid_end_time[3], " ",
+               "00:00")
     }
     
     # Validate the input of the date and time string
     if (grepl("[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-9][0-9]",
-              grid_end_time, perl = TRUE) == TRUE) {
+              grid_end_time, perl = TRUE)){
       grid_end_time_valid_1 <- TRUE
     } else if (grepl("[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-9][0-9]",
-                     grid_end_time, perl = TRUE) == FALSE) {
+                     grid_end_time, perl = TRUE) == FALSE){
       grid_end_time_valid_1 <- FALSE
     }
     
-    # Determine whether the supplied date/time string yields a valid POSIXct date/time
+    # Determine whether the supplied date/time string
+    # yields a valid POSIXct date/time
     if (class(ymd_hms(paste0(grid_start_time, ":00")))[1] == "POSIXct"){
       grid_end_time_valid_2 <- TRUE
     } else if (is.na(ymd_hms(paste0(grid_start_time, ":00")))){
       grid_end_time_valid_2 <- FALSE
     }
     
-    # If the entered date passes both validation tests, assign it to 'grid_end_time_char'
+    # If the entered date passes both validation tests,
+    # assign it to 'grid_end_time_char'
     if (grid_end_time_valid_1 == TRUE &
-          grid_end_time_valid_2 == TRUE ) {
-      grid_end_time_char <- as.character(gsub("-", " ", grid_end_time))
-      grid_end_time_char <- as.character(gsub(":", " ", grid_end_time_char))
-      grid_end_time_char <- as.character(gsub("^[0-9][0-9]", "", grid_end_time_char))
+        grid_end_time_valid_2 == TRUE ) {
+      grid_end_time_char <-
+        as.character(gsub("-", " ",
+                          grid_end_time))
+      grid_end_time_char <-
+        as.character(gsub(":", " ",
+                          grid_end_time_char))
+      grid_end_time_char <-
+        as.character(gsub("^[0-9][0-9]", "",
+                          grid_end_time_char))
     }
     
     # Ask to assign value to 'sampling_interval_type'
     sampling_interval_type <-
-      readline(paste(cat("Provide the type of grid sampling to perform.",
-                         "\n",
-                         "Choices are: (1) averaging, (2) snapshot, or (3) maximum", "\n",
-                         "Press <ENTER> to assign the 'averaging' method", "\n",
-                         sep = '')))
+      readline(
+        paste(
+          cat(
+            "Provide the type of grid sampling to perform.",
+            "\n",
+            "Choices are: (1) averaging, (2) snapshot, or (3) maximum", "\n",
+            "Press <ENTER> to assign the 'averaging' method", "\n",
+            sep = "")))
     
-    # Check user input and assign a numeric value correponding to:
-    # 0 - averaging, 1 - snapshot, 2 - maximum
+    # Check user input and assign a numeric value
+    # corresponding to: 0 - averaging, 1 - snapshot,
+    # 2 - maximum
     if (sampling_interval_type == "") sampling_interval_type_no <- 0
     if (sampling_interval_type == "1") sampling_interval_type_no <- 0
     if (sampling_interval_type == "averaging") sampling_interval_type_no <- 0
@@ -1248,69 +1447,79 @@ dispersion_preset_add <- function(type,
     
     # Ask to assign value to 'sampling_interval_rate'
     sampling_interval_rate <-
-      readline(paste(cat("Provide the grid sampling measurement frequency.",
-                         "\n",
-                         "Use the format HH:MM", "\n",
-                         "Press <ENTER> to assign a 1-hour measurement frequency", "\n",
-                         sep = '')))
+      readline(
+        paste(
+          cat(
+            "Provide the grid sampling measurement frequency.",
+            "\n",
+            "Use the format HH:MM", "\n",
+            "Press <ENTER> to assign a 1-hour measurement frequency", "\n",
+            sep = "")))
     
     # Validate the input of the time string
-    if (grepl("[0-2][0-9]:[0-9][0-9]", sampling_interval_rate, perl = TRUE) == TRUE) {
+    if (grepl("[0-2][0-9]:[0-9][0-9]",
+              sampling_interval_rate, perl = TRUE)){
       sampling_interval_rate_valid <- TRUE
-    } else if (grepl("[0-2][0-9]:[0-9][0-9]", sampling_interval_rate, perl = TRUE) == FALSE) {
+    } else if (grepl("[0-2][0-9]:[0-9][0-9]",
+                     sampling_interval_rate,
+                     perl = TRUE) == FALSE){
       sampling_interval_rate_valid <- FALSE
     }
     
-    # If the entered date passes the validation test, assign it to 'sampling_interval_rate_char'
+    # If the entered date passes the validation test,
+    # assign it to 'sampling_interval_rate_char'
     if (sampling_interval_rate_valid == TRUE) {
-      sampling_interval_rate_char <- as.character(gsub(":", " ", sampling_interval_rate))
+      sampling_interval_rate_char <-
+        as.character(gsub(":", " ",
+                          sampling_interval_rate))
     }
     
-    # If the default value of 1 hour was chosen by pressing <ENTER>, assign a value
-    # of "01 00" to 'sampling_interval_rate_char'
+    # If the default value of 1 hour was chosen by
+    # pressing <ENTER>, assign a value of "01 00" to
+    # 'sampling_interval_rate_char'
     if (sampling_interval_rate == "") {
       sampling_interval_rate_char <- "01 00"
     }
     
-    # Provide a summary of the chosen options and ask if the chosen options are acceptable
+    # Provide a summary of the chosen options and ask
+    # if the chosen options are acceptable
     acceptable_grid <-
-      readline(paste(cat(
-        "The plan. Adding grid: ", grid_name, "\n",
-        "----------------------------------", "\n", 
-        "            Grid Center: ", 
-        paste(unlist(strsplit(grid_center, " "))[1], "º, ",
-              unlist(strsplit(grid_center, " "))[2], "º",
-              sep = ''), "\n",
-        "           Grid Spacing: ",
-        paste(unlist(strsplit(grid_spacing, " "))[1], "º, ",
-              unlist(strsplit(grid_spacing, " "))[2], "º",
-              sep = ''), "\n",
-        "              Grid Span: ",
-        paste(unlist(strsplit(grid_span, " "))[1], "º, ",
-              unlist(strsplit(grid_span, " "))[2], "º",
-              sep = ''), "\n",
-        " No. of Vertical Levels: ", grid_number_vertical, "\n",
-        "           Grid Heights: ", grid_heights_string_list_comma_sep, " m", "\n",
-        "      Start of Sampling: ", grid_start_time, "\n",
-        "        End of Sampling: ", grid_end_time, "\n",
-        "        Sampling Method: ", sampling_interval_type_no, "\n",
-        "     Sampling Frequency: ",
-        as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[1],
-        " h",
-        ifelse(as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[2]
-               == 0, paste(""), paste0(
-                 as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[2],
-                 " m")),
-        "\n",
-        "----------------------------------", "\n",
-        "This is what will be set. Okay? [y/n]: ",
-        sep = '')))
+      readline(
+        paste(
+          cat(
+            "The plan. Adding grid: ", grid_name, "\n",
+            "----------------------------------", "\n", 
+            "            Grid Center: ", 
+            paste0(unlist(strsplit(grid_center, " "))[1], "º, ",
+                   unlist(strsplit(grid_center, " "))[2], "º"), "\n",
+            "           Grid Spacing: ",
+            paste0(unlist(strsplit(grid_spacing, " "))[1], "º, ",
+                   unlist(strsplit(grid_spacing, " "))[2], "º"), "\n",
+            "              Grid Span: ",
+            paste0(unlist(strsplit(grid_span, " "))[1], "º, ",
+                   unlist(strsplit(grid_span, " "))[2], "º"), "\n",
+            " No. of Vertical Levels: ", grid_number_vertical, "\n",
+            "           Grid Heights: ", grid_heights_string_list_comma_sep, " m", "\n",
+            "      Start of Sampling: ", grid_start_time, "\n",
+            "        End of Sampling: ", grid_end_time, "\n",
+            "        Sampling Method: ", sampling_interval_type_no, "\n",
+            "     Sampling Frequency: ",
+            as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[1],
+            " h",
+            ifelse(as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[2]
+                   == 0, paste(""), paste0(
+                     as.numeric(unlist(strsplit(sampling_interval_rate_char, " ")))[2],
+                     " m")),
+            "\n",
+            "----------------------------------", "\n",
+            "This is what will be set. Okay? [y/n]: ",
+            sep = "")))
     
     # If acceptable, add the grid and the options to the list of grids in the
     # project folder
     if (acceptable_grid == "y"){
       cat(paste0("--- Grid named: ", grid_name,
-                ", generated on ", Sys.time()), "\n",
+                 ", generated on ", Sys.time()), "\n",
           grid_center, "\n",
           grid_spacing, "\n",
           grid_span, "\n",
@@ -1323,11 +1532,7 @@ dispersion_preset_add <- function(type,
           sampling_interval_type_no, " ", sampling_interval_rate_char, "\n",
           paste("---"), "\n",
           file = paste0(path_wd, "grids"), append = TRUE,
-          sep = '')
+          sep = "")
     }
-    
-    # Close grids block
   }
-  
-  # Close function
 }
