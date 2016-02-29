@@ -32,7 +32,8 @@ volume of air.
 }
 \examples{
 \dontrun{
-# Get a statistical summary of particles available in region every hour
+# Get a statistical summary of particles
+# available in a region every hour
 disp_stats_particle_through_region(
   dispersion_df = disp_output,
   stats = "frequencies",
