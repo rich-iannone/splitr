@@ -1,19 +1,24 @@
 #' Create config file for dispersion runs
-#' @description This function creates a default SETUP.CFG configuration file and places it in the user-specified 'working' folder. This file must be located in the working directory before any HYSPLIT dispersion models can be run.
-#' @param path_wd a full path should be provided for the HYSPLIT working directory.
+#' @description This function creates a default
+#' SETUP.CFG configuration file and places it in the
+#' user-specified 'working' folder. This file must be
+#' located in the working directory before any HYSPLIT
+#' dispersion models can be run.
+#' @param path_wd a full path should be provided for
+#' the HYSPLIT working directory.
 #' @export hysplit_dispersion_config
 #' @examples
 #' \dontrun{
 #' # Create a default SETUP.CFG file for dispersion runs
-#' hysplit_dispersion_config(path_wd = "C://hysplit//working//")
+#' hysplit_dispersion_config(
+#'   path_wd = "C://hysplit//working//")
 #' }
 
 hysplit_dispersion_config <- function(path_wd){
   
-  # Create default configuration file for dispersion runs and place it in the
-  # working directory
-  
-  # Create SETUP.CFG file and place in working directory
+  # Create default `SETUP.CFG` configuration file for
+  # dispersion runs and place it in the working
+  # directory
   cat(" &SETUP", " tratio = 0.75,", " initd = 0,", " kpuff = 0,", " khmax = 9999,",
       " kmixd = 0,", " kmix0 = 250,", " kzmix = 0,", " kdef = 0,", " kbls = 1,",
       " kblt = 2,", " conage = 48,", " numpar = 2500,", " qcycle = 0.0,", " efile = '',",
@@ -24,7 +29,8 @@ hysplit_dispersion_config <- function(path_wd){
       " frhs = 1.0,", " frvs = 0.01,", " frts = 0.10,", " frhmax = 3.0,", " splitf = 1.0,",
       " /", sep = "\n", file = paste0(path_wd, "SETUP.CFG"))
   
-  # Create ASCDATA.CFG file and place in working directory
+  # Create `ASCDATA.CFG` file and place in the 
+  # working directory
   cat("-90.0  -180.0  lat/lon of lower left corner (last record in file)",
       "1.0  1.0	lat/lon spacing in degrees between data points",
       "180  360	lat/lon number of data points",
@@ -32,5 +38,4 @@ hysplit_dispersion_config <- function(path_wd){
       "0.2  	default roughness length (meters)",
       "'.'  directory location of data files",
       sep = "\n", file = paste0(path_wd, "ASCDATA.CFG"))
-  
 }
