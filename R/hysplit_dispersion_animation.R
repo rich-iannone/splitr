@@ -1,29 +1,46 @@
-#' Create an animated movie from HYSPLIT dispersion model output
-#' @description Create a movie file of dispersed particles from a dispersion data frame
-#' @param dispersion_df specification of hours of dispersion data to plot.
-#' @param df_folder_path absolute path of the folder containing a dispersion data frame.
-#' @param start_lat_deg the starting latitude (in decimal degrees) for the model run(s).
-#' @param start_long_deg the starting longitude (in decimal degrees) for the model run(s).
-#' @param start_height_m_AGL the starting height (in meters above ground level) for the model run(s).
-#' @param write_particle_CSV an option to write the subhourly particle dispersion data to a CSV file.
-#' @param map_type selection provider of base maps for plotting. Choices are 'osm' (Open Street Map) and 'stamen' (Stamen Maps).
-#' @param frame_rate the desired frame rate of the generated MP4 movie file.
-#' @param movie_output_name the desired filename for the generate MP4 movie.
-#' @param IM_exec_path an absolute system path for the ImageMagick 'convert' command.
-#' @param path_output_files a full path for a location that the dispersion output files were written.
+#' Create an animated movie from HYSPLIT dispersion
+#' model output
+#' @description Create a movie file of dispersed
+#' particles from a dispersion data frame
+#' @param dispersion_df specification of hours of
+#' dispersion data to plot.
+#' @param df_folder_path absolute path of the folder
+#' containing a dispersion data frame.
+#' @param start_lat_deg the starting latitude (in
+#' decimal degrees) for the model run(s).
+#' @param start_long_deg the starting longitude (in
+#' decimal degrees) for the model run(s).
+#' @param start_height_m_AGL the starting height (in
+#' meters above ground level) for the model run(s).
+#' @param write_particle_CSV an option to write the
+#' subhourly particle dispersion data to a CSV file.
+#' @param map_type selection provider of base maps for
+#' plotting. Choices are 'osm' (Open Street Map) and
+#' 'stamen' (Stamen Maps).
+#' @param frame_rate the desired frame rate of the
+#' generated MP4 movie file.
+#' @param movie_output_name the desired filename for
+#' the generated MP4 movie.
+#' @param IM_exec_path an absolute system path for the
+#' ImageMagick 'convert' command.
+#' @param path_output_files a full path for a location
+#' that the dispersion output files were written.
+#' @import labeling
 #' @export hysplit_dispersion_animation
 #' @examples
 #' \dontrun{
-#' # Create an MP4 movie from a data frame returned by the 'hysplit_dispersion' function
-#' hysplit_dispersion_animation(dispersion_df = disp.df,
-#'                              start_lat_deg = 42.83752,
-#'                              start_long_deg = -80.30364,
-#'                              start_height_m_AGL = 15,
-#'                              write_particle_CSV = TRUE,
-#'                              frame_rate = 30,
-#'                              movie_output_name = "dispersion-movie",
-#'                              IM_exec_path = "/opt/local/bin/convert",
-#'                              path_output_files = "~/Documents/SplitR/Output/Movies/"
+#' # Create an MP4 movie from a data frame returned
+#' # by the 'hysplit_dispersion' function
+#' hysplit_dispersion_animation(
+#'   dispersion_df = disp.df,
+#'   start_lat_deg = 42.83752,
+#'   start_long_deg = -80.30364,
+#'   start_height_m_AGL = 15,
+#'   write_particle_CSV = TRUE,
+#'   frame_rate = 30,
+#'   movie_output_name = "dispersion-movie",
+#'   IM_exec_path = "/opt/local/bin/convert",
+#'   path_output_files = "~/Documents/SplitR/Output/Movies/"
 #'}
 
 hysplit_dispersion_animation <- function(dispersion_df = NULL,
