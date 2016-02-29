@@ -80,14 +80,10 @@ hysplit_forecast_trajectory <- function(start_lat_deg,
   #   path_wd <- "~/Documents/SplitR/Working/"
   #   path_executable <- "~/Documents/SplitR/Exec/"
   
-  # Define package requirements
-  require(lubridate)
-  
   # Set number of starting locations to 1 for this function
   no_starting_locations <- 1
   
   # Obtain the appropriate forecast met files, depending on user selection
-  
   if (met_type == "nam"){
     
     # If the most recent NAM forecast met file isn't already available, get the file
