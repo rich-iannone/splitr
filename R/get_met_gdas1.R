@@ -1,18 +1,26 @@
 #' Get GDAS1 meteorology data files
-#' @description This function downloads GDAS1 meteorology data files from the NOAA FTP server and saves them to a specified folder. Files can be downloaded either by specifying a list of filenames (in the form of "RP[YYYY][MM].gbl") or through bulk download of a year of files.
-#' @param files a vector list of exact filenames for the GDAS1 files.
-#' @param years a vector list of years for which GDAS1 files are to be obtained via FTP.
-#' @param months a vector list of months for which GDAS1 files are to be obtained via FTP. 
-#' @param path_met_files a full path should be provided for the location of the meteorological data files; downloaded files will be saved in this location.
+#' @description This function downloads GDAS1
+#' meteorology data files from the NOAA FTP server and
+#' saves them to a specified folder. Files can be
+#' downloaded either by specifying a list of filenames
+#' (in the form of "RP[YYYY][MM].gbl") or through bulk
+#' download of a year of files.
+#' @param files a vector list of exact filenames for
+#' the GDAS1 files.
+#' @param years a vector list of years for which GDAS1
+#' files are to be obtained via FTP.
+#' @param months a vector list of months for which 
+#' GDAS1 files are to be obtained via FTP. 
+#' @param path_met_files a full path should be provided
+#' for the location of the meteorological data files;
+#' downloaded files will be saved in this location.
+#' @import RCurl
 #' @export get_met_gdas1
 
 get_met_gdas1 <- function(files = NULL,
                           years = NULL,
                           months = NULL,
                           path_met_files){
-  
-  # Add require statements
-  require(RCurl) 
   
   # Download list of GDAS1 met files by name
   if (!is.null(files)){
