@@ -1,37 +1,107 @@
 #' Add dispersion preset information
-#' @description The function allows for the setting of presets specific to dispersion runs. Presets are effectively blocks of parameters that are stored on the disk. Having presets is useful because these groups of parameters can be called in different dispersion runs (and across projects) without having to specify dozens of parameters with every type of run. Furthermore, dispersion runs can utilize multiple presets of each type simply by calling the identifier for each preset (e.g., multiple predefined emissions locations can be added to a run or series of runs with a numeric vector). The presets are divided into three groups: 'emissions', 'grids', and 'species'. Each preset has a plaintext file that resides on disk of the same name (located in the SplitR folder). For removing presets from the associated files, the interactive function 'dispersion_preset_delete' can be used.
-#' @param type the type of preset to add. The three types are "emissions", "grids", and "species". Only a single type can be specified. Once specified, the function interactively asks for input on the parameters specific to each preset.
-#' @param interactive determines whether the function should run in an interactive mode, prompting the for input on which kinds of values to supply for each parameter.
-#' @param species_name a case sensitive name that identifies the species preset. The use of a name is useful since presets can be referenced by this name when using the 'dispersion_preset_list' function.
-#' @param particle_pdiam the particle diameter in units of µm.
-#' @param particle_density the particle density in units of g/cm3.
-#' @param particle_shape_factor the particle shape factor as a value between 0-1.
-#' @param ddep_velocity the dry deposition velocity in units of m/s.
-#' @param ddep_MW the molecular weight in units of g/mol.
+#' @description The function allows for the setting of
+#' presets specific to dispersion runs. Presets are
+#' effectively blocks of parameters that are stored on
+#' the disk. Having presets is useful because these
+#' groups of parameters can be called in different
+#' dispersion runs (and across projects) without having
+#' to specify dozens of parameters with every type of
+#' run. Furthermore, dispersion runs can utilize
+#' multiple presets of each type simply by calling the
+#' identifier for each preset (e.g., multiple
+#' predefined emissions locations can be added to a run
+#' or series of runs with a numeric vector). The
+#' presets are divided into three groups: 'emissions',
+#' 'grids', and 'species'. Each preset has a plaintext
+#' file that resides on disk of the same name (located
+#' in the SplitR folder). For removing presets from the
+#' associated files, the interactive function
+#' 'dispersion_preset_delete' can be used.
+#' @param type the type of preset to add. The three
+#' types are "emissions", "grids", and "species". Only
+#' a single type can be specified. Once specified, the
+#' function interactively asks for input on the
+#' parameters specific to each preset.
+#' @param interactive determines whether the function
+#' should run in an interactive mode, prompting the
+#' for input on which kinds of values to supply for
+#' each parameter.
+#' @param species_name a case sensitive name that
+#' identifies the species preset. The use of a name is
+#' useful since presets can be referenced by this name
+#' when using the 'dispersion_preset_list' function.
+#' @param particle_pdiam the particle diameter in
+#' units of µm.
+#' @param particle_density the particle density in
+#' units of g/cm3.
+#' @param particle_shape_factor the particle shape
+#' factor as a value between 0-1.
+#' @param ddep_velocity the dry deposition velocity in
+#' units of m/s.
+#' @param ddep_MW the molecular weight in units of
+#' g/mol.
 #' @param ddep_A_ratio the dry deposition A ratio.
 #' @param ddep_D_ratio the dry deposition D ratio.
-#' @param ddep_Henrys_Law_coeff the Henry's Law value associated with dry deposition.
-#' @param wdep_Henrys_Law_coeff the Henry's Law value associated with wet deposition.
-#' @param wdep_in_cloud_dep the in-cloud wet deposition rate in units of L/L.
-#' @param wdep_below_cloud_dep the below cloud wet deposition rate in units of 1/s.
-#' @param rad_decay the rate of radioactive decay, in units of days.
-#' @param pollutant_resuspension_factor the pollutant resuspension factor in units of 1/m.
-#' @param emissions_name a case sensitive name that identifies the emissions preset. The use of a name is useful since presets can be referenced by this name when using the 'dispersion_preset_list' function.
-#' @param emissions_rate the rate of emissions for the pollutant in mass units per hour.
-#' @param emissions_duration the duration of emissions in hours.
-#' @param emissions_start_time a string specifying the start of emissions in the format "YY MM DD HH MM".
-#' @param grid_name a case sensitive name that identifies the grid preset. The use of a name is useful since presets can be referenced by this name when using the 'dispersion_preset_list' function.
-#' @param grid_center the center of the grid, specified in a string containing latitude and longitude in decimal degrees.
-#' @param grid_spacing the spacing between adjacent grid points, specified in a string containing decimal degree units of latitude and longitude.
-#' @param grid_span the span of the grid, specified in a string containing decimal degree units of latitude and longitude.
-#' @param grid_folder the location for which the grid output files will be written.
-#' @param grid_filename the name of the output grid file for each dispersion model run. This is normally given a self-describing name, based on parameters for the model run.
-#' @param grid_number_vertical the number of vertical levels for the grid.
-#' @param grid_heights the heights assigned to each level, for which the total number of levels is given in the 'grid_number_vertical' argument.
-#' @param grid_start_time a string specifying the start of sampling emissions by the grid. Should be provided in the format "YY MM DD HH MM".
-#' @param grid_end_time a string specifying the end of sampling emissions by the grid. Should be provided in the format "YY MM DD HH MM".
-#' @param sampling_interval_type_rate a sting that specifies the type of sampling, and the rate by which sampling occurs ("HH MM").
-#' @param path_wd a full path should be provided for the HYSPLIT working directory since presets will reside in this folder.
+#' @param ddep_Henrys_Law_coeff the Henry's Law value
+#' associated with dry deposition.
+#' @param wdep_Henrys_Law_coeff the Henry's Law value
+#' associated with wet deposition.
+#' @param wdep_in_cloud_dep the in-cloud wet deposition
+#' rate in units of L/L.
+#' @param wdep_below_cloud_dep the below cloud wet
+#' deposition rate in units of 1/s.
+#' @param rad_decay the rate of radioactive decay, in
+#' units of days.
+#' @param pollutant_resuspension_factor the pollutant
+#' resuspension factor in units of 1/m.
+#' @param emissions_name a case sensitive name that
+#' identifies the emissions preset. The use of a name
+#' is useful since presets can be referenced by this
+#' name when using the 'dispersion_preset_list'
+#' function.
+#' @param emissions_rate the rate of emissions for the
+#' pollutant in mass units per hour.
+#' @param emissions_duration the duration of emissions
+#' in hours.
+#' @param emissions_start_time a string specifying the
+#' start of emissions in the format "YY MM DD HH MM".
+#' @param grid_name a case sensitive name that
+#' identifies the grid preset. The use of a name is
+#' useful since presets can be referenced by this name
+#' when using the 'dispersion_preset_list' function.
+#' @param grid_center the center of the grid, specified
+#' in a string containing latitude and longitude in
+#' decimal degrees.
+#' @param grid_spacing the spacing between adjacent
+#' grid points, specified in a string containing
+#' decimal degree units of latitude and longitude.
+#' @param grid_span the span of the grid, specified in
+#' a string containing decimal degree units of latitude
+#' and longitude.
+#' @param grid_folder the location for which the grid
+#' output files will be written.
+#' @param grid_filename the name of the output grid
+#' file for each dispersion model run. This is normally
+#' given a self-describing name, based on parameters
+#' for the model run.
+#' @param grid_number_vertical the number of vertical
+#' levels for the grid.
+#' @param grid_heights the heights assigned to each
+#' level, for which the total number of levels is given
+#' in the 'grid_number_vertical' argument.
+#' @param grid_start_time a string specifying the start
+#' of sampling emissions by the grid. Should be
+#' provided in the format "YY MM DD HH MM".
+#' @param grid_end_time a string specifying the end of
+#' sampling emissions by the grid. Should be provided
+#' in the format "YY MM DD HH MM".
+#' @param sampling_interval_type_rate a sting that
+#' specifies the type of sampling, and the rate by
+#' which sampling occurs ("HH MM").
+#' @param path_wd a full path should be provided for
+#' the HYSPLIT working directory since presets will
+#' reside in this folder.
+#' @import lubridate
 #' @export dispersion_preset_add
 #' @examples
 #' \dontrun{
@@ -39,22 +109,27 @@
 #' dispersion_preset_add("emissions")
 #' 
 #' # Add a default preset for a 'species' input
-#' dispersion_preset_add("species", interactive = FALSE,
-#'                       species_name = 'default')
+#' dispersion_preset_add(
+#'   "species",
+#'   interactive = FALSE,
+#'   species_name = 'default')
 #' 
 #' # Add a preset for a 'grids' input
-#' dispersion_preset_add("grids", interactive = FALSE,
-#'                       grid_name = "MainGrid",
-#'                       grid_center = "36.5 -122.4",
-#'                       grid_spacing = "0.05 0.05", 
-#'                       grid_span = "20 20",
-#'                       grid_number_vertical = 5,
-#'                       grid_heights = "0 200 400 800 1200",
-#'                       grid_start_time = "12 02 01 12 00", 
-#'                       grid_end_time = "12 02 08 12 00")
+#' dispersion_preset_add(
+#'   "grids",
+#'   interactive = FALSE,
+#'   grid_name = "MainGrid",
+#'   grid_center = "36.5 -122.4",
+#'   grid_spacing = "0.05 0.05", 
+#'   grid_span = "20 20",
+#'   grid_number_vertical = 5,
+#'   grid_heights = "0 200 400 800 1200",
+#'   grid_start_time = "12 02 01 12 00", 
+#'   grid_end_time = "12 02 08 12 00")
 #'}
 
-dispersion_preset_add <- function(type, interactive = TRUE,
+dispersion_preset_add <- function(type,
+                                  interactive = TRUE,
                                   species_name = NULL,
                                   particle_pdiam = NULL,
                                   particle_density = NULL,
