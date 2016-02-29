@@ -9,28 +9,38 @@ hysplit_dispersion_plot(hours = "all", dispersion_df = NULL,
   path_output_files = NULL)
 }
 \arguments{
-\item{hours}{specification of hours of dispersion data to plot.}
+\item{hours}{specification of hours of dispersion
+data to plot.}
 
-\item{dispersion_df}{optionally specify a data frame with dispersion data as an input.}
+\item{dispersion_df}{optionally specify a data frame
+with dispersion data as an input.}
 
-\item{df_folder_path}{absolute path of the folder containing a dispersion data frame.}
+\item{df_folder_path}{absolute path of the folder
+containing a dispersion data frame.}
 
-\item{map_type}{selection provider of base maps for plotting. Choices are 'osm' (Open Street Map) and 'stamen' (Stamen Maps).}
+\item{map_type}{selection provider of base maps for
+plotting. Choices are 'osm' (Open Street Map) and
+'stamen' (Stamen Maps).}
 
-\item{map_output_name}{a partial identifier prepended to the output map files.}
+\item{map_output_name}{a partial identifier
+prepended to the output map files.}
 
-\item{path_output_files}{a full path for a location that the dispersion output files were written.}
+\item{path_output_files}{a full path for a location
+that the dispersion output files were written.}
 }
 \description{
-The function plots hourly outputs of dispersed particles onto maps.
+The function plots hourly outputs of
+dispersed particles onto maps.
 }
 \examples{
 \dontrun{
-# Make a set of hourly plots from a dispersion data frame
-hysplit_dispersion_plot(hours = "all",
-                        dispersion_df = disp.df,
-                        map_output_name = "new map",
-                        path_output_files = "~/Documents/SplitR/Output/Plots/")
+# Make a set of hourly plots from a dispersion
+# data frame
+hysplit_dispersion_plot(
+  hours = "all",
+  dispersion_df = disp.df,
+  map_output_name = "new map",
+  path_output_files = "~/Documents/SplitR/Output/Plots/")
 }
 }
 

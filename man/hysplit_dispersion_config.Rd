@@ -7,15 +7,21 @@
 hysplit_dispersion_config(path_wd)
 }
 \arguments{
-\item{path_wd}{a full path should be provided for the HYSPLIT working directory.}
+\item{path_wd}{a full path should be provided for
+the HYSPLIT working directory.}
 }
 \description{
-This function creates a default SETUP.CFG configuration file and places it in the user-specified 'working' folder. This file must be located in the working directory before any HYSPLIT dispersion models can be run.
+This function creates a default
+SETUP.CFG configuration file and places it in the
+user-specified 'working' folder. This file must be
+located in the working directory before any HYSPLIT
+dispersion models can be run.
 }
 \examples{
 \dontrun{
 # Create a default SETUP.CFG file for dispersion runs
-hysplit_dispersion_config(path_wd = "C://hysplit//working//")
+hysplit_dispersion_config(
+  path_wd = "C://hysplit//working//")
 }
 }
 

@@ -7,15 +7,25 @@
 get_met_nam12(files = NULL, years = NULL, months = NULL, path_met_files)
 }
 \arguments{
-\item{files}{a vector list of exact filenames for the NAM12 files.}
+\item{files}{a vector list of exact filenames for
+the NAM12 files.}
 
-\item{years}{a vector list of years for which NAM12 files are to be obtained via FTP.}
+\item{years}{a vector list of years for which NAM12
+files are to be obtained via FTP.}
 
-\item{months}{a vector list of months for which NAM12 files are to be obtained via FTP.}
+\item{months}{a vector list of months for which
+NAM12 files are to be obtained via FTP.}
 
-\item{path_met_files}{a full path should be provided for the location of the meteorological data files; downloaded files will be saved in this location.}
+\item{path_met_files}{a full path should be provided
+for the location of the meteorological data files;
+downloaded files will be saved in this location.}
 }
 \description{
-This function downloads NAM12 meteorology data files from the NOAA FTP server and saves them to a specified folder. Files can be downloaded either by specifying a list of filenames (in the form of "RP[YYYY][MM].gbl") or through bulk download of a year of files.
+This function downloads NAM12
+meteorology data files from the NOAA FTP server and
+saves them to a specified folder. Files can be
+downloaded either by specifying a list of filenames
+(in the form of "RP[YYYY][MM].gbl") or through bulk
+download of a year of files.
 }
 
