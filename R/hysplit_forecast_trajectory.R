@@ -90,8 +90,8 @@ hysplit_forecast_trajectory <- function(start_lat_deg,
     today <- gsub("-", "", Sys.Date())
     
     if (paste0(path.expand(path_met_files), paste0(today, ".t00z.namf")) %in%
-          list.files(path = gsub("/$", "", path_met_files),
-                     full.names = TRUE) == FALSE){
+        list.files(path = gsub("/$", "", path_met_files),
+                   full.names = TRUE) == FALSE){
       get_met_forecast_nam(path_met_files = path_met_files)
     }
     
@@ -106,16 +106,18 @@ hysplit_forecast_trajectory <- function(start_lat_deg,
     start_hour_GMT <- run_start_hour
     
     # Construct the output filename string for this model run
-    output_filename <- paste0("traj-forecast",
-                              ifelse(backtrajectory == TRUE, '(back)', '(forward)'), "-",
-                              start_year_GMT, "-",
-                              start_month_GMT, "-",
-                              start_day_GMT, "-",
-                              start_hour_GMT, "-",
-                              "lat_", start_lat_deg, "_",
-                              "long_",start_long_deg, "-",
-                              "height_",start_height_m_AGL, "-",
-                              simulation_duration_h, "h")
+    output_filename <- 
+      paste0("traj-forecast",
+             ifelse(backtrajectory == TRUE,
+                    '(back)', '(forward)'), "-",
+             start_year_GMT, "-",
+             start_month_GMT, "-",
+             start_day_GMT, "-",
+             start_hour_GMT, "-",
+             "lat_", start_lat_deg, "_",
+             "long_",start_long_deg, "-",
+             "height_",start_height_m_AGL, "-",
+             simulation_duration_h, "h")
     
     # Write start year, month, day, hour to 'CONTROL'
     cat(start_year_GMT, " ", 
@@ -178,10 +180,10 @@ hysplit_forecast_trajectory <- function(start_lat_deg,
         file = paste0(path_wd, "CONTROL"),
         sep = '', append = TRUE)
     
-    # CONTROL file is now complete and in the working directory
-    # Execute the model run; the system call will be different whether
-    # the platform in win or unix
-    
+    # CONTROL file is now complete and in the working
+    # directory Execute the model run; the system call
+    # will be different whether the platform in win or
+    # unix
     if (.Platform$OS.type == "unix"){
       system(paste0("(cd ", path_wd, " && ", path_executable, "hyts_std)"))
       
