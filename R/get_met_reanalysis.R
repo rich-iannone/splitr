@@ -12,14 +12,12 @@
 #' @param path_met_files a full path should be provided
 #' for the location of the meteorological data files;
 #' downloaded files will be saved in this location.
+#' @import RCurl
 #' @export get_met_reanalysis
 
 get_met_reanalysis <- function(files = NULL,
                                years = NULL,
                                path_met_files){ 
-  
-  # Add require statements
-  require(RCurl) 
   
   reanalysis_dir <- 
     "ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/"
