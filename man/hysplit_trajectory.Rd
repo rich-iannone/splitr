@@ -8,9 +8,7 @@ hysplit_trajectory(traj_name = NULL, return_traj_df = TRUE, start_lat_deg,
   start_long_deg, start_height_m_AGL, simulation_duration_h = 24,
   backtrajectory = FALSE, met_type, vertical_motion_option = 0,
   top_of_model_domain_m = 20000, run_type, run_day = NULL,
-  run_range = NULL, run_years = NULL, daily_hours_to_start,
-  path_met_files = NULL, path_output_files = NULL, path_wd = NULL,
-  path_executable = NULL)
+  run_range = NULL, run_years = NULL, daily_hours_to_start)
 }
 \arguments{
 \item{traj_name}{an optional, descriptive name for
