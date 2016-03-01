@@ -13,13 +13,4 @@ Imports:
     labeling (>= 0.3),
     lubridate (>= 1.5.0),
     RCurl (>= 1.95)
-Depends:
-    stats,
-    utils,
-    graphics,
-    grDevices,
-    plyr,
-    cluster,
-    maps,
-    mapdata
 RoxygenNote: 5.0.1
