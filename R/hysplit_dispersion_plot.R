@@ -14,6 +14,7 @@
 #' prepended to the output map files.
 #' @param path_output_files a full path for a location
 #' that the dispersion output files were written.
+#' @import ggmap
 #' @export hysplit_dispersion_plot
 #' @examples
 #' \dontrun{
