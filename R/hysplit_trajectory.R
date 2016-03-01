@@ -652,7 +652,7 @@ hysplit_trajectory <- function(traj_name = NULL,
     if (return_traj_df == TRUE){
       
       traj_df <-
-        trajectory_read(archive_folder =
+        trajectory_read(output_folder =
                           paste0(getwd(), "/",
                                  folder_name))
       return(traj_df)
@@ -688,7 +688,7 @@ hysplit_trajectory <- function(traj_name = NULL,
     # Return a trajectory data frame if it is requested
     if (return_traj_df == TRUE){
       traj_df <- 
-        trajectory_read(archive_folder =
+        trajectory_read(output_folder =
                           paste0(path_output_files,
                                  folder_name))
       return(traj_df)

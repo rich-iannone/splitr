@@ -3,7 +3,7 @@
 #' @description The function takes HYSPLIT trajectory
 #' output files in a specified output directory and
 #' processes all files into a data frame object.
-#' @param archive_folder the absolute path of the
+#' @param output_folder the absolute path of the
 #' directory containing the trajectory endpoints files
 #' is to be provided.
 #' @param year providing a year will filter the list
@@ -30,24 +30,24 @@
 #' # specified output directory
 #' trajectory_df <-
 #'   trajectory_read(
-#'     archive_folder = "traj--2015-06-16--23-58-44")
+#'     output_folder = "traj--2015-06-16--23-58-44")
 #' 
 #' # Process trajectory output files in the same
 #' # folder but only those files from 2002 with a
 #' # starting height of 500 m
 #' trajectory_df <-
 #'   trajectory_read(
-#'     archive_folder = "traj--2015-06-16--23-58-44",
+#'     output_folder = "traj--2015-06-16--23-58-44",
 #'     year = 2002,
 #'     start_height_m_AGL = 500)
 #'}
 
-trajectory_read <- function(archive_folder,
+trajectory_read <- function(output_folder,
                             year = NULL,
                             start_height_m_AGL = NULL){  
   
   # List files from the specified archive folder
-  trajectory_file_list <- list.files(archive_folder)
+  trajectory_file_list <- list.files(output_folder)
   
   # Optionally filter list of files by using 'year' or
   # 'start_height_m_AGL' arguments, or both
@@ -55,13 +55,13 @@ trajectory_read <- function(archive_folder,
       is.null(start_height_m_AGL)){
     trajectory_file_list <- 
       list.files(
-        path = archive_folder,
+        path = output_folder,
         pattern = "^traj.*")
   } else if (!is.null(year) &
              is.null(start_height_m_AGL)){
     trajectory_file_list <- 
       list.files(
-        path = archive_folder,
+        path = output_folder,
         pattern = paste0("^traj.*?-",
                          gsub("^[0-9][0-9]", "",
                               as.character(year)),
@@ -70,7 +70,7 @@ trajectory_read <- function(archive_folder,
              !is.null(start_height_m_AGL)){
     trajectory_file_list <- 
       list.files(
-        path = archive_folder,
+        path = output_folder,
         pattern = paste0("^.*?height_",
                          gsub("^[0-9][0-9]", "",
                               as.character(year)),
@@ -79,7 +79,7 @@ trajectory_read <- function(archive_folder,
              !is.null(start_height_m_AGL)){
     trajectory_file_list <- 
       list.files(
-        path = archive_folder,
+        path = output_folder,
         pattern = paste0("^traj.*?-",
                          gsub("^[0-9][0-9]", "",
                               as.character(year)),
@@ -105,7 +105,7 @@ trajectory_read <- function(archive_folder,
     
     traj_temp <- 
       read.fwf(paste0("file://",
-                      path.expand(archive_folder),
+                      path.expand(output_folder),
                       "/", trajectory_file_list[i]),
                widths = column_widths)
     
@@ -122,7 +122,7 @@ trajectory_read <- function(archive_folder,
     if (.Platform$OS.type == "unix"){
       traj <- 
         read.fwf(paste0("file://",
-                        path.expand(archive_folder),
+                        path.expand(output_folder),
                         "/", trajectory_file_list[i]),
                  skip = skip_up_to_line,
                  widths = column.widths)
@@ -131,7 +131,7 @@ trajectory_read <- function(archive_folder,
     if (.Platform$OS.type == "windows"){
       traj <- 
         read.fwf(paste0("file://",
-                        path.expand(archive_folder),
+                        path.expand(output_folder),
                         "/", trajectory_file_list[i]),
                  skip = skip_up_to_line,
                  widths = column.widths)
