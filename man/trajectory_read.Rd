@@ -5,10 +5,10 @@
 \title{Read HYSPLIT trajectory output files into a data
 frame}
 \usage{
-trajectory_read(archive_folder, year = NULL, start_height_m_AGL = NULL)
+trajectory_read(output_folder, year = NULL, start_height_m_AGL = NULL)
 }
 \arguments{
-\item{archive_folder}{the absolute path of the
+\item{output_folder}{the absolute path of the
 directory containing the trajectory endpoints files
 is to be provided.}
 
@@ -44,14 +44,14 @@ processes all files into a data frame object.
 # specified output directory
 trajectory_df <-
   trajectory_read(
-    archive_folder = "traj--2015-06-16--23-58-44")
+    output_folder = "traj--2015-06-16--23-58-44")
 
 # Process trajectory output files in the same
 # folder but only those files from 2002 with a
 # starting height of 500 m
 trajectory_df <-
   trajectory_read(
-    archive_folder = "traj--2015-06-16--23-58-44",
+    output_folder = "traj--2015-06-16--23-58-44",
     year = 2002,
     start_height_m_AGL = 500)
 }

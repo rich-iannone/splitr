@@ -8,8 +8,8 @@ or folders}
 trajectory_list(output_folder)
 }
 \arguments{
-\item{output_folder}{the absolute path for the
-trajectory archive files (UNIX) or folders (Windows)
+\item{output_folder}{the absolute path of the
+directory containing the trajectory endpoints files
 is to be provided.}
 }
 \value{
