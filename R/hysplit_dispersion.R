@@ -140,18 +140,19 @@ hysplit_dispersion <- function(disp_name = NULL,
   run_type <- run_type
   run_day <- run_day
   
-  # Set number of starting locations to 1 for this function
-  no_starting_locations <- 1
-  
   # Set number of particles to 1 in the SETUP.CFG file
   setup.cfg <- readLines(paste0(path_wd, "SETUP.CFG"))
   
   setup.cfg <- gsub(" numpar = ([0-9]*),",
-                    paste0(" numpar = ", number_of_particles, ","),
+                    paste0(" numpar = ",
+                           number_of_particles,
+                           ","),
                     setup.cfg)
   
   setup.cfg <- gsub(" maxpar = ([0-9]*),",
-                    paste0(" maxpar = ", max_particles, ","),
+                    paste0(" maxpar = ",
+                           max_particles,
+                           ","),
                     setup.cfg)
   
   writeLines(setup.cfg, paste0(path_wd, "SETUP.CFG"))
@@ -159,49 +160,78 @@ hysplit_dispersion <- function(disp_name = NULL,
   rm(setup.cfg)
   
   # Make a vector list of run days in POSIXct format
-  if (exists("run_type") & run_type == "day" & exists("run_day")){
-    list_run_days <- as.POSIXct(run_day, origin = "1970-01-01", tz = "UTC")}
+  if (exists("run_type") &
+      run_type == "day" &
+      exists("run_day")){
+    list_run_days <- 
+      as.POSIXct(run_day,
+                 origin = "1970-01-01",
+                 tz = "UTC")}
   
-  if (exists("run_type") & run_type == "range" & exists("run_range")){
-    list_run_days <- seq(as.POSIXct(run_range[1], origin = "1970-01-01", tz = "UTC"),
-                         as.POSIXct(run_range[2], origin = "1970-01-01", tz = "UTC"),
-                         by = 86400)}
+  if (exists("run_type") &
+      run_type == "range" &
+      exists("run_range")){
+    list_run_days <- 
+      seq(as.POSIXct(run_range[1],
+                     origin = "1970-01-01",
+                     tz = "UTC"),
+          as.POSIXct(run_range[2],
+                     origin = "1970-01-01",
+                     tz = "UTC"),
+          by = 86400)}
   
-  if (exists("run_type") & run_type == "years" & exists("run_years")){
+  if (exists("run_type") &
+      run_type == "years" &
+      exists("run_years")){
     run_years_single_range <-
-      ifelse(nchar(run_years) == 4, "single", "range")
+      ifelse(nchar(run_years) == 4,
+             "single", "range")
     
-    list_run_days <- seq(as.POSIXct(paste0(substr(run_years, 1, 4), "-01-01"), 
-                                    origin = "1970-01-01", tz = "UTC"),
-                         as.POSIXct(ifelse(run_years_single_range == "single",
-                                           paste0(substr(run_years, 1, 4), "-12-31"),
-                                           paste0(substr(run_years, 6, 9), "-12-31")), 
-                                    origin = "1970-01-01", tz = "UTC"),
-                         by = 86400)}
+    list_run_days <- 
+      seq(as.POSIXct(
+        paste0(substr(run_years, 1, 4), 
+               "-01-01"), 
+        origin = "1970-01-01",
+        tz = "UTC"),
+        as.POSIXct(
+          ifelse(run_years_single_range == "single",
+                 paste0(substr(run_years, 1, 4),
+                        "-12-31"),
+                 paste0(substr(run_years, 6, 9),
+                        "-12-31")), 
+          origin = "1970-01-01",
+          tz = "UTC"),
+        by = 86400)}
   
   # Make loop with all run days
   for (i in 1:length(list_run_days)) {
     
     # Define starting time parameters
-    start_year_GMT <- substr(as.character(year(list_run_days[i])),3,4)
+    start_year_GMT <- 
+      substr(
+        as.character(year(list_run_days[i])), 3, 4)
     
-    start_month_GMT <- formatC(as.numeric(month(list_run_days[i])),
-                               width = 2, format = "d", flag = "0")
+    start_month_GMT <- 
+      formatC(as.numeric(month(list_run_days[i])),
+              width = 2, format = "d", flag = "0")
     
-    start_day_GMT <- formatC(as.numeric(day(list_run_days[i])),
-                             width = 2, format = "d", flag = "0")
+    start_day_GMT <- 
+      formatC(as.numeric(day(list_run_days[i])),
+              width = 2, format = "d", flag = "0")
     
     # Make nested loop with daily beginning hours
     for (j in daily_hours_to_start) {    
       
       start_hour_GMT <- j
       
-      #--- Determine which met files are required for this run
+      #--- Determine which met files are required
+      #    for this run
       
       # Determine the start time of the model run
       start_time_GMT <- 
         ymd_hms(paste0(ifelse(start_year_GMT > 50,
-                              paste0("19", start_year_GMT),
+                              paste0("19",
+                                     start_year_GMT),
                               start_year_GMT), "-",
                        start_month_GMT, "-",
                        start_day_GMT, " ",
@@ -209,10 +239,14 @@ hysplit_dispersion <- function(disp_name = NULL,
       
       # Determine the end time of the model run
       end_time_GMT <- 
-        as.POSIXct(ifelse(backward_running == TRUE, 
-                          start_time_GMT - (simulation_duration_h * 3600),
-                          start_time_GMT + (simulation_duration_h * 3600)),
-                   origin = "1970-01-01", tz = "UTC")
+        as.POSIXct(
+          ifelse(backward_running, 
+                 start_time_GMT -
+                   (simulation_duration_h * 3600),
+                 start_time_GMT +
+                   (simulation_duration_h * 3600)),
+          origin = "1970-01-01",
+          tz = "UTC")
       
       # Determine whether the start year is a leap year
       leap_year <- 
@@ -220,17 +254,20 @@ hysplit_dispersion <- function(disp_name = NULL,
                              start_month_GMT, "-",
                              start_day_GMT)))
       
-      # Determine whether the beginning and end of the current run
-      # crosses over a calendar year
+      # Determine whether the beginning and end of the
+      # current run crosses over a calendar year
       number_of_calendar_years <- 
-        ifelse(year(start_time_GMT) == year(end_time_GMT), 1, 2)
+        ifelse(year(start_time_GMT) ==
+                 year(end_time_GMT), 1, 2)
       
-      # Determine whether the beginning and end of the current run
-      # crosses over a calendar month
+      # Determine whether the beginning and end of
+      # the current run crosses over a calendar month
       number_of_calendar_months <- 
-        ifelse(month(start_time_GMT) == month(end_time_GMT), 1, 2)
+        ifelse(month(start_time_GMT) ==
+                 month(end_time_GMT), 1, 2)
       
-      #--- Divide different requirements for met files into different cases
+      #--- Divide different requirements for met files
+      #    into different cases
       
       # Set the different cases to FALSE by default
       case_within_month <- FALSE
@@ -247,94 +284,135 @@ hysplit_dispersion <- function(disp_name = NULL,
         case_over_month <- TRUE
       } else { NULL }
       
-      #--- Get vector lists of met files applicable to run from GDAS 1-degree dataset
+      #--- Get vector lists of met files applicable to
+      #    run from GDAS 1-degree dataset
       
-      # Trap leap-year condition of missing .w5 met file for February in a '0' list value
-      if (case_within_month == TRUE &
+      # Trap leap-year condition of missing .w5 met
+      # file for February in a '0' list value
+      if (case_within_month &
           met_type == "gdas1") met <- 
-        c(paste0("gdas1.",
-                 substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                 substr(year(start_time_GMT), 3, 4), ".w1"),                                      
-          paste0("gdas1.",
-                 substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                 substr(year(start_time_GMT), 3, 4), ".w2"),
-          paste0("gdas1.",
-                 substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                 substr(year(start_time_GMT), 3, 4), ".w3"),
-          paste0("gdas1.",
-                 substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                 substr(year(start_time_GMT), 3, 4), ".w4"),
-          ifelse(month(start_time_GMT) == 2 &
-                   leap_year == TRUE, 0,
-                 paste0("gdas1.",
-                        substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                        substr(year(start_time_GMT), 3, 4), ".w5")))
+        c(paste0(
+          "gdas1.",
+          substr(tolower(format(start_time_GMT,
+                                "%B")), 1, 3),
+          substr(year(start_time_GMT), 3, 4), ".w1"),                                      
+          paste0(
+            "gdas1.",
+            substr(tolower(format(start_time_GMT,
+                                  "%B")), 1, 3),
+            substr(year(start_time_GMT), 3, 4), ".w2"),
+          paste0(
+            "gdas1.",
+            substr(tolower(format(start_time_GMT,
+                                  "%B")), 1, 3),
+            substr(year(start_time_GMT), 3, 4), ".w3"),
+          paste0(
+            "gdas1.",
+            substr(tolower(format(start_time_GMT,
+                                  "%B")), 1, 3),
+            substr(year(start_time_GMT), 3, 4), ".w4"),
+          ifelse(
+            month(start_time_GMT) == 2 &
+              leap_year, 0,
+            paste0("gdas1.",
+                   substr(tolower(format(start_time_GMT,
+                                         "%B")), 1, 3),
+                   substr(year(start_time_GMT), 3, 4),
+                   ".w5")))
       
-      if (case_over_year == TRUE &
+      if (case_over_year &
           met_type == "gdas1") met <- 
-        c(paste0("gdas1.dec",
-                 substr(year(end_time_GMT), 3, 4), ".w3"),                                      
-          paste0("gdas1.dec",
-                 substr(year(end_time_GMT), 3, 4), ".w4"),
-          paste0("gdas1.dec",
-                 substr(year(end_time_GMT), 3, 4), ".w5"),
-          paste0("gdas1.jan",
-                 substr(year(start_time_GMT), 3, 4), ".w1"),
-          paste0("gdas1.jan",
-                 substr(year(start_time_GMT), 3, 4), ".w2"),
-          paste0("gdas1.jan",
-                 substr(year(start_time_GMT), 3, 4), ".w3"))
+        c(paste0(
+          "gdas1.dec",
+          substr(year(end_time_GMT), 3, 4), ".w3"),                                      
+          paste0(
+            "gdas1.dec",
+            substr(year(end_time_GMT), 3, 4), ".w4"),
+          paste0(
+            "gdas1.dec",
+            substr(year(end_time_GMT), 3, 4), ".w5"),
+          paste0(
+            "gdas1.jan",
+            substr(year(start_time_GMT), 3, 4), ".w1"),
+          paste0(
+            "gdas1.jan",
+            substr(year(start_time_GMT), 3, 4), ".w2"),
+          paste0(
+            "gdas1.jan",
+            substr(year(start_time_GMT), 3, 4), ".w3"))
       
       if (case_over_month == TRUE &
           met_type == "gdas1") met <-
-        c(paste0("gdas1.",
-                 substr(tolower(format(end_time_GMT, "%B")), 1, 3),
-                 substr(year(end_time_GMT), 3, 4), ".w3"),                                      
-          paste0("gdas1.",
-                 substr(tolower(format(end_time_GMT, "%B")), 1, 3),
-                 substr(year(end_time_GMT), 3, 4), ".w4"),
-          ifelse(month(end_time_GMT) == 2 &
-                   leap_year == TRUE, 0,
-                 paste0("gdas1.",
-                        substr(tolower(format(end_time_GMT, "%B")), 1, 3),
-                        substr(year(end_time_GMT), 3, 4), ".w5")),
-          paste0("gdas1.",
-                 substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                 substr(year(start_time_GMT), 3, 4), ".w1"),
-          paste0("gdas1.",
-                 substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                 substr(year(start_time_GMT), 3, 4), ".w2"),
-          paste0("gdas1.",
-                 substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                 substr(year(start_time_GMT), 3, 4), ".w3"))
+        c(paste0(
+          "gdas1.",
+          substr(tolower(format(end_time_GMT, 
+                                "%B")), 1, 3),
+          substr(year(end_time_GMT), 3, 4), ".w3"),                                      
+          paste0(
+            "gdas1.",
+            substr(tolower(format(end_time_GMT, 
+                                  "%B")), 1, 3),
+            substr(year(end_time_GMT), 3, 4), ".w4"),
+          ifelse(
+            month(end_time_GMT) == 2 &
+              leap_year == TRUE, 0,
+            paste0(
+              "gdas1.",
+              substr(tolower(format(end_time_GMT, 
+                                    "%B")), 1, 3),
+              substr(year(end_time_GMT), 3, 4), ".w5")),
+          paste0(
+            "gdas1.",
+            substr(tolower(format(start_time_GMT, 
+                                  "%B")), 1, 3),
+            substr(year(start_time_GMT), 3, 4), ".w1"),
+          paste0(
+            "gdas1.",
+            substr(tolower(format(start_time_GMT, 
+                                  "%B")), 1, 3),
+            substr(year(start_time_GMT), 3, 4), ".w2"),
+          paste0(
+            "gdas1.",
+            substr(tolower(format(start_time_GMT, 
+                                  "%B")), 1, 3),
+            substr(year(start_time_GMT), 3, 4), ".w3"))
       
-      # Get vector lists of met files applicable to run from the NCEP/NCAR reanalysis dataset
+      # Get vector lists of met files applicable to run
+      # from the NCEP/NCAR reanalysis dataset
       if (met_type == "reanalysis") met <- 
-        c(paste0("RP",
-                 ifelse(start_month_GMT == "01",
-                        year(start_time_GMT) - 1,
-                        year(start_time_GMT)),
-                 ifelse(start_month_GMT == "01", "12",
-                        formatC(month(start_time_GMT) - 1,
-                                width = 2, format = "d", flag = "0")),
-                 ".gbl"),
-          paste0("RP",
-                 year(start_time_GMT),
-                 start_month_GMT, ".gbl"),
-          paste0("RP",
-                 ifelse(start_month_GMT == "12",
-                        year(start_time_GMT) + 1,
-                        year(start_time_GMT)),
-                 ifelse(start_month_GMT == "12", "01",
-                        formatC(month(start_time_GMT) + 1,
-                                width = 2, format = "d", flag = "0")),
-                 ".gbl"))
+        c(paste0(
+          "RP",
+          ifelse(start_month_GMT == "01",
+                 year(start_time_GMT) - 1,
+                 year(start_time_GMT)),
+          ifelse(start_month_GMT == "01", "12",
+                 formatC(month(start_time_GMT) - 1,
+                         width = 2, 
+                         format = "d", 
+                         flag = "0")),
+          ".gbl"),
+          paste0(
+            "RP",
+            year(start_time_GMT),
+            start_month_GMT, ".gbl"),
+          paste0(
+            "RP",
+            ifelse(start_month_GMT == "12",
+                   year(start_time_GMT) + 1,
+                   year(start_time_GMT)),
+            ifelse(start_month_GMT == "12", "01",
+                   formatC(month(start_time_GMT) + 1,
+                           width = 2, 
+                           format = "d", 
+                           flag = "0")),
+            ".gbl"))
       
-      # Remove list values containing '0' (representing missing .w5
-      # data files for Feb in leap years)
+      # Remove list values containing '0' (representing
+      # missing .w5 data files for Feb in leap years)
       if(exists("met")) met <- met[!met %in% c(0)]
       
-      # Are the met files available on the selected path?
+      # Are the met files available in the
+      # selected path?
       met.file.df <- 
         setNames(data.frame(mat.or.vec(nr = length(met),
                                        nc = 2)),
@@ -344,7 +422,11 @@ hysplit_dispersion <- function(disp_name = NULL,
         
         for (k in 1:length(met)){
           met.file.df[k, 1] <- met[k]
-          met.file.df[k, 2] <- as.character(file.exists(paste0(path_met_files, met[k])))}
+          met.file.df[k, 2] <-
+            as.character(
+              file.exists(paste0(path_met_files,
+                                 met[k])))
+        }
         
         # Write the met file availability to file
         write.table(
@@ -359,14 +441,20 @@ hysplit_dispersion <- function(disp_name = NULL,
         # Download the missing met files
         if (FALSE %in% met.file.df[,2]){
           
-          files_to_get <- subset(met.file.df, available == FALSE)[,1]
+          files_to_get <-
+            subset(met.file.df,
+                   available == FALSE)[,1]
           
           if (met_type == "reanalysis"){
-            get_met_reanalysis(files = files_to_get, path_met_files = path_met_files)
+            get_met_reanalysis(
+              files = files_to_get,
+              path_met_files = path_met_files)
           }
           
           if (met_type == "gdas1"){
-            get_met_gdas1(files = files_to_get, path_met_files = path_met_files)
+            get_met_gdas1(
+              files = files_to_get,
+              path_met_files = path_met_files)
           } 
         }
       }
@@ -375,33 +463,47 @@ hysplit_dispersion <- function(disp_name = NULL,
         
         for (k in 1:length(met)){
           met.file.df[k, 1] <- met[k]
-          met.file.df[k, 2] <- as.character(file.exists(paste0(path_met_files,
-                                                               met[k])))}
+          met.file.df[k, 2] <-
+            as.character(
+              file.exists(paste0(path_met_files,
+                                 met[k])))}
         
         # Write the met file availability to file
-        write.table(met.file.df, file = paste0(path_wd, "met_file_list"),
-                    sep = ",", row.names = FALSE, col.names = FALSE, quote = FALSE,
+        write.table(met.file.df,
+                    file = paste0(path_wd,
+                                  "met_file_list"),
+                    sep = ",",
+                    row.names = FALSE,
+                    col.names = FALSE,
+                    quote = FALSE,
                     append = FALSE)
         
         # Download the missing met files
         if (FALSE %in% met.file.df[,2]){
           
-          files_to_get <- subset(met.file.df, available == FALSE)[,1]
+          files_to_get <-
+            subset(met.file.df, available == FALSE)[,1]
           
           if (met_type == "reanalysis"){
-            get_met_reanalysis(files = files_to_get, path_met_files = path_met_files)
+            get_met_reanalysis(
+              files = files_to_get,
+              path_met_files = path_met_files)
           }
           
           if (met_type == "gdas1"){
-            get_met_gdas1(files = files_to_get, path_met_files = path_met_files)
+            get_met_gdas1(
+              files = files_to_get,
+              path_met_files = path_met_files)
           } 
         }
       }
       
-      # Construct the output filename string for this model run
+      # Construct the output filename string
+      # for this model run
       output_filename <- 
         paste0("--disp",
-               ifelse(backward_running == TRUE, '(back)', '(forward)'), "-",
+               ifelse(backward_running,
+                      '(back)', '(forward)'), "-",
                start_year_GMT, "-",
                start_month_GMT, "-",
                start_day_GMT, "-",
@@ -420,19 +522,21 @@ hysplit_dispersion <- function(disp_name = NULL,
           sep = '', append = FALSE)
       
       #Write number of starting locations to 'CONTROL'
-      cat(no_starting_locations, "\n",
+      cat("1\n",
           file = paste0(path_wd, "CONTROL"),
           sep = '', append = TRUE)
       
-      # Write starting latitude, longitude, height AGL to 'CONTROL'
+      # Write starting latitude, longitude, and height
+      # AGL to 'CONTROL'
       cat(start_lat_deg, " ", 
           start_long_deg, " ", 
           start_height_m_AGL, "\n",
           file = paste0(path_wd, "CONTROL"),
           sep = '', append = TRUE)
       
-      # Write direction and number of simulation hours to 'CONTROL'
-      cat(ifelse(backward_running == TRUE, "-", ""),
+      # Write direction and number of simulation hours
+      # to 'CONTROL'
+      cat(ifelse(backward_running, "-", ""),
           simulation_duration_h, "\n",
           file = paste0(path_wd, "CONTROL"),
           sep = '', append = TRUE)
@@ -459,26 +563,32 @@ hysplit_dispersion <- function(disp_name = NULL,
             sep = '', append = TRUE)}
       
       # Write emissions blocks to 'CONTROL'
-      for (i in 1:length(dispersion_preset_get("emissions", emissions, path_wd = path_wd))){
-        cat(dispersion_preset_get("emissions", emissions, path_wd = path_wd)[i], "\n",
-            file = paste0(path_wd, "CONTROL"),
-            sep = '', append = TRUE)}
+      for (i in 1:length(
+        dispersion_preset_get("emissions",
+                              emissions,
+                              path_wd = path_wd))){
+        cat(dispersion_preset_get(
+          "emissions", emissions,
+          path_wd = path_wd)[i], "\n",
+          file = paste0(path_wd, "CONTROL"),
+          sep = '', append = TRUE)}
       
-      # Write grid blocks to 'CONTROL'
-      
-      # Get vector text elements through reading selected elements from 'grids' file
+      # Get vector text elements through reading
+      # selected elements from 'grids' file
       grids_text <-
         dispersion_preset_get("grids",
                               grids,
                               path_wd = path_wd)
       
-      # Get vector text indices that contain the short name(s) of the grid(s)
+      # Get vector text indices that contain the short
+      # name(s) of the grid(s)
       gridnames_indices <-
         seq(from = 1 + 5,
             to = length(grids_text) - 5,
             by = 10)
       
-      # Combine short grid name string with longer 'output_filename' string
+      # Combine short grid name string with longer
+      # 'output_filename' string
       for (i in 1:((length(grids_text) - 1)/10)){
         grids_text[gridnames_indices[i]] <-
           paste0(grids_text[gridnames_indices[i]],
@@ -492,13 +602,18 @@ hysplit_dispersion <- function(disp_name = NULL,
             sep = '', append = TRUE)}
       
       # Write species blocks to 'CONTROL'
-      for (i in 1:length(dispersion_preset_get("species", species, path_wd = path_wd))){
-        cat(dispersion_preset_get("species", species, path_wd = path_wd)[i], "\n",
-            file = paste0(path_wd, "CONTROL"),
-            sep = '', append = TRUE)}
+      for (i in 1:length(
+        dispersion_preset_get("species",
+                              species,
+                              path_wd = path_wd))){
+        cat(dispersion_preset_get(
+          "species", species,
+          path_wd = path_wd)[i], "\n",
+          file = paste0(path_wd, "CONTROL"),
+          sep = '', append = TRUE)}
       
-      # CONTROL file is now complete and in the working directory
-      # Execute the model run
+      # CONTROL file is now complete and in the
+      # working directory; execute the model run
       if (.Platform$OS.type == "unix"){
         system(paste0("(cd ", path_wd, " && ",
                       path_executable, "hycs_std)"))
@@ -512,39 +627,48 @@ hysplit_dispersion <- function(disp_name = NULL,
       # Extract the particle positions at every hour
       if (.Platform$OS.type == "unix"){
         system(paste0("(cd ", path_wd, " && ",
-                      path_executable, "parhplot -iPARDUMP -a1)"))
+                      path_executable,
+                      "parhplot -iPARDUMP -a1)"))
       }
       
       if (.Platform$OS.type == "windows"){
         shell(paste0("(cd ", path_wd, " && ",
-                     path_executable, "parhplot -iPARDUMP -a1)"))
+                     path_executable,
+                     "parhplot -iPARDUMP -a1)"))
       }
       
       # Remove the .att files from the working directory
       if (.Platform$OS.type == "unix"){
-        system(paste0("(cd ", path_wd, " && rm GIS_part*.att)"))
+        system(paste0("(cd ", path_wd,
+                      " && rm GIS_part*.att)"))
       }
       
       if (.Platform$OS.type == "windows"){
-        shell(paste0("(cd ", path_wd, " && del GIS_part*.att)"))
+        shell(paste0("(cd ", path_wd,
+                     " && del GIS_part*.att)"))
       }
       
       # Remove the postscript plot from the working directory
       if (.Platform$OS.type == "unix"){
-        system(paste0("(cd ", path_wd, " && rm parhplot.ps)"))
+        system(paste0("(cd ", path_wd,
+                      " && rm parhplot.ps)"))
       }
       
       if (.Platform$OS.type == "windows"){
-        shell(paste0("(cd ", path_wd, " && del parhplot.ps)"))
+        shell(paste0("(cd ", path_wd,
+                     " && del parhplot.ps)"))
       }
       
-      # Rename the .txt files as .csv files
+      # Rename the TXT files as CSV files
       if (.Platform$OS.type == "unix"){
-        system(paste0("(cd ", path_wd, " && for files in GIS*.txt;",
-                      " do mv \"$files\" \"${files%.txt}.csv\"; done)"))
+        system(
+          paste0("(cd ", path_wd,
+                 " && for files in GIS*.txt;",
+                 " do mv \"$files\" \"${files%.txt}.csv\"; done)"))
       }
       
-      # Remove the 'END' string near the end of each .csv file
+      # Remove the 'END' string near the end of
+      # each CSV file
       if (.Platform$OS.type == "unix"){
         system(paste0("(cd ", path_wd, " && sed -i .bk 's/END//g'",
                       " GIS_part_*.csv; rm *.bk)"))
@@ -557,23 +681,36 @@ hysplit_dispersion <- function(disp_name = NULL,
         for (i in 1:length(temp_file_list)){
           temp_lines <- readLines(temp_file_list[i])
           temp_lines <- temp_lines[-(length(temp_lines))]
-          write.table(temp_lines, file = gsub("txt", "csv", temp_file_list[i]),
-                      col.names = FALSE, row.names = FALSE, quote = FALSE)
+          write.table(temp_lines,
+                      file = gsub("txt", "csv",
+                                  temp_file_list[i]),
+                      col.names = FALSE,
+                      row.names = FALSE,
+                      quote = FALSE)
         }
       }
       
-      # Move the .csv files from the working directory to the output folder
+      # Move the .csv files from the working directory
+      # to the output folder
       if (.Platform$OS.type == "unix"){
         
         if (is.null(disp_name)){
-          folder_name <- paste0("disp--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"))  
+          folder_name <- 
+            paste0("disp--", 
+                   format(Sys.time(),
+                          "%Y-%m-%d--%H-%M-%S"))  
         } else if (!is.null(disp_name)){
-          folder_name <- paste0(disp_name, "--", format(Sys.time(), "%Y-%m-%d--%H-%M-%S"))  
+          folder_name <- 
+            paste0(disp_name, "--",
+                   format(Sys.time(),
+                          "%Y-%m-%d--%H-%M-%S"))  
         }
         
-        # Perform the movement of all dispersion files into a folder residing in the
-        # output directory
-        dir.create(path = paste0(path_output_files, folder_name))
+        # Perform the movement of all dispersion files
+        # into a folder residing in the output dir
+        dir.create(path = paste0(path_output_files,
+                                 folder_name))
+        
         system(paste0("(cd ", path_wd,
                       " && mv GIS_part*.csv '",
                       path_output_files,
@@ -590,16 +727,15 @@ hysplit_dispersion <- function(disp_name = NULL,
     }
   }
   
-  # Write the dispersion data frame to a CSV if it is requested
-  if (write_disp_CSV == TRUE){
-    
+  # Write the dispersion data frame to a CSV if
+  # it is requested
+  if (write_disp_CSV){
     disp.df <- 
       dispersion_read(archive_folder =
                         paste0(path_output_files,
                                folder_name))
     
     if (.Platform$OS.type == "unix"){
-      
       write.table(
         disp.df,
         file = paste0(path_output_files,
@@ -610,7 +746,6 @@ hysplit_dispersion <- function(disp_name = NULL,
     }
     
     if (.Platform$OS.type == "windows"){
-      
       write.table(
         disp.df,
         file = paste0(path_output_files,
@@ -622,8 +757,7 @@ hysplit_dispersion <- function(disp_name = NULL,
   }
   
   # Return a dispersion data frame if it is requested
-  if (return_disp_df == TRUE){
-    
+  if (return_disp_df){
     disp.df <- 
       dispersion_read(
         archive_folder = paste0(path_output_files,
