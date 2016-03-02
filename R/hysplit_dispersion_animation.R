@@ -25,7 +25,7 @@
 #' ImageMagick 'convert' command.
 #' @param path_output_files a full path for a location
 #' that the dispersion output files were written.
-#' @import labeling
+#' @import ggmap
 #' @export hysplit_dispersion_animation
 #' @examples
 #' \dontrun{
