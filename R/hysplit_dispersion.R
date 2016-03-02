@@ -77,15 +77,15 @@
 #' HYSPLIT executable file for dispersion runs must be
 #' provided.
 #' @import lubridate
-#' @import maps
-#' @import mapdata
 #' @import ggmap
 #' @export hysplit_dispersion 
 #' @examples
 #' \dontrun{
-#' # Perform a dispersion run lasting 12 hours over two consecutive days, both starting at midnight
-#' # Grid presets 1 and 2 will be used as sampling grids
-#' # Presets for species and emissions are set to the first (this is also the default)
+#' # Perform a dispersion run lasting 12 hours over
+#' # two consecutive days, both starting at midnight;
+#' # grid presets 1 and 2 will be used as sampling
+#' # grids (presets for species and emissions are set
+#' # to the first, which is the default)
 #' hysplit_dispersion(
 #'   disp_name = "example",
 #'   return_disp_df = FALSE,
