@@ -16,9 +16,6 @@ get_met_edas40 <- function(files = NULL,
                            months = NULL,
                            path_met_files){
   
-  # Add require statements
-  require(lubridate)
-  
   # Download the 'listing' file from NOAA server
   # It contains a list of EDAS40 files currently available on the server
   download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/edas40/",
