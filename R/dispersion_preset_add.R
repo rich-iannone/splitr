@@ -155,8 +155,7 @@ dispersion_preset_add <- function(type,
                                   grid_heights = NULL,
                                   grid_start_time = NULL,
                                   grid_end_time = NULL,
-                                  sampling_interval_type_rate = NULL,
-                                  path_wd){
+                                  sampling_interval_type_rate = NULL){
   
   if (interactive == FALSE & type == "species"){
     
