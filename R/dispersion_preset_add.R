@@ -98,9 +98,6 @@
 #' @param sampling_interval_type_rate a sting that
 #' specifies the type of sampling, and the rate by
 #' which sampling occurs ("HH MM").
-#' @param path_wd a full path should be provided for
-#' the HYSPLIT working directory since presets will
-#' reside in this folder.
 #' @import lubridate
 #' @export dispersion_preset_add
 #' @examples
