@@ -5,7 +5,7 @@
 \title{Plot HYSPLIT dispersion model output onto maps}
 \usage{
 hysplit_dispersion_plot(hours = "all", dispersion_df = NULL,
-  df_folder_path = NULL, map_type = "stamen", map_output_name = NULL,
+  disp_folder_path = NULL, map_type = "stamen", map_output_name = NULL,
   path_output_files = NULL)
 }
 \arguments{
@@ -15,7 +15,7 @@ data to plot.}
 \item{dispersion_df}{optionally specify a data frame
 with dispersion data as an input.}
 
-\item{df_folder_path}{absolute path of the folder
+\item{disp_folder_path}{absolute path of the folder
 containing a dispersion data frame.}
 
 \item{map_type}{selection provider of base maps for
