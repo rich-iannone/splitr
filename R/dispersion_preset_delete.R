@@ -105,7 +105,7 @@ dispersion_preset_delete <- function(read = NULL,
       # Read the 'emissions' file line by line and
       # place into a vector object
       from_file <-
-        as.vector(read.table(paste0(path_wd, "emissions"), sep = "\n"))
+        as.vector(read.table(paste0(getwd(), "/emissions"), sep = "\n"))
       
       # Get the total number of preset entries
       #available in the file
@@ -210,7 +210,7 @@ dispersion_preset_delete <- function(read = NULL,
       # (containing all presets except the one that
       # was removed)
       write.table(unlist(list.from_file),
-                  paste0(path_wd, "emissions"),
+                  paste0(getwd(), "/emissions"),
                   sep = "\n",
                   quote = FALSE,
                   row.names = FALSE,
@@ -222,7 +222,7 @@ dispersion_preset_delete <- function(read = NULL,
       # Read the 'grids' file line by line and place
       # into a vector object
       from_file <-
-        as.vector(read.table(paste0(path_wd, "grids"),
+        as.vector(read.table(paste0(getwd(), "/grids"),
                              sep = "\n"))
       
       # Get the total number of preset entries
@@ -330,7 +330,7 @@ dispersion_preset_delete <- function(read = NULL,
       # (containing all presets except the one that
       # was removed)
       write.table(unlist(list.from_file),
-                  paste0(path_wd, "grids"),
+                  paste0(getwd(), "/grids"),
                   sep = "\n",
                   quote = FALSE,
                   row.names = FALSE,
@@ -342,7 +342,7 @@ dispersion_preset_delete <- function(read = NULL,
       # Read the 'species' file line by line and place
       # into a vector object
       from_file <- 
-        as.vector(read.table(paste0(path_wd, "species"),
+        as.vector(read.table(paste0(getwd(), "/species"),
                              sep = "\n"))
       
       # Get the total number of preset entries
@@ -449,7 +449,7 @@ dispersion_preset_delete <- function(read = NULL,
       # (containing all presets except the one that
       # was removed)
       write.table(unlist(list.from_file),
-                  paste0(path_wd, "species"),
+                  paste0(getwd(), "/species"),
                   sep = "\n",
                   quote = FALSE,
                   row.names = FALSE,
