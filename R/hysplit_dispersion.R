@@ -103,11 +103,7 @@
 #'   grids = c(1,2),
 #'   run_type = "range",
 #'   run_range = c("2012-02-01", "2012-02-03"),
-#'   daily_hours_to_start = "00",
-#'   path_met_files = "~/Documents/SplitR/Met/",
-#'   path_output_files = "~/Documents/SplitR/Output/",
-#'   path_wd = "~/Documents/SplitR/Working/",
-#'   path_executable = "~/Documents/SplitR/Exec/hycs_std")
+#'   daily_hours_to_start = "00")
 #'}
 
 hysplit_dispersion <- function(disp_name = NULL,
