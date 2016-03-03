@@ -5,7 +5,7 @@
 #' data to plot.
 #' @param dispersion_df optionally specify a data frame
 #' with dispersion data as an input.
-#' @param df_folder_path absolute path of the folder
+#' @param disp_folder_path absolute path of the folder
 #' containing a dispersion data frame.
 #' @param map_type selection provider of base maps for
 #' plotting. Choices are 'osm' (Open Street Map) and
@@ -29,7 +29,7 @@
 
 hysplit_dispersion_plot <- function(hours = 'all',
                                     dispersion_df = NULL,
-                                    df_folder_path = NULL,
+                                    disp_folder_path = NULL,
                                     map_type = "stamen",
                                     map_output_name = NULL,
                                     path_output_files = NULL){
@@ -60,17 +60,17 @@ hysplit_dispersion_plot <- function(hours = 'all',
   }
   
   if (is.null(dispersion_df) &
-      !is.null(df_folder_path)){
+      !is.null(disp_folder_path)){
     if (.Platform$OS.type == "unix"){
       csv_absolute_path <- 
         gsub("//", "/",
-             paste0(df_folder_path, "/dispersion.csv"))
+             paste0(disp_folder_path, "/dispersion.csv"))
     }
     
     if (.Platform$OS.type == "windows"){
-      if (grepl("\\\\", df_folder_path)) df_folder_path <- gsub("\\\\", "", df_folder_path)
+      if (grepl("\\\\", disp_folder_path)) disp_folder_path <- gsub("\\\\", "", disp_folder_path)
       csv_absolute_path <-
-        paste0(df_folder_path, "\\dispersion.csv")
+        paste0(disp_folder_path, "\\dispersion.csv")
     }
     
     dispersion_df <- 
