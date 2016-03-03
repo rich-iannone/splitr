@@ -59,9 +59,7 @@ The necessary meteorological data files relevant to the period being modelled wi
 These files will be placed in a subdirectory within the working directory. If the the option to generate a data frame of trajectory information wasn't taken during the invocation of `hysplit_trajectory()`, this can be done later by using the **SplitR** `trajectory_read()` function:
 
 ```R
-trajectory_df <-
-  trajectory_read(
-    output_folder = "t2--2014-06-17--02-39-29")
+trajectory_df <- trajectory_read(output_folder = "t2--2014-06-17--02-39-29")
 ```
 Here, the name or folder is specified in the `output_folder` argument. With the resultant data frame, statistical analyses for the trajectories can be generated (e.g., average heights of trajectories after specified time periods, etc.).
 
@@ -70,9 +68,7 @@ Here, the name or folder is specified in the `output_folder` argument. With the 
 Presets for `species`, `grids`, and `emissions` first need to be set. All additions of presets are made with the use of the `dispersion_preset_add`. That function can be run interactively with `interactive = TRUE` and remembering to set the `type` argumemnt as either `type = "species"`, `type = "grids"`, or `type = "emissions"`. An example of an interactive session for creating a 'species' preset is given below (angled brackets represent user input).
 
 ```R
-dispersion_preset_add(
-  type = "species",
-  interactive = TRUE)
+dispersion_preset_add(type = "species", interactive = TRUE)
 ```
 
 ```
@@ -117,9 +113,7 @@ dispersion_preset_add(
 Interactively creating a `grids` preset looks like this:
 
 ```R
-dispersion_preset_add(
-  type = 'grids',
-  interactive = TRUE)
+dispersion_preset_add(type = 'grids', interactive = TRUE)
 ```
 
 ```
@@ -206,9 +200,7 @@ dispersion_preset_add(
 Interactively creating an `emissions` preset looks like this:
 
 ```R
-dispersion_preset_add(
-  type = 'emissions',
-  interactive = TRUE)
+dispersion_preset_add(type = 'emissions', interactive = TRUE)
 ```
 
 ```
@@ -254,8 +246,7 @@ dispersion_preset_add(
 Once the presets have been created, they can be read using the `dispersion_preset_list` function by specifying the type of present (using the read argument) and providing the path of the working directory. For the `species` presets:
 
 ```R
-dispersion_preset_list(
-  read = 'species')
+dispersion_preset_list(read = 'species')
 ```
 
 ```
@@ -266,8 +257,7 @@ Here are the current species presets
 ```
 
 ```R
-dispersion_preset_list(
-  read = 'grids')
+dispersion_preset_list(read = 'grids')
 ```
 
 ```
@@ -278,8 +268,7 @@ Here are the current presets for grids
 ```
 
 ```R
-dispersion_preset_list(
-  read = 'emissions')
+dispersion_preset_list(read = 'emissions')
 ```
 
 ```
