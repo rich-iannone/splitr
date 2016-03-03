@@ -65,11 +65,10 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
   # the value supplied to 'dispersion_df' is not
   # null (and if a valid data frame object is given)
   # use it as the dispersion_df
-  
   if (!is.null(dispersion_df)){
-    if (names(dispersion_df) == 
+    if (all(names(dispersion_df) %in% 
         c("particle_no", "lon", "lat",
-          "height", "hour")){
+          "height", "hour"))){
       valid_names <- TRUE
     }
     
@@ -156,8 +155,6 @@ hysplit_dispersion_animation <- function(dispersion_df = NULL,
                    lat = (bbox_data[[2]] +
                             bbox_data[[4]])/2,
                    i, in.miles = FALSE)
-    
-    print (i)
     
     if (bbox_map[1] <= bbox_data[[1]] &
         bbox_map[2] >= bbox_data[[3]] &
