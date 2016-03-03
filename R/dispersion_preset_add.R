@@ -237,7 +237,8 @@ dispersion_preset_add <- function(type,
         rad_decay, "\n",
         pollutant_resuspension_factor, "\n",
         paste("---"), "\n",
-        file = paste0(path_wd, "species"),
+        file = paste0(getwd(),
+                      "/species"),
         append = TRUE,
         sep = "")
     
@@ -276,7 +277,7 @@ dispersion_preset_add <- function(type,
         emissions_duration, "\n",
         emissions_start_time, "\n",
         paste("---"), "\n",
-        file = paste0(path_wd, "emissions"),
+        file = paste0(getwd(), "/emissions"),
         append = TRUE,
         sep = "")
     
@@ -306,7 +307,7 @@ dispersion_preset_add <- function(type,
     }
     
     if (is.null(grid_folder)){
-      grid_folder <- path_wd
+      grid_folder <- getwd()
     }
     
     if (is.null(grid_filename)){
@@ -352,7 +353,7 @@ dispersion_preset_add <- function(type,
         grid_end_time, "\n",
         sampling_interval_type_rate, "\n",
         paste("---"), "\n",
-        file = paste0(path_wd, "grids"),
+        file = paste0(getwd(), "/grids"),
         append = TRUE,
         sep = "")
   }
@@ -812,7 +813,8 @@ dispersion_preset_add <- function(type,
           rad_decay, "\n",
           pollutant_resuspension_factor, "\n",
           paste("---"), "\n",
-          file = paste0(path_wd, "species"), append = TRUE,
+          file = paste0(getwd(), "/species"),
+          append = TRUE,
           sep = "")
     }
   }
@@ -1199,7 +1201,7 @@ dispersion_preset_add <- function(type,
     
     # Automatically assign the location of the
     # 'grids' folder
-    grid_folder <- path_wd
+    grid_folder <- getwd()
     
     # Automatically assign the output grid file name
     grid_filename <- grid_name
@@ -1527,7 +1529,7 @@ dispersion_preset_add <- function(type,
           grid_end_time_char, "\n",
           sampling_interval_type_no, " ", sampling_interval_rate_char, "\n",
           paste("---"), "\n",
-          file = paste0(path_wd, "grids"), append = TRUE,
+          file = paste0(getwd(), "/grids"), append = TRUE,
           sep = "")
     }
   }
