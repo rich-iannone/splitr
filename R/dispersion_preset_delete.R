@@ -57,8 +57,7 @@
 
 dispersion_preset_delete <- function(read = NULL,
                                      numbers = NULL,
-                                     interactive = TRUE,
-                                     path_wd){
+                                     interactive = TRUE){
   
   # Validate supplied digits for duplicates
   if (!is.null(numbers)){
