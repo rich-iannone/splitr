@@ -57,13 +57,14 @@ dispersion_preset_get <- function(read,
   
   # Reading and extracting elements from 'emissions'
   # file
-  if (read == "emissions" & no_duplicates == TRUE) {
+  if (read == "emissions" & no_duplicates) {
     
     if (length(numbers) == 1){
       
       from_file <- 
-        as.vector(read.table(paste0(path_wd,
-                                    "emissions"), sep = "\n"))
+        as.vector(
+          read.table(paste0(getwd(), "/emissions"),
+                     sep = "\n"))
       
       number_of_entries <- nrow(from_file) / 6
       
@@ -92,8 +93,9 @@ dispersion_preset_get <- function(read,
     if (length(numbers) > 1){
       
       from_file <- 
-        as.vector(read.table(paste0(path_wd,
-                                    "emissions"), sep = "\n"))
+        as.vector(
+          read.table(paste0(getwd(), "/emissions"),
+                     sep = "\n"))
       
       number_of_entries <- nrow(from_file) / 6
       
@@ -119,7 +121,8 @@ dispersion_preset_get <- function(read,
         list.from_file[[i]] <- vector.from_file
       }
       
-      # Get vector of emisisons data elements for CONTROL script
+      # Get vector of emisisons data elements for
+      # the CONTROL script
       emissions <- 
         c(number_of_requests,
           unlist(list.from_file))
@@ -129,13 +132,14 @@ dispersion_preset_get <- function(read,
   }
   
   # Reading and extracting elements from 'grids' file
-  if (read == "grids" & no_duplicates == TRUE){
+  if (read == "grids" & no_duplicates){
     
     if (length(numbers) == 1){
       
       from_file <-
-        as.vector(read.table(paste0(path_wd,
-                                    "grids"), sep = "\n"))
+        as.vector(
+          read.table(paste0(getwd(), "/grids"),
+                     sep = "\n"))
       
       number_of_entries <- nrow(from_file) / 12
       
@@ -164,14 +168,17 @@ dispersion_preset_get <- function(read,
     if (length(numbers) > 1){
       
       from_file <- 
-        as.vector(read.table(paste0(path_wd, "grids"), sep = "\n"))
+        as.vector(
+          read.table(paste0(getwd(), "/grids"),
+                     sep = "\n"))
       
       number_of_entries <- nrow(from_file) / 12
       
       # Get the numbered emissions blocks
       number_of_requests <- length(numbers)
       
-      # Initialize 'list.from_file' list with appropriate length
+      # Initialize 'list.from_file' list with
+      # appropriate length
       list.from_file <- 
         vector(mode = "list", 
                length = number_of_requests)
@@ -198,13 +205,14 @@ dispersion_preset_get <- function(read,
   }
   
   # Reading and extracting elements from 'species' file
-  if (read == "species" & no_duplicates == TRUE){
+  if (read == "species" & no_duplicates){
     
     if (length(numbers) == 1){
       
       from_file <- 
-        as.vector(read.table(paste0(path_wd,
-                                    "species"), sep = "\n"))
+        as.vector(
+          read.table(paste0(getwd(), "/species"),
+                     sep = "\n"))
       
       number_of_entries <- nrow(from_file) / 7
       
@@ -233,14 +241,17 @@ dispersion_preset_get <- function(read,
     if (length(numbers) > 1){
       
       from_file <- 
-        as.vector(read.table(paste0(path_wd, "species"), sep = "\n"))
+        as.vector(
+          read.table(paste0(getwd(), "/species"),
+                     sep = "\n"))
       
       number_of_entries <- nrow(from_file) / 7
       
       # Get the numbered emissions blocks
       number_of_requests <- length(numbers)
       
-      # Initialize 'list.from_file' list with appropriate length
+      # Initialize 'list.from_file' list with
+      # appropriate length
       list.from_file <- 
         vector(mode = "list",
                length = number_of_requests)
