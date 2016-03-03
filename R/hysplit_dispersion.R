@@ -124,20 +124,24 @@ hysplit_dispersion <- function(disp_name = NULL,
                                run_range = c("2013-02-01", "2013-02-10"),
                                run_years = "2013",
                                daily_hours_to_start = "00",
-                               emissions = c(1),
-                               species = c(1),
-                               grids = c(1),
-                               path_met_files,
-                               path_output_files,
-                               path_wd,
-                               path_executable){ 
+                               emissions = 1,
+                               species = 1,
+                               grids = 1){ 
   
   # Set parameters
   run_type <- run_type
   run_day <- run_day
   
+  # If SETUP.CFG or ASCDATA do not exist in the working
+  # directory, write default versions of those
+  # config files
+  if (!("SETUP.CFG" %in% list.files()) |
+      !("ASCDATA.CFG" %in% list.files())){
+    hysplit_config_init() 
+  }
+  
   # Set number of particles to 1 in the SETUP.CFG file
-  setup.cfg <- readLines(paste0(path_wd, "SETUP.CFG"))
+  setup.cfg <- readLines(paste0(getwd(), "/SETUP.CFG"))
   
   setup.cfg <- gsub(" numpar = ([0-9]*),",
                     paste0(" numpar = ",
@@ -151,7 +155,7 @@ hysplit_dispersion <- function(disp_name = NULL,
                            ","),
                     setup.cfg)
   
-  writeLines(setup.cfg, paste0(path_wd, "SETUP.CFG"))
+  writeLines(setup.cfg, paste0(getwd(), "/SETUP.CFG"))
   
   rm(setup.cfg)
   
@@ -162,7 +166,8 @@ hysplit_dispersion <- function(disp_name = NULL,
     list_run_days <- 
       as.POSIXct(run_day,
                  origin = "1970-01-01",
-                 tz = "UTC")}
+                 tz = "UTC")
+  }
   
   if (exists("run_type") &
       run_type == "range" &
@@ -174,7 +179,8 @@ hysplit_dispersion <- function(disp_name = NULL,
           as.POSIXct(run_range[2],
                      origin = "1970-01-01",
                      tz = "UTC"),
-          by = 86400)}
+          by = 86400)
+  }
   
   if (exists("run_type") &
       run_type == "years" &
@@ -197,7 +203,8 @@ hysplit_dispersion <- function(disp_name = NULL,
                         "-12-31")), 
           origin = "1970-01-01",
           tz = "UTC"),
-        by = 86400)}
+        by = 86400)
+  }
   
   # Make loop with all run days
   for (i in 1:length(list_run_days)) {
@@ -420,14 +427,14 @@ hysplit_dispersion <- function(disp_name = NULL,
           met.file.df[k, 1] <- met[k]
           met.file.df[k, 2] <-
             as.character(
-              file.exists(paste0(path_met_files,
+              file.exists(paste0(getwd(), "/",
                                  met[k])))
         }
         
         # Write the met file availability to file
         write.table(
           met.file.df,
-          file = paste0(path_wd, "met_file_list"),
+          file = paste0(getwd(), "/", "met_file_list"),
           sep = ",",
           row.names = FALSE,
           col.names = FALSE,
@@ -444,13 +451,13 @@ hysplit_dispersion <- function(disp_name = NULL,
           if (met_type == "reanalysis"){
             get_met_reanalysis(
               files = files_to_get,
-              path_met_files = path_met_files)
+              path_met_files = getwd())
           }
           
           if (met_type == "gdas1"){
             get_met_gdas1(
               files = files_to_get,
-              path_met_files = path_met_files)
+              path_met_files = getwd())
           } 
         }
       }
@@ -461,12 +468,12 @@ hysplit_dispersion <- function(disp_name = NULL,
           met.file.df[k, 1] <- met[k]
           met.file.df[k, 2] <-
             as.character(
-              file.exists(paste0(path_met_files,
+              file.exists(paste0(getwd(), "\\",
                                  met[k])))}
         
         # Write the met file availability to file
         write.table(met.file.df,
-                    file = paste0(path_wd,
+                    file = paste0(getwd(), "\\",
                                   "met_file_list"),
                     sep = ",",
                     row.names = FALSE,
@@ -483,13 +490,13 @@ hysplit_dispersion <- function(disp_name = NULL,
           if (met_type == "reanalysis"){
             get_met_reanalysis(
               files = files_to_get,
-              path_met_files = path_met_files)
+              path_met_files = getwd())
           }
           
           if (met_type == "gdas1"){
             get_met_gdas1(
               files = files_to_get,
-              path_met_files = path_met_files)
+              path_met_files = getwd())
           } 
         }
       }
@@ -514,12 +521,12 @@ hysplit_dispersion <- function(disp_name = NULL,
           start_month_GMT, " ",
           start_day_GMT, " ",
           start_hour_GMT, "\n",
-          file = paste0(path_wd, "CONTROL"),
+          file = paste0(getwd(), "/", "CONTROL"),
           sep = '', append = FALSE)
       
       #Write number of starting locations to 'CONTROL'
       cat("1\n",
-          file = paste0(path_wd, "CONTROL"),
+          file = paste0(getwd(), "/", "CONTROL"),
           sep = '', append = TRUE)
       
       # Write starting latitude, longitude, and height
@@ -527,54 +534,53 @@ hysplit_dispersion <- function(disp_name = NULL,
       cat(start_lat_deg, " ", 
           start_long_deg, " ", 
           start_height_m_AGL, "\n",
-          file = paste0(path_wd, "CONTROL"),
+          file = paste0(getwd(), "/", "CONTROL"),
           sep = '', append = TRUE)
       
       # Write direction and number of simulation hours
       # to 'CONTROL'
       cat(ifelse(backward_running, "-", ""),
           simulation_duration_h, "\n",
-          file = paste0(path_wd, "CONTROL"),
+          file = paste0(getwd(), "/", "CONTROL"),
           sep = '', append = TRUE)
       
       # Write vertical motion option to 'CONTROL'
       cat(vertical_motion_option, "\n",
-          file = paste0(path_wd, "CONTROL"),
+          file = paste0(getwd(), "/", "CONTROL"),
           sep = '', append = TRUE)
       
       # Write top of model domain in meters to 'CONTROL'
       cat(top_of_model_domain_m, "\n",
-          file = paste0(path_wd, "CONTROL"),
+          file = paste0(getwd(), "/", "CONTROL"),
           sep = '', append = TRUE)
       
       # Write number of met files used to 'CONTROL'
       cat(length(met), "\n",
-          file = paste0(path_wd, "CONTROL"),
+          file = paste0(getwd(), "/", "CONTROL"),
           sep = '', append = TRUE)
       
       # Write met file paths to 'CONTROL'
       for (i in 1:length(met)){
-        cat(path_met_files, "\n", met[i], "\n",
-            file = paste0(path_wd, "CONTROL"),
-            sep = '', append = TRUE)}
+        cat(getwd(), "/\n", met[i], "\n",
+            file = paste0(getwd(), "/", "CONTROL"),
+            sep = '', append = TRUE)
+        }
       
       # Write emissions blocks to 'CONTROL'
       for (i in 1:length(
         dispersion_preset_get("emissions",
-                              emissions,
-                              path_wd = path_wd))){
+                              emissions))){
         cat(dispersion_preset_get(
-          "emissions", emissions,
-          path_wd = path_wd)[i], "\n",
-          file = paste0(path_wd, "CONTROL"),
-          sep = '', append = TRUE)}
+          "emissions", emissions)[i], "\n",
+          file = paste0(getwd(), "/", "CONTROL"),
+          sep = '', append = TRUE)
+        }
       
       # Get vector text elements through reading
       # selected elements from 'grids' file
       grids_text <-
         dispersion_preset_get("grids",
-                              grids,
-                              path_wd = path_wd)
+                              grids)
       
       # Get vector text indices that contain the short
       # name(s) of the grid(s)
@@ -594,25 +600,27 @@ hysplit_dispersion <- function(disp_name = NULL,
       # Write grid blocks to 'CONTROL'
       for (i in 1:length(grids_text)){
         cat(grids_text[i], "\n",
-            file = paste0(path_wd, "CONTROL"),
-            sep = '', append = TRUE)}
+            file = paste0(getwd(), "/", "CONTROL"),
+            sep = '', append = TRUE)
+        }
       
       # Write species blocks to 'CONTROL'
       for (i in 1:length(
         dispersion_preset_get("species",
-                              species,
-                              path_wd = path_wd))){
+                              species))){
         cat(dispersion_preset_get(
-          "species", species,
-          path_wd = path_wd)[i], "\n",
-          file = paste0(path_wd, "CONTROL"),
-          sep = '', append = TRUE)}
+          "species", species)[i], "\n",
+          file = paste0(getwd(), "/", "CONTROL"),
+          sep = '', append = TRUE)
+        }
       
       # CONTROL file is now complete and in the
       # working directory; execute the model run
       if (.Platform$OS.type == "unix"){
-        system(paste0("(cd ", path_wd, " && ",
-                      path_executable, "hycs_std)"))
+        system(paste0("(cd ", getwd(), " && ",
+                      system.file("osx/hycs_std",
+                                  package = "SplitR"),
+                      ")"))
       }
       
       if (.Platform$OS.type == "windows"){
@@ -622,43 +630,44 @@ hysplit_dispersion <- function(disp_name = NULL,
       
       # Extract the particle positions at every hour
       if (.Platform$OS.type == "unix"){
-        system(paste0("(cd ", path_wd, " && ",
-                      path_executable,
-                      "parhplot -iPARDUMP -a1)"))
+        system(paste0("(cd ", getwd(), "/", " && ",
+                      system.file("osx/parhplot",
+                                  package = "SplitR"),
+                      " -iPARDUMP -a1)"))
       }
       
       if (.Platform$OS.type == "windows"){
-        shell(paste0("(cd ", path_wd, " && ",
-                     path_executable,
+        shell(paste0("(cd ", getwd(), " && ",
+                     getwd(), "\\",
                      "parhplot -iPARDUMP -a1)"))
       }
       
       # Remove the .att files from the working directory
       if (.Platform$OS.type == "unix"){
-        system(paste0("(cd ", path_wd,
+        system(paste0("(cd ", getwd(),
                       " && rm GIS_part*.att)"))
       }
       
       if (.Platform$OS.type == "windows"){
-        shell(paste0("(cd ", path_wd,
+        shell(paste0("(cd ", getwd(),
                      " && del GIS_part*.att)"))
       }
       
       # Remove the postscript plot from the working directory
       if (.Platform$OS.type == "unix"){
-        system(paste0("(cd ", path_wd,
+        system(paste0("(cd ", getwd(),
                       " && rm parhplot.ps)"))
       }
       
       if (.Platform$OS.type == "windows"){
-        shell(paste0("(cd ", path_wd,
+        shell(paste0("(cd ", getwd(),
                      " && del parhplot.ps)"))
       }
       
       # Rename the TXT files as CSV files
       if (.Platform$OS.type == "unix"){
         system(
-          paste0("(cd ", path_wd,
+          paste0("(cd ", getwd(),
                  " && for files in GIS*.txt;",
                  " do mv \"$files\" \"${files%.txt}.csv\"; done)"))
       }
@@ -666,13 +675,16 @@ hysplit_dispersion <- function(disp_name = NULL,
       # Remove the 'END' string near the end of
       # each CSV file
       if (.Platform$OS.type == "unix"){
-        system(paste0("(cd ", path_wd, " && sed -i .bk 's/END//g'",
+        system(paste0("(cd ", getwd(),
+                      " && sed -i .bk 's/END//g'",
                       " GIS_part_*.csv; rm *.bk)"))
       }
       
       if (.Platform$OS.type == "windows"){        
-        temp_file_list <- list.files(path = path_wd, pattern = "*._ps.txt",
-                                     full.names = TRUE)
+        temp_file_list <- 
+          list.files(path = getwd(),
+                     pattern = "*._ps.txt",
+                     full.names = TRUE)
         
         for (i in 1:length(temp_file_list)){
           temp_lines <- readLines(temp_file_list[i])
@@ -704,21 +716,21 @@ hysplit_dispersion <- function(disp_name = NULL,
         
         # Perform the movement of all dispersion files
         # into a folder residing in the output dir
-        dir.create(path = paste0(path_output_files,
+        dir.create(path = paste0(getwd(), "/",
                                  folder_name))
         
-        system(paste0("(cd ", path_wd,
+        system(paste0("(cd ", getwd(),
                       " && mv GIS_part*.csv '",
-                      path_output_files,
+                      getwd(), "/",
                       folder_name,
                       "')"))
       }
       
       if (.Platform$OS.type == "windows"){
         
-        system(paste0("(cd ", path_wd,
+        system(paste0("(cd ", getwd(),
                       " && mv GIS_part*.csv '",
-                      path_output_files, "')"))
+                      getwd(), "')"))
       }
     }
   }
@@ -728,13 +740,13 @@ hysplit_dispersion <- function(disp_name = NULL,
   if (write_disp_CSV){
     disp.df <- 
       dispersion_read(archive_folder =
-                        paste0(path_output_files,
+                        paste0(getwd(), "/",
                                folder_name))
     
     if (.Platform$OS.type == "unix"){
       write.table(
         disp.df,
-        file = paste0(path_output_files,
+        file = paste0(getwd(), "/",
                       folder_name,
                       "/dispersion.csv"),
         sep = ",",
@@ -744,7 +756,7 @@ hysplit_dispersion <- function(disp_name = NULL,
     if (.Platform$OS.type == "windows"){
       write.table(
         disp.df,
-        file = paste0(path_output_files,
+        file = paste0(getwd(), "\\",
                       folder_name,
                       "\\dispersion.csv"),
         sep = ",",
@@ -756,7 +768,7 @@ hysplit_dispersion <- function(disp_name = NULL,
   if (return_disp_df){
     disp.df <- 
       dispersion_read(
-        archive_folder = paste0(path_output_files,
+        archive_folder = paste0(getwd(), "/",
                                 folder_name))
     
     invisible(disp.df)
