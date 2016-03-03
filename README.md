@@ -61,9 +61,7 @@ These files will be placed in a subdirectory within the working directory. If th
 ```R
 trajectory_df <-
   trajectory_read(
-    output_folder = "t2--2014-06-17--02-39-29",
-    year = NULL,
-    start_height_m_AGL = NULL)
+    output_folder = "t2--2014-06-17--02-39-29")
 ```
 Here, the name or folder is specified in the `output_folder` argument. With the resultant data frame, statistical analyses for the trajectories can be generated (e.g., average heights of trajectories after specified time periods, etc.).
 
@@ -197,7 +195,6 @@ dispersion_preset_add(
   grid_center = "42.83752 -80.30364",
   grid_spacing = "0.05 0.05",
   grid_span = "1 1",
-  grid_folder = "C:\\hysplit4\\working\\",
   grid_filename = "grid",
   grid_number_vertical = "1",
   grid_heights = "0",
