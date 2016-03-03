@@ -4,7 +4,7 @@
 \alias{dispersion_preset_list}
 \title{Get list of presets}
 \usage{
-dispersion_preset_list(read = NULL, search = NULL, path_wd)
+dispersion_preset_list(read = NULL, search = NULL)
 }
 \arguments{
 \item{read}{the type of preset to get. The three
@@ -16,10 +16,6 @@ name of a preset of the type provided within the
 argument 'read'. If an exact match is found
 (case-sensitive), then the number corresponding to
 the matched preset is provided.}
-
-\item{path_wd}{a full path should be provided for
-the HYSPLIT working directory since presets will
-normally reside in this folder.}
 }
 \description{
 This function allows you to generate a
@@ -39,15 +35,13 @@ with that preset is returned.
 \dontrun{
 # Get a list of 'species' presets
 dispersion_preset_list(
-  read = "species",
-  path_wd = "C:\\\\hysplit4\\\\working\\\\")
+  read = "species")
 
 # Find the number for the 'emissions'
 # preset named 'E134'
 dispersion_preset_list(
   read = "emissions",
-  search = "E134",
-  path_wd = "~/Documents/Hysplit/working/")
+  search = "E134")
 }
 }
 

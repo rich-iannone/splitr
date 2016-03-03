@@ -11,8 +11,7 @@ hysplit_dispersion(disp_name = NULL, return_disp_df = TRUE,
   top_of_model_domain_m = 20000, number_of_particles = 2500,
   max_particles = 10000, run_type = "day", run_day = "2013-02-01",
   run_range = c("2013-02-01", "2013-02-10"), run_years = "2013",
-  daily_hours_to_start = "00", emissions = c(1), species = c(1),
-  grids = c(1), path_met_files, path_output_files, path_wd, path_executable)
+  daily_hours_to_start = "00", emissions = 1, species = 1, grids = 1)
 }
 \arguments{
 \item{disp_name}{an optional, descriptive name for
@@ -121,9 +120,11 @@ specified meteorological datasets.
 }
 \examples{
 \dontrun{
-# Perform a dispersion run lasting 12 hours over two consecutive days, both starting at midnight
-# Grid presets 1 and 2 will be used as sampling grids
-# Presets for species and emissions are set to the first (this is also the default)
+# Perform a dispersion run lasting 12 hours over
+# two consecutive days, both starting at midnight;
+# grid presets 1 and 2 will be used as sampling
+# grids (presets for species and emissions are set
+# to the first, which is the default)
 hysplit_dispersion(
   disp_name = "example",
   return_disp_df = FALSE,
@@ -141,11 +142,7 @@ hysplit_dispersion(
   grids = c(1,2),
   run_type = "range",
   run_range = c("2012-02-01", "2012-02-03"),
-  daily_hours_to_start = "00",
-  path_met_files = "~/Documents/SplitR/Met/",
-  path_output_files = "~/Documents/SplitR/Output/",
-  path_wd = "~/Documents/SplitR/Working/",
-  path_executable = "~/Documents/SplitR/Exec/hycs_std")
+  daily_hours_to_start = "00")
 }
 }
 

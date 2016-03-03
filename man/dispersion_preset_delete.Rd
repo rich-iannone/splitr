@@ -4,8 +4,7 @@
 \alias{dispersion_preset_delete}
 \title{Remove dispersion preset information}
 \usage{
-dispersion_preset_delete(read = NULL, numbers = NULL, interactive = TRUE,
-  path_wd)
+dispersion_preset_delete(read = NULL, numbers = NULL, interactive = TRUE)
 }
 \arguments{
 \item{read}{the type of preset to delete. The three
@@ -38,10 +37,6 @@ guide the user on which items are available for
 deletion. If the interactive mode is selected (it
 is the default mode), no values for the 'numbers'
 need to be supplied.}
-
-\item{path_wd}{a full path should be provided for
-the HYSPLIT working directory since presets will
-normally reside in this folder.}
 }
 \description{
 The function allows for the deletion of

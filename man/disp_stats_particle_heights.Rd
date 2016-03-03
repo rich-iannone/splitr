@@ -22,7 +22,7 @@ interval.
 \examples{
 \dontrun{
 # Get a five-number statistical summary of particle
-heights at every hour
+# heights at every hour
 disp_stats_particle_heights(
   dispersion_df = disp_output,
   stats = "fivenum")

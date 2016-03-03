@@ -4,7 +4,7 @@
 \alias{dispersion_preset_get}
 \title{Get requested preset information}
 \usage{
-dispersion_preset_get(read, numbers, path_wd = "~/Documents/SplitR/Working/")
+dispersion_preset_get(read, numbers)
 }
 \arguments{
 \item{read}{the type of preset to get. The three
@@ -19,10 +19,6 @@ value or numeric vector. The numbers correspond
 to the order in which the presets appear in each
 of the 'emissions', 'grids', or 'species' plaintext
 files.}
-
-\item{path_wd}{a full path should be provided for
-the HYSPLIT working directory since presets will
-normally reside in this folder.}
 }
 \description{
 This is a helper function that is used

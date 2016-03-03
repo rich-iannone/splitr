@@ -16,7 +16,7 @@ dispersion_preset_add(type, interactive = TRUE, species_name = NULL,
   grid_spacing = NULL, grid_span = NULL, grid_folder = NULL,
   grid_filename = NULL, grid_number_vertical = NULL, grid_heights = NULL,
   grid_start_time = NULL, grid_end_time = NULL,
-  sampling_interval_type_rate = NULL, path_wd)
+  sampling_interval_type_rate = NULL)
 }
 \arguments{
 \item{type}{the type of preset to add. The three
@@ -130,10 +130,6 @@ in the format "YY MM DD HH MM".}
 \item{sampling_interval_type_rate}{a sting that
 specifies the type of sampling, and the rate by
 which sampling occurs ("HH MM").}
-
-\item{path_wd}{a full path should be provided for
-the HYSPLIT working directory since presets will
-reside in this folder.}
 }
 \description{
 The function allows for the setting of
