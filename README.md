@@ -170,7 +170,7 @@ The plan. Adding grid: "grid"
               Grid Span: 1, 1
  No. of Vertical Levels: 1
            Grid Heights: 0 m
-      Start of Sampling: 2012-03-13 00:00
+      Start of Sampling: 2012-03-12 00:00
         End of Sampling: 2012-03-13 00:00
         Sampling Method: 0
      Sampling Frequency: 1 h
