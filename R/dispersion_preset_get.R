@@ -21,9 +21,6 @@
 #' to the order in which the presets appear in each
 #' of the 'emissions', 'grids', or 'species' plaintext
 #' files.
-#' @param path_wd a full path should be provided for
-#' the HYSPLIT working directory since presets will
-#' normally reside in this folder.
 #' @export dispersion_preset_get
 #' @examples
 #' \dontrun{
@@ -41,8 +38,8 @@
 #'   numbers = species)
 #' }
 
-dispersion_preset_get <- function(read, numbers,
-                                  path_wd = "~/Documents/SplitR/Working/"){
+dispersion_preset_get <- function(read,
+                                  numbers){
   
   # Validate supplied digits for duplicates
   no_duplicates <- ifelse(anyDuplicated(numbers) == 0,
