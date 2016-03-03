@@ -12,8 +12,6 @@
 #' 'stamen' (Stamen Maps).
 #' @param map_output_name a partial identifier
 #' prepended to the output map files.
-#' @param path_output_files a full path for a location
-#' that the dispersion output files were written.
 #' @import ggmap
 #' @export hysplit_dispersion_plot
 #' @examples
@@ -23,16 +21,14 @@
 #' hysplit_dispersion_plot(
 #'   hours = "all",
 #'   dispersion_df = disp.df,
-#'   map_output_name = "new map",
-#'   path_output_files = "~/Documents/SplitR/Output/Plots/")
+#'   map_output_name = "new map")
 #'}
 
 hysplit_dispersion_plot <- function(hours = 'all',
                                     dispersion_df = NULL,
                                     disp_folder_path = NULL,
                                     map_type = "stamen",
-                                    map_output_name = NULL,
-                                    path_output_files = NULL){
+                                    map_output_name = NULL){
   
   # Obtain the appropriate dispersion data frame; if
   # the value supplied to 'dispersion_df' is not
