@@ -1,20 +1,18 @@
-#' Create config file for dispersion runs
-#' @description This function creates a default
-#' SETUP.CFG configuration file and places it in the
-#' user-specified 'working' folder. This file must be
-#' located in the working directory before any HYSPLIT
-#' dispersion models can be run.
-#' @param path_wd a full path should be provided for
-#' the HYSPLIT working directory.
-#' @export hysplit_dispersion_config
+#' Create default configuration files for trajectory
+#' and dispersion modelling runs
+#' @description This function creates default
+#' \code{SETUP.CFG} and \code{ASCDATA.CFG}
+#' configuration files and places them in the
+#' working directories.
+#' @export hysplit_config_init
 #' @examples
 #' \dontrun{
-#' # Create a default SETUP.CFG file for dispersion runs
-#' hysplit_dispersion_config(
-#'   path_wd = "C://hysplit//working//")
+#' # Create a default `SETUP.CFG` and `ASCDATA.CFG`
+#' # files for trajectory and dispersion runs
+#' hysplit_config_init()
 #' }
 
-hysplit_dispersion_config <- function(path_wd){
+hysplit_config_init <- function(){
   
   # Create default `SETUP.CFG` configuration file for
   # dispersion runs and place it in the working
@@ -27,7 +25,8 @@ hysplit_dispersion_config <- function(path_wd){
       " maxpar = 10000,", " cpack = 1,", " cmass = 0,", " dxf = 1.0,", " dyf = 1.0,",
       " dzf = 0.01,", " ichem = 0,", " maxdim = 1,", " kspl = 1,", " krnd = 6,",
       " frhs = 1.0,", " frvs = 0.01,", " frts = 0.10,", " frhmax = 3.0,", " splitf = 1.0,",
-      " /", sep = "\n", file = paste0(path_wd, "SETUP.CFG"))
+      " /", sep = "\n",
+      file = paste0(getwd(), "/", "SETUP.CFG"))
   
   # Create `ASCDATA.CFG` file and place in the 
   # working directory
@@ -37,5 +36,6 @@ hysplit_dispersion_config <- function(path_wd){
       "2  	default land use category",
       "0.2  	default roughness length (meters)",
       "'.'  directory location of data files",
-      sep = "\n", file = paste0(path_wd, "ASCDATA.CFG"))
+      sep = "\n",
+      file = paste0(getwd(), "/", "ASCDATA.CFG"))
 }
