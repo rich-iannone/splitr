@@ -1044,14 +1044,16 @@ dispersion_preset_add <- function(type,
     # options to the list of emissions sources in the
     # project folder
     if (acceptable_emissions == "y"){
-      cat(paste0("--- Emissions source named: ", emissions_name,
+      cat(paste0("--- Emissions source named: ",
+                 emissions_name,
                  ", generated on ", Sys.time()), "\n",
           gsub("^(....).*","\\1", emissions_name), "\n",
           emissions_rate, "\n",
           emissions_duration, "\n",
           emissions_start_time_char, "\n",
           paste("---"), "\n",
-          file = paste0(path_wd, "emissions"), append = TRUE,
+          file = paste0(getwd(), "/emissions"),
+          append = TRUE,
           sep = "")
     }
   }
