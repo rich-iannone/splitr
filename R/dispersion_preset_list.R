@@ -19,28 +19,22 @@
 #' argument 'read'. If an exact match is found
 #' (case-sensitive), then the number corresponding to
 #' the matched preset is provided.
-#' @param path_wd a full path should be provided for
-#' the HYSPLIT working directory since presets will
-#' normally reside in this folder.
 #' @export dispersion_preset_list
 #' @examples
 #' \dontrun{
 #' # Get a list of 'species' presets
 #' dispersion_preset_list(
-#'   read = "species",
-#'   path_wd = "C:\\hysplit4\\working\\")
+#'   read = "species")
 #' 
 #' # Find the number for the 'emissions'
 #' # preset named 'E134'
 #' dispersion_preset_list(
 #'   read = "emissions",
-#'   search = "E134",
-#'   path_wd = "~/Documents/Hysplit/working/")
+#'   search = "E134")
 #'}
 
 dispersion_preset_list <- function(read = NULL,
-                                   search = NULL,
-                                   path_wd){
+                                   search = NULL){
   
   # If an argument for read was not provided, prompt the user to select a preset class
   if (is.null(read)){
@@ -64,7 +58,7 @@ dispersion_preset_list <- function(read = NULL,
   if (read == "emissions"){
     
     # Read the 'emissions' file line by line and place into a vector object
-    from_file <- as.vector(read.table(paste0(path_wd, "emissions"), sep = "\n"))
+    from_file <- as.vector(read.table(paste0(getwd(), "/emissions"), sep = "\n"))
     
     # Get the total number of preset entries available in the file
     number_of_entries <- nrow(from_file) / 6
@@ -153,7 +147,7 @@ dispersion_preset_list <- function(read = NULL,
   if (read == "grids"){
     
     # Read the 'grids' file line by line and place into a vector object
-    from_file <- as.vector(read.table(paste0(path_wd, "grids"), sep = "\n"))
+    from_file <- as.vector(read.table(paste0(getwd(), "/grids"), sep = "\n"))
     
     # Get the total number of preset entries available in the file
     number_of_entries <- nrow(from_file) / 12
@@ -247,7 +241,7 @@ dispersion_preset_list <- function(read = NULL,
   if (read == "species"){
     
     # Read the 'species' file line by line and place into a vector object
-    from_file <- as.vector(read.table(paste0(path_wd, "species"), sep = "\n"))
+    from_file <- as.vector(read.table(paste0(getwd(), "/species"), sep = "\n"))
     
     # Get the total number of preset entries available in the file
     number_of_entries <- nrow(from_file) / 7
