@@ -75,6 +75,12 @@ hysplit_dispersion_plot <- function(hours = 'all',
                stringsAsFactors = FALSE)
   }
   
+  # Set the output path for plot files
+  path_output_files <- 
+    ifelse(is.null(disp_folder_path),
+           getwd(),
+           disp_folder_path)
+  
   # If value for 'hours' argument contains 'all'
   # (default), determine the ending hour from
   # the dispersion dataframe
