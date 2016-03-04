@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/20543/rich-iannone/SplitR.svg)](https://zenodo.org/badge/latestdoi/20543/rich-iannone/SplitR)
 
-**SplitR** is an **R** package for conducting trajectory and dispersion modelling with **HYSPLIT**. The **HYSPLIT** model can be obtained from the **Air Resources Laboratory** (**ARL**) of the National Oceanic and Atmospheric Administration** (**NOAA**) [READY website](http://ready.arl.noaa.gov/HYSPLIT.php).
+**SplitR** is an **R** package for conducting trajectory and dispersion modelling with **HYSPLIT**. You can determine where air (came from | is going), or, where particulate matter (came from | is going). More information on the **HYSPLIT** model can be obtained from the **Air Resources Laboratory** (**ARL**) of the National Oceanic and Atmospheric Administration** (**NOAA**) [READY website](http://ready.arl.noaa.gov/HYSPLIT.php).
 
 ## Installation
 
