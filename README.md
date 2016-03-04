@@ -2,11 +2,11 @@
 
 [![DOI](https://zenodo.org/badge/20543/rich-iannone/SplitR.svg)](https://zenodo.org/badge/latestdoi/20543/rich-iannone/SplitR)
 
-**SplitR** is an **R** package for conducting trajectory and dispersion modelling **HYSPLIT**. The **HYSPLIT** model can be obtained from the **Air Resources Laboratory** (**ARL**) of the National Oceanic and Atmospheric Administration** (**NOAA**) [READY website](http://ready.arl.noaa.gov/HYSPLIT.php).
+**SplitR** is an **R** package for conducting trajectory and dispersion modelling with **HYSPLIT**. The **HYSPLIT** model can be obtained from the **Air Resources Laboratory** (**ARL**) of the National Oceanic and Atmospheric Administration** (**NOAA**) [READY website](http://ready.arl.noaa.gov/HYSPLIT.php).
 
 ## Installation
 
-Install of **SplitR** from **GitHub** using the `devtools` package:
+Install **SplitR** from **GitHub** using the `devtools` package:
 
 ```R
 library(devtools)
