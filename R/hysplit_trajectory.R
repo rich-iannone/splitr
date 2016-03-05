@@ -107,11 +107,12 @@ hysplit_trajectory <- function(traj_name = NULL,
                                run_years = NULL,
                                daily_hours_to_start){
   
-  # Place `ASCDATA.CFG` file in working directory
-  if (!file.exists("ASCDATA.CFG")){
-    file.copy(from = system.file("ASCDATA.CFG",
-                                 package = "SplitR"),
-              to = getwd())
+  # If SETUP.CFG or ASCDATA.CFG do not exist in the working
+  # directory, write default versions of those
+  # config files
+  if (!("SETUP.CFG" %in% list.files()) |
+      !("ASCDATA.CFG" %in% list.files())){
+    hysplit_config_init() 
   }
 
   # Determine whether the run_years input is a single
