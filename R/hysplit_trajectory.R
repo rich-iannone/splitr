@@ -603,8 +603,10 @@ hysplit_trajectory <- function(traj_name = NULL,
       }
       
       if (.Platform$OS.type == "windows"){
-        shell(paste0("(cd ", path_wd, " && ",
-                     path_executable, "hyts_std)"))
+        system(paste0("(cd ", getwd(), " && ",
+                      system.file("win/hyts_std.exe",
+                                  package = "SplitR"),
+                      ")"))
       }
     }
   }
@@ -662,13 +664,13 @@ hysplit_trajectory <- function(traj_name = NULL,
     
     # Perform the movement of all trajectory files
     # into a folder residing to the output directory
-    dir.create(path = paste0(getwd(), "/",
+    dir.create(path = paste0(getwd(), "\\",
                              folder_name))
     
     for (i in 1:length(all_trajectory_files)){
       shell(paste0("(cd ", getwd(), " && move ",
                    all_trajectory_files[i], " ",
-                   paste0(getwd(), "/",
+                   paste0(getwd(), "\\",
                           folder_name),
                    ")"))
     }
@@ -676,8 +678,9 @@ hysplit_trajectory <- function(traj_name = NULL,
     # Return a trajectory data frame if it is requested
     if (return_traj_df == TRUE){
       traj_df <- 
+        traj_df <-
         trajectory_read(output_folder =
-                          paste0(path_output_files,
+                          paste0(getwd(), "\\",
                                  folder_name))
       return(traj_df)
     }
