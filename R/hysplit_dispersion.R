@@ -132,7 +132,7 @@ hysplit_dispersion <- function(disp_name = NULL,
   run_type <- run_type
   run_day <- run_day
   
-  # If SETUP.CFG or ASCDATA do not exist in the working
+  # If SETUP.CFG or ASCDATA.CFG do not exist in the working
   # directory, write default versions of those
   # config files
   if (!("SETUP.CFG" %in% list.files()) |
