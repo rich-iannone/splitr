@@ -74,23 +74,6 @@ be a single year (\code{YYYY}) or a range of years
 single daily hour in the format \code{HH}, or,
 several daily hours as a vector in the format of
 \code{"c("HH", "HH", ...)"}.}
-
-\item{path_met_files}{a full path should be provided
-for the location of the meteorological data files
-relevant to the model options chosen.}
-
-\item{path_output_files}{a full path should be
-provided for a location that the trajectory output
-files will be written.}
-
-\item{path_wd}{a full path should be provided for
-the HYSPLIT working directory; the \code{CONTROL}
-file for each model run will be written to and read
-from this location.}
-
-\item{path_executable}{the full path and name of the
-HYSPLIT executable file for trajectory runs must be
-provided here.}
 }
 \description{
 The function executes single/multiple

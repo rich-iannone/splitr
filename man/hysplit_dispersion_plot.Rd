@@ -5,8 +5,7 @@
 \title{Plot HYSPLIT dispersion model output onto maps}
 \usage{
 hysplit_dispersion_plot(hours = "all", dispersion_df = NULL,
-  disp_folder_path = NULL, map_type = "stamen", map_output_name = NULL,
-  path_output_files = NULL)
+  disp_folder_path = NULL, map_type = "stamen", map_output_name = NULL)
 }
 \arguments{
 \item{hours}{specification of hours of dispersion
@@ -24,9 +23,6 @@ plotting. Choices are 'osm' (Open Street Map) and
 
 \item{map_output_name}{a partial identifier
 prepended to the output map files.}
-
-\item{path_output_files}{a full path for a location
-that the dispersion output files were written.}
 }
 \description{
 The function plots hourly outputs of
@@ -39,8 +35,7 @@ dispersed particles onto maps.
 hysplit_dispersion_plot(
   hours = "all",
   dispersion_df = disp.df,
-  map_output_name = "new map",
-  path_output_files = "~/Documents/SplitR/Output/Plots/")
+  map_output_name = "new map")
 }
 }
 

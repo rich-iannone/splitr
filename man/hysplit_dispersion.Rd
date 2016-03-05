@@ -95,23 +95,6 @@ using the function
 stored grid presets. These presets are specified
 using the function
 'hysplit_dispersion_define("grids")'.}
-
-\item{path_met_files}{a full path should be provided
-for the location of the meteorological data files
-relevant to the model options chosen.}
-
-\item{path_output_files}{a full path should be
-provided for a location that the dispersion output
-files will be written.}
-
-\item{path_wd}{a full path should be provided for
-the HYSPLIT working directory; the CONTROL file for
-each model run will be written to and read from this
-location.}
-
-\item{path_executable}{the full path and name of the
-HYSPLIT executable file for dispersion runs must be
-provided.}
 }
 \description{
 The function executes single/multiple
