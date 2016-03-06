@@ -572,7 +572,7 @@ hysplit_trajectory <- function(traj_name = NULL,
         
         # Write met file paths to 'CONTROL'
         for (i in 1:length(met)){
-          cat(getwd(), "\n", met[i], "\n",
+          cat(getwd(), "/\n", met[i], "\n",
               file = paste0(getwd(), "\\", "CONTROL"),
               sep = '', append = TRUE)}
         
