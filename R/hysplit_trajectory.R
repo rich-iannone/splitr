@@ -599,10 +599,10 @@ hysplit_trajectory <- function(traj_name = NULL,
       }
       
       if (.Platform$OS.type == "windows"){
-        system(paste0("(cd ", getwd(), " && ",
+        system(paste0("(cd ", getwd(), " && \"",
                       system.file("win/hyts_std.exe",
                                   package = "SplitR"),
-                      ")"))
+                      "\")"))
       }
     }
   }
