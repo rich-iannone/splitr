@@ -40,9 +40,9 @@ the dispersion runs should be running forward in
 time (the default) or in a backward running state.}
 
 \item{met_type}{an option to select meteorological
-data files. The options are "gdas1" (Global Data
+data files. The options are \code{gdas1} (Global Data
 Assimilation System 1-degree resolution data) and
-'reanalysis' (NCAR/NCEP global reanalysis data).}
+\code{reanalysis} (NCAR/NCEP global reanalysis data).}
 
 \item{vertical_motion_option}{a numbered option to
 select the method used to simulation vertical
@@ -61,17 +61,17 @@ released by source during each release cycle.}
 released by a source during a model run.}
 
 \item{run_type}{used to select whether models should
-be run for a single day ("day"), for one or more
-years ("years"), or within a specified date range
-("range").}
+be run for a single day (\code{day}), for one or more
+years (\code{years}), or within a specified date range
+(\code{range}).}
 
-\item{run_day}{used when 'run_type' of 'day' is
-selected. The date format should be provided here
-as "YYYY-MM-DD".}
+\item{run_day}{used when \code{run_type} of
+\code{day} is selected. The date format should be
+provided here as "YYYY-MM-DD".}
 
 \item{run_range}{used when 'run_type' of 'range' is
 selected. The date format should be provided here
-as "c("YYYY-MM-DD", "YYYY-MM-DD")".}
+as \code{c("YYYY-MM-DD", "YYYY-MM-DD")}.}
 
 \item{run_years}{used when 'run_type' of 'years' is
 selected. The format should either be a single year
@@ -79,22 +79,22 @@ selected. The format should either be a single year
 
 \item{daily_hours_to_start}{should consist of a
 single daily hour in the format "HH", or, several
-daily hours in the format "c("HH", "HH", "HH", ...)".}
+daily hours in the format \code{c("HH", "HH", "HH", ...)}.}
 
 \item{emissions}{the numbers corresponding to the
 stored emissions presets. These presets are
 specified using the function
-'hysplit_dispersion_define("emissions")'.}
+\code{hysplit_dispersion_define("emissions")}.}
 
 \item{species}{the numbers corresponding to the
 stored species presets. These presets are specified
 using the function
-'hysplit_dispersion_define("species")'.}
+\code{hysplit_dispersion_define("species")}.}
 
 \item{grids}{the numbers corresponding to the
 stored grid presets. These presets are specified
 using the function
-'hysplit_dispersion_define("grids")'.}
+\code{hysplit_dispersion_define("grids")}.}
 }
 \description{
 The function executes single/multiple

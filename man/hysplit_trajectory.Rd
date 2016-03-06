@@ -98,11 +98,7 @@ hysplit_trajectory(
   run_type = "years",
   run_years = "2004",
   daily_hours_to_start = c("03", "06", "09", "12",
-                           "15", "18", "21"),
-  path_met_files = "~/hysplit4/met/",
-  path_output_files = "~/hysplit4/output_trajectory/",
-  path_wd = "~/hysplit4/working/",
-  path_executable = "~/hysplit4/exec/hyts_std")
+                           "15", "18", "21"))
 }
 }
 
