@@ -20,9 +20,9 @@
 #' the dispersion runs should be running forward in
 #' time (the default) or in a backward running state.
 #' @param met_type an option to select meteorological
-#' data files. The options are "gdas1" (Global Data
+#' data files. The options are \code{gdas1} (Global Data
 #' Assimilation System 1-degree resolution data) and
-#' 'reanalysis' (NCAR/NCEP global reanalysis data).
+#' \code{reanalysis} (NCAR/NCEP global reanalysis data).
 #' @param vertical_motion_option a numbered option to
 #' select the method used to simulation vertical
 #' motion. The methods are: (0) input model data,
@@ -36,33 +36,33 @@
 #' @param max_particles the number of particles
 #' released by a source during a model run.
 #' @param run_type used to select whether models should
-#' be run for a single day ("day"), for one or more
-#' years ("years"), or within a specified date range
-#' ("range").
-#' @param run_day used when 'run_type' of 'day' is
-#' selected. The date format should be provided here
-#' as "YYYY-MM-DD".
+#' be run for a single day (\code{day}), for one or more
+#' years (\code{years}), or within a specified date range
+#' (\code{range}).
+#' @param run_day used when \code{run_type} of
+#' \code{day} is selected. The date format should be
+#' provided here as "YYYY-MM-DD".
 #' @param run_range used when 'run_type' of 'range' is
 #' selected. The date format should be provided here
-#' as "c("YYYY-MM-DD", "YYYY-MM-DD")".
+#' as \code{c("YYYY-MM-DD", "YYYY-MM-DD")}.
 #' @param run_years used when 'run_type' of 'years' is
 #' selected. The format should either be a single year
 #' ("YYYY") or a range of years ("YYYY-YYYY").
 #' @param daily_hours_to_start should consist of a
 #' single daily hour in the format "HH", or, several
-#' daily hours in the format "c("HH", "HH", "HH", ...)".
+#' daily hours in the format \code{c("HH", "HH", "HH", ...)}.
 #' @param emissions the numbers corresponding to the
 #' stored emissions presets. These presets are
 #' specified using the function
-#' 'hysplit_dispersion_define("emissions")'.
+#' \code{hysplit_dispersion_define("emissions")}.
 #' @param species the numbers corresponding to the
 #' stored species presets. These presets are specified
 #' using the function
-#' 'hysplit_dispersion_define("species")'.
+#' \code{hysplit_dispersion_define("species")}.
 #' @param grids the numbers corresponding to the
 #' stored grid presets. These presets are specified
 #' using the function
-#' 'hysplit_dispersion_define("grids")'.
+#' \code{hysplit_dispersion_define("grids")}.
 #' @import lubridate
 #' @import ggmap
 #' @export hysplit_dispersion 
