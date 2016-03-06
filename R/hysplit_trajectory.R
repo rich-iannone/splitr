@@ -428,12 +428,12 @@ hysplit_trajectory <- function(traj_name = NULL,
           
           if (met_type == "reanalysis"){
             get_met_reanalysis(files = files_to_get,
-                               path_met_files = path_met_files)
+                               path_met_files = getwd())
           }
           
           if (met_type == "gdas1"){
             get_met_gdas1(files = files_to_get,
-                          path_met_files = path_met_files)
+                          path_met_files = getwd())
           } 
         }
       }
