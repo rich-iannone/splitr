@@ -97,11 +97,11 @@ hysplit_trajectory <- function(traj_name = NULL,
       !("ASCDATA.CFG" %in% list.files())){
     hysplit_config_init() 
   }
-
+  
   # Determine whether the run_years input is a single
   # year or a range
   if (exists("run_years")) run_years_single_range <-
-    ifelse(nchar(run_years) == 4, "single", "range") 
+      ifelse(nchar(run_years) == 4, "single", "range") 
   
   # Make a vector list of run days in POSIXct format
   if (run_type == "day"){
@@ -137,7 +137,7 @@ hysplit_trajectory <- function(traj_name = NULL,
   } else {
     stop("A run type has not been selected")
   }
-
+  
   # Initialize a vector that will contain names for
   # all files generated
   all_trajectory_files <- 
@@ -625,7 +625,7 @@ hysplit_trajectory <- function(traj_name = NULL,
     # into a folder residing to the output directory
     dir.create(path = paste0(getwd(), "/",
                              folder_name))
-
+    
     for (i in 1:length(all_trajectory_files)){
       system(paste0("(cd ", getwd(), " && mv ",
                     all_trajectory_files[i], " ",
@@ -660,15 +660,15 @@ hysplit_trajectory <- function(traj_name = NULL,
     
     # Perform the movement of all trajectory files
     # into a folder residing to the output directory
-    dir.create(path = paste0(getwd(), "\\",
+    dir.create(path = paste0(getwd(), "/",
                              folder_name))
     
     for (i in 1:length(all_trajectory_files)){
-      shell(paste0("(cd ", getwd(), " && move ",
-                   all_trajectory_files[i], " ",
-                   paste0(getwd(), "\\",
-                          folder_name),
-                   ")"))
+      system2(paste0("(cd ", getwd(), " && move ",
+                    all_trajectory_files[i], " ",
+                    paste0(getwd(), "/",
+                           folder_name),
+                    ")"))
     }
     
     # Return a trajectory data frame if it is requested
