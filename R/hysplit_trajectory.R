@@ -408,7 +408,7 @@ hysplit_trajectory <- function(traj_name = NULL,
           met_file_df[k, 1] <- met[k]
           
           met_file_df[k, 2] <-
-            as.character(file.exists(paste0(getwd(), "/",
+            as.character(file.exists(paste0(getwd(), "\\",
                                             met[k])))}
         
         # Write the met file availability to file
