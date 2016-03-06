@@ -664,11 +664,11 @@ hysplit_trajectory <- function(traj_name = NULL,
                              folder_name))
     
     for (i in 1:length(all_trajectory_files)){
-      system2(paste0("(cd ", getwd(), " && move ",
-                    all_trajectory_files[i], " ",
+      system2(paste0("(cd ", getwd(), " && move \"",
+                    all_trajectory_files[i], "\" \"",
                     paste0(getwd(), "/",
                            folder_name),
-                    ")"))
+                    "\")"))
     }
     
     # Return a trajectory data frame if it is requested
