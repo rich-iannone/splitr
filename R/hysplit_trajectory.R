@@ -578,7 +578,7 @@ hysplit_trajectory <- function(traj_name = NULL,
         
         # Write path for trajectory output files to
         # 'CONTROL'
-        cat(getwd(), "\n",
+        cat(getwd(), "/\n",
             file = paste0(getwd(), "\\", "CONTROL"),
             sep = '', append = TRUE)
         
