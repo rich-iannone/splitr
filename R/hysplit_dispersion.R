@@ -777,9 +777,7 @@ hysplit_dispersion <- function(disp_name = NULL,
   if (return_disp_df){
     
     disp.df <- 
-      dispersion_read(
-        archive_folder = paste0(getwd(), "/",
-                                folder_name))
+      dispersion_read(archive_folder = folder_name)
     
     invisible(disp.df)
   }
