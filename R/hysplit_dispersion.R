@@ -730,6 +730,11 @@ hysplit_dispersion <- function(disp_name = NULL,
                           "%Y-%m-%d--%H-%M-%S"))  
         }
         
+        # Perform the movement of all dispersion files
+        # into a folder residing in the output dir
+        dir.create(path = paste0(getwd(), "/",
+                                 folder_name))
+        
         shell(paste0("(cd \"", getwd(),
                      "\" && move GIS_part*.csv \"",
                      getwd(), "/",
