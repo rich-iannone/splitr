@@ -74,7 +74,8 @@
 #'   run_type = "years",
 #'   run_years = "2004",
 #'   daily_hours_to_start = c("03", "06", "09", "12",
-#'                            "15", "18", "21"))
+#'                            "15", "18", "21"),
+#'   return_met_along_traj = TRUE)
 #'}
 
 hysplit_trajectory <- function(traj_name = NULL,
