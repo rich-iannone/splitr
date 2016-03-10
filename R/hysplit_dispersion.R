@@ -551,7 +551,7 @@ hysplit_dispersion <- function(disp_name = NULL,
         cat(getwd(), "/\n", met[i], "\n",
             file = paste0(getwd(), "/", "CONTROL"),
             sep = '', append = TRUE)
-        }
+      }
       
       # Write emissions blocks to 'CONTROL'
       for (i in 1:length(
@@ -561,7 +561,7 @@ hysplit_dispersion <- function(disp_name = NULL,
           "emissions", emissions)[i], "\n",
           file = paste0(getwd(), "/", "CONTROL"),
           sep = '', append = TRUE)
-        }
+      }
       
       # Get vector text elements through reading
       # selected elements from 'grids' file
@@ -589,7 +589,7 @@ hysplit_dispersion <- function(disp_name = NULL,
         cat(grids_text[i], "\n",
             file = paste0(getwd(), "/", "CONTROL"),
             sep = '', append = TRUE)
-        }
+      }
       
       # Write species blocks to 'CONTROL'
       for (i in 1:length(
@@ -599,7 +599,7 @@ hysplit_dispersion <- function(disp_name = NULL,
           "species", species)[i], "\n",
           file = paste0(getwd(), "/", "CONTROL"),
           sep = '', append = TRUE)
-        }
+      }
       
       # CONTROL file is now complete and in the
       # working directory; execute the model run
@@ -627,9 +627,9 @@ hysplit_dispersion <- function(disp_name = NULL,
       
       if (.Platform$OS.type == "windows"){
         shell(paste0("(cd \"", getwd(), "\" && \"",
-                      system.file("win/parhplot.exe",
-                                  package = "SplitR"),
-                      "\" -iPARDUMP -a1)"))
+                     system.file("win/parhplot.exe",
+                                 package = "SplitR"),
+                     "\" -iPARDUMP -a1)"))
       }
       
       # Remove the .att files from the working directory
@@ -719,8 +719,8 @@ hysplit_dispersion <- function(disp_name = NULL,
       if (.Platform$OS.type == "windows"){
         
         shell(paste0("(cd \"", getwd(),
-                      "\" && mv GIS_part*.csv \"",
-                      getwd(), "\")"))
+                     "\" && move GIS_part*.csv \"",
+                     getwd(), "\")"))
       }
     }
   }
@@ -746,9 +746,9 @@ hysplit_dispersion <- function(disp_name = NULL,
     if (.Platform$OS.type == "windows"){
       write.table(
         disp.df,
-        file = paste0(getwd(), "\\",
+        file = paste0("\"", getwd(), "/",
                       folder_name,
-                      "\\dispersion.csv"),
+                      "/dispersion.csv\""),
         sep = ",",
         row.names = FALSE) 
     }
@@ -756,6 +756,7 @@ hysplit_dispersion <- function(disp_name = NULL,
   
   # Return a dispersion data frame if it is requested
   if (return_disp_df){
+    
     disp.df <- 
       dispersion_read(
         archive_folder = paste0(getwd(), "/",
