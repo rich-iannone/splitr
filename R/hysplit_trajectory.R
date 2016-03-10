@@ -51,6 +51,9 @@
 #' single daily hour in the format \code{HH}, or,
 #' several daily hours as a vector in the format of
 #' \code{"c("HH", "HH", ...)"}.
+#' @param return_met_along_traj an option to report
+#' additional meteorological data along each output
+#' trajectory.
 #' @import lubridate
 #' @export hysplit_trajectory
 #' @examples
