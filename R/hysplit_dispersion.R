@@ -718,9 +718,23 @@ hysplit_dispersion <- function(disp_name = NULL,
       
       if (.Platform$OS.type == "windows"){
         
+        if (is.null(disp_name)){
+          folder_name <- 
+            paste0("disp--", 
+                   format(Sys.time(),
+                          "%Y-%m-%d--%H-%M-%S"))  
+        } else if (!is.null(disp_name)){
+          folder_name <- 
+            paste0(disp_name, "--",
+                   format(Sys.time(),
+                          "%Y-%m-%d--%H-%M-%S"))  
+        }
+        
         shell(paste0("(cd \"", getwd(),
                      "\" && move GIS_part*.csv \"",
-                     getwd(), "\")"))
+                     getwd(), "/",
+                     folder_name,
+                     "\")"))
       }
     }
   }
