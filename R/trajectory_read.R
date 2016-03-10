@@ -143,7 +143,7 @@ trajectory_read <- function(output_folder,
         "lat", "lon", "height", "pressure")
     
     traj$first <- traj$zero1 <- traj$zero2 <- NULL
-
+    
     date2 <- mat.or.vec(nr = nrow(traj), nc = 1)
     
     for (k in 1:nrow(traj)){
@@ -170,6 +170,48 @@ trajectory_read <- function(output_folder,
     # Continuously bind data frames together to make
     # a large df from all trajectory files
     traj_df <- rbind(traj_df, traj)
+  }
+  
+  width <- 
+    max(
+      nchar(
+        readLines(
+          paste0("file://",
+                 path.expand(output_folder),
+                 "/", trajectory_file_list[1]))))
+  
+  if (width == 155){
+    
+    # Initialize empty data frame with 7 named columns
+    traj_extra_df <- 
+      setNames(data.frame(mat.or.vec(nr = 0, nc = 7)),
+               nm = c("theta", "air_temp", "rainfall",
+                      "mixdepth", "rh", "terr_msl",
+                      "sun_flux"))
+    
+    extra_column_widths <- 
+      c(6, 6, 6, 6, 6, 6, 6, 6, 8, 9, 9, 9, 9,
+        9, 9, 9, 9, 9, 9, 9)
+    
+    for (i in 1:length(trajectory_file_list)){
+    
+    traj_extra <- 
+      read.fwf(paste0("file://",
+                      path.expand(output_folder),
+                      "/", trajectory_file_list[i]),
+               skip = skip_up_to_line,
+               widths = extra_column_widths)[,14:20]
+    
+    names(traj_extra) <- 
+      c("theta", "air_temp", "rainfall", "mixdepth",
+        "rh", "terr_msl", "sun_flux")
+    
+    # Continuously bind data frames together to make
+    # a large df from all trajectory files
+    traj_extra_df <- rbind(traj_extra_df, traj_extra)
+    }
+    
+    traj_df <- cbind(traj_df, traj_extra_df)
   }
   
   return(traj_df)
