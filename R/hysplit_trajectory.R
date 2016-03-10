@@ -76,19 +76,19 @@
 
 hysplit_trajectory <- function(traj_name = NULL,
                                return_traj_df = TRUE,
-                               start_lat_deg,
-                               start_long_deg,
-                               start_height_m_AGL,
+                               start_lat_deg = 49.263405,
+                               start_long_deg = -123.250054,
+                               start_height_m_AGL = 50,
                                simulation_duration_h = 24,
                                backtrajectory = FALSE,
-                               met_type,
+                               met_type = "reanalysis",
                                vertical_motion_option = 0,
                                top_of_model_domain_m = 20000,
-                               run_type,
-                               run_day = NULL,
+                               run_type = "day",
+                               run_day = "2015-07-01",
                                run_range = NULL,
                                run_years = NULL,
-                               daily_hours_to_start){
+                               daily_hours_to_start = "00",
   
   # If SETUP.CFG or ASCDATA.CFG do not exist in the working
   # directory, write default versions of those
