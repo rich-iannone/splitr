@@ -683,7 +683,6 @@ hysplit_trajectory <- function(traj_name = NULL,
     # Return a trajectory data frame if it is requested
     if (return_traj_df == TRUE){
       traj_df <- 
-        traj_df <-
         trajectory_read(output_folder =
                           paste0(getwd(), "\\",
                                  folder_name))
