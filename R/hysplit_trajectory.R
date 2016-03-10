@@ -99,6 +99,14 @@ hysplit_trajectory <- function(traj_name = NULL,
     hysplit_config_init() 
   }
   
+  if (return_met_along_traj){
+    setup_cfg <- readLines('SETUP.CFG')
+    setup_cfg <- gsub("(tm_.* )(0),", "\\11,", setup_cfg)
+    cat(setup_cfg,
+        sep = "\n",
+        file = paste0(getwd(), "/", "SETUP.CFG"))
+  }
+  
   # Determine whether the run_years input is a single
   # year or a range
   if (exists("run_years")) run_years_single_range <-
