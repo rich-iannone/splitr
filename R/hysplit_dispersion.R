@@ -747,14 +747,14 @@ hysplit_dispersion <- function(disp_name = NULL,
   # Write the dispersion data frame to a CSV if
   # it is requested
   if (write_disp_CSV){
-    disp.df <- 
+    disp_df <- 
       dispersion_read(archive_folder =
                         paste0(getwd(), "/",
                                folder_name))
     
     if (.Platform$OS.type == "unix"){
       write.table(
-        disp.df,
+        disp_df,
         file = paste0(getwd(), "/",
                       folder_name,
                       "/dispersion.csv"),
@@ -764,7 +764,7 @@ hysplit_dispersion <- function(disp_name = NULL,
     
     if (.Platform$OS.type == "windows"){
       write.table(
-        disp.df,
+        disp_df,
         file = paste0("\"", getwd(), "/",
                       folder_name,
                       "/dispersion.csv\""),
@@ -776,9 +776,9 @@ hysplit_dispersion <- function(disp_name = NULL,
   # Return a dispersion data frame if it is requested
   if (return_disp_df){
     
-    disp.df <- 
+    disp_df <- 
       dispersion_read(archive_folder = folder_name)
     
-    invisible(disp.df)
+    invisible(disp_df)
   }
 }
