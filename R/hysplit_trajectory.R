@@ -89,6 +89,7 @@ hysplit_trajectory <- function(traj_name = NULL,
                                run_range = NULL,
                                run_years = NULL,
                                daily_hours_to_start = "00",
+                               return_met_along_traj = FALSE){
   
   # If SETUP.CFG or ASCDATA.CFG do not exist in the working
   # directory, write default versions of those
