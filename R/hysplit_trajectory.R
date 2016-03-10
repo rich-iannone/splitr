@@ -95,13 +95,9 @@ hysplit_trajectory <- function(traj_name = NULL,
                                daily_hours_to_start = "00",
                                return_met_along_traj = TRUE){
   
-  # If SETUP.CFG or ASCDATA.CFG do not exist in the working
-  # directory, write default versions of those
-  # config files
-  if (!("SETUP.CFG" %in% list.files()) |
-      !("ASCDATA.CFG" %in% list.files())){
-    hysplit_config_init() 
-  }
+  # Write default versions of the SETUP.CFG and
+  # ASCDATA.CFG files in the working directory
+  hysplit_config_init() 
   
   if (return_met_along_traj){
     setup_cfg <- readLines('SETUP.CFG')
