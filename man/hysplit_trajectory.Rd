@@ -4,11 +4,14 @@
 \alias{hysplit_trajectory}
 \title{Conduct HYSPLIT trajectory runs}
 \usage{
-hysplit_trajectory(traj_name = NULL, return_traj_df = TRUE, start_lat_deg,
-  start_long_deg, start_height_m_AGL, simulation_duration_h = 24,
-  backtrajectory = FALSE, met_type, vertical_motion_option = 0,
-  top_of_model_domain_m = 20000, run_type, run_day = NULL,
-  run_range = NULL, run_years = NULL, daily_hours_to_start)
+hysplit_trajectory(traj_name = NULL, return_traj_df = TRUE,
+  start_lat_deg = 49.263405, start_long_deg = -123.250054,
+  start_height_m_AGL = 50, simulation_duration_h = 24,
+  backtrajectory = FALSE, met_type = "reanalysis",
+  vertical_motion_option = 0, top_of_model_domain_m = 20000,
+  run_type = "day", run_day = "2015-07-01", run_range = NULL,
+  run_years = NULL, daily_hours_to_start = "00",
+  return_met_along_traj = TRUE)
 }
 \arguments{
 \item{traj_name}{an optional, descriptive name for
@@ -74,6 +77,10 @@ be a single year (\code{YYYY}) or a range of years
 single daily hour in the format \code{HH}, or,
 several daily hours as a vector in the format of
 \code{"c("HH", "HH", ...)"}.}
+
+\item{return_met_along_traj}{an option to report
+additional meteorological data along each output
+trajectory.}
 }
 \description{
 The function executes single/multiple
