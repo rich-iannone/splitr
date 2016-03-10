@@ -280,7 +280,6 @@ dispersion_preset_add <- function(type,
         file = paste0(getwd(), "/emissions"),
         append = TRUE,
         sep = "")
-    
   }
   
   if (interactive == FALSE & type == "grids"){
