@@ -611,8 +611,10 @@ hysplit_dispersion <- function(disp_name = NULL,
       }
       
       if (.Platform$OS.type == "windows"){
-        shell(paste0("(cd ", path_wd, " && ",
-                     path_executable, "hycs_std)"))
+        shell(paste0("(cd \"", getwd(), "\" && \"",
+                     system.file("win/hycs_std.exe",
+                                 package = "SplitR"),
+                     "\")"))
       }
       
       # Extract the particle positions at every hour
@@ -624,9 +626,10 @@ hysplit_dispersion <- function(disp_name = NULL,
       }
       
       if (.Platform$OS.type == "windows"){
-        shell(paste0("(cd ", getwd(), " && ",
-                     getwd(), "\\",
-                     "parhplot -iPARDUMP -a1)"))
+        shell(paste0("(cd \"", getwd(), "\" && \"",
+                      system.file("win/parhplot.exe",
+                                  package = "SplitR"),
+                      " -iPARDUMP -a1\")"))
       }
       
       # Remove the .att files from the working directory
@@ -636,8 +639,8 @@ hysplit_dispersion <- function(disp_name = NULL,
       }
       
       if (.Platform$OS.type == "windows"){
-        shell(paste0("(cd ", getwd(),
-                     " && del GIS_part*.att)"))
+        shell(paste0("(cd \"", getwd(),
+                     "\" && del GIS_part*.att)"))
       }
       
       # Remove the postscript plot from the working directory
@@ -647,8 +650,8 @@ hysplit_dispersion <- function(disp_name = NULL,
       }
       
       if (.Platform$OS.type == "windows"){
-        shell(paste0("(cd ", getwd(),
-                     " && del parhplot.ps)"))
+        shell(paste0("(cd \"", getwd(),
+                     "\" && del parhplot.ps)"))
       }
       
       # Rename the TXT files as CSV files
@@ -715,9 +718,9 @@ hysplit_dispersion <- function(disp_name = NULL,
       
       if (.Platform$OS.type == "windows"){
         
-        system(paste0("(cd ", getwd(),
-                      " && mv GIS_part*.csv '",
-                      getwd(), "')"))
+        shell(paste0("(cd \"", getwd(),
+                      "\" && mv GIS_part*.csv \"",
+                      getwd(), "\")"))
       }
     }
   }
