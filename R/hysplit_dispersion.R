@@ -629,7 +629,7 @@ hysplit_dispersion <- function(disp_name = NULL,
         shell(paste0("(cd \"", getwd(), "\" && \"",
                       system.file("win/parhplot.exe",
                                   package = "SplitR"),
-                      " -iPARDUMP -a1\")"))
+                      "\" -iPARDUMP -a1)"))
       }
       
       # Remove the .att files from the working directory
