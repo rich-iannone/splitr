@@ -25,6 +25,8 @@ hysplit_config_init <- function(){
       " maxpar = 10000,", " cpack = 1,", " cmass = 0,", " dxf = 1.0,", " dyf = 1.0,",
       " dzf = 0.01,", " ichem = 0,", " maxdim = 1,", " kspl = 1,", " krnd = 6,",
       " frhs = 1.0,", " frvs = 0.01,", " frts = 0.10,", " frhmax = 3.0,", " splitf = 1.0,",
+      " tm_pres = 0,", " tm_tpot = 0,", " tm_tamb = 0,", " tm_rain = 0,", " tm_mixd = 0,", 
+      " tm_terr = 0,", " tm_dswf = 0,", " tm_relh = 0,", 
       " /", sep = "\n",
       file = paste0(getwd(), "/", "SETUP.CFG"))
   
