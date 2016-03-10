@@ -119,23 +119,12 @@ trajectory_read <- function(output_folder,
     column.widths <- 
       c(6, 6, 6, 6, 6, 6, 6, 6, 8, 9, 9, 9, 9)
     
-    if (.Platform$OS.type == "unix"){
-      traj <- 
-        read.fwf(paste0("file://",
-                        path.expand(output_folder),
-                        "/", trajectory_file_list[i]),
-                 skip = skip_up_to_line,
-                 widths = column.widths)
-    }
-    
-    if (.Platform$OS.type == "windows"){
-      traj <- 
-        read.fwf(paste0("file://",
-                        path.expand(output_folder),
-                        "/", trajectory_file_list[i]),
-                 skip = skip_up_to_line,
-                 widths = column.widths)
-    }
+    traj <- 
+      read.fwf(paste0("file://",
+                      path.expand(output_folder),
+                      "/", trajectory_file_list[i]),
+               skip = skip_up_to_line,
+               widths = column.widths)
     
     names(traj) <- 
       c("first", "receptor", "year", "month",
@@ -194,21 +183,21 @@ trajectory_read <- function(output_folder,
         9, 9, 9, 9, 9, 9, 9)
     
     for (i in 1:length(trajectory_file_list)){
-    
-    traj_extra <- 
-      read.fwf(paste0("file://",
-                      path.expand(output_folder),
-                      "/", trajectory_file_list[i]),
-               skip = skip_up_to_line,
-               widths = extra_column_widths)[,14:20]
-    
-    names(traj_extra) <- 
-      c("theta", "air_temp", "rainfall", "mixdepth",
-        "rh", "terr_msl", "sun_flux")
-    
-    # Continuously bind data frames together to make
-    # a large df from all trajectory files
-    traj_extra_df <- rbind(traj_extra_df, traj_extra)
+      
+      traj_extra <- 
+        read.fwf(paste0("file://",
+                        path.expand(output_folder),
+                        "/", trajectory_file_list[i]),
+                 skip = skip_up_to_line,
+                 widths = extra_column_widths)[,14:20]
+      
+      names(traj_extra) <- 
+        c("theta", "air_temp", "rainfall", "mixdepth",
+          "rh", "terr_msl", "sun_flux")
+      
+      # Continuously bind data frames together to make
+      # a large df from all trajectory files
+      traj_extra_df <- rbind(traj_extra_df, traj_extra)
     }
     
     traj_df <- cbind(traj_df, traj_extra_df)
