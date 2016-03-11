@@ -9,7 +9,9 @@
 
 trajectory_plot <- function(traj_df){
   
-  colors <- hue_pal(c = 90, l = 70)(9)
+  colors <- 
+    hue_pal(c = 90, l = 70)(
+      length(sort(unique(traj_df$date))))
   
   traj_plot <- leaflet()
   
