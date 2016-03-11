@@ -101,11 +101,30 @@ trajectory_read <- function(output_folder,
     
     # For each trajectory file, read each line and
     # determine where the variable-length header ends
-    column_widths <- c(92)
+    column_widths <- 92
+    
+    widths <- 
+      nchar(
+        readLines(
+          paste0(path.expand(output_folder),
+                 "/", trajectory_file_list[i])))
+    
+    if (any(widths == 18)){
+      
+      filename <- paste0(
+        path.expand(output_folder),
+        "/", trajectory_file_list[i])
+      
+      read_characters <-
+        readChar(filename, file.info(filename)$size)
+      
+      cat(gsub("([-0-9\\. ]{19}[-0-9\\. ])\n", "\\1", read_characters),
+          file = filename,
+          sep = "\n")
+    }
     
     traj_temp <- 
-      read.fwf(paste0("file://",
-                      path.expand(output_folder),
+      read.fwf(paste0(path.expand(output_folder),
                       "/", trajectory_file_list[i]),
                widths = column_widths)
     
@@ -116,15 +135,14 @@ trajectory_read <- function(output_folder,
       } 
     }
     
-    column.widths <- 
+    column_widths <- 
       c(6, 6, 6, 6, 6, 6, 6, 6, 8, 9, 9, 9, 9)
     
     traj <- 
-      read.fwf(paste0("file://",
-                      path.expand(output_folder),
+      read.fwf(paste0(path.expand(output_folder),
                       "/", trajectory_file_list[i]),
                skip = skip_up_to_line,
-               widths = column.widths)
+               widths = column_widths)
     
     names(traj) <- 
       c("first", "receptor", "year", "month",
@@ -142,7 +160,8 @@ trajectory_read <- function(output_folder,
                            traj[1,2] + 1900),
                     traj[1,3], traj[1,4], traj[1,5],
                     min = 0, sec = 0, tz = "GMT") +
-        traj$hour.inc[k] * 3600}
+        traj$hour.inc[k] * 3600
+    }
     
     traj$date2 <-
       as.POSIXct(date2,
@@ -156,44 +175,52 @@ trajectory_read <- function(output_folder,
                   traj[1,3], traj[1,4], traj[1,5],
                   min = 0, sec = 0, tz = "GMT")
     
+    if (any(is.na(traj[,1]))){
+      traj <- traj[-which(is.na(traj[,1])),]
+    }
+    
     # Continuously bind data frames together to make
     # a large df from all trajectory files
     traj_df <- rbind(traj_df, traj)
   }
   
-  width <- 
-    max(
-      nchar(
-        readLines(
-          paste0("file://",
-                 path.expand(output_folder),
-                 "/", trajectory_file_list[1]))))
+  widths <- 
+    nchar(
+      readLines(
+        paste0(path.expand(output_folder),
+               "/", trajectory_file_list[1])))
   
-  if (width == 155){
+  if (any(widths == 173)){
     
-    # Initialize empty data frame with 7 named columns
+    # Initialize empty data frame with 9 named columns
     traj_extra_df <- 
-      setNames(data.frame(mat.or.vec(nr = 0, nc = 7)),
+      setNames(data.frame(mat.or.vec(nr = 0, nc = 9)),
                nm = c("theta", "air_temp", "rainfall",
-                      "mixdepth", "rh", "terr_msl",
+                      "mixdepth", "rh", "sp_humidity", 
+                      "h2o_mixrate", "terr_msl",
                       "sun_flux"))
     
     extra_column_widths <- 
       c(6, 6, 6, 6, 6, 6, 6, 6, 8, 9, 9, 9, 9,
-        9, 9, 9, 9, 9, 9, 9)
+        9, 9, 9, 9, 9, 9, 9, 9, 9)
     
     for (i in 1:length(trajectory_file_list)){
       
       traj_extra <- 
-        read.fwf(paste0("file://",
-                        path.expand(output_folder),
+        read.fwf(paste0(path.expand(output_folder),
                         "/", trajectory_file_list[i]),
                  skip = skip_up_to_line,
-                 widths = extra_column_widths)[,14:20]
+                 widths = extra_column_widths)[,14:22]
+      
+      if (any(is.na(traj_extra[,1]))){
+        traj_extra <- traj_extra[-which(is.na(traj_extra[,1])),]
+      }
       
       names(traj_extra) <- 
-        c("theta", "air_temp", "rainfall", "mixdepth",
-          "rh", "terr_msl", "sun_flux")
+        c("theta", "air_temp", "rainfall",
+          "mixdepth", "rh", "sp_humidity", 
+          "h2o_mixrate", "terr_msl",
+          "sun_flux")
       
       # Continuously bind data frames together to make
       # a large df from all trajectory files
