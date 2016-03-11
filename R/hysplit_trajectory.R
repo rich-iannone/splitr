@@ -93,11 +93,11 @@ hysplit_trajectory <- function(traj_name = NULL,
                                run_range = NULL,
                                run_years = NULL,
                                daily_hours_to_start = "00",
-                               return_met_along_traj = TRUE){
+                               return_met_along_traj = FALSE){
   
   # Write default versions of the SETUP.CFG and
   # ASCDATA.CFG files in the working directory
-  hysplit_config_init() 
+  hysplit_config_init()
   
   if (return_met_along_traj){
     setup_cfg <- readLines('SETUP.CFG')
