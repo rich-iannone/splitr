@@ -3,15 +3,28 @@
 #' trajectories onto a map with information provided
 #' at every hour of air transport.
 #' @param traj_df a trajectory data frame.
+#' @param color_scheme defines the appearance of
+#' multiple trajectories in a single plot. Options are
+#' \code{cycle_hues} (the default), and
+#' \code{increasingly_gray}.
 #' @import leaflet
 #' @import scales
 #' @export trajectory_plot
 
-trajectory_plot <- function(traj_df){
+trajectory_plot <- function(traj_df,
+                            color_scheme = "cycle_hues"){
   
-  colors <- 
-    hue_pal(c = 90, l = 70)(
-      length(sort(unique(traj_df$date))))
+  if (color_scheme == "cycle_hues"){
+    colors <- 
+      hue_pal(c = 90, l = 70)(
+        length(sort(unique(traj_df$date))))
+  }
+  
+  if (color_scheme == "increasingly_gray"){
+    colors <- grey_pal(0.8, 0.2)(length(sort(unique(traj_df$date))))
+  }
+  
+  
   
   traj_plot <- leaflet()
   
