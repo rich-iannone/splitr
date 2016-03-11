@@ -4,10 +4,18 @@
 \alias{trajectory_plot}
 \title{Plot HYSPLIT trajectory model output onto a map}
 \usage{
-trajectory_plot(traj_df)
+trajectory_plot(traj_df, show_hourly = TRUE, color_scheme = "cycle_hues")
 }
 \arguments{
 \item{traj_df}{a trajectory data frame.}
+
+\item{show_hourly}{an option to show hourly
+positions and associated data along trajectories.}
+
+\item{color_scheme}{defines the appearance of
+multiple trajectories in a single plot. Options are
+\code{cycle_hues} (the default), and
+\code{increasingly_gray}.}
 }
 \description{
 The function plots modeled wind
