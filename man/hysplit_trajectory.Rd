@@ -11,7 +11,7 @@ hysplit_trajectory(traj_name = NULL, return_traj_df = TRUE,
   vertical_motion_option = 0, top_of_model_domain_m = 20000,
   run_type = "day", run_day = "2015-07-01", run_range = NULL,
   run_years = NULL, daily_hours_to_start = "00",
-  return_met_along_traj = TRUE)
+  return_met_along_traj = FALSE)
 }
 \arguments{
 \item{traj_name}{an optional, descriptive name for
