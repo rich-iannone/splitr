@@ -168,6 +168,15 @@ hysplit_trajectory <- function(traj_name = NULL,
       formatC(as.numeric(day(list_run_days[i])),
               width = 2, format = "d", flag = "0")
     
+    # Sort daily starting hours if given as
+    # numeric values
+    if (class(daily_hours_to_start) == "numeric"){
+      daily_hours_to_start <-
+        formatC(sort(daily_hours_to_start),
+                width = 2,
+                flag = 0)
+    }
+    
     # Make nested loop with daily beginning hours
     for (j in daily_hours_to_start){    
       
@@ -609,9 +618,9 @@ hysplit_trajectory <- function(traj_name = NULL,
       
       if (.Platform$OS.type == "windows"){
         shell(paste0("(cd \"", getwd(), "\" && \"",
-                      system.file("win/hyts_std.exe",
-                                  package = "SplitR"),
-                      "\")"))
+                     system.file("win/hyts_std.exe",
+                                 package = "SplitR"),
+                     "\")"))
       }
     }
   }
@@ -674,10 +683,10 @@ hysplit_trajectory <- function(traj_name = NULL,
     
     for (i in 1:length(all_trajectory_files)){
       shell(paste0("(cd \"", getwd(), "\" && move \"",
-                    all_trajectory_files[i], "\" \"",
-                    paste0(getwd(), "/",
-                           folder_name),
-                    "\")"))
+                   all_trajectory_files[i], "\" \"",
+                   paste0(getwd(), "/",
+                          folder_name),
+                   "\")"))
     }
     
     # Return a trajectory data frame if it is requested
