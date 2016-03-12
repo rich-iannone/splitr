@@ -30,38 +30,76 @@ Some of the things you can do with **SplitR** are:
 To perform a series **HYSPLIT** trajectory model runs, use the **SplitR** `hysplit_trajectory()` function:
 
 ```R
-trajectory_df <- 
+trajectory <- 
   hysplit_trajectory(
-    traj_name = "t2",
+    traj_name = "trajectory",
     return_traj_df = TRUE,
     start_lat_deg = 42.83752,
     start_long_deg = -80.30364,
-    start_height_m_AGL = 5,
+    start_height_m_AGL = 50,
     simulation_duration_h = 24,
     backtrajectory = FALSE,
     met_type = "gdas1",
-    vertical_motion_option = 0,
-    top_of_model_domain_m = 20000,
     run_type = "day",
     run_day = "2012-03-12",
-    daily_hours_to_start = c("00", "06", "12", "18")) 
+    daily_hours_to_start = c(0, 6, 12, 18),
+    return_met_along_traj = TRUE) 
 ```
 
-This use of `hysplit_trajectory()` sets up four trajectory runs that start at `00:00`, `06:00`, `12:00`, and `18:00` UTC on March 12, 2012. The `traj_name` argument allows for the inclusion of a descriptive name for the set of runs. Setting `return_traj_df` to `TRUE` will instruct the function to return a data frame containing detailed trajectory information. Such a data frame (named here as the object `trajectory_df`) will be useful for conducting further analyses. The initial times for the model runs are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours_to_start = c("00", "06", "12", "18")`. The model runs are forward runs (moving forward in time, set here using `backtrajectory = FALSE`) and not backtrajectory runs (set with `backtrajectory = TRUE`). These runs are 24 h in duration (`simulation_duration_h = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `start_lat_deg = 42.83752` and `start_long_deg = -80.30364`; the starting height of 5 m above ground level is set by `start_height_m_AGL = 5`. The meteorological options include the type of met data to use (1º **GDAS** data is used here with `met_type = "gdas1"`—there is also the option to use **NCEP** reanalysis data with the `met_type = "reanalysis"` setting), the vertical motion option (here, set as `vertical_motion_option = 0` which instructs **HYSPLIT** to use the vertical motion available in the met data files), and, the top of the model domain (set as 20,000 meters with `top_of_model_domain_m = 20000`).
+This use of `hysplit_trajectory()` sets up four trajectory runs that start at 00:00, 06:00, 12:00, and 18:00 UTC on March 12, 2012. The `traj_name` argument allows for the inclusion of a descriptive name for the set of runs. Setting `return_traj_df` to `TRUE` will instruct the function to return a data frame containing detailed trajectory information. Such a data frame (named here as the object `trajectory`) will be have the following columns with `return_met_along_traj == FALSE`:
 
-The necessary meteorological data files relevant to the period being modelled will be downloaded from the **NOAA** FTP server (arlftp.arlhq.noaa.gov) if they are not present in the working directory. After **SplitR** downloads the met files and runs the models, four files should be generated:
+- `receptor` a numeric label for the receptor
+- `year`, `month`, `day`, `hour` integer values for date/time components
+- `hour.inc` the integer hour difference compared to the run starting time
+- `lat`, `lon`, `height` the latitude, longitude, and height (meters above ground level) of the air mass along the trajectory
+- `pressure` the air pressure along the trajectory (in hPa)
+- `date2` a POSIXct date-time value (in UTC) for the air mass along the trajectory
+- `date` a POSIXct date-time value (in UTC) for the time of release or time of incidence at the receptor site
 
-- `traj(forward)-12-03-12-00-lat_42.83752_long_-80.30364-height_5-24h`
-- `traj(forward)-12-03-12-06-lat_42.83752_long_-80.30364-height_5-24h`
-- `traj(forward)-12-03-12-12-lat_42.83752_long_-80.30364-height_5-24h`
-- `traj(forward)-12-03-12-18-lat_42.83752_long_-80.30364-height_5-24h`
+If the model is run with `return_met_along_traj == TRUE` then the following columns will also be available in the data frame:
 
-These files will be placed in a subdirectory within the working directory. If the the option to generate a data frame of trajectory information wasn't taken during the invocation of `hysplit_trajectory()`, this can be done later by using the **SplitR** `trajectory_read()` function:
+- `theta` the potential temperature (in K) along the trajectory
+- `air_temp` the ambient air temperature (in K) along the trajectory
+- `rainfall` the rate of rainfall (in mm/h) along the trajectory
+- `mixdepth` the mixing depth (or mixing height, in meters) along the trajectory
+- `rh` the relative humidity along the trajectory
+- `sp_humidity` the specific humidity (in g/kg) along the trajectory
+- `h2o_mixrate` the mixed layer depth (in meters) along the trajectory
+- `terr_msl` the terrain height at the location defined by `lat` and `long`
+- `sun_flux` the downward solar radiation flux (in watts) along the trajectory
+
+The initial times for the model runs are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours_to_start = c(0, 6, 12, 18)`.
+
+These runs are 24 h in duration (`simulation_duration_h = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `start_lat_deg = 42.83752` and `start_long_deg = -80.30364`; the starting height of 5 m above ground level is set by `start_height_m_AGL = 5`.
+
+The model runs are forward runs (moving forward in time, set here using `backtrajectory = FALSE`) and not backtrajectory runs (set with `backtrajectory = TRUE`).
+
+The meteorological options include the type of met data to use. The 1º **GDAS** data is used here with `met_type = "gdas1"` but there is also the option to use **NCEP** reanalysis data with the `met_type = "reanalysis"` setting.
+
+The necessary meteorological data files relevant to the period being modelled will be downloaded from the **NOAA** FTP server if they are not present in the working directory. After **SplitR** downloads the met files and runs the models, four files should be generated:
+
+- `traj(forward)-12-03-12-00-lat_42.83752_long_-80.30364-height_50-24h`
+- `traj(forward)-12-03-12-06-lat_42.83752_long_-80.30364-height_50-24h`
+- `traj(forward)-12-03-12-12-lat_42.83752_long_-80.30364-height_50-24h`
+- `traj(forward)-12-03-12-18-lat_42.83752_long_-80.30364-height_50-24h`
+
+These files will be placed in a subdirectory (prefixed with `trajectory` since `traj_name = "trajectory"` was specified) within the working directory. If the the option to generate a data frame of trajectory information wasn't taken during the invocation of `hysplit_trajectory()`, this can be done later by using the **SplitR** `trajectory_read()` function. Simply provide the output folder name in the `output_folder` argument:
 
 ```R
-trajectory_df <- trajectory_read(output_folder = "t2--2014-06-17--02-39-29")
+trajectory <-
+  trajectory_read(
+    output_folder = "trajectory--2014-06-17--02-39-29")
 ```
-Here, the name or folder is specified in the `output_folder` argument. With the resultant data frame, statistical analyses for the trajectories can be generated (e.g., average heights of trajectories after specified time periods, etc.).
+
+The trajectories can be plotted onto a map. Use the `trajectory_plot()` function with the `trajectory` data frame:
+
+```R
+trajectory_plot(
+  traj_df = trajectory,
+  show_hourly = TRUE)
+```
+
+<img src="inst/trajectory_plot.png" width="100%">
 
 ## **HYSPLIT** Dispersion Runs
 
