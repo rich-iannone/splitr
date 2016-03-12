@@ -24,19 +24,55 @@ trajectory_plot <- function(traj_df,
   }
   
   if (color_scheme == "increasingly_gray"){
-    colors <- grey_pal(0.7, 0.1)(length(sort(unique(traj_df$date))))
+    colors <-
+      grey_pal(0.7, 0.1)(length(sort(unique(traj_df$date))))
   }
+  
+  # Correct longitude values near prime meridian
+  traj_df$lon[which(traj_df$lon > 0)] <- 
+    traj_df$lon[which(traj_df$lon > 0)] - (180*2)
   
   traj_plot <- leaflet()
   
-  traj_plot <- addTiles(traj_plot)
+  #traj_plot <- addTiles(traj_plot)
   
-  traj_plot <- fitBounds(
-    traj_plot,
-    min(traj_df$lon),
-    min(traj_df$lat),
-    max(traj_df$lon),
-    max(traj_df$lat))
+  traj_plot <- 
+    addProviderTiles(
+      traj_plot,
+      "OpenStreetMap",
+      group = "OpenStreetMap") 
+  
+  traj_plot <-
+    addProviderTiles(
+      traj_plot,
+      "CartoDB.DarkMatter",
+      group = "CartoDB Dark Matter")
+  
+  traj_plot <-
+    addProviderTiles(
+      traj_plot,
+      "CartoDB.Positron",
+      group = "CartoDB Positron")
+  
+  traj_plot <- 
+    addProviderTiles(
+      traj_plot,
+      "Esri.WorldTerrain",
+      group = "ESRI World Terrain")
+  
+  traj_plot <-
+    addProviderTiles(
+      traj_plot,
+      "Stamen.Toner",
+      group = "Stamen Toner")
+  
+  traj_plot <- 
+    fitBounds(
+      traj_plot,
+      min(traj_df$lon),
+      min(traj_df$lat),
+      max(traj_df$lon),
+      max(traj_df$lat))
   
   # Get different trajectories by date
   for (i in 1:length(sort(unique(traj_df$date)))){
