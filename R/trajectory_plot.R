@@ -146,6 +146,7 @@ trajectory_plot <- function(traj_df,
           traj_plot,
           wind_trajectories_by_date[[i]][,8],
           wind_trajectories_by_date[[i]][,7],
+          group = "trajectory_points",
           radius = 1,
           fill = TRUE,
           fillOpacity = 1,
@@ -156,16 +157,30 @@ trajectory_plot <- function(traj_df,
     }
   }
   
+  # Create polylines for trajectory paths
   for (i in 1:length(wind_trajectories_by_date)){
+    
     traj_plot <-
       addPolylines(
         traj_plot,
         wind_trajectories_by_date[[i]][,8],
         wind_trajectories_by_date[[i]][,7],
+        group = "trajectory_paths",
         weight = 2,
-        smoothFactor = 2,
+        smoothFactor = 1,
         color = colors[i])
   }
+  
+  traj_plot <-
+    addLayersControl(
+      traj_plot,
+      position = "topright",
+      baseGroups = c("CartoDB Positron",
+                     "CartoDB Dark Matter",
+                     "Stamen Toner",
+                     "ESRI World Terrain"),
+      overlayGroups = c("trajectory_points",
+                        "trajectory_paths"))
   
   traj_plot
 }
