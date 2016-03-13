@@ -98,8 +98,11 @@ trajectory_plot(
   traj_df = trajectory,
   show_hourly = TRUE)
 ```
-
 <img src="inst/trajectory_plot.png" width="100%">
+
+Clicking any of the points along the trajectory will provide an information popup with time and position information, and meteorological for that location at that point in time:
+
+<img src="inst/trajectory_popup.png" width="100%">
 
 ## **HYSPLIT** Dispersion Runs
 
