@@ -91,7 +91,7 @@ trajectory <-
     output_folder = "trajectory--2014-06-17--02-39-29")
 ```
 
-The trajectories can be plotted onto a map. Use the `trajectory_plot()` function with the `trajectory` data frame:
+The trajectories can be plotted onto a map. Use the `trajectory_plot()` function with the `trajectory` data frame to see a visualization in the **RStudio** Viewer:
 
 ```R
 trajectory_plot(
@@ -100,7 +100,14 @@ trajectory_plot(
 ```
 <img src="inst/trajectory_plot.png" width="100%">
 
-Clicking any of the points along the trajectory will provide an information popup with time and position information, and meteorological for that location at that point in time:
+The trajectory points and paths are layers where their visibility can be toggled using the *Layers* icon at the top-right of the view. The following selection of basemaps is also provided:
+
+- CartoDB Dark Matter
+- CartoDB Positron
+- ESRI World Terrain
+- Stamen Toner
+
+Clicking any of the points along the trajectory will provide an information popup with time and position information, and meteorological data for that location at that point in time:
 
 <img src="inst/trajectory_popup.png" width="100%">
 
