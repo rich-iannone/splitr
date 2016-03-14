@@ -146,12 +146,12 @@ trajectory_plot <- function(traj_df,
       }
       
       traj_plot <-
-        addCircleMarkers(
+        addCircles(
           traj_plot,
           wind_trajectories_by_date[[i]][,8],
           wind_trajectories_by_date[[i]][,7],
           group = "trajectory_points",
-          radius = 3,
+          radius = 500,
           fill = TRUE,
           fillOpacity = 1,
           opacity = 1,
