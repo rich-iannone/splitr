@@ -7,7 +7,10 @@
 trajectory_plot(traj_df, show_hourly = TRUE, color_scheme = "cycle_hues")
 }
 \arguments{
-\item{traj_df}{a trajectory data frame.}
+\item{traj_df}{a trajectory data frame, typically
+created from use of the \code{hysplit_trajectory}
+function with the value for \code{return_traj_df}
+set to \code{TRUE}.}
 
 \item{show_hourly}{an option to show hourly
 positions and associated data along trajectories.}
@@ -20,6 +23,6 @@ multiple trajectories in a single plot. Options are
 \description{
 The function plots modeled wind
 trajectories onto a map with information provided
-at every hour of air transport.
+at every air transport time interval.
 }
 
