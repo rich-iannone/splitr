@@ -83,6 +83,10 @@ trajectory_plot <- function(traj_df,
     
     wind_trajectories_by_date[[i]] <-
       subset(traj_df, date == sorted_dates[i])
+    
+    wind_trajectories_by_date[[i]] <-
+      wind_trajectories_by_date[[i]][
+        order(wind_trajectories_by_date[[i]][,6]),]
   }
   
   if (show_hourly){
