@@ -1,8 +1,11 @@
 #' Plot HYSPLIT trajectory model output onto a map
 #' @description The function plots modeled wind
 #' trajectories onto a map with information provided
-#' at every hour of air transport.
-#' @param traj_df a trajectory data frame.
+#' at every air transport time interval.
+#' @param traj_df a trajectory data frame, typically
+#' created from use of the \code{hysplit_trajectory}
+#' function with the value for \code{return_traj_df}
+#' set to \code{TRUE}.
 #' @param show_hourly an option to show hourly
 #' positions and associated data along trajectories.
 #' @param color_scheme defines the appearance of
