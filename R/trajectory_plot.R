@@ -164,6 +164,13 @@ trajectory_plot <- function(traj_df,
   # Create polylines for trajectory paths
   for (i in 1:length(wind_trajectories_by_date)){
     
+    popup <- 
+      paste0("<strong>trajectory </strong> ",
+             unique(wind_trajectories_by_date[[i]][, 12]),
+             "<br><strong>total duration: </strong> ",
+             length(wind_trajectories_by_date[[i]][, 6]) - 1,
+             " h<br>")
+    
     traj_plot <-
       addPolylines(
         traj_plot,
@@ -172,7 +179,8 @@ trajectory_plot <- function(traj_df,
         group = "trajectory_paths",
         weight = 2,
         smoothFactor = 1,
-        color = colors[i])
+        color = colors[i],
+        popup = popup)
   }
   
   traj_plot <-
