@@ -39,4 +39,28 @@ get_met_edas40 <- function(files = NULL,
   
   edas40_listing <-
     gsub(" ", "", edas40_listing)
+  
+  if (!is.null(years)){
+    
+    if (length(years) > 1){
+      years <- seq.default(years[1], years[2])
+    }
+    
+    years <- substr(years, 3, 4)
+    
+    for (i in 1:length(years)){
+      
+      if (i == 1){
+        edas40_file_list <-
+          vector(mode = "character")
+      }
+      
+      edas40_file_list <-
+        c(edas40_file_list,
+          edas40_listing[
+            which(grepl(paste0("[a-z][a-z][a-z]",
+                               years[i]),
+                        edas40_listing))])
+    }
+  }
 }
