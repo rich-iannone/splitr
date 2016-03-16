@@ -20,8 +20,7 @@
 
 get_met_edas40 <- function(files = NULL,
                            years = NULL,
-                           months = NULL,
-                           path_met_files){
+                           months = NULL){
   
   # Download the 'listing' file from NOAA server
   # It contains a list of EDAS40 files currently available on the server
