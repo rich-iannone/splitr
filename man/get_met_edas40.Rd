@@ -4,19 +4,25 @@
 \alias{get_met_edas40}
 \title{Get EDAS40 meteorology data files}
 \usage{
-get_met_edas40(files = NULL, years = NULL, months = NULL, path_met_files)
+get_met_edas40(files = NULL, years = NULL, months = NULL)
 }
 \arguments{
-\item{files}{a vector list of exact filenames for the EDAS40 files.}
+\item{files}{a vector list of exact filenames for
+the EDAS40 files.}
 
-\item{years}{a vector list of years for which EDAS40 files are to be obtained via FTP.}
+\item{years}{a vector list of years for which EDAS40
+files are to be obtained via FTP.}
 
-\item{months}{a vector list of months for which EDAS40 files are to be obtained via FTP.}
-
-\item{path_met_files}{a full path should be provided for the location of the meteorological data files; downloaded files will be saved in this location.}
+\item{months}{a vector list of months for which
+EDAS40 files are to be obtained via FTP.}
 }
 \description{
-This function downloads EDAS40 meteorology data files from the NOAA FTP server and saves them to a specified folder. Files can be downloaded either by specifying a list of filenames (in the form of "RP[YYYY][MM].gbl") or through bulk download of a year of files.
+This function downloads EDAS40
+meteorology data files from the NOAA FTP server and
+saves them to the working directory. Files can be
+downloaded either by specifying a list of filenames
+(in the form of "RP[YYYY][MM].gbl") or through bulk
+download of months or years of files.
 }
 \examples{
 \dontrun{
