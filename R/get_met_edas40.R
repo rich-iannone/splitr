@@ -1,9 +1,16 @@
 #' Get EDAS40 meteorology data files
-#' @description This function downloads EDAS40 meteorology data files from the NOAA FTP server and saves them to a specified folder. Files can be downloaded either by specifying a list of filenames (in the form of "RP[YYYY][MM].gbl") or through bulk download of a year of files.
-#' @param files a vector list of exact filenames for the EDAS40 files.
-#' @param years a vector list of years for which EDAS40 files are to be obtained via FTP.
-#' @param months a vector list of months for which EDAS40 files are to be obtained via FTP.
-#' @param path_met_files  a full path should be provided for the location of the meteorological data files; downloaded files will be saved in this location.
+#' @description This function downloads EDAS40
+#' meteorology data files from the NOAA FTP server and
+#' saves them to the working directory. Files can be
+#' downloaded either by specifying a list of filenames
+#' (in the form of "RP[YYYY][MM].gbl") or through bulk
+#' download of months or years of files.
+#' @param files a vector list of exact filenames for
+#' the EDAS40 files.
+#' @param years a vector list of years for which EDAS40
+#' files are to be obtained via FTP.
+#' @param months a vector list of months for which
+#' EDAS40 files are to be obtained via FTP.
 #' @export get_met_edas40
 #' @examples
 #' \dontrun{
