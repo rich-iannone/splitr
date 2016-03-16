@@ -16,8 +16,8 @@ set to \code{TRUE}.}
 positions and associated data along trajectories.}
 
 \item{color_scheme}{defines the appearance of
-multiple trajectories in a single plot. Options are
-\code{cycle_hues} (the default), and
+multiple trajectories in a single plot. Current
+options are \code{cycle_hues} (the default), and
 \code{increasingly_gray}.}
 }
 \description{
