@@ -11,9 +11,8 @@
 #' files are to be obtained via FTP.
 #' @param months a vector list of months for which 
 #' GDAS1 files are to be obtained via FTP. 
-#' @param path_met_files a full path should be provided
-#' for the location of the meteorological data files;
-#' downloaded files will be saved in this location.
+#' @param path_met_files a full path for the download
+#' location of the meteorological data files.
 #' @import RCurl
 #' @export get_met_gdas1
 
