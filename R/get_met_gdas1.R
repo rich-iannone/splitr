@@ -164,7 +164,7 @@ get_met_gdas1 <- function(files = NULL,
     for (i in 1:length(the_files)){
       download.file(
         url = paste0(gdas1_dir,
-                     files[i]),
+                     the_files[i]),
         destfile = paste0(path_met_files,
                           the_files[i]),
         method = "auto",
