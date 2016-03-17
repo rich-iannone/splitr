@@ -69,4 +69,45 @@ get_met_edas40 <- function(files = NULL,
                         edas40_listing))])
     }
   }
+  
+  if (!is.null(months)){
+    
+    months_3_letter <- c("jan", "feb", "mar", "apr", "may", "jun",
+                         "jul", "aug", "sep", "oct", "nov", "dec")
+    
+    
+    for (i in 1:length(months)){
+      if (i == 1){
+        edas40_file_list_month <-
+          vector(mode = "character", length = 0)
+      }
+      
+      edas40_file_list_month <-
+        c(edas40_file_list_month,
+          edas40_file_list[
+            which(grepl(paste0("edas.",
+                               months_3_letter[months[i]]),
+                        edas40_file_list))])
+    }
+    
+    edas40_file_list <- edas40_file_list_month
+    
+  }
+  
+  if (!is.null(files)){
+    edas40_file_list <- files
+  }
+  
+  for (i in 1:length(edas40_file_list)){
+    download.file(
+      url = paste0(edas40_dir,
+                   edas40_file_list[i]),
+      destfile = paste0(path_met_files,
+                        edas40_file_list[i]),
+      method = "auto",
+      quiet = FALSE,
+      mode = "wb",
+      cacheOK = FALSE)
+  }
+  
 }
