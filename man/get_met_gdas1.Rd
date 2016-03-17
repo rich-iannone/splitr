@@ -16,9 +16,8 @@ files are to be obtained via FTP.}
 \item{months}{a vector list of months for which 
 GDAS1 files are to be obtained via FTP.}
 
-\item{path_met_files}{a full path should be provided
-for the location of the meteorological data files;
-downloaded files will be saved in this location.}
+\item{path_met_files}{a full path for the download
+location of the meteorological data files.}
 }
 \description{
 This function downloads GDAS1

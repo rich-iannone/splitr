@@ -4,7 +4,7 @@
 \alias{get_met_edas40}
 \title{Get EDAS40 meteorology data files}
 \usage{
-get_met_edas40(files = NULL, years = NULL, months = NULL)
+get_met_edas40(files = NULL, years = NULL, months = NULL, path_met_files)
 }
 \arguments{
 \item{files}{a vector list of exact filenames for
@@ -15,6 +15,9 @@ files are to be obtained via FTP.}
 
 \item{months}{a vector list of months for which
 EDAS40 files are to be obtained via FTP.}
+
+\item{path_met_files}{a full path for the download
+location of the meteorological data files.}
 }
 \description{
 This function downloads EDAS40
