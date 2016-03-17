@@ -11,6 +11,8 @@
 #' files are to be obtained via FTP.
 #' @param months a vector list of months for which
 #' EDAS40 files are to be obtained via FTP.
+#' @param path_met_files a full path for the download
+#' location of the meteorological data files.
 #' @export get_met_edas40
 #' @examples
 #' \dontrun{
@@ -20,7 +22,11 @@
 
 get_met_edas40 <- function(files = NULL,
                            years = NULL,
-                           months = NULL){
+                           months = NULL,
+                           path_met_files){
+  
+  edas40_dir <- 
+    "ftp://arlftp.arlhq.noaa.gov/archives/edas40/"
   
   # Download the 'listing' file from NOAA server
   # It contains a list of EDAS40 files currently
