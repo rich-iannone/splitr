@@ -72,8 +72,10 @@ get_met_edas40 <- function(files = NULL,
   
   if (!is.null(months)){
     
-    months_3_letter <- c("jan", "feb", "mar", "apr", "may", "jun",
-                         "jul", "aug", "sep", "oct", "nov", "dec")
+    months_3_letter <- 
+      c("jan", "feb", "mar", "apr",
+        "may", "jun", "jul", "aug",
+        "sep", "oct", "nov", "dec")
     
     
     for (i in 1:length(months)){
@@ -109,5 +111,4 @@ get_met_edas40 <- function(files = NULL,
       mode = "wb",
       cacheOK = FALSE)
   }
-  
 }

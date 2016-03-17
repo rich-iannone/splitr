@@ -97,9 +97,10 @@ get_met_gdas1 <- function(files = NULL,
   
   if (!is.null(years)){
     
-    months_3_letter <-
-      c("jan", "feb", "mar", "apr", "may", "jun",
-        "jul", "aug", "sep", "oct", "nov", "dec")
+    months_3_letter <- 
+      c("jan", "feb", "mar", "apr",
+        "may", "jun", "jul", "aug",
+        "sep", "oct", "nov", "dec")
     
     years <- c(2009, 2010)
     
