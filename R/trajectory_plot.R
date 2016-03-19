@@ -185,11 +185,15 @@ trajectory_plot <- function(traj_df,
     for (i in 1:length(wind_traj_by_site_date[[1]])){
       
       popup <- 
-        paste0("<strong>trajectory </strong> ",
-               unique(wind_traj_by_site_date[[1]][[i]][, 12]),
-               "<br><strong>total duration: </strong> ",
-               length(wind_traj_by_site_date[[1]][[i]][, 6]) - 1,
-               " h<br>")
+        paste0(
+          "<strong>trajectory </strong> ",
+          unique(wind_traj_by_site_date[[1]][[i]][, 12]),
+          "<br><strong>total duration: </strong> ",
+          length(wind_traj_by_site_date[[1]][[i]][, 6]) - 
+            ifelse(wind_traj_by_site_date[[1]][[i]][, 6] < 0 &
+                     wind_traj_by_site_date[[1]][[i]][, 6] > 0,
+                   2, 1),
+          " h<br>")
       
       traj_plot <-
         addPolylines(
