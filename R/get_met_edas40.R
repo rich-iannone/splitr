@@ -13,6 +13,7 @@
 #' EDAS40 files are to be obtained via FTP.
 #' @param path_met_files a full path for the download
 #' location of the meteorological data files.
+#' @import downloader
 #' @export get_met_edas40
 #' @examples
 #' \dontrun{
@@ -101,7 +102,7 @@ get_met_edas40 <- function(files = NULL,
   }
   
   for (i in 1:length(edas40_file_list)){
-    download.file(
+    download(
       url = paste0(edas40_dir,
                    edas40_file_list[i]),
       destfile = paste0(path_met_files,

@@ -12,7 +12,7 @@
 #' @param path_met_files a full path should be provided
 #' for the location of the meteorological data files;
 #' downloaded files will be saved in this location.
-#' @import RCurl
+#' @import downloader
 #' @export get_met_reanalysis
 
 get_met_reanalysis <- function(files = NULL,
@@ -28,7 +28,7 @@ get_met_reanalysis <- function(files = NULL,
     for (i in 1:length(files)){
       
       if (.Platform$OS.type == "windows"){
-        download.file(
+        download(
           url = paste0(reanalysis_dir,
                        files[i]),
           destfile = paste0(path_met_files,
@@ -40,7 +40,7 @@ get_met_reanalysis <- function(files = NULL,
       }
       
       if (.Platform$OS.type == "unix"){
-        download.file(
+        download(
           url = paste0(reanalysis_dir,
                        files[i]),
           destfile = paste0(path_met_files,
@@ -58,7 +58,7 @@ get_met_reanalysis <- function(files = NULL,
     for (i in 1:length(years)){
       for (j in 1:12){
         if (.Platform$OS.type == "unix"){
-          download.file(
+          download(
             url = paste0(reanalysis_dir,
                          "RP",
                          years[i],
@@ -80,7 +80,7 @@ get_met_reanalysis <- function(files = NULL,
         }
         
         if (.Platform$OS.type == "windows"){
-          download.file(
+          download(
             url = paste0(reanalysis_dir,
                          "RP",
                          years[i],

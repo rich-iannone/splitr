@@ -13,7 +13,7 @@
 #' GDAS1 files are to be obtained via FTP. 
 #' @param path_met_files a full path for the download
 #' location of the meteorological data files.
-#' @import RCurl
+#' @import downloader
 #' @export get_met_gdas1
 
 get_met_gdas1 <- function(files = NULL,
@@ -28,7 +28,7 @@ get_met_gdas1 <- function(files = NULL,
   if (!is.null(files)){
     
     for (i in 1:length(files)){
-      download.file(
+      download(
         url = paste0(gdas1_dir,
                      files[i]),
         destfile = paste0(path_met_files,
@@ -83,7 +83,7 @@ get_met_gdas1 <- function(files = NULL,
     }
     
     for (i in 1:length(the_files)){
-      download.file(
+      download(
         url = paste0(gdas1_dir,
                      files[i]),
         destfile = paste0(path_met_files,
@@ -163,7 +163,7 @@ get_met_gdas1 <- function(files = NULL,
     }
     
     for (i in 1:length(the_files)){
-      download.file(
+      download(
         url = paste0(gdas1_dir,
                      the_files[i]),
         destfile = paste0(path_met_files,

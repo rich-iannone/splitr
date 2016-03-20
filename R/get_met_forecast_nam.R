@@ -5,7 +5,7 @@
 #' @param path_met_files a full path should be provided
 #' for the location of the meteorological data files;
 #' downloaded files will be saved in this location.
-#' @import RCurl
+#' @import downloader
 #' @export get_met_forecast_nam
 
 get_met_forecast_nam <- function(path_met_files){
@@ -23,12 +23,12 @@ get_met_forecast_nam <- function(path_met_files){
   # -- CONUS, 12 km, 3 hrly, pressure levels, 48 h forecast
   
   if (today %in% forecast_dirs){
-    download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/forecast/",
-                              today, "/hysplit.t00z.namf"),
-                  destfile = paste0(path_met_files, paste0(today, ".t00z.namf")),
-                  method = "auto",
-                  quiet = FALSE,
-                  mode = "w",
-                  cacheOK = TRUE)
+    download(url = paste0("ftp://arlftp.arlhq.noaa.gov/forecast/",
+                          today, "/hysplit.t00z.namf"),
+             destfile = paste0(path_met_files, paste0(today, ".t00z.namf")),
+             method = "auto",
+             quiet = FALSE,
+             mode = "w",
+             cacheOK = TRUE)
   } 
 }

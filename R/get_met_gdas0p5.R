@@ -16,7 +16,7 @@
 #' @param path_met_files a full path should be provided
 #' for the location of the meteorological data files;
 #' downloaded files will be saved in this location.
-#' @import RCurl
+#' @import downloader
 #' @import lubridate
 #' @export get_met_gdas0p5
 
@@ -28,13 +28,13 @@ get_met_gdas0p5 <- function(files = NULL,
   
   # Download the 'listing' file from NOAA server
   # It contains a list of GDAS0p5 files currently available on the server
-  download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/gdas0p5/",
-                            "listing"),
-                destfile = paste0(path_met_files, "listing"),
-                method = "auto",
-                quiet = TRUE,
-                mode = "wb",
-                cacheOK = FALSE)
+  download(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/gdas0p5/",
+                        "listing"),
+           destfile = paste0(path_met_files, "listing"),
+           method = "auto",
+           quiet = TRUE,
+           mode = "wb",
+           cacheOK = FALSE)
   
   # Create object 'listing' as a vector with all filenames available on the FTP server
   listing <- as.vector(read.table(paste0(path_met_files, "listing"),
@@ -50,13 +50,13 @@ get_met_gdas0p5 <- function(files = NULL,
     if (files_available == TRUE){
       
       for (i in 1:length(files)){
-        download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
-                                  files[i]),
-                      destfile = paste0(path_met_files, files[i]),
-                      method = "auto",
-                      quiet = FALSE,
-                      mode = "wb",
-                      cacheOK = FALSE)
+        download(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
+                              files[i]),
+                 destfile = paste0(path_met_files, files[i]),
+                 method = "auto",
+                 quiet = FALSE,
+                 mode = "wb",
+                 cacheOK = FALSE)
       }
     }
   }
@@ -72,86 +72,86 @@ get_met_gdas0p5 <- function(files = NULL,
       jan <- seq(1, 31, 1)
       for (j in 1:length(jan)){
         the_list <- c(the_list, paste0(years[i], "01",
-                                      formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5"))
+                                       formatC(j, width = 2, format = "d", flag = "0"),
+                                       "_gdas0p5"))
       }
       
       if (years[i] %% 4 != 0) feb <- seq(1, 29, 1)
       if (years[i] %% 4 == 0) feb <- seq(1, 28, 1)
       for (j in 1:length(feb)){
         the_list <- c(the_list, paste0(years[i], "02",
-                                      formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5"))
+                                       formatC(j, width = 2, format = "d", flag = "0"),
+                                       "_gdas0p5"))
       }
       
       mar <- seq(1, 31, 1)
       for (j in 1:length(mar)){
         the_list <- c(the_list, paste0(years[i], "03",
-                                      formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5"))
+                                       formatC(j, width = 2, format = "d", flag = "0"),
+                                       "_gdas0p5"))
       }
       
       apr <- seq(1, 30, 1)
       for (j in 1:length(apr)){
         the_list <- c(the_list, paste0(years[i], "04",
-                                      formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5"))
+                                       formatC(j, width = 2, format = "d", flag = "0"),
+                                       "_gdas0p5"))
       }
       
       may <- seq(1, 31, 1)
       for (j in 1:length(may)){
         the_list <- c(the_list, paste0(years[i], "05",
-                                      formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5"))
+                                       formatC(j, width = 2, format = "d", flag = "0"),
+                                       "_gdas0p5"))
       }
       
       jun <- seq(1, 30, 1)
       for (j in 1:length(jun)){
         the_list <- c(the_list, paste0(years[i], "06",
-                                      formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5"))
+                                       formatC(j, width = 2, format = "d", flag = "0"),
+                                       "_gdas0p5"))
       }
       
       jul <- seq(1, 31, 1)
       for (j in 1:length(jul)){
         the_list <- c(the_list, paste0(years[i], "07",
-                                      formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5"))
+                                       formatC(j, width = 2, format = "d", flag = "0"),
+                                       "_gdas0p5"))
       }
       
       aug <- seq(1, 31, 1)
       for (j in 1:length(aug)){
         the_list <- c(the_list, paste0(years[i], "08",
-                                      formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5"))
+                                       formatC(j, width = 2, format = "d", flag = "0"),
+                                       "_gdas0p5"))
       }
       
       sep <- seq(1, 30, 1)
       for (j in 1:length(sep)){
         the_list <- c(the_list, paste0(years[i], "09",
-                                      formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5"))
+                                       formatC(j, width = 2, format = "d", flag = "0"),
+                                       "_gdas0p5"))
       }
       
       oct <- seq(1, 31, 1)
       for (j in 1:length(oct)){
         the_list <- c(the_list, paste0(years[i], "10",
-                                      formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5"))
+                                       formatC(j, width = 2, format = "d", flag = "0"),
+                                       "_gdas0p5"))
       }
       
       nov <- seq(1, 30, 1)
       for (j in 1:length(nov)){
         the_list <- c(the_list, paste0(years[i], "11",
-                                      formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5"))
+                                       formatC(j, width = 2, format = "d", flag = "0"),
+                                       "_gdas0p5"))
       }
       
       dec <- seq(1, 31, 1)
       for (j in 1:length(dec)){
         the_list <- c(the_list, paste0(years[i], "12",
-                                      formatC(j, width = 2, format = "d", flag = "0"),
-                                      "_gdas0p5"))
+                                       formatC(j, width = 2, format = "d", flag = "0"),
+                                       "_gdas0p5"))
       }
     }
     
@@ -191,13 +191,13 @@ get_met_gdas0p5 <- function(files = NULL,
     
     # Download the requested files from the server
     for (i in 1:length(the_list)){
-      download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
-                                the_list[i]),
-                    destfile = paste0(path_met_files, the_list[i]),
-                    method = "auto",
-                    quiet = FALSE,
-                    mode = "wb",
-                    cacheOK = FALSE)
+      download(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
+                            the_list[i]),
+               destfile = paste0(path_met_files, the_list[i]),
+               method = "auto",
+               quiet = FALSE,
+               mode = "wb",
+               cacheOK = FALSE)
     }
     
     # Write file that contains report of missing files
@@ -227,8 +227,8 @@ get_met_gdas0p5 <- function(files = NULL,
         jan <- seq(1, 31, 1)
         for (j in 1:length(jan)){
           the_list <- c(the_list, paste0(the_year, "01",
-                                        formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5"))
+                                         formatC(j, width = 2, format = "d", flag = "0"),
+                                         "_gdas0p5"))
         }
       }
       
@@ -237,8 +237,8 @@ get_met_gdas0p5 <- function(files = NULL,
         if (the_year %% 4 == 0) feb <- seq(1, 28, 1)
         for (j in 1:length(feb)){
           the_list <- c(the_list, paste0(the_year, "02",
-                                        formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5"))
+                                         formatC(j, width = 2, format = "d", flag = "0"),
+                                         "_gdas0p5"))
         }
       }
       
@@ -246,8 +246,8 @@ get_met_gdas0p5 <- function(files = NULL,
         mar <- seq(1, 31, 1)
         for (j in 1:length(mar)){
           the_list <- c(the_list, paste0(the_year, "03",
-                                        formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5"))
+                                         formatC(j, width = 2, format = "d", flag = "0"),
+                                         "_gdas0p5"))
         }
       }
       
@@ -255,8 +255,8 @@ get_met_gdas0p5 <- function(files = NULL,
         apr <- seq(1, 30, 1)
         for (j in 1:length(apr)){
           the_list <- c(the_list, paste0(the_year, "04",
-                                        formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5"))
+                                         formatC(j, width = 2, format = "d", flag = "0"),
+                                         "_gdas0p5"))
         }
       }
       
@@ -264,8 +264,8 @@ get_met_gdas0p5 <- function(files = NULL,
         may <- seq(1, 31, 1)
         for (j in 1:length(may)){
           the_list <- c(the_list, paste0(the_year, "05",
-                                        formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5"))
+                                         formatC(j, width = 2, format = "d", flag = "0"),
+                                         "_gdas0p5"))
         }
       }
       
@@ -273,8 +273,8 @@ get_met_gdas0p5 <- function(files = NULL,
         jun <- seq(1, 30, 1)
         for (j in 1:length(jun)){
           the_list <- c(the_list, paste0(the_year, "06",
-                                        formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5"))
+                                         formatC(j, width = 2, format = "d", flag = "0"),
+                                         "_gdas0p5"))
         }
       }
       
@@ -282,8 +282,8 @@ get_met_gdas0p5 <- function(files = NULL,
         jul <- seq(1, 31, 1)
         for (j in 1:length(jul)){
           the_list <- c(the_list, paste0(the_year, "07",
-                                        formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5"))
+                                         formatC(j, width = 2, format = "d", flag = "0"),
+                                         "_gdas0p5"))
         }
       }
       
@@ -291,8 +291,8 @@ get_met_gdas0p5 <- function(files = NULL,
         aug <- seq(1, 31, 1)
         for (j in 1:length(aug)){
           the_list <- c(the_list, paste0(the_year, "08",
-                                        formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5"))
+                                         formatC(j, width = 2, format = "d", flag = "0"),
+                                         "_gdas0p5"))
         }
       }
       
@@ -300,8 +300,8 @@ get_met_gdas0p5 <- function(files = NULL,
         sep <- seq(1, 30, 1)
         for (j in 1:length(sep)){
           the_list <- c(the_list, paste0(the_year, "09",
-                                        formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5"))
+                                         formatC(j, width = 2, format = "d", flag = "0"),
+                                         "_gdas0p5"))
         }
       }
       
@@ -309,8 +309,8 @@ get_met_gdas0p5 <- function(files = NULL,
         oct <- seq(1, 31, 1)
         for (j in 1:length(oct)){
           the_list <- c(the_list, paste0(the_year, "10",
-                                        formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5"))
+                                         formatC(j, width = 2, format = "d", flag = "0"),
+                                         "_gdas0p5"))
         }
       }
       
@@ -318,8 +318,8 @@ get_met_gdas0p5 <- function(files = NULL,
         nov <- seq(1, 30, 1)
         for (j in 1:length(nov)){
           the_list <- c(the_list, paste0(the_year, "11",
-                                        formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5"))
+                                         formatC(j, width = 2, format = "d", flag = "0"),
+                                         "_gdas0p5"))
         }
       }
       
@@ -327,8 +327,8 @@ get_met_gdas0p5 <- function(files = NULL,
         dec <- seq(1, 31, 1)
         for (j in 1:length(dec)){
           the_list <- c(the_list, paste0(the_year, "12",
-                                        formatC(j, width = 2, format = "d", flag = "0"),
-                                        "_gdas0p5"))
+                                         formatC(j, width = 2, format = "d", flag = "0"),
+                                         "_gdas0p5"))
         }
       }
     }
@@ -369,13 +369,13 @@ get_met_gdas0p5 <- function(files = NULL,
     
     # Download the requested files from the server
     for (i in 1:length(the_list)){
-      download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
-                                the_list[i]),
-                    destfile = paste0(path_met_files, the_list[i]),
-                    method = "auto",
-                    quiet = FALSE,
-                    mode = "wb",
-                    cacheOK = FALSE)
+      download(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
+                            the_list[i]),
+               destfile = paste0(path_met_files, the_list[i]),
+               method = "auto",
+               quiet = FALSE,
+               mode = "wb",
+               cacheOK = FALSE)
     }
     
     # Write file that contains report of missing files
@@ -405,9 +405,9 @@ get_met_gdas0p5 <- function(files = NULL,
       
       # Construct the filename and add it to 'the_list'
       the_list <- c(the_list, paste0(the_year,
-                                    formatC(the_month, width = 2, format = "d", flag = "0"),
-                                    formatC(the_day, width = 2, format = "d", flag = "0"),
-                                    "_gdas0p5"))
+                                     formatC(the_month, width = 2, format = "d", flag = "0"),
+                                     formatC(the_day, width = 2, format = "d", flag = "0"),
+                                     "_gdas0p5"))
     }
     
     # Determine whether all of the requested files are available on the server
@@ -446,13 +446,13 @@ get_met_gdas0p5 <- function(files = NULL,
     
     # Download the requested files from the server
     for (i in 1:length(the_list)){
-      download.file(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
-                                the_list[i]),
-                    destfile = paste0(path_met_files, the_list[i]),
-                    method = "auto",
-                    quiet = FALSE,
-                    mode = "wb",
-                    cacheOK = FALSE)
+      download(url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/gdas1/",
+                            the_list[i]),
+               destfile = paste0(path_met_files, the_list[i]),
+               method = "auto",
+               quiet = FALSE,
+               mode = "wb",
+               cacheOK = FALSE)
     }
     
     # Write file that contains report of missing files
