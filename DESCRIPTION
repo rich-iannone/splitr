@@ -8,6 +8,7 @@ Maintainer: Richard Iannone <riannone@me.com>
 Description: Run the NOAA HYSPLIT model from R.
 License: MIT + file LICENSE
 Imports:
+    downloader (>= 0.4),
     ggplot2 (>= 2.0.0),
     ggmap (>= 2.6.1),
     labeling (>= 0.3),
