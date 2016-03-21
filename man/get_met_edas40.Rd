@@ -24,13 +24,23 @@ This function downloads EDAS40
 meteorology data files from the NOAA FTP server and
 saves them to the working directory. Files can be
 downloaded either by specifying a list of filenames
-(in the form of "RP[YYYY][MM].gbl") or through bulk
-download of months or years of files.
+(in the form of \code{RP[YYYY][MM].gbl}) or through
+bulk download of months or years of files.
 }
 \examples{
 \dontrun{
-# Download a year of EDAS40 data files
-get_met_edas40(years = 2012)
+# Download a year of EDAS40 data files to the
+# working directory
+get_met_edas40(
+  years = 2012,
+  path_met_files = getwd())
+
+# Download EDAS40 data files for March, April,
+# and May of 2015 to the working directory
+get_met_edas40(
+  years = 2015,
+  months = c(3, 4, 5),
+  path_met_files = getwd())
 }
 }
 
