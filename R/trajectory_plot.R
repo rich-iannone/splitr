@@ -216,8 +216,6 @@ trajectory_plot <- function(traj_df,
                        "ESRI World Terrain"),
         overlayGroups = c("trajectory_points",
                           "trajectory_paths"))
-    
-    traj_plot
   }
   
   if (length(wind_traj_by_site_date) > 1){
@@ -340,7 +338,7 @@ trajectory_plot <- function(traj_df,
                        "ESRI World Terrain"),
         overlayGroups = c("trajectory_points",
                           "trajectory_paths"))
-    
-    traj_plot
   }
+  
+  traj_plot
 }
