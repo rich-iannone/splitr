@@ -220,4 +220,128 @@ trajectory_plot <- function(traj_df,
     
     traj_plot
   }
+  
+  if (length(wind_traj_by_site_date) > 1){
+    
+    if (show_hourly){
+      
+      # Add CircleMarkers for each trajectory
+      for (i in 1:length(wind_traj_by_site_date)){
+        for (j in 1:length(wind_traj_by_site_date[i])){
+          
+          if (ncol(wind_traj_by_site_date[[i]][[j]]) == 21){
+            popup <- 
+              paste0("<strong>receptor</strong> ",
+                     wind_traj_by_site_date[[i]][[j]][, 1],
+                     "<br><strong>trajectory</strong> ",
+                     wind_traj_by_site_date[[i]][[j]][, 12],
+                     "<br><strong>at time </strong> ",
+                     wind_traj_by_site_date[[i]][[j]][, 11],
+                     " (",
+                     wind_traj_by_site_date[[i]][[j]][, 6],
+                     " h)<br><strong>height</strong> ",
+                     wind_traj_by_site_date[[i]][[j]][, 9],
+                     " <font size=\"1\">m AGL</font> / ",
+                     "<strong>terrain</strong> ", 
+                     wind_traj_by_site_date[[i]][[j]][, 20],
+                     " <font size=\"1\">m AMSL</font><br>",
+                     "<strong>P</strong> ",
+                     wind_traj_by_site_date[[i]][[j]][, 10],
+                     " <font size=\"1\">hPa</font> / ",
+                     "<strong>RH</strong> ", 
+                     wind_traj_by_site_date[[i]][[j]][, 17],
+                     "% / <strong>SH</strong> ", 
+                     wind_traj_by_site_date[[i]][[j]][, 18],
+                     " <font size=\"1\">g/kg</font><br>",
+                     "<strong>rainfall</strong> ", 
+                     wind_traj_by_site_date[[i]][[j]][, 15],
+                     " <font size=\"1\">mm/h</font> ",
+                     "/ <strong>MH</strong> ", 
+                     wind_traj_by_site_date[[i]][[j]][, 16],
+                     " m<br>",
+                     "<strong>T<sub>amb</sub></strong> ", 
+                     wind_traj_by_site_date[[i]][[j]][, 14],
+                     " K / <strong>T<sub>pot</sub></strong> ", 
+                     wind_traj_by_site_date[[i]][[j]][, 13],
+                     " K<br>")
+          }
+          
+          if (ncol(wind_traj_by_site_date[[i]][[j]]) == 12){
+            popup <- 
+              paste0("<strong>receptor</strong> ",
+                     wind_traj_by_site_date[[i]][[j]][, 1],
+                     "<br><strong>trajectory</strong> ",
+                     wind_traj_by_site_date[[i]][[j]][, 12],
+                     "<br><strong>at time </strong> ",
+                     wind_traj_by_site_date[[i]][[j]][, 11],
+                     " (",
+                     wind_traj_by_site_date[[i]][[j]][, 6],
+                     " h)<br><strong>height</strong> ",
+                     wind_traj_by_site_date[[i]][[j]][, 9],
+                     " <font size=\"1\">m AGL</font> / ",
+                     "<strong>P</strong> ",
+                     wind_traj_by_site_date[[i]][[j]][, 10],
+                     " <font size=\"1\">hPa</font>")
+          }
+          
+          traj_plot <-
+            addCircles(
+              traj_plot,
+              wind_traj_by_site_date[[i]][[j]][,8],
+              wind_traj_by_site_date[[i]][[j]][,7],
+              group = "trajectory_points",
+              radius = 500,
+              fill = TRUE,
+              fillOpacity = 1,
+              opacity = 1,
+              color = colors[j],
+              fillColor = colors[j],
+              popup = popup)
+        }
+      }
+    }
+    
+    # Create polylines for trajectory paths
+    for (i in 1:length(wind_traj_by_site_date)){
+      for (j in 1:length(wind_traj_by_site_date[i])){
+        
+        popup <- 
+          paste0(
+            "<strong>receptor ",
+            wind_traj_by_site_date[[i]][[j]][, 1],
+            "<br><strong>trajectory </strong> ",
+            unique(wind_traj_by_site_date[[i]][[j]][, 12]),
+            "<br><strong>total duration: </strong> ",
+            length(wind_traj_by_site_date[[i]][[j]][, 6]) - 
+              ifelse(wind_traj_by_site_date[[i]][[j]][, 6] < 0 &
+                       wind_traj_by_site_date[[i]][[j]][, 6] > 0,
+                     2, 1),
+            " h<br>")
+        
+        traj_plot <-
+          addPolylines(
+            traj_plot,
+            wind_traj_by_site_date[[i]][[j]][,8],
+            wind_traj_by_site_date[[i]][[j]][,7],
+            group = "trajectory_paths",
+            weight = 2,
+            smoothFactor = 1,
+            color = colors[j],
+            popup = popup)
+      }
+    }
+    
+    traj_plot <-
+      addLayersControl(
+        traj_plot,
+        position = "topright",
+        baseGroups = c("CartoDB Positron",
+                       "CartoDB Dark Matter",
+                       "Stamen Toner",
+                       "ESRI World Terrain"),
+        overlayGroups = c("trajectory_points",
+                          "trajectory_paths"))
+    
+    traj_plot
+  }
 }
