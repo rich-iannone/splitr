@@ -3,8 +3,8 @@
 #' meteorology data files from the NOAA FTP server and
 #' saves them to the working directory. Files can be
 #' downloaded either by specifying a list of filenames
-#' (in the form of "RP[YYYY][MM].gbl") or through bulk
-#' download of months or years of files.
+#' (in the form of \code{RP[YYYY][MM].gbl}) or through
+#' bulk download of months or years of files.
 #' @param files a vector list of exact filenames for
 #' the EDAS40 files.
 #' @param years a vector list of years for which EDAS40
