@@ -104,7 +104,6 @@ trajectory_plot <- function(traj_df,
     }
     
     wind_traj_by_site_date[[i]] <- wind_traj_by_date
-    
   }
   
   if (length(wind_traj_by_site_date) == 1){
@@ -227,7 +226,7 @@ trajectory_plot <- function(traj_df,
       
       # Add CircleMarkers for each trajectory
       for (i in 1:length(wind_traj_by_site_date)){
-        for (j in 1:length(wind_traj_by_site_date[i])){
+        for (j in 1:length(wind_traj_by_site_date[[i]])){
           
           if (ncol(wind_traj_by_site_date[[i]][[j]]) == 21){
             popup <- 
@@ -303,7 +302,7 @@ trajectory_plot <- function(traj_df,
     
     # Create polylines for trajectory paths
     for (i in 1:length(wind_traj_by_site_date)){
-      for (j in 1:length(wind_traj_by_site_date[i])){
+      for (j in 1:length(wind_traj_by_site_date[[i]])){
         
         popup <- 
           paste0(
