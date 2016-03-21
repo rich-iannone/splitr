@@ -116,9 +116,9 @@ trajectory_plot <- function(traj_df,
         
         if (ncol(wind_traj_by_site_date[[1]][[i]]) == 21){
           popup <- 
-            paste0("<strong>trajectory </strong> ",
+            paste0("<strong>trajectory</strong> ",
                    wind_traj_by_site_date[[1]][[i]][, 12],
-                   "<br><strong>at time </strong> ",
+                   "<br><strong>at time</strong> ",
                    wind_traj_by_site_date[[1]][[i]][, 11],
                    " (",
                    wind_traj_by_site_date[[1]][[i]][, 6],
@@ -151,9 +151,9 @@ trajectory_plot <- function(traj_df,
         
         if (ncol(wind_traj_by_site_date[[1]][[i]]) == 12){
           popup <- 
-            paste0("<strong>trajectory </strong> ",
+            paste0("<strong>trajectory</strong> ",
                    wind_traj_by_site_date[[1]][[i]][, 12],
-                   "<br><strong>at time </strong> ",
+                   "<br><strong>at time</strong> ",
                    wind_traj_by_site_date[[1]][[i]][, 11],
                    " (",
                    wind_traj_by_site_date[[1]][[i]][, 6],
@@ -186,9 +186,9 @@ trajectory_plot <- function(traj_df,
       
       popup <- 
         paste0(
-          "<strong>trajectory </strong> ",
+          "<strong>trajectory</strong> ",
           unique(wind_traj_by_site_date[[1]][[i]][, 12]),
-          "<br><strong>total duration: </strong> ",
+          "<br><strong>total duration</strong> ",
           length(wind_traj_by_site_date[[1]][[i]][, 6]) - 
             ifelse(wind_traj_by_site_date[[1]][[i]][, 6] < 0 &
                      wind_traj_by_site_date[[1]][[i]][, 6] > 0,
