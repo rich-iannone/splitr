@@ -17,8 +17,18 @@
 #' @export get_met_edas40
 #' @examples
 #' \dontrun{
-#' # Download a year of EDAS40 data files
-#' get_met_edas40(years = 2012)
+#' # Download a year of EDAS40 data files to the
+#' # working directory
+#' get_met_edas40(
+#'   years = 2012,
+#'   path_met_files = getwd())
+#' 
+#' # Download EDAS40 data files for March, April,
+#' # and May of 2015 to the working directory
+#' get_met_edas40(
+#'   years = 2015,
+#'   months = c(3, 4, 5),
+#'   path_met_files = getwd())
 #' }
 
 get_met_edas40 <- function(files = NULL,
@@ -94,7 +104,6 @@ get_met_edas40 <- function(files = NULL,
     }
     
     edas40_file_list <- edas40_file_list_month
-    
   }
   
   if (!is.null(files)){
