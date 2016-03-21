@@ -59,7 +59,7 @@
 #' @examples
 #' \dontrun{
 #' # Test with a run type of `years` with a forward
-#' # trajectory using NCEP/NCAR reanalaysis data
+#' # trajectory using NCEP/NCAR reanalysis data
 #' hysplit_trajectory(
 #'   traj_name = "second",
 #'   return_traj_df = FALSE,
@@ -73,8 +73,7 @@
 #'   top_of_model_domain_m = 20000,
 #'   run_type = "years",
 #'   run_years = "2004",
-#'   daily_hours_to_start = c("03", "06", "09", "12",
-#'                            "15", "18", "21"),
+#'   daily_hours_to_start = c(3, 6, 9, 12, 15, 18, 21),
 #'   return_met_along_traj = TRUE)
 #'}
 
