@@ -64,22 +64,6 @@ hysplit_forecast_trajectory <- function(start_lat_deg,
                                         path_wd,
                                         path_executable){
   
-  #   # test parameters
-  #   run_start_hour <- "12"
-  #   start_lat_deg <- 42.83752
-  #   start_long_deg <- -80.30364
-  #   start_height_m_AGL <- 5
-  #   simulation_duration_h <- 24
-  #   backtrajectory <- FALSE
-  #   met_type <- "nam"
-  #   forecast_cycle <- "latest"
-  #   vertical_motion_option <- 0
-  #   top_of_model_domain_m <- 20000
-  #   path_met_files <- "~/Documents/SplitR/Met/"
-  #   path_output_files <- "~/Documents/SplitR/Working/"
-  #   path_wd <- "~/Documents/SplitR/Working/"
-  #   path_executable <- "~/Documents/SplitR/Exec/"
-  
   # Set number of starting locations to 1 for this function
   no_starting_locations <- 1
   
