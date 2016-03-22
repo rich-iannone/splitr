@@ -38,9 +38,10 @@ backtrajectories.}
 
 \item{met_type}{an option to select meteorological
 data files. The options are \code{gdas1} (Global
-Data Assimilation System 1-degree resolution data)
-and \code{reanalysis} (NCAR/NCEP global reanalysis
-data).}
+Data Assimilation System 1-degree resolution data), 
+\code{reanalysis} (NCAR/NCEP global reanalysis
+data), and \code{narr} (North American Regional 
+Reanalysis).}
 
 \item{vertical_motion_option}{a numbered option to
 select the method used to simulation vertical
