@@ -19,9 +19,10 @@
 #' backtrajectories.
 #' @param met_type an option to select meteorological
 #' data files. The options are \code{gdas1} (Global
-#' Data Assimilation System 1-degree resolution data)
-#' and \code{reanalysis} (NCAR/NCEP global reanalysis
-#' data). 
+#' Data Assimilation System 1-degree resolution data), 
+#' \code{reanalysis} (NCAR/NCEP global reanalysis
+#' data), and \code{narr} (North American Regional 
+#' Reanalysis). 
 #' @param vertical_motion_option a numbered option to
 #' select the method used to simulation vertical
 #' motion. The methods are: \code{0} (input model
@@ -382,6 +383,34 @@ hysplit_trajectory <- function(traj_name = NULL,
                              flag = "0")),
               ".gbl"))
         
+        # Get vector lists of met files applicable to run
+        # from the NARR dataset
+        if (met_type == "narr") met <- 
+          c(paste0(
+            "NARR",
+            ifelse(start_month_GMT == "01",
+                   year(start_time_GMT) - 1,
+                   year(start_time_GMT)),
+            ifelse(start_month_GMT == "01", "12",
+                   formatC(month(start_time_GMT) - 1,
+                           width = 2,
+                           format = "d",
+                           flag = "0"))),
+            paste0(
+              "NARR",
+              year(start_time_GMT),
+              start_month_GMT),
+            paste0(
+              "NARR",
+              ifelse(start_month_GMT == "12",
+                     year(start_time_GMT) + 1,
+                     year(start_time_GMT)),
+              ifelse(start_month_GMT == "12", "01",
+                     formatC(month(start_time_GMT) + 1,
+                             width = 2,
+                             format = "d",
+                             flag = "0"))))
+        
         # Remove list values containing '0' (representing
         # missing .w5 data files for Feb in leap years)
         if (exists("met")) met <- met[!met %in% c(0)]
@@ -427,6 +456,13 @@ hysplit_trajectory <- function(traj_name = NULL,
                 path_met_files = paste0(getwd(), "/"))
             }
             
+            if (met_type == "narr"){
+              
+              get_met_narr(
+                files = files_to_get,
+                path_met_files = paste0(getwd(), "/"))
+            }
+            
             if (met_type == "gdas1"){
               
               get_met_gdas1(
@@ -462,6 +498,11 @@ hysplit_trajectory <- function(traj_name = NULL,
             
             if (met_type == "reanalysis"){
               get_met_reanalysis(files = files_to_get,
+                                 path_met_files = getwd())
+            }
+            
+            if (met_type == "narr"){
+              get_met_narr(files = files_to_get,
                                  path_met_files = getwd())
             }
             
