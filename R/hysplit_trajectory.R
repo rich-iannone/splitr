@@ -91,7 +91,7 @@ hysplit_trajectory <- function(traj_name = NULL,
                                run_day = "2015-07-01",
                                run_range = NULL,
                                run_years = NULL,
-                               daily_hours_to_start = "00",
+                               daily_hours_to_start = 0,
                                return_met_along_traj = FALSE){
   
   # Write default versions of the SETUP.CFG and
