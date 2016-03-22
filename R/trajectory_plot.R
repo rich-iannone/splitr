@@ -114,69 +114,167 @@ trajectory_plot <- function(traj_df,
       for (i in 1:length(wind_traj_by_site_date[[1]])){
         
         if (ncol(wind_traj_by_site_date[[1]][[i]]) == 21){
+          
           popup <- 
-            paste0("<strong>trajectory</strong> ",
-                   wind_traj_by_site_date[[1]][[i]][, 12],
-                   "<br><strong>at time</strong> ",
-                   wind_traj_by_site_date[[1]][[i]][, 11],
-                   " (",
-                   wind_traj_by_site_date[[1]][[i]][, 6],
-                   " h)<br><strong>height</strong> ",
-                   wind_traj_by_site_date[[1]][[i]][, 9],
-                   " <font size=\"1\">m AGL</font> / ",
-                   "<strong>terrain</strong> ", 
-                   wind_traj_by_site_date[[1]][[i]][, 20],
-                   " <font size=\"1\">m AMSL</font><br>",
-                   "<strong>P</strong> ",
-                   wind_traj_by_site_date[[1]][[i]][, 10],
-                   " <font size=\"1\">hPa</font> / ",
-                   "<strong>RH</strong> ", 
-                   wind_traj_by_site_date[[1]][[i]][, 17],
-                   "% / <strong>SH</strong> ", 
-                   wind_traj_by_site_date[[1]][[i]][, 18],
-                   " <font size=\"1\">g/kg</font><br>",
-                   "<strong>rainfall</strong> ", 
-                   wind_traj_by_site_date[[1]][[i]][, 15],
-                   " <font size=\"1\">mm/h</font> ",
-                   "/ <strong>MH</strong> ", 
-                   wind_traj_by_site_date[[1]][[i]][, 16],
-                   " m<br>",
-                   "<strong>T<sub>amb</sub></strong> ", 
-                   wind_traj_by_site_date[[1]][[i]][, 14],
-                   " K / <strong>T<sub>pot</sub></strong> ", 
-                   wind_traj_by_site_date[[1]][[i]][, 13],
-                   " K<br>")
+            paste0(
+              "<strong>receptor site</strong> ",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc == 0)[, 1],
+              "<br><strong>lat</strong> ",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc == 0)[, 7],
+              "<br><strong>lon </strong> ",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc == 0)[, 8],
+              "<br><strong>height </strong> ",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc == 0)[, 9],
+              " <font size=\"1\">m AGL</font>")
+          
+          traj_plot <-
+            addCircles(
+              traj_plot,
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc == 0)[, 8],
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc == 0)[, 7],
+              group = "trajectory_points",
+              radius = 250,
+              fill = TRUE,
+              color = "#808080",
+              popup = popup)
+          
+          
+          popup <- 
+            paste0(
+              "<strong>trajectory</strong> ",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 12],
+              "<br><strong>at time</strong> ",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 11],
+              " (",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 6],
+              " h)<br><strong>height</strong> ",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 9],
+              " <font size=\"1\">m AGL</font> / ",
+              "<strong>terrain</strong> ", 
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 20],
+              " <font size=\"1\">m AMSL</font><br>",
+              "<strong>P</strong> ",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 10],
+              " <font size=\"1\">hPa</font> / ",
+              "<strong>RH</strong> ", 
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 17],
+              "% / <strong>SH</strong> ", 
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 18],
+              " <font size=\"1\">g/kg</font><br>",
+              "<strong>rainfall</strong> ", 
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 15],
+              " <font size=\"1\">mm/h</font> ",
+              "/ <strong>MH</strong> ", 
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 16],
+              " m<br>",
+              "<strong>T<sub>amb</sub></strong> ", 
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 14],
+              " K / <strong>T<sub>pot</sub></strong> ", 
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 13],
+              " K<br>")
+          
+          traj_plot <-
+            addCircles(
+              traj_plot,
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 8],
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 7],
+              group = "trajectory_points",
+              radius = 500,
+              fill = TRUE,
+              opacity = 1,
+              fillOpacity = 1,
+              color = colors[i],
+              fillColor = colors[i],
+              popup = popup)
         }
         
         if (ncol(wind_traj_by_site_date[[1]][[i]]) == 12){
+          
           popup <- 
-            paste0("<strong>trajectory</strong> ",
-                   wind_traj_by_site_date[[1]][[i]][, 12],
-                   "<br><strong>at time</strong> ",
-                   wind_traj_by_site_date[[1]][[i]][, 11],
-                   " (",
-                   wind_traj_by_site_date[[1]][[i]][, 6],
-                   " h)<br><strong>height</strong> ",
-                   wind_traj_by_site_date[[1]][[i]][, 9],
-                   " <font size=\"1\">m AGL</font> / ",
-                   "<strong>P</strong> ",
-                   wind_traj_by_site_date[[1]][[i]][, 10],
-                   " <font size=\"1\">hPa</font>")
+            paste0(
+              "<strong>receptor site</strong> ",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc == 0)[, 1],
+              "<br><strong>lat</strong> ",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc == 0)[, 7],
+              "<br><strong>lon </strong> ",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc == 0)[, 8],
+              "<br><strong>height </strong> ",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc == 0)[, 9],
+              " <font size=\"1\">m AGL</font>")
+          
+          traj_plot <-
+            addCircles(
+              traj_plot,
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc == 0)[, 8],
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc == 0)[, 7],
+              group = "trajectory_points",
+              radius = 250,
+              fill = TRUE,
+              color = "#808080",
+              popup = popup)
+          
+          popup <- 
+            paste0(
+              "<strong>trajectory</strong> ",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 12],
+              "<br><strong>at time</strong> ",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 11],
+              " (",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 6],
+              " h)<br><strong>height</strong> ",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 9],
+              " <font size=\"1\">m AGL</font> / ",
+              "<strong>P</strong> ",
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 10],
+              " <font size=\"1\">hPa</font>")
+          
+          traj_plot <-
+            addCircles(
+              traj_plot,
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 8],
+              subset(wind_traj_by_site_date[[1]][[i]],
+                     hour.inc != 0)[, 7],
+              group = "trajectory_points",
+              radius = 500,
+              fill = TRUE,
+              opacity = 1,
+              fillOpacity = 1,
+              color = colors[i],
+              fillColor = colors[i],
+              popup = popup)
         }
-        
-        traj_plot <-
-          addCircles(
-            traj_plot,
-            wind_traj_by_site_date[[1]][[i]][,8],
-            wind_traj_by_site_date[[1]][[i]][,7],
-            group = "trajectory_points",
-            radius = 500,
-            fill = TRUE,
-            fillOpacity = 1,
-            opacity = 1,
-            color = colors[i],
-            fillColor = colors[i],
-            popup = popup)
       }
     }
     
@@ -227,73 +325,172 @@ trajectory_plot <- function(traj_df,
         for (j in 1:length(wind_traj_by_site_date[[i]])){
           
           if (ncol(wind_traj_by_site_date[[i]][[j]]) == 21){
+            
             popup <- 
-              paste0("<strong>receptor</strong> ",
-                     wind_traj_by_site_date[[i]][[j]][, 1],
-                     "<br><strong>trajectory</strong> ",
-                     wind_traj_by_site_date[[i]][[j]][, 12],
-                     "<br><strong>at time </strong> ",
-                     wind_traj_by_site_date[[i]][[j]][, 11],
-                     " (",
-                     wind_traj_by_site_date[[i]][[j]][, 6],
-                     " h)<br><strong>height</strong> ",
-                     wind_traj_by_site_date[[i]][[j]][, 9],
-                     " <font size=\"1\">m AGL</font> / ",
-                     "<strong>terrain</strong> ", 
-                     wind_traj_by_site_date[[i]][[j]][, 20],
-                     " <font size=\"1\">m AMSL</font><br>",
-                     "<strong>P</strong> ",
-                     wind_traj_by_site_date[[i]][[j]][, 10],
-                     " <font size=\"1\">hPa</font> / ",
-                     "<strong>RH</strong> ", 
-                     wind_traj_by_site_date[[i]][[j]][, 17],
-                     "% / <strong>SH</strong> ", 
-                     wind_traj_by_site_date[[i]][[j]][, 18],
-                     " <font size=\"1\">g/kg</font><br>",
-                     "<strong>rainfall</strong> ", 
-                     wind_traj_by_site_date[[i]][[j]][, 15],
-                     " <font size=\"1\">mm/h</font> ",
-                     "/ <strong>MH</strong> ", 
-                     wind_traj_by_site_date[[i]][[j]][, 16],
-                     " m<br>",
-                     "<strong>T<sub>amb</sub></strong> ", 
-                     wind_traj_by_site_date[[i]][[j]][, 14],
-                     " K / <strong>T<sub>pot</sub></strong> ", 
-                     wind_traj_by_site_date[[i]][[j]][, 13],
-                     " K<br>")
+              paste0(
+                "<strong>receptor site</strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc == 0)[, 1],
+                "<br><strong>lat</strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc == 0)[, 7],
+                "<br><strong>lon </strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc == 0)[, 8],
+                "<br><strong>height </strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc == 0)[, 9],
+                " <font size=\"1\">m AGL</font>")
+            
+            traj_plot <-
+              addCircles(
+                traj_plot,
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc == 0)[, 8],
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc == 0)[, 7],
+                group = "trajectory_points",
+                radius = 250,
+                fill = TRUE,
+                color = "#808080",
+                popup = popup)
+            
+            popup <- 
+              paste0(
+                "<strong>receptor</strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 1],
+                "<br><strong>trajectory</strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 12],
+                "<br><strong>at time </strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 11],
+                " (",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 6],
+                " h)<br><strong>height</strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 9],
+                " <font size=\"1\">m AGL</font> / ",
+                "<strong>terrain</strong> ", 
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 20],
+                " <font size=\"1\">m AMSL</font><br>",
+                "<strong>P</strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 10],
+                " <font size=\"1\">hPa</font> / ",
+                "<strong>RH</strong> ", 
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 17],
+                "% / <strong>SH</strong> ", 
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 18],
+                " <font size=\"1\">g/kg</font><br>",
+                "<strong>rainfall</strong> ", 
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 15],
+                " <font size=\"1\">mm/h</font> ",
+                "/ <strong>MH</strong> ", 
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 16],
+                " m<br>",
+                "<strong>T<sub>amb</sub></strong> ", 
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 14],
+                " K / <strong>T<sub>pot</sub></strong> ", 
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 13],
+                " K<br>")
+            
+            traj_plot <-
+              addCircles(
+                traj_plot,
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 8],
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 7],
+                group = "trajectory_points",
+                radius = 500,
+                fill = TRUE,
+                fillOpacity = 1,
+                opacity = 1,
+                color = colors[j],
+                fillColor = colors[j],
+                popup = popup)
           }
           
           if (ncol(wind_traj_by_site_date[[i]][[j]]) == 12){
+            
             popup <- 
-              paste0("<strong>receptor</strong> ",
-                     wind_traj_by_site_date[[i]][[j]][, 1],
-                     "<br><strong>trajectory</strong> ",
-                     wind_traj_by_site_date[[i]][[j]][, 12],
-                     "<br><strong>at time </strong> ",
-                     wind_traj_by_site_date[[i]][[j]][, 11],
-                     " (",
-                     wind_traj_by_site_date[[i]][[j]][, 6],
-                     " h)<br><strong>height</strong> ",
-                     wind_traj_by_site_date[[i]][[j]][, 9],
-                     " <font size=\"1\">m AGL</font> / ",
-                     "<strong>P</strong> ",
-                     wind_traj_by_site_date[[i]][[j]][, 10],
-                     " <font size=\"1\">hPa</font>")
+              paste0(
+                "<strong>receptor site</strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc == 0)[, 1],
+                "<br><strong>lat</strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc == 0)[, 7],
+                "<br><strong>lon </strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc == 0)[, 8],
+                "<br><strong>height </strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc == 0)[, 9],
+                " <font size=\"1\">m AGL</font>")
+            
+            traj_plot <-
+              addCircles(
+                traj_plot,
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc == 0)[, 8],
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc == 0)[, 7],
+                group = "trajectory_points",
+                radius = 250,
+                fill = TRUE,
+                color = "#808080",
+                popup = popup)
+            
+            popup <- 
+              paste0(
+                "<strong>receptor</strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 1],
+                "<br><strong>trajectory</strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 12],
+                "<br><strong>at time </strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 11],
+                " (",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 6],
+                " h)<br><strong>height</strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 9],
+                " <font size=\"1\">m AGL</font> / ",
+                "<strong>P</strong> ",
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 10],
+                " <font size=\"1\">hPa</font>")
+            
+            traj_plot <-
+              addCircles(
+                traj_plot,
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 8],
+                subset(wind_traj_by_site_date[[i]][[j]],
+                       hour.inc != 0)[, 7],
+                group = "trajectory_points",
+                radius = 500,
+                fill = TRUE,
+                fillOpacity = 1,
+                opacity = 1,
+                color = colors[j],
+                fillColor = colors[j],
+                popup = popup)
           }
-          
-          traj_plot <-
-            addCircles(
-              traj_plot,
-              wind_traj_by_site_date[[i]][[j]][,8],
-              wind_traj_by_site_date[[i]][[j]][,7],
-              group = "trajectory_points",
-              radius = 500,
-              fill = TRUE,
-              fillOpacity = 1,
-              opacity = 1,
-              color = colors[j],
-              fillColor = colors[j],
-              popup = popup)
         }
       }
     }
