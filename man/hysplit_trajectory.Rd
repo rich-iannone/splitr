@@ -10,7 +10,7 @@ hysplit_trajectory(traj_name = NULL, return_traj_df = TRUE,
   backtrajectory = FALSE, met_type = "reanalysis",
   vertical_motion_option = 0, top_of_model_domain_m = 20000,
   run_type = "day", run_day = "2015-07-01", run_range = NULL,
-  run_years = NULL, daily_hours_to_start = "00",
+  run_years = NULL, daily_hours_to_start = 0,
   return_met_along_traj = FALSE)
 }
 \arguments{
