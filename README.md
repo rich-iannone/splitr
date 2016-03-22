@@ -431,13 +431,3 @@ hysplit_dispersion_plot(
   map_type = "stamen",
   map_output_name = "map2")
 ```
-
-## Future Additions to SplitR
-
-- greater support for different types of meteorological data files
-- support for dispersion from line sources
-- improved graphics for trajectory and dispersion model run outputs
-- options for merging data frames of backtrajectories with pollutant concentrations for advanced air quality analyses
-- statistical summaries for trajectories and dispersion of particles
-- ensemble model runs
-- capability for the starting location to be moving during successive model runs
