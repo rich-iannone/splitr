@@ -18,7 +18,7 @@ create_grid <- function(lat_deg = 49.196116,
                         n_s_dist = 0.5,
                         w_e_division = 0.1,
                         n_s_division = 0.1,
-                        dist_units = "degrees",){
+                        dist_units = "degrees"){
   
   
 }
