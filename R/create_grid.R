@@ -11,13 +11,13 @@
 #' @param dist_units
 #' @export create_grid
 
-create_grid <- function(lat_deg = 49.196116,
-                        lon_deg = -122.505866,
+create_grid <- function(lat_deg = 49.263,
+                        lon_deg = -123.250,
                         grid_ref = "center",
-                        n_s_dist = 0.5,
-                        w_e_dist = 0.5,
-                        n_s_division = 0.1,
-                        w_e_division = 0.1,
+                        n_s_dist = 5,
+                        w_e_dist = 5,
+                        n_s_division = 0.5,
+                        w_e_division = 0.5,
                         dist_units = "degrees"){
   
   
