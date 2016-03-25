@@ -80,8 +80,8 @@
 
 hysplit_trajectory <- function(traj_name = NULL,
                                return_traj_df = TRUE,
-                               start_lat_deg = 49.263405,
-                               start_long_deg = -123.250054,
+                               start_lat_deg = 49.263,
+                               start_long_deg = -123.250,
                                start_height_m_AGL = 50,
                                simulation_duration_h = 24,
                                backtrajectory = FALSE,
