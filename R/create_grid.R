@@ -20,6 +20,8 @@ create_grid <- function(lat_deg = 49.263,
                         w_e_division = 0.5,
                         dist_units = "degrees"){
   
+  n_s_points <- n_s_dist / n_s_division
+  w_e_points <- w_e_dist / w_e_division
   
 
 }
