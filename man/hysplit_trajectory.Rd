@@ -5,7 +5,7 @@
 \title{Conduct HYSPLIT trajectory runs}
 \usage{
 hysplit_trajectory(traj_name = NULL, return_traj_df = TRUE,
-  start_lat_deg = 49.263405, start_long_deg = -123.250054,
+  start_lat_deg = 49.263, start_long_deg = -123.25,
   start_height_m_AGL = 50, simulation_duration_h = 24,
   backtrajectory = FALSE, met_type = "reanalysis",
   vertical_motion_option = 0, top_of_model_domain_m = 20000,
