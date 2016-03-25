@@ -23,5 +23,20 @@ create_grid <- function(lat_deg = 49.263,
   n_s_points <- n_s_dist / n_s_division
   w_e_points <- w_e_dist / w_e_division
   
+  lat <- (lat_deg + n_s_dist/2) - seq(0, n_s_dist, n_s_division)
+  lon <- (lon_deg + w_e_dist/2) - seq(0, w_e_dist, w_e_division)
+  
+  for (i in 1:length(lat)){
+    for (j in 1:length(lon)){
+      if (i == 1){
+        coords <- vector("list", 2)
+        names(coords) <- c("lat", "lon")
+      }
 
+      coords$lat[length(coords$lat) + 1] <- lat[i]
+      coords$lon[length(coords$lon) + 1] <- lon[j]
+    }
+  }
+
+  return(coords)
 }
