@@ -421,7 +421,7 @@ hysplit_trajectory <- function(traj_name = NULL,
             mat.or.vec(nr = length(met), nc = 2)),
             nm = c("file","available"))
         
-        if (.Platform$OS.type == "unix"){
+        if (any(c("mac", "unix") %in% get_os())){
           
           for (k in 1:length(met)) {
             met_file_df[k, 1] <- met[k]
@@ -472,13 +472,13 @@ hysplit_trajectory <- function(traj_name = NULL,
           }
         }
         
-        if (.Platform$OS.type == "windows"){
+        if (get_os() == "win"){
           
           for (k in 1:length(met)) {
             met_file_df[k, 1] <- met[k]
             
             met_file_df[k, 2] <-
-              as.character(file.exists(paste0(getwd(), "\\",
+              as.character(file.exists(paste0(getwd(), "/",
                                               met[k])))}
           
           # Write the met file availability to file
@@ -531,7 +531,7 @@ hysplit_trajectory <- function(traj_name = NULL,
         all_trajectory_files <- 
           c(all_trajectory_files, output_filename)
         
-        if (.Platform$OS.type == "unix"){
+        if (any(c("mac", "unix") %in% get_os())){
           
           # Write start year, month, day, hour to
           # 'CONTROL'
@@ -597,7 +597,7 @@ hysplit_trajectory <- function(traj_name = NULL,
               sep = '', append = TRUE)
         }
         
-        if (.Platform$OS.type == "windows"){
+        if (get_os() == "win"){
           
           # Write start year, month, day, hour to
           # 'CONTROL'
@@ -605,13 +605,13 @@ hysplit_trajectory <- function(traj_name = NULL,
               start_month_GMT, " ",
               start_day_GMT, " ",
               start_hour_GMT, "\n",
-              file = paste0(getwd(), "\\", "CONTROL"),
+              file = paste0(getwd(), "/CONTROL"),
               sep = '', append = FALSE)
           
           # Write number of starting locations
           # to 'CONTROL'
           cat("1\n",
-              file = paste0(getwd(), "\\", "CONTROL"),
+              file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
           
           # Write starting latitude, longitude, height
@@ -619,14 +619,14 @@ hysplit_trajectory <- function(traj_name = NULL,
           cat(coords$lat[z], " ", 
               coords$lon[z], " ", 
               start_height_m_AGL, "\n",
-              file = paste0(getwd(), "\\", "CONTROL"),
+              file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
           
           # Write direction and number of simulation
           # hours to 'CONTROL'
           cat(ifelse(backtrajectory == TRUE, "-", ""),
               simulation_duration_h, "\n",
-              file = paste0(getwd(), "\\", "CONTROL"),
+              file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
           
           # Write vertical motion option to 'CONTROL'
@@ -637,35 +637,35 @@ hysplit_trajectory <- function(traj_name = NULL,
           # Write top of model domain in meters to
           # 'CONTROL'
           cat(top_of_model_domain_m, "\n",
-              file = paste0(getwd(), "\\", "CONTROL"),
+              file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
           
           # Write number of met files used to 'CONTROL'
           cat(length(met), "\n",
-              file = paste0(getwd(), "\\", "CONTROL"),
+              file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
           
           # Write met file paths to 'CONTROL'
           for (i in 1:length(met)){
             cat(getwd(), "/\n", met[i], "\n",
-                file = paste0(getwd(), "\\", "CONTROL"),
+                file = paste0(getwd(), "/CONTROL"),
                 sep = '', append = TRUE)}
           
           # Write path for trajectory output files to
           # 'CONTROL'
           cat(getwd(), "/\n",
-              file = paste0(getwd(), "\\", "CONTROL"),
+              file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
           
           # Write name of output filename to 'CONTROL'
           cat(output_filename, "\n",
-              file = paste0(getwd(), "\\", "CONTROL"),
+              file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
         }
         
         # The CONTROL file is now complete and in the
         # working directory, so, execute the model run
-        if (.Platform$OS.type == "unix"){
+        if (get_os() == "mac"){
           
           system(paste0("(cd ", getwd(), " && ",
                         system.file("osx/hyts_std",
@@ -673,17 +673,24 @@ hysplit_trajectory <- function(traj_name = NULL,
                         ")"))
         }
         
-        if (.Platform$OS.type == "windows"){
+        if (get_os() == "win"){
           shell(paste0("(cd \"", getwd(), "\" && \"",
                        system.file("win/hyts_std.exe",
                                    package = "SplitR"),
                        "\")"))
         }
+        
+        if (get_os() == "unix"){
+          system(paste0("(cd ", getwd(), " && ",
+                        system.file("linux-amd64/hyts_std",
+                                    package = "SplitR"),
+                        ")"))
+        }
       }
     }
     
     # Generate name of archive directory
-    if (.Platform$OS.type == "unix"){
+    if (any(c("mac", "unix") %in% get_os())){
       if (is.null(traj_name)){
         folder_name <-
           paste0("traj--",
@@ -709,18 +716,17 @@ hysplit_trajectory <- function(traj_name = NULL,
                       ")"))
       }
       
-      # Return a trajectory data frame if it is requested
+      # Obtain a trajectory data frame
       if (return_traj_df == TRUE){
         
         traj_df <-
           trajectory_read(output_folder =
                             paste0(getwd(), "/",
                                    folder_name))
-        #return(traj_df)
       }
     }
     
-    if (.Platform$OS.type == "windows"){
+    if (get_os() == "win"){
       if (is.null(traj_name)){
         folder_name <- 
           paste0("traj--",
@@ -746,13 +752,12 @@ hysplit_trajectory <- function(traj_name = NULL,
                      "\")"))
       }
       
-      # Return a trajectory data frame if it is requested
+      # Obtain a trajectory data frame
       if (return_traj_df == TRUE){
         traj_df <- 
           trajectory_read(output_folder =
                             paste0(getwd(), "/",
                                    folder_name))
-        #return(traj_df)
       }
     }
     
