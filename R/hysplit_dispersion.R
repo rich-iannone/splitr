@@ -206,6 +206,15 @@ hysplit_dispersion <- function(lat = 49.263,
       formatC(as.numeric(day(list_run_days[i])),
               width = 2, format = "d", flag = "0")
     
+    # Sort daily starting hours if given as
+    # numeric values
+    if (class(daily_hours) == "numeric"){
+      daily_hours <-
+        formatC(sort(daily_hours),
+                width = 2,
+                flag = 0)
+    }
+    
     # Make nested loop with daily beginning hours
     for (j in daily_hours) {    
       
