@@ -74,20 +74,18 @@
 #' # grids (presets for species and emissions are set
 #' # to the first, which is the default)
 #' hysplit_dispersion(
-#'   disp_name = "example",
-#'   return_disp_df = FALSE,
-#'   write_disp_CSV = TRUE,
-#'   lat = 49.289328,
-#'   lon = -123.117665,
+#'   lat = 49.263,
+#'   lon = -123.250,
 #'   height = 15,
 #'   duration = 12,
-#'   backward_running = FALSE,
+#'   run_type = "range",
+#'   run_range = c("2012-02-01", "2012-02-02"),
+#'   daily_hours = 0,
 #'   emissions = 1,
 #'   species = 1,
 #'   grids = c(1,2),
-#'   run_type = "range",
-#'   run_range = c("2012-02-01", "2012-02-03"),
-#'   daily_hours = "00")
+#'   return_disp_df = FALSE,
+#'   disp_name = "example")
 #'}
 
 hysplit_dispersion <- function(lat = 49.263,
@@ -98,7 +96,7 @@ hysplit_dispersion <- function(lat = 49.263,
                                run_day = "2013-02-01",
                                run_range = c("2013-02-01", "2013-02-10"),
                                run_years = "2013",
-                               daily_hours = "00",
+                               daily_hours = 0,
                                backward_running = FALSE,
                                met_type = "reanalysis",
                                vert_motion = 0,
