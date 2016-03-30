@@ -4,66 +4,31 @@
 \alias{hysplit_dispersion}
 \title{Conduct HYSPLIT dispersion runs}
 \usage{
-hysplit_dispersion(disp_name = NULL, return_disp_df = TRUE,
-  write_disp_CSV = TRUE, start_lat_deg, start_long_deg, start_height_m_AGL,
-  simulation_duration_h = 24, backward_running = FALSE,
-  met_type = "reanalysis", vertical_motion_option = 0,
-  top_of_model_domain_m = 20000, number_of_particles = 2500,
-  max_particles = 10000, run_type = "day", run_day = "2013-02-01",
+hysplit_dispersion(lat = 49.263, lon = -123.25, height = 50,
+  duration = 24, run_type = "day", run_day = "2013-02-01",
   run_range = c("2013-02-01", "2013-02-10"), run_years = "2013",
-  daily_hours_to_start = "00", emissions = 1, species = 1, grids = 1)
+  daily_hours = "00", backward_running = FALSE, met_type = "reanalysis",
+  vert_motion = 0, model_height = 20000, particle_num = 2500,
+  particle_max = 10000, emissions = 1, species = 1, grids = 1,
+  return_disp_df = TRUE, write_disp_CSV = TRUE, disp_name = NULL)
 }
 \arguments{
-\item{disp_name}{an optional, descriptive name for
-the output file collection.}
+\item{lat}{the starting latitude (in decimal
+degrees) for the model run(s).}
 
-\item{return_disp_df}{an option to return a data
-frame with dispersion data.}
+\item{lon}{the starting longitude (in decimal
+degrees) for the model run(s).}
 
-\item{write_disp_CSV}{an option to write disperison
-data to a CSV file.}
+\item{height}{the starting height (in meters above
+ground level) for the model run(s).}
 
-\item{start_lat_deg}{the starting latitude (in
-decimal degrees) for the model run(s).}
-
-\item{start_long_deg}{the starting longitude (in
-decimal degrees) for the model run(s).}
-
-\item{start_height_m_AGL}{the starting height (in
-meters above ground level) for the model run(s).}
-
-\item{simulation_duration_h}{the duration of each
+\item{duration}{the duration of each
 model run (either forward or backward) in hours.}
 
-\item{backward_running}{an option to select whether
-the dispersion runs should be running forward in
-time (the default) or in a backward running state.}
-
-\item{met_type}{an option to select meteorological
-data files. The options are \code{gdas1} (Global Data
-Assimilation System 1-degree resolution data) and
-\code{reanalysis} (NCAR/NCEP global reanalysis data).}
-
-\item{vertical_motion_option}{a numbered option to
-select the method used to simulation vertical
-motion. The methods are: (0) input model data,
-(1) isobaric, (2) isentropic, (3) constant density,
-(4) isosigma, (5) from divergence, (6) remap MSL to
-AGL, (7) average data, and (8) damped magnitude.}
-
-\item{top_of_model_domain_m}{the upper limit of the
-model domain in meters.}
-
-\item{number_of_particles}{the number of particles
-released by source during each release cycle.}
-
-\item{max_particles}{the number of particles
-released by a source during a model run.}
-
 \item{run_type}{used to select whether models should
-be run for a single day (\code{day}), for one or more
-years (\code{years}), or within a specified date range
-(\code{range}).}
+be run for a single day (\code{day}), for one or
+more years (\code{years}), or within a specified
+date range (\code{range}).}
 
 \item{run_day}{used when \code{run_type} of
 \code{day} is selected. The date format should be
@@ -77,9 +42,34 @@ as \code{c("YYYY-MM-DD", "YYYY-MM-DD")}.}
 selected. The format should either be a single year
 ("YYYY") or a range of years ("YYYY-YYYY").}
 
-\item{daily_hours_to_start}{should consist of a
+\item{daily_hours}{should consist of a
 single daily hour in the format "HH", or, several
 daily hours in the format \code{c("HH", "HH", "HH", ...)}.}
+
+\item{backward_running}{an option to select whether
+the dispersion runs should be running forward in
+time (the default) or in a backward running state.}
+
+\item{met_type}{an option to select meteorological
+data files. The options are \code{gdas1} (Global Data
+Assimilation System 1-degree resolution data) and
+\code{reanalysis} (NCAR/NCEP global reanalysis data).}
+
+\item{vert_motion}{a numbered option to
+select the method used to simulation vertical
+motion. The methods are: (0) input model data,
+(1) isobaric, (2) isentropic, (3) constant density,
+(4) isosigma, (5) from divergence, (6) remap MSL to
+AGL, (7) average data, and (8) damped magnitude.}
+
+\item{model_height}{the upper limit of the
+model domain in meters.}
+
+\item{particle_num}{the number of particles
+released by source during each release cycle.}
+
+\item{particle_max}{the number of particles
+released by a source during a model run.}
 
 \item{emissions}{the numbers corresponding to the
 stored emissions presets. These presets are
@@ -95,6 +85,15 @@ using the function
 stored grid presets. These presets are specified
 using the function
 \code{hysplit_dispersion_define("grids")}.}
+
+\item{return_disp_df}{an option to return a data
+frame with dispersion data.}
+
+\item{write_disp_CSV}{an option to write disperison
+data to a CSV file.}
+
+\item{disp_name}{an optional, descriptive name for
+the output file collection.}
 }
 \description{
 The function executes single/multiple
@@ -112,20 +111,17 @@ hysplit_dispersion(
   disp_name = "example",
   return_disp_df = FALSE,
   write_disp_CSV = TRUE,
-  start_lat_deg = 49.289328,
-  start_long_deg = -123.117665,
-  start_height_m_AGL = 15,
-  simulation_duration_h = 12,
+  lat = 49.289328,
+  lon = -123.117665,
+  height = 15,
+  duration = 12,
   backward_running = FALSE,
-  met_type = "reanalysis",
-  vertical_motion_option = 0,
-  top_of_model_domain_m = 2000,
   emissions = 1,
   species = 1,
   grids = c(1,2),
   run_type = "range",
   run_range = c("2012-02-01", "2012-02-03"),
-  daily_hours_to_start = "00")
+  daily_hours = "00")
 }
 }
 
