@@ -2,37 +2,14 @@
 #' @description The function executes single/multiple
 #' forward or backward HYSPLIT trajectory runs using
 #' specified meteorological datasets.
-#' @param traj_name an optional, descriptive name for
-#' the output file collection.
-#' @param return_traj_df an option to return a data
-#' frame with trajectory data.
-#' @param start_lat_deg the starting latitude (in
+#' @param lat the starting latitude (in
 #' decimal degrees) for the model run(s).
-#' @param start_long_deg the starting longitude (in
+#' @param lon the starting longitude (in
 #' decimal degrees) for the model run(s).
-#' @param start_height_m_AGL the starting height (in
+#' @param height the starting height (in
 #' meters above ground level) for the model run(s).
-#' @param simulation_duration_h the duration of each
+#' @param duration the duration of each
 #' model run (either forward or backward) in hours.
-#' @param backtrajectory an option to select whether to
-#' conduct forward trajectory model runs or to generate
-#' backtrajectories.
-#' @param met_type an option to select meteorological
-#' data files. The options are \code{gdas1} (Global
-#' Data Assimilation System 1-degree resolution data), 
-#' \code{reanalysis} (NCAR/NCEP global reanalysis
-#' data), and \code{narr} (North American Regional 
-#' Reanalysis). 
-#' @param vertical_motion_option a numbered option to
-#' select the method used to simulation vertical
-#' motion. The methods are: \code{0} (input model
-#' data), \code{1} (isobaric), \code{2} (isentropic),
-#' \code{3} (constant density), \code{4} (isosigma),
-#' \code{5} (from divergence), \code{6} (remap MSL to
-#' AGL), \code{7} (average data), and \code{8} (damped
-#' magnitude). 
-#' @param top_of_model_domain_m the upper limit of the
-#' model domain in meters.
 #' @param run_type used to select whether models should
 #' be run for a single day (\code{day}), for one or
 #' more years (\code{years}), or within a specified
@@ -48,58 +25,75 @@
 #' \code{years} is selected. The format should either
 #' be a single year (\code{YYYY}) or a range of years
 #' (\code{YYYY-YYYY}).
-#' @param daily_hours_to_start should consist of a
-#' single daily hour in the format \code{HH}, or,
-#' several daily hours as a vector in the format of
-#' \code{"c("HH", "HH", ...)"}.
-#' @param return_met_along_traj an option to report
+#' @param daily_hours should consist of a
+#' single daily hour as an integer hour (from \code{0}
+#' to \code{23}), or, a vector of several daily hours
+#' represented as integers.
+#' @param backtrajectory an option to select whether to
+#' conduct forward trajectory model runs or to generate
+#' backtrajectories.
+#' @param met_type an option to select meteorological
+#' data files. The options are \code{gdas1} (Global
+#' Data Assimilation System 1-degree resolution data), 
+#' \code{reanalysis} (NCAR/NCEP global reanalysis
+#' data), and \code{narr} (North American Regional 
+#' Reanalysis). 
+#' @param vert_motion a numbered option to
+#' select the method used to simulation vertical
+#' motion. The methods are: \code{0} (input model
+#' data), \code{1} (isobaric), \code{2} (isentropic),
+#' \code{3} (constant density), \code{4} (isosigma),
+#' \code{5} (from divergence), \code{6} (remap MSL to
+#' AGL), \code{7} (average data), and \code{8} (damped
+#' magnitude). 
+#' @param model_height the upper limit of the model
+#' domain in meters.
+#' @param extended_met an option to report
 #' additional meteorological data along each output
 #' trajectory.
+#' @param return_traj_df an option to return a data
+#' frame with trajectory data.
+#' @param traj_name an optional, descriptive name for
+#' the output file collection.
 #' @import lubridate
 #' @export hysplit_trajectory
 #' @examples
 #' \dontrun{
 #' # Test with a run type of `years` with a forward
 #' # trajectory using NCEP/NCAR reanalysis data
-#' hysplit_trajectory(
-#'   traj_name = "second",
-#'   return_traj_df = FALSE,
-#'   start_lat_deg = 50.108,
-#'   start_long_deg = -122.942,
-#'   start_height_m_AGL = 200.0,
-#'   simulation_duration_h = 96,
-#'   backtrajectory = FALSE,
-#'   met_type = "reanalysis",
-#'   vertical_motion_option = 0,
-#'   top_of_model_domain_m = 20000,
-#'   run_type = "years",
-#'   run_years = "2004",
-#'   daily_hours_to_start = c(3, 6, 9, 12, 15, 18, 21),
-#'   return_met_along_traj = TRUE)
+#' trajectory <- 
+#'   hysplit_trajectory(
+#'     lat = 50.108,
+#'     lon = -122.942,
+#'     height = 100,
+#'     duration = 48,
+#'     run_type = "years",
+#'     run_years = "2004",
+#'     daily_hours = c(0, 6, 12, 18))
 #'}
 
-hysplit_trajectory <- function(traj_name = NULL,
-                               return_traj_df = TRUE,
-                               start_lat_deg = 49.263,
-                               start_long_deg = -123.250,
-                               start_height_m_AGL = 50,
-                               simulation_duration_h = 24,
-                               backtrajectory = FALSE,
-                               met_type = "reanalysis",
-                               vertical_motion_option = 0,
-                               top_of_model_domain_m = 20000,
+hysplit_trajectory <- function(lat = 49.263,
+                               lon = -123.250,
+                               height = 50,
+                               duration = 24,
                                run_type = "day",
                                run_day = "2015-07-01",
                                run_range = NULL,
                                run_years = NULL,
-                               daily_hours_to_start = 0,
-                               return_met_along_traj = FALSE){
+                               daily_hours = 0,
+                               backtrajectory = FALSE,
+                               met_type = "reanalysis",
+                               vert_motion = 0,
+                               model_height = 20000,
+                               extended_met = FALSE,
+                               return_traj_df = TRUE,
+                               traj_name = NULL){
   
   # Write default versions of the SETUP.CFG and
   # ASCDATA.CFG files in the working directory
   hysplit_config_init()
   
-  if (return_met_along_traj){
+  if (extended_met){
     setup_cfg <- readLines('SETUP.CFG')
     setup_cfg <- gsub("(tm_.* )(0),", "\\11,", setup_cfg)
     cat(setup_cfg,
@@ -108,15 +102,13 @@ hysplit_trajectory <- function(traj_name = NULL,
   }
   
   # Stop function if there are vectors of different
-  # length for `start_lat_deg` and `start_long_deg`
-  if (length(start_lat_deg) !=
-      length(start_long_deg)){
+  # length for `lat` and `lon`
+  if (length(lat) != length(lon)){
     stop("The coordinate vectors are not the same length.")
   }
   
   # Create a coordinates list
-  coords <- list(lat = start_lat_deg,
-                 lon = start_long_deg)
+  coords <- list(lat = lat, lon = lon)
   
   # For every set of coordinates, perform a set
   # of model runs
@@ -187,15 +179,15 @@ hysplit_trajectory <- function(traj_name = NULL,
       
       # Sort daily starting hours if given as
       # numeric values
-      if (class(daily_hours_to_start) == "numeric"){
-        daily_hours_to_start <-
-          formatC(sort(daily_hours_to_start),
+      if (class(daily_hours) == "numeric"){
+        daily_hours <-
+          formatC(sort(daily_hours),
                   width = 2,
                   flag = 0)
       }
       
       # Make nested loop with daily beginning hours
-      for (j in daily_hours_to_start){    
+      for (j in daily_hours){    
         
         start_hour_GMT <- j
         
@@ -216,9 +208,9 @@ hysplit_trajectory <- function(traj_name = NULL,
           as.POSIXct(
             ifelse(backtrajectory, 
                    start_time_GMT -
-                     (simulation_duration_h * 3600),
+                     (duration * 3600),
                    start_time_GMT +
-                     (simulation_duration_h * 3600)),
+                     (duration * 3600)),
             origin = "1970-01-01",
             tz = "UTC")
         
@@ -525,8 +517,8 @@ hysplit_trajectory <- function(traj_name = NULL,
                  start_hour_GMT, "-",
                  "lat_", gsub("\\.", "-", coords$lat[z]), "_",
                  "long_", gsub("\\.", "-", coords$lon[z]), "-",
-                 "height_",start_height_m_AGL, "-",
-                 simulation_duration_h, "h")
+                 "height_",height, "-",
+                 duration, "h")
         
         all_trajectory_files <- 
           c(all_trajectory_files, output_filename)
@@ -552,25 +544,25 @@ hysplit_trajectory <- function(traj_name = NULL,
           # AGL to 'CONTROL'
           cat(coords$lat[z], " ", 
               coords$lon[z], " ", 
-              start_height_m_AGL, "\n",
+              height, "\n",
               file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
           
           # Write direction and number of simulation
           # hours to 'CONTROL'
           cat(ifelse(backtrajectory == TRUE, "-", ""),
-              simulation_duration_h, "\n",
+              duration, "\n",
               file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
           
           # Write vertical motion option to 'CONTROL'
-          cat(vertical_motion_option, "\n",
+          cat(vert_motion, "\n",
               file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
           
           # Write top of model domain in meters to
           # 'CONTROL'
-          cat(top_of_model_domain_m, "\n",
+          cat(model_height, "\n",
               file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
           
@@ -618,25 +610,25 @@ hysplit_trajectory <- function(traj_name = NULL,
           # AGL to 'CONTROL'
           cat(coords$lat[z], " ", 
               coords$lon[z], " ", 
-              start_height_m_AGL, "\n",
+              height, "\n",
               file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
           
           # Write direction and number of simulation
           # hours to 'CONTROL'
           cat(ifelse(backtrajectory == TRUE, "-", ""),
-              simulation_duration_h, "\n",
+              duration, "\n",
               file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
           
           # Write vertical motion option to 'CONTROL'
-          cat(vertical_motion_option, "\n",
+          cat(vert_motion, "\n",
               file = paste0(getwd(), "\\", "CONTROL"),
               sep = '', append = TRUE)
           
           # Write top of model domain in meters to
           # 'CONTROL'
-          cat(top_of_model_domain_m, "\n",
+          cat(model_height, "\n",
               file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
           
@@ -760,7 +752,6 @@ hysplit_trajectory <- function(traj_name = NULL,
                                    folder_name))
       }
     }
-    
     
     if (z == 1){
       col_names <- colnames(traj_df)
