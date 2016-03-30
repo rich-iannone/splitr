@@ -405,7 +405,7 @@ hysplit_dispersion <- function(lat = 49.263,
                                        nc = 2)),
                  nm = c("file", "available"))
       
-      if (.Platform$OS.type == "unix"){
+      if (any(c("mac", "unix") %in% get_os())){
         
         for (k in 1:length(met)){
           met.file.df[k, 1] <- met[k]
@@ -446,7 +446,7 @@ hysplit_dispersion <- function(lat = 49.263,
         }
       }
       
-      if (.Platform$OS.type == "windows"){
+      if (get_os() == "win"){
         
         for (k in 1:length(met)){
           met.file.df[k, 1] <- met[k]
@@ -600,14 +600,21 @@ hysplit_dispersion <- function(lat = 49.263,
       
       # CONTROL file is now complete and in the
       # working directory; execute the model run
-      if (.Platform$OS.type == "unix"){
+      if (get_os() == "mac"){
         system(paste0("(cd ", getwd(), " && ",
                       system.file("osx/hycs_std",
                                   package = "SplitR"),
                       ")"))
       }
       
-      if (.Platform$OS.type == "windows"){
+      if (get_os() == "unix"){
+        system(paste0("(cd ", getwd(), " && ",
+                      system.file("linux-amd64/hycs_std",
+                                  package = "SplitR"),
+                      ")"))
+      }
+      
+      if (get_os() == "win"){
         shell(paste0("(cd \"", getwd(), "\" && \"",
                      system.file("win/hycs_std.exe",
                                  package = "SplitR"),
@@ -615,14 +622,21 @@ hysplit_dispersion <- function(lat = 49.263,
       }
       
       # Extract the particle positions at every hour
-      if (.Platform$OS.type == "unix"){
+      if (get_os() == "mac"){
         system(paste0("(cd ", getwd(), "/", " && ",
                       system.file("osx/parhplot",
                                   package = "SplitR"),
                       " -iPARDUMP -a1)"))
       }
       
-      if (.Platform$OS.type == "windows"){
+      if (get_os() == "unix"){
+        system(paste0("(cd ", getwd(), "/", " && ",
+                      system.file("linux-amd64/parhplot",
+                                  package = "SplitR"),
+                      " -iPARDUMP -a1)"))
+      }
+      
+      if (get_os() == "win"){
         shell(paste0("(cd \"", getwd(), "\" && \"",
                      system.file("win/parhplot.exe",
                                  package = "SplitR"),
@@ -630,29 +644,29 @@ hysplit_dispersion <- function(lat = 49.263,
       }
       
       # Remove the .att files from the working directory
-      if (.Platform$OS.type == "unix"){
+      if (any(c("mac", "unix") %in% get_os())){
         system(paste0("(cd ", getwd(),
                       " && rm GIS_part*.att)"))
       }
       
-      if (.Platform$OS.type == "windows"){
+      if (get_os() == "win"){
         shell(paste0("(cd \"", getwd(),
                      "\" && del GIS_part*.att)"))
       }
       
       # Remove the postscript plot from the working directory
-      if (.Platform$OS.type == "unix"){
+      if (any(c("mac", "unix") %in% get_os())){
         system(paste0("(cd ", getwd(),
                       " && rm parhplot.ps)"))
       }
       
-      if (.Platform$OS.type == "windows"){
+      if (get_os() == "win"){
         shell(paste0("(cd \"", getwd(),
                      "\" && del parhplot.ps)"))
       }
       
       # Rename the TXT files as CSV files
-      if (.Platform$OS.type == "unix"){
+      if (any(c("mac", "unix") %in% get_os())){
         system(
           paste0("(cd ", getwd(),
                  " && for files in GIS*.txt;",
@@ -661,13 +675,13 @@ hysplit_dispersion <- function(lat = 49.263,
       
       # Remove the 'END' string near the end of
       # each CSV file
-      if (.Platform$OS.type == "unix"){
+      if (any(c("mac", "unix") %in% get_os())){
         system(paste0("(cd ", getwd(),
                       " && sed -i .bk 's/END//g'",
                       " GIS_part_*.csv; rm *.bk)"))
       }
       
-      if (.Platform$OS.type == "windows"){        
+      if (get_os() == "win"){        
         temp_file_list <- 
           list.files(path = getwd(),
                      pattern = "*._ps.txt",
@@ -687,7 +701,7 @@ hysplit_dispersion <- function(lat = 49.263,
       
       # Move the .csv files from the working directory
       # to the output folder
-      if (.Platform$OS.type == "unix"){
+      if (any(c("mac", "unix") %in% get_os())){
         
         if (is.null(disp_name)){
           folder_name <- 
@@ -713,7 +727,7 @@ hysplit_dispersion <- function(lat = 49.263,
                       "')"))
       }
       
-      if (.Platform$OS.type == "windows"){
+      if (get_os() == "win"){
         
         if (is.null(disp_name)){
           folder_name <- 
@@ -749,7 +763,7 @@ hysplit_dispersion <- function(lat = 49.263,
                         paste0(getwd(), "/",
                                folder_name))
     
-    if (.Platform$OS.type == "unix"){
+    if (any(c("mac", "unix") %in% get_os())){
       write.table(
         disp_df,
         file = paste0(getwd(), "/",
@@ -759,7 +773,7 @@ hysplit_dispersion <- function(lat = 49.263,
         row.names = FALSE)
     }
     
-    if (.Platform$OS.type == "windows"){
+    if (get_os() == "win"){
       write.table(
         disp_df,
         file = paste0("\"", getwd(), "/",
