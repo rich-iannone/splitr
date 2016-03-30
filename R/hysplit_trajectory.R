@@ -623,7 +623,7 @@ hysplit_trajectory <- function(lat = 49.263,
           
           # Write vertical motion option to 'CONTROL'
           cat(vert_motion, "\n",
-              file = paste0(getwd(), "\\", "CONTROL"),
+              file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
           
           # Write top of model domain in meters to
@@ -665,18 +665,18 @@ hysplit_trajectory <- function(lat = 49.263,
                         ")"))
         }
         
-        if (get_os() == "win"){
-          shell(paste0("(cd \"", getwd(), "\" && \"",
-                       system.file("win/hyts_std.exe",
-                                   package = "SplitR"),
-                       "\")"))
-        }
-        
         if (get_os() == "unix"){
           system(paste0("(cd ", getwd(), " && ",
                         system.file("linux-amd64/hyts_std",
                                     package = "SplitR"),
                         ")"))
+        }
+        
+        if (get_os() == "win"){
+          shell(paste0("(cd \"", getwd(), "\" && \"",
+                       system.file("win/hyts_std.exe",
+                                   package = "SplitR"),
+                       "\")"))
         }
       }
     }
