@@ -32,21 +32,21 @@ To perform a series **HYSPLIT** trajectory model runs, use the **SplitR** `hyspl
 ```R
 trajectory <- 
   hysplit_trajectory(
-    traj_name = "trajectory",
-    return_traj_df = TRUE,
-    start_lat_deg = 42.83752,
-    start_long_deg = -80.30364,
-    start_height_m_AGL = 50,
-    simulation_duration_h = 24,
-    backtrajectory = FALSE,
-    met_type = "gdas1",
+    lat = 42.83752,
+    lon = -80.30364,
+    height = 50,
+    duration = 24,
     run_type = "day",
     run_day = "2012-03-12",
-    daily_hours_to_start = c(0, 6, 12, 18),
-    return_met_along_traj = TRUE) 
+    daily_hours = c(0, 6, 12, 18),
+    backtrajectory = FALSE,
+    met_type = "gdas1",
+    extended_met = TRUE,
+    return_traj_df = TRUE,
+    traj_name = "trajectory") 
 ```
 
-This use of `hysplit_trajectory()` sets up four trajectory runs that start at 00:00, 06:00, 12:00, and 18:00 UTC on March 12, 2012. The `traj_name` argument allows for the inclusion of a descriptive name for the set of runs. Setting `return_traj_df` to `TRUE` will instruct the function to return a data frame containing detailed trajectory information. Such a data frame (named here as the object `trajectory`) will be have the following columns with `return_met_along_traj == FALSE`:
+This use of `hysplit_trajectory()` sets up four trajectory runs that start at 00:00, 06:00, 12:00, and 18:00 UTC on March 12, 2012. The `traj_name` argument allows for the inclusion of a descriptive name for the set of runs. Setting `return_traj_df` to `TRUE` will instruct the function to return a data frame containing detailed trajectory information. Such a data frame (named here as the object `trajectory`) will be have the following columns when `extended_met` is set to `FALSE`:
 
 - `receptor` a numeric label for the receptor
 - `year`, `month`, `day`, `hour` integer values for date/time components
@@ -56,7 +56,7 @@ This use of `hysplit_trajectory()` sets up four trajectory runs that start at 00
 - `date2` a POSIXct date-time value (in UTC) for the air mass along the trajectory
 - `date` a POSIXct date-time value (in UTC) for the time of release or time of incidence at the receptor site
 
-If the model is run with `return_met_along_traj == TRUE` then the following columns will also be available in the data frame:
+If the model is run with `extended_met` set to `TRUE` then the following columns will also be available in the data frame:
 
 - `theta` the potential temperature (in K) along the trajectory
 - `air_temp` the ambient air temperature (in K) along the trajectory
@@ -68,9 +68,9 @@ If the model is run with `return_met_along_traj == TRUE` then the following colu
 - `terr_msl` the terrain height at the location defined by `lat` and `long`
 - `sun_flux` the downward solar radiation flux (in watts) along the trajectory
 
-The initial times for the model runs are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours_to_start = c(0, 6, 12, 18)`.
+The initial times for the model runs are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours = c(0, 6, 12, 18)`.
 
-These runs are 24 h in duration (`simulation_duration_h = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `start_lat_deg = 42.83752` and `start_long_deg = -80.30364`; the starting height of 5 m above ground level is set by `start_height_m_AGL = 5`.
+These runs are 24 h in duration (`duration = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `lat = 42.83752` and `lon = -80.30364`; the starting height of 5 m above ground level is set by `height = 5`.
 
 The model runs are forward runs (moving forward in time, set here using `backtrajectory = FALSE`) and not backtrajectory runs (set with `backtrajectory = TRUE`).
 
@@ -335,23 +335,23 @@ dispersion_2012_03_12 <-
   hysplit_dispersion(
     return_disp_df = TRUE,
     write_disp_CSV = TRUE,
-    start_lat_deg = 42.83752,
-    start_long_deg = -80.30364,
-    start_height_m_AGL = 5,
-    simulation_duration_h = 24,
-    backward_running = FALSE,
+    lat = 42.83752,
+    lon = -80.30364,
+    height = 5,
+    duration = 24,
+    backtrajectory = FALSE,
     met_type = "gdas1",
     vertical_motion_option = 0,
     top_of_model_domain_m = 20000,
     run_type = "day",
     run_day = "2012-03-12",
-    daily_hours_to_start = "00",
+    daily_hours = "00",
     emissions = 1,
     species = 1,
     grids = 1) 
 ```
 
-This use of `hysplit_dispersion()` sets up a single dispersion run that starts at 00:00 UTC on March 12, 2012. These initial times are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours_to_start = "00"`. The model run is a forward run (moving forward in time, set here using `backward_running = FALSE`) and not backwards (set with `backward_running = TRUE`). Essentially, running in forward mode means the starting location is a source of emissions; running backward means that the starting location is a receptor. This run has been set to be modelled for 24 h (`simulation_duration_h = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `start_lat_deg = 42.83752` and `start_long_deg = -80.30364`; the starting height of 5 m above ground level is set by `start_height_m_AGL = 5`. The meteorological options include the type of met data to use (1º **GDAS** data is used here with `met_type = "gdas1"`--there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting), the vertical motion option (here, set as `vertical_motion_option = 0` which instructs **HYSPLIT** to use the vertical motion available in the met data files), and, the top of the model domain (set as 20,000 meters with `top_of_model_domain_m = 20000`).
+This use of `hysplit_dispersion()` sets up a single dispersion run that starts at 00:00 UTC on March 12, 2012. These initial times are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours = "00"`. The model run is a forward run (moving forward in time, set here using `backtrajectory = FALSE`) and not backwards (set with `backtrajectory = TRUE`). Essentially, running in forward mode means the starting location is a source of emissions; running backward means that the starting location is a receptor. This run has been set to be modelled for 24 h (`duration = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `lat = 42.83752` and `lon = -80.30364`; the starting height of 5 m above ground level is set by `height = 5`. The meteorological options include the type of met data to use (1º **GDAS** data is used here with `met_type = "gdas1"`--there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting), the vertical motion option (here, set as `vertical_motion_option = 0` which instructs **HYSPLIT** to use the vertical motion available in the met data files), and, the top of the model domain (set as 20,000 meters with `top_of_model_domain_m = 20000`).
 
 Remember those presets that were added earlier? They are called up in the `emissions`, `species`, and `grids` arguments. The `1` value provided for each of those corresponds to the first preset of each type of preset. If you ever need to remind yourself of which presets are currently in the system, use `dispersion_preset_list()` function. Moreover, that function has an interactive mode.
 
