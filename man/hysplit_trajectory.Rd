@@ -4,56 +4,25 @@
 \alias{hysplit_trajectory}
 \title{Conduct HYSPLIT trajectory runs}
 \usage{
-hysplit_trajectory(traj_name = NULL, return_traj_df = TRUE,
-  start_lat_deg = 49.263, start_long_deg = -123.25,
-  start_height_m_AGL = 50, simulation_duration_h = 24,
-  backtrajectory = FALSE, met_type = "reanalysis",
-  vertical_motion_option = 0, top_of_model_domain_m = 20000,
-  run_type = "day", run_day = "2015-07-01", run_range = NULL,
-  run_years = NULL, daily_hours_to_start = 0,
-  return_met_along_traj = FALSE)
+hysplit_trajectory(lat = 49.263, lon = -123.25, height = 50,
+  duration = 24, run_type = "day", run_day = "2015-07-01",
+  run_range = NULL, run_years = NULL, daily_hours = 0,
+  backtrajectory = FALSE, met_type = "reanalysis", vert_motion = 0,
+  model_height = 20000, extended_met = FALSE, return_traj_df = TRUE,
+  traj_name = NULL)
 }
 \arguments{
-\item{traj_name}{an optional, descriptive name for
-the output file collection.}
-
-\item{return_traj_df}{an option to return a data
-frame with trajectory data.}
-
-\item{start_lat_deg}{the starting latitude (in
+\item{lat}{the starting latitude (in
 decimal degrees) for the model run(s).}
 
-\item{start_long_deg}{the starting longitude (in
+\item{lon}{the starting longitude (in
 decimal degrees) for the model run(s).}
 
-\item{start_height_m_AGL}{the starting height (in
+\item{height}{the starting height (in
 meters above ground level) for the model run(s).}
 
-\item{simulation_duration_h}{the duration of each
+\item{duration}{the duration of each
 model run (either forward or backward) in hours.}
-
-\item{backtrajectory}{an option to select whether to
-conduct forward trajectory model runs or to generate
-backtrajectories.}
-
-\item{met_type}{an option to select meteorological
-data files. The options are \code{gdas1} (Global
-Data Assimilation System 1-degree resolution data), 
-\code{reanalysis} (NCAR/NCEP global reanalysis
-data), and \code{narr} (North American Regional 
-Reanalysis).}
-
-\item{vertical_motion_option}{a numbered option to
-select the method used to simulation vertical
-motion. The methods are: \code{0} (input model
-data), \code{1} (isobaric), \code{2} (isentropic),
-\code{3} (constant density), \code{4} (isosigma),
-\code{5} (from divergence), \code{6} (remap MSL to
-AGL), \code{7} (average data), and \code{8} (damped
-magnitude).}
-
-\item{top_of_model_domain_m}{the upper limit of the
-model domain in meters.}
 
 \item{run_type}{used to select whether models should
 be run for a single day (\code{day}), for one or
@@ -74,14 +43,43 @@ provided here as a vector of length 2 in the form:
 be a single year (\code{YYYY}) or a range of years
 (\code{YYYY-YYYY}).}
 
-\item{daily_hours_to_start}{should consist of a
-single daily hour in the format \code{HH}, or,
-several daily hours as a vector in the format of
-\code{"c("HH", "HH", ...)"}.}
+\item{daily_hours}{should consist of a
+single daily hour as an integer hour (from \code{0}
+to \code{23}), or, a vector of several daily hours
+represented as integers.}
 
-\item{return_met_along_traj}{an option to report
+\item{backtrajectory}{an option to select whether to
+conduct forward trajectory model runs or to generate
+backtrajectories.}
+
+\item{met_type}{an option to select meteorological
+data files. The options are \code{gdas1} (Global
+Data Assimilation System 1-degree resolution data), 
+\code{reanalysis} (NCAR/NCEP global reanalysis
+data), and \code{narr} (North American Regional 
+Reanalysis).}
+
+\item{vert_motion}{a numbered option to
+select the method used to simulation vertical
+motion. The methods are: \code{0} (input model
+data), \code{1} (isobaric), \code{2} (isentropic),
+\code{3} (constant density), \code{4} (isosigma),
+\code{5} (from divergence), \code{6} (remap MSL to
+AGL), \code{7} (average data), and \code{8} (damped
+magnitude).}
+
+\item{model_height}{the upper limit of the model
+domain in meters.}
+
+\item{extended_met}{an option to report
 additional meteorological data along each output
 trajectory.}
+
+\item{return_traj_df}{an option to return a data
+frame with trajectory data.}
+
+\item{traj_name}{an optional, descriptive name for
+the output file collection.}
 }
 \description{
 The function executes single/multiple
@@ -92,21 +90,15 @@ specified meteorological datasets.
 \dontrun{
 # Test with a run type of `years` with a forward
 # trajectory using NCEP/NCAR reanalysis data
-hysplit_trajectory(
-  traj_name = "second",
-  return_traj_df = FALSE,
-  start_lat_deg = 50.108,
-  start_long_deg = -122.942,
-  start_height_m_AGL = 200.0,
-  simulation_duration_h = 96,
-  backtrajectory = FALSE,
-  met_type = "reanalysis",
-  vertical_motion_option = 0,
-  top_of_model_domain_m = 20000,
-  run_type = "years",
-  run_years = "2004",
-  daily_hours_to_start = c(3, 6, 9, 12, 15, 18, 21),
-  return_met_along_traj = TRUE)
+trajectory <- 
+  hysplit_trajectory(
+    lat = 50.108,
+    lon = -122.942,
+    height = 100,
+    duration = 48,
+    run_type = "years",
+    run_years = "2004",
+    daily_hours = c(0, 6, 12, 18))
 }
 }
 

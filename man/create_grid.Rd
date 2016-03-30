@@ -4,15 +4,15 @@
 \alias{create_grid}
 \title{Create a grid of sites}
 \usage{
-create_grid(lat_deg = 49.263, lon_deg = -123.25, grid_ref = "center",
+create_grid(lat = 49.263, lon = -123.25, grid_ref = "center",
   n_s_dist = 5, w_e_dist = 5, n_s_division = 0.5, w_e_division = 0.5,
   dist_units = "degrees")
 }
 \arguments{
-\item{lat_deg}{a latitude value in decimal degrees
+\item{lat}{a latitude value in decimal degrees
 for the point of reference on the grid.}
 
-\item{lon_deg}{a longitude value in decimal degrees
+\item{lon}{a longitude value in decimal degrees
 for the point of reference on the grid.}
 
 \item{grid_ref}{the grid reference point. The
