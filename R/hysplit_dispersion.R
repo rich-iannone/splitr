@@ -2,43 +2,18 @@
 #' @description The function executes single/multiple
 #' forward or backward HYSPLIT dispersion runs using
 #' specified meteorological datasets.
-#' @param disp_name an optional, descriptive name for
-#' the output file collection.
-#' @param return_disp_df an option to return a data
-#' frame with dispersion data.
-#' @param write_disp_CSV an option to write disperison
-#' data to a CSV file.
-#' @param start_lat_deg the starting latitude (in
-#' decimal degrees) for the model run(s).
-#' @param start_long_deg the starting longitude (in
-#' decimal degrees) for the model run(s).
-#' @param start_height_m_AGL the starting height (in
-#' meters above ground level) for the model run(s).
-#' @param simulation_duration_h the duration of each
+#' @param lat the starting latitude (in decimal
+#' degrees) for the model run(s).
+#' @param lon the starting longitude (in decimal
+#' degrees) for the model run(s).
+#' @param height the starting height (in meters above
+#' ground level) for the model run(s).
+#' @param duration the duration of each
 #' model run (either forward or backward) in hours.
-#' @param backward_running an option to select whether
-#' the dispersion runs should be running forward in
-#' time (the default) or in a backward running state.
-#' @param met_type an option to select meteorological
-#' data files. The options are \code{gdas1} (Global Data
-#' Assimilation System 1-degree resolution data) and
-#' \code{reanalysis} (NCAR/NCEP global reanalysis data).
-#' @param vertical_motion_option a numbered option to
-#' select the method used to simulation vertical
-#' motion. The methods are: (0) input model data,
-#' (1) isobaric, (2) isentropic, (3) constant density,
-#' (4) isosigma, (5) from divergence, (6) remap MSL to
-#' AGL, (7) average data, and (8) damped magnitude.
-#' @param top_of_model_domain_m the upper limit of the
-#' model domain in meters.
-#' @param number_of_particles the number of particles
-#' released by source during each release cycle.
-#' @param max_particles the number of particles
-#' released by a source during a model run.
 #' @param run_type used to select whether models should
-#' be run for a single day (\code{day}), for one or more
-#' years (\code{years}), or within a specified date range
-#' (\code{range}).
+#' be run for a single day (\code{day}), for one or
+#' more years (\code{years}), or within a specified
+#' date range (\code{range}).
 #' @param run_day used when \code{run_type} of
 #' \code{day} is selected. The date format should be
 #' provided here as "YYYY-MM-DD".
@@ -48,9 +23,28 @@
 #' @param run_years used when 'run_type' of 'years' is
 #' selected. The format should either be a single year
 #' ("YYYY") or a range of years ("YYYY-YYYY").
-#' @param daily_hours_to_start should consist of a
+#' @param daily_hours should consist of a
 #' single daily hour in the format "HH", or, several
 #' daily hours in the format \code{c("HH", "HH", "HH", ...)}.
+#' @param backward_running an option to select whether
+#' the dispersion runs should be running forward in
+#' time (the default) or in a backward running state.
+#' @param met_type an option to select meteorological
+#' data files. The options are \code{gdas1} (Global Data
+#' Assimilation System 1-degree resolution data) and
+#' \code{reanalysis} (NCAR/NCEP global reanalysis data).
+#' @param vert_motion a numbered option to
+#' select the method used to simulation vertical
+#' motion. The methods are: (0) input model data,
+#' (1) isobaric, (2) isentropic, (3) constant density,
+#' (4) isosigma, (5) from divergence, (6) remap MSL to
+#' AGL, (7) average data, and (8) damped magnitude.
+#' @param model_height the upper limit of the
+#' model domain in meters.
+#' @param particle_num the number of particles
+#' released by source during each release cycle.
+#' @param particle_max the number of particles
+#' released by a source during a model run.
 #' @param emissions the numbers corresponding to the
 #' stored emissions presets. These presets are
 #' specified using the function
@@ -63,6 +57,12 @@
 #' stored grid presets. These presets are specified
 #' using the function
 #' \code{hysplit_dispersion_define("grids")}.
+#' @param return_disp_df an option to return a data
+#' frame with dispersion data.
+#' @param write_disp_CSV an option to write disperison
+#' data to a CSV file.
+#' @param disp_name an optional, descriptive name for
+#' the output file collection.
 #' @import lubridate
 #' @import ggmap
 #' @export hysplit_dispersion 
@@ -77,43 +77,40 @@
 #'   disp_name = "example",
 #'   return_disp_df = FALSE,
 #'   write_disp_CSV = TRUE,
-#'   start_lat_deg = 49.289328,
-#'   start_long_deg = -123.117665,
-#'   start_height_m_AGL = 15,
-#'   simulation_duration_h = 12,
+#'   lat = 49.289328,
+#'   lon = -123.117665,
+#'   height = 15,
+#'   duration = 12,
 #'   backward_running = FALSE,
-#'   met_type = "reanalysis",
-#'   vertical_motion_option = 0,
-#'   top_of_model_domain_m = 2000,
 #'   emissions = 1,
 #'   species = 1,
 #'   grids = c(1,2),
 #'   run_type = "range",
 #'   run_range = c("2012-02-01", "2012-02-03"),
-#'   daily_hours_to_start = "00")
+#'   daily_hours = "00")
 #'}
 
-hysplit_dispersion <- function(disp_name = NULL,
-                               return_disp_df = TRUE,
-                               write_disp_CSV = TRUE,
-                               start_lat_deg,
-                               start_long_deg,
-                               start_height_m_AGL,
-                               simulation_duration_h = 24,
-                               backward_running = FALSE,
-                               met_type = "reanalysis",
-                               vertical_motion_option = 0,
-                               top_of_model_domain_m = 20000,
-                               number_of_particles = 2500,
-                               max_particles = 10000,
+hysplit_dispersion <- function(lat = 49.263,
+                               lon = -123.250,
+                               height = 50,
+                               duration = 24,
                                run_type = "day",
                                run_day = "2013-02-01",
                                run_range = c("2013-02-01", "2013-02-10"),
                                run_years = "2013",
-                               daily_hours_to_start = "00",
+                               daily_hours = "00",
+                               backward_running = FALSE,
+                               met_type = "reanalysis",
+                               vert_motion = 0,
+                               model_height = 20000,
+                               particle_num = 2500,
+                               particle_max = 10000,
                                emissions = 1,
                                species = 1,
-                               grids = 1){ 
+                               grids = 1,
+                               return_disp_df = TRUE,
+                               write_disp_CSV = TRUE,
+                               disp_name = NULL){ 
   
   # Set parameters
   run_type <- run_type
@@ -132,13 +129,13 @@ hysplit_dispersion <- function(disp_name = NULL,
   
   setup.cfg <- gsub(" numpar = ([0-9]*),",
                     paste0(" numpar = ",
-                           number_of_particles,
+                           particle_num,
                            ","),
                     setup.cfg)
   
   setup.cfg <- gsub(" maxpar = ([0-9]*),",
                     paste0(" maxpar = ",
-                           max_particles,
+                           particle_max,
                            ","),
                     setup.cfg)
   
@@ -210,7 +207,7 @@ hysplit_dispersion <- function(disp_name = NULL,
               width = 2, format = "d", flag = "0")
     
     # Make nested loop with daily beginning hours
-    for (j in daily_hours_to_start) {    
+    for (j in daily_hours) {    
       
       start_hour_GMT <- j
       
@@ -232,9 +229,9 @@ hysplit_dispersion <- function(disp_name = NULL,
         as.POSIXct(
           ifelse(backward_running, 
                  start_time_GMT -
-                   (simulation_duration_h * 3600),
+                   (duration * 3600),
                  start_time_GMT +
-                   (simulation_duration_h * 3600)),
+                   (duration * 3600)),
           origin = "1970-01-01",
           tz = "UTC")
       
@@ -498,10 +495,10 @@ hysplit_dispersion <- function(disp_name = NULL,
                start_month_GMT, "-",
                start_day_GMT, "-",
                start_hour_GMT, "-",
-               "lat_", start_lat_deg, "_",
-               "long_",start_long_deg, "-",
-               "height_",start_height_m_AGL, "-",
-               simulation_duration_h, "h")
+               "lat_", lat, "_",
+               "long_",lon, "-",
+               "height_",height, "-",
+               duration, "h")
       
       # Write start year, month, day, hour to 'CONTROL'
       cat(start_year_GMT, " ", 
@@ -518,26 +515,26 @@ hysplit_dispersion <- function(disp_name = NULL,
       
       # Write starting latitude, longitude, and height
       # AGL to 'CONTROL'
-      cat(start_lat_deg, " ", 
-          start_long_deg, " ", 
-          start_height_m_AGL, "\n",
+      cat(lat, " ", 
+          lon, " ", 
+          height, "\n",
           file = paste0(getwd(), "/", "CONTROL"),
           sep = '', append = TRUE)
       
       # Write direction and number of simulation hours
       # to 'CONTROL'
       cat(ifelse(backward_running, "-", ""),
-          simulation_duration_h, "\n",
+          duration, "\n",
           file = paste0(getwd(), "/", "CONTROL"),
           sep = '', append = TRUE)
       
       # Write vertical motion option to 'CONTROL'
-      cat(vertical_motion_option, "\n",
+      cat(vert_motion, "\n",
           file = paste0(getwd(), "/", "CONTROL"),
           sep = '', append = TRUE)
       
       # Write top of model domain in meters to 'CONTROL'
-      cat(top_of_model_domain_m, "\n",
+      cat(model_height, "\n",
           file = paste0(getwd(), "/", "CONTROL"),
           sep = '', append = TRUE)
       
