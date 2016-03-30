@@ -333,25 +333,21 @@ To perform a **HYSPLIT** dispersion model run, use the **SplitR** `hysplit_dispe
 ```R
 dispersion_2012_03_12 <-
   hysplit_dispersion(
-    return_disp_df = TRUE,
-    write_disp_CSV = TRUE,
     lat = 42.83752,
     lon = -80.30364,
     height = 5,
     duration = 24,
-    backtrajectory = FALSE,
     met_type = "gdas1",
-    vertical_motion_option = 0,
-    top_of_model_domain_m = 20000,
     run_type = "day",
     run_day = "2012-03-12",
-    daily_hours = "00",
+    daily_hours = 0,
+    backward_running = FALSE,
     emissions = 1,
     species = 1,
     grids = 1) 
 ```
 
-This use of `hysplit_dispersion()` sets up a single dispersion run that starts at 00:00 UTC on March 12, 2012. These initial times are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours = "00"`. The model run is a forward run (moving forward in time, set here using `backtrajectory = FALSE`) and not backwards (set with `backtrajectory = TRUE`). Essentially, running in forward mode means the starting location is a source of emissions; running backward means that the starting location is a receptor. This run has been set to be modelled for 24 h (`duration = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `lat = 42.83752` and `lon = -80.30364`; the starting height of 5 m above ground level is set by `height = 5`. The meteorological options include the type of met data to use (1º **GDAS** data is used here with `met_type = "gdas1"`--there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting), the vertical motion option (here, set as `vertical_motion_option = 0` which instructs **HYSPLIT** to use the vertical motion available in the met data files), and, the top of the model domain (set as 20,000 meters with `top_of_model_domain_m = 20000`).
+This use of `hysplit_dispersion()` sets up a single dispersion run that starts at 00:00 UTC on March 12, 2012. These initial times are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours = 0`. The model run is a forward run (moving forward in time, set here using `backward_running = FALSE`) and not backwards (set with `backward_running = TRUE`). Essentially, running in forward mode means the starting location is a source of emissions; running backward means that the starting location is a receptor. This run has been set to be modelled for 24 h (`duration = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `lat = 42.83752` and `lon = -80.30364`; the starting height of 5 m above ground level is set by `height = 5`. The meteorological options include the type of met data to use (1º **GDAS** data is used here with `met_type = "gdas1"`--there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting).
 
 Remember those presets that were added earlier? They are called up in the `emissions`, `species`, and `grids` arguments. The `1` value provided for each of those corresponds to the first preset of each type of preset. If you ever need to remind yourself of which presets are currently in the system, use `dispersion_preset_list()` function. Moreover, that function has an interactive mode.
 
