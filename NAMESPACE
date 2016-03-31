@@ -3,6 +3,7 @@
 export(create_grid)
 export(disp_stats_particle_heights)
 export(disp_stats_particle_through_region)
+export(dispersion_plot)
 export(dispersion_preset_add)
 export(dispersion_preset_delete)
 export(dispersion_preset_get)
