@@ -37,8 +37,6 @@ trajectory_plot <- function(traj_df,
   
   traj_plot <- leaflet()
   
-  #traj_plot <- addTiles(traj_plot)
-  
   traj_plot <- 
     addProviderTiles(
       traj_plot,
