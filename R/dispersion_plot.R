@@ -88,6 +88,7 @@ dispersion_plot <- function(disp_df,
                hour == sort(unique(disp_df$hour))[i])[, 3],
         group = groups[i],
         radius = 1,
+        stroke = FALSE,
         fill = TRUE,
         color = colors[i],
         fillColor = colors[i])
