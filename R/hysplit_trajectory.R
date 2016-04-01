@@ -797,10 +797,6 @@ hysplit_trajectory <- function(lat = 49.263,
     traj_df[,1] <- z
     
     ensemble_df <- rbind(ensemble_df, traj_df)
-    
-#     if (z != length(coords$lat)){
-#       Sys.sleep(2)
-#     }
   }
   
   return(ensemble_df)
