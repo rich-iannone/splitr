@@ -5,9 +5,9 @@
 \title{Add model parameters}
 \usage{
 add_params(model, lat = NULL, lon = NULL, height = NULL,
-  duration = NULL, run_type = NULL, run_day = NULL, run_range = NULL,
-  run_years = NULL, daily_hours = NULL, backtrajectory = NULL,
-  met_type = NULL, vert_motion = NULL, model_height = NULL)
+  duration = NULL, run_period = NULL, daily_hours = NULL,
+  backtrajectory = NULL, met_type = NULL, vert_motion = NULL,
+  model_height = NULL)
 }
 \arguments{
 \item{model}{a SplitR modeling object}
