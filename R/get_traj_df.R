@@ -12,6 +12,6 @@ get_traj_df <- function(model){
   }
   
   if (!is.null(model$traj_df)){
-    return(traj_df)
+    return(model$traj_df)
   }
 }
