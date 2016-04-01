@@ -5,8 +5,7 @@
 \title{Conduct HYSPLIT trajectory runs}
 \usage{
 hysplit_trajectory(lat = 49.263, lon = -123.25, height = 50,
-  duration = 24, run_type = "day", run_day = "2015-07-01",
-  run_range = NULL, run_years = NULL, daily_hours = 0,
+  duration = 24, run_period = "2015-07-01", daily_hours = 0,
   backtrajectory = FALSE, met_type = "reanalysis", vert_motion = 0,
   model_height = 20000, extended_met = FALSE, return_traj_df = TRUE,
   traj_name = NULL)
@@ -23,25 +22,6 @@ meters above ground level) for the model run(s).}
 
 \item{duration}{the duration of each
 model run (either forward or backward) in hours.}
-
-\item{run_type}{used to select whether models should
-be run for a single day (\code{day}), for one or
-more years (\code{years}), or within a specified
-date range (\code{range}).}
-
-\item{run_day}{used when the \code{run_type} of
-\code{day} is selected. The date format should be
-provided here in the format \code{YYYY-MM-DD}.}
-
-\item{run_range}{used when the \code{run_type} of
-\code{range} is selected. The date format should be
-provided here as a vector of length 2 in the form:
- \code{c("YYYY-MM-DD", "YYYY-MM-DD")}.}
-
-\item{run_years}{used when the \code{run_type} of
-\code{years} is selected. The format should either
-be a single year (\code{YYYY}) or a range of years
-(\code{YYYY-YYYY}).}
 
 \item{daily_hours}{should consist of a
 single daily hour as an integer hour (from \code{0}
@@ -80,6 +60,25 @@ frame with trajectory data.}
 
 \item{traj_name}{an optional, descriptive name for
 the output file collection.}
+
+\item{run_type}{used to select whether models should
+be run for a single day (\code{day}), for one or
+more years (\code{years}), or within a specified
+date range (\code{range}).}
+
+\item{run_day}{used when the \code{run_type} of
+\code{day} is selected. The date format should be
+provided here in the format \code{YYYY-MM-DD}.}
+
+\item{run_range}{used when the \code{run_type} of
+\code{range} is selected. The date format should be
+provided here as a vector of length 2 in the form:
+ \code{c("YYYY-MM-DD", "YYYY-MM-DD")}.}
+
+\item{run_years}{used when the \code{run_type} of
+\code{years} is selected. The format should either
+be a single year (\code{YYYY}) or a range of years
+(\code{YYYY-YYYY}).}
 }
 \description{
 The function executes single/multiple
