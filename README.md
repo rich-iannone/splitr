@@ -27,9 +27,12 @@ Some of the things you can do with **SplitR** are:
 
 ## **HYSPLIT** Trajectory Runs
 
-To perform a series **HYSPLIT** trajectory model runs, use the **SplitR** `hysplit_trajectory()` function:
+To perform a series **HYSPLIT** trajectory model runs, one can simply use the **SplitR** `hysplit_trajectory()` function:
 
 ```R
+library(SplitR)
+setwd("~/Documents/SplitR_wd")
+
 trajectory <- 
   hysplit_trajectory(
     lat = 42.83752,
@@ -67,32 +70,57 @@ If the model is run with `extended_met` set to `TRUE` then the following columns
 - `terr_msl` the terrain height at the location defined by `lat` and `long`
 - `sun_flux` the downward solar radiation flux (in watts) along the trajectory
 
-The initial times for the model runs are set using `run_period = "2012-03-12"` and `daily_hours = c(0, 6, 12, 18)`. Several years of runs can be initiated using `run_period = c(2012, 2014)`, model runs can be performed between a range of dates as well (`run_period = c("2012-03-12", "2013-05-23")`). 
+The receptor/origin locations are set using `lat` and `lon` for the latitude(s) and longitude(s). The starting location of 42.83752ºN and 80.30364ºW is set here using `lat = 42.83752` and `lon = -80.30364`. Equal-length vectors of `lat` and `lon` values can be used here to create an ensemble of model runs. The starting height of 5 m above ground level is set by `height = 5`.
 
-These runs are 24 h in duration (`duration = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `lat = 42.83752` and `lon = -80.30364`; the starting height of 5 m above ground level is set by `height = 5`.
+The initial times for the model runs are set using `run_period = "2012-03-12"` and `daily_hours = c(0, 6, 12, 18)`. Several years of runs can be initiated using `run_period = c(2012, 2014)`, model runs can be performed between a range of dates as well (`run_period = c("2012-03-12", "2013-05-23")`). These runs are 24 h in duration (`duration = 24`).
 
 The model runs are forward runs (moving forward in time, set here using `backtrajectory = FALSE`) and not backtrajectory runs (set with `backtrajectory = TRUE`).
 
 The meteorological options include the type of met data to use. The 1º **GDAS** data is used here with `met_type = "gdas1"` but there is also the option to use **NCEP** reanalysis data with the `met_type = "reanalysis"` setting.
 
-The necessary meteorological data files relevant to the period being modelled will be downloaded from the **NOAA** FTP server if they are not present in the working directory. After **SplitR** downloads the met files and runs the models, four files should be generated:
+The necessary meteorological data files relevant to the period being modelled will be downloaded from the **NOAA** FTP server if they are not present in the working directory. After **SplitR** downloads the met files and runs the models, output files will be placed in the working directory and data frame of trajectory information will be returned.
 
-- `traj(forward)-12-03-12-00-lat_42.83752_long_-80.30364-height_50-24h`
-- `traj(forward)-12-03-12-06-lat_42.83752_long_-80.30364-height_50-24h`
-- `traj(forward)-12-03-12-12-lat_42.83752_long_-80.30364-height_50-24h`
-- `traj(forward)-12-03-12-18-lat_42.83752_long_-80.30364-height_50-24h`
-
-These files will be placed in a subdirectory (prefixed with `trajectory` since `traj_name = "trajectory"` was specified) within the working directory. If the the option to generate a data frame of trajectory information wasn't taken during the invocation of `hysplit_trajectory()`, this can be done later by using the **SplitR** `trajectory_read()` function. Simply provide the output folder name in the `output_folder` argument:
+Models can also be defined and executed using a modeling object in a **magrittr** workflow. Here's an example:
 
 ```R
-trajectory <-
-  trajectory_read(
-    output_folder = "trajectory--2014-06-17--02-39-29")
+library(SplitR)
+library(magrittr)
+
+setwd("~/Documents/SplitR_wd")
+
+# Create the `trajectory model` object, add
+# a grid of starting locations, add run
+# parameters, and execute the model runs
+trajectory_model <-
+  create_trajectory_model() %>%
+  add_grid(
+    lat = 49.0,
+    lon = -123.0,
+    grid_ref = "center",
+    range = c(0.8, 0.8),
+    division = c(0.2, 0.2)) %>%
+  add_params(
+    height = 50,
+    duration = 6,
+    run_period = "2015-07-01",
+    daily_hours = c(0, 12),
+    backtrajectory = TRUE,
+    met_type = "reanalysis") %>%
+  run_model
+
+# Get a data frame of the model results
+trajectory_model %>% get_traj_df
 ```
 
-The trajectories can be plotted onto a map. Use the `trajectory_plot()` function with the `trajectory` data frame to see a visualization in the **RStudio** Viewer:
+This pipeline setup allows for more flexibility as **R** objects can be piped in for variation in the types of models created. For example, the `add_grid()` allows for the simple creation of a grid for multiple starting locations in an ensemble run. One or more `add_params()` statements can be used to write model parameters to the model object. Ending the pipeline with `run_model()` runs the model and creates results which can be extracted using `get_traj_df()`.
+
+#### Plotting Trajectory Data
+
+Trajectories can be plotted onto an interactive map. Use the `trajectory_plot()` function with the `trajectory` data frame to see a visualization in the **RStudio** Viewer:
 
 ```R
+library(SplitR)
+
 trajectory_plot(
   traj_df = trajectory,
   show_hourly = TRUE)
@@ -106,9 +134,12 @@ The trajectory points and paths are layers where their visibility can be toggled
 - ESRI World Terrain
 - Stamen Toner
 
-Clicking any of the points along the trajectory will provide an information popup with time and position information, and meteorological data for that location at that point in time:
+Clicking any of the points along the trajectory will provide an informative popup with time/position info and meteorological data for that location at that point in time:
 
 <img src="inst/trajectory_popup.png" width="100%">
+
+
+
 
 ## **HYSPLIT** Dispersion Runs
 
