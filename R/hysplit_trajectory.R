@@ -76,10 +76,7 @@ hysplit_trajectory <- function(lat = 49.263,
                                lon = -123.250,
                                height = 50,
                                duration = 24,
-                               run_type = "day",
-                               run_day = "2015-07-01",
-                               run_range = NULL,
-                               run_years = NULL,
+                               run_period = "2015-07-01",
                                daily_hours = 0,
                                backtrajectory = FALSE,
                                met_type = "reanalysis",
@@ -88,6 +85,39 @@ hysplit_trajectory <- function(lat = 49.263,
                                extended_met = FALSE,
                                return_traj_df = TRUE,
                                traj_name = NULL){
+  
+  
+  if (length(run_period) == 1 &
+      class(run_period) == "character" &
+      all(grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]",
+            run_period))){
+    
+    run_type <- "day"
+    run_day <- run_period
+  }
+  
+  if (length(run_period) == 2 &
+      class(run_period) == "character" &
+      all(grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]",
+            run_period))){
+    
+    run_type <- "range"
+    run_range <- run_period
+  }
+  
+  if (length(run_period) == 1 &
+      class(run_period) == "numeric"){
+    
+    run_type <- "years"
+    run_years <- run_period
+  }
+  
+  if (length(run_period) == 2 &
+      class(run_period) == "numeric"){
+    
+    run_type <- "years"
+    run_years <- paste0(run_period[1], "-", run_period[2])
+  }
   
   # Write default versions of the SETUP.CFG and
   # ASCDATA.CFG files in the working directory
@@ -517,8 +547,9 @@ hysplit_trajectory <- function(lat = 49.263,
                  start_hour_GMT, "-",
                  "lat_", gsub("\\.", "-", coords$lat[z]), "_",
                  "long_", gsub("\\.", "-", coords$lon[z]), "-",
-                 "height_",height, "-",
-                 duration, "h")
+                 "height_", height, "-",
+                 duration, "h", "-",
+                 formatC(z, width = 5, format = "d", flag = "0"))
         
         all_trajectory_files <- 
           c(all_trajectory_files, output_filename)
@@ -684,15 +715,17 @@ hysplit_trajectory <- function(lat = 49.263,
     # Generate name of archive directory
     if (any(c("mac", "unix") %in% get_os())){
       if (is.null(traj_name)){
-        folder_name <-
+        folder_name <- 
           paste0("traj--",
                  format(Sys.time(),
-                        "%Y-%m-%d--%H-%M-%S"))  
+                        "%Y-%m-%d--%H-%M-%S"), "-",
+                 formatC(z, width = 5, format = "d", flag = "0"))
       } else if (!is.null(traj_name)){
         folder_name <-
           paste0(traj_name, "--", 
                  format(Sys.time(),
-                        "%Y-%m-%d--%H-%M-%S"))  
+                        "%Y-%m-%d--%H-%M-%S"), "-",
+                 formatC(z, width = 5, format = "d", flag = "0"))
       }
       
       # Perform the movement of all trajectory files
@@ -765,9 +798,9 @@ hysplit_trajectory <- function(lat = 49.263,
     
     ensemble_df <- rbind(ensemble_df, traj_df)
     
-    if (z != length(coords$lat)){
-      Sys.sleep(2)
-    }
+#     if (z != length(coords$lat)){
+#       Sys.sleep(2)
+#     }
   }
   
   return(ensemble_df)
