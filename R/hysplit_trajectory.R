@@ -10,21 +10,12 @@
 #' meters above ground level) for the model run(s).
 #' @param duration the duration of each
 #' model run (either forward or backward) in hours.
-#' @param run_type used to select whether models should
-#' be run for a single day (\code{day}), for one or
-#' more years (\code{years}), or within a specified
-#' date range (\code{range}).
-#' @param run_day used when the \code{run_type} of
-#' \code{day} is selected. The date format should be
-#' provided here in the format \code{YYYY-MM-DD}.
-#' @param run_range used when the \code{run_type} of
-#' \code{range} is selected. The date format should be
-#' provided here as a vector of length 2 in the form:
-#'  \code{c("YYYY-MM-DD", "YYYY-MM-DD")}.
-#' @param run_years used when the \code{run_type} of
-#' \code{years} is selected. The format should either
-#' be a single year (\code{YYYY}) or a range of years
-#' (\code{YYYY-YYYY}).
+#' @param run_period the extended period (i.e., days,
+#' years) when the model will initialize and run. This
+#' can take the form of a single-length vector for a
+#' day (\code{"YYYY-MM-DD"}) or year (\code{YYYY}), or,
+#' a vector of length 2 to specify the range of days or
+#' years.
 #' @param daily_hours should consist of a
 #' single daily hour as an integer hour (from \code{0}
 #' to \code{23}), or, a vector of several daily hours
@@ -59,16 +50,15 @@
 #' @export hysplit_trajectory
 #' @examples
 #' \dontrun{
-#' # Test with a run type of `years` with a forward
-#' # trajectory using NCEP/NCAR reanalysis data
+#' # Run a trajectory model 4 times a day throughout
+#' # 2004 using NCEP/NCAR reanalysis data
 #' trajectory <- 
 #'   hysplit_trajectory(
 #'     lat = 50.108,
 #'     lon = -122.942,
 #'     height = 100,
 #'     duration = 48,
-#'     run_type = "years",
-#'     run_years = "2004",
+#'     run_period = 2004,
 #'     daily_hours = c(0, 6, 12, 18))
 #'}
 
