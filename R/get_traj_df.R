@@ -7,7 +7,7 @@
 
 get_traj_df <- function(model){
 
-  if (is.null){
+  if (is.null(model$traj_df)){
     return(NA)
   }
   
