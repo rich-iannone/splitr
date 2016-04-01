@@ -36,8 +36,7 @@ trajectory <-
     lon = -80.30364,
     height = 50,
     duration = 24,
-    run_type = "day",
-    run_day = "2012-03-12",
+    run_period = "2012-03-12",
     daily_hours = c(0, 6, 12, 18),
     backtrajectory = FALSE,
     met_type = "gdas1",
@@ -68,7 +67,7 @@ If the model is run with `extended_met` set to `TRUE` then the following columns
 - `terr_msl` the terrain height at the location defined by `lat` and `long`
 - `sun_flux` the downward solar radiation flux (in watts) along the trajectory
 
-The initial times for the model runs are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours = c(0, 6, 12, 18)`.
+The initial times for the model runs are set using `run_period = "2012-03-12"` and `daily_hours = c(0, 6, 12, 18)`. Several years of runs can be initiated using `run_period = c(2012, 2014)`, model runs can be performed between a range of dates as well (`run_period = c("2012-03-12", "2013-05-23")`). 
 
 These runs are 24 h in duration (`duration = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `lat = 42.83752` and `lon = -80.30364`; the starting height of 5 m above ground level is set by `height = 5`.
 
