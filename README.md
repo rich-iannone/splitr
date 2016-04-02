@@ -92,7 +92,7 @@ setwd("~/Documents/SplitR_wd")
 # a grid of starting locations, add run
 # parameters, and execute the model runs
 trajectory_model <-
-  create_trajectory_model() %>%
+  create_traj_model() %>%
   add_grid(
     lat = 49.0,
     lon = -123.0,
@@ -112,7 +112,7 @@ trajectory_model <-
 trajectory_model %>% get_traj_df
 ```
 
-This pipeline setup allows for more flexibility as **R** objects can be piped in for variation in the types of models created. For example, the `add_grid()` allows for the simple creation of a grid for multiple starting locations in an ensemble run. One or more `add_params()` statements can be used to write model parameters to the model object. Ending the pipeline with `run_model()` runs the model and creates results which can be extracted using `get_traj_df()`.
+This pipeline setup allows for more flexibility as **R** objects can be piped in for variation in the types of models created. The `create_traj_model()` function creates the trajectory model object. The `add_grid()` allows for the simple creation of a grid for multiple starting locations in an ensemble run. One or more `add_params()` statements can be used to write model parameters to the model object. Ending the pipeline with `run_model()` runs the model and creates results which can be extracted using `get_traj_df()`.
 
 #### Plotting Trajectory Data
 
