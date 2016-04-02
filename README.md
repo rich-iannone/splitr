@@ -116,15 +116,21 @@ This pipeline setup allows for more flexibility as **R** objects can be piped in
 
 #### Plotting Trajectory Data
 
-Trajectories can be plotted onto an interactive map. Use the `trajectory_plot()` function with the `trajectory` data frame to see a visualization in the **RStudio** Viewer:
+Trajectories can be plotted onto an interactive map. Use the `trajectory_plot()` function with either the `trajectory` data frame (created directly by the `hysplit_trajectory()` function), or, even better, with a trajectory model object.
 
 ```R
 library(SplitR)
+library(magrittr)
 
-trajectory_plot(
-  traj_df = trajectory,
-  show_hourly = TRUE)
+# Plotting using the trajectory data frame
+trajectory_plot(trajectory)
+
+# Plotting using the trajectory model object
+trajectory_model %>% trajectory_plot
 ```
+
+The visualization will appear in the **RStudio** Viewer:
+
 <img src="inst/trajectory_plot.png" width="100%">
 
 The trajectory points and paths are layers where their visibility can be toggled using the *Layers* icon at the top-right of the view. The following selection of basemaps is also provided:
@@ -137,9 +143,6 @@ The trajectory points and paths are layers where their visibility can be toggled
 Clicking any of the points along the trajectory will provide an informative popup with time/position info and meteorological data for that location at that point in time:
 
 <img src="inst/trajectory_popup.png" width="100%">
-
-
-
 
 ## **HYSPLIT** Dispersion Runs
 
