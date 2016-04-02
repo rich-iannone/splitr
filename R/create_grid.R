@@ -7,35 +7,28 @@
 #' for the point of reference on the grid.
 #' @param grid_ref the grid reference point. The
 #' default value is \code{center}.
-#' @param n_s_dist the north-to-south distance of the
-#' grid.
-#' @param w_e_dist the west-to-east distance of the
-#' grid.
-#' @param n_s_division the north-to-south distances of
-#' the those divisions in the grid.
-#' @param w_e_division the west-to-east distances of
-#' the those divisions in the grid.
+#' @param range the latitude and longitude range about
+#' the \code{grid_ref}.
+#' @param division the division distances across the
+#' latitude and longitude ranges.
 #' @param dist_units the distance units used with
-#' values supplied to  \code{n_s_dist},
-#' \code{w_e_dist}, \code{n_s_division}, and
-#' \code{w_e_division}. The default is \code{degrees}.
+#' values supplied to \code{range} and
+#' \code{division}. The default is \code{degrees}.
 #' @export create_grid
 
 create_grid <- function(lat = 49.263,
                         lon = -123.250,
                         grid_ref = "center",
-                        n_s_dist = 5,
-                        w_e_dist = 5,
-                        n_s_division = 0.5,
-                        w_e_division = 0.5,
+                        range = c(5, 5),
+                        division = c(0.5, 0.5),
                         dist_units = "degrees"){
   
-  n_s_points <- n_s_dist / n_s_division
-  w_e_points <- w_e_dist / w_e_division
+  n_s_points <- range[1] / division[1]
+  w_e_points <- range[2] / division[2]
   
-  lat_vec <- sort((lat + n_s_dist/2) - seq(0, n_s_dist, n_s_division),
+  lat_vec <- sort((lat + range[1]/2) - seq(0, range[1], division[1]),
                   decreasing = TRUE)
-  lon_vec <- sort((lon + w_e_dist/2) - seq(0, w_e_dist, w_e_division))
+  lon_vec <- sort((lon + range[2]/2) - seq(0, range[2], division[2]))
   
   for (i in 1:length(lat_vec)){
     for (j in 1:length(lon_vec)){
