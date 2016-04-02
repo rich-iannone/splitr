@@ -697,8 +697,6 @@ hysplit_dispersion <- function(lat = 49.263,
                  "\")"))
   }
   
-  
-  
   # Write the dispersion data frame to a CSV if
   # it is requested
   if (write_disp_CSV){
