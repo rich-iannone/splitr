@@ -151,20 +151,13 @@ hysplit_dispersion <- function(lat = 49.263,
     formatC(as.numeric(day(run_day)),
             width = 2, format = "d", flag = "0")
   
-  # Sort daily starting hours if given as
-  # numeric values
+  # Format `start_hour` if given as a numeric value
   if (class(start_hour) == "numeric"){
     start_hour <-
       formatC(sort(start_hour),
               width = 2,
               flag = 0)
   }
-  
-  # Make nested loop with daily beginning hours
-  
-  
-  #--- Determine which met files are required
-  #    for this run
   
   # Determine the start time of the model run
   start_time_GMT <- 
