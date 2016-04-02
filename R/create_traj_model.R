@@ -20,7 +20,6 @@ create_traj_model <- function(name = NULL){
          met_type = NULL,
          vert_motion = 0,
          model_height = 20000,
-         return_traj_df = TRUE,
          traj_df = NULL)
   
   attr(traj_model, "class") <- "traj_model"
