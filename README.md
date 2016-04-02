@@ -104,7 +104,7 @@ trajectory_model <-
     duration = 6,
     run_period = "2015-07-01",
     daily_hours = c(0, 12),
-    backtrajectory = TRUE,
+    direction = "backward",
     met_type = "reanalysis") %>%
   run_model
 
@@ -371,16 +371,15 @@ dispersion_2012_03_12 <-
     height = 5,
     duration = 24,
     met_type = "gdas1",
-    run_type = "day",
-    run_day = "2012-03-12",
-    daily_hours = 0,
-    backward_running = FALSE,
+    start_day = "2012-03-12",
+    start_hour = 0,
+    direction = "forward",
     emissions = 1,
     species = 1,
     grids = 1) 
 ```
 
-This use of `hysplit_dispersion()` sets up a single dispersion run that starts at 00:00 UTC on March 12, 2012. These initial times are set using `run_type = "day"`, `run_day = "2012-03-12"`, and `daily_hours = 0`. The model run is a forward run (moving forward in time, set here using `backward_running = FALSE`) and not backwards (set with `backward_running = TRUE`). Essentially, running in forward mode means the starting location is a source of emissions; running backward means that the starting location is a receptor. This run has been set to be modelled for 24 h (`duration = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `lat = 42.83752` and `lon = -80.30364`; the starting height of 5 m above ground level is set by `height = 5`. The meteorological options include the type of met data to use (1º **GDAS** data is used here with `met_type = "gdas1"`--there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting).
+This use of `hysplit_dispersion()` sets up a dispersion run that starts at 00:00 UTC on March 12, 2012. The startingtimes is set using `start_day = "2012-03-12"` and `start_hour = 0`. The model run is a forward run (moving forward in time, set here using `direction = "forward"`) and not backwards (would be set as `direction = "backward"`). Essentially, running in forward mode means the starting location is a source of emissions; running backward means that the starting location is a receptor. This run has been set to be modelled for 24 h (`duration = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `lat = 42.83752` and `lon = -80.30364`; the starting height of 5 m above ground level is set by `height = 5`. The meteorological options include the type of met data to use (1º **GDAS** data is used here with `met_type = "gdas1"`--there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting).
 
 Remember those presets that were added earlier? They are called up in the `emissions`, `species`, and `grids` arguments. The `1` value provided for each of those corresponds to the first preset of each type of preset. If you ever need to remind yourself of which presets are currently in the system, use `dispersion_preset_list()` function. Moreover, that function has an interactive mode.
 
@@ -421,25 +420,7 @@ Press <ENTER> for no deletion. Otherwise, enter a number.
 <1>
 ```
 
-After executing the `hysplit_dispersion()` function (and possibly waiting awhile, since met files will need to be downloaded), 24 CSV files with particle position will become available in the working directory:
-
-- `GIS_part_[001]_ps.csv`
-
-Also, there will be 24 .jpg image files with particles overlaid onto a map at each hour of the model run:
-
-- `map---disp(forward)-12-03-12-00-lat_42.83752_long_-80.30364-height_5-24h-[001].jpg`
-
-A binary file containing gridded concentrations will be available in the working directory:
-
-- `grid--disp(forward)-12-03-12-00-lat_42.83752_long_-80.30364-height_5-24h`
-
-The met files that were automatically downloaded will remain in the working directory:
-
-- `gdas1.mar12.w1`
-- `gdas1.mar12.w2`
-- `gdas1.mar12.w3`
-- `gdas1.mar12.w4`
-- `gdas1.mar12.w5`
+After executing the `hysplit_dispersion()` function (and possibly waiting awhile, since met files will need to be downloaded), 24 CSV files with particle position will become available in a subdirectory within the working directory.
 
 One or more snapshot plots of the data can be generated using the `hysplit_dispersion_plot()` function. If a dispersion data frame is available, the function can be called to reference that data and generate particle plots at every hour of the model run:
 
