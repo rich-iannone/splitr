@@ -4,13 +4,14 @@
 \alias{trajectory_plot}
 \title{Plot HYSPLIT trajectory model output onto a map}
 \usage{
-trajectory_plot(traj_df, show_hourly = TRUE, color_scheme = "cycle_hues")
+trajectory_plot(x, show_hourly = TRUE, color_scheme = "cycle_hues")
 }
 \arguments{
-\item{traj_df}{a trajectory data frame, typically
-created from use of the \code{hysplit_trajectory}
-function with the value for \code{return_traj_df}
-set to \code{TRUE}.}
+\item{x}{either a trajectory data frame, typically
+created from use of the \code{hysplit_trajectory},
+or a trajectory model object that contains output
+data (i.e., after executing model runs via the
+\code{run_model} function).}
 
 \item{show_hourly}{an option to show hourly
 positions and associated data along trajectories.}

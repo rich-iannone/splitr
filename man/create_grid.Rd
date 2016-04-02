@@ -5,8 +5,7 @@
 \title{Create a grid of sites}
 \usage{
 create_grid(lat = 49.263, lon = -123.25, grid_ref = "center",
-  n_s_dist = 5, w_e_dist = 5, n_s_division = 0.5, w_e_division = 0.5,
-  dist_units = "degrees")
+  range = c(5, 5), division = c(0.5, 0.5), dist_units = "degrees")
 }
 \arguments{
 \item{lat}{a latitude value in decimal degrees
@@ -18,22 +17,15 @@ for the point of reference on the grid.}
 \item{grid_ref}{the grid reference point. The
 default value is \code{center}.}
 
-\item{n_s_dist}{the north-to-south distance of the
-grid.}
+\item{range}{the latitude and longitude range about
+the \code{grid_ref}.}
 
-\item{w_e_dist}{the west-to-east distance of the
-grid.}
-
-\item{n_s_division}{the north-to-south distances of
-the those divisions in the grid.}
-
-\item{w_e_division}{the west-to-east distances of
-the those divisions in the grid.}
+\item{division}{the division distances across the
+latitude and longitude ranges.}
 
 \item{dist_units}{the distance units used with
-values supplied to  \code{n_s_dist},
-\code{w_e_dist}, \code{n_s_division}, and
-\code{w_e_division}. The default is \code{degrees}.}
+values supplied to \code{range} and
+\code{division}. The default is \code{degrees}.}
 }
 \description{
 Flexibly create a grid of sites for
