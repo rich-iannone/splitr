@@ -1,9 +1,11 @@
 #' Create a trajectory model
 #' @description Create a trajectory model object to
 #' begin a modelling pipeline.
-#' @export create_trajectory_model
+#' @param name an optional name for the trajectory
+#' model object.
+#' @export create_traj_model
 
-create_trajectory_model <- function(traj_name = NULL){
+create_traj_model <- function(name = NULL){
   
   # Create the 'traj_model' list object
   traj_model <- 
@@ -23,7 +25,7 @@ create_trajectory_model <- function(traj_name = NULL){
   
   attr(traj_model, "class") <- "traj_model"
   
-  if (!is.null(traj_name)) traj_model$traj_name <- traj_name
+  if (!is.null(name)) traj_model$traj_name <- name
   
   return(traj_model)
 }
