@@ -2,8 +2,9 @@
 
 export(add_grid)
 export(add_params)
+export(create_disp_model)
 export(create_grid)
-export(create_trajectory_model)
+export(create_traj_model)
 export(disp_stats_particle_heights)
 export(disp_stats_particle_through_region)
 export(dispersion_plot)
