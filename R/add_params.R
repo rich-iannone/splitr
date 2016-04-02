@@ -85,12 +85,20 @@ add_params <- function(model,
     model$run_period <- run_period
   }
 
+  if (!is.null(start_day)){
+    model$start_day <- start_day
+  }
+  
+  if (!is.null(start_hour)){
+    model$start_hour <- start_hour
+  }
+  
   if (!is.null(daily_hours)){
     model$daily_hours <- daily_hours
   }
   
-  if (!is.null(backtrajectory)){
-    model$backtrajectory <- backtrajectory
+  if (!is.null(direction)){
+    model$direction <- direction
   }
   
   if (!is.null(met_type)){
