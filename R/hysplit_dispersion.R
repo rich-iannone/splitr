@@ -15,9 +15,9 @@
 #' single-length vector for a day (\code{"YYYY-MM-DD"}).
 #' @param start_hour a single daily hour as an
 #' integer hour (from \code{0} to \code{23}).
-#' @param backward_running an option to select whether
-#' the dispersion runs should be running forward in
-#' time (the default) or in a backward running state.
+#' @param direction an option to select whether to
+#' conduct the model in the \code{forward} or 
+#' \code{backward} directions.
 #' @param met_type an option to select meteorological
 #' data files. The options are \code{gdas1} (Global Data
 #' Assimilation System 1-degree resolution data) and
@@ -83,7 +83,7 @@ hysplit_dispersion <- function(lat = 49.263,
                                duration = 24,
                                start_day = "2015-07-01",
                                start_hour = 0,
-                               backward_running = FALSE,
+                               direction = "forward",
                                met_type = "reanalysis",
                                vert_motion = 0,
                                model_height = 20000,
@@ -172,7 +172,7 @@ hysplit_dispersion <- function(lat = 49.263,
   # Determine the end time of the model run
   end_time_GMT <- 
     as.POSIXct(
-      ifelse(backward_running, 
+      ifelse(direction == "backward", 
              start_time_GMT -
                (duration * 3600),
              start_time_GMT +
@@ -434,8 +434,8 @@ hysplit_dispersion <- function(lat = 49.263,
   # for this model run
   output_filename <- 
     paste0("--disp",
-           ifelse(backward_running,
-                  '(back)', '(forward)'), "-",
+           ifelse(direction == "backward",
+                  "(back)", "(forward)"), "-",
            start_year_GMT, "-",
            start_month_GMT, "-",
            start_day_GMT, "-",
@@ -468,7 +468,7 @@ hysplit_dispersion <- function(lat = 49.263,
   
   # Write direction and number of simulation hours
   # to 'CONTROL'
-  cat(ifelse(backward_running, "-", ""),
+  cat(ifelse(direction == "backward", "-", ""),
       duration, "\n",
       file = paste0(getwd(), "/", "CONTROL"),
       sep = '', append = TRUE)

@@ -20,9 +20,9 @@
 #' single daily hour as an integer hour (from \code{0}
 #' to \code{23}), or, a vector of several daily hours
 #' represented as integers.
-#' @param backtrajectory an option to select whether to
-#' conduct forward trajectory model runs or to generate
-#' backtrajectories.
+#' @param direction an option to select whether to
+#' conduct the model in the \code{forward} or 
+#' \code{backward} directions.
 #' @param met_type an option to select meteorological
 #' data files. The options are \code{gdas1} (Global
 #' Data Assimilation System 1-degree resolution data), 
@@ -68,7 +68,7 @@ hysplit_trajectory <- function(lat = 49.263,
                                duration = 24,
                                run_period = "2015-07-01",
                                daily_hours = 0,
-                               backtrajectory = FALSE,
+                               direction = "forward",
                                met_type = "reanalysis",
                                vert_motion = 0,
                                model_height = 20000,
@@ -226,7 +226,7 @@ hysplit_trajectory <- function(lat = 49.263,
         # Determine the end time of the model run
         end_time_GMT <-
           as.POSIXct(
-            ifelse(backtrajectory, 
+            ifelse(direction == "backward", 
                    start_time_GMT -
                      (duration * 3600),
                    start_time_GMT +
@@ -529,8 +529,8 @@ hysplit_trajectory <- function(lat = 49.263,
         # model run
         output_filename <-
           paste0("traj-",
-                 ifelse(backtrajectory == TRUE,
-                        'back--', 'forward--'), "-",
+                 ifelse(direction == "backward",
+                        "back--", "forward--"), "-",
                  start_year_GMT, "-",
                  start_month_GMT, "-",
                  start_day_GMT, "-",
@@ -571,7 +571,7 @@ hysplit_trajectory <- function(lat = 49.263,
           
           # Write direction and number of simulation
           # hours to 'CONTROL'
-          cat(ifelse(backtrajectory == TRUE, "-", ""),
+          cat(ifelse(direction == "backward", "-", ""),
               duration, "\n",
               file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
@@ -637,7 +637,7 @@ hysplit_trajectory <- function(lat = 49.263,
           
           # Write direction and number of simulation
           # hours to 'CONTROL'
-          cat(ifelse(backtrajectory == TRUE, "-", ""),
+          cat(ifelse(direction == "backward", "-", ""),
               duration, "\n",
               file = paste0(getwd(), "/CONTROL"),
               sep = '', append = TRUE)
