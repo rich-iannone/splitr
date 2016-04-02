@@ -12,7 +12,7 @@
 
 trajectory_list <- function(output_folder){
   
-  if (.Platform$OS.type == "unix"){
+  if (get_os() == "mac"){
     file_list <- list.files(path = output_folder,
                             pattern = ".zip")
     trajectory_output_df <-
@@ -20,7 +20,7 @@ trajectory_list <- function(output_folder){
                                nc = 4))
   }
   
-  if (.Platform$OS.type == "windows"){
+  if (get_os() == "win"){
     dir_list <- list.dirs(path = output_folder,
                           recursive = FALSE)
     trajectory_output_df <-
@@ -35,7 +35,7 @@ trajectory_list <- function(output_folder){
   
   for (i in 1:length(file_list)){
     trajectory_output_df[i,1] <- i
-    if (.Platform$OS.type == "unix"){
+    if (get_os() == "mac"){
       trajectory_output_df[i,2] <- 
         gsub("^([^--]+)--.*", "\\1", file_list[i])
       
@@ -56,7 +56,7 @@ trajectory_list <- function(output_folder){
           tz = "")
     }
     
-    if (.Platform$OS.type == "windows"){
+    if (get_os() == "win"){
       trajectory_output_df[i,2] <-
         gsub("^([^--]+)--.*", "\\1", dir_list[i])
       
@@ -144,14 +144,16 @@ trajectory_list <- function(output_folder){
     
     rm(datetime, time_description)
     
-    if (.Platform$OS.type == "unix"){
+    if (get_os() == "mac"){
       trajectory_output_df[i,4] <- 
-        as.numeric(system(paste0("unzip -l ",
-                                 list.files(path = output_folder,
-                                            pattern = ".zip",
-                                            full.names = TRUE)[i],
-                                 " | wc -l"),
-                          intern = TRUE))
+        as.numeric(
+          system(
+            paste0("unzip -l ",
+                   list.files(path = output_folder,
+                              pattern = ".zip",
+                              full.names = TRUE)[i],
+                   " | wc -l"),
+            intern = TRUE))
     }
   }
   
