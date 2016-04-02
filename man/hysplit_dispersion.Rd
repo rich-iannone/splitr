@@ -5,12 +5,11 @@
 \title{Conduct HYSPLIT dispersion runs}
 \usage{
 hysplit_dispersion(lat = 49.263, lon = -123.25, height = 50,
-  duration = 24, run_type = "day", run_day = "2013-02-01",
-  run_range = c("2013-02-01", "2013-02-10"), run_years = "2013",
-  daily_hours = 0, backward_running = FALSE, met_type = "reanalysis",
-  vert_motion = 0, model_height = 20000, particle_num = 2500,
-  particle_max = 10000, emissions = 1, species = 1, grids = 1,
-  return_disp_df = TRUE, write_disp_CSV = TRUE, disp_name = NULL)
+  duration = 24, start_day = "2015-07-01", start_hour = 0,
+  backward_running = FALSE, met_type = "reanalysis", vert_motion = 0,
+  model_height = 20000, particle_num = 2500, particle_max = 10000,
+  emissions = 1, species = 1, grids = 1, return_disp_df = TRUE,
+  write_disp_CSV = TRUE, disp_name = NULL)
 }
 \arguments{
 \item{lat}{the starting latitude (in decimal
@@ -25,26 +24,12 @@ ground level) for the model run(s).}
 \item{duration}{the duration of each
 model run (either forward or backward) in hours.}
 
-\item{run_type}{used to select whether models should
-be run for a single day (\code{day}), for one or
-more years (\code{years}), or within a specified
-date range (\code{range}).}
+\item{start_day}{the day that the model will 
+initialize and run. This should take the form of a
+single-length vector for a day (\code{"YYYY-MM-DD"}).}
 
-\item{run_day}{used when \code{run_type} of
-\code{day} is selected. The date format should be
-provided here as "YYYY-MM-DD".}
-
-\item{run_range}{used when 'run_type' of 'range' is
-selected. The date format should be provided here
-as \code{c("YYYY-MM-DD", "YYYY-MM-DD")}.}
-
-\item{run_years}{used when 'run_type' of 'years' is
-selected. The format should either be a single year
-("YYYY") or a range of years ("YYYY-YYYY").}
-
-\item{daily_hours}{should consist of a
-single daily hour in the format "HH", or, several
-daily hours in the format \code{c("HH", "HH", "HH", ...)}.}
+\item{start_hour}{a single daily hour as an
+integer hour (from \code{0} to \code{23}).}
 
 \item{backward_running}{an option to select whether
 the dispersion runs should be running forward in
@@ -113,8 +98,8 @@ hysplit_dispersion(
   height = 15,
   duration = 12,
   run_type = "range",
-  run_range = c("2012-02-01", "2012-02-02"),
-  daily_hours = 0,
+  start_day = "2012-02-01",
+  start_hour = 0,
   emissions = 1,
   species = 1,
   grids = c(1,2),
