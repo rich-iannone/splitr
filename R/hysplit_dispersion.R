@@ -352,7 +352,7 @@ hysplit_dispersion <- function(lat = 49.263,
   
   # Are the met files available in the
   # selected path?
-  met.file.df <- 
+  met_file_df <- 
     setNames(data.frame(mat.or.vec(nr = length(met),
                                    nc = 2)),
              nm = c("file", "available"))
@@ -360,8 +360,8 @@ hysplit_dispersion <- function(lat = 49.263,
   if (any(c("mac", "unix") %in% get_os())){
     
     for (k in 1:length(met)){
-      met.file.df[k, 1] <- met[k]
-      met.file.df[k, 2] <-
+      met_file_df[k, 1] <- met[k]
+      met_file_df[k, 2] <-
         as.character(
           file.exists(paste0(getwd(), "/",
                              met[k])))
@@ -369,7 +369,7 @@ hysplit_dispersion <- function(lat = 49.263,
     
     # Write the met file availability to file
     write.table(
-      met.file.df,
+      met_file_df,
       file = paste0(getwd(), "/", "met_file_list"),
       sep = ",",
       row.names = FALSE,
@@ -378,10 +378,10 @@ hysplit_dispersion <- function(lat = 49.263,
       append = FALSE)
     
     # Download the missing met files
-    if (FALSE %in% met.file.df[,2]){
+    if (FALSE %in% met_file_df[,2]){
       
       files_to_get <-
-        subset(met.file.df,
+        subset(met_file_df,
                available == FALSE)[,1]
       
       if (met_type == "reanalysis"){
@@ -401,14 +401,14 @@ hysplit_dispersion <- function(lat = 49.263,
   if (get_os() == "win"){
     
     for (k in 1:length(met)){
-      met.file.df[k, 1] <- met[k]
-      met.file.df[k, 2] <-
+      met_file_df[k, 1] <- met[k]
+      met_file_df[k, 2] <-
         as.character(
           file.exists(paste0(getwd(), "\\",
                              met[k])))}
     
     # Write the met file availability to file
-    write.table(met.file.df,
+    write.table(met_file_df,
                 file = paste0(getwd(), "\\",
                               "met_file_list"),
                 sep = ",",
@@ -418,10 +418,10 @@ hysplit_dispersion <- function(lat = 49.263,
                 append = FALSE)
     
     # Download the missing met files
-    if (FALSE %in% met.file.df[,2]){
+    if (FALSE %in% met_file_df[,2]){
       
       files_to_get <-
-        subset(met.file.df, available == FALSE)[,1]
+        subset(met_file_df, available == FALSE)[,1]
       
       if (met_type == "reanalysis"){
         get_met_reanalysis(
