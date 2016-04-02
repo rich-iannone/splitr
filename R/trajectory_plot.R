@@ -2,10 +2,11 @@
 #' @description The function plots modeled wind
 #' trajectories onto a map with information provided
 #' at every air transport time interval.
-#' @param traj_df a trajectory data frame, typically
-#' created from use of the \code{hysplit_trajectory}
-#' function with the value for \code{return_traj_df}
-#' set to \code{TRUE}.
+#' @param x either a trajectory data frame, typically
+#' created from use of the \code{hysplit_trajectory},
+#' or a trajectory model object that contains output
+#' data (i.e., after executing model runs via the
+#' \code{run_model} function).
 #' @param show_hourly an option to show hourly
 #' positions and associated data along trajectories.
 #' @param color_scheme defines the appearance of
@@ -16,9 +17,28 @@
 #' @import scales
 #' @export trajectory_plot
 
-trajectory_plot <- function(traj_df,
+trajectory_plot <- function(x,
                             show_hourly = TRUE,
                             color_scheme = "cycle_hues"){
+  
+  if (inherits(x, "traj_model")){
+    if (!is.null(x$traj_df)){
+      traj_df <- x$traj_df
+    } else {
+      stop("There is no data available for plotting.")
+    }
+  }
+  
+  if (inherits(x, "data.frame")){
+    if (all(c("receptor", "year", "month", "day",
+              "hour", "hour.inc", "lat", "lon",
+              "height", "pressure", "date2",
+              "date") %in% colnames(x))){
+      traj_df <- x
+    } else {
+      stop("This data frame does not contain plottable data.")
+    }
+  }
   
   if (color_scheme == "cycle_hues"){
     colors <- 
