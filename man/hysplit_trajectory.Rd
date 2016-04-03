@@ -6,7 +6,7 @@
 \usage{
 hysplit_trajectory(lat = 49.263, lon = -123.25, height = 50,
   duration = 24, run_period = "2015-07-01", daily_hours = 0,
-  backtrajectory = FALSE, met_type = "reanalysis", vert_motion = 0,
+  direction = "forward", met_type = "reanalysis", vert_motion = 0,
   model_height = 20000, extended_met = FALSE, return_traj_df = TRUE,
   traj_name = NULL)
 }
@@ -35,9 +35,9 @@ single daily hour as an integer hour (from \code{0}
 to \code{23}), or, a vector of several daily hours
 represented as integers.}
 
-\item{backtrajectory}{an option to select whether to
-conduct forward trajectory model runs or to generate
-backtrajectories.}
+\item{direction}{an option to select whether to
+conduct the model in the \code{forward} or 
+\code{backward} directions.}
 
 \item{met_type}{an option to select meteorological
 data files. The options are \code{gdas1} (Global

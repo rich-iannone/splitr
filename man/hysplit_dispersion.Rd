@@ -6,7 +6,7 @@
 \usage{
 hysplit_dispersion(lat = 49.263, lon = -123.25, height = 50,
   duration = 24, start_day = "2015-07-01", start_hour = 0,
-  backward_running = FALSE, met_type = "reanalysis", vert_motion = 0,
+  direction = "forward", met_type = "reanalysis", vert_motion = 0,
   model_height = 20000, particle_num = 2500, particle_max = 10000,
   emissions = 1, species = 1, grids = 1, return_disp_df = TRUE,
   write_disp_CSV = TRUE, disp_name = NULL)
@@ -31,9 +31,9 @@ single-length vector for a day (\code{"YYYY-MM-DD"}).}
 \item{start_hour}{a single daily hour as an
 integer hour (from \code{0} to \code{23}).}
 
-\item{backward_running}{an option to select whether
-the dispersion runs should be running forward in
-time (the default) or in a backward running state.}
+\item{direction}{an option to select whether to
+conduct the model in the \code{forward} or 
+\code{backward} directions.}
 
 \item{met_type}{an option to select meteorological
 data files. The options are \code{gdas1} (Global Data
