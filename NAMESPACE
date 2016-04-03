@@ -3,6 +3,7 @@
 export(add_emissions)
 export(add_grid)
 export(add_params)
+export(add_species)
 export(create_disp_model)
 export(create_grid)
 export(create_traj_model)
