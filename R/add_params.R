@@ -1,7 +1,7 @@
 #' Add model parameters
 #' @description Add modelling parameters to a model
 #' object
-#' @param model a SplitR modeling object
+#' @param model a SplitR modeling object.
 #' @param lat the starting latitude (in
 #' decimal degrees) for the model run(s).
 #' @param lon the starting longitude (in
