@@ -152,7 +152,7 @@ hysplit_dispersion <- function(lat = 49.263,
             width = 2, format = "d", flag = "0")
   
   # Format `start_hour` if given as a numeric value
-  if (class(start_hour) == "numeric"){
+  if (class(start_hour) == "numeric") {
     start_hour <-
       formatC(sort(start_hour),
               width = 2,
@@ -208,11 +208,11 @@ hysplit_dispersion <- function(lat = 49.263,
   
   # Determine which of the three cases is true
   if (number_of_calendar_years == 1 &
-      number_of_calendar_months == 1){
+      number_of_calendar_months == 1) {
     case_within_month <- TRUE
-  } else if (number_of_calendar_years > 1){
+  } else if (number_of_calendar_years > 1) {
     case_over_year <- TRUE
-  } else if (number_of_calendar_months > 1){
+  } else if (number_of_calendar_months > 1) {
     case_over_month <- TRUE
   } else { NULL }
   
@@ -350,9 +350,9 @@ hysplit_dispersion <- function(lat = 49.263,
                                    nc = 2)),
              nm = c("file", "available"))
   
-  if (any(c("mac", "unix") %in% get_os())){
+  if (any(c("mac", "unix") %in% get_os())) {
     
-    for (k in 1:length(met)){
+    for (k in 1:length(met)) {
       met_file_df[k, 1] <- met[k]
       met_file_df[k, 2] <-
         as.character(
@@ -371,19 +371,19 @@ hysplit_dispersion <- function(lat = 49.263,
       append = FALSE)
     
     # Download the missing met files
-    if (FALSE %in% met_file_df[,2]){
+    if (FALSE %in% met_file_df[,2]) {
       
       files_to_get <-
         subset(met_file_df,
                available == FALSE)[,1]
       
-      if (met_type == "reanalysis"){
+      if (met_type == "reanalysis") {
         get_met_reanalysis(
           files = files_to_get,
           path_met_files = getwd())
       }
       
-      if (met_type == "gdas1"){
+      if (met_type == "gdas1") {
         get_met_gdas1(
           files = files_to_get,
           path_met_files = getwd())
@@ -391,9 +391,9 @@ hysplit_dispersion <- function(lat = 49.263,
     }
   }
   
-  if (get_os() == "win"){
+  if (get_os() == "win") {
     
-    for (k in 1:length(met)){
+    for (k in 1:length(met)) {
       met_file_df[k, 1] <- met[k]
       met_file_df[k, 2] <-
         as.character(
@@ -411,18 +411,18 @@ hysplit_dispersion <- function(lat = 49.263,
                 append = FALSE)
     
     # Download the missing met files
-    if (FALSE %in% met_file_df[,2]){
+    if (FALSE %in% met_file_df[,2]) {
       
       files_to_get <-
         subset(met_file_df, available == FALSE)[,1]
       
-      if (met_type == "reanalysis"){
+      if (met_type == "reanalysis") {
         get_met_reanalysis(
           files = files_to_get,
           path_met_files = getwd())
       }
       
-      if (met_type == "gdas1"){
+      if (met_type == "gdas1") {
         get_met_gdas1(
           files = files_to_get,
           path_met_files = getwd())
@@ -645,14 +645,14 @@ hysplit_dispersion <- function(lat = 49.263,
   
   # Move the .csv files from the working directory
   # to the output folder
-  if (any(c("mac", "unix") %in% get_os())){
+  if (any(c("mac", "unix") %in% get_os())) {
     
-    if (is.null(disp_name)){
+    if (is.null(disp_name)) {
       folder_name <- 
         paste0("disp--", 
                format(Sys.time(),
                       "%Y-%m-%d--%H-%M-%S"))  
-    } else if (!is.null(disp_name)){
+    } else if (!is.null(disp_name)) {
       folder_name <- 
         paste0(disp_name, "--",
                format(Sys.time(),
@@ -671,14 +671,14 @@ hysplit_dispersion <- function(lat = 49.263,
                   "')"))
   }
   
-  if (get_os() == "win"){
+  if (get_os() == "win") {
     
-    if (is.null(disp_name)){
+    if (is.null(disp_name)) {
       folder_name <- 
         paste0("disp--", 
                format(Sys.time(),
                       "%Y-%m-%d--%H-%M-%S"))  
-    } else if (!is.null(disp_name)){
+    } else if (!is.null(disp_name)) {
       folder_name <- 
         paste0(disp_name, "--",
                format(Sys.time(),
@@ -699,13 +699,13 @@ hysplit_dispersion <- function(lat = 49.263,
   
   # Write the dispersion data frame to a CSV if
   # it is requested
-  if (write_disp_CSV){
+  if (write_disp_CSV) {
     disp_df <- 
       dispersion_read(archive_folder =
                         paste0(getwd(), "/",
                                folder_name))
     
-    if (any(c("mac", "unix") %in% get_os())){
+    if (any(c("mac", "unix") %in% get_os())) {
       write.table(
         disp_df,
         file = paste0(getwd(), "/",
@@ -715,7 +715,7 @@ hysplit_dispersion <- function(lat = 49.263,
         row.names = FALSE)
     }
     
-    if (get_os() == "win"){
+    if (get_os() == "win") {
       write.table(
         disp_df,
         file = paste0("\"", getwd(), "/",
@@ -727,7 +727,7 @@ hysplit_dispersion <- function(lat = 49.263,
   }
   
   # Return a dispersion data frame if it is requested
-  if (return_disp_df){
+  if (return_disp_df) {
     
     disp_df <- 
       dispersion_read(archive_folder = folder_name)
