@@ -133,4 +133,6 @@ add_species <- function(model,
     model$species <- 
       rbind(model$species, species)
   }
+  
+  return(model)
 }
