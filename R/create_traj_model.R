@@ -5,7 +5,7 @@
 #' model object.
 #' @export create_traj_model
 
-create_traj_model <- function(name = NULL){
+create_traj_model <- function(name = NULL) {
   
   # Create the 'traj_model' list object
   traj_model <- 
