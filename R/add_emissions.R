@@ -21,10 +21,10 @@ add_emissions <- function(model,
                           duration = NULL,
                           start_day = NULL,
                           start_hour = NULL,
-                          name = NULL){
+                          name = NULL) {
   
-  if (is.null(name)){
-    if (is.null(model$emissions)){
+  if (is.null(name)) {
+    if (is.null(model$emissions)) {
       name <- "emissions_1"
     } else {
       name <- paste0("emissions_",
@@ -32,19 +32,19 @@ add_emissions <- function(model,
     }
   }
   
-  if (is.null(rate)){
+  if (is.null(rate)) {
     rate <- 1
   }
   
-  if (is.null(duration)){
+  if (is.null(duration)) {
     duration <- 1
   }
   
-  if (is.null(start_day)){
+  if (is.null(start_day)) {
     start_day <- "10-05-01"
   }
   
-  if (is.null(start_hour)){
+  if (is.null(start_hour)) {
     start_hour <- 0
   }
   
@@ -60,7 +60,7 @@ add_emissions <- function(model,
   
   # Write data frame to the `emissions` list
   # component of `model`
-  if (is.null(model$emissions)){
+  if (is.null(model$emissions)) {
     model$emissions <- emissions
   } else {
     model$emissions <- 
