@@ -1,6 +1,7 @@
-#' Add model parameters
-#' @description Add modelling parameters to a model
-#' object
+#' Run the model
+#' @description Run either a trajectory model or a
+#' dispersion model, depending on the class of the
+#' SplitR modeling object
 #' @param model a SplitR modeling object
 #' @export run_model
 
