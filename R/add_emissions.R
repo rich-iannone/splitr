@@ -66,4 +66,6 @@ add_emissions <- function(model,
     model$emissions <- 
       rbind(model$emissions, emissions)
   }
+  
+  return(model)
 }
