@@ -4,14 +4,11 @@
 \alias{add_emissions}
 \title{Add emissions parameters to a dispersion model}
 \usage{
-add_emissions(model, name = NULL, rate = NULL, duration = NULL,
-  start_day = NULL, start_hour = NULL)
+add_emissions(model, rate = NULL, duration = NULL, start_day = NULL,
+  start_hour = NULL, name = NULL)
 }
 \arguments{
 \item{model}{a SplitR modeling object.}
-
-\item{name}{an identifier for the group of emissions
-parameters.}
 
 \item{rate}{the rate of emissions for the pollutant
 in mass units per hour.}
@@ -24,6 +21,9 @@ single-length vector for a day (\code{"YYYY-MM-DD"}).}
 
 \item{start_hour}{a single daily hour as an
 integer hour (from \code{0} to \code{23}).}
+
+\item{name}{an identifier for the group of emissions
+parameters.}
 }
 \description{
 Add a set of emissions parameters to
