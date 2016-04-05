@@ -10,14 +10,32 @@
 #' the \code{grid_ref}.
 #' @param division the division distances across the
 #' latitude and longitude ranges.
-#' @param start_date
-#' @param start_time
-#' @param end_date
-#' @param end_time
-#' @param duration
-#' @param samp_interval
-#' @param samp_type
-#' @param samp_rate
+#' @param start_day the day that the grid will become
+#' active and measuring particle concentrations. This
+#' should take the form of a single-length vector for a
+#' day (\code{"YYYY-MM-DD"}).
+#' @param start_hour the associated hour for the
+#' \code{start_day} variable, taking the form of a
+#' single integer hour (from \code{0} to \code{23}).
+#' @param end_day the day that the grid will cease to
+#' be active and no longer measuring particle
+#' concentrations. This should take the form of a
+#' single-length vector for a day (\code{"YYYY-MM-DD"}).
+#' @param end_hour the associated hour for the
+#' \code{end_day} variable, taking the form of a
+#' single integer hour (from \code{0} to \code{23}).
+#' @param duration a length of time in hours that the
+#' grid will remain active from the start date-time.
+#' @param heights a vector of heights for which there
+#' will be horizontal sampling grids.
+#' @param samp_interval the sampling interval in units
+#' of hours.
+#' @param samp_type the type of sampling that will
+#' occur.
+#' @param samp_rate the sampling rate.
+#' @param name an identifier for this set of grid
+#' parameters.
+#' @import lubridate
 #' @export add_grid
 
 add_grid <- function(model,
@@ -25,16 +43,16 @@ add_grid <- function(model,
                      lon = -123.250,
                      range = c(5, 5),
                      division = c(0.5, 0.5),
-                     start_date = NULL,
+                     start_day = NULL,
                      start_hour = NULL,
-                     end_date = NULL,
+                     end_day = NULL,
                      end_hour = NULL,
                      duration = NULL,
                      heights = NULL,
-                     samp_interval = NULL,
-                     samp_type = 0,
-                     samp_rate = 6,
-                     name = 0) {
+                     samp_interval = 0,
+                     samp_type = 6,
+                     samp_rate = 0,
+                     name = NULL) {
   
   if (inherits(model, "traj_model")) {
     
