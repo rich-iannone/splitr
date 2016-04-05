@@ -89,17 +89,17 @@ hysplit_dispersion <- function(lat = 49.263,
                                model_height = 20000,
                                particle_num = 2500,
                                particle_max = 10000,
-                               emissions = 1,
-                               species = 1,
-                               grids = 1,
+                               emissions,
+                               species,
+                               grids,
                                return_disp_df = TRUE,
                                write_disp_CSV = TRUE,
-                               disp_name = NULL){ 
+                               disp_name = NULL) { 
   
   if (length(start_day) == 1 &
       class(start_day) == "character" &
       all(grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]",
-                start_day))){
+                start_day))) {
     
     run_type <- "day"
     run_day <- start_day
@@ -109,7 +109,7 @@ hysplit_dispersion <- function(lat = 49.263,
   # directory, write default versions of those
   # config files
   if (!("SETUP.CFG" %in% list.files()) |
-      !("ASCDATA.CFG" %in% list.files())){
+      !("ASCDATA.CFG" %in% list.files())) {
     hysplit_config_init() 
   }
   
