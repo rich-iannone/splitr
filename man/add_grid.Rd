@@ -4,7 +4,7 @@
 \alias{add_grid}
 \title{Add lat/lon grid to a model}
 \usage{
-add_grid(model, lat = 49.263, lon = -123.25, range = c(5, 5),
+add_grid(model, lat = NULL, lon = NULL, range = c(5, 5),
   division = c(0.5, 0.5), start_day = NULL, start_hour = NULL,
   end_day = NULL, end_hour = NULL, duration = NULL, heights = NULL,
   samp_interval = 0, samp_type = 6, samp_rate = 0, name = NULL)

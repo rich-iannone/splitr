@@ -2,7 +2,7 @@
 % Please edit documentation in R/run_model.R
 \name{run_model}
 \alias{run_model}
-\title{Add model parameters}
+\title{Run the model}
 \usage{
 run_model(model)
 }
@@ -10,7 +10,8 @@ run_model(model)
 \item{model}{a SplitR modeling object}
 }
 \description{
-Add modelling parameters to a model
-object
+Run either a trajectory model or a
+dispersion model, depending on the class of the
+SplitR modeling object
 }
 
