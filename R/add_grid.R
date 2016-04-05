@@ -99,23 +99,58 @@ add_grid <- function(model,
           16000, 17000, 18000, 19000, 20000)
     }
     
+    heights <- 
+      paste(heights, collapse = " ")
+    
     layers <- length(heights) - 2
     
     if (is.null(start_day)) {
-      start_day <- model$start_day
+      if (!is.null(model$start_day)) {
+        start_day <- model$start_day
+      } else {
+        start_day <- NA
+      }
     }
     
     if (is.null(start_hour)) {
-      start_day <- model$start_hour
+      if (!is.null(model$start_hour)) {
+        start_hour <- model$start_hour
+      } else {
+        start_hour <- NA
+      }
     }
     
     if (is.null(end_day) & 
         is.null(end_hour)) {
-      duration <- model$duration
+      if (!is.null(model$duration)) {
+        duration <- model$duration
+      } else {
+        duration <- NA
+      }
     }
     
-    if (is.null(start_hour)) {
-      start_day <- model$start_hour
+    if (!is.na(duration)){
+      
+      # Calculate end_day and end_hour
+      end_day <- 0
+      end_hour <- 0
+      
+    } else {
+      end_day <- NA
+      end_hour <- NA
+    }
+    
+    # Calculate duration if start and end times are
+    # available
+    if (is.na(duration) &
+        !is.na(start_day) &
+        !is.na(start_hour) &
+        !is.na(end_day) &
+        !is.na(end_hour)) {
+      
+      duration <-
+        as.numeric(ymd_h(paste0(end_day, " ", end_hour)) - 
+        ymd_h(paste0(start_day, " ", start_hour))) * 24
     }
     
     # Write grid parameters to a data frame
@@ -145,5 +180,4 @@ add_grid <- function(model,
     
     return(model)
   }
-  
 }
