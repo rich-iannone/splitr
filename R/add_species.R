@@ -43,10 +43,10 @@ add_species <- function(model,
                         wdep_in_cloud = NULL,
                         wdep_below_cloud = NULL,
                         rad_decay = NULL,
-                        resuspension = NULL){
+                        resuspension = NULL) {
 
-  if (is.null(name)){
-    if (is.null(model$species)){
+  if (is.null(name)) {
+    if (is.null(model$species)) {
       name <- "species_1"
     } else {
       name <- paste0("species_",
@@ -54,55 +54,55 @@ add_species <- function(model,
     }
   }
   
-  if (is.null(pdiam)){
+  if (is.null(pdiam)) {
     pdiam <- 15.0
   }
   
-  if (is.null(density)){
+  if (is.null(density)) {
     density <- 1.0
   }
   
-  if (is.null(shape_factor)){
+  if (is.null(shape_factor)) {
     shape_factor <- 1.0
   }
   
-  if (is.null(ddep_vel)){
+  if (is.null(ddep_vel)) {
     ddep_vel <- 0.0
   }
   
-  if (is.null(ddep_mw)){
+  if (is.null(ddep_mw)) {
     ddep_mw <- 0.0
   }
   
-  if (is.null(ddep_a_ratio)){
+  if (is.null(ddep_a_ratio)) {
     ddep_a_ratio <- 0.0
   }
   
-  if (is.null(ddep_d_ratio)){
+  if (is.null(ddep_d_ratio)) {
     ddep_d_ratio <- 0.0
   }
   
-  if (is.null(ddep_hl_coeff)){
+  if (is.null(ddep_hl_coeff)) {
     ddep_hl_coeff <- 0.0
   }
   
-  if (is.null(wdep_hl_coeff)){
+  if (is.null(wdep_hl_coeff)) {
     wdep_hl_coeff <- 0.0
   }
   
-  if (is.null(wdep_in_cloud)){
+  if (is.null(wdep_in_cloud)) {
     wdep_in_cloud <- 0.0
   }
   
-  if (is.null(wdep_below_cloud)){
+  if (is.null(wdep_below_cloud)) {
     wdep_below_cloud <- 0.0
   }
   
-  if (is.null(rad_decay)){
+  if (is.null(rad_decay)) {
     rad_decay <- 0.0
   }
   
-  if (is.null(resuspension)){
+  if (is.null(resuspension)) {
     resuspension <- 0.0
   }
   
@@ -127,7 +127,7 @@ add_species <- function(model,
   
   # Write data frame to the `species` list
   # component of `model`
-  if (is.null(model$species)){
+  if (is.null(model$species)) {
     model$species <- species
   } else {
     model$species <- 
