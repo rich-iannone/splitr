@@ -60,9 +60,9 @@ run_model <- function(model) {
                               20000, model$model_height),
         particle_num = 2500,
         particle_max = 10000,
-        emissions = emissions,
-        species = species,
-        grids = grids,
+        emissions = model$emissions,
+        species = model$species,
+        grids = model$grids,
         return_disp_df = TRUE,
         write_disp_CSV = TRUE
       )
