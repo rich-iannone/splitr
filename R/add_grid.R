@@ -39,8 +39,8 @@
 #' @export add_grid
 
 add_grid <- function(model,
-                     lat = 49.263,
-                     lon = -123.250,
+                     lat = NULL,
+                     lon = NULL,
                      range = c(5, 5),
                      division = c(0.5, 0.5),
                      start_day = NULL,
