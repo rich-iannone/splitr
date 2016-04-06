@@ -489,26 +489,98 @@ hysplit_dispersion <- function(lat = 49.263,
       sep = '', append = TRUE)
   
   # Write met file paths to 'CONTROL'
-  for (i in 1:length(met)){
+  for (i in 1:length(met)) {
     cat(getwd(), "/\n", met[i], "\n",
         file = paste0(getwd(), "/", "CONTROL"),
         sep = '', append = TRUE)
   }
   
   # Write emissions blocks to 'CONTROL'
-  for (i in 1:length(
-    dispersion_preset_get("emissions",
-                          emissions))){
-    cat(dispersion_preset_get(
-      "emissions", emissions)[i], "\n",
-      file = paste0(getwd(), "/", "CONTROL"),
-      sep = '', append = TRUE)
+  for (i in 1:nrow(emissions)) {
+    cat(c(nrow(emissions), "\n",
+          substr(emissions[i, 1], 1, 4), "\n",
+          emissions[i, 2], "\n",
+          emissions[i, 3], "\n",
+          paste0(paste(unlist(strsplit(substr(emissions[i, 4], 3, 10), "-")),
+                       collapse = " "),
+                 " ",
+                 formatC(emissions[i, 5],
+                         width = 2, 
+                         format = "d", 
+                         flag = "0"),
+                 " 00")), "\n",
+        file = paste0(getwd(), "/", "CONTROL"),
+        sep = "", append = TRUE)
   }
   
   # Get vector text elements through reading
-  # selected elements from 'grids' file
+  # selected elements from the 'grids' data frame
+  if (any(is.na(grids$lat),
+          is.na(grids$lon))) {
+    
+    grids$lat <- lat
+    grids$lon <- lon
+  }
+  
+  if (any(is.na(grids$duration),
+          is.na(grids$start_day),
+          is.na(grids$start_hour),
+          is.na(grids$end_day),
+          is.na(grids$end_hour))) {
+    
+    grids$duration <- duration
+    grids$start_day <- start_day
+    grids$start_hour <- start_hour
+    
+    grids$end_day <-
+      format(ymd_h(paste(grids$start_day, grids$start_hour)) + 
+               (duration * 3600),
+             "%Y-%m-%d")
+    
+    grids$end_hour <-
+      as.numeric(
+        format(ymd_h(paste(grids$start_day, grids$start_hour)) + 
+                 (duration * 3600),
+               "%H")
+      )
+  }
+  
   grids_text <-
-    dispersion_preset_get("grids", grids)
+    c("1",
+      paste(grids[1, 2],
+            grids[1, 3]),
+      paste(grids[1, 6],
+            grids[1, 7]),
+      paste(grids[1, 4],
+            grids[1, 5]),
+      paste0(getwd(), "/"),
+      grids[1,1],
+      "1", "50",
+      paste0(paste(unlist(strsplit(substr(grids[i, 9], 3, 10), "-")),
+                   collapse = " "),
+             " ",
+             formatC(grids[1, 10],
+                     width = 2, 
+                     format = "d", 
+                     flag = "0"),
+             " 00"),
+      paste0(paste(unlist(strsplit(substr(grids[i, 11], 3, 10), "-")),
+                   collapse = " "),
+             " ",
+             formatC(grids[1, 12],
+                     width = 2, 
+                     format = "d", 
+                     flag = "0"),
+             " 00"),
+      paste0(grids[1, 14], " ",
+             formatC(grids[1, 15],
+                     width = 2, 
+                     format = "d", 
+                     flag = "0"), " ",
+             formatC(grids[1, 16],
+                     width = 2, 
+                     format = "d", 
+                     flag = "0")))
   
   # Get vector text indices that contain the short
   # name(s) of the grid(s)
@@ -519,46 +591,56 @@ hysplit_dispersion <- function(lat = 49.263,
   
   # Combine short grid name string with longer
   # 'output_filename' string
-  for (i in 1:((length(grids_text) - 1)/10)){
+  for (i in 1:((length(grids_text) - 1)/10)) {
     grids_text[gridnames_indices[i]] <-
       paste0(grids_text[gridnames_indices[i]],
              output_filename)
   }
   
   # Write grid blocks to 'CONTROL'
-  for (i in 1:length(grids_text)){
+  for (i in 1:length(grids_text)) {
     cat(grids_text[i], "\n",
         file = paste0(getwd(), "/", "CONTROL"),
         sep = '', append = TRUE)
   }
   
   # Write species blocks to 'CONTROL'
-  for (i in 1:length(
-    dispersion_preset_get("species",
-                          species))){
-    cat(dispersion_preset_get(
-      "species", species)[i], "\n",
-      file = paste0(getwd(), "/", "CONTROL"),
-      sep = '', append = TRUE)
+  for (i in 1:nrow(species)) {
+    cat(c(nrow(species), "\n",
+          paste(species[1, 2],
+                species[1, 3],
+                species[1, 4]), "\n",
+          paste(species[1, 5],
+                species[1, 6],
+                species[1, 7],
+                species[1, 8],
+                species[1, 9]), "\n",
+          paste(species[1, 10],
+                species[1, 11],
+                species[1, 12]), "\n",
+          species[1, 13], "\n",
+          species[1, 14]), "\n",
+        file = paste0(getwd(), "/", "CONTROL"),
+        sep = "", append = TRUE)
   }
   
   # CONTROL file is now complete and in the
   # working directory; execute the model run
-  if (get_os() == "mac"){
+  if (get_os() == "mac") {
     system(paste0("(cd ", getwd(), " && ",
                   system.file("osx/hycs_std",
                               package = "SplitR"),
                   ")"))
   }
   
-  if (get_os() == "unix"){
+  if (get_os() == "unix") {
     system(paste0("(cd ", getwd(), " && ",
                   system.file("linux-amd64/hycs_std",
                               package = "SplitR"),
                   ")"))
   }
   
-  if (get_os() == "win"){
+  if (get_os() == "win") {
     shell(paste0("(cd \"", getwd(), "\" && \"",
                  system.file("win/hycs_std.exe",
                              package = "SplitR"),
@@ -566,21 +648,21 @@ hysplit_dispersion <- function(lat = 49.263,
   }
   
   # Extract the particle positions at every hour
-  if (get_os() == "mac"){
+  if (get_os() == "mac") {
     system(paste0("(cd ", getwd(), "/", " && ",
                   system.file("osx/parhplot",
                               package = "SplitR"),
                   " -iPARDUMP -a1)"))
   }
   
-  if (get_os() == "unix"){
+  if (get_os() == "unix") {
     system(paste0("(cd ", getwd(), "/", " && ",
                   system.file("linux-amd64/parhplot",
                               package = "SplitR"),
                   " -iPARDUMP -a1)"))
   }
   
-  if (get_os() == "win"){
+  if (get_os() == "win") {
     shell(paste0("(cd \"", getwd(), "\" && \"",
                  system.file("win/parhplot.exe",
                              package = "SplitR"),
@@ -588,29 +670,29 @@ hysplit_dispersion <- function(lat = 49.263,
   }
   
   # Remove the .att files from the working directory
-  if (any(c("mac", "unix") %in% get_os())){
+  if (any(c("mac", "unix") %in% get_os())) {
     system(paste0("(cd ", getwd(),
                   " && rm GIS_part*.att)"))
   }
   
-  if (get_os() == "win"){
+  if (get_os() == "win") {
     shell(paste0("(cd \"", getwd(),
                  "\" && del GIS_part*.att)"))
   }
   
   # Remove the postscript plot from the working directory
-  if (any(c("mac", "unix") %in% get_os())){
+  if (any(c("mac", "unix") %in% get_os())) {
     system(paste0("(cd ", getwd(),
                   " && rm parhplot.ps)"))
   }
   
-  if (get_os() == "win"){
+  if (get_os() == "win") {
     shell(paste0("(cd \"", getwd(),
                  "\" && del parhplot.ps)"))
   }
   
   # Rename the TXT files as CSV files
-  if (any(c("mac", "unix") %in% get_os())){
+  if (any(c("mac", "unix") %in% get_os())) {
     system(
       paste0("(cd ", getwd(),
              " && for files in GIS*.txt;",
@@ -619,19 +701,19 @@ hysplit_dispersion <- function(lat = 49.263,
   
   # Remove the 'END' string near the end of
   # each CSV file
-  if (any(c("mac", "unix") %in% get_os())){
+  if (any(c("mac", "unix") %in% get_os())) {
     system(paste0("(cd ", getwd(),
                   " && sed -i .bk 's/END//g'",
                   " GIS_part_*.csv; rm *.bk)"))
   }
   
-  if (get_os() == "win"){        
+  if (get_os() == "win") {        
     temp_file_list <- 
       list.files(path = getwd(),
                  pattern = "*._ps.txt",
                  full.names = TRUE)
     
-    for (i in 1:length(temp_file_list)){
+    for (i in 1:length(temp_file_list)) {
       temp_lines <- readLines(temp_file_list[i])
       temp_lines <- temp_lines[-(length(temp_lines))]
       write.table(temp_lines,
