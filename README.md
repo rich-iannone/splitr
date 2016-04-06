@@ -2,28 +2,20 @@
 
 [![DOI](https://zenodo.org/badge/20543/rich-iannone/SplitR.svg)](https://zenodo.org/badge/latestdoi/20543/rich-iannone/SplitR)
 
-**SplitR** is an **R** package for conducting trajectory and dispersion modelling with **HYSPLIT**. You can determine where air (came from | is going), or, where particulate matter (came from | is going). More information on the **HYSPLIT** model can be obtained from the **Air Resources Laboratory** (**ARL**) of the **National Oceanic and Atmospheric Administration** (**NOAA**) [READY website](http://ready.arl.noaa.gov/HYSPLIT.php).
+**SplitR** is an **R** package for conducting trajectory and dispersion modelling with **HYSPLIT**. You can determine where air (came from | is going), or, where gas-phase or particulate matter (came from | is going). It's a means to help explain how, where, and when chemicals and materials are atmospherically transported, dispersed, and deposited.
 
-## Installation
+This model has many applications. Some have modeled the atmospheric transport of moisture to determine probable extreme rainfall locations leading to flood events ([Gustafsson et al., 2010](http://tellusa.net/index.php/tellusa/article/view/15715)). Similarly, [Creamean et al., 2013](http://science.sciencemag.org/content/339/6127/1572.full) have presented a direct link between long-range transported dust and biological aerosols affecting cloud ice formation and precipitation processes in western United States.
 
-Install **SplitR** from **GitHub** using the `devtools` package:
+Others have successfully improved understanding of invasive species dispersal abilities to inform conservation and landscape management ([Lander et al., 2014](http://onlinelibrary.wiley.com/doi/10.1002/ece3.1206/abstract)). Along similar lines, the long-distance transport of high-risk plant pathogens can be modeled with **HYSPLIT** to assist with plant disease management decisions, such as applications of fungicide or pesticide to potentially-affected agricultural areas ([Schmale and Ross, 2015](http://www.annualreviews.org/doi/abs/10.1146/annurev-phyto-080614-115942?journalCode=phyto)).
 
-```R
-library(devtools)
-devtools::install_github("rich-iannone/SplitR")
-```
-
-## Description
-
-**SplitR** allows you set up and run **HYSPLIT** in a very fast, easy, and organized manner. You can set up a few or, perhaps, thousands of trajectory or dispersion runs by using a single function. Because **SplitR** is an **R** interface to **HYSPLIT**, we can store output in data frames and take advantage of the vast selection of **R** packages to perform cluster analyses, generate and save plots, and more. This package simplifies the process of running **HYSPLIT** models by automating the downloading and storage of meteorological data files, providing a simple means to initiate a range of runs, and by providing outputs that can be easily applied to statistical analyses.
+**SplitR** allows you to build and run **HYSPLIT** models in a fast, easy, and organized manner. A few or, perhaps, thousands of trajectory or dispersion runs can be conducted with minimal code. Because **SplitR** is an **R** interface to **HYSPLIT**, we can store output in memory and take advantage of the vast selection of **R** packages to perform statistical analyses and to generate visualizations. This package simplifies the process of running **HYSPLIT** models by providing a simple means to execute a range of runs and by automating the retrieval and storage of associated meteorological data files.
 
 Some of the things you can do with **SplitR** are:
 
-- run multiple trajectory and dispersion model runs (forward or backward) with a single function call
-- automatically download all meteorological data files for the run
-- store dispersion modelling presets for easy retrieval
-- run numerous models through different batching options: multiple start times throughout a single year, several years, or a predefined time range
+- create and execute model runs with an easily readable **magrittr** pipeline workflow
+- run multiple trajectory and dispersion model runs (forward or backward) with multiple temporal and spatial variations
 - visualize wind trajectories and particle positions throughout trajectory and dispersion runs
+- use the returned **dplyr** `tbl` data frame to `filter()`, `select()`, `group_by()`, `summarize()`, `mutate()`, and `transmute()` the model output data
 
 ## **HYSPLIT** Trajectory Runs
 
@@ -31,6 +23,7 @@ To perform a series **HYSPLIT** trajectory model runs, one can simply use the **
 
 ```R
 library(SplitR)
+
 setwd("~/Documents/SplitR_wd")
 
 trajectory <- 
@@ -88,7 +81,7 @@ library(magrittr)
 
 setwd("~/Documents/SplitR_wd")
 
-# Create the `trajectory model` object, add
+# Create the `trajectory_model` object, add
 # a grid of starting locations, add run
 # parameters, and execute the model runs
 trajectory_model <-
@@ -96,7 +89,6 @@ trajectory_model <-
   add_grid(
     lat = 49.0,
     lon = -123.0,
-    grid_ref = "center",
     range = c(0.8, 0.8),
     division = c(0.2, 0.2)) %>%
   add_params(
@@ -107,12 +99,41 @@ trajectory_model <-
     direction = "backward",
     met_type = "reanalysis") %>%
   run_model
-
-# Get a data frame of the model results
-trajectory_model %>% get_traj_df
 ```
 
-This pipeline setup allows for more flexibility as **R** objects can be piped in for variation in the types of models created. The `create_traj_model()` function creates the trajectory model object. The `add_grid()` allows for the simple creation of a grid for multiple starting locations in an ensemble run. One or more `add_params()` statements can be used to write model parameters to the model object. Ending the pipeline with `run_model()` runs the model and creates results which can be extracted using `get_traj_df()`.
+This pipeline setup allows for more flexibility as **R** objects can be piped in for variation in the types of models created. The `create_traj_model()` function creates the trajectory model object. The `add_grid()` allows for the simple creation of a grid for multiple starting locations in an ensemble run. One or more `add_params()` statements can be used to write model parameters to the model object. Ending the pipeline with `run_model()` runs the model and creates results.
+
+The trajectory data can be be extracted from the trajectory model object using `get_output_df()`...
+
+```R
+# Get a data frame containing the model results
+trajectory_df <-
+  trajectory_model %>% get_output_df
+```
+
+...and a **dplyr** `tbl` object is now available:
+
+```R
+trajectory_df
+#> Source: local data frame [175 x 21]
+#> 
+#>    receptor  year month   day  hour hour.inc    lat      lon height
+#>       (int) (int) (int) (int) (int)    (dbl)  (dbl)    (dbl)  (dbl)
+#> 1         1    15     7     1     0        0 49.400 -123.400   50.0
+#> 2         1    15     7     1     1        1 49.359 -123.203   49.9
+#> 3         1    15     7     1     2        2 49.326 -123.039   49.3
+#> 4         1    15     7     1     3        3 49.300 -122.905   48.2
+#> 5         1    15     7     1     4        4 49.282 -122.800   46.7
+#> 6         1    15     7     1     5        5 49.268 -122.723   44.8
+#> 7         1    15     7     1     6        6 49.260 -122.672   42.5
+#> 8         2    15     7     1     0        0 49.400 -123.200   50.0
+#> 9         2    15     7     1     1        1 49.369 -123.008   49.9
+#> 10        2    15     7     1     2        2 49.346 -122.848   49.4
+#> ..      ...   ...   ...   ...   ...      ...    ...      ...    ...
+#> Variables not shown: pressure (dbl), date2 (time), date (time), theta
+#>   (dbl), air_temp (dbl), rainfall (dbl), mixdepth (dbl), rh (dbl),
+#>   sp_humidity (dbl), h2o_mixrate (dbl), terr_msl (dbl), sun_flux (dbl)
+```
 
 #### Plotting Trajectory Data
 
@@ -122,10 +143,10 @@ Trajectories can be plotted onto an interactive map. Use the `trajectory_plot()`
 library(SplitR)
 library(magrittr)
 
-# Plotting using the trajectory data frame
+# Plot results using the trajectory data frame
 trajectory_plot(trajectory)
 
-# Plotting using the trajectory model object
+# Plot results using the trajectory model object
 trajectory_model %>% trajectory_plot
 ```
 
@@ -146,298 +167,108 @@ Clicking any of the points along the trajectory will provide an informative popu
 
 ## **HYSPLIT** Dispersion Runs
 
-Presets for `species`, `grids`, and `emissions` first need to be set. All additions of presets are made with the use of the `dispersion_preset_add()` function. It can be run interactively with `interactive = TRUE`, remembering to set the `type` argumemnt as either `type = "species"`, `type = "grids"`, or `type = "emissions"`. An example of an interactive session for creating a `species` preset is given below (angled brackets represent user input).
+Dispersion models can also be conveniently built and executed using a **magrittr** workflow. Instantiate the dispersion model with the `create_disp_model()` function. Use one or more `add_params()` statements to write parameters to the model object. The `add_grid()` function here facilitates the creation of sampling grids. Using `add_emissions()` function anywhere in the pipeline will define emissions properties for one or more emitted pollutants. With `add_species()`, the physical properties and deposition parameters of one or more emitted species can be added to the model.
+
+As with the trajectory model, the pipeline can ended with `run_model()`. To extract a data frame containing the modeled output data, use the `get_output_df()` function. An example is in order:
 
 ```R
-dispersion_preset_add(type = "species", interactive = TRUE)
-```
+library(SplitR)
+library(magrittr)
 
-```
-What is the name of the species?  <test>
-Is the species a gas or particle? [gas/particle] <gas>
-Use the default parameters for a gas-phase species? [y/n] <y>
-The plan. Adding species: test
--------------------------
-Particle Properties // diameter: 0 µm | density: 0 g/cm3 | shape factor: 0 -- not a particle species
-Dry Deposition // deposition velocity: 0 m/s | molecular weight: 0 g/mol
-                  A ratio: 0 | D ratio: 0 | Henry's Law: 0 M/a -- no dry deposition
-Wet Deposition // Henry's Law coeff.: 0 M/a | in-cloud deposition: 0 L/L
-                  below-cloud deposition: 0 1/s -- no wet deposition
-Radioactive Decay // half-life: 0 days
-Pollutant Resuspension // factor: 0 1/m
-------------------------------
-This is what will be set. Okay? [y/n]: <y>
-```
+setwd("~/Documents/SplitR_wd")
 
-Also, the function can be used to create a `species` preset non-interactively:
-
-```R
-dispersion_preset_add(
-  type = "species",
-  interactive = FALSE,
-  species_name = "test",
-  particle_pdiam = 0,
-  particle_density = 0,
-  particle_shape_factor = 0,
-  ddep_velocity = 0,
-  ddep_MW = 0,
-  ddep_A_ratio = 0,
-  ddep_D_ratio = 0,
-  ddep_Henrys_Law_coeff = 0,
-  wdep_Henrys_Law_coeff = 0,
-  wdep_in_cloud_dep = 0,
-  wdep_below_cloud_dep = 0,
-  rad_decay = 0,
-  pollutant_resuspension_factor = 0)
-```
-
-Interactively creating a `grids` preset looks like this:
-
-```R
-dispersion_preset_add(type = 'grids', interactive = TRUE)
-```
-
-```
-What is the name of the grid? <"grid">
-
-Provide the center of the grid.
-Units: degrees. Default: 49.289328, -123.117665.
-Provide the latitude and longitude (<ENTER> for default values):
-<42.83752, -80.30364>
-
-Provide the spacing of adjacent grid points in the x and y directions.
-Units: degrees. Default: 0.05, 0.05.
-Provide latitude and longitude intervals (<ENTER> for default values):
-<0.05, 0.05>
-
-Provide the total span of the grid in the x and y directions.
-Units: degrees. Default: 1.00, 1.00.
-Provide latitude and longitude values (<ENTER> for default values): 
-<1.00, 1.00>
-
-Provide the number of vertical levels in the concentration grid.
-This number includes the deposition layer (with height = 0 m AGL)
-Default: 1.
-Provide a postive integer (<ENTER> for default value): 
-<1>
-
-For the single level specified, does that refer to the ground (deposition layer) or some height 
-above the ground?
-Press <ENTER> to assign level to the ground layer, or, provide a height in meters above ground level: 
-<ENTER>
-
-Provide a date and time for the start of grid sampling.
-Use the format YYYY-MM-DD HH:MM (<ENTER> for default value)
-<2012-03-12 00:00>
-
-Provide a date and time for the end of grid sampling.
-Use the format YYYY-MM-DD HH:MM (<ENTER> for default value)
-<2012-03-13 00:00>
-
-Provide the type of grid sampling to perform.
-Choices are: (1) averaging, (2) snapshot, or (3) maximum
-Press <ENTER> to assign the 'averaging' method
-<1>
-
-Provide the grid sampling measurement frequency.
-Use the format HH:MM
-Press <ENTER> to assign a 1-hour measurement frequency
-<01:00>
-
-The plan. Adding grid: "grid"
-----------------------------------
-            Grid Center: 42.83752, -80.30364
-           Grid Spacing: 0.05, 0.05
-              Grid Span: 1, 1
- No. of Vertical Levels: 1
-           Grid Heights: 0 m
-      Start of Sampling: 2012-03-12 00:00
-        End of Sampling: 2012-03-13 00:00
-        Sampling Method: 0
-     Sampling Frequency: 1 h
-----------------------------------
-This is what will be set. Okay? [y/n]: 
-<y>
-```
-
-Also, the `grids` preset be set non-interactively like this:
-
-```R
-dispersion_preset_add(
-  type = 'grids',
-  interactive = FALSE,
-  grid_name = "grid",
-  grid_center = "42.83752 -80.30364",
-  grid_spacing = "0.05 0.05",
-  grid_span = "1 1",
-  grid_filename = "grid",
-  grid_number_vertical = "1",
-  grid_heights = "0",
-  grid_start_time = "12 03 12 00 00",
-  grid_end_time = "12 03 13 00 00",
-  sampling_interval_type_rate = "1 01 00")
-```
-
-Interactively creating an `emissions` preset looks like this:
-
-```R
-dispersion_preset_add(type = 'emissions', interactive = TRUE)
-```
-
-```
-What is the name of the emissions source? <test>
-
-Provide the starting date and time.
-Several options available:
-(1) Use defined time in the format YYYY-MM-DD HH:MM
-(2) Provide the number of hours or days after start of run (# h, or # d)
-(3) Press <ENTER> to match run and sampling starting times
-<2012-03-12 00:00>
-
-Provide either a time duration in hours
-or days, or, provide an ending date and time.
-Use the formats # h, # d, or YYYY-MM-DD HH:MM
-<1 d>
-
-Provide the rate of emissions in mass units per hour.
-<35>
-
-The plan. Adding emissions source: test
-----------------------------------
-Start Date/Time: 2012-03-12 00:00
-       Duration: 24 h
- Emissions Rate: 35 (mass units)/h
-----------------------------------
-This is what will be set. Okay? [y/n]: 
-<y>
-```
-
-For the non-interactive creation of an `emissions` preset:
-
-```R
-dispersion_preset_add(
-  type = 'emissions',
-  interactive = FALSE,
-  emissions_name = "test",
-  emissions_rate = 35,
-  emissions_duration = 24,
-  emissions_start_time = "12 03 12 00 00")
-```
-
-Once the presets have been created, they can be read using the `dispersion_preset_list()` function by specifying the type of present (using the read argument) and providing the path of the working directory. For the `species` presets:
-
-```R
-dispersion_preset_list(read = 'species')
-```
-
-```
-Here are the current species presets
-------------------------------------
-(1) test / Particle: 0 0 0 / DDep: 0 0 0 0 0 / WDep: 0 0 0 / RD: 0 / RS: 0
-------------------------------------
-```
-
-```R
-dispersion_preset_list(read = 'grids')
-```
-
-```
-Here are the current presets for grids
---------------------------------------
-(1) grid / C: 42.83752, -80.30364 / I: 0.05, 0.05 / S: 1, 1 / 1 lv / s->e: 12 03 12 00 00 - 12 03 13 00 00 / avg: 1 01 00
---------------------------------------
-```
-
-```R
-dispersion_preset_list(read = 'emissions')
-```
-
-```
-Here are the current presets for emissions
-------------------------------------------
-(1) test / Rate: 35 (mass units)/h / Duration: 24 h / Release: 12 03 12 00 00
-------------------------------------------
-``` 
-
-Adding more presets of any type will simply add items to each list provided by the `dispersion_preset_list()` function.
-
-To perform a **HYSPLIT** dispersion model run, use the **SplitR** `hysplit_dispersion()` function:
-
-```R
-dispersion_2012_03_12 <-
-  hysplit_dispersion(
-    lat = 42.83752,
-    lon = -80.30364,
-    height = 5,
+# Create the `dispersion_model` object, add
+# a grid of starting locations, add run
+# parameters, and then execute the model run
+dispersion_model <-
+  create_disp_model() %>%
+  add_emissions(
+    rate = 5,
+    duration = 6,
+    start_day = "2015-07-01",
+    start_hour = 0) %>%
+  add_species(
+    pdiam = 1,
+    density = 1,
+    shape_factor = 1) %>%
+  add_grid(
+    range = c(0.5, 0.5),
+    division = c(0.1, 0.1)) %>%
+  add_params(
+    lat = 49.0,
+    lon = -123.0,
+    height = 50,
     duration = 24,
-    met_type = "gdas1",
-    start_day = "2012-03-12",
+    start_day = "2015-07-01",
     start_hour = 0,
     direction = "forward",
-    emissions = 1,
-    species = 1,
-    grids = 1) 
+    met_type = "reanalysis") %>%
+  run_model
 ```
 
-This use of `hysplit_dispersion()` sets up a dispersion run that starts at 00:00 UTC on March 12, 2012. The startingtimes is set using `start_day = "2012-03-12"` and `start_hour = 0`. The model run is a forward run (moving forward in time, set here using `direction = "forward"`) and not backwards (would be set as `direction = "backward"`). Essentially, running in forward mode means the starting location is a source of emissions; running backward means that the starting location is a receptor. This run has been set to be modelled for 24 h (`duration = 24`). The starting location of 42.83752ºN and 80.30364ºW is set using `lat = 42.83752` and `lon = -80.30364`; the starting height of 5 m above ground level is set by `height = 5`. The meteorological options include the type of met data to use (1º **GDAS** data is used here with `met_type = "gdas1"`--there is also the option to use NCEP reanalysis data with the `met_type = "reanalysis"` setting).
+This dispersion model formally begins at 00:00 UTC on July 1, 2015 (using `start_day = "2015-07-01"` and `start_hour = 0`). The model run is a forward run (i.e., moving forward in time, with `direction = "forward"`) and not backwards (would be set as `direction = "backward"`). Essentially, running in forward mode means the starting location is a source of emissions; running backward means that the starting location is a receptor.
 
-Remember those presets that were added earlier? They are called up in the `emissions`, `species`, and `grids` arguments. The `1` value provided for each of those corresponds to the first preset of each type of preset. If you ever need to remind yourself of which presets are currently in the system, use `dispersion_preset_list()` function. Moreover, that function has an interactive mode.
+This run has been set to be modelled for 24 h (`duration = 24`). The starting location of 49.0ºN and 123.0ºW is set using `lat = 49.0` and `lon = -123.0`; the starting height of 50 m above ground level is set by `height = 50`. The meteorological options include the type of met data to use (global NCEP Reanalysis data is used here with `met_type = "reanalysis`).
+
+A single emissions species is set to be emitted (using `add_emissions()`) for 6 hours (`duration = 6`) at an emission rate of 5 mass units per hour (`rate = 5`). Emissions begin at the same time as the start of the model (`start_day = "2015-07-01"` and `start_hour = 0`). The properties of the emitted pollutant are defined using `add_species()`. Here, the physical properties of particle diameter (in micrometers), density (in grams per cubic centimeter), and shape factor (value from 0 to 1), respectively, are defined with `pdiam = 1`, `density = 1`, and `shape_factor = 1`.
+
+It should be noted that the order of `add_emissions()`, `add_species()`, `add_grid()`, and `add_params()` does not matter. There can even be several instances of each of these functions throughout the pipeline.
+
+All meteorological data files needed to execute the model during the defined period will be downloaded from the **NOAA** FTP server if such files are not already present in the working directory.
+
+The output data can be extracted from the dispersion model object...
 
 ```R
-dispersion_preset_list()
+# Get a data frame containing the model results
+dispersion_df <-
+  dispersion_model %>% get_output_df
 ```
 
-```
-Which preset type would you like to list?
-Choices are: (1) emissions, (2) grids, (3) species
-Press <ENTER> to exit
-<1>
-
-Here are the current presets for emissions
-------------------------------------------
-(1) test / Rate: 1 (mass units)/h / Duration: 336 h / Release: 12 03 22 00 00
-------------------------------------------
-```
-
-While adding presets is generally a good thing to do, there may come a point where you would like to delete some of the presets. This can be done with the `dispersion_preset_delete()` function. It can be done interactively, which is probably the safer method:
+...and the data is conveniently supplied as a **dplyr** `tbl`:
 
 ```R
-dispersion_preset_delete()
+dispersion_df
+#> Source: local data frame [54,063 x 5]
+#> 
+#>    particle_no       lon     lat height  hour
+#>          (int)     (dbl)   (dbl)  (dbl) (int)
+#> 1            1 -122.8368 48.9499    711     1
+#> 2            2 -122.8419 48.9311    780     1
+#> 3            3 -122.8531 48.9108    848     1
+#> 4            4 -122.8401 48.9365    647     1
+#> 5            5 -122.8472 48.9389    124     1
+#> 6            6 -122.8124 48.9449     10     1
+#> 7            7 -122.8263 48.9316    935     1
+#> 8            8 -122.8144 48.9631    265     1
+#> 9            9 -122.8313 48.9465    278     1
+#> 10          10 -122.8105 48.9326    250     1
+#> ..         ...       ...     ...    ...   ...
 ```
 
-```
-What type of preset would you like to delete?
-Choices are: (1) emissions, (2) grids, (3) species
-Press <ENTER> for no deletion. Otherwise, enter a number or type
-<1>
+#### Plotting Dispersion Data
 
-Here are the current presets for emissions
-------------------------------------------
-(1) test / Rate: 1 (mass units)/h / Duration: 336 h / Release: 12 03 22 00 00
-------------------------------------------
-Which preset number should be deleted?
-Press <ENTER> for no deletion. Otherwise, enter a number. 
-<1>
-```
-
-After executing the `hysplit_dispersion()` function (and possibly waiting awhile, since met files will need to be downloaded), 24 CSV files with particle position will become available in a subdirectory within the working directory.
-
-One or more snapshot plots of the data can be generated using the `hysplit_dispersion_plot()` function. If a dispersion data frame is available, the function can be called to reference that data and generate particle plots at every hour of the model run:
+Dispersion data can also be plotted onto a map. Use the `dispersion_plot()` function with the dispersion model object.
 
 ```R
-hysplit_dispersion_plot(
-  hours = 'all',
-  dispersion_df = dispersion_2012_03_12,
-  map_type = "stamen",
-  map_output_name = "map1")
+library(SplitR)
+library(magrittr)
+
+# Plot particle data onto a map
+dispersion_model %>% dispersion_plot
 ```
 
-If the dispersion data has been saved to disk (usually as the file `dispersion.csv` in a subfolder for the run), it's possible to point to that file in the `hysplit_dispersion_plot()` call:
+The visualization will appear in the **RStudio** Viewer:
 
-```R
-hysplit_dispersion_plot(
-  hours = 'all',
-  df_folder_path = paste0(getwd(), "dispersion--2014-08-03--13-42-28"),
-  map_type = "stamen",
-  map_output_name = "map2")
+<img src="inst/dispersion_plot.png" width="100%">
+
+The dispersed particles at every hour are present as map layers, where their visibility can be toggled using the *Layers* icon at the top-right of the view.
+
+## Installation
+
+**SplitR** is used in an **R** environment. If you don't have an **R** installation, it can be obtained from the [**Comprehensive R Archive Network (CRAN)**](http://cran.rstudio.com). It is recommended that [**RStudio**](http://www.rstudio.com/products/RStudio/) be used as the **R** IDE to take advantage of its ability to visualize output in its *Viewer* pane.
+
+You can install the development version of **SplitR** from **GitHub** using the **devtools** package.
+
+```r
+devtools::install_github('rich-iannone/SplitR')
 ```
