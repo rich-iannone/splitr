@@ -8,8 +8,8 @@ hysplit_dispersion(lat = 49.263, lon = -123.25, height = 50,
   duration = 24, start_day = "2015-07-01", start_hour = 0,
   direction = "forward", met_type = "reanalysis", vert_motion = 0,
   model_height = 20000, particle_num = 2500, particle_max = 10000,
-  emissions = 1, species = 1, grids = 1, return_disp_df = TRUE,
-  write_disp_CSV = TRUE, disp_name = NULL)
+  emissions, species, grids, return_disp_df = TRUE, write_disp_CSV = TRUE,
+  disp_name = NULL)
 }
 \arguments{
 \item{lat}{the starting latitude (in decimal

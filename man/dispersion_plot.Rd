@@ -4,13 +4,14 @@
 \alias{dispersion_plot}
 \title{Plot HYSPLIT dispersion model output onto a map}
 \usage{
-dispersion_plot(disp_df, color_scheme = "cycle_hues")
+dispersion_plot(x, color_scheme = "cycle_hues")
 }
 \arguments{
-\item{disp_df}{a dispersion data frame, typically
-created from use of the \code{hysplit_dispersion}
-function with the value for \code{return_disp_df}
-set to \code{TRUE}.}
+\item{x}{either a dispersion data frame, typically
+created from use of the \code{hysplit_dispersion},
+or a dispersion model object that contains output
+data (i.e., after executing model runs via the
+\code{run_model} function).}
 
 \item{color_scheme}{defines the appearance of
 multiple trajectories in a single plot. Current
@@ -19,7 +20,6 @@ options are \code{cycle_hues} (the default), and
 }
 \description{
 The function plots modeled dispersion
-particles onto a map with information provided
-at time interval.
+particles onto an interactive map.
 }
 

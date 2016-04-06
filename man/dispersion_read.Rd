@@ -7,13 +7,17 @@
 dispersion_read(archive_folder)
 }
 \arguments{
-\item{path_output_files}{the absolute path of the dispersion output files is to be provided.}
+\item{path_output_files}{the absolute path of the
+dispersion output files is to be provided.}
 }
 \value{
 data frame with hourly particle positions
 }
 \description{
-The function takes HYSPLIT dispersion output files in a specified output directory or dispersion archive and processes all files into a data frame object.
+The function takes HYSPLIT dispersion
+output files in a specified output directory or
+dispersion archive and processes all files into a
+data frame object.
 }
 \examples{
 \dontrun{
