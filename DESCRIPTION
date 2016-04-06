@@ -1,19 +1,17 @@
 Package: SplitR
 Type: Package
 Title: Use the HYSPLIT model from inside R
-Version: 0.3
-Date: 2016-03-10
+Version: 0.4
+Date: 2016-04-05
 Author: Richard Iannone <riannone@me.com>
 Maintainer: Richard Iannone <riannone@me.com>
-Description: Run the NOAA HYSPLIT model from R.
+Description: Use the HYSPLIT model from inside R and do more with it.
 License: MIT + file LICENSE
 Imports:
     downloader (>= 0.4),
-    ggplot2 (>= 2.0.0),
+    dplyr (>= 0.4.3),
     ggmap (>= 2.6.1),
-    labeling (>= 0.3),
     leaflet (>= 1.0.0),
     lubridate (>= 1.5.0),
-    RCurl (>= 1.95),
     scales (>= 0.4.0)
 RoxygenNote: 5.0.1
