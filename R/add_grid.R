@@ -125,42 +125,22 @@ add_grid <- function(model,
     
     if (is.null(end_day) & 
         is.null(end_hour)) {
-      if (!is.null(model$duration)) {
-        duration <- model$duration
-      } else {
-        duration <- NA
-      }
-    }
-    
-    if (!is.na(duration)){
       
-      # Calculate end_day and end_hour
-      end_day <- 0
-      end_hour <- 0
-      
-    } else {
+      duration <- NA
       end_day <- NA
       end_hour <- NA
-    }
-    
-    # Calculate duration if start and end times are
-    # available
-    if (is.na(duration) &
-        !is.na(start_day) &
-        !is.na(start_hour) &
-        !is.na(end_day) &
-        !is.na(end_hour)) {
-      
-      duration <-
-        as.numeric(ymd_h(paste0(end_day, " ", end_hour)) - 
-        ymd_h(paste0(start_day, " ", start_hour))) * 24
     }
     
     # Write grid parameters to a data frame
     grid <- 
       data.frame(
         name = name,
-        rate = rate,
+        lat = lat,
+        lon = lon,
+        range_lat = range[1],
+        range_lon = range[2],
+        division_lat = division[1],
+        division_lon = division[2],
         duration = duration,
         start_day = start_day,
         start_hour = start_hour,
