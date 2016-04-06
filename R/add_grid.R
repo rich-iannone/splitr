@@ -83,26 +83,29 @@ add_grid <- function(model,
     }
     
     if (is.null(lat)) {
-      lat <- model$lat
+      if (is.null(model$lat)) {
+        lat <- NA  
+      } else {
+        lat <- model$lat
+      }
     }
     
     if (is.null(lon)) {
-      lon <- model$lon
+      if (is.null(model$lon)) {
+        lon <- NA  
+      } else {
+        lon <- model$lon
+      }
     }
     
     if (is.null(heights)) {
+      heights <- 50
+      layers <- 1
+    } else {
+      layers <- length(heights)
       heights <- 
-        c(0, 5, 10, 50, 100,
-          1000, 2000, 3000, 4000, 5000,
-          6000, 7000, 8000, 9000, 10000,
-          11000, 12000, 13000, 14000, 15000,
-          16000, 17000, 18000, 19000, 20000)
+        paste(heights, collapse = " ")
     }
-    
-    heights <- 
-      paste(heights, collapse = " ")
-    
-    layers <- length(heights) - 2
     
     if (is.null(start_day)) {
       if (!is.null(model$start_day)) {
