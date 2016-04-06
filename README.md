@@ -43,7 +43,7 @@ This use of `hysplit_trajectory()` sets up four trajectory runs that start at 00
 
 The receptor/origin locations are set using `lat` and `lon` for the latitude(s) and longitude(s). The starting location of 42.83752ºN and 80.30364ºW is set here using `lat = 42.83752` and `lon = -80.30364`. Equal-length vectors of `lat` and `lon` values can be used here to create an ensemble of model runs. The starting height of 5 m above ground level is set by `height = 5`.
 
-The model runs as set above are forward runs (moving forward in time, set here using `backtrajectory = FALSE`) and not backtrajectory runs (set with `backtrajectory = TRUE`).
+The model runs as set above are forward runs (moving forward in time, set here using `direction = "forward"`) and not backtrajectory runs (set with `direction = "backward"`).
 
 The meteorological options include the type of met data to use. The 1º **GDAS** data is used here with `met_type = "gdas1"` but there is also the option to use **NCEP** reanalysis data with the `met_type = "reanalysis"` setting. The necessary meteorological data files relevant to the period being modelled will be downloaded from the **NOAA** FTP server if they are not present in the working directory,
 
