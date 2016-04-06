@@ -34,14 +34,12 @@ trajectory <-
     duration = 24,
     run_period = "2012-03-12",
     daily_hours = c(0, 6, 12, 18),
-    backtrajectory = FALSE,
+    direction = "forward",
     met_type = "gdas1",
-    extended_met = TRUE,
-    return_traj_df = TRUE,
-    traj_name = "trajectory") 
+    extended_met = TRUE) 
 ```
 
-This use of `hysplit_trajectory()` sets up four trajectory runs that start at 00:00, 06:00, 12:00, and 18:00 UTC on March 12, 2012. The `traj_name` argument allows for the inclusion of a descriptive name for the set of runs. Setting `return_traj_df` to `TRUE` will instruct the function to return a data frame containing detailed trajectory information. Such a data frame (named here as the object `trajectory`) will be have the following columns when `extended_met` is set to `FALSE`:
+This use of `hysplit_trajectory()` sets up four trajectory runs that start at 00:00, 06:00, 12:00, and 18:00 UTC on March 12, 2012. The function will return a data frame containing trajectory information. The data frame (named here as the object `trajectory`) will be have the following columns when `extended_met` is set to `FALSE`:
 
 - `receptor` a numeric label for the receptor
 - `year`, `month`, `day`, `hour` integer values for date/time components
