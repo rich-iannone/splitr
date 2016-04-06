@@ -17,17 +17,17 @@
 
 get_met_narr <- function(files = NULL,
                          years = NULL,
-                         path_met_files){ 
+                         path_met_files) { 
   
   narr_dir <- 
     "ftp://arlftp.arlhq.noaa.gov/narr/"
   
   # Download list of NARR met files by name
-  if (!is.null(files)){
+  if (!is.null(files)) {
     
-    for (i in 1:length(files)){
+    for (i in 1:length(files)) {
       
-      if (.Platform$OS.type == "windows"){
+      if (.Platform$OS.type == "windows") {
         download(
           url = paste0(narr_dir,
                        files[i]),
@@ -39,7 +39,7 @@ get_met_narr <- function(files = NULL,
           cacheOK = FALSE)
       }
       
-      if (.Platform$OS.type == "unix"){
+      if (.Platform$OS.type == "unix") {
         download(
           url = paste0(narr_dir,
                        files[i]),
@@ -54,10 +54,10 @@ get_met_narr <- function(files = NULL,
   }
   
   # Download one or more years of NARR met files
-  if (!is.null(years)){
-    for (i in 1:length(years)){
-      for (j in 1:12){
-        if (.Platform$OS.type == "unix"){
+  if (!is.null(years)) {
+    for (i in 1:length(years)) {
+      for (j in 1:12) {
+        if (.Platform$OS.type == "unix") {
           download(
             url = paste0(narr_dir,
                          "NARR",
@@ -77,7 +77,7 @@ get_met_narr <- function(files = NULL,
             cacheOK = FALSE)
         }
         
-        if (.Platform$OS.type == "windows"){
+        if (.Platform$OS.type == "windows") {
           download(
             url = paste0(narr_dir,
                          "NARR",

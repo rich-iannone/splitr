@@ -44,7 +44,7 @@
 
 trajectory_read <- function(output_folder,
                             year = NULL,
-                            start_height_m_AGL = NULL){  
+                            start_height_m_AGL = NULL) {  
   
   # List files from the specified archive folder
   trajectory_file_list <- list.files(output_folder)
@@ -52,13 +52,13 @@ trajectory_read <- function(output_folder,
   # Optionally filter list of files by using 'year' or
   # 'start_height_m_AGL' arguments, or both
   if (is.null(year) &
-      is.null(start_height_m_AGL)){
+      is.null(start_height_m_AGL)) {
     trajectory_file_list <- 
       list.files(
         path = output_folder,
         pattern = "^traj.*")
   } else if (!is.null(year) &
-             is.null(start_height_m_AGL)){
+             is.null(start_height_m_AGL)) {
     trajectory_file_list <- 
       list.files(
         path = output_folder,
@@ -67,7 +67,7 @@ trajectory_read <- function(output_folder,
                               as.character(year)),
                          ".*$"))
   } else if (is.null(year) &
-             !is.null(start_height_m_AGL)){
+             !is.null(start_height_m_AGL)) {
     trajectory_file_list <- 
       list.files(
         path = output_folder,
@@ -76,7 +76,7 @@ trajectory_read <- function(output_folder,
                               as.character(year)),
                          ".*$"))
   } else if (!is.null(year) &
-             !is.null(start_height_m_AGL)){
+             !is.null(start_height_m_AGL)) {
     trajectory_file_list <- 
       list.files(
         path = output_folder,
@@ -97,7 +97,7 @@ trajectory_read <- function(output_folder,
                     "date"))
   
   # Process all trajectory files
-  for (i in 1:length(trajectory_file_list)){
+  for (i in 1:length(trajectory_file_list)) {
     
     # For each trajectory file, read each line and
     # determine where the variable-length header ends
@@ -109,7 +109,7 @@ trajectory_read <- function(output_folder,
           paste0(path.expand(output_folder),
                  "/", trajectory_file_list[i])))
     
-    if (any(widths == 18)){
+    if (any(widths == 18)) {
       
       filename <- paste0(
         path.expand(output_folder),
@@ -118,7 +118,8 @@ trajectory_read <- function(output_folder,
       read_characters <-
         readChar(filename, file.info(filename)$size)
       
-      cat(gsub("([-0-9\\. ]{19}[-0-9\\. ])\n", "\\1", read_characters),
+      cat(gsub("([-0-9\\. ]{19}[-0-9\\. ])\n",
+               "\\1", read_characters),
           file = filename,
           sep = "\n")
     }
@@ -130,7 +131,7 @@ trajectory_read <- function(output_folder,
     
     for (j in 1:nrow(traj_temp)) {
       if (length(grep("PRESSURE",
-                      traj_temp[j,1])) != 0){
+                      traj_temp[j,1])) != 0) {
         skip_up_to_line <- j
       } 
     }
@@ -153,7 +154,7 @@ trajectory_read <- function(output_folder,
     
     date2 <- mat.or.vec(nr = nrow(traj), nc = 1)
     
-    for (k in 1:nrow(traj)){
+    for (k in 1:nrow(traj)) {
       date2[k] <- 
         ISOdatetime(ifelse(traj[1,2] < 50,
                            traj[1,2] + 2000,
@@ -175,7 +176,7 @@ trajectory_read <- function(output_folder,
                   traj[1,3], traj[1,4], traj[1,5],
                   min = 0, sec = 0, tz = "GMT")
     
-    if (any(is.na(traj[,1]))){
+    if (any(is.na(traj[,1]))) {
       traj <- traj[-which(is.na(traj[,1])),]
     }
     
@@ -190,7 +191,7 @@ trajectory_read <- function(output_folder,
         paste0(path.expand(output_folder),
                "/", trajectory_file_list[1])))
   
-  if (any(widths == 173)){
+  if (any(widths == 173)) {
     
     # Initialize empty data frame with 9 named columns
     traj_extra_df <- 
@@ -204,7 +205,7 @@ trajectory_read <- function(output_folder,
       c(6, 6, 6, 6, 6, 6, 6, 6, 8, 9, 9, 9, 9,
         9, 9, 9, 9, 9, 9, 9, 9, 9)
     
-    for (i in 1:length(trajectory_file_list)){
+    for (i in 1:length(trajectory_file_list)) {
       
       traj_extra <- 
         read.fwf(paste0(path.expand(output_folder),
@@ -212,7 +213,7 @@ trajectory_read <- function(output_folder,
                  skip = skip_up_to_line,
                  widths = extra_column_widths)[,14:22]
       
-      if (any(is.na(traj_extra[,1]))){
+      if (any(is.na(traj_extra[,1]))) {
         traj_extra <- traj_extra[-which(is.na(traj_extra[,1])),]
       }
       

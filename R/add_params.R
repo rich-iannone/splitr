@@ -63,53 +63,53 @@ add_params <- function(model,
                        direction = NULL,
                        met_type = NULL,
                        vert_motion = NULL,
-                       model_height = NULL){
+                       model_height = NULL) {
   
-  if (!is.null(lat)){
+  if (!is.null(lat)) {
     model$lat <- lat
   }
   
-  if (!is.null(lon)){
+  if (!is.null(lon)) {
     model$lon <- lon
   }
   
-  if (!is.null(height)){
+  if (!is.null(height)) {
     model$height <- height
   }
   
-  if (!is.null(duration)){
+  if (!is.null(duration)) {
     model$duration <- duration
   }
   
-  if (!is.null(run_period)){
+  if (!is.null(run_period)) {
     model$run_period <- run_period
   }
 
-  if (!is.null(start_day)){
+  if (!is.null(start_day)) {
     model$start_day <- start_day
   }
   
-  if (!is.null(start_hour)){
+  if (!is.null(start_hour)) {
     model$start_hour <- start_hour
   }
   
-  if (!is.null(daily_hours)){
+  if (!is.null(daily_hours)) {
     model$daily_hours <- daily_hours
   }
   
-  if (!is.null(direction)){
+  if (!is.null(direction)) {
     model$direction <- direction
   }
   
-  if (!is.null(met_type)){
+  if (!is.null(met_type)) {
     model$met_type <- met_type
   }
   
-  if (!is.null(vert_motion)){
+  if (!is.null(vert_motion)) {
     model$vert_motion <- vert_motion
   }
   
-  if (!is.null(model_height)){
+  if (!is.null(model_height)) {
     model$model_height <- model_height
   }
   

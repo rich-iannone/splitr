@@ -62,20 +62,20 @@ hysplit_forecast_trajectory <- function(start_lat_deg,
                                         path_met_files,
                                         path_output_files,
                                         path_wd,
-                                        path_executable){
+                                        path_executable) {
   
   # Set number of starting locations to 1 for this function
   no_starting_locations <- 1
   
   # Obtain the appropriate forecast met files, depending on user selection
-  if (met_type == "nam"){
+  if (met_type == "nam") {
     
     # If the most recent NAM forecast met file isn't already available, get the file
     today <- gsub("-", "", Sys.Date())
     
     if (paste0(path.expand(path_met_files), paste0(today, ".t00z.namf")) %in%
         list.files(path = gsub("/$", "", path_met_files),
-                   full.names = TRUE) == FALSE){
+                   full.names = TRUE) == FALSE) {
       get_met_forecast_nam(path_met_files = path_met_files)
     }
     
@@ -168,14 +168,14 @@ hysplit_forecast_trajectory <- function(start_lat_deg,
     # directory Execute the model run; the system call
     # will be different whether the platform in win or
     # unix
-    if (.Platform$OS.type == "unix"){
+    if (.Platform$OS.type == "unix") {
       system(paste0("(cd ", path_wd, " && ", path_executable, "hyts_std)"))
       
       # Copy files from 'Working' to current project folder
       system(paste0("(cd ", path_wd, " && mv traj* '", path_output_files, "')"))
     }
     
-    if (.Platform$OS.type == "windows"){
+    if (.Platform$OS.type == "windows") {
       shell(paste0("(cd ", path_wd, " && ", path_executable, "hyts_std)"))
       
       # Copy files from 'Working' to the output folder

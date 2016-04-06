@@ -19,34 +19,34 @@
 
 trajectory_plot <- function(x,
                             show_hourly = TRUE,
-                            color_scheme = "cycle_hues"){
+                            color_scheme = "cycle_hues") {
   
-  if (inherits(x, "traj_model")){
-    if (!is.null(x$traj_df)){
+  if (inherits(x, "traj_model")) {
+    if (!is.null(x$traj_df)) {
       traj_df <- x$traj_df
     } else {
       stop("There is no data available for plotting.")
     }
   }
   
-  if (inherits(x, "data.frame")){
+  if (inherits(x, "data.frame")) {
     if (all(c("receptor", "year", "month", "day",
               "hour", "hour.inc", "lat", "lon",
               "height", "pressure", "date2",
-              "date") %in% colnames(x))){
+              "date") %in% colnames(x))) {
       traj_df <- x
     } else {
       stop("This data frame does not contain plottable data.")
     }
   }
   
-  if (color_scheme == "cycle_hues"){
+  if (color_scheme == "cycle_hues") {
     colors <- 
       hue_pal(c = 90, l = 70)(
         length(sort(unique(traj_df$date))))
   }
   
-  if (color_scheme == "increasingly_gray"){
+  if (color_scheme == "increasingly_gray") {
     colors <-
       grey_pal(0.7, 0.1)(length(sort(unique(traj_df$date))))
   }
@@ -96,16 +96,16 @@ trajectory_plot <- function(x,
       max(traj_df$lat))
   
   # Get different trajectories by site and by date
-  for (i in 1:length(sort(unique(traj_df$receptor)))){
+  for (i in 1:length(sort(unique(traj_df$receptor)))) {
     
-    if (i == 1){
+    if (i == 1) {
       sorted_sites <- sort(unique(traj_df$receptor))
       wind_traj_by_site_date <- list()
     }
     
-    for (j in 1:length(sort(unique(traj_df$date)))){
+    for (j in 1:length(sort(unique(traj_df$date)))) {
       
-      if (j == 1){
+      if (j == 1) {
         sorted_dates <- sort(unique(traj_df$date))
         wind_traj_by_date <- list()
       }
@@ -124,14 +124,14 @@ trajectory_plot <- function(x,
     wind_traj_by_site_date[[i]] <- wind_traj_by_date
   }
   
-  if (length(wind_traj_by_site_date) == 1){
+  if (length(wind_traj_by_site_date) == 1) {
     
-    if (show_hourly){
+    if (show_hourly) {
       
       # Add CircleMarkers for each trajectory
-      for (i in 1:length(wind_traj_by_site_date[[1]])){
+      for (i in 1:length(wind_traj_by_site_date[[1]])) {
         
-        if (ncol(wind_traj_by_site_date[[1]][[i]]) == 21){
+        if (ncol(wind_traj_by_site_date[[1]][[i]]) == 21) {
           
           popup <- 
             paste0(
@@ -226,7 +226,7 @@ trajectory_plot <- function(x,
               popup = popup)
         }
         
-        if (ncol(wind_traj_by_site_date[[1]][[i]]) == 12){
+        if (ncol(wind_traj_by_site_date[[1]][[i]]) == 12) {
           
           popup <- 
             paste0(
@@ -297,7 +297,7 @@ trajectory_plot <- function(x,
     }
     
     # Create polylines for trajectory paths
-    for (i in 1:length(wind_traj_by_site_date[[1]])){
+    for (i in 1:length(wind_traj_by_site_date[[1]])) {
       
       popup <- 
         paste0(
@@ -334,15 +334,15 @@ trajectory_plot <- function(x,
                           "trajectory_paths"))
   }
   
-  if (length(wind_traj_by_site_date) > 1){
+  if (length(wind_traj_by_site_date) > 1) {
     
-    if (show_hourly){
+    if (show_hourly) {
       
       # Add CircleMarkers for each trajectory
-      for (i in 1:length(wind_traj_by_site_date)){
-        for (j in 1:length(wind_traj_by_site_date[[i]])){
+      for (i in 1:length(wind_traj_by_site_date)) {
+        for (j in 1:length(wind_traj_by_site_date[[i]])) {
           
-          if (ncol(wind_traj_by_site_date[[i]][[j]]) == 21){
+          if (ncol(wind_traj_by_site_date[[i]][[j]]) == 21) {
             
             popup <- 
               paste0(
@@ -439,7 +439,7 @@ trajectory_plot <- function(x,
                 popup = popup)
           }
           
-          if (ncol(wind_traj_by_site_date[[i]][[j]]) == 12){
+          if (ncol(wind_traj_by_site_date[[i]][[j]]) == 12) {
             
             popup <- 
               paste0(
@@ -514,8 +514,8 @@ trajectory_plot <- function(x,
     }
     
     # Create polylines for trajectory paths
-    for (i in 1:length(wind_traj_by_site_date)){
-      for (j in 1:length(wind_traj_by_site_date[[i]])){
+    for (i in 1:length(wind_traj_by_site_date)) {
+      for (j in 1:length(wind_traj_by_site_date[[i]])) {
         
         popup <- 
           paste0(

@@ -5,7 +5,7 @@
 #' model object.
 #' @export create_disp_model
 
-create_disp_model <- function(name = NULL){
+create_disp_model <- function(name = NULL) {
   
   # Create the 'disp_model' list object
   disp_model <- 

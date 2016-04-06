@@ -1,11 +1,11 @@
 #' Plot HYSPLIT dispersion model output onto a map
 #' @description The function plots modeled dispersion
-#' particles onto a map with information provided
-#' at time interval.
-#' @param disp_df a dispersion data frame, typically
-#' created from use of the \code{hysplit_dispersion}
-#' function with the value for \code{return_disp_df}
-#' set to \code{TRUE}.
+#' particles onto an interactive map.
+#' @param x either a dispersion data frame, typically
+#' created from use of the \code{hysplit_dispersion},
+#' or a dispersion model object that contains output
+#' data (i.e., after executing model runs via the
+#' \code{run_model} function).
 #' @param color_scheme defines the appearance of
 #' multiple trajectories in a single plot. Current
 #' options are \code{cycle_hues} (the default), and
@@ -14,16 +14,33 @@
 #' @import scales
 #' @export dispersion_plot
 
-dispersion_plot <- function(disp_df,
-                            color_scheme = "cycle_hues"){
+dispersion_plot <- function(x,
+                            color_scheme = "cycle_hues") {
   
-  if (color_scheme == "cycle_hues"){
+  if (inherits(x, "disp_model")) {
+    if (!is.null(x$disp_df)) {
+      disp_df <- x$disp_df
+    } else {
+      stop("There is no data available for plotting.")
+    }
+  }
+  
+  if (inherits(x, "data.frame")) {
+    if (all(c("particle_no", "lon", "lat", "height",
+              "hour") %in% colnames(x))) {
+      disp_df <- x
+    } else {
+      stop("This data frame does not contain plottable data.")
+    }
+  }
+  
+  if (color_scheme == "cycle_hues") {
     colors <- 
       hue_pal(c = 90, l = 70)(
         length(sort(unique(disp_df$hour))))
   }
   
-  if (color_scheme == "increasingly_gray"){
+  if (color_scheme == "increasingly_gray") {
     colors <-
       grey_pal(0.7, 0.1)(length(sort(unique(disp_df$hour))))
   }
@@ -69,9 +86,9 @@ dispersion_plot <- function(disp_df,
       max(disp_df$lat))
   
   # Get different particle plots by hour of transport
-  for (i in 1:length(sort(unique(disp_df$hour)))){
+  for (i in 1:length(sort(unique(disp_df$hour)))) {
     
-    if (i == 1){
+    if (i == 1) {
       groups <- vector("character")
     }
     

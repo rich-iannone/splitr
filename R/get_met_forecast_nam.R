@@ -8,7 +8,7 @@
 #' @import downloader
 #' @export get_met_forecast_nam
 
-get_met_forecast_nam <- function(path_met_files){
+get_met_forecast_nam <- function(path_met_files) {
   
   # Establish which forecast dirs are currently available on the server
   forecast_dirs <-
@@ -22,7 +22,7 @@ get_met_forecast_nam <- function(path_met_files){
   # Download today's namf file
   # -- CONUS, 12 km, 3 hrly, pressure levels, 48 h forecast
   
-  if (today %in% forecast_dirs){
+  if (today %in% forecast_dirs) {
     download(url = paste0("ftp://arlftp.arlhq.noaa.gov/forecast/",
                           today, "/hysplit.t00z.namf"),
              destfile = paste0(path_met_files, paste0(today, ".t00z.namf")),

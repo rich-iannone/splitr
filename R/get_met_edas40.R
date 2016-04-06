@@ -34,7 +34,7 @@
 get_met_edas40 <- function(files = NULL,
                            years = NULL,
                            months = NULL,
-                           path_met_files){
+                           path_met_files) {
   
   edas40_dir <- 
     "ftp://arlftp.arlhq.noaa.gov/archives/edas40/"
@@ -57,17 +57,17 @@ get_met_edas40 <- function(files = NULL,
   edas40_listing <-
     gsub(" ", "", edas40_listing)
   
-  if (!is.null(years)){
+  if (!is.null(years)) {
     
-    if (length(years) > 1){
+    if (length(years) > 1) {
       years <- seq.default(years[1], years[2])
     }
     
     years <- substr(years, 3, 4)
     
-    for (i in 1:length(years)){
+    for (i in 1:length(years)) {
       
-      if (i == 1){
+      if (i == 1) {
         edas40_file_list <-
           vector(mode = "character")
       }
@@ -81,16 +81,15 @@ get_met_edas40 <- function(files = NULL,
     }
   }
   
-  if (!is.null(months)){
+  if (!is.null(months)) {
     
     months_3_letter <- 
       c("jan", "feb", "mar", "apr",
         "may", "jun", "jul", "aug",
         "sep", "oct", "nov", "dec")
     
-    
-    for (i in 1:length(months)){
-      if (i == 1){
+    for (i in 1:length(months)) {
+      if (i == 1) {
         edas40_file_list_month <-
           vector(mode = "character", length = 0)
       }
@@ -106,11 +105,11 @@ get_met_edas40 <- function(files = NULL,
     edas40_file_list <- edas40_file_list_month
   }
   
-  if (!is.null(files)){
+  if (!is.null(files)) {
     edas40_file_list <- files
   }
   
-  for (i in 1:length(edas40_file_list)){
+  for (i in 1:length(edas40_file_list)) {
     download(
       url = paste0(edas40_dir,
                    edas40_file_list[i]),

@@ -10,9 +10,9 @@
 #' model output data archives
 #' @export trajectory_list
 
-trajectory_list <- function(output_folder){
+trajectory_list <- function(output_folder) {
   
-  if (get_os() == "mac"){
+  if (get_os() == "mac") {
     file_list <- list.files(path = output_folder,
                             pattern = ".zip")
     trajectory_output_df <-
@@ -20,7 +20,7 @@ trajectory_list <- function(output_folder){
                                nc = 4))
   }
   
-  if (get_os() == "win"){
+  if (get_os() == "win") {
     dir_list <- list.dirs(path = output_folder,
                           recursive = FALSE)
     trajectory_output_df <-
@@ -33,9 +33,9 @@ trajectory_list <- function(output_folder){
       "Creation Date and Time",
       "Data Count")
   
-  for (i in 1:length(file_list)){
+  for (i in 1:length(file_list)) {
     trajectory_output_df[i,1] <- i
-    if (get_os() == "mac"){
+    if (get_os() == "mac") {
       trajectory_output_df[i,2] <- 
         gsub("^([^--]+)--.*", "\\1", file_list[i])
       
@@ -56,7 +56,7 @@ trajectory_list <- function(output_folder){
           tz = "")
     }
     
-    if (get_os() == "win"){
+    if (get_os() == "win") {
       trajectory_output_df[i,2] <-
         gsub("^([^--]+)--.*", "\\1", dir_list[i])
       
@@ -79,10 +79,10 @@ trajectory_list <- function(output_folder){
     
     if (difftime(Sys.time(),
                  datetime,
-                 units = "hours")[[1]] >= 24){
+                 units = "hours")[[1]] >= 24) {
       if (difftime(Sys.time(),
                    datetime,
-                   units = "days")[[1]] %% 1 >= 0.8){
+                   units = "days")[[1]] %% 1 >= 0.8) {
         time_description <- 
           paste0("almost ",
                  ceiling(difftime(Sys.time(),
@@ -94,7 +94,7 @@ trajectory_list <- function(output_folder){
                           units = "days")[[1]] %% 1 >= 0.2 &
                  difftime(Sys.time(),
                           datetime,
-                          units = "days")[[1]] %% 1 < 0.8){
+                          units = "days")[[1]] %% 1 < 0.8) {
         time_description <- 
           paste0("ca. ", 
                  floor(difftime(Sys.time(),
@@ -114,7 +114,7 @@ trajectory_list <- function(output_folder){
                         units = "hours")[[1]] < 24 &
                difftime(Sys.time(),
                         datetime,
-                        units = "hours")[[1]] >= 1){
+                        units = "hours")[[1]] >= 1) {
       time_description <- 
         paste0("about ",
                floor(difftime(Sys.time(),
@@ -126,7 +126,7 @@ trajectory_list <- function(output_folder){
                         units = "hours")[[1]] < 1 &
                difftime(Sys.time(),
                         datetime,
-                        units = "mins")[[1]] >= 1){
+                        units = "mins")[[1]] >= 1) {
       time_description <- 
         paste0("about ",
                floor(difftime(Sys.time(),
@@ -144,7 +144,7 @@ trajectory_list <- function(output_folder){
     
     rm(datetime, time_description)
     
-    if (get_os() == "mac"){
+    if (get_os() == "mac") {
       trajectory_output_df[i,4] <- 
         as.numeric(
           system(

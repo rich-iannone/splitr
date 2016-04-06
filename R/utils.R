@@ -1,5 +1,3 @@
-
-
 # Create default `SETUP.CFG` and `ASCDATA.CFG`
 # files for trajectory and dispersion runs
 hysplit_config_init <- function() {

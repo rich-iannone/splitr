@@ -74,13 +74,13 @@ hysplit_trajectory <- function(lat = 49.263,
                                model_height = 20000,
                                extended_met = FALSE,
                                return_traj_df = TRUE,
-                               traj_name = NULL){
+                               traj_name = NULL) {
   
   
   if (length(run_period) == 1 &
       class(run_period) == "character" &
       all(grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]",
-            run_period))){
+            run_period))) {
     
     run_type <- "day"
     run_day <- run_period
@@ -89,21 +89,21 @@ hysplit_trajectory <- function(lat = 49.263,
   if (length(run_period) == 2 &
       class(run_period) == "character" &
       all(grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]",
-            run_period))){
+            run_period))) {
     
     run_type <- "range"
     run_range <- run_period
   }
   
   if (length(run_period) == 1 &
-      class(run_period) == "numeric"){
+      class(run_period) == "numeric") {
     
     run_type <- "years"
     run_years <- run_period
   }
   
   if (length(run_period) == 2 &
-      class(run_period) == "numeric"){
+      class(run_period) == "numeric") {
     
     run_type <- "years"
     run_years <- paste0(run_period[1], "-", run_period[2])
@@ -113,7 +113,7 @@ hysplit_trajectory <- function(lat = 49.263,
   # ASCDATA.CFG files in the working directory
   hysplit_config_init()
   
-  if (extended_met){
+  if (extended_met) {
     setup_cfg <- readLines('SETUP.CFG')
     setup_cfg <- gsub("(tm_.* )(0),", "\\11,", setup_cfg)
     cat(setup_cfg,
@@ -123,7 +123,7 @@ hysplit_trajectory <- function(lat = 49.263,
   
   # Stop function if there are vectors of different
   # length for `lat` and `lon`
-  if (length(lat) != length(lon)){
+  if (length(lat) != length(lon)) {
     stop("The coordinate vectors are not the same length.")
   }
   
@@ -132,7 +132,7 @@ hysplit_trajectory <- function(lat = 49.263,
   
   # For every set of coordinates, perform a set
   # of model runs
-  for (z in 1:length(coords$lat)){
+  for (z in 1:length(coords$lat)) {
   
     if (z == 1) ensemble_df <- data.frame()
     
@@ -142,12 +142,12 @@ hysplit_trajectory <- function(lat = 49.263,
         ifelse(nchar(run_years) == 4, "single", "range")
     
     # Make a vector list of run days in POSIXct format
-    if (run_type == "day"){
+    if (run_type == "day") {
       list_run_days <- 
         as.POSIXct(run_day,
                    origin = "1970-01-01",
                    tz = "UTC")
-    } else if (run_type == "range"){
+    } else if (run_type == "range") {
       list_run_days <- 
         seq(as.POSIXct(run_range[1],
                        origin = "1970-01-01",
@@ -156,7 +156,7 @@ hysplit_trajectory <- function(lat = 49.263,
                        origin = "1970-01-01",
                        tz = "UTC"),
             by = 86400)
-    } else if (run_type == "years"){
+    } else if (run_type == "years") {
       list_run_days <- 
         seq(
           as.POSIXct(paste0(substr(run_years, 1, 4),
@@ -183,7 +183,7 @@ hysplit_trajectory <- function(lat = 49.263,
              length = 0)
     
     # Make loop with all run days
-    for (i in 1:length(list_run_days)){
+    for (i in 1:length(list_run_days)) {
       
       # Define starting time parameters
       start_year_GMT <- 
@@ -199,7 +199,7 @@ hysplit_trajectory <- function(lat = 49.263,
       
       # Sort daily starting hours if given as
       # numeric values
-      if (class(daily_hours) == "numeric"){
+      if (class(daily_hours) == "numeric") {
         daily_hours <-
           formatC(sort(daily_hours),
                   width = 2,
@@ -207,7 +207,7 @@ hysplit_trajectory <- function(lat = 49.263,
       }
       
       # Make nested loop with daily beginning hours
-      for (j in daily_hours){    
+      for (j in daily_hours) {    
         
         start_hour_GMT <- j
         
@@ -262,11 +262,11 @@ hysplit_trajectory <- function(lat = 49.263,
         
         # Determine which of the three cases is true
         if (number_of_calendar_years == 1 & 
-            number_of_calendar_months == 1){
+            number_of_calendar_months == 1) {
           case_within_month <- TRUE
-        } else if (number_of_calendar_years > 1){
+        } else if (number_of_calendar_years > 1) {
           case_over_year <- TRUE
-        } else if (number_of_calendar_months > 1){
+        } else if (number_of_calendar_months > 1) {
           case_over_month <- TRUE
         } else { NULL }
         
@@ -433,7 +433,7 @@ hysplit_trajectory <- function(lat = 49.263,
             mat.or.vec(nr = length(met), nc = 2)),
             nm = c("file","available"))
         
-        if (any(c("mac", "unix") %in% get_os())){
+        if (any(c("mac", "unix") %in% get_os())) {
           
           for (k in 1:length(met)) {
             met_file_df[k, 1] <- met[k]
@@ -455,27 +455,27 @@ hysplit_trajectory <- function(lat = 49.263,
                       append = FALSE)
           
           # Download the missing met files
-          if (FALSE %in% met_file_df[,2]){
+          if (FALSE %in% met_file_df[,2]) {
             
             files_to_get <- 
               subset(met_file_df,
                      available == FALSE)[,1]
             
-            if (met_type == "reanalysis"){
+            if (met_type == "reanalysis") {
               
               get_met_reanalysis(
                 files = files_to_get,
                 path_met_files = paste0(getwd(), "/"))
             }
             
-            if (met_type == "narr"){
+            if (met_type == "narr") {
               
               get_met_narr(
                 files = files_to_get,
                 path_met_files = paste0(getwd(), "/"))
             }
             
-            if (met_type == "gdas1"){
+            if (met_type == "gdas1") {
               
               get_met_gdas1(
                 files = files_to_get,
@@ -484,7 +484,7 @@ hysplit_trajectory <- function(lat = 49.263,
           }
         }
         
-        if (get_os() == "win"){
+        if (get_os() == "win") {
           
           for (k in 1:length(met)) {
             met_file_df[k, 1] <- met[k]
@@ -503,22 +503,22 @@ hysplit_trajectory <- function(lat = 49.263,
                       append = FALSE)
           
           # Download the missing met files
-          if (FALSE %in% met_file_df[,2]){
+          if (FALSE %in% met_file_df[,2]) {
             
             files_to_get <- subset(met_file_df,
                                    available == FALSE)[,1]
             
-            if (met_type == "reanalysis"){
+            if (met_type == "reanalysis") {
               get_met_reanalysis(files = files_to_get,
                                  path_met_files = getwd())
             }
             
-            if (met_type == "narr"){
+            if (met_type == "narr") {
               get_met_narr(files = files_to_get,
                                  path_met_files = getwd())
             }
             
-            if (met_type == "gdas1"){
+            if (met_type == "gdas1") {
               get_met_gdas1(files = files_to_get,
                             path_met_files = getwd())
             } 
@@ -544,7 +544,7 @@ hysplit_trajectory <- function(lat = 49.263,
         all_trajectory_files <- 
           c(all_trajectory_files, output_filename)
         
-        if (any(c("mac", "unix") %in% get_os())){
+        if (any(c("mac", "unix") %in% get_os())) {
           
           # Write start year, month, day, hour to
           # 'CONTROL'
@@ -593,7 +593,7 @@ hysplit_trajectory <- function(lat = 49.263,
               sep = '', append = TRUE)
           
           # Write met file paths to 'CONTROL'
-          for (i in 1:length(met)){
+          for (i in 1:length(met)) {
             cat(getwd(), "/\n", met[i], "\n",
                 file = paste0(getwd(), "/CONTROL"),
                 sep = '', append = TRUE)}
@@ -610,7 +610,7 @@ hysplit_trajectory <- function(lat = 49.263,
               sep = '', append = TRUE)
         }
         
-        if (get_os() == "win"){
+        if (get_os() == "win") {
           
           # Write start year, month, day, hour to
           # 'CONTROL'
@@ -659,7 +659,7 @@ hysplit_trajectory <- function(lat = 49.263,
               sep = '', append = TRUE)
           
           # Write met file paths to 'CONTROL'
-          for (i in 1:length(met)){
+          for (i in 1:length(met)) {
             cat(getwd(), "/\n", met[i], "\n",
                 file = paste0(getwd(), "/CONTROL"),
                 sep = '', append = TRUE)}
@@ -678,7 +678,7 @@ hysplit_trajectory <- function(lat = 49.263,
         
         # The CONTROL file is now complete and in the
         # working directory, so, execute the model run
-        if (get_os() == "mac"){
+        if (get_os() == "mac") {
           
           system(paste0("(cd ", getwd(), " && ",
                         system.file("osx/hyts_std",
@@ -686,14 +686,14 @@ hysplit_trajectory <- function(lat = 49.263,
                         ")"))
         }
         
-        if (get_os() == "unix"){
+        if (get_os() == "unix") {
           system(paste0("(cd ", getwd(), " && ",
                         system.file("linux-amd64/hyts_std",
                                     package = "SplitR"),
                         ")"))
         }
         
-        if (get_os() == "win"){
+        if (get_os() == "win") {
           shell(paste0("(cd \"", getwd(), "\" && \"",
                        system.file("win/hyts_std.exe",
                                    package = "SplitR"),
@@ -703,14 +703,14 @@ hysplit_trajectory <- function(lat = 49.263,
     }
     
     # Generate name of archive directory
-    if (any(c("mac", "unix") %in% get_os())){
-      if (is.null(traj_name)){
+    if (any(c("mac", "unix") %in% get_os())) {
+      if (is.null(traj_name)) {
         folder_name <- 
           paste0("traj--",
                  format(Sys.time(),
                         "%Y-%m-%d--%H-%M-%S"), "-",
                  formatC(z, width = 5, format = "d", flag = "0"))
-      } else if (!is.null(traj_name)){
+      } else if (!is.null(traj_name)) {
         folder_name <-
           paste0(traj_name, "--", 
                  format(Sys.time(),
@@ -723,7 +723,7 @@ hysplit_trajectory <- function(lat = 49.263,
       dir.create(path = paste0(getwd(), "/",
                                folder_name))
       
-      for (i in 1:length(all_trajectory_files)){
+      for (i in 1:length(all_trajectory_files)) {
         system(paste0("(cd ", getwd(), " && mv ",
                       all_trajectory_files[i], " ",
                       paste0(getwd(), "/",
@@ -732,7 +732,7 @@ hysplit_trajectory <- function(lat = 49.263,
       }
       
       # Obtain a trajectory data frame
-      if (return_traj_df == TRUE){
+      if (return_traj_df == TRUE) {
         
         traj_df <-
           trajectory_read(output_folder =
@@ -741,13 +741,13 @@ hysplit_trajectory <- function(lat = 49.263,
       }
     }
     
-    if (get_os() == "win"){
-      if (is.null(traj_name)){
+    if (get_os() == "win") {
+      if (is.null(traj_name)) {
         folder_name <- 
           paste0("traj--",
                  format(Sys.time(),
                         "%Y-%m-%d--%H-%M-%S"))  
-      } else if (!is.null(traj_name)){
+      } else if (!is.null(traj_name)) {
         folder_name <- 
           paste0(traj_name, "--",
                  format(Sys.time(),
@@ -759,7 +759,7 @@ hysplit_trajectory <- function(lat = 49.263,
       dir.create(path = paste0(getwd(), "/",
                                folder_name))
       
-      for (i in 1:length(all_trajectory_files)){
+      for (i in 1:length(all_trajectory_files)) {
         shell(paste0("(cd \"", getwd(), "\" && move \"",
                      all_trajectory_files[i], "\" \"",
                      paste0(getwd(), "/",
@@ -768,7 +768,7 @@ hysplit_trajectory <- function(lat = 49.263,
       }
       
       # Obtain a trajectory data frame
-      if (return_traj_df == TRUE){
+      if (return_traj_df == TRUE) {
         traj_df <- 
           trajectory_read(output_folder =
                             paste0(getwd(), "/",
@@ -776,7 +776,7 @@ hysplit_trajectory <- function(lat = 49.263,
       }
     }
     
-    if (z == 1){
+    if (z == 1) {
       col_names <- colnames(traj_df)
       ensemble_df <-
         data.frame(mat.or.vec(nr = 0,
