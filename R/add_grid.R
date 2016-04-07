@@ -28,11 +28,14 @@
 #' grid will remain active from the start date-time.
 #' @param heights a vector of heights for which there
 #' will be horizontal sampling grids.
+#' @param samp_type the method of reporting for the
+#' sampling grid. The default is \code{avg} for
+#' reporting average concentrations at every sampling
+#' interval. Other options are \code{snapshot} and
+#' \code{max} for concentrations at the time of 
+#' sampling and for maximum concentrations, respectively.
 #' @param samp_interval the sampling interval in units
 #' of hours.
-#' @param samp_type the type of sampling that will
-#' occur.
-#' @param samp_rate the sampling rate.
 #' @param name an identifier for this set of grid
 #' parameters.
 #' @import lubridate
@@ -49,9 +52,8 @@ add_grid <- function(model,
                      end_hour = NULL,
                      duration = NULL,
                      heights = NULL,
-                     samp_interval = 0,
-                     samp_type = 6,
-                     samp_rate = 0,
+                     samp_type = "avg",
+                     samp_interval = 24,
                      name = NULL) {
   
   if (inherits(model, "traj_model")) {
@@ -147,9 +149,8 @@ add_grid <- function(model,
         end_day = end_day,
         end_hour = end_hour,
         heights = heights,
-        samp_interval = samp_interval,
         samp_type = samp_type,
-        samp_rate = samp_rate,
+        samp_interval = samp_interval,
         stringsAsFactors = FALSE)
     
     # Write data frame to the `grids` list
