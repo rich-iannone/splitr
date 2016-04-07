@@ -586,7 +586,8 @@ hysplit_dispersion <- function(lat = 49.263,
              formatC(grids[1, 15],
                      width = 2, 
                      format = "d", 
-                     flag = "0")))
+                     flag = "0"),
+             " 00"))
   
   # Get vector text indices that contain the short
   # name(s) of the grid(s)
