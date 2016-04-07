@@ -545,6 +545,16 @@ hysplit_dispersion <- function(lat = 49.263,
       )
   }
   
+  if (grids[1, 14] == "avg") {
+    sampling_type <- "0"
+  } else if (grids[1, 14] == "snapshot") {
+    sampling_type <- "1"
+  } else if (grids[1, 14] == "max") {
+    sampling_type <- "2"
+  } else {
+    sampling_type <- "0"
+  }
+  
   grids_text <-
     c("1",
       paste(grids[1, 2],
@@ -572,12 +582,8 @@ hysplit_dispersion <- function(lat = 49.263,
                      format = "d", 
                      flag = "0"),
              " 00"),
-      paste0(grids[1, 14], " ",
+      paste0(sampling_type, " ",
              formatC(grids[1, 15],
-                     width = 2, 
-                     format = "d", 
-                     flag = "0"), " ",
-             formatC(grids[1, 16],
                      width = 2, 
                      format = "d", 
                      flag = "0")))
