@@ -7,7 +7,7 @@
 add_grid(model, lat = NULL, lon = NULL, range = c(5, 5),
   division = c(0.5, 0.5), start_day = NULL, start_hour = NULL,
   end_day = NULL, end_hour = NULL, duration = NULL, heights = NULL,
-  samp_interval = 0, samp_type = 6, samp_rate = 0, name = NULL)
+  samp_type = "avg", samp_interval = 24, name = NULL)
 }
 \arguments{
 \item{model}{a SplitR modeling object}
@@ -48,13 +48,15 @@ grid will remain active from the start date-time.}
 \item{heights}{a vector of heights for which there
 will be horizontal sampling grids.}
 
+\item{samp_type}{the method of reporting for the
+sampling grid. The default is \code{avg} for
+reporting average concentrations at every sampling
+interval. Other options are \code{snapshot} and
+\code{max} for concentrations at the time of 
+sampling and for maximum concentrations, respectively.}
+
 \item{samp_interval}{the sampling interval in units
 of hours.}
-
-\item{samp_type}{the type of sampling that will
-occur.}
-
-\item{samp_rate}{the sampling rate.}
 
 \item{name}{an identifier for this set of grid
 parameters.}
