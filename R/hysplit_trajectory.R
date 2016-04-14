@@ -216,7 +216,7 @@ hysplit_trajectory <- function(lat = 49.263,
         
         # Determine the start time of the model run
         start_time_GMT <-
-          ymd_hms(paste0(ifelse(start_year_GMT > 50,
+          ymd_hms(paste0(ifelse(start_year_GMT > 40,
                                 paste0("19",
                                        start_year_GMT),
                                 start_year_GMT), "-",
