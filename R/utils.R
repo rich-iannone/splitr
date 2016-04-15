@@ -1,6 +1,6 @@
 # Create default `SETUP.CFG` and `ASCDATA.CFG`
 # files for trajectory and dispersion runs
-hysplit_config_init <- function() {
+hysplit_config_init <- function(dir) {
   
   # Default `SETUP.CFG` configuration file
   cat(" &SETUP", " tratio = 0.75,", " initd = 0,", " kpuff = 0,", " khmax = 9999,",
@@ -14,7 +14,7 @@ hysplit_config_init <- function() {
       " tm_pres = 0,", " tm_tpot = 0,", " tm_tamb = 0,", " tm_rain = 0,", " tm_mixd = 0,", 
       " tm_relh = 0,", " tm_sphu = 0,", " tm_mixr = 0,", " tm_dswf = 0,", " tm_terr = 0,",  
       " /", sep = "\n",
-      file = paste0(getwd(), "/", "SETUP.CFG"))
+      file = paste0(dir, "/", "SETUP.CFG"))
   
   # Default `ASCDATA.CFG` file
   cat("-90.0  -180.0  lat/lon of lower left corner (last record in file)",
@@ -24,7 +24,7 @@ hysplit_config_init <- function() {
       "0.2  	default roughness length (meters)",
       "'.'  directory location of data files",
       sep = "\n",
-      file = paste0(getwd(), "/", "ASCDATA.CFG"))
+      file = paste0(dir, "/", "ASCDATA.CFG"))
 }
 
 # Determine the operating system in use

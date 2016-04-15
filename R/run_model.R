@@ -30,7 +30,9 @@ run_model <- function(model) {
         model_height = ifelse(is.null(model$model_height),
                               20000, model$model_height),
         extended_met = TRUE,
-        return_traj_df = TRUE
+        return_traj_df = TRUE,
+        exec_dir = model$exec_dir,
+        met_dir = model$met_dir
       )
     
     model$traj_df <- traj_df

@@ -49,6 +49,11 @@
 #' magnitude). 
 #' @param model_height the upper limit of the model
 #' domain in meters.
+#' @param exec_dir an optional file path for the
+#' working directory of the model input and output
+#' files.
+#' @param met_dir an optional file path for storage and
+#' access of meteorological data files.
 #' @export add_params
 
 add_params <- function(model,
@@ -63,7 +68,9 @@ add_params <- function(model,
                        direction = NULL,
                        met_type = NULL,
                        vert_motion = NULL,
-                       model_height = NULL) {
+                       model_height = NULL,
+                       exec_dir = NULL,
+                       met_dir = NULL) {
   
   if (!is.null(lat)) {
     model$lat <- lat
@@ -111,6 +118,14 @@ add_params <- function(model,
   
   if (!is.null(model_height)) {
     model$model_height <- model_height
+  }
+  
+  if (!is.null(exec_dir)) {
+    model$exec_dir <- exec_dir
+  }
+  
+  if (!is.null(met_dir)) {
+    model$met_dir <-met_dir
   }
   
   return(model)
