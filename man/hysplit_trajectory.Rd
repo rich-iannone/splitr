@@ -8,7 +8,7 @@ hysplit_trajectory(lat = 49.263, lon = -123.25, height = 50,
   duration = 24, run_period = "2015-07-01", daily_hours = 0,
   direction = "forward", met_type = "reanalysis", vert_motion = 0,
   model_height = 20000, extended_met = FALSE, return_traj_df = TRUE,
-  traj_name = NULL)
+  traj_name = NULL, exec_dir = NULL, met_dir = NULL)
 }
 \arguments{
 \item{lat}{the starting latitude (in
@@ -67,6 +67,13 @@ frame with trajectory data.}
 
 \item{traj_name}{an optional, descriptive name for
 the output file collection.}
+
+\item{exec_dir}{an optional file path for the
+working directory of the model input and output
+files.}
+
+\item{met_dir}{an optional file path for storage and
+access of meteorological data files.}
 }
 \description{
 The function executes single/multiple

@@ -7,7 +7,8 @@
 add_params(model, lat = NULL, lon = NULL, height = NULL,
   duration = NULL, run_period = NULL, start_day = NULL,
   start_hour = NULL, daily_hours = NULL, direction = NULL,
-  met_type = NULL, vert_motion = NULL, model_height = NULL)
+  met_type = NULL, vert_motion = NULL, model_height = NULL,
+  exec_dir = NULL, met_dir = NULL)
 }
 \arguments{
 \item{model}{a SplitR modeling object.}
@@ -70,6 +71,13 @@ magnitude).}
 
 \item{model_height}{the upper limit of the model
 domain in meters.}
+
+\item{exec_dir}{an optional file path for the
+working directory of the model input and output
+files.}
+
+\item{met_dir}{an optional file path for storage and
+access of meteorological data files.}
 }
 \description{
 Add modelling parameters to a model
