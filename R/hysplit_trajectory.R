@@ -693,14 +693,14 @@ hysplit_trajectory <- function(lat = 49.263,
           system(paste0("(cd ", exec_dir, " && ",
                         system.file("osx/hyts_std",
                                     package = "SplitR"),
-                        ")"))
+                        " >> /dev/null 2>&1)"))
         }
         
         if (get_os() == "unix") {
           system(paste0("(cd ", exec_dir, " && ",
                         system.file("linux-amd64/hyts_std",
                                     package = "SplitR"),
-                        ")"))
+                        " >> /dev/null 2>&1)"))
         }
         
         if (get_os() == "win") {
