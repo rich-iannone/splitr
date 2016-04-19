@@ -105,8 +105,8 @@ hysplit_dispersion <- function(lat = 49.263,
     run_day <- start_day
   }
   
-  # If SETUP.CFG or ASCDATA.CFG do not exist in the working
-  # directory, write default versions of those
+  # If SETUP.CFG or ASCDATA.CFG do not exist in the 
+  # working directory, write default versions of those
   # config files
   if (!("SETUP.CFG" %in% list.files()) |
       !("ASCDATA.CFG" %in% list.files())) {
@@ -637,14 +637,14 @@ hysplit_dispersion <- function(lat = 49.263,
     system(paste0("(cd ", getwd(), " && ",
                   system.file("osx/hycs_std",
                               package = "SplitR"),
-                  ")"))
+                  " >> /dev/null 2>&1)"))
   }
   
   if (get_os() == "unix") {
     system(paste0("(cd ", getwd(), " && ",
                   system.file("linux-amd64/hycs_std",
                               package = "SplitR"),
-                  ")"))
+                  " >> /dev/null 2>&1)"))
   }
   
   if (get_os() == "win") {
