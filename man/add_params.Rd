@@ -8,22 +8,21 @@ add_params(model, lat = NULL, lon = NULL, height = NULL,
   duration = NULL, run_period = NULL, start_day = NULL,
   start_hour = NULL, daily_hours = NULL, direction = NULL,
   met_type = NULL, vert_motion = NULL, model_height = NULL,
-  exec_dir = NULL, met_dir = NULL)
+  exec_dir = NULL, met_dir = NULL, binary_path = NULL)
 }
 \arguments{
 \item{model}{a SplitR modeling object.}
 
-\item{lat}{the starting latitude (in
-decimal degrees) for the model run(s).}
+\item{lat}{the starting latitude (in decimal 
+degrees) for the model run(s).}
 
-\item{lon}{the starting longitude (in
-decimal degrees) for the model run(s).}
+\item{lon}{the starting longitude (in decimal 
+degrees) for the model run(s).}
 
-\item{height}{the starting height (in
-meters above ground level) for the model run(s).}
+\item{height}{the starting height (in meters above 
+ground level) for the model run(s).}
 
 \item{duration}{the duration of one or several
-model runs (either \code{forward} or
 \code{backward}) in hours.}
 
 \item{run_period}{the extended period (i.e., days,
@@ -78,6 +77,11 @@ files.}
 
 \item{met_dir}{an optional file path for storage and
 access of meteorological data files.}
+
+\item{binary_path}{an optional path to a HYSPLIT
+trajectory model binary. When not specified, the
+model binary will be chosen from several available
+in the package (based on the user's platform).}
 }
 \description{
 Add modelling parameters to a model
