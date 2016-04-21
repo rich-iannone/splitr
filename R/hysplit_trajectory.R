@@ -2,23 +2,23 @@
 #' @description The function executes single/multiple
 #' forward or backward HYSPLIT trajectory runs using
 #' specified meteorological datasets.
-#' @param lat the starting latitude (in
-#' decimal degrees) for the model run(s).
-#' @param lon the starting longitude (in
-#' decimal degrees) for the model run(s).
-#' @param height the starting height (in
-#' meters above ground level) for the model run(s).
-#' @param duration the duration of each
-#' model run (either forward or backward) in hours.
+#' @param lat the starting latitude (in decimal 
+#' degrees) for the model run(s).
+#' @param lon the starting longitude (in decimal 
+#' degrees) for the model run(s).
+#' @param height the starting height (in meters above 
+#' ground level) for the model run(s).
+#' @param duration the duration of each model run 
+#' (either forward or backward) in hours.
 #' @param run_period the extended period (i.e., days,
 #' years) when the model will initialize and run. This
 #' can take the form of a single-length vector for a
 #' day (\code{"YYYY-MM-DD"}) or year (\code{YYYY}), or,
 #' a vector of length 2 to specify the range of days or
 #' years.
-#' @param daily_hours should consist of a
-#' single daily hour as an integer hour (from \code{0}
-#' to \code{23}), or, a vector of several daily hours
+#' @param daily_hours should consist of a single daily 
+#' hour as an integer hour (from \code{0} to 
+#' \code{23}), or, a vector of several daily hours
 #' represented as integers.
 #' @param direction an option to select whether to
 #' conduct the model in the \code{forward} or 
@@ -29,19 +29,18 @@
 #' \code{reanalysis} (NCAR/NCEP global reanalysis
 #' data), and \code{narr} (North American Regional 
 #' Reanalysis). 
-#' @param vert_motion a numbered option to
-#' select the method used to simulation vertical
-#' motion. The methods are: \code{0} (input model
-#' data), \code{1} (isobaric), \code{2} (isentropic),
-#' \code{3} (constant density), \code{4} (isosigma),
-#' \code{5} (from divergence), \code{6} (remap MSL to
-#' AGL), \code{7} (average data), and \code{8} (damped
+#' @param vert_motion a numbered option to select the 
+#' method used to simulation vertical motion. The 
+#' methods are: \code{0} (input model data), \code{1} 
+#' (isobaric), \code{2} (isentropic), \code{3} 
+#' (constant density), \code{4} (isosigma), \code{5} 
+#' (from divergence), \code{6} (remap MSL to AGL), 
+#' \code{7} (average data), and \code{8} (damped
 #' magnitude). 
 #' @param model_height the upper limit of the model
 #' domain in meters.
-#' @param extended_met an option to report
-#' additional meteorological data along each output
-#' trajectory.
+#' @param extended_met an option to report additional 
+#' meteorological data along each output trajectory.
 #' @param return_traj_df an option to return a data
 #' frame with trajectory data.
 #' @param traj_name an optional, descriptive name for
@@ -51,6 +50,10 @@
 #' files.
 #' @param met_dir an optional file path for storage and
 #' access of meteorological data files.
+#' @param binary_path an optional path to a HYSPLIT
+#' trajectory model binary. When not specified, the
+#' model binary will be chosen from several available
+#' in the package (based on the user's platform).
 #' @import lubridate
 #' @export hysplit_trajectory
 #' @examples
@@ -81,16 +84,38 @@ hysplit_trajectory <- function(lat = 49.263,
                                return_traj_df = TRUE,
                                traj_name = NULL,
                                exec_dir = NULL,
-                               met_dir = NULL) {
+                               met_dir = NULL,
+                               binary_path = NULL) {
   
   if (is.null(exec_dir)) exec_dir <- getwd()
   
   if (is.null(met_dir)) met_dir <- getwd()
   
+  if (is.null(binary_path)) {
+    
+    if (get_os() == "mac") {
+      binary_path <-
+        system.file("osx/hyts_std",
+                    package = "SplitR")
+    }
+    
+    if (get_os() == "unix") {
+      binary_path <-
+        system.file("linux-amd64/hyts_std",
+                    package = "SplitR")
+    }
+   
+    if (get_os() == "win") {
+      binary_path <-
+        system.file("win/hyts_std.exe",
+                    package = "SplitR")
+    }
+  }
+  
   if (length(run_period) == 1 &
       class(run_period) == "character" &
       all(grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]",
-            run_period))) {
+                run_period))) {
     
     run_type <- "day"
     run_day <- run_period
@@ -99,7 +124,7 @@ hysplit_trajectory <- function(lat = 49.263,
   if (length(run_period) == 2 &
       class(run_period) == "character" &
       all(grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]",
-            run_period))) {
+                run_period))) {
     
     run_type <- "range"
     run_range <- run_period
@@ -143,7 +168,7 @@ hysplit_trajectory <- function(lat = 49.263,
   # For every set of coordinates, perform a set
   # of model runs
   for (z in 1:length(coords$lat)) {
-  
+    
     if (z == 1) ensemble_df <- data.frame()
     
     # Determine whether the run_years input is a single
@@ -525,7 +550,7 @@ hysplit_trajectory <- function(lat = 49.263,
             
             if (met_type == "narr") {
               get_met_narr(files = files_to_get,
-                                 path_met_files = met_dir)
+                           path_met_files = met_dir)
             }
             
             if (met_type == "gdas1") {
@@ -688,25 +713,16 @@ hysplit_trajectory <- function(lat = 49.263,
         
         # The CONTROL file is now complete and in the
         # working directory, so, execute the model run
-        if (get_os() == "mac") {
+        if (any(c("mac", "unix") %in% get_os())) {
           
           system(paste0("(cd ", exec_dir, " && ",
-                        system.file("osx/hyts_std",
-                                    package = "SplitR"),
-                        " >> /dev/null 2>&1)"))
-        }
-        
-        if (get_os() == "unix") {
-          system(paste0("(cd ", exec_dir, " && ",
-                        system.file("linux-amd64/hyts_std",
-                                    package = "SplitR"),
+                        binary_path,
                         " >> /dev/null 2>&1)"))
         }
         
         if (get_os() == "win") {
           shell(paste0("(cd \"", exec_dir, "\" && \"",
-                       system.file("win/hyts_std.exe",
-                                   package = "SplitR"),
+                       binary_path,
                        "\")"))
         }
       }
@@ -742,8 +758,7 @@ hysplit_trajectory <- function(lat = 49.263,
       }
       
       # Obtain a trajectory data frame
-      if (return_traj_df == TRUE) {
-        
+      if (return_traj_df) {
         traj_df <-
           trajectory_read(output_folder =
                             paste0(exec_dir, "/",
@@ -778,7 +793,7 @@ hysplit_trajectory <- function(lat = 49.263,
       }
       
       # Obtain a trajectory data frame
-      if (return_traj_df == TRUE) {
+      if (return_traj_df) {
         traj_df <- 
           trajectory_read(output_folder =
                             paste0(exec_dir, "/",

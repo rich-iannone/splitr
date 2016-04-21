@@ -2,14 +2,14 @@
 #' @description Add modelling parameters to a model
 #' object
 #' @param model a SplitR modeling object.
-#' @param lat the starting latitude (in
-#' decimal degrees) for the model run(s).
-#' @param lon the starting longitude (in
-#' decimal degrees) for the model run(s).
-#' @param height the starting height (in
-#' meters above ground level) for the model run(s).
+#' @param lat the starting latitude (in decimal 
+#' degrees) for the model run(s).
+#' @param lon the starting longitude (in decimal 
+#' degrees) for the model run(s).
+#' @param height the starting height (in meters above 
+#' ground level) for the model run(s).
 #' @param duration the duration of one or several
-#' model runs (either \code{forward} or
+#  model runs (either \code{forward} or
 #' \code{backward}) in hours.
 #' @param run_period the extended period (i.e., days,
 #' years) when the model will initialize and run. This
@@ -54,6 +54,10 @@
 #' files.
 #' @param met_dir an optional file path for storage and
 #' access of meteorological data files.
+#' @param binary_path an optional path to a HYSPLIT
+#' trajectory model binary. When not specified, the
+#' model binary will be chosen from several available
+#' in the package (based on the user's platform).
 #' @export add_params
 
 add_params <- function(model,
@@ -70,7 +74,8 @@ add_params <- function(model,
                        vert_motion = NULL,
                        model_height = NULL,
                        exec_dir = NULL,
-                       met_dir = NULL) {
+                       met_dir = NULL,
+                       binary_path = NULL) {
   
   if (!is.null(lat)) {
     model$lat <- lat
@@ -125,7 +130,11 @@ add_params <- function(model,
   }
   
   if (!is.null(met_dir)) {
-    model$met_dir <-met_dir
+    model$met_dir <- met_dir
+  }
+  
+  if (!is.null(binary_path)) {
+    model$binary_path <- binary_path
   }
   
   return(model)

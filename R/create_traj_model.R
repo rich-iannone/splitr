@@ -22,7 +22,8 @@ create_traj_model <- function(name = NULL) {
          model_height = 20000,
          traj_df = NULL,
          exec_dir = NULL,
-         met_dir = NULL)
+         met_dir = NULL,
+         binary_path = NULL)
   
   attr(traj_model, "class") <- "traj_model"
   

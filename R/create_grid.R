@@ -26,9 +26,14 @@ create_grid <- function(lat = 49.263,
   n_s_points <- range[1] / division[1]
   w_e_points <- range[2] / division[2]
   
-  lat_vec <- sort((lat + range[1]/2) - seq(0, range[1], division[1]),
-                  decreasing = TRUE)
-  lon_vec <- sort((lon + range[2]/2) - seq(0, range[2], division[2]))
+  lat_vec <- 
+    sort((lat + range[1]/2) - 
+           seq(0, range[1], division[1]),
+         decreasing = TRUE)
+  
+  lon_vec <- 
+    sort((lon + range[2]/2) - 
+           seq(0, range[2], division[2]))
   
   for (i in 1:length(lat_vec)) {
     for (j in 1:length(lon_vec)) {
@@ -41,6 +46,5 @@ create_grid <- function(lat = 49.263,
       coords$lon[length(coords$lon) + 1] <- lon_vec[j]
     }
   }
-  
   return(coords)
 }

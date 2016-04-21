@@ -32,11 +32,11 @@ run_model <- function(model) {
         extended_met = TRUE,
         return_traj_df = TRUE,
         exec_dir = model$exec_dir,
-        met_dir = model$met_dir
+        met_dir = model$met_dir,
+        binary_path = model$binary_path
       )
     
     model$traj_df <- traj_df
-    
     return(model)
   }
   
@@ -70,7 +70,6 @@ run_model <- function(model) {
       )
    
     model$disp_df <- disp_df
-    
     return(model) 
   }
 }
