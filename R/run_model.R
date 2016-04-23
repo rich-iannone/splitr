@@ -9,18 +9,17 @@ run_model <- function(model) {
   
   if (inherits(model, "traj_model")) {
     
+
+    
     traj_df <- 
       hysplit_trajectory(
         lat = model$lat,
         lon = model$lon,
-        height = ifelse(is.null(model$height),
-                        50, model$height),
+        height = model$height,
         duration = ifelse(is.null(model$duration),
                           24, model$duration),
-        run_period = ifelse(is.null(model$run_period),
-                            "2015-07-01", model$run_period),
-        daily_hours = ifelse(is.null(model$daily_hours),
-                             0, model$daily_hours),
+        run_period = model$run_period,
+        daily_hours = model$daily_hours,
         direction = ifelse(is.null(model$direction),
                            "forward", model$direction),
         met_type = ifelse(is.null(model$met_type),
