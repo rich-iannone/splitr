@@ -8,9 +8,7 @@
 run_model <- function(model) {
   
   if (inherits(model, "traj_model")) {
-    
 
-    
     traj_df <- 
       hysplit_trajectory(
         lat = model$lat,
@@ -30,6 +28,7 @@ run_model <- function(model) {
                               20000, model$model_height),
         extended_met = TRUE,
         return_traj_df = TRUE,
+        traj_name = model$traj_name,
         exec_dir = model$exec_dir,
         met_dir = model$met_dir,
         binary_path = model$binary_path
