@@ -44,3 +44,21 @@ get_os <- function() {
 is_64bit_system <- function() {
   ifelse(.Machine$sizeof.pointer == 8, TRUE, FALSE)
 }
+
+create_file_list <- function(output_folder,
+                             create_file = TRUE,
+                             file_name = "file_list.txt") {
+  
+  # List files from the specified archive folder
+  file_list <- 
+    list.files(output_folder,
+               pattern = "traj.*")
+  
+  # Create file list in the output folder
+  cat(file_list,
+      file = paste0(output_folder, "/",
+                    file_name),
+      sep = '\n', append = FALSE)
+  
+  return(file_list)
+}
