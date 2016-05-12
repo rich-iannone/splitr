@@ -104,7 +104,7 @@ hysplit_trajectory <- function(lat = 49.263,
         system.file("linux-amd64/hyts_std",
                     package = "SplitR")
     }
-   
+    
     if (get_os() == "win") {
       binary_path <-
         system.file("win/hyts_std.exe",
@@ -112,11 +112,20 @@ hysplit_trajectory <- function(lat = 49.263,
     }
   }
   
+  # Generate name of output folder
+  if (is.null(traj_name)) {
+    folder_name <- 
+      paste0("traj-",
+             format(Sys.time(),
+                    "%Y-%m-%d-%H-%M-%S"))
+  } else if (!is.null(traj_name)) {
+    folder_name <- traj_name
+  }
+  
   if (length(run_period) == 1 &
       class(run_period) == "character" &
       all(grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]",
                 run_period))) {
-    
     run_type <- "day"
     run_day <- run_period
   }
@@ -125,21 +134,18 @@ hysplit_trajectory <- function(lat = 49.263,
       class(run_period) == "character" &
       all(grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]",
                 run_period))) {
-    
     run_type <- "range"
     run_range <- run_period
   }
   
   if (length(run_period) == 1 &
       class(run_period) == "numeric") {
-    
     run_type <- "years"
     run_years <- run_period
   }
   
   if (length(run_period) == 2 &
       class(run_period) == "numeric") {
-    
     run_type <- "years"
     run_years <- paste0(run_period[1], "-", run_period[2])
   }
@@ -168,8 +174,10 @@ hysplit_trajectory <- function(lat = 49.263,
   # For every set of coordinates, perform a set
   # of model runs
   for (z in 1:length(coords$lat)) {
-    
     if (z == 1) ensemble_df <- data.frame()
+    
+    lat <- coords$lat[z]
+    lon <- coords$lon[z]
     
     # Determine whether the run_years input is a single
     # year or a range
@@ -243,7 +251,6 @@ hysplit_trajectory <- function(lat = 49.263,
       
       # Make nested loop with daily beginning hours
       for (j in daily_hours) {    
-        
         start_hour_GMT <- j
         
         #--- Determine which met files are required for
@@ -480,38 +487,35 @@ hysplit_trajectory <- function(lat = 49.263,
           }
           
           # Write the met file availability to file
-          write.table(met_file_df,
-                      file = paste0(met_dir,
-                                    "/met_file_list"),
-                      sep = ",",
-                      row.names = FALSE,
-                      col.names = FALSE,
-                      quote = FALSE,
-                      append = FALSE)
+          write.table(
+            met_file_df,
+            file = paste0(met_dir,
+                          "/met_file_list"),
+            sep = ",",
+            row.names = FALSE,
+            col.names = FALSE,
+            quote = FALSE,
+            append = FALSE)
           
           # Download the missing met files
           if (FALSE %in% met_file_df[,2]) {
-            
             files_to_get <- 
               subset(met_file_df,
                      available == FALSE)[,1]
             
             if (met_type == "reanalysis") {
-              
               get_met_reanalysis(
                 files = files_to_get,
                 path_met_files = paste0(met_dir, "/"))
             }
             
             if (met_type == "narr") {
-              
               get_met_narr(
                 files = files_to_get,
                 path_met_files = paste0(met_dir, "/"))
             }
             
             if (met_type == "gdas1") {
-              
               get_met_gdas1(
                 files = files_to_get,
                 path_met_files = paste0(met_dir, "/"))
@@ -529,13 +533,14 @@ hysplit_trajectory <- function(lat = 49.263,
                                               met[k])))}
           
           # Write the met file availability to file
-          write.table(met_file_df,
-                      file = paste0(met_dir, "/met_file_list"),
-                      sep = ",",
-                      row.names = FALSE,
-                      col.names = FALSE,
-                      quote = FALSE,
-                      append = FALSE)
+          write.table(
+            met_file_df,
+            file = paste0(met_dir, "/met_file_list"),
+            sep = ",",
+            row.names = FALSE,
+            col.names = FALSE,
+            quote = FALSE,
+            append = FALSE)
           
           # Download the missing met files
           if (FALSE %in% met_file_df[,2]) {
@@ -564,17 +569,21 @@ hysplit_trajectory <- function(lat = 49.263,
         # model run
         output_filename <-
           paste0("traj-",
+                 ifelse(is.null(traj_name), 
+                        "", traj_name),
+                 "-",
                  ifelse(direction == "backward",
-                        "back--", "forward--"), "-",
+                        "bwd", "fwd"), "-",
                  start_year_GMT, "-",
                  start_month_GMT, "-",
                  start_day_GMT, "-",
                  start_hour_GMT, "-",
-                 "lat_", gsub("\\.", "-", coords$lat[z]), "_",
-                 "long_", gsub("\\.", "-", coords$lon[z]), "-",
-                 "height_", height, "-",
-                 duration, "h", "-",
-                 formatC(z, width = 5, format = "d", flag = "0"))
+                 z,
+                 "lat_", gsub("\\.", "p", as.character(lat)), "_",
+                 "lon_", gsub("\\.", "p", as.character(lon)), "-",
+                 "hgt_", height, "-",
+                 duration, "h")
+                 #formatC(z, width = 5, format = "d", flag = "0"))
         
         all_trajectory_files <- 
           c(all_trajectory_files, output_filename)
@@ -728,62 +737,31 @@ hysplit_trajectory <- function(lat = 49.263,
       }
     }
     
-    # Generate name of archive directory
+    # Create the output folder if it doesn't exist
+    if (!dir.exists(paste0(exec_dir, "/",
+                           folder_name))) {
+      dir.create(
+        path = paste0(exec_dir, "/",
+                      folder_name))
+    }
+    
     if (any(c("mac", "unix") %in% get_os())) {
-      if (is.null(traj_name)) {
-        folder_name <- 
-          paste0("traj--",
-                 format(Sys.time(),
-                        "%Y-%m-%d--%H-%M-%S"), "-",
-                 formatC(z, width = 5, format = "d", flag = "0"))
-      } else if (!is.null(traj_name)) {
-        folder_name <-
-          paste0(traj_name, "--", 
-                 format(Sys.time(),
-                        "%Y-%m-%d--%H-%M-%S"), "-",
-                 formatC(z, width = 5, format = "d", flag = "0"))
-      }
       
       # Perform the movement of all trajectory files
       # into a folder residing to the output directory
-      dir.create(path = paste0(exec_dir, "/",
-                               folder_name))
-      
       for (i in 1:length(all_trajectory_files)) {
-        system(paste0("(cd ", exec_dir, " && mv ",
-                      all_trajectory_files[i], " ",
+        system(paste0("(cd ", exec_dir, " && mv '",
+                      all_trajectory_files[i], "' ",
                       paste0(exec_dir, "/",
                              folder_name),
                       ")"))
       }
-      
-      # Obtain a trajectory data frame
-      if (return_traj_df) {
-        traj_df <-
-          trajectory_read(output_folder =
-                            paste0(exec_dir, "/",
-                                   folder_name))
-      }
     }
     
     if (get_os() == "win") {
-      if (is.null(traj_name)) {
-        folder_name <- 
-          paste0("traj--",
-                 format(Sys.time(),
-                        "%Y-%m-%d--%H-%M-%S"))  
-      } else if (!is.null(traj_name)) {
-        folder_name <- 
-          paste0(traj_name, "--",
-                 format(Sys.time(),
-                        "%Y-%m-%d--%H-%M-%S"))  
-      }
       
       # Perform the movement of all trajectory files
       # into a folder residing to the output directory
-      dir.create(path = paste0(exec_dir, "/",
-                               folder_name))
-      
       for (i in 1:length(all_trajectory_files)) {
         shell(paste0("(cd \"", exec_dir, "\" && move \"",
                      all_trajectory_files[i], "\" \"",
@@ -791,14 +769,14 @@ hysplit_trajectory <- function(lat = 49.263,
                             folder_name),
                      "\")"))
       }
-      
-      # Obtain a trajectory data frame
-      if (return_traj_df) {
-        traj_df <- 
-          trajectory_read(output_folder =
-                            paste0(exec_dir, "/",
-                                   folder_name))
-      }
+    }
+    
+    # Obtain a trajectory data frame
+    if (return_traj_df) {
+      traj_df <-
+        trajectory_read(output_folder =
+                          paste0(exec_dir, "/",
+                                 folder_name))
     }
     
     if (z == 1) {
