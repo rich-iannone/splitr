@@ -49,6 +49,8 @@
 #' magnitude). 
 #' @param model_height the upper limit of the model
 #' domain in meters.
+#' @param traj_name an optional, descriptive name for
+#' the output file collection.
 #' @param exec_dir an optional file path for the
 #' working directory of the model input and output
 #' files.
@@ -73,6 +75,7 @@ add_params <- function(model,
                        met_type = NULL,
                        vert_motion = NULL,
                        model_height = NULL,
+                       traj_name = NULL,
                        exec_dir = NULL,
                        met_dir = NULL,
                        binary_path = NULL) {
@@ -123,6 +126,10 @@ add_params <- function(model,
   
   if (!is.null(model_height)) {
     model$model_height <- model_height
+  }
+  
+  if (!is.null(traj_name)) {
+    model$traj_name <- traj_name
   }
   
   if (!is.null(exec_dir)) {
