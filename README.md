@@ -19,7 +19,7 @@ Some of the things you can do with **SplitR** are:
 
 ## **HYSPLIT** Trajectory Runs
 
-To perform a series **HYSPLIT** trajectory model runs, one can simply use the **SplitR** `hysplit_trajectory()` function:
+To perform a series of **HYSPLIT** trajectory model runs, one can simply use the **SplitR** `hysplit_trajectory()` function:
 
 ```R
 library(SplitR)
