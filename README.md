@@ -45,7 +45,7 @@ The receptor/origin locations are set using `lat` and `lon` for the latitude(s) 
 
 The model runs as set above are forward runs (moving forward in time, set here using `direction = "forward"`) and not backtrajectory runs (set with `direction = "backward"`).
 
-The meteorological options include the type of met data to use. The 1º **GDAS** data is used here with `met_type = "gdas1"` but there is also the option to use **NCEP** reanalysis data with the `met_type = "reanalysis"` setting. The necessary meteorological data files relevant to the period being modelled will be downloaded from the **NOAA** FTP server if they are not present in the working directory,
+The meteorological options include the type of met data to use. The 1º **GDAS** data is used here with `met_type = "gdas1"` but there is also the option to use **NCEP** reanalysis data with the `met_type = "reanalysis"` setting and **NARR** (North American Regional Reanalysis) data with `met_type = "narr"`. The necessary meteorological data files relevant to the period being modelled will be downloaded from the **NOAA** FTP server if they are not present in the working directory,
 
 The function will return a data frame containing trajectory information. The data frame (named here as the object `trajectory`) will be have the following columns when `extended_met` is set to `FALSE`:
 
@@ -57,7 +57,7 @@ The function will return a data frame containing trajectory information. The dat
 - `date2` a POSIXct date-time value (in UTC) for the air mass along the trajectory
 - `date` a POSIXct date-time value (in UTC) for the time of release or time of incidence at the receptor site
 
-If the model is run with `extended_met` set to `TRUE` then the following columns will also be available in the data frame:
+If the model is run with `extended_met` set to `TRUE` then the following columns will also be available in the output data frame:
 
 - `theta` the potential temperature (in K) along the trajectory
 - `air_temp` the ambient air temperature (in K) along the trajectory
@@ -97,7 +97,9 @@ trajectory_model <-
   run_model
 ```
 
-This pipeline setup allows for more flexibility as **R** objects can be piped in for variation in the types of models created. The `create_traj_model()` function creates the trajectory model object. The `add_grid()` allows for the simple creation of a grid for multiple starting locations in an ensemble run. One or more `add_params()` statements can be used to write model parameters to the model object. Ending the pipeline with `run_model()` runs the model and creates results.
+Here, we create a `trajectory_model` object which serves as a container for the model definition and for the results. Read left to right, the order of operations is: `create_traj_model()` -> `add_grid()` -> `add_params` -> `run_model()`.
+
+This pipeline setup allows for more flexibility as **R** objects can be piped in for variation in the types of models created. The `create_traj_model()` function creates the trajectory model object. The `add_grid()` allows for the simple creation of a grid for multiple starting locations in an ensemble run. As shown, a grid centered on 49ºN and 123ºW has bounds 0.8º in each direction and grid points at every 0.2º in each direction. One or more `add_params()` statements can be used to write model parameters to the model object. Ending the pipeline with `run_model()` runs the model and creates results.
 
 The trajectory data can be be extracted from the trajectory model object using `get_output_df()`...
 
