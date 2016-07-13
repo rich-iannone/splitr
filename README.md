@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/20543/rich-iannone/SplitR.svg)](https://zenodo.org/badge/latestdoi/20543/rich-iannone/SplitR)
 
-**SplitR** is an **R** package for conducting trajectory and dispersion modelling with **HYSPLIT**. You can determine where air (came from | is going), or, where gas-phase or particulate matter (came from | is going). It's a means to help explain how, where, and when chemicals and materials are atmospherically transported, dispersed, and deposited.
+**SplitR** is an **R** package for conducting trajectory and dispersion modeling with **HYSPLIT**. You can determine where air (came from | is going), or, where gas-phase or particulate matter (came from | is going). It's a means to help explain how, where, and when chemicals and materials are atmospherically transported, dispersed, and deposited.
 
 This model has many applications. Some have modeled the atmospheric transport of moisture to determine probable extreme rainfall locations leading to flood events ([Gustafsson et al., 2010](http://tellusa.net/index.php/tellusa/article/view/15715)). Similarly, [Creamean et al., 2013](http://science.sciencemag.org/content/339/6127/1572.full) have presented a direct link between long-range transported dust and biological aerosols affecting cloud ice formation and precipitation processes in western United States.
 
@@ -45,7 +45,7 @@ The receptor/origin locations are set using `lat` and `lon` for the latitude(s) 
 
 The model runs as set above are forward runs (moving forward in time, set here using `direction = "forward"`) and not backtrajectory runs (set with `direction = "backward"`).
 
-The meteorological options include the type of met data to use. The 1º **GDAS** data is used here with `met_type = "gdas1"` but there is also the option to use **NCEP** reanalysis data with the `met_type = "reanalysis"` setting and **NARR** (North American Regional Reanalysis) data with `met_type = "narr"`. The necessary meteorological data files relevant to the period being modelled will be downloaded from the **NOAA** FTP server if they are not present in the working directory,
+The meteorological options include the type of met data to use. The 1º **GDAS** data is used here with `met_type = "gdas1"` but there is also the option to use **NCEP** reanalysis data with the `met_type = "reanalysis"` setting and **NARR** (North American Regional Reanalysis) data with `met_type = "narr"`. The necessary meteorological data files relevant to the period being modeled will be downloaded from the **NOAA** FTP server if they are not present in the working directory.
 
 The function will return a data frame containing trajectory information. The data frame (named here as the object `trajectory`) will be have the following columns when `extended_met` is set to `FALSE`:
 
@@ -206,7 +206,7 @@ dispersion_model <-
 
 This dispersion model formally begins at 00:00 UTC on July 1, 2015 (using `start_day = "2015-07-01"` and `start_hour = 0`). The model run is a forward run (i.e., moving forward in time, with `direction = "forward"`) and not backwards (would be set as `direction = "backward"`). Essentially, running in forward mode means the starting location is a source of emissions; running backward means that the starting location is a receptor.
 
-This run has been set to be modelled for 24 h (`duration = 24`). The starting location of 49.0ºN and 123.0ºW is set using `lat = 49.0` and `lon = -123.0`; the starting height of 50 m above ground level is set by `height = 50`. The meteorological options include the type of met data to use (global NCEP Reanalysis data is used here with `met_type = "reanalysis`).
+This run has been set to be modeled for 24 h (`duration = 24`). The starting location of 49.0ºN and 123.0ºW is set using `lat = 49.0` and `lon = -123.0`; the starting height of 50 m above ground level is set by `height = 50`. The meteorological options include the type of met data to use (global NCEP Reanalysis data is used here with `met_type = "reanalysis`).
 
 A single emissions species is set to be emitted (using `add_emissions()`) for 6 hours (`duration = 6`) at an emission rate of 5 mass units per hour (`rate = 5`). Emissions begin at the same time as the start of the model (`start_day = "2015-07-01"` and `start_hour = 0`). The properties of the emitted pollutant are defined using `add_species()`. Here, the physical properties of particle diameter (in micrometers), density (in grams per cubic centimeter), and shape factor (value from 0 to 1), respectively, are defined with `pdiam = 1`, `density = 1`, and `shape_factor = 1`.
 
