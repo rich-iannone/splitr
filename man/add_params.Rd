@@ -8,7 +8,7 @@ add_params(model, lat = NULL, lon = NULL, height = NULL,
   duration = NULL, run_period = NULL, start_day = NULL,
   start_hour = NULL, daily_hours = NULL, direction = NULL,
   met_type = NULL, vert_motion = NULL, model_height = NULL,
-  exec_dir = NULL, met_dir = NULL, binary_path = NULL)
+  traj_name = NULL, exec_dir = NULL, met_dir = NULL, binary_path = NULL)
 }
 \arguments{
 \item{model}{a SplitR modeling object.}
@@ -70,6 +70,9 @@ magnitude).}
 
 \item{model_height}{the upper limit of the model
 domain in meters.}
+
+\item{traj_name}{an optional, descriptive name for
+the output file collection.}
 
 \item{exec_dir}{an optional file path for the
 working directory of the model input and output
