@@ -7,23 +7,25 @@
 dispersion_read(archive_folder)
 }
 \arguments{
-\item{path_output_files}{the absolute path of the
-dispersion output files is to be provided.}
+\item{archive_folder}{the absolute path of the
+directory containing dispersion output files is 
+provided here.}
 }
 \value{
 data frame with hourly particle positions
 }
 \description{
 The function takes HYSPLIT dispersion
-output files in a specified output directory or
-dispersion archive and processes all files into a
-data frame object.
+output files in a specified output directory and
+processes all files into a data frame object.
 }
 \examples{
 \dontrun{
-# Process all dispersion output files in the specified output directory
-dispersion.df <- dispersion_read(path_output_files =
-                                 "~/hysplit/dispersion/")
+# Process all dispersion output files in the 
+# specified output directory
+dispersion.df <- 
+  dispersion_read(
+    path_output_files =  "~/hysplit/dispersion/")
 }
 }
 
