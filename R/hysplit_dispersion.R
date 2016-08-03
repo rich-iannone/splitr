@@ -380,13 +380,13 @@ hysplit_dispersion <- function(lat = 49.263,
       if (met_type == "reanalysis") {
         get_met_reanalysis(
           files = files_to_get,
-          path_met_files = getwd())
+          path_met_files = paste0(getwd(), "/"))
       }
       
       if (met_type == "gdas1") {
         get_met_gdas1(
           files = files_to_get,
-          path_met_files = getwd())
+          path_met_files = paste0(getwd(), "/"))
       } 
     }
   }
