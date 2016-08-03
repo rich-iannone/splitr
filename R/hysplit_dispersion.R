@@ -110,7 +110,7 @@ hysplit_dispersion <- function(lat = 49.263,
   # config files
   if (!("SETUP.CFG" %in% list.files()) |
       !("ASCDATA.CFG" %in% list.files())) {
-    hysplit_config_init(get_wd())
+    hysplit_config_init(getwd())
   }
   
   # Set number of particles to 1 in the SETUP.CFG file
