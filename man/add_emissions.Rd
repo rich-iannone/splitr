@@ -31,4 +31,3 @@ a dispersion model object. Multiple sets of
 emissions parameters can can be added to a single
 dispersion model object.
 }
-

@@ -21,4 +21,3 @@ The function lists the HYSPLIT
 trajectory output files that reside in a specified
 directory.
 }
-

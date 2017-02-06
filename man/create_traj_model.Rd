@@ -14,4 +14,3 @@ model object.}
 Create a trajectory model object to
 begin a modelling pipeline.
 }
-

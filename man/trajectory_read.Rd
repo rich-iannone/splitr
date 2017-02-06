@@ -56,4 +56,3 @@ trajectory_df <-
     start_height_m_AGL = 500)
 }
 }
-

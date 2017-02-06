@@ -31,4 +31,3 @@ values supplied to \code{range} and
 Flexibly create a grid of sites for
 ensemble trajectory model runs.
 }
-

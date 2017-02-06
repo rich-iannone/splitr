@@ -65,4 +65,3 @@ parameters.}
 Create and add a grid of latitude and
 longitude points to a model object
 }
-

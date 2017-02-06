@@ -25,4 +25,3 @@ downloaded either by specifying a list of filenames
 (in the form of \code{'NARR[YYYY][MM]'}) or
 through bulk download of a year of files.
 }
-

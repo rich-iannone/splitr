@@ -22,4 +22,3 @@ options are \code{cycle_hues} (the default), and
 The function plots modeled dispersion
 particles onto an interactive map.
 }
-

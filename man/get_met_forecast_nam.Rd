@@ -16,4 +16,3 @@ This function downloads NAM meteorology
 forecast data files from the NOAA FTP server and
 saves them to a specified folder.
 }
-

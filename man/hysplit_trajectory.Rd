@@ -98,4 +98,3 @@ trajectory <-
     daily_hours = c(0, 6, 12, 18))
 }
 }
-

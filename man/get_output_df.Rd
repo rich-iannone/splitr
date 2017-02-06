@@ -15,4 +15,3 @@ data frame will be available within a SplitR modeling
 object and this function will get either the entire
 output data frame or a subset of it.
 }
-

@@ -14,4 +14,3 @@ Run either a trajectory model or a
 dispersion model, depending on the class of the
 SplitR modeling object
 }
-

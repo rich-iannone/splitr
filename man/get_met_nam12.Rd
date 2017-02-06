@@ -28,4 +28,3 @@ downloaded either by specifying a list of filenames
 (in the form of \code{'RP[YYYY][MM].gbl'}) or
 through bulk download of a year of files.
 }
-

@@ -28,4 +28,3 @@ dispersion.df <-
     path_output_files =  "~/hysplit/dispersion/")
 }
 }
-

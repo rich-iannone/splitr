@@ -90,4 +90,3 @@ in the package (based on the user's platform).}
 Add modelling parameters to a model
 object
 }
-

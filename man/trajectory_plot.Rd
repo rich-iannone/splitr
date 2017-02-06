@@ -26,4 +26,3 @@ The function plots modeled wind
 trajectories onto a map with information provided
 at every air transport time interval.
 }
-
