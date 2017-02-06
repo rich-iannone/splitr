@@ -15,4 +15,4 @@ Imports:
     lubridate (>= 1.5.0),
     RCurl (>= 1.95),
     scales (>= 0.4.0)
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.0
