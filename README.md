@@ -15,7 +15,7 @@ Some of the things you can do with **SplitR** are:
 - create and execute model runs with an easily readable **magrittr** pipeline workflow
 - run multiple trajectory and dispersion model runs (forward or backward) with multiple temporal and spatial variations
 - visualize wind trajectories and particle positions throughout trajectory and dispersion runs
-- use the returned **dplyr** `tbl` data frame to `filter()`, `select()`, `group_by()`, `summarize()`, `mutate()`, and `transmute()` the model output data
+- use the returned `tbl_df` object with **dplyr** to `filter()`, `select()`, `group_by()`, `summarize()`, `mutate()`, and `transmute()` the model output data
 
 ## **HYSPLIT** Trajectory Runs
 
@@ -94,7 +94,7 @@ trajectory_model <-
     daily_hours = c(0, 12),
     direction = "backward",
     met_type = "reanalysis") %>%
-  run_model
+  run_model()
 ```
 
 Here, we create a `trajectory_model` object which serves as a container for the model definition and for the results. Read left to right, the order of operations is: `create_traj_model()` -> `add_grid()` -> `add_params` -> `run_model()`.
@@ -106,10 +106,10 @@ The trajectory data can be be extracted from the trajectory model object using `
 ```R
 # Get a data frame containing the model results
 trajectory_df <-
-  trajectory_model %>% get_output_df
+  trajectory_model %>% get_output_df()
 ```
 
-...and a **dplyr** `tbl` object is now available:
+...and a `tbl_df` (tibble) object is now available:
 
 ```R
 trajectory_df
@@ -145,7 +145,7 @@ library(magrittr)
 trajectory_plot(trajectory)
 
 # Plot results using the trajectory model object
-trajectory_model %>% trajectory_plot
+trajectory_model %>% trajectory_plot()
 ```
 
 The visualization will appear in the **RStudio** Viewer:
@@ -201,7 +201,7 @@ dispersion_model <-
     start_hour = 0,
     direction = "forward",
     met_type = "reanalysis") %>%
-  run_model
+  run_model()
 ```
 
 This dispersion model formally begins at 00:00 UTC on July 1, 2015 (using `start_day = "2015-07-01"` and `start_hour = 0`). The model run is a forward run (i.e., moving forward in time, with `direction = "forward"`) and not backwards (would be set as `direction = "backward"`). Essentially, running in forward mode means the starting location is a source of emissions; running backward means that the starting location is a receptor.
@@ -219,10 +219,10 @@ The output data can be extracted from the dispersion model object...
 ```R
 # Get a data frame containing the model results
 dispersion_df <-
-  dispersion_model %>% get_output_df
+  dispersion_model %>% get_output_df()
 ```
 
-...and the data is conveniently supplied as a **dplyr** `tbl`:
+...and the data is conveniently supplied as a tibble object:
 
 ```R
 dispersion_df
@@ -252,7 +252,7 @@ library(SplitR)
 library(magrittr)
 
 # Plot particle data onto a map
-dispersion_model %>% dispersion_plot
+dispersion_model %>% dispersion_plot()
 ```
 
 The visualization will appear in the **RStudio** Viewer:
@@ -268,7 +268,7 @@ The dispersed particles at every hour are present as map layers, where their vis
 You can install the development version of **SplitR** from **GitHub** using the **devtools** package.
 
 ```r
-devtools::install_github('rich-iannone/SplitR')
+devtools::install_github("rich-iannone/SplitR")
 ```
 
 ## HYSPLIT Citations
