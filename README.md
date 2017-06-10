@@ -17,7 +17,7 @@ Some of the things you can do with **SplitR** are:
 - visualize wind trajectories and particle positions throughout trajectory and dispersion runs
 - use the returned `tbl_df` object with **dplyr** to `filter()`, `select()`, `group_by()`, `summarize()`, `mutate()`, and `transmute()` the model output data
 
-## **HYSPLIT** Trajectory Runs
+## **HYSPLIT** Trajectory Model Runs
 
 To perform a series of **HYSPLIT** trajectory model runs, one can use the **SplitR** `hysplit_trajectory()` function:
 
