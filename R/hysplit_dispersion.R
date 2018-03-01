@@ -22,6 +22,8 @@
 #' data files. The options are \code{gdas1} (Global Data
 #' Assimilation System 1-degree resolution data) and
 #' \code{reanalysis} (NCAR/NCEP global reanalysis data).
+#' @param met_dir an optional file path for storage and
+#' access of meteorological data files.
 #' @param vert_motion a numbered option to
 #' select the method used to simulation vertical
 #' motion. The methods are: (0) input model data,
@@ -85,6 +87,7 @@ hysplit_dispersion <- function(lat = 49.263,
                                start_hour = 0,
                                direction = "forward",
                                met_type = "reanalysis",
+                               met_dir = NULL,
                                vert_motion = 0,
                                model_height = 20000,
                                particle_num = 2500,
@@ -95,6 +98,8 @@ hysplit_dispersion <- function(lat = 49.263,
                                return_disp_df = TRUE,
                                write_disp_CSV = TRUE,
                                disp_name = NULL) { 
+  
+  if (is.null(met_dir)) met_dir <- getwd()
   
   if (length(start_day) == 1 &
       class(start_day) == "character" &
@@ -356,14 +361,14 @@ hysplit_dispersion <- function(lat = 49.263,
       met_file_df[k, 1] <- met[k]
       met_file_df[k, 2] <-
         as.character(
-          file.exists(paste0(getwd(), "/",
+          file.exists(paste0(met_dir, "/",
                              met[k])))
     }
     
     # Write the met file availability to file
     write.table(
       met_file_df,
-      file = paste0(getwd(), "/", "met_file_list"),
+      file = paste0(met_dir, "/", "met_file_list"),
       sep = ",",
       row.names = FALSE,
       col.names = FALSE,
@@ -380,13 +385,13 @@ hysplit_dispersion <- function(lat = 49.263,
       if (met_type == "reanalysis") {
         get_met_reanalysis(
           files = files_to_get,
-          path_met_files = paste0(getwd(), "/"))
+          path_met_files = paste0(met_dir, "/"))
       }
       
       if (met_type == "gdas1") {
         get_met_gdas1(
           files = files_to_get,
-          path_met_files = paste0(getwd(), "/"))
+          path_met_files = paste0(met_dir, "/"))
       } 
     }
   }
@@ -397,12 +402,12 @@ hysplit_dispersion <- function(lat = 49.263,
       met_file_df[k, 1] <- met[k]
       met_file_df[k, 2] <-
         as.character(
-          file.exists(paste0(getwd(), "\\",
+          file.exists(paste0(met_dir, "\\",
                              met[k])))}
     
     # Write the met file availability to file
     write.table(met_file_df,
-                file = paste0(getwd(), "\\",
+                file = paste0(met_dir, "\\",
                               "met_file_list"),
                 sep = ",",
                 row.names = FALSE,
@@ -419,13 +424,13 @@ hysplit_dispersion <- function(lat = 49.263,
       if (met_type == "reanalysis") {
         get_met_reanalysis(
           files = files_to_get,
-          path_met_files = getwd())
+          path_met_files = met_dir)
       }
       
       if (met_type == "gdas1") {
         get_met_gdas1(
           files = files_to_get,
-          path_met_files = getwd())
+          path_met_files = met_dir)
       } 
     }
   }
@@ -490,7 +495,7 @@ hysplit_dispersion <- function(lat = 49.263,
   
   # Write met file paths to 'CONTROL'
   for (i in 1:length(met)) {
-    cat(getwd(), "/\n", met[i], "\n",
+    cat(met_dir, "/\n", met[i], "\n",
         file = paste0(getwd(), "/", "CONTROL"),
         sep = '', append = TRUE)
   }
