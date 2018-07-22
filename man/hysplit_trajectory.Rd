@@ -43,8 +43,9 @@ conduct the model in the \code{forward} or
 data files. The options are \code{gdas1} (Global
 Data Assimilation System 1-degree resolution data), 
 \code{reanalysis} (NCAR/NCEP global reanalysis
-data), and \code{narr} (North American Regional 
-Reanalysis).}
+data), \code{narr} (North American Regional 
+Reanalysis), and \code{hrrr} (High Resolution 
+Rapid Refresh 3-km resolution data - CONUS only).}
 
 \item{vert_motion}{a numbered option to select the 
 method used to simulation vertical motion. The 

@@ -20,8 +20,10 @@
 #' \code{backward} directions.
 #' @param met_type an option to select meteorological
 #' data files. The options are \code{gdas1} (Global Data
-#' Assimilation System 1-degree resolution data) and
-#' \code{reanalysis} (NCAR/NCEP global reanalysis data).
+#' Assimilation System 1-degree resolution data),
+#' \code{reanalysis} (NCAR/NCEP global reanalysis data),
+#' and \code{hrrr} (High Resolution Rapid Refresh 3-km 
+#' resolution data - CONUS only).
 #' @param met_dir an optional file path for storage and
 #' access of meteorological data files.
 #' @param vert_motion a numbered option to
@@ -343,7 +345,25 @@ hysplit_dispersion <- function(lat = 49.263,
                        format = "d", 
                        flag = "0")),
         ".gbl"))
-  
+
+  #--- Get vector lists of met files applicable to
+  #    run from hrrr 3-km dataset
+  if (met_type == "hrrr") {
+    # Get all date/times needed for download
+    seq_start <- as.POSIXct(paste(format(start_time_GMT, "%Y-%m-%d"), 
+      (as.numeric(format(start_time_GMT, "%H")) %/% 6)*6), 
+      format = "%Y-%m-%d %H", tz = "UTC")
+    seq_end <- as.POSIXct(paste(format(end_time_GMT, "%Y-%m-%d"),
+      (as.numeric(format(end_time_GMT, "%H")) %/% 6)*6),
+      format = "%Y-%m-%d %H", tz = "UTC")
+    # Format date times to conform to hrrr file names
+    file_datetimes_format <- format(seq(from = seq_start,
+      to = seq_end, by = 6*60*60), "%Y%m%d.%H")
+    # Create file names
+    met <- paste0("hysplit.",
+        file_datetimes_format, "z.hrrra")
+  }
+
   # Remove list values containing '0' (representing
   # missing .w5 data files for Feb in leap years)
   if(exists("met")) met <- met[!met %in% c(0)]
@@ -393,6 +413,12 @@ hysplit_dispersion <- function(lat = 49.263,
           files = files_to_get,
           path_met_files = paste0(met_dir, "/"))
       } 
+
+      if (met_type == "hrrr") {
+        get_met_hrrr(
+          files = files_to_get,
+          path_met_files = paste0(met_dir, "/"))
+      } 
     }
   }
   
@@ -429,6 +455,12 @@ hysplit_dispersion <- function(lat = 49.263,
       
       if (met_type == "gdas1") {
         get_met_gdas1(
+          files = files_to_get,
+          path_met_files = met_dir)
+      } 
+
+      if (met_type == "hrrr") {
+        get_met_hrrr(
           files = files_to_get,
           path_met_files = met_dir)
       } 
