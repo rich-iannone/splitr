@@ -45,7 +45,7 @@ The receptor/origin locations are set using `lat` and `lon` for the latitude(s) 
 
 The model runs as set above are forward runs (moving forward in time, set here using `direction = "forward"`) and not backtrajectory runs (set with `direction = "backward"`).
 
-The meteorological options include the type of met data to use. The 1º **GDAS** data is used here with `met_type = "gdas1"` but there is also the option to use **NCEP** reanalysis data with the `met_type = "reanalysis"` setting and **NARR** (North American Regional Reanalysis) data with `met_type = "narr"`. The necessary meteorological data files relevant to the period being modeled will be downloaded from the **NOAA** FTP server if they are not present in the working directory.
+The meteorological options include the type of met data to use. The 1º **GDAS** data is used here with `met_type = "gdas1"` but there is also the option to use **NCEP** reanalysis data with the `met_type = "reanalysis"` setting, **NARR** (North American Regional Reanalysis) data with `met_type = "narr"`, and **HRRR** (High Resolution Rapid Refresh) data with the `met_type = "hrrr"` setting. The necessary meteorological data files relevant to the period being modeled will be downloaded from the **NOAA** FTP server if they are not present in the working directory.
 
 The function will return a data frame containing trajectory information. The data frame (named here as the object `trajectory`) will be have the following columns when `extended_met` is set to `FALSE`:
 

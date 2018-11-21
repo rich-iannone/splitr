@@ -6,10 +6,10 @@
 \usage{
 hysplit_dispersion(lat = 49.263, lon = -123.25, height = 50,
   duration = 24, start_day = "2015-07-01", start_hour = 0,
-  direction = "forward", met_type = "reanalysis", vert_motion = 0,
-  model_height = 20000, particle_num = 2500, particle_max = 10000,
-  emissions, species, grids, return_disp_df = TRUE, write_disp_CSV = TRUE,
-  disp_name = NULL)
+  direction = "forward", met_type = "reanalysis", met_dir = NULL,
+  vert_motion = 0, model_height = 20000, particle_num = 2500,
+  particle_max = 10000, emissions, species, grids, return_disp_df = TRUE,
+  write_disp_CSV = TRUE, disp_name = NULL)
 }
 \arguments{
 \item{lat}{the starting latitude (in decimal
@@ -37,8 +37,13 @@ conduct the model in the \code{forward} or
 
 \item{met_type}{an option to select meteorological
 data files. The options are \code{gdas1} (Global Data
-Assimilation System 1-degree resolution data) and
-\code{reanalysis} (NCAR/NCEP global reanalysis data).}
+Assimilation System 1-degree resolution data),
+\code{reanalysis} (NCAR/NCEP global reanalysis data),
+and \code{hrrr} (High Resolution Rapid Refresh 3-km 
+resolution data - CONUS only).}
+
+\item{met_dir}{an optional file path for storage and
+access of meteorological data files.}
 
 \item{vert_motion}{a numbered option to
 select the method used to simulation vertical
