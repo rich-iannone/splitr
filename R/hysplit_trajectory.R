@@ -409,34 +409,11 @@ hysplit_trajectory <- function(lat = 49.263,
         
         # Get vector lists of met files applicable to run
         # from the NCEP/NCAR reanalysis dataset
-        if (met_type == "reanalysis") met <- 
-          c(paste0(
-            "RP",
-            ifelse(start_month_GMT == "01",
-                   year(start_time_GMT) - 1,
-                   year(start_time_GMT)),
-            ifelse(start_month_GMT == "01", "12",
-                   formatC(month(start_time_GMT) - 1,
-                           width = 2,
-                           format = "d",
-                           flag = "0")),
-            ".gbl"),
-            paste0(
-              "RP",
-              year(start_time_GMT),
-              start_month_GMT, ".gbl"),
-            paste0(
-              "RP",
-              ifelse(start_month_GMT == "12",
-                     year(start_time_GMT) + 1,
-                     year(start_time_GMT)),
-              ifelse(start_month_GMT == "12", "01",
-                     formatC(month(start_time_GMT) + 1,
-                             width = 2,
-                             format = "d",
-                             flag = "0")),
-              ".gbl"))
-        
+        if (met_type == "reanalysis") {
+          tt <- c(start_time_GMT, start_time_GMT+(1-2*as.numeric(direction=="backward"))*duration*3600)
+          met <- paste0("RP", unique(format(seq.POSIXt(min(tt), max(tt),by="1 hour"), "%Y%m")), ".gbl")
+        }
+
         # Get vector lists of met files applicable to run
         # from the NARR dataset
         if (met_type == "narr") met <- 
