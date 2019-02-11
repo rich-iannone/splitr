@@ -3,7 +3,7 @@
 
 # SplitR
 
-<img src="man/figures/SplitR.png" width="70%">
+<img src="man/figures/fig_SplitR.png" width="70%">
 
 [![DOI](https://zenodo.org/badge/20543/rich-iannone/SplitR.svg)](https://zenodo.org/badge/latestdoi/20543/rich-iannone/SplitR)
 
@@ -226,7 +226,7 @@ trajectory_model %>% trajectory_plot()
 
 The visualization will appear in the **RStudio** Viewer:
 
-<img src="man/figures/trajectory_plot.png" width="100%">
+<img src="man/figures/fig_trajectory_plot.png" width="100%">
 
 The trajectory points and paths are layers where their visibility can be
 toggled using the *Layers* icon at the top-right of the view. The
@@ -241,7 +241,7 @@ Clicking any of the points along the trajectory will provide an
 informative popup with time/position info and meteorological data for
 that location at that point in time:
 
-<img src="man/figures/trajectory_popup.png" width="100%">
+<img src="man/figures/fig_trajectory_popup.png" width="100%">
 
 ## **HYSPLIT** Dispersion Runs
 
@@ -366,7 +366,7 @@ dispersion_model %>% dispersion_plot()
 
 The visualization will appear in the **RStudio** Viewer:
 
-<img src="man/figures/dispersion_plot.png" width="100%">
+<img src="man/figures/fig_dispersion_plot.png" width="100%">
 
 The dispersed particles at every hour are present as map layers, where
 their visibility can be toggled using the *Layers* icon at the top-right
