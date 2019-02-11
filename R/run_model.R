@@ -1,10 +1,9 @@
 #' Run the model
-#' @description Run either a trajectory model or a
-#' dispersion model, depending on the class of the
-#' SplitR modeling object
+#'
+#' Run either a trajectory model or a dispersion model, depending on the class
+#' of the SplitR modeling object
 #' @param model a SplitR modeling object
-#' @export run_model
-
+#' @export
 run_model <- function(model) {
   
   if (inherits(model, "traj_model")) {

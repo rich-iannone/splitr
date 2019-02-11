@@ -1,64 +1,48 @@
 #' Conduct HYSPLIT dispersion runs
-#' @description The function executes single/multiple
-#' forward or backward HYSPLIT dispersion runs using
-#' specified meteorological datasets.
-#' @param lat the starting latitude (in decimal
-#' degrees) for the model run(s).
-#' @param lon the starting longitude (in decimal
-#' degrees) for the model run(s).
-#' @param height the starting height (in meters above
-#' ground level) for the model run(s).
-#' @param duration the duration of each
-#' model run (either forward or backward) in hours.
-#' @param start_day the day that the model will 
-#' initialize and run. This should take the form of a
-#' single-length vector for a day (\code{"YYYY-MM-DD"}).
-#' @param start_hour a single daily hour as an
-#' integer hour (from \code{0} to \code{23}).
-#' @param direction an option to select whether to
-#' conduct the model in the \code{forward} or 
-#' \code{backward} directions.
-#' @param met_type an option to select meteorological
-#' data files. The options are \code{gdas1} (Global Data
-#' Assimilation System 1-degree resolution data),
-#' \code{reanalysis} (NCAR/NCEP global reanalysis data),
-#' and \code{hrrr} (High Resolution Rapid Refresh 3-km 
-#' resolution data - CONUS only).
-#' @param met_dir an optional file path for storage and
-#' access of meteorological data files.
-#' @param vert_motion a numbered option to
-#' select the method used to simulation vertical
-#' motion. The methods are: (0) input model data,
-#' (1) isobaric, (2) isentropic, (3) constant density,
-#' (4) isosigma, (5) from divergence, (6) remap MSL to
-#' AGL, (7) average data, and (8) damped magnitude.
-#' @param model_height the upper limit of the
-#' model domain in meters.
-#' @param particle_num the number of particles
-#' released by source during each release cycle.
-#' @param particle_max the number of particles
-#' released by a source during a model run.
-#' @param emissions the numbers corresponding to the
-#' stored emissions presets. These presets are
-#' specified using the function
-#' \code{hysplit_dispersion_define("emissions")}.
-#' @param species the numbers corresponding to the
-#' stored species presets. These presets are specified
-#' using the function
-#' \code{hysplit_dispersion_define("species")}.
-#' @param grids the numbers corresponding to the
-#' stored grid presets. These presets are specified
-#' using the function
-#' \code{hysplit_dispersion_define("grids")}.
-#' @param return_disp_df an option to return a data
-#' frame with dispersion data.
-#' @param write_disp_CSV an option to write disperison
-#' data to a CSV file.
-#' @param disp_name an optional, descriptive name for
-#' the output file collection.
-#' @import lubridate
-#' @import ggmap
-#' @export hysplit_dispersion 
+#' 
+#' The function executes single/multiple forward or backward HYSPLIT dispersion
+#' runs using specified meteorological datasets.
+#' @param lat the starting latitude (in decimal degrees) for the model run(s).
+#' @param lon the starting longitude (in decimal degrees) for the model run(s).
+#' @param height the starting height (in meters above ground level) for the
+#'   model run(s).
+#' @param duration the duration of each model run (either forward or backward)
+#'   in hours.
+#' @param start_day the day that the model will initialize and run. This should
+#'   take the form of a single-length vector for a day (\code{"YYYY-MM-DD"}).
+#' @param start_hour a single daily hour as an integer hour (from \code{0} to
+#'   \code{23}).
+#' @param direction an option to select whether to conduct the model in the
+#'   \code{forward} or \code{backward} directions.
+#' @param met_type an option to select meteorological data files. The options
+#'   are \code{gdas1} (Global Data Assimilation System 1-degree resolution
+#'   data), \code{reanalysis} (NCAR/NCEP global reanalysis data), and
+#'   \code{hrrr} (High Resolution Rapid Refresh 3-km resolution data - CONUS
+#'   only).
+#' @param met_dir an optional file path for storage and access of meteorological
+#'   data files.
+#' @param vert_motion a numbered option to select the method used to simulation
+#'   vertical motion. The methods are: (0) input model data, (1) isobaric, (2)
+#'   isentropic, (3) constant density, (4) isosigma, (5) from divergence, (6)
+#'   remap MSL to AGL, (7) average data, and (8) damped magnitude.
+#' @param model_height the upper limit of the model domain in meters.
+#' @param particle_num the number of particles released by source during each
+#'   release cycle.
+#' @param particle_max the number of particles released by a source during a
+#'   model run.
+#' @param emissions the numbers corresponding to the stored emissions presets.
+#'   These presets are specified using the function
+#'   \code{hysplit_dispersion_define("emissions")}.
+#' @param species the numbers corresponding to the stored species presets. These
+#'   presets are specified using the function
+#'   \code{hysplit_dispersion_define("species")}.
+#' @param grids the numbers corresponding to the stored grid presets. These
+#'   presets are specified using the function
+#'   \code{hysplit_dispersion_define("grids")}.
+#' @param return_disp_df an option to return a data frame with dispersion data.
+#' @param write_disp_CSV an option to write disperison data to a CSV file.
+#' @param disp_name an optional, descriptive name for the output file
+#'   collection.
 #' @examples
 #' \dontrun{
 #' # Perform a dispersion run lasting 12 hours over
@@ -79,8 +63,10 @@
 #'   grids = c(1,2),
 #'   return_disp_df = FALSE,
 #'   disp_name = "example")
-#'}
-
+#' }
+#' @import lubridate
+#' @import ggmap
+#' @export
 hysplit_dispersion <- function(lat = 49.263,
                                lon = -123.250,
                                height = 50,

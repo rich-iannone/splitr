@@ -1,15 +1,11 @@
-#' List HYSPLIT trajectory output archive files
-#' or folders
-#' @description The function lists the HYSPLIT
-#' trajectory output files that reside in a specified
-#' directory.
-#' @param output_folder the absolute path of the
-#' directory containing the trajectory endpoints files
-#' is to be provided.
-#' @return data frame with information on trajectory
-#' model output data archives
-#' @export trajectory_list
-
+#' List HYSPLIT trajectory output archive files or folders
+#'
+#' The function lists the HYSPLIT trajectory output files that reside in a
+#' specified directory.
+#' @param output_folder the absolute path of the directory containing the
+#'   trajectory endpoints files is to be provided.
+#' @return data frame with information on trajectory model output data archives
+#' @export
 trajectory_list <- function(output_folder) {
   
   if (get_os() == "mac") {

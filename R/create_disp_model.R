@@ -1,10 +1,8 @@
 #' Create a dispersion model
-#' @description Create a dispersion model object to
-#' begin a modelling pipeline.
-#' @param name an optional name for the dispersion
-#' model object.
-#' @export create_disp_model
-
+#'
+#' Create a dispersion model object to begin a modelling pipeline.
+#' @param name an optional name for the dispersion model object.
+#' @export
 create_disp_model <- function(name = NULL) {
   
   # Create the 'disp_model' list object

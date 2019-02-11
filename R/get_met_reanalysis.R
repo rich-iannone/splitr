@@ -1,20 +1,16 @@
 #' Get reanalysis meteorology data files
-#' @description This function downloads reanalysis
-#' meteorology data files from the NOAA FTP server and
-#' saves them to a specified folder. Files can be
-#' downloaded either by specifying a list of filenames
-#' (in the form of \code{'RP[YYYY][MM].gbl'}) or
-#' through bulk download of a year of files.
-#' @param files a vector list of exact filenames for
-#' the reanalysis files.
-#' @param years a vector list of years for which
-#' reanalysis files are to be obtained via FTP.
-#' @param path_met_files a full path should be provided
-#' for the location of the meteorological data files;
-#' downloaded files will be saved in this location.
+#'
+#' This function downloads reanalysis meteorology data files from the NOAA FTP
+#' server and saves them to a specified folder. Files can be downloaded either
+#' by specifying a list of filenames (in the form of \code{'RP[YYYY][MM].gbl'})
+#' or through bulk download of a year of files.
+#' @param files a vector list of exact filenames for the reanalysis files.
+#' @param years a vector list of years for which reanalysis files are to be
+#'   obtained via FTP.
+#' @param path_met_files a full path should be provided for the location of the
+#'   meteorological data files; downloaded files will be saved in this location.
 #' @import downloader
-#' @export get_met_reanalysis
-
+#' @export
 get_met_reanalysis <- function(files = NULL,
                                years = NULL,
                                path_met_files) { 

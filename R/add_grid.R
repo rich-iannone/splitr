@@ -1,46 +1,37 @@
 #' Add lat/lon grid to a model
-#' @description Create and add a grid of latitude and
-#' longitude points to a model object
+#'
+#' Create and add a grid of latitude and longitude points to a model object.
 #' @param model a SplitR modeling object
-#' @param lat a latitude value in decimal degrees
-#' for the point of reference on the grid.
-#' @param lon a longitude value in decimal degrees
-#' for the point of reference on the grid.
-#' @param range the latitude and longitude range about
-#' the \code{grid_ref}.
-#' @param division the division distances across the
-#' latitude and longitude ranges.
-#' @param start_day the day that the grid will become
-#' active and measuring particle concentrations. This
-#' should take the form of a single-length vector for a
-#' day (\code{"YYYY-MM-DD"}).
-#' @param start_hour the associated hour for the
-#' \code{start_day} variable, taking the form of a
-#' single integer hour (from \code{0} to \code{23}).
-#' @param end_day the day that the grid will cease to
-#' be active and no longer measuring particle
-#' concentrations. This should take the form of a
-#' single-length vector for a day (\code{"YYYY-MM-DD"}).
-#' @param end_hour the associated hour for the
-#' \code{end_day} variable, taking the form of a
-#' single integer hour (from \code{0} to \code{23}).
-#' @param duration a length of time in hours that the
-#' grid will remain active from the start date-time.
-#' @param heights a vector of heights for which there
-#' will be horizontal sampling grids.
-#' @param samp_type the method of reporting for the
-#' sampling grid. The default is \code{avg} for
-#' reporting average concentrations at every sampling
-#' interval. Other options are \code{snapshot} and
-#' \code{max} for concentrations at the time of 
-#' sampling and for maximum concentrations, respectively.
-#' @param samp_interval the sampling interval in units
-#' of hours.
-#' @param name an identifier for this set of grid
-#' parameters.
+#' @param lat a latitude value in decimal degrees for the point of reference on
+#'   the grid.
+#' @param lon a longitude value in decimal degrees for the point of reference on
+#'   the grid.
+#' @param range the latitude and longitude range about the \code{grid_ref}.
+#' @param division the division distances across the latitude and longitude
+#'   ranges.
+#' @param start_day the day that the grid will become active and measuring
+#'   particle concentrations. This should take the form of a single-length
+#'   vector for a day (\code{"YYYY-MM-DD"}).
+#' @param start_hour the associated hour for the \code{start_day} variable,
+#'   taking the form of a single integer hour (from \code{0} to \code{23}).
+#' @param end_day the day that the grid will cease to be active and no longer
+#'   measuring particle concentrations. This should take the form of a
+#'   single-length vector for a day (\code{"YYYY-MM-DD"}).
+#' @param end_hour the associated hour for the \code{end_day} variable, taking
+#'   the form of a single integer hour (from \code{0} to \code{23}).
+#' @param duration a length of time in hours that the grid will remain active
+#'   from the start date-time.
+#' @param heights a vector of heights for which there will be horizontal
+#'   sampling grids.
+#' @param samp_type the method of reporting for the sampling grid. The default
+#'   is \code{avg} for reporting average concentrations at every sampling
+#'   interval. Other options are \code{snapshot} and \code{max} for
+#'   concentrations at the time of sampling and for maximum concentrations,
+#'   respectively.
+#' @param samp_interval the sampling interval in units of hours.
+#' @param name an identifier for this set of grid parameters.
 #' @import lubridate
-#' @export add_grid
-
+#' @export
 add_grid <- function(model,
                      lat = NULL,
                      lon = NULL,

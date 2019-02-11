@@ -1,17 +1,13 @@
 #' Get HRRR meteorology data files
-#' @description This function downloads High Resolution
-#' Rapid Refresh (HRRR) meteorology data files from the 
-#' NOAA FTP server and saves them to a specified folder. 
-#' Files can be downloaded only by specifying a list 
-#' of filenames (in the form of 
+#'
+#' This function downloads High Resolution Rapid Refresh (HRRR) meteorology data
+#' files from the NOAA FTP server and saves them to a specified folder. Files
+#' can be downloaded only by specifying a list of filenames (in the form of
 #' \code{'RP[YYYY][MM].gbl'}).
-#' @param files a vector list of exact filenames for
-#' the HRRR files.
-#' @param path_met_files a full path should be provided
-#' for the location of the meteorological data files;
-#' downloaded files will be saved in this location.
-#' @export get_met_hrrr
-
+#' @param files a vector list of exact filenames for the HRRR files.
+#' @param path_met_files a full path should be provided for the location of the
+#'   meteorological data files; downloaded files will be saved in this location.
+#' @export
 get_met_hrrr <- function(files = NULL,
                           years = NULL,
                           months = NULL,

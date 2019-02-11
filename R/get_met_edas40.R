@@ -1,20 +1,17 @@
 #' Get EDAS40 meteorology data files
-#' @description This function downloads EDAS40
-#' meteorology data files from the NOAA FTP server and
-#' saves them to the working directory. Files can be
-#' downloaded either by specifying a list of filenames
-#' (in the form of \code{RP[YYYY][MM].gbl}) or through
-#' bulk download of months or years of files.
-#' @param files a vector list of exact filenames for
-#' the EDAS40 files.
-#' @param years a vector list of years for which EDAS40
-#' files are to be obtained via FTP.
-#' @param months a vector list of months for which
-#' EDAS40 files are to be obtained via FTP.
-#' @param path_met_files a full path for the download
-#' location of the meteorological data files.
-#' @import downloader
-#' @export get_met_edas40
+#'
+#' This function downloads EDAS40 meteorology data files from the NOAA FTP
+#' server and saves them to the working directory. Files can be downloaded
+#' either by specifying a list of filenames (in the form of
+#' \code{RP[YYYY][MM].gbl}) or through bulk download of months or years of
+#' files.
+#' @param files a vector list of exact filenames for the EDAS40 files.
+#' @param years a vector list of years for which EDAS40 files are to be obtained
+#'   via FTP.
+#' @param months a vector list of months for which EDAS40 files are to be
+#'   obtained via FTP.
+#' @param path_met_files a full path for the download location of the
+#'   meteorological data files.
 #' @examples
 #' \dontrun{
 #' # Download a year of EDAS40 data files to the
@@ -22,7 +19,7 @@
 #' get_met_edas40(
 #'   years = 2012,
 #'   path_met_files = getwd())
-#' 
+#'
 #' # Download EDAS40 data files for March, April,
 #' # and May of 2015 to the working directory
 #' get_met_edas40(
@@ -30,7 +27,8 @@
 #'   months = c(3, 4, 5),
 #'   path_met_files = getwd())
 #' }
-
+#' @import downloader
+#' @export
 get_met_edas40 <- function(files = NULL,
                            years = NULL,
                            months = NULL,

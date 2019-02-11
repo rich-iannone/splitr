@@ -1,19 +1,16 @@
 #' Plot HYSPLIT dispersion model output onto a map
-#' @description The function plots modeled dispersion
-#' particles onto an interactive map.
-#' @param x either a dispersion data frame, typically
-#' created from use of the \code{hysplit_dispersion},
-#' or a dispersion model object that contains output
-#' data (i.e., after executing model runs via the
-#' \code{run_model} function).
-#' @param color_scheme defines the appearance of
-#' multiple trajectories in a single plot. Current
-#' options are \code{cycle_hues} (the default), and
-#' \code{increasingly_gray}.
+#'
+#' The function plots modeled dispersion particles onto an interactive map.
+#' @param x either a dispersion data frame, typically created from use of the
+#'   \code{hysplit_dispersion}, or a dispersion model object that contains
+#'   output data (i.e., after executing model runs via the \code{run_model}
+#'   function).
+#' @param color_scheme defines the appearance of multiple trajectories in a
+#'   single plot. Current options are \code{cycle_hues} (the default), and
+#'   \code{increasingly_gray}.
 #' @import leaflet
 #' @import scales
-#' @export dispersion_plot
-
+#' @export
 dispersion_plot <- function(x,
                             color_scheme = "cycle_hues") {
   

@@ -1,67 +1,50 @@
 #' Conduct HYSPLIT trajectory runs
-#' @description The function executes single/multiple
-#' forward or backward HYSPLIT trajectory runs using
-#' specified meteorological datasets.
-#' @param lat the starting latitude (in decimal 
-#' degrees) for the model run(s).
-#' @param lon the starting longitude (in decimal 
-#' degrees) for the model run(s).
-#' @param height the starting height (in meters above 
-#' ground level) for the model run(s).
-#' @param duration the duration of each model run 
-#' (either forward or backward) in hours.
-#' @param run_period the extended period (i.e., days,
-#' years) when the model will initialize and run. This
-#' can take the form of a single-length vector for a
-#' day (\code{"YYYY-MM-DD"}) or year (\code{YYYY}), or,
-#' a vector of length 2 to specify the range of days or
-#' years.
-#' @param daily_hours should consist of a single daily 
-#' hour as an integer hour (from \code{0} to 
-#' \code{23}), or, a vector of several daily hours
-#' represented as integers.
-#' @param direction an option to select whether to
-#' conduct the model in the \code{forward} or 
-#' \code{backward} directions.
-#' @param met_type an option to select meteorological
-#' data files. The options are \code{gdas1} (Global
-#' Data Assimilation System 1-degree resolution data), 
-#' \code{reanalysis} (NCAR/NCEP global reanalysis
-#' data), \code{narr} (North American Regional 
-#' Reanalysis), and \code{hrrr} (High Resolution 
-#' Rapid Refresh 3-km resolution data - CONUS only).
-#' @param vert_motion a numbered option to select the 
-#' method used to simulation vertical motion. The 
-#' methods are: \code{0} (input model data), \code{1} 
-#' (isobaric), \code{2} (isentropic), \code{3} 
-#' (constant density), \code{4} (isosigma), \code{5} 
-#' (from divergence), \code{6} (remap MSL to AGL), 
-#' \code{7} (average data), and \code{8} (damped
-#' magnitude). 
-#' @param model_height the upper limit of the model
-#' domain in meters.
-#' @param extended_met an option to report additional 
-#' meteorological data along each output trajectory.
-#' @param return_traj_df an option to return a data
-#' frame with trajectory data.
-#' @param traj_name an optional, descriptive name for
-#' the output file collection.
-#' @param exec_dir an optional file path for the
-#' working directory of the model input and output
-#' files.
-#' @param met_dir an optional file path for storage and
-#' access of meteorological data files.
-#' @param binary_path an optional path to a HYSPLIT
-#' trajectory model binary. When not specified, the
-#' model binary will be chosen from several available
-#' in the package (based on the user's platform).
-#' @import lubridate
-#' @export hysplit_trajectory
+#'
+#' The function executes single/multiple forward or backward HYSPLIT trajectory
+#' runs using specified meteorological datasets.
+#' @param lat the starting latitude (in decimal degrees) for the model run(s).
+#' @param lon the starting longitude (in decimal degrees) for the model run(s).
+#' @param height the starting height (in meters above ground level) for the
+#'   model run(s).
+#' @param duration the duration of each model run (either forward or backward)
+#'   in hours.
+#' @param run_period the extended period (i.e., days, years) when the model will
+#'   initialize and run. This can take the form of a single-length vector for a
+#'   day (\code{"YYYY-MM-DD"}) or year (\code{YYYY}), or, a vector of length 2
+#'   to specify the range of days or years.
+#' @param daily_hours should consist of a single daily hour as an integer hour
+#'   (from \code{0} to \code{23}), or, a vector of several daily hours
+#'   represented as integers.
+#' @param direction an option to select whether to conduct the model in the
+#'   \code{forward} or \code{backward} directions.
+#' @param met_type an option to select meteorological data files. The options
+#'   are \code{gdas1} (Global Data Assimilation System 1-degree resolution
+#'   data), \code{reanalysis} (NCAR/NCEP global reanalysis data), \code{narr}
+#'   (North American Regional Reanalysis), and \code{hrrr} (High Resolution
+#'   Rapid Refresh 3-km resolution data - CONUS only).
+#' @param vert_motion a numbered option to select the method used to simulation
+#'   vertical motion. The methods are: \code{0} (input model data), \code{1}
+#'   (isobaric), \code{2} (isentropic), \code{3} (constant density), \code{4}
+#'   (isosigma), \code{5} (from divergence), \code{6} (remap MSL to AGL),
+#'   \code{7} (average data), and \code{8} (damped magnitude).
+#' @param model_height the upper limit of the model domain in meters.
+#' @param extended_met an option to report additional meteorological data along
+#'   each output trajectory.
+#' @param return_traj_df an option to return a data frame with trajectory data.
+#' @param traj_name an optional, descriptive name for the output file
+#'   collection.
+#' @param exec_dir an optional file path for the working directory of the model
+#'   input and output files.
+#' @param met_dir an optional file path for storage and access of meteorological
+#'   data files.
+#' @param binary_path an optional path to a HYSPLIT trajectory model binary.
+#'   When not specified, the model binary will be chosen from several available
+#'   in the package (based on the user's platform).
 #' @examples
 #' \dontrun{
 #' # Run a trajectory model 4 times a day throughout
 #' # 2004 using NCEP/NCAR reanalysis data
-#' trajectory <- 
+#' trajectory <-
 #'   hysplit_trajectory(
 #'     lat = 50.108,
 #'     lon = -122.942,
@@ -69,8 +52,9 @@
 #'     duration = 48,
 #'     run_period = 2004,
 #'     daily_hours = c(0, 6, 12, 18))
-#'}
-
+#' }
+#' @import lubridate
+#' @export
 hysplit_trajectory <- function(lat = 49.263,
                                lon = -123.250,
                                height = 50,
