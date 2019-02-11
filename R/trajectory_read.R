@@ -124,65 +124,70 @@ trajectory_read <- function(output_folder,
           sep = "\n")
     }
     
-    traj_temp <- 
+    traj_temp <- try(
       read.fwf(paste0(path.expand(output_folder),
                       "/", trajectory_file_list[i]),
                widths = column_widths)
+    )
     
-    for (j in 1:nrow(traj_temp)) {
-      if (length(grep("PRESSURE",
-                      traj_temp[j,1])) != 0) {
-        skip_up_to_line <- j
-      } 
-    }
-    
-    column_widths <- 
-      c(6, 6, 6, 6, 6, 6, 6, 6, 8, 9, 9, 9, 9)
-    
-    traj <- 
-      read.fwf(paste0(path.expand(output_folder),
-                      "/", trajectory_file_list[i]),
-               skip = skip_up_to_line,
-               widths = column_widths)
-    
-    names(traj) <- 
-      c("first", "receptor", "year", "month",
-        "day", "hour", "zero1", "zero2", "hour.inc",
-        "lat", "lon", "height", "pressure")
-    
-    traj$first <- traj$zero1 <- traj$zero2 <- NULL
-    
-    date2 <- mat.or.vec(nr = nrow(traj), nc = 1)
-    
-    for (k in 1:nrow(traj)) {
-      date2[k] <- 
-        ISOdatetime(ifelse(traj[1,2] < 50,
-                           traj[1,2] + 2000,
-                           traj[1,2] + 1900),
-                    traj[1,3], traj[1,4], traj[1,5],
-                    min = 0, sec = 0, tz = "GMT") +
-        traj$hour.inc[k] * 3600
-    }
-    
-    traj$date2 <-
-      as.POSIXct(date2,
-                 origin = "1970-01-01",
-                 tz = "GMT")
-    
-    traj$date <-
-      ISOdatetime(ifelse(traj[1,2] < 50,
-                         traj[1,2] + 2000,
-                         traj[1,2] + 1900),
-                  traj[1,3], traj[1,4], traj[1,5],
-                  min = 0, sec = 0, tz = "GMT")
-    
-    if (any(is.na(traj[,1]))) {
-      traj <- traj[-which(is.na(traj[,1])),]
-    }
-    
-    # Continuously bind data frames together to make
-    # a large df from all trajectory files
-    traj_df <- rbind(traj_df, traj)
+    if(class(traj_temp)!="try-error") {
+      for (j in 1:nrow(traj_temp)) {
+        if (length(grep("PRESSURE",
+                        traj_temp[j,1])) != 0) {
+          skip_up_to_line <- j
+        } 
+      }
+      
+      column_widths <- 
+        c(6, 6, 6, 6, 6, 6, 6, 6, 8, 9, 9, 9, 9)
+      
+      traj <- try(
+        read.fwf(paste0(path.expand(output_folder),
+                        "/", trajectory_file_list[i]),
+                 skip = skip_up_to_line,
+                 widths = column_widths)
+      )
+      
+      if(class(traj)!="try-error") {
+        names(traj) <- 
+          c("first", "receptor", "year", "month",
+            "day", "hour", "zero1", "zero2", "hour.inc",
+            "lat", "lon", "height", "pressure")
+        
+        traj$first <- traj$zero1 <- traj$zero2 <- NULL
+        
+        date2 <- mat.or.vec(nr = nrow(traj), nc = 1)
+        
+        for (k in 1:nrow(traj)) {
+          date2[k] <- 
+            ISOdatetime(ifelse(traj[1,2] < 50,
+                               traj[1,2] + 2000,
+                               traj[1,2] + 1900),
+                        traj[1,3], traj[1,4], traj[1,5],
+                        min = 0, sec = 0, tz = "GMT") +
+            traj$hour.inc[k] * 3600
+        }
+        
+        traj$date2 <-
+          as.POSIXct(date2,
+                     origin = "1970-01-01",
+                     tz = "GMT")
+        
+        traj$date <-
+          ISOdatetime(ifelse(traj[1,2] < 50,
+                             traj[1,2] + 2000,
+                             traj[1,2] + 1900),
+                      traj[1,3], traj[1,4], traj[1,5],
+                      min = 0, sec = 0, tz = "GMT")
+        
+        if (any(is.na(traj[,1]))) {
+          traj <- traj[-which(is.na(traj[,1])),]
+        }
+        
+        # Continuously bind data frames together to make
+        # a large df from all trajectory files
+        traj_df <- rbind(traj_df, traj)
+      }}
   }
   
   widths <- 
