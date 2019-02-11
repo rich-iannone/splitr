@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Keyshape -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 400 200" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" style="white-space: pre;">
+    <style>
+@keyframes a0_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a0_f { 0% { fill: #7ef1c8; } 21.4286% { fill: #7ef1c8; } 100% { fill: #7ef1c8; } }
+@keyframes a1_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a1_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a2_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a2_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a3_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a3_f { 0% { fill: #7ef1c8; } 21.4286% { fill: #7ef1c8; } 100% { fill: #7ef1c8; } }
+@keyframes a4_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a4_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a5_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a5_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a6_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a6_f { 0% { fill: #c6f17e; } 21.4286% { fill: #c6f17e; } 100% { fill: #c6f17e; } }
+@keyframes a7_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a7_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a8_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a8_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a9_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a9_f { 0% { fill: #7ef1c8; } 21.4286% { fill: #7ef1c8; } 100% { fill: #7ef1c8; } }
+@keyframes a10_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a10_f { 0% { fill: #7ef1c2; } 21.4286% { fill: #7ef1c2; } 100% { fill: #7ef1c2; } }
+@keyframes a11_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a11_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a12_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a12_f { 0% { fill: #7ef1c8; } 21.4286% { fill: #7ef1c8; } 100% { fill: #7ef1c8; } }
+@keyframes a13_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a13_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a14_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a14_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a15_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a15_f { 0% { fill: #7ef1d4; } 21.4286% { fill: #7ef1d4; } 100% { fill: #7ef1d4; } }
+@keyframes a16_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a16_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a17_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a17_f { 0% { fill: #f1b37e; } 21.4286% { fill: #f1b37e; } 100% { fill: #f1b37e; } }
+@keyframes a18_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a18_f { 0% { fill: #7ef1c8; } 21.4286% { fill: #7ef1c8; } 100% { fill: #7ef1c8; } }
+@keyframes a19_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a19_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a20_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a20_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a21_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a21_f { 0% { fill: #7ef1c8; } 21.4286% { fill: #7ef1c8; } 100% { fill: #7ef1c8; } }
+@keyframes a22_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a22_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a23_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a23_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a24_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a24_f { 0% { fill: #f1d67e; } 21.4286% { fill: #f1d67e; } 100% { fill: #f1d67e; } }
+@keyframes a25_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a25_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a26_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a26_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a27_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a27_f { 0% { fill: #7ef1c8; } 21.4286% { fill: #7ef1c8; } 100% { fill: #7ef1c8; } }
+@keyframes a28_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a28_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a29_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a29_f { 0% { fill: #f1be7e; } 21.4286% { fill: #f1be7e; } 100% { fill: #f1be7e; } }
+@keyframes a30_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a30_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a31_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a31_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a32_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a32_f { 0% { fill: #f1dc7e; } 21.4286% { fill: #f1dc7e; } 100% { fill: #f1dc7e; } }
+@keyframes a33_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a33_f { 0% { fill: #7ef1c8; } 21.4286% { fill: #7ef1c8; } 100% { fill: #7ef1c8; } }
+@keyframes a34_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a34_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a35_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a35_f { 0% { fill: #f1ed7e; } 21.4286% { fill: #f1ed7e; } 100% { fill: #f1ed7e; } }
+@keyframes a36_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a36_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a37_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a37_f { 0% { fill: #c0f17e; } 21.4286% { fill: #c0f17e; } 100% { fill: #c0f17e; } }
+@keyframes a38_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a38_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a39_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a39_f { 0% { fill: #7ef1c8; } 21.4286% { fill: #7ef1c8; } 100% { fill: #7ef1c8; } }
+@keyframes a40_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a40_f { 0% { fill: #7ef184; } 21.4286% { fill: #7ef184; } 100% { fill: #7ef184; } }
+@keyframes a41_o { 0% { opacity: 0; } 21.4286% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a41_f { 0% { fill: #e3f17e; } 21.4286% { fill: #e3f17e; } 100% { fill: #e3f17e; } }
+@keyframes a42_t { 0% { transform: translate(20px,177.694031px); } 28.5714% { transform: translate(20px,177.694031px); } 100% { transform: translate(20px,177.694031px); } }
+@keyframes a42_o { 0% { opacity: 0; } 28.5714% { opacity: 0; } 57.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a43_t { 0% { transform: translate(140px,30px); } 7.1428% { transform: translate(140px,30px); } 100% { transform: translate(140px,30px); } }
+@keyframes a43_o { 0% { opacity: 0; } 7.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a43_d { 0% { d: path('M0,0L120,0'); } 7.1429% { d: path('M0,0L120,0'); } 100% { d: path('M0,0L120,0'); } }
+@keyframes a44_t { 0% { transform: translate(140px,50px); } 7.1428% { transform: translate(140px,50px); } 100% { transform: translate(140px,50px); } }
+@keyframes a44_o { 0% { opacity: 0; } 7.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a44_d { 0% { d: path('M0,0L120,0'); } 7.1429% { d: path('M0,0L120,0'); } 100% { d: path('M0,0L120,0'); } }
+@keyframes a45_t { 0% { transform: translate(140px,70px); } 7.1428% { transform: translate(140px,70px); } 100% { transform: translate(140px,70px); } }
+@keyframes a45_o { 0% { opacity: 0; } 7.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a45_d { 0% { d: path('M0,0L120,0'); } 7.1429% { d: path('M0,0L120,0'); } 100% { d: path('M0,0L120,0'); } }
+@keyframes a46_t { 0% { transform: translate(140px,90px); } 7.1428% { transform: translate(140px,90px); } 100% { transform: translate(140px,90px); } }
+@keyframes a46_o { 0% { opacity: 0; } 7.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a46_d { 0% { d: path('M0,0L120,0'); } 7.1429% { d: path('M0,0L120,0'); } 100% { d: path('M0,0L120,0'); } }
+@keyframes a47_t { 0% { transform: translate(140px,110px); } 7.1428% { transform: translate(140px,110px); } 100% { transform: translate(140px,110px); } }
+@keyframes a47_o { 0% { opacity: 0; } 7.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a47_d { 0% { d: path('M0,0L120,0'); } 7.1429% { d: path('M0,0L120,0'); } 100% { d: path('M0,0L120,0'); } }
+@keyframes a48_t { 0% { transform: translate(140px,130.797226px); } 7.1428% { transform: translate(140px,130.797226px); } 100% { transform: translate(140px,130.797226px); } }
+@keyframes a48_o { 0% { opacity: 0; } 7.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a48_d { 0% { d: path('M0,-0.797226L120,-0.797226'); } 7.1429% { d: path('M0,-0.797226L120,-0.797226'); } 100% { d: path('M0,-0.797226L120,-0.797226'); } }
+@keyframes a49_t { 0% { transform: translate(140px,150px); } 7.1428% { transform: translate(140px,150px); } 100% { transform: translate(140px,150px); } }
+@keyframes a49_o { 0% { opacity: 0; } 7.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a50_t { 0% { transform: translate(140px,170px); } 7.1428% { transform: translate(140px,170px); } 100% { transform: translate(140px,170px); } }
+@keyframes a50_o { 0% { opacity: 0; } 7.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a50_d { 0% { d: path('M0,0L120,0'); } 7.1429% { d: path('M0,0L120,0'); } 100% { d: path('M0,0L120,0'); } }
+@keyframes a51_t { 0% { transform: translate(140px,30px); } 7.1428% { transform: translate(140px,30px); } 100% { transform: translate(140px,30px); } }
+@keyframes a51_o { 0% { opacity: 0; } 7.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a51_d { 0% { d: path('M0,0L0,140'); } 7.1429% { d: path('M0,0L0,140'); } 100% { d: path('M0,0L0,140'); } }
+@keyframes a52_t { 0% { transform: translate(160px,30px); } 7.1428% { transform: translate(160px,30px); } 100% { transform: translate(160px,30px); } }
+@keyframes a52_o { 0% { opacity: 0; } 7.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a52_d { 0% { d: path('M0,0L0,140'); } 7.1429% { d: path('M0,0L0,140'); } 100% { d: path('M0,0L0,140'); } }
+@keyframes a53_t { 0% { transform: translate(180px,30px); } 7.1428% { transform: translate(180px,30px); } 100% { transform: translate(180px,30px); } }
+@keyframes a53_o { 0% { opacity: 0; } 7.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a53_d { 0% { d: path('M0,0L0,140'); } 7.1429% { d: path('M0,0L0,140'); } 100% { d: path('M0,0L0,140'); } }
+@keyframes a54_t { 0% { transform: translate(200px,30px); } 7.1428% { transform: translate(200px,30px); } 100% { transform: translate(200px,30px); } }
+@keyframes a54_o { 0% { opacity: 0; } 7.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a54_d { 0% { d: path('M0,0L0,140'); } 7.1429% { d: path('M0,0L0,140'); } 100% { d: path('M0,0L0,140'); } }
+@keyframes a55_t { 0% { transform: translate(220px,30px); } 7.1428% { transform: translate(220px,30px); } 100% { transform: translate(220px,30px); } }
+@keyframes a55_o { 0% { opacity: 0; } 7.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a55_d { 0% { d: path('M0,0L0,140'); } 7.1429% { d: path('M0,0L0,140'); } 100% { d: path('M0,0L0,140'); } }
+@keyframes a56_t { 0% { transform: translate(240px,30px); } 7.1428% { transform: translate(240px,30px); } 100% { transform: translate(240px,30px); } }
+@keyframes a56_o { 0% { opacity: 0; } 7.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a56_d { 0% { d: path('M0,0L0,140'); } 7.1429% { d: path('M0,0L0,140'); } 100% { d: path('M0,0L0,140'); } }
+@keyframes a57_t { 0% { transform: translate(260px,30px); } 7.1428% { transform: translate(260px,30px); } 100% { transform: translate(260px,30px); } }
+@keyframes a57_o { 0% { opacity: 0; } 7.1429% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes a57_d { 0% { d: path('M0,0L0,140'); } 7.1429% { d: path('M0,0L0,140'); } 100% { d: path('M0,0L0,140'); } }
+@keyframes a58_t { 0% { transform: translate(-60px,45px); } 57.1428% { transform: translate(834.319402px,45px); } 100% { transform: translate(834.319402px,45px); } }
+@keyframes a59_t { 0% { transform: translate(-70px,70px); } 57.1428% { transform: translate(865.000005px,75px); } 100% { transform: translate(865.000005px,75px); } }
+@keyframes a60_t { 0% { transform: translate(-60px,94.472517px); } 57.1428% { transform: translate(742.445012px,91.608641px); } 100% { transform: translate(742.445012px,91.608641px); } }
+@keyframes a61_t { 0% { transform: translate(-75px,110px); } 57.1428% { transform: translate(834.130254px,85.80825px); } 100% { transform: translate(834.130254px,85.80825px); } }
+@keyframes a62_t { 0% { transform: translate(-60px,120px); } 57.1428% { transform: translate(860.000005px,117.080505px); } 100% { transform: translate(860.000005px,117.080505px); } }
+@keyframes a63_t { 0% { transform: translate(-80px,140px); } 57.1428% { transform: translate(855.000005px,145px); } 100% { transform: translate(855.000005px,145px); } }
+@keyframes a64_t { 0% { transform: translate(-60px,150px); } 57.1428% { transform: translate(875.000005px,155px); } 100% { transform: translate(875.000005px,155px); } }
+@keyframes a65_t { 0% { transform: translate(-20.33508px,147.94438px); } 28.5714% { transform: translate(456.055328px,148.342346px); } 42.8571% { transform: translate(694.111938px,140.761658px); } 50% { transform: translate(812.870605px,131.82959px); } 53.5714% { transform: translate(872.104553px,125.703781px); } 57.1428% { transform: translate(931.198311px,118.340315px); } 100% { transform: translate(931.198311px,118.340315px); } }
+@keyframes a66_t { 0% { transform: translate(-30px,135px); } 57.1428% { transform: translate(833.056951px,145px); } 100% { transform: translate(833.056951px,145px); } }
+@keyframes a67_t { 0% { transform: translate(-25px,105px); } 57.1428% { transform: translate(950.000005px,110px); } 100% { transform: translate(950.000005px,110px); } }
+@keyframes a68_t { 0% { transform: translate(-35px,80px); } 57.1428% { transform: translate(920.000005px,93.341629px); } 100% { transform: translate(920.000005px,93.341629px); } }
+@keyframes a69_t { 0% { transform: translate(-25px,60px); } 57.1428% { transform: translate(936.198308px,67.005241px); } 100% { transform: translate(936.198308px,67.005241px); } }
+@keyframes a70_t { 0% { transform: translate(-35px,45px); } 57.1428% { transform: translate(870.000005px,52.801048px); } 100% { transform: translate(870.000005px,52.801048px); } }
+@keyframes a71_t { 0% { transform: translate(-25px,13.669505px); } 7.1428% { transform: translate(84.927406px,19.628181px); } 14.2857% { transform: translate(194.720139px,27.490335px); } 28.5714% { transform: translate(414.323029px,42.9832px); } 42.8571% { transform: translate(634.349426px,48.795952px); } 50% { transform: translate(744.371765px,45.1502px); } 53.5714% { transform: translate(799.299866px,41.322739px); } 57.1428% { transform: translate(854.130254px,36.06741px); } 100% { transform: translate(854.130254px,36.06741px); } }
+@keyframes a72_t { 0% { transform: translate(-115px,11.672779px); } 7.1428% { transform: translate(4.899467px,15.062972px); } 14.2857% { transform: translate(124.595581px,21.187922px); } 28.5714% { transform: translate(363.895325px,33.231491px); } 42.8571% { transform: translate(603.636536px,32.955147px); } 50% { transform: translate(723.421692px,26.673817px); } 57.1428% { transform: translate(842.932622px,16.672779px); } 100% { transform: translate(842.932622px,16.672779px); } }
+@keyframes a73_t { 0% { transform: translate(-95.209431px,54.267671px); } 57.1428% { transform: translate(800.725755px,59.607335px); } 100% { transform: translate(800.725755px,59.607335px); } }
+@keyframes a74_t { 0% { transform: translate(-37.941105px,99.337699px); } 57.1428% { transform: translate(785.72577px,107.406417px); } 100% { transform: translate(785.72577px,107.406417px); } }
+@keyframes a75_t { 0% { transform: translate(-119.403144px,69.741498px); } 57.1428% { transform: translate(758.041869px,74.741498px); } 100% { transform: translate(758.041869px,74.741498px); } }
+@keyframes a76_t { 0% { transform: translate(-111.94307px,114.872386px); } 57.1428% { transform: translate(749.999989px,134.208774px); } 100% { transform: translate(749.999989px,134.208774px); } }
+@keyframes a77_t { 0% { transform: translate(-51.009169px,129.676054px); } 57.1428% { transform: translate(907.05889px,134.676054px); } 100% { transform: translate(907.05889px,134.676054px); } }
+@keyframes a78_t { 0% { transform: translate(-37.670814px,115.61061px); } 57.1428% { transform: translate(905.000028px,99.672782px); } 100% { transform: translate(905.000028px,99.672782px); } }
+@keyframes a79_t { 0% { transform: translate(-80.869767px,123.742808px); } 57.1428% { transform: translate(839.999989px,110.610606px); } 100% { transform: translate(839.999989px,110.610606px); } }
+@keyframes a80_t { 0% { transform: translate(-36.539926px,151.743463px); } 57.1428% { transform: translate(898.460079px,156.743463px); } 100% { transform: translate(898.460079px,156.743463px); } }
+@keyframes a81_t { 0% { transform: translate(-70.803013px,166.479066px); } 57.1428% { transform: translate(864.196992px,171.479066px); } 100% { transform: translate(864.196992px,171.479066px); } }
+@keyframes a82_t { 0% { transform: translate(-96.405763px,170.880245px); } 57.1428% { transform: translate(854.130252px,173.745419px); } 100% { transform: translate(854.130252px,173.745419px); } }
+@keyframes a83_t { 0% { transform: translate(-155.007859px,170.214015px); } 57.1428% { transform: translate(885px,175px); } 100% { transform: translate(885px,175px); } }
+@keyframes a84_t { 0% { transform: translate(-125.679328px,157.613884px); } 57.1428% { transform: translate(818.056944px,165.4123px); } 100% { transform: translate(818.056944px,165.4123px); } }
+@keyframes a85_t { 0% { transform: translate(-156.876971px,136.87959px); } 57.1428% { transform: translate(778.123034px,141.87959px); } 100% { transform: translate(778.123034px,141.87959px); } }
+@keyframes a86_t { 0% { transform: translate(-181.812836px,100.544511px); } 57.1428% { transform: translate(753.187169px,105.544511px); } 100% { transform: translate(753.187169px,105.544511px); } }
+@keyframes a87_t { 0% { transform: translate(-183.881555px,80.808252px); } 57.1428% { transform: translate(739.000042px,85.808252px); } 100% { transform: translate(739.000042px,85.808252px); } }
+@keyframes a88_t { 0% { transform: translate(-93.481686px,90.073303px); } 57.1428% { transform: translate(841.518319px,95.073303px); } 100% { transform: translate(841.518319px,95.073303px); } }
+@keyframes a89_t { 0% { transform: translate(-298.023577px,139.746082px); } 57.1428% { transform: translate(604.999865px,161.743473px); } 100% { transform: translate(604.999865px,161.743473px); } }
+@keyframes a90_t { 0% { transform: translate(-306.557609px,101.211396px); } 57.1428% { transform: translate(672.64723px,111.205498px); } 100% { transform: translate(672.64723px,111.205498px); } }
+@keyframes a91_t { 0% { transform: translate(-390.158395px,97.808252px); } 57.1428% { transform: translate(559.242123px,110.87697px); } 100% { transform: translate(559.242123px,110.87697px); } }
+@keyframes a92_t { 0% { transform: translate(-449.43196px,106.60799px); } 14.2857% { transform: translate(-215.446365px,109.553482px); } 28.5714% { transform: translate(17.659607px,119.025856px); } 57.1428% { transform: translate(485.568045px,111.60799px); } 100% { transform: translate(485.568045px,111.60799px); } }
+@keyframes a93_t { 0% { transform: translate(-477.770314px,86.608645px); } 57.1428% { transform: translate(457.229691px,91.608645px); } 100% { transform: translate(457.229691px,91.608645px); } }
+@keyframes a94_t { 0% { transform: translate(-448.37241px,88.94045px); } 57.1428% { transform: translate(486.627595px,93.94045px); } 100% { transform: translate(486.627595px,93.94045px); } }
+@keyframes a95_t { 0% { transform: translate(-455.036675px,57.540581px); } 57.1428% { transform: translate(479.96333px,62.540581px); } 100% { transform: translate(479.96333px,62.540581px); } }
+@keyframes a96_t { 0% { transform: translate(-433.633532px,55px); } 57.1428% { transform: translate(508.703509px,60px); } 100% { transform: translate(508.703509px,60px); } }
+@keyframes a97_t { 0% { transform: translate(-414.168873px,33.471207px); } 57.1428% { transform: translate(545.626969px,47.801049px); } 100% { transform: translate(545.626969px,47.801049px); } }
+@keyframes a98_t { 0% { transform: translate(-388.433925px,52.602751px); } 57.1428% { transform: translate(546.56608px,57.602751px); } 100% { transform: translate(546.56608px,57.602751px); } }
+@keyframes a99_t { 0% { transform: translate(-414.298452px,68.670814px); } 57.1428% { transform: translate(520.626968px,81.608643px); } 100% { transform: translate(520.626968px,81.608643px); } }
+@keyframes a100_t { 0% { transform: translate(-362.433925px,85.272255px); } 57.1428% { transform: translate(578.968607px,79.340973px); } 100% { transform: translate(578.968607px,79.340973px); } }
+@keyframes a101_t { 0% { transform: translate(-344.162979px,45.806942px); } 57.1428% { transform: translate(590.837026px,50.806942px); } 100% { transform: translate(590.837026px,50.806942px); } }
+@keyframes a102_t { 0% { transform: translate(-348.561538px,83.337045px); } 57.1428% { transform: translate(597.30364px,88.34163px); } 100% { transform: translate(597.30364px,88.34163px); } }
+@keyframes a103_t { 0% { transform: translate(-367.295177px,68.206811px); } 57.1428% { transform: translate(567.704828px,73.206811px); } 100% { transform: translate(567.704828px,73.206811px); } }
+@keyframes a104_t { 0% { transform: translate(-374.496749px,90.738878px); } 57.1428% { transform: translate(687.646566px,109.672785px); } 100% { transform: translate(687.646566px,109.672785px); } }
+@keyframes a105_t { 0% { transform: translate(-419.964027px,95.674089px); } 57.1428% { transform: translate(514.999967px,109.872385px); } 100% { transform: translate(514.999967px,109.872385px); } }
+@keyframes a106_t { 0% { transform: translate(-430.767695px,120.474482px); } 57.1428% { transform: translate(507.496094px,140.941757px); } 100% { transform: translate(507.496094px,140.941757px); } }
+@keyframes a107_t { 0% { transform: translate(-395.968612px,122.476447px); } 57.1428% { transform: translate(635.844321px,150.941756px); } 100% { transform: translate(635.844321px,150.941756px); } }
+@keyframes a108_t { 0% { transform: translate(-376.76573px,133.143332px); } 57.1428% { transform: translate(501.627586px,124.208777px); } 100% { transform: translate(501.627586px,124.208777px); } }
+@keyframes a109_t { 0% { transform: translate(-422.564158px,138.344249px); } 14.2857% { transform: translate(-187.840088px,142.174576px); } 28.5714% { transform: translate(46.911438px,144.10437px); } 42.8571% { transform: translate(281.495422px,152.695587px); } 50% { transform: translate(398.490356px,162.133545px); } 53.5714% { transform: translate(456.825073px,168.583893px); } 57.1428% { transform: translate(514.999995px,176.347514px); } 100% { transform: translate(514.999995px,176.347514px); } }
+@keyframes a110_t { 0% { transform: translate(-453.43458px,128.144642px); } 57.1428% { transform: translate(522.435848px,124.208774px); } 100% { transform: translate(522.435848px,124.208774px); } }
+@keyframes a111_t { 0% { transform: translate(-453.43458px,128.144642px); } 57.1428% { transform: translate(467.834377px,124.208774px); } 100% { transform: translate(467.834377px,124.208774px); } }
+@keyframes a112_t { 0% { transform: translate(-467.970576px,121.876971px); } 57.1428% { transform: translate(553.234263px,161.879595px); } 100% { transform: translate(553.234263px,161.879595px); } }
+@keyframes a113_t { 0% { transform: translate(-433.633532px,104.011134px); } 57.1428% { transform: translate(533.234271px,110.000002px); } 100% { transform: translate(533.234271px,110.000002px); } }
+@keyframes a114_t { 0% { transform: translate(-477.635497px,103.008514px); } 57.1428% { transform: translate(538.234259px,90.80825px); } 100% { transform: translate(538.234259px,90.80825px); } }
+@keyframes a115_t { 0% { transform: translate(-462.905787px,92.475137px); } 57.1428% { transform: translate(472.094218px,97.475137px); } 100% { transform: translate(472.094218px,97.475137px); } }
+@keyframes a116_t { 0% { transform: translate(-460px,75px); } 57.1428% { transform: translate(475.000005px,80px); } 100% { transform: translate(475.000005px,80px); } }
+@keyframes a117_t { 0% { transform: translate(-423.770969px,81.739533px); } 57.1428% { transform: translate(469.559572px,83.34163px); } 100% { transform: translate(469.559572px,83.34163px); } }
+@keyframes a118_t { 0% { transform: translate(-399.034711px,66.140057px); } 28.5714% { transform: translate(127.253448px,65.346397px); } 42.8571% { transform: translate(390.378754px,68.215385px); } 50% { transform: translate(521.875977px,72.680298px); } 57.1428% { transform: translate(653.24276px,80.000004px); } 100% { transform: translate(653.24276px,80.000004px); } }
+@keyframes a119_t { 0% { transform: translate(-376.76573px,36.935866px); } 57.1428% { transform: translate(576.167503px,60.80694px); } 100% { transform: translate(576.167503px,60.80694px); } }
+@keyframes a120_t { 0% { transform: translate(-359.030781px,30.803013px); } 57.1428% { transform: translate(561.901841px,39.607334px); } 100% { transform: translate(561.901841px,39.607334px); } }
+@keyframes a121_t { 0% { transform: translate(-396.962717px,26.935866px); } 57.1428% { transform: translate(519.999995px,50px); } 100% { transform: translate(519.999995px,50px); } }
+@keyframes a122_t { 0% { transform: translate(-358.832484px,14.202227px); } 28.5714% { transform: translate(118.801239px,32.563354px); } 42.8571% { transform: translate(357.325836px,47.402565px); } 50% { transform: translate(476.325226px,58.301186px); } 57.1428% { transform: translate(595.000041px,72.27422px); } 100% { transform: translate(595.000041px,72.27422px); } }
+@keyframes a123_t { 0% { transform: translate(-358.832484px,14.202227px); } 28.5714% { transform: translate(158.513092px,34.859009px); } 42.8571% { transform: translate(417.335968px,39.882385px); } 50% { transform: translate(546.766724px,38.561745px); } 57.1428% { transform: translate(676.11322px,33.736259px); } 100% { transform: translate(676.11322px,33.736259px); } }
+@keyframes a124_t { 0% { transform: translate(-330.426721px,47.801048px); } 57.1428% { transform: translate(634.907086px,73.341629px); } 100% { transform: translate(634.907086px,73.341629px); } }
+@keyframes a125_t { 0% { transform: translate(-185.16036px,51.470553px); } 57.1428% { transform: translate(708.448959px,44.607332px); } 100% { transform: translate(708.448959px,44.607332px); } }
+@keyframes a126_t { 0% { transform: translate(-129.081817px,56.737568px); } 57.1428% { transform: translate(719.999975px,58.736912px); } 100% { transform: translate(719.999975px,58.736912px); } }
+@keyframes a127_t { 0% { transform: translate(-108.077233px,75.537961px); } 57.1428% { transform: translate(779.36778px,80.537961px); } 100% { transform: translate(779.36778px,80.537961px); } }
+@keyframes a128_t { 0% { transform: translate(-51.009169px,80px); } 57.1428% { transform: translate(883.990836px,67.808907px); } 100% { transform: translate(883.990836px,67.808907px); } }
+@keyframes a129_t { 0% { transform: translate(-110px,102.473172px); } 57.1428% { transform: translate(800.725774px,108.341626px); } 100% { transform: translate(800.725774px,108.341626px); } }
+@keyframes a130_t { 0% { transform: translate(-100.409038px,120.94176px); } 57.1428% { transform: translate(884.999964px,132.810214px); } 100% { transform: translate(884.999964px,132.810214px); } }
+@keyframes a131_t { 0% { transform: translate(-114.274875px,128.076578px); } 28.5714% { transform: translate(350.233368px,134.094406px); } 42.8571% { transform: translate(582.431274px,139.909958px); } 50% { transform: translate(698.442505px,145.321198px); } 57.1428% { transform: translate(814.320711px,153.076578px); } 100% { transform: translate(814.320711px,153.076578px); } }
+@keyframes a132_t { 0% { transform: translate(-151.142677px,107.010479px); } 57.1428% { transform: translate(830.725126px,110.876972px); } 100% { transform: translate(830.725126px,110.876972px); } }
+@keyframes a133_t { 0% { transform: translate(-155px,74.340974px); } 57.1428% { transform: translate(782.881597px,65.537965px); } 100% { transform: translate(782.881597px,65.537965px); } }
+@keyframes a134_t { 0% { transform: translate(-65px,134.676054px); } 57.1428% { transform: translate(870.000005px,139.676054px); } 100% { transform: translate(870.000005px,139.676054px); } }
+@keyframes a135_t { 0% { transform: translate(-52.071993px,108.94438px); } 57.1428% { transform: translate(897.928012px,114.011129px); } 100% { transform: translate(897.928012px,114.011129px); } }
+@keyframes a136_t { 0% { transform: translate(-52.071993px,108.94438px); } 57.1428% { transform: translate(873.990817px,105.876966px); } 100% { transform: translate(873.990817px,105.876966px); } }
+@keyframes a137_t { 0% { transform: translate(-55px,13.069374px); } 57.1428% { transform: translate(880.000005px,18.069374px); } 100% { transform: translate(880.000005px,18.069374px); } }
+@keyframes a138_t { 0% { transform: translate(-20px,34.070683px); } 57.1428% { transform: translate(880.000005px,46.06741px); } 100% { transform: translate(880.000005px,46.06741px); } }
+@keyframes a139_t { 0% { transform: translate(-10.33508px,51.602751px); } 57.1428% { transform: translate(924.664925px,56.602751px); } 100% { transform: translate(924.664925px,56.602751px); } }
+@keyframes a140_t { 0% { transform: translate(-10.33508px,51.602751px); } 57.1428% { transform: translate(904.664925px,56.602751px); } 100% { transform: translate(904.664925px,56.602751px); } }
+@keyframes a141_t { 0% { transform: translate(-70px,26.067409px); } 57.1428% { transform: translate(830.725103px,32.801048px); } 100% { transform: translate(830.725103px,32.801048px); } }
+@keyframes a142_t { 0% { transform: translate(-90px,20px); } 57.1428% { transform: translate(815.725103px,26.736259px); } 100% { transform: translate(815.725103px,26.736259px); } }
+@keyframes a143_t { 0% { transform: translate(-80px,45px); } 57.1428% { transform: translate(855.000005px,50px); } 100% { transform: translate(855.000005px,50px); } }
+@keyframes a144_t { 0% { transform: translate(-45px,35px); } 57.1428% { transform: translate(892.058904px,72.005241px); } 100% { transform: translate(892.058904px,72.005241px); } }
+@keyframes a145_t { 0% { transform: translate(-90px,75px); } 57.1428% { transform: translate(770.000005px,98.940453px); } 100% { transform: translate(770.000005px,98.940453px); } }
+@keyframes a146_t { 0% { transform: translate(-95px,105px); } 57.1428% { transform: translate(839.130254px,127.080505px); } 100% { transform: translate(839.130254px,127.080505px); } }
+@keyframes a147_t { 0% { transform: translate(-95px,135px); } 57.1428% { transform: translate(860.000005px,138.076584px); } 100% { transform: translate(860.000005px,138.076584px); } }
+@keyframes a148_t { 0% { transform: translate(-110px,150px); } 57.1428% { transform: translate(818.056951px,152.944382px); } 100% { transform: translate(818.056951px,152.944382px); } }
+@keyframes a149_t { 0% { transform: translate(-85px,160px); } 57.1428% { transform: translate(833.056951px,164.278809px); } 100% { transform: translate(833.056951px,164.278809px); } }
+@keyframes a150_t { 0% { transform: translate(-55px,165px); } 57.1428% { transform: translate(849.130254px,155px); } 100% { transform: translate(849.130254px,155px); } }
+@keyframes a151_t { 0% { transform: translate(-115px,170px); } 57.1428% { transform: translate(782.881592px,175.281418px); } 100% { transform: translate(782.881592px,175.281418px); } }
+@keyframes a152_t { 0% { transform: translate(-130px,140px); } 57.1428% { transform: translate(732.445012px,144.277496px); } 100% { transform: translate(732.445012px,144.277496px); } }
+@keyframes a153_t { 0% { transform: translate(-125px,115px); } 57.1428% { transform: translate(790.000005px,90.000015px); } 100% { transform: translate(790.000005px,90.000015px); } }
+@keyframes a154_t { 0% { transform: translate(-150px,94.472517px); } 57.1428% { transform: translate(804.320684px,97.473173px); } 100% { transform: translate(804.320684px,97.473173px); } }
+@keyframes a155_t { 0% { transform: translate(-115px,90px); } 57.1428% { transform: translate(820.000005px,100.876968px); } 100% { transform: translate(820.000005px,100.876968px); } }
+@keyframes a156_t { 0% { transform: translate(-140px,75px); } 7.1428% { transform: translate(-20.384995px,73.322548px); } 14.2857% { transform: translate(99.154846px,69.102211px); } 28.5714% { transform: translate(338.163177px,59.71999px); } 42.8571% { transform: translate(577.300903px,60.08828px); } 50% { transform: translate(696.702026px,67.21505px); } 53.5714% { transform: translate(756.273621px,72.873352px); } 57.1428% { transform: translate(815.725774px,80px); } 100% { transform: translate(815.725774px,80px); } }
+@keyframes a157_t { 0% { transform: translate(-115px,55px); } 57.1428% { transform: translate(834.319402px,60px); } 100% { transform: translate(834.319402px,60px); } }
+@keyframes a158_t { 0% { transform: translate(-125px,35px); } 57.1428% { transform: translate(810.000005px,40px); } 100% { transform: translate(810.000005px,40px); } }
+@keyframes a159_t { 0% { transform: translate(-140px,10px); } 57.1428% { transform: translate(795.000005px,15px); } 100% { transform: translate(795.000005px,15px); } }
+@keyframes a160_t { 0% { transform: translate(-170px,45px); } 57.1428% { transform: translate(765.000005px,50px); } 100% { transform: translate(765.000005px,50px); } }
+@keyframes a161_t { 0% { transform: translate(-190px,65px); } 57.1428% { transform: translate(681.647893px,71.14006px); } 100% { transform: translate(681.647893px,71.14006px); } }
+@keyframes a162_t { 0% { transform: translate(-170px,85px); } 57.1428% { transform: translate(752.881597px,90px); } 100% { transform: translate(752.881597px,90px); } }
+@keyframes a163_t { 0% { transform: translate(-195px,115px); } 57.1428% { transform: translate(696.780095px,135.941757px); } 100% { transform: translate(696.780095px,135.941757px); } }
+@keyframes a164_t { 0% { transform: translate(-170px,130px); } 57.1428% { transform: translate(765.000005px,135px); } 100% { transform: translate(765.000005px,135px); } }
+@keyframes a165_t { 0% { transform: translate(-185px,150px); } 57.1428% { transform: translate(750.000005px,155px); } 100% { transform: translate(750.000005px,155px); } }
+@keyframes a166_t { 0% { transform: translate(-165px,155px); } 57.1428% { transform: translate(770.000005px,160px); } 100% { transform: translate(770.000005px,160px); } }
+@keyframes a167_t { 0% { transform: translate(-145px,120px); } 57.1428% { transform: translate(735.000005px,118.340317px); } 100% { transform: translate(735.000005px,118.340317px); } }
+@keyframes a168_t { 0% { transform: translate(-145px,155px); } 57.1428% { transform: translate(790.000005px,160px); } 100% { transform: translate(790.000005px,160px); } }
+@keyframes a169_t { 0% { transform: translate(-190px,135px); } 57.1428% { transform: translate(710.000005px,135px); } 100% { transform: translate(710.000005px,135px); } }
+@keyframes a170_t { 0% { transform: translate(-204.348833px,164.877626px); } 57.1428% { transform: translate(754.999988px,170.000001px); } 100% { transform: translate(754.999988px,170.000001px); } }
+@keyframes a171_t { 0% { transform: translate(-180px,175px); } 57.1428% { transform: translate(725.65125px,180px); } 100% { transform: translate(725.65125px,180px); } }
+@keyframes a172_t { 0% { transform: translate(-134.681293px,180.947654px); } 57.1428% { transform: translate(714.999986px,166.743476px); } 100% { transform: translate(714.999986px,166.743476px); } }
+@keyframes a173_t { 0% { transform: translate(-65px,185.947654px); } 57.1428% { transform: translate(870.000005px,190.947654px); } 100% { transform: translate(870.000005px,190.947654px); } }
+@keyframes a174_t { 0% { transform: translate(-45px,180.947654px); } 57.1428% { transform: translate(890.000005px,185.947654px); } 100% { transform: translate(890.000005px,185.947654px); } }
+@keyframes a175_t { 0% { transform: translate(-20.803668px,175.281424px); } 57.1428% { transform: translate(941.198291px,160.412314px); } 100% { transform: translate(941.198291px,160.412314px); } }
+@keyframes a176_t { 0% { transform: translate(-8.801703px,162.947654px); } 28.5714% { transform: translate(458.621796px,149.396378px); } 42.8571% { transform: translate(692.403259px,145.902557px); } 57.1428% { transform: translate(926.198302px,147.944389px); } 100% { transform: translate(926.198302px,147.944389px); } }
+@keyframes a177_t { 0% { transform: translate(-92.067409px,149.679983px); } 57.1428% { transform: translate(849.130228px,142.810217px); } 100% { transform: translate(849.130228px,142.810217px); } }
+@keyframes a178_t { 0% { transform: translate(-144.27422px,136.345558px); } 7.1428% { transform: translate(-26.142998px,134.147751px); } 14.2857% { transform: translate(91.943817px,130.232666px); } 28.5714% { transform: translate(328.106445px,122.10659px); } 42.8571% { transform: translate(564.384644px,121.682274px); } 50% { transform: translate(682.391602px,127.390114px); } 53.5714% { transform: translate(741.267883px,132.241272px); } 57.1428% { transform: translate(800.000016px,138.609291px); } 100% { transform: translate(800.000016px,138.609291px); } }
+@keyframes a179_t { 0% { transform: translate(-179.545166px,116.477757px); } 57.1428% { transform: translate(782.881597px,123.34425px); } 100% { transform: translate(782.881597px,123.34425px); } }
+@keyframes a180_t { 0% { transform: translate(-304.759181px,173.745427px); } 57.1428% { transform: translate(657.647196px,143.609304px); } 100% { transform: translate(657.647196px,143.609304px); } }
+@keyframes a181_t { 0% { transform: translate(-348.558264px,161.347523px); } 57.1428% { transform: translate(582.303619px,174.278813px); } 100% { transform: translate(582.303619px,174.278813px); } }
+@keyframes a182_t { 0% { transform: translate(-383.828554px,163.079852px); } 57.1428% { transform: translate(568.234256px,156.879596px); } 100% { transform: translate(568.234256px,156.879596px); } }
+@keyframes a183_t { 0% { transform: translate(-361.031436px,148.21336px); } 57.1428% { transform: translate(496.627566px,167.342938px); } 100% { transform: translate(496.627566px,167.342938px); } }
+@keyframes a184_t { 0% { transform: translate(-332.096225px,159.745427px); } 28.5714% { transform: translate(141.648163px,153.210251px); } 42.8571% { transform: translate(378.52652px,155.165146px); } 50% { transform: translate(496.867523px,160.139008px); } 57.1428% { transform: translate(614.999971px,168.745427px); } 100% { transform: translate(614.999971px,168.745427px); } }
+@keyframes a185_t { 0% { transform: translate(-355.293868px,132.013098px); } 28.5714% { transform: translate(126.885223px,135.848175px); } 42.8571% { transform: translate(368.009186px,141.047272px); } 50% { transform: translate(488.487946px,145.720596px); } 57.1428% { transform: translate(608.57251px,152.810211px); } 100% { transform: translate(608.57251px,152.810211px); } }
+@keyframes a186_t { 0% { transform: translate(-318.762455px,139.277495px); } 57.1428% { transform: translate(667.647217px,123.344254px); } 100% { transform: translate(667.647217px,123.344254px); } }
+@keyframes a187_t { 0% { transform: translate(-333.959443px,125.744773px); } 57.1428% { transform: translate(583.234288px,119.01113px); } 100% { transform: translate(583.234288px,119.01113px); } }
+@keyframes a188_t { 0% { transform: translate(-321.427376px,94.343594px); } 57.1428% { transform: translate(613.572629px,99.343594px); } 100% { transform: translate(613.572629px,99.343594px); } }
+@keyframes a189_t { 0% { transform: translate(-348.092951px,100.407728px); } 57.1428% { transform: translate(586.907054px,105.407728px); } 100% { transform: translate(586.907054px,105.407728px); } }
+@keyframes a190_t { 0% { transform: translate(-264.7618px,60.274875px); } 57.1428% { transform: translate(670.111984px,70.537967px); } 100% { transform: translate(670.111984px,70.537967px); } }
+@keyframes a191_t { 0% { transform: translate(-202.554989px,30.2716px); } 57.1428% { transform: translate(737.445016px,46.268984px); } 100% { transform: translate(737.445016px,46.268984px); } }
+@keyframes a192_t { 0% { transform: translate(-320.683258px,17.869112px); } 57.1428% { transform: translate(588.234228px,16.736259px); } 100% { transform: translate(588.234228px,16.736259px); } }
+@keyframes a193_t { 0% { transform: translate(-300.092951px,9.134818px); } 57.1428% { transform: translate(575.000011px,31.736259px); } 100% { transform: translate(575.000011px,31.736259px); } }
+@keyframes a194_t { 0% { transform: translate(-380.757871px,12.600786px); } 57.1428% { transform: translate(545.000008px,36.603405px); } 100% { transform: translate(545.000008px,36.603405px); } }
+@keyframes a195_t { 0% { transform: translate(-438.297797px,22.801048px); } 57.1428% { transform: translate(457.229674px,34.607334px); } 100% { transform: translate(457.229674px,34.607334px); } }
+@keyframes a196_t { 0% { transform: translate(-438.297797px,22.801048px); } 57.1428% { transform: translate(564.242126px,56.602749px); } 100% { transform: translate(564.242126px,56.602749px); } }
+@keyframes a197_t { 0% { transform: translate(-455.70225px,36.136128px); } 7.1428% { transform: translate(-336.10968px,39.796246px); } 14.2857% { transform: translate(-216.606155px,45.729897px); } 28.5714% { transform: translate(22.373962px,58.089413px); } 42.8571% { transform: translate(261.617218px,60.578655px); } 50% { transform: translate(381.090302px,54.272152px); } 53.5714% { transform: translate(440.648102px,48.60915px); } 57.1428% { transform: translate(499.999995px,41.06741px); } 100% { transform: translate(499.999995px,41.06741px); } }
+@keyframes a198_t { 0% { transform: translate(-422.503953px,38.736259px); } 57.1428% { transform: translate(573.234272px,96.608642px); } 100% { transform: translate(573.234272px,96.608642px); } }
+@keyframes a199_t { 0% { transform: translate(-439.170183px,43.736914px); } 7.1428% { transform: translate(-317.528137px,45.198051px); } 14.2857% { transform: translate(-195.946167px,49.389359px); } 28.5714% { transform: translate(47.167175px,59.105858px); } 42.8571% { transform: translate(290.430817px,59.179939px); } 50% { transform: translate(411.819366px,51.330597px); } 53.5714% { transform: translate(472.28598px,44.717907px); } 55.3571% { transform: translate(502.391327px,40.66338px); } 57.1428% { transform: translate(532.496124px,36.067411px); } 100% { transform: translate(532.496124px,36.067411px); } }
+@keyframes a200_t { 0% { transform: translate(-469.502643px,52.736914px); } 57.1428% { transform: translate(527.495958px,60.806944px); } 100% { transform: translate(527.495958px,60.806944px); } }
+@keyframes a201_t { 0% { transform: translate(-493.905132px,65.804322px); } 57.1428% { transform: translate(512.496087px,98.940454px); } 100% { transform: translate(512.496087px,98.940454px); } }
+@keyframes a202_t { 0% { transform: translate(-479.440474px,67.005239px); } 57.1428% { transform: translate(464.559531px,72.005239px); } 100% { transform: translate(464.559531px,72.005239px); } }
+@keyframes a203_t { 0% { transform: translate(-520px,74.340974px); } 57.1428% { transform: translate(440.000005px,79.340974px); } 100% { transform: translate(440.000005px,79.340974px); } }
+@keyframes a204_t { 0% { transform: translate(-496.975816px,89.672779px); } 57.1428% { transform: translate(452.229675px,106.607986px); } 100% { transform: translate(452.229675px,106.607986px); } }
+@keyframes a205_t { 0% { transform: translate(-485.107359px,44.607335px); } 57.1428% { transform: translate(457.229682px,49.607335px); } 100% { transform: translate(457.229682px,49.607335px); } }
+@keyframes a206_t { 0% { transform: translate(-493.905132px,114.011134px); } 57.1428% { transform: translate(424.999994px,117.080508px); } 100% { transform: translate(424.999994px,117.080508px); } }
+@keyframes a207_t { 0% { transform: translate(-454.440474px,149.676054px); } 7.1428% { transform: translate(-337.894653px,146.886642px); } 14.2857% { transform: translate(-221.407974px,142.242355px); } 28.5714% { transform: translate(11.550598px,132.619995px); } 42.8571% { transform: translate(244.675995px,131.275543px); } 50% { transform: translate(361.107819px,136.97728px); } 53.5714% { transform: translate(419.182526px,141.977936px); } 57.1428% { transform: translate(477.094199px,148.609297px); } 100% { transform: translate(477.094199px,148.609297px); } }
+@keyframes a208_t { 0% { transform: translate(-485.437199px,150.878935px); } 57.1428% { transform: translate(447.229676px,129.999999px); } 100% { transform: translate(447.229676px,129.999999px); } }
+@keyframes a209_t { 0% { transform: translate(-404.373065px,155.412312px); } 57.1428% { transform: translate(530.62694px,160.412312px); } 100% { transform: translate(530.62694px,160.412312px); } }
+@keyframes a210_t { 0% { transform: translate(-404.373065px,155.412312px); } 28.5714% { transform: translate(29.598328px,136.120941px); } 42.8571% { transform: translate(246.75766px,136.849731px); } 50% { transform: translate(355.099823px,144.210983px); } 53.5714% { transform: translate(409.073517px,150.163803px); } 57.1428% { transform: translate(462.834368px,157.810216px); } 100% { transform: translate(462.834368px,157.810216px); } }
+@keyframes a211_t { 0% { transform: translate(-35px,165px); } 57.1428% { transform: translate(800.725769px,170.412308px); } 100% { transform: translate(800.725769px,170.412308px); } }
+@keyframes a212_t { 0% { transform: translate(-6.669505px,95.348178px); } 57.1428% { transform: translate(915px,77.808907px); } 100% { transform: translate(915px,77.808907px); } }
+@keyframes a213_t { 0% { transform: translate(-20px,122.476447px); } 57.1428% { transform: translate(820.725098px,133.344254px); } 100% { transform: translate(820.725098px,133.344254px); } }
+@keyframes a214_t { 0% { transform: translate(-15px,75px); } 57.1428% { transform: translate(887.928045px,82.808907px); } 100% { transform: translate(887.928045px,82.808907px); } }
+@keyframes a215_t { 0% { transform: translate(-50px,65px); } 57.1428% { transform: translate(860.000005px,65px); } 100% { transform: translate(860.000005px,65px); } }
+@keyframes a216_t { 0% { transform: translate(-75px,90.348178px); } 57.1428% { transform: translate(860.000005px,95.348178px); } 100% { transform: translate(860.000005px,95.348178px); } }
+@keyframes a217_t { 0% { transform: translate(-155px,60px); } 57.1428% { transform: translate(762.881597px,65px); } 100% { transform: translate(762.881597px,65px); } }
+@keyframes a218_t { 0% { transform: translate(-185px,35px); } 57.1428% { transform: translate(841.518316px,72.808907px); } 100% { transform: translate(841.518316px,72.808907px); } }
+@keyframes a219_t { 0% { transform: translate(-171.148571px,8.069374px); } 57.1428% { transform: translate(763.851434px,13.069374px); } 100% { transform: translate(763.851434px,13.069374px); } }
+@keyframes a220_t { 0% { transform: translate(-105.680638px,31.067409px); } 57.1428% { transform: translate(819.320649px,44.070682px); } 100% { transform: translate(819.320649px,44.070682px); } }
+@keyframes a221_t { 0% { transform: translate(-222.142022px,36.935866px); } 57.1428% { transform: translate(706.780102px,60.80694px); } 100% { transform: translate(706.780102px,60.80694px); } }
+@keyframes a222_t { 0% { transform: translate(-196.418207px,13.669505px); } 57.1428% { transform: translate(738.581798px,18.669505px); } 100% { transform: translate(738.581798px,18.669505px); } }
+@keyframes a223_t { 0% { transform: translate(-204.348833px,50px); } 57.1428% { transform: translate(725.651233px,77.005241px); } 100% { transform: translate(725.651233px,77.005241px); } }
+@keyframes a224_t { 0% { transform: translate(-233.950274px,78.60406px); } 57.1428% { transform: translate(684.578479px,95.407733px); } 100% { transform: translate(684.578479px,95.407733px); } }
+@keyframes a225_t { 0% { transform: translate(-216.619124px,92.406418px); } 57.1428% { transform: translate(767.881614px,85.40773px); } 100% { transform: translate(767.881614px,85.40773px); } }
+@keyframes a226_t { 0% { transform: translate(-216.55106px,67.27422px); } 57.1428% { transform: translate(723.318696px,92.406415px); } 100% { transform: translate(723.318696px,92.406415px); } }
+@keyframes a227_t { 0% { transform: translate(-249.55106px,116.205501px); } 57.1428% { transform: translate(814.320679px,118.340317px); } 100% { transform: translate(814.320679px,118.340317px); } }
+@keyframes a228_t { 0% { transform: translate(-229.553679px,124.6093px); } 57.1428% { transform: translate(730.651221px,129.676057px); } 100% { transform: translate(730.651221px,129.676057px); } }
+@keyframes a229_t { 0% { transform: translate(-243.352108px,142.810217px); } 57.1428% { transform: translate(691.647897px,147.810217px); } 100% { transform: translate(691.647897px,147.810217px); } }
+@keyframes a230_t { 0% { transform: translate(-228.219909px,155.945035px); } 57.1428% { transform: translate(737.445068px,163.745422px); } 100% { transform: translate(737.445068px,163.745422px); } }
+@keyframes a231_t { 0% { transform: translate(-214.751977px,134.746082px); } 57.1428% { transform: translate(709.914898px,150.941761px); } 100% { transform: translate(709.914898px,150.941761px); } }
+@keyframes a232_t { 0% { transform: translate(-212.417552px,147.94438px); } 28.5714% { transform: translate(271.095093px,153.46315px); } 42.8571% { transform: translate(512.736084px,161.223251px); } 50% { transform: translate(633.405273px,168.469193px); } 57.1428% { transform: translate(753.851435px,178.74542px); } 100% { transform: translate(753.851435px,178.74542px); } }
+@keyframes a233_t { 0% { transform: translate(-225.284044px,173.745427px); } 57.1428% { transform: translate(587.303669px,149.746084px); } 100% { transform: translate(587.303669px,149.746084px); } }
+@keyframes a234_t { 0% { transform: translate(-225.284044px,173.745427px); } 57.1428% { transform: translate(750.380878px,143.609304px); } 100% { transform: translate(750.380878px,143.609304px); } }
+@keyframes a235_t { 0% { transform: translate(-245.085092px,172.347523px); } 57.1428% { transform: translate(666.113033px,158.214024px); } 100% { transform: translate(666.113033px,158.214024px); } }
+@keyframes a236_t { 0% { transform: translate(-258.886794px,158.214015px); } 57.1428% { transform: translate(676.113211px,163.214015px); } 100% { transform: translate(676.113211px,163.214015px); } }
+@keyframes a237_t { 0% { transform: translate(-260.889414px,90.61061px); } 57.1428% { transform: translate(702.650513px,102.208122px); } 100% { transform: translate(702.650513px,102.208122px); } }
+@keyframes a238_t { 0% { transform: translate(-274.888104px,125px); } 57.1428% { transform: translate(686.113182px,130px); } 100% { transform: translate(686.113182px,130px); } }
+@keyframes a239_t { 0% { transform: translate(-275.689152px,100.876971px); } 57.1428% { transform: translate(768.123048px,116.607989px); } 100% { transform: translate(768.123048px,116.607989px); } }
+@keyframes a240_t { 0% { transform: translate(-219.751977px,110px); } 57.1428% { transform: translate(715.248028px,115px); } 100% { transform: translate(715.248028px,115px); } }
+@keyframes a241_t { 0% { transform: translate(-196.418207px,100.876971px); } 57.1428% { transform: translate(738.581798px,105.876971px); } 100% { transform: translate(738.581798px,105.876971px); } }
+@keyframes a242_t { 0% { transform: translate(-202.349488px,78.341629px); } 57.1428% { transform: translate(707.650517px,83.341629px); } 100% { transform: translate(707.650517px,83.341629px); } }
+@keyframes a243_t { 0% { transform: translate(-167.149881px,106.406418px); } 57.1428% { transform: translate(755.000026px,121.205498px); } 100% { transform: translate(755.000026px,121.205498px); } }
+@keyframes a244_t { 0% { transform: translate(-134.681293px,97.406418px); } 57.1428% { transform: translate(718.318712px,102.406418px); } 100% { transform: translate(718.318712px,102.406418px); } }
+@keyframes a245_t { 0% { transform: translate(-250.411003px,66.141367px); } 57.1428% { transform: translate(746.765699px,77.274225px); } 100% { transform: translate(746.765699px,77.274225px); } }
+@keyframes a246_t { 0% { transform: translate(-237.15381px,49.60537px); } 57.1428% { transform: translate(630.773563px,61.60275px); } 100% { transform: translate(630.773563px,61.60275px); } }
+@keyframes a247_t { 0% { transform: translate(-272.352763px,47.60406px); } 57.1428% { transform: translate(679.578491px,53.736259px); } 100% { transform: translate(679.578491px,53.736259px); } }
+@keyframes a248_t { 0% { transform: translate(-276.555644px,74.403799px); } 57.1428% { transform: translate(672.646631px,84.34097px); } 100% { transform: translate(672.646631px,84.34097px); } }
+@keyframes a249_t { 0% { transform: translate(-245.289283px,21.672779px); } 57.1428% { transform: translate(699.914946px,31.672779px); } 100% { transform: translate(699.914946px,31.672779px); } }
+@keyframes a250_t { 0% { transform: translate(-262.353417px,28.33508px); } 57.1428% { transform: translate(737.445007px,31.736259px); } 100% { transform: translate(737.445007px,31.736259px); } }
+@keyframes a251_t { 0% { transform: translate(-255.421481px,41.268981px); } 57.1428% { transform: translate(602.303682px,34.999999px); } 100% { transform: translate(602.303682px,34.999999px); } }
+@keyframes a252_t { 0% { transform: translate(-285.954203px,36.603406px); } 57.1428% { transform: translate(649.045802px,41.603406px); } 100% { transform: translate(649.045802px,41.603406px); } }
+@keyframes a253_t { 0% { transform: translate(-287.890069px,66.269636px); } 57.1428% { transform: translate(649.045788px,62.274221px); } 100% { transform: translate(649.045788px,62.274221px); } }
+@keyframes a254_t { 0% { transform: translate(-293.023577px,85.672124px); } 57.1428% { transform: translate(629.045764px,104.67278px); } 100% { transform: translate(629.045764px,104.67278px); } }
+@keyframes a255_t { 0% { transform: translate(-291.357347px,113.340319px); } 57.1428% { transform: translate(610px,115px); } 100% { transform: translate(610px,115px); } }
+@keyframes a256_t { 0% { transform: translate(-276.757216px,148.6093px); } 57.1428% { transform: translate(674.578482px,149.676057px); } 100% { transform: translate(674.578482px,149.676057px); } }
+@keyframes a257_t { 0% { transform: translate(-289.289283px,159.278804px); } 57.1428% { transform: translate(650.710722px,164.278804px); } 100% { transform: translate(650.710722px,164.278804px); } }
+@keyframes a258_t { 0% { transform: translate(-274.623708px,169.479721px); } 57.1428% { transform: translate(696.647903px,175.281418px); } 100% { transform: translate(696.647903px,175.281418px); } }
+@keyframes a259_t { 0% { transform: translate(-261.155775px,132.080507px); } 57.1428% { transform: translate(671.64788px,137.080507px); } 100% { transform: translate(671.64788px,137.080507px); } }
+@keyframes a260_t { 0% { transform: translate(-239.354727px,99.277495px); } 57.1428% { transform: translate(799.320693px,82.274222px); } 100% { transform: translate(799.320693px,82.274222px); } }
+@keyframes a261_t { 0% { transform: translate(-264.486271px,112.208121px); } 57.1428% { transform: translate(543.234253px,124.208771px); } 100% { transform: translate(543.234253px,124.208771px); } }
+@keyframes a262_t { 0% { transform: translate(-171.148571px,66.141367px); } 28.5714% { transform: translate(285.877869px,68.737114px); } 57.1428% { transform: translate(742.881646px,67.274221px); } 100% { transform: translate(742.881646px,67.274221px); } }
+@keyframes a263_t { 0% { transform: translate(-166.148571px,28.33508px); } 57.1428% { transform: translate(768.851434px,33.33508px); } 100% { transform: translate(768.851434px,33.33508px); } }
+@keyframes a264_t { 0% { transform: translate(-166.148571px,28.33508px); } 57.1428% { transform: translate(787.881585px,33.33508px); } 100% { transform: translate(787.881585px,33.33508px); } }
+@keyframes a265_t { 0% { transform: translate(-223.219909px,16.672779px); } 57.1428% { transform: translate(711.780096px,21.672779px); } 100% { transform: translate(711.780096px,21.672779px); } }
+@keyframes a266_t { 0% { transform: translate(-223.219909px,16.672779px); } 57.1428% { transform: translate(711.780096px,21.672779px); } 100% { transform: translate(711.780096px,21.672779px); } }
+@keyframes a267_t { 0% { transform: translate(-284.289283px,16.672779px); } 28.5714% { transform: translate(184.654358px,19.30364px); } 42.8571% { transform: translate(419.098358px,15.8035px); } 50% { transform: translate(536.240723px,11.066694px); } 57.1428% { transform: translate(653.242887px,3.669504px); } 100% { transform: translate(653.242887px,3.669504px); } }
+@keyframes a268_t { 0% { transform: translate(-269.486271px,4.801105px); } 57.1428% { transform: translate(681.64789px,13.669505px); } 100% { transform: translate(681.64789px,13.669505px); } }
+@keyframes a269_t { 0% { transform: translate(-300px,55px); } 57.1428% { transform: translate(609.316777px,72.808907px); } 100% { transform: translate(609.316777px,72.808907px); } }
+@keyframes a270_t { 0% { transform: translate(-322.824625px,63.337699px); } 57.1428% { transform: translate(614.316738px,62.274223px); } 100% { transform: translate(614.316738px,62.274223px); } }
+@keyframes a271_t { 0% { transform: translate(-309.226459px,79.471862px); } 57.1428% { transform: translate(660.71068px,102.473175px); } 100% { transform: translate(660.71068px,102.473175px); } }
+@keyframes a272_t { 0% { transform: translate(-329.358657px,107.473172px); } 57.1428% { transform: translate(599.316763px,129.278806px); } 100% { transform: translate(599.316763px,129.278806px); } }
+@keyframes a273_t { 0% { transform: translate(-311.093606px,124.208776px); } 57.1428% { transform: translate(582.303677px,135.941762px); } 100% { transform: translate(582.303677px,135.941762px); } }
+@keyframes a274_t { 0% { transform: translate(-336.492165px,140.27684px); } 57.1428% { transform: translate(645.844266px,95.876968px); } 100% { transform: translate(645.844266px,95.876968px); } }
+@keyframes a275_t { 0% { transform: translate(-372.027507px,116.744773px); } 57.1428% { transform: translate(563.234217px,127.476447px); } 100% { transform: translate(563.234217px,127.476447px); } }
+@keyframes a276_t { 0% { transform: translate(-360px,94.277495px); } 57.1428% { transform: translate(632.571294px,124.208769px); } 100% { transform: translate(632.571294px,124.208769px); } }
+@keyframes a277_t { 0% { transform: translate(-385.562848px,74.340974px); } 57.1428% { transform: translate(549.437157px,79.340974px); } 100% { transform: translate(549.437157px,79.340974px); } }
+@keyframes a278_t { 0% { transform: translate(-363.09819px,48.672779px); } 57.1428% { transform: translate(596.907003px,48.73626px); } 100% { transform: translate(596.907003px,48.73626px); } }
+@keyframes a279_t { 0% { transform: translate(-337.696356px,29.070683px); } 57.1428% { transform: translate(622.571288px,43.33508px); } 100% { transform: translate(622.571288px,43.33508px); } }
+@keyframes a280_t { 0% { transform: translate(-346.161014px,63.802358px); } 57.1428% { transform: translate(441.09488px,64.741498px); } 100% { transform: translate(441.09488px,64.741498px); } }
+@keyframes a281_t { 0% { transform: translate(-316.161669px,35.471862px); } 57.1428% { transform: translate(638.642657px,47.602748px); } 100% { transform: translate(638.642657px,47.602748px); } }
+@keyframes a282_t { 0% { transform: translate(-299.759181px,31.736259px); } 57.1428% { transform: translate(635.240824px,36.736259px); } 100% { transform: translate(635.240824px,36.736259px); } }
+@keyframes a283_t { 0% { transform: translate(-333.757871px,84.469243px); } 57.1428% { transform: translate(601.040535px,97.473172px); } 100% { transform: translate(601.040535px,97.473172px); } }
+@keyframes a284_t { 0% { transform: translate(-393.360622px,137.273565px); } 28.5714% { transform: translate(111.13028px,127.060249px); } 42.8571% { transform: translate(363.466156px,125.467621px); } 50% { transform: translate(489.62149px,127.825523px); } 57.1428% { transform: translate(615.773539px,132.810217px); } 100% { transform: translate(615.773539px,132.810217px); } }
+@keyframes a285_t { 0% { transform: translate(-409.632222px,109.011134px); } 57.1428% { transform: translate(528.234238px,140.94176px); } 100% { transform: translate(528.234238px,140.94176px); } }
+@keyframes a286_t { 0% { transform: translate(-438.633532px,72.808907px); } 57.1428% { transform: translate(540.626971px,75.808251px); } 100% { transform: translate(540.626971px,75.808251px); } }
+@keyframes a287_t { 0% { transform: translate(-406.502643px,51.539271px); } 57.1428% { transform: translate(499.999986px,77.274222px); } 100% { transform: translate(499.999986px,77.274222px); } }
+@keyframes a288_t { 0% { transform: translate(-403.43327px,87.270945px); } 57.1428% { transform: translate(548.234216px,98.341632px); } 100% { transform: translate(548.234216px,98.341632px); } }
+@keyframes a289_t { 0% { transform: translate(-350.766385px,117.473827px); } 57.1428% { transform: translate(649.045754px,124.676059px); } 100% { transform: translate(649.045754px,124.676059px); } }
+@keyframes a290_t { 0% { transform: translate(-317.428685px,157.342939px); } 57.1428% { transform: translate(617.57132px,162.342939px); } 100% { transform: translate(617.57132px,162.342939px); } }
+@keyframes a291_t { 0% { transform: translate(-317.428685px,157.342939px); } 57.1428% { transform: translate(627.57132px,139.278806px); } 100% { transform: translate(627.57132px,139.278806px); } }
+    </style>
+    <rect width="20" height="20" stroke="none" fill="#7ef1c8" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(150,40) translate(-10,-10)" style="animation: 7s linear infinite both a0_o, 7s linear infinite both a0_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(150,60) translate(-10,-10)" style="animation: 7s linear infinite both a1_o, 7s linear infinite both a1_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(150,80) translate(-10,-10)" style="animation: 7s linear infinite both a2_o, 7s linear infinite both a2_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef1c8" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(150,100) translate(-10,-10)" style="animation: 7s linear infinite both a3_o, 7s linear infinite both a3_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(150,120) translate(-10,-10)" style="animation: 7s linear infinite both a4_o, 7s linear infinite both a4_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(150,140) translate(-10,-10)" style="animation: 7s linear infinite both a5_o, 7s linear infinite both a5_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#c6f17e" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(150,160) translate(-10,-10)" style="animation: 7s linear infinite both a6_o, 7s linear infinite both a6_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(170,40) translate(-10,-10)" style="animation: 7s linear infinite both a7_o, 7s linear infinite both a7_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(170,60) translate(-10,-10)" style="animation: 7s linear infinite both a8_o, 7s linear infinite both a8_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef1c8" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(170,80) translate(-10,-10)" style="animation: 7s linear infinite both a9_o, 7s linear infinite both a9_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef1c2" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(170,100) translate(-10,-10)" style="animation: 7s linear infinite both a10_o, 7s linear infinite both a10_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(170,120) translate(-10,-10)" style="animation: 7s linear infinite both a11_o, 7s linear infinite both a11_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef1c8" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(170,140) translate(-10,-10)" style="animation: 7s linear infinite both a12_o, 7s linear infinite both a12_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(170,160) translate(-10,-10)" style="animation: 7s linear infinite both a13_o, 7s linear infinite both a13_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(190,40) translate(-10,-10)" style="animation: 7s linear infinite both a14_o, 7s linear infinite both a14_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef1d4" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(190,60) translate(-10,-10)" style="animation: 7s linear infinite both a15_o, 7s linear infinite both a15_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(190,80) translate(-10,-10)" style="animation: 7s linear infinite both a16_o, 7s linear infinite both a16_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#f1b37e" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(190,100) translate(-10,-10)" style="animation: 7s linear infinite both a17_o, 7s linear infinite both a17_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef1c8" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(190,120) translate(-10,-10)" style="animation: 7s linear infinite both a18_o, 7s linear infinite both a18_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(190,140) translate(-10,-10)" style="animation: 7s linear infinite both a19_o, 7s linear infinite both a19_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(190,160) translate(-10,-10)" style="animation: 7s linear infinite both a20_o, 7s linear infinite both a20_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef1c8" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(210,40) translate(-10,-10)" style="animation: 7s linear infinite both a21_o, 7s linear infinite both a21_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(210,60) translate(-10,-10)" style="animation: 7s linear infinite both a22_o, 7s linear infinite both a22_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(210,80) translate(-10,-10)" style="animation: 7s linear infinite both a23_o, 7s linear infinite both a23_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#f1d67e" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(210,100) translate(-10,-10)" style="animation: 7s linear infinite both a24_o, 7s linear infinite both a24_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(210,120) translate(-10,-10)" style="animation: 7s linear infinite both a25_o, 7s linear infinite both a25_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(210,140) translate(-10,-10)" style="animation: 7s linear infinite both a26_o, 7s linear infinite both a26_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef1c8" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(210,160) translate(-10,-10)" style="animation: 7s linear infinite both a27_o, 7s linear infinite both a27_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(230,40) translate(-10,-10)" style="animation: 7s linear infinite both a28_o, 7s linear infinite both a28_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#f1be7e" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(230,60) translate(-10,-10)" style="animation: 7s linear infinite both a29_o, 7s linear infinite both a29_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(230,80) translate(-10,-10)" style="animation: 7s linear infinite both a30_o, 7s linear infinite both a30_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(230,100) translate(-10,-10)" style="animation: 7s linear infinite both a31_o, 7s linear infinite both a31_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#f1dc7e" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(230,120) translate(-10,-10)" style="animation: 7s linear infinite both a32_o, 7s linear infinite both a32_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef1c8" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(230,140) translate(-10,-10)" style="animation: 7s linear infinite both a33_o, 7s linear infinite both a33_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(230,160) translate(-10,-10)" style="animation: 7s linear infinite both a34_o, 7s linear infinite both a34_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#f1ed7e" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(250,40) translate(-10,-10)" style="animation: 7s linear infinite both a35_o, 7s linear infinite both a35_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(250,60) translate(-10,-10)" style="animation: 7s linear infinite both a36_o, 7s linear infinite both a36_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#c0f17e" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(250,80) translate(-10,-10)" style="animation: 7s linear infinite both a37_o, 7s linear infinite both a37_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(250,100) translate(-10,-10)" style="animation: 7s linear infinite both a38_o, 7s linear infinite both a38_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef1c8" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(250,120) translate(-10,-10)" style="animation: 7s linear infinite both a39_o, 7s linear infinite both a39_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#7ef184" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(250,140) translate(-10,-10)" style="animation: 7s linear infinite both a40_o, 7s linear infinite both a40_f;"/>
+    <rect width="20" height="20" stroke="none" fill="#e3f17e" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(250,160) translate(-10,-10)" style="animation: 7s linear infinite both a41_o, 7s linear infinite both a41_f;"/>
+    <path fill="#000000" stroke="none" d="M9.996,-30.156C8.624,-30.156,7.392,-29.918,6.3,-29.442C5.208,-28.966,4.284,-28.357,3.528,-27.615C2.772,-26.873,2.191,-26.047,1.785,-25.137C1.379,-24.227,1.176,-23.338,1.176,-22.47C1.176,-20.846,1.526,-19.551,2.226,-18.585C2.926,-17.619,3.801,-16.835,4.851,-16.233C5.901,-15.631,7.042,-15.134,8.274,-14.742C9.506,-14.35,10.647,-13.93,11.697,-13.482C12.747,-13.034,13.622,-12.474,14.322,-11.802C15.022,-11.13,15.372,-10.206,15.372,-9.03C15.372,-8.19,15.232,-7.406,14.952,-6.678C14.672,-5.95,14.266,-5.306,13.734,-4.746C13.202,-4.186,12.558,-3.745,11.802,-3.423C11.046,-3.101,10.192,-2.94,9.24,-2.94C8.288,-2.94,7.462,-3.059,6.762,-3.297C6.062,-3.535,5.439,-3.801,4.893,-4.095C4.347,-4.389,3.878,-4.655,3.486,-4.893C3.094,-5.131,2.744,-5.25,2.436,-5.25C1.904,-5.25,1.512,-5.061,1.26,-4.683C1.008,-4.305,0.882,-3.864,0.882,-3.36C0.882,-2.828,1.127,-2.345,1.617,-1.911C2.107,-1.477,2.751,-1.099,3.549,-0.777C4.347,-0.455,5.243,-0.203,6.237,-0.021C7.231,0.161,8.218,0.252,9.198,0.252C10.822,0.252,12.264,-0.00700001,13.524,-0.525C14.784,-1.043,15.841,-1.736,16.695,-2.604C17.549,-3.472,18.2,-4.48,18.648,-5.628C19.096,-6.776,19.32,-7.966,19.32,-9.198C19.32,-10.878,18.97,-12.229,18.27,-13.251C17.57,-14.273,16.695,-15.099,15.645,-15.729C14.595,-16.359,13.454,-16.87,12.222,-17.262C10.99,-17.654,9.849,-18.074,8.799,-18.522C7.749,-18.97,6.874,-19.509,6.174,-20.139C5.474,-20.769,5.124,-21.63,5.124,-22.722C5.124,-23.982,5.572,-25.004,6.468,-25.788C7.364,-26.572,8.498,-26.964,9.87,-26.964C10.794,-26.964,11.543,-26.866,12.117,-26.67C12.691,-26.474,13.181,-26.25,13.587,-25.998C13.993,-25.746,14.35,-25.522,14.658,-25.326C14.966,-25.13,15.33,-25.032,15.75,-25.032C16.226,-25.032,16.611,-25.193,16.905,-25.515C17.199,-25.837,17.346,-26.222,17.346,-26.67C17.346,-27.146,17.136,-27.601,16.716,-28.035C16.296,-28.469,15.743,-28.84,15.057,-29.148C14.371,-29.456,13.587,-29.701,12.705,-29.883C11.823,-30.065,10.92,-30.156,9.996,-30.156ZM26.1251,-11.172C26.1251,-12.124,26.2301,-13.083,26.4401,-14.049C26.6501,-15.015,27.0001,-15.897,27.4901,-16.695C27.9801,-17.493,28.6171,-18.144,29.4011,-18.648C30.1851,-19.152,31.1371,-19.404,32.2571,-19.404C33.4051,-19.404,34.3641,-19.152,35.1341,-18.648C35.9041,-18.144,36.5341,-17.493,37.0241,-16.695C37.5141,-15.897,37.8641,-15.015,38.0741,-14.049C38.2841,-13.083,38.3891,-12.124,38.3891,-11.172C38.3891,-10.22,38.2841,-9.261,38.0741,-8.295C37.8641,-7.329,37.5141,-6.447,37.0241,-5.649C36.5341,-4.851,35.9041,-4.2,35.1341,-3.696C34.3641,-3.192,33.4051,-2.94,32.2571,-2.94C31.1371,-2.94,30.1851,-3.192,29.4011,-3.696C28.6171,-4.2,27.9801,-4.851,27.4901,-5.649C27.0001,-6.447,26.6501,-7.329,26.4401,-8.295C26.2301,-9.261,26.1251,-10.22,26.1251,-11.172ZM22.8071,7.098C22.8071,7.714,22.9751,8.197,23.3111,8.547C23.6471,8.897,24.0951,9.072,24.6551,9.072C25.2151,9.072,25.6631,8.897,25.9991,8.547C26.3351,8.197,26.5031,7.714,26.5031,7.098L26.5031,-2.772L26.5871,-2.772C26.8391,-2.436,27.1471,-2.086,27.5111,-1.722C27.8751,-1.358,28.3091,-1.029,28.8131,-0.735C29.3171,-0.441,29.8841,-0.203,30.5141,-0.021C31.1441,0.161,31.8231,0.252,32.5511,0.252C34.0631,0.252,35.4071,-0.063,36.5831,-0.693C37.7591,-1.323,38.7601,-2.17,39.5861,-3.234C40.4121,-4.298,41.0351,-5.516,41.4551,-6.888C41.8751,-8.26,42.0851,-9.688,42.0851,-11.172C42.0851,-12.656,41.8751,-14.084,41.4551,-15.456C41.0351,-16.828,40.4121,-18.046,39.5861,-19.11C38.7601,-20.174,37.7591,-21.021,36.5831,-21.651C35.4071,-22.281,34.0631,-22.596,32.5511,-22.596C29.6391,-22.596,27.6511,-21.574,26.5871,-19.53L26.5031,-19.53L26.5031,-20.622C26.5031,-21.238,26.3351,-21.721,25.9991,-22.071C25.6631,-22.421,25.2151,-22.596,24.6551,-22.596C24.0951,-22.596,23.6471,-22.421,23.3111,-22.071C22.9751,-21.721,22.8071,-21.238,22.8071,-20.622ZM49.6945,-30.45C49.6945,-31.066,49.5265,-31.549,49.1905,-31.899C48.8545,-32.249,48.4065,-32.424,47.8465,-32.424C47.2865,-32.424,46.8385,-32.249,46.5025,-31.899C46.1665,-31.549,45.9985,-31.066,45.9985,-30.45L45.9985,-1.722C45.9985,-1.106,46.1665,-0.623,46.5025,-0.273C46.8385,0.077,47.2865,0.252,47.8465,0.252C48.4065,0.252,48.8545,0.077,49.1905,-0.273C49.5265,-0.623,49.6945,-1.106,49.6945,-1.722ZM58.257,-20.622C58.257,-21.238,58.089,-21.721,57.753,-22.071C57.417,-22.421,56.969,-22.596,56.409,-22.596C55.849,-22.596,55.401,-22.421,55.065,-22.071C54.729,-21.721,54.561,-21.238,54.561,-20.622L54.561,-1.722C54.561,-1.106,54.729,-0.623,55.065,-0.273C55.401,0.077,55.849,0.252,56.409,0.252C56.969,0.252,57.417,0.077,57.753,-0.273C58.089,-0.623,58.257,-1.106,58.257,-1.722ZM54.141,-27.888C54.141,-27.244,54.358,-26.705,54.792,-26.271C55.226,-25.837,55.765,-25.62,56.409,-25.62C57.053,-25.62,57.592,-25.837,58.026,-26.271C58.46,-26.705,58.677,-27.244,58.677,-27.888C58.677,-28.532,58.46,-29.071,58.026,-29.505C57.592,-29.939,57.053,-30.156,56.409,-30.156C55.765,-30.156,55.226,-29.939,54.792,-29.505C54.358,-29.071,54.141,-28.532,54.141,-27.888ZM64.2995,-22.344L62.7875,-22.344C61.5555,-22.344,60.9395,-21.812,60.9395,-20.748C60.9395,-19.684,61.5555,-19.152,62.7875,-19.152L64.2995,-19.152L64.2995,-1.722C64.2995,-1.106,64.4675,-0.623,64.8035,-0.273C65.1395,0.077,65.5875,0.252,66.1475,0.252C66.7075,0.252,67.1555,0.077,67.4915,-0.273C67.8275,-0.623,67.9955,-1.106,67.9955,-1.722L67.9955,-19.152L69.5075,-19.152C70.7395,-19.152,71.3555,-19.684,71.3555,-20.748C71.3555,-21.812,70.7395,-22.344,69.5075,-22.344L67.9955,-22.344L67.9955,-27.174C67.9955,-27.79,67.8275,-28.273,67.4915,-28.623C67.1555,-28.973,66.7075,-29.148,66.1475,-29.148C65.5875,-29.148,65.1395,-28.973,64.8035,-28.623C64.4675,-28.273,64.2995,-27.79,64.2995,-27.174ZM77.7414,-13.104L89.1654,-0.588C89.3894,-0.364,89.6274,-0.168,89.8794,0C90.1314,0.168,90.4534,0.252,90.8454,0.252C91.3214,0.252,91.7204,0.112,92.0424,-0.168C92.3644,-0.448,92.5254,-0.784,92.5254,-1.176C92.5254,-1.792,92.2874,-2.352,91.8114,-2.856L82.2774,-13.314L83.8734,-13.356C84.9934,-13.412,86.0434,-13.601,87.0234,-13.923C88.0034,-14.245,88.8644,-14.742,89.6064,-15.414C90.3484,-16.086,90.9364,-16.947,91.3704,-17.997C91.8044,-19.047,92.0214,-20.328,92.0214,-21.84C92.0214,-23.072,91.7624,-24.178,91.2444,-25.158C90.7264,-26.138,90.0474,-26.985,89.2074,-27.699C88.3674,-28.413,87.3944,-28.959,86.2884,-29.337C85.1824,-29.715,84.0414,-29.904,82.8654,-29.904L76.0194,-29.904C75.3194,-29.904,74.8154,-29.708,74.5074,-29.316C74.1994,-28.924,74.0454,-28.448,74.0454,-27.888L74.0454,-1.722C74.0454,-1.106,74.2134,-0.623,74.5494,-0.273C74.8854,0.077,75.3334,0.252,75.8934,0.252C76.4534,0.252,76.9014,0.077,77.2374,-0.273C77.5734,-0.623,77.7414,-1.106,77.7414,-1.722ZM77.7414,-26.712L82.6974,-26.712C83.5654,-26.712,84.3424,-26.572,85.0284,-26.292C85.7144,-26.012,86.3024,-25.641,86.7924,-25.179C87.2824,-24.717,87.6604,-24.178,87.9264,-23.562C88.1924,-22.946,88.3254,-22.288,88.3254,-21.588C88.3254,-19.656,87.8844,-18.256,87.0024,-17.388C86.1204,-16.52,84.7134,-16.086,82.7814,-16.086L77.7414,-16.086Z" opacity="0" transform="translate(20,177.694)" style="animation: 7s linear infinite both a42_t, 7s linear infinite both a42_o;"/>
+    <path d="M0,0L120,0" stroke="#444444" fill="none" stroke-width="2.22222" stroke-linecap="square" opacity="0" transform="translate(140,30)" style="animation: 7s linear infinite both a43_t, 7s linear infinite both a43_o, 7s linear infinite both a43_d;"/>
+    <path d="M0,0L120,0" stroke="#444444" fill="none" stroke-width="2.22222" stroke-linecap="square" opacity="0" transform="translate(140,50)" style="animation: 7s linear infinite both a44_t, 7s linear infinite both a44_o, 7s linear infinite both a44_d;"/>
+    <path d="M0,0L120,0" stroke="#444444" fill="none" stroke-width="2.22222" stroke-linecap="square" opacity="0" transform="translate(140,70)" style="animation: 7s linear infinite both a45_t, 7s linear infinite both a45_o, 7s linear infinite both a45_d;"/>
+    <path d="M0,0L120,0" stroke="#444444" fill="none" stroke-width="2.22222" stroke-linecap="square" opacity="0" transform="translate(140,90)" style="animation: 7s linear infinite both a46_t, 7s linear infinite both a46_o, 7s linear infinite both a46_d;"/>
+    <path d="M0,0L120,0" stroke="#444444" fill="none" stroke-width="2.22222" stroke-linecap="square" opacity="0" transform="translate(140,110)" style="animation: 7s linear infinite both a47_t, 7s linear infinite both a47_o, 7s linear infinite both a47_d;"/>
+    <path d="M0,-0.797226L120,-0.797226" stroke="#444444" fill="none" stroke-width="2.22222" stroke-linecap="square" opacity="0" transform="translate(140,130.797)" style="animation: 7s linear infinite both a48_t, 7s linear infinite both a48_o, 7s linear infinite both a48_d;"/>
+    <path d="M0,0L120,0" stroke="#444444" fill="none" stroke-width="2.22222" stroke-linecap="square" opacity="0" transform="translate(140,150)" style="animation: 7s linear infinite both a49_t, 7s linear infinite both a49_o;"/>
+    <path d="M0,0L120,0" stroke="#444444" fill="none" stroke-width="2.22222" stroke-linecap="square" opacity="0" transform="translate(140,170)" style="animation: 7s linear infinite both a50_t, 7s linear infinite both a50_o, 7s linear infinite both a50_d;"/>
+    <path d="M0,0L0,140" stroke="#444444" fill="none" stroke-width="2.22222" stroke-linecap="square" opacity="0" transform="translate(140,30)" style="animation: 7s linear infinite both a51_t, 7s linear infinite both a51_o, 7s linear infinite both a51_d;"/>
+    <path d="M0,0L0,140" stroke="#444444" fill="none" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(160,30)" style="animation: 7s linear infinite both a52_t, 7s linear infinite both a52_o, 7s linear infinite both a52_d;"/>
+    <path d="M0,0L0,140" stroke="#444444" fill="none" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(180,30)" style="animation: 7s linear infinite both a53_t, 7s linear infinite both a53_o, 7s linear infinite both a53_d;"/>
+    <path d="M0,0L0,140" stroke="#444444" fill="none" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(200,30)" style="animation: 7s linear infinite both a54_t, 7s linear infinite both a54_o, 7s linear infinite both a54_d;"/>
+    <path d="M0,0L0,140" stroke="#444444" fill="none" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(220,30)" style="animation: 7s linear infinite both a55_t, 7s linear infinite both a55_o, 7s linear infinite both a55_d;"/>
+    <path d="M0,0L0,140" stroke="#444444" fill="none" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(240,30)" style="animation: 7s linear infinite both a56_t, 7s linear infinite both a56_o, 7s linear infinite both a56_d;"/>
+    <path d="M0,0L0,140" stroke="#444444" fill="none" stroke-width="2.2" stroke-linecap="square" opacity="0" transform="translate(260,30)" style="animation: 7s linear infinite both a57_t, 7s linear infinite both a57_o, 7s linear infinite both a57_d;"/>
+    <defs/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-60,45)" style="animation: 7s linear infinite both a58_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-70,70)" style="animation: 7s linear infinite both a59_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-60,94.4725)" style="animation: 7s linear infinite both a60_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-75,110)" style="animation: 7s linear infinite both a61_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-60,120)" style="animation: 7s linear infinite both a62_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-80,140)" style="animation: 7s linear infinite both a63_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-60,150)" style="animation: 7s linear infinite both a64_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-20.3351,147.944)" style="animation: 7s linear infinite both a65_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-30,135)" style="animation: 7s linear infinite both a66_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-25,105)" style="animation: 7s linear infinite both a67_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-35,80)" style="animation: 7s linear infinite both a68_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-25,60)" style="animation: 7s linear infinite both a69_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-35,45)" style="animation: 7s linear infinite both a70_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-25,13.6695)" style="animation: 7s linear infinite both a71_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-115,11.6728)" style="animation: 7s linear infinite both a72_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-95.2094,54.2677)" style="animation: 7s linear infinite both a73_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-37.9411,99.3377)" style="animation: 7s linear infinite both a74_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-119.403,69.7415)" style="animation: 7s linear infinite both a75_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-111.943,114.872)" style="animation: 7s linear infinite both a76_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-51.0092,129.676)" style="animation: 7s linear infinite both a77_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-37.6708,115.611)" style="animation: 7s linear infinite both a78_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-80.8698,123.743)" style="animation: 7s linear infinite both a79_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-36.5399,151.743)" style="animation: 7s linear infinite both a80_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-70.803,166.479)" style="animation: 7s linear infinite both a81_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-96.4058,170.88)" style="animation: 7s linear infinite both a82_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-155.008,170.214)" style="animation: 7s linear infinite both a83_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-125.679,157.614)" style="animation: 7s linear infinite both a84_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-156.877,136.88)" style="animation: 7s linear infinite both a85_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-181.813,100.545)" style="animation: 7s linear infinite both a86_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-183.882,80.8083)" style="animation: 7s linear infinite both a87_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-93.4817,90.0733)" style="animation: 7s linear infinite both a88_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-298.024,139.746)" style="animation: 7s linear infinite both a89_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-306.558,101.211)" style="animation: 7s linear infinite both a90_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-390.158,97.8083)" style="animation: 7s linear infinite both a91_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-449.432,106.608)" style="animation: 7s linear infinite both a92_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-477.77,86.6086)" style="animation: 7s linear infinite both a93_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-448.372,88.9405)" style="animation: 7s linear infinite both a94_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-455.037,57.5406)" style="animation: 7s linear infinite both a95_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-433.634,55)" style="animation: 7s linear infinite both a96_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-414.169,33.4712)" style="animation: 7s linear infinite both a97_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-388.434,52.6027)" style="animation: 7s linear infinite both a98_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-414.298,68.6708)" style="animation: 7s linear infinite both a99_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-362.434,85.2723)" style="animation: 7s linear infinite both a100_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-344.163,45.8069)" style="animation: 7s linear infinite both a101_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-348.562,83.337)" style="animation: 7s linear infinite both a102_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-367.295,68.2068)" style="animation: 7s linear infinite both a103_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-374.497,90.7389)" style="animation: 7s linear infinite both a104_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-419.964,95.6741)" style="animation: 7s linear infinite both a105_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-430.768,120.474)" style="animation: 7s linear infinite both a106_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-395.969,122.476)" style="animation: 7s linear infinite both a107_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-376.766,133.143)" style="animation: 7s linear infinite both a108_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-422.564,138.344)" style="animation: 7s linear infinite both a109_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-453.435,128.145)" style="animation: 7s linear infinite both a110_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-453.435,128.145)" style="animation: 7s linear infinite both a111_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-467.971,121.877)" style="animation: 7s linear infinite both a112_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-433.634,104.011)" style="animation: 7s linear infinite both a113_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-477.635,103.009)" style="animation: 7s linear infinite both a114_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-462.906,92.4751)" style="animation: 7s linear infinite both a115_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-460,75)" style="animation: 7s linear infinite both a116_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-423.771,81.7395)" style="animation: 7s linear infinite both a117_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-399.035,66.1401)" style="animation: 7s linear infinite both a118_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-376.766,36.9359)" style="animation: 7s linear infinite both a119_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-359.031,30.803)" style="animation: 7s linear infinite both a120_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-396.963,26.9359)" style="animation: 7s linear infinite both a121_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-358.832,14.2022)" style="animation: 7s linear infinite both a122_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-358.832,14.2022)" style="animation: 7s linear infinite both a123_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-330.427,47.801)" style="animation: 7s linear infinite both a124_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-185.16,51.4706)" style="animation: 7s linear infinite both a125_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-129.082,56.7376)" style="animation: 7s linear infinite both a126_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-108.077,75.538)" style="animation: 7s linear infinite both a127_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-51.0092,80)" style="animation: 7s linear infinite both a128_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-110,102.473)" style="animation: 7s linear infinite both a129_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-100.409,120.942)" style="animation: 7s linear infinite both a130_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-114.275,128.077)" style="animation: 7s linear infinite both a131_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-151.143,107.01)" style="animation: 7s linear infinite both a132_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-155,74.341)" style="animation: 7s linear infinite both a133_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-65,134.676)" style="animation: 7s linear infinite both a134_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-52.072,108.944)" style="animation: 7s linear infinite both a135_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-52.072,108.944)" style="animation: 7s linear infinite both a136_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-55,13.0694)" style="animation: 7s linear infinite both a137_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-20,34.0707)" style="animation: 7s linear infinite both a138_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-10.3351,51.6027)" style="animation: 7s linear infinite both a139_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-10.3351,51.6027)" style="animation: 7s linear infinite both a140_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-70,26.0674)" style="animation: 7s linear infinite both a141_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-90,20)" style="animation: 7s linear infinite both a142_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-80,45)" style="animation: 7s linear infinite both a143_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-45,35)" style="animation: 7s linear infinite both a144_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-90,75)" style="animation: 7s linear infinite both a145_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-95,105)" style="animation: 7s linear infinite both a146_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-95,135)" style="animation: 7s linear infinite both a147_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-110,150)" style="animation: 7s linear infinite both a148_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-85,160)" style="animation: 7s linear infinite both a149_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-55,165)" style="animation: 7s linear infinite both a150_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-115,170)" style="animation: 7s linear infinite both a151_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-130,140)" style="animation: 7s linear infinite both a152_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-125,115)" style="animation: 7s linear infinite both a153_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-150,94.4725)" style="animation: 7s linear infinite both a154_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-115,90)" style="animation: 7s linear infinite both a155_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-140,75)" style="animation: 7s linear infinite both a156_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-115,55)" style="animation: 7s linear infinite both a157_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-125,35)" style="animation: 7s linear infinite both a158_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-140,10)" style="animation: 7s linear infinite both a159_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-170,45)" style="animation: 7s linear infinite both a160_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-190,65)" style="animation: 7s linear infinite both a161_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-170,85)" style="animation: 7s linear infinite both a162_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-195,115)" style="animation: 7s linear infinite both a163_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-170,130)" style="animation: 7s linear infinite both a164_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-185,150)" style="animation: 7s linear infinite both a165_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-165,155)" style="animation: 7s linear infinite both a166_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-145,120)" style="animation: 7s linear infinite both a167_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-145,155)" style="animation: 7s linear infinite both a168_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-190,135)" style="animation: 7s linear infinite both a169_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-204.349,164.878)" style="animation: 7s linear infinite both a170_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-180,175)" style="animation: 7s linear infinite both a171_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-134.681,180.948)" style="animation: 7s linear infinite both a172_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-65,185.948)" style="animation: 7s linear infinite both a173_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-45,180.948)" style="animation: 7s linear infinite both a174_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-20.8037,175.281)" style="animation: 7s linear infinite both a175_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-8.8017,162.948)" style="animation: 7s linear infinite both a176_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-92.0674,149.68)" style="animation: 7s linear infinite both a177_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-144.274,136.346)" style="animation: 7s linear infinite both a178_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-179.545,116.478)" style="animation: 7s linear infinite both a179_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-304.759,173.745)" style="animation: 7s linear infinite both a180_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-348.558,161.348)" style="animation: 7s linear infinite both a181_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-383.829,163.08)" style="animation: 7s linear infinite both a182_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-361.031,148.213)" style="animation: 7s linear infinite both a183_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-332.096,159.745)" style="animation: 7s linear infinite both a184_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-355.294,132.013)" style="animation: 7s linear infinite both a185_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-318.762,139.277)" style="animation: 7s linear infinite both a186_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-333.959,125.745)" style="animation: 7s linear infinite both a187_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-321.427,94.3436)" style="animation: 7s linear infinite both a188_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-348.093,100.408)" style="animation: 7s linear infinite both a189_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-264.762,60.2749)" style="animation: 7s linear infinite both a190_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-202.555,30.2716)" style="animation: 7s linear infinite both a191_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-320.683,17.8691)" style="animation: 7s linear infinite both a192_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-300.093,9.13482)" style="animation: 7s linear infinite both a193_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-380.758,12.6008)" style="animation: 7s linear infinite both a194_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-438.298,22.801)" style="animation: 7s linear infinite both a195_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-438.298,22.801)" style="animation: 7s linear infinite both a196_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-455.702,36.1361)" style="animation: 7s linear infinite both a197_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-422.504,38.7363)" style="animation: 7s linear infinite both a198_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-439.17,43.7369)" style="animation: 7s linear infinite both a199_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-469.503,52.7369)" style="animation: 7s linear infinite both a200_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-493.905,65.8043)" style="animation: 7s linear infinite both a201_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-479.44,67.0052)" style="animation: 7s linear infinite both a202_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-520,74.341)" style="animation: 7s linear infinite both a203_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-496.976,89.6728)" style="animation: 7s linear infinite both a204_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-485.107,44.6073)" style="animation: 7s linear infinite both a205_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-493.905,114.011)" style="animation: 7s linear infinite both a206_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-454.44,149.676)" style="animation: 7s linear infinite both a207_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-485.437,150.879)" style="animation: 7s linear infinite both a208_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-404.373,155.412)" style="animation: 7s linear infinite both a209_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-404.373,155.412)" style="animation: 7s linear infinite both a210_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-35,165)" style="animation: 7s linear infinite both a211_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-6.6695,95.3482)" style="animation: 7s linear infinite both a212_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-20,122.476)" style="animation: 7s linear infinite both a213_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-15,75)" style="animation: 7s linear infinite both a214_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-50,65)" style="animation: 7s linear infinite both a215_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-75,90.3482)" style="animation: 7s linear infinite both a216_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-155,60)" style="animation: 7s linear infinite both a217_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-185,35)" style="animation: 7s linear infinite both a218_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-171.149,8.06937)" style="animation: 7s linear infinite both a219_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-105.681,31.0674)" style="animation: 7s linear infinite both a220_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-222.142,36.9359)" style="animation: 7s linear infinite both a221_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-196.418,13.6695)" style="animation: 7s linear infinite both a222_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-204.349,50)" style="animation: 7s linear infinite both a223_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-233.95,78.6041)" style="animation: 7s linear infinite both a224_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-216.619,92.4064)" style="animation: 7s linear infinite both a225_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-216.551,67.2742)" style="animation: 7s linear infinite both a226_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-249.551,116.205)" style="animation: 7s linear infinite both a227_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-229.554,124.609)" style="animation: 7s linear infinite both a228_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-243.352,142.81)" style="animation: 7s linear infinite both a229_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-228.22,155.945)" style="animation: 7s linear infinite both a230_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-214.752,134.746)" style="animation: 7s linear infinite both a231_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-212.418,147.944)" style="animation: 7s linear infinite both a232_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-225.284,173.745)" style="animation: 7s linear infinite both a233_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-225.284,173.745)" style="animation: 7s linear infinite both a234_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-245.085,172.348)" style="animation: 7s linear infinite both a235_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-258.887,158.214)" style="animation: 7s linear infinite both a236_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-260.889,90.6106)" style="animation: 7s linear infinite both a237_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-274.888,125)" style="animation: 7s linear infinite both a238_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-275.689,100.877)" style="animation: 7s linear infinite both a239_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-219.752,110)" style="animation: 7s linear infinite both a240_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-196.418,100.877)" style="animation: 7s linear infinite both a241_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-202.349,78.3416)" style="animation: 7s linear infinite both a242_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-167.15,106.406)" style="animation: 7s linear infinite both a243_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-134.681,97.4064)" style="animation: 7s linear infinite both a244_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-250.411,66.1414)" style="animation: 7s linear infinite both a245_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-237.154,49.6054)" style="animation: 7s linear infinite both a246_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-272.353,47.6041)" style="animation: 7s linear infinite both a247_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-276.556,74.4038)" style="animation: 7s linear infinite both a248_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-245.289,21.6728)" style="animation: 7s linear infinite both a249_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-262.353,28.3351)" style="animation: 7s linear infinite both a250_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-255.421,41.269)" style="animation: 7s linear infinite both a251_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-285.954,36.6034)" style="animation: 7s linear infinite both a252_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-287.89,66.2696)" style="animation: 7s linear infinite both a253_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-293.024,85.6721)" style="animation: 7s linear infinite both a254_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-291.357,113.34)" style="animation: 7s linear infinite both a255_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-276.757,148.609)" style="animation: 7s linear infinite both a256_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-289.289,159.279)" style="animation: 7s linear infinite both a257_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-274.624,169.48)" style="animation: 7s linear infinite both a258_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-261.156,132.081)" style="animation: 7s linear infinite both a259_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-239.355,99.2775)" style="animation: 7s linear infinite both a260_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-264.486,112.208)" style="animation: 7s linear infinite both a261_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-171.149,66.1414)" style="animation: 7s linear infinite both a262_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-166.149,28.3351)" style="animation: 7s linear infinite both a263_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-166.149,28.3351)" style="animation: 7s linear infinite both a264_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-223.22,16.6728)" style="animation: 7s linear infinite both a265_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-223.22,16.6728)" style="animation: 7s linear infinite both a266_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-284.289,16.6728)" style="animation: 7s linear infinite both a267_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-269.486,4.80111)" style="animation: 7s linear infinite both a268_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-300,55)" style="animation: 7s linear infinite both a269_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-322.825,63.3377)" style="animation: 7s linear infinite both a270_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-309.226,79.4719)" style="animation: 7s linear infinite both a271_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-329.359,107.473)" style="animation: 7s linear infinite both a272_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-311.094,124.209)" style="animation: 7s linear infinite both a273_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-336.492,140.277)" style="animation: 7s linear infinite both a274_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-372.027,116.745)" style="animation: 7s linear infinite both a275_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-360,94.2775)" style="animation: 7s linear infinite both a276_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-385.563,74.341)" style="animation: 7s linear infinite both a277_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-363.098,48.6728)" style="animation: 7s linear infinite both a278_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-337.696,29.0707)" style="animation: 7s linear infinite both a279_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-346.161,63.8024)" style="animation: 7s linear infinite both a280_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-316.162,35.4719)" style="animation: 7s linear infinite both a281_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-299.759,31.7363)" style="animation: 7s linear infinite both a282_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-333.758,84.4692)" style="animation: 7s linear infinite both a283_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-393.361,137.274)" style="animation: 7s linear infinite both a284_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-409.632,109.011)" style="animation: 7s linear infinite both a285_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-438.634,72.8089)" style="animation: 7s linear infinite both a286_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-406.503,51.5393)" style="animation: 7s linear infinite both a287_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-403.433,87.2709)" style="animation: 7s linear infinite both a288_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-350.766,117.474)" style="animation: 7s linear infinite both a289_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-317.429,157.343)" style="animation: 7s linear infinite both a290_t;"/>
+    <ellipse rx="5" ry="5" stroke="none" fill="#0077ce" stroke-width="4" stroke-linecap="square" transform="translate(-317.429,157.343)" style="animation: 7s linear infinite both a291_t;"/>
+</svg>
