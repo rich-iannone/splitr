@@ -31,6 +31,3 @@ import(leaflet)
 import(lubridate)
 import(scales)
 importFrom(dplyr,as.tbl)
-importFrom("stats", "setNames")
-importFrom("utils", "download.file", "read.csv", "read.fwf",
-           "read.table", "write.table")
