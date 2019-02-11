@@ -1,11 +1,14 @@
-Package: SplitR
 Type: Package
-Title: Use the HYSPLIT model from inside R
+Package: SplitR
 Version: 0.4
-Author: Richard Iannone <riannone@me.com>
-Maintainer: Richard Iannone <riannone@me.com>
+Title: Use the HYSPLIT model from inside R
 Description: Use the HYSPLIT model from inside R and do more with it.
+Authors@R:
+    person("Richard", "Iannone", , "rich@rstudio.com", c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-3925-190X"))
 License: MIT + file LICENSE
+Encoding: UTF-8
+RoxygenNote: 6.1.1
 Imports:
     downloader (>= 0.4),
     dplyr (>= 0.4.3),
@@ -14,4 +17,3 @@ Imports:
     lubridate (>= 1.5.0),
     RCurl (>= 1.95),
     scales (>= 0.4.0)
-RoxygenNote: 6.0.1
