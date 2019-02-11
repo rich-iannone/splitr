@@ -382,14 +382,13 @@ Network (CRAN)**](http://cran.rstudio.com). It is recommended that
 *Viewer* pane.
 
 You can install the development version of **SplitR** from **GitHub**
-using the **devtools**
-package.
+using the **devtools** package.
 
 ``` r
 devtools::install_github("rich-iannone/SplitR")
 ```
 
-<img src="man/figures/SplitR.svg" height="250px" style="display: block; margin-left: auto; margin-right: auto; width: 50%; border:1px solid #021a40;"/>
+<img src="man/figures/SplitR.svg" width="100%" />
 
 ## HYSPLIT Citations
 
