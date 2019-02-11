@@ -10,7 +10,6 @@ run_model(model)
 \item{model}{a SplitR modeling object}
 }
 \description{
-Run either a trajectory model or a
-dispersion model, depending on the class of the
-SplitR modeling object
+Run either a trajectory model or a dispersion model, depending on the class
+of the SplitR modeling object
 }

@@ -7,24 +7,22 @@
 add_species(model, name = NULL, pdiam = NULL, density = NULL,
   shape_factor = NULL, ddep_vel = NULL, ddep_mw = NULL,
   ddep_a_ratio = NULL, ddep_d_ratio = NULL, ddep_hl_coeff = NULL,
-  wdep_hl_coeff = NULL, wdep_in_cloud = NULL, wdep_below_cloud = NULL,
-  rad_decay = NULL, resuspension = NULL)
+  wdep_hl_coeff = NULL, wdep_in_cloud = NULL,
+  wdep_below_cloud = NULL, rad_decay = NULL, resuspension = NULL)
 }
 \arguments{
 \item{model}{a SplitR modeling object.}
 
 \item{name}{an identifier for the species.}
 
-\item{pdiam}{the particle diameter in units of
-micrometers.}
+\item{pdiam}{the particle diameter in units of micrometers.}
 
 \item{density}{the particle density in units of g/cm3.}
 
-\item{shape_factor}{the particle shape factor as a
-value in the range \code{0}-\code{1}.}
+\item{shape_factor}{the particle shape factor as a value in the range
+\code{0}-\code{1}.}
 
-\item{ddep_vel}{the dry deposition velocity in units
-of m/s.}
+\item{ddep_vel}{the dry deposition velocity in units of m/s.}
 
 \item{ddep_mw}{the molecular weight in units of g/mol.}
 
@@ -32,27 +30,19 @@ of m/s.}
 
 \item{ddep_d_ratio}{the dry deposition D ratio.}
 
-\item{ddep_hl_coeff}{the Henry's Law value associated
-with dry deposition.}
+\item{ddep_hl_coeff}{the Henry's Law value associated with dry deposition.}
 
-\item{wdep_hl_coeff}{the Henry's Law value associated
-with wet deposition.}
+\item{wdep_hl_coeff}{the Henry's Law value associated with wet deposition.}
 
-\item{wdep_in_cloud}{the in-cloud wet deposition
-rate in units of L/L.}
+\item{wdep_in_cloud}{the in-cloud wet deposition rate in units of L/L.}
 
-\item{wdep_below_cloud}{the below cloud wet deposition
-rate in units of 1/s.}
+\item{wdep_below_cloud}{the below cloud wet deposition rate in units of 1/s.}
 
-\item{rad_decay}{the rate of radioactive decay, in
-units of days.}
+\item{rad_decay}{the rate of radioactive decay, in units of days.}
 
-\item{resuspension}{the pollutant resuspension factor
-in units of 1/m.}
+\item{resuspension}{the pollutant resuspension factor in units of 1/m.}
 }
 \description{
-Add a set of species parameters to
-a dispersion model object. Multiple sets of
-species parameters can can be added to a single
-dispersion model object.
+Add a set of species parameters to a dispersion model object. Multiple sets
+of species parameters can can be added to a single dispersion model object.
 }

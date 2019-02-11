@@ -7,21 +7,17 @@
 get_met_narr(files = NULL, years = NULL, path_met_files)
 }
 \arguments{
-\item{files}{a vector list of exact filenames for
-the NARR files.}
+\item{files}{a vector list of exact filenames for the NARR files.}
 
-\item{years}{a vector list of years for which
-NARR files are to be obtained via FTP.}
+\item{years}{a vector list of years for which NARR files are to be obtained
+via FTP.}
 
-\item{path_met_files}{a full path should be provided
-for the location of the meteorological data files;
-downloaded files will be saved in this location.}
+\item{path_met_files}{a full path should be provided for the location of the
+meteorological data files; downloaded files will be saved in this location.}
 }
 \description{
-This function downloads NARR
-meteorology data files from the NOAA FTP server and
-saves them to a specified folder. Files can be
-downloaded either by specifying a list of filenames
-(in the form of \code{'NARR[YYYY][MM]'}) or
+This function downloads NARR meteorology data files from the NOAA FTP server
+and saves them to a specified folder. Files can be downloaded either by
+specifying a list of filenames (in the form of \code{'NARR[YYYY][MM]'}) or
 through bulk download of a year of files.
 }

@@ -8,26 +8,22 @@ create_grid(lat = 49.263, lon = -123.25, grid_ref = "center",
   range = c(5, 5), division = c(0.5, 0.5), dist_units = "degrees")
 }
 \arguments{
-\item{lat}{a latitude value in decimal degrees
-for the point of reference on the grid.}
+\item{lat}{a latitude value in decimal degrees for the point of reference on
+the grid.}
 
-\item{lon}{a longitude value in decimal degrees
-for the point of reference on the grid.}
+\item{lon}{a longitude value in decimal degrees for the point of reference on
+the grid.}
 
-\item{grid_ref}{the grid reference point. The
-default value is \code{center}.}
+\item{grid_ref}{the grid reference point. The default value is \code{center}.}
 
-\item{range}{the latitude and longitude range about
-the \code{grid_ref}.}
+\item{range}{the latitude and longitude range about the \code{grid_ref}.}
 
-\item{division}{the division distances across the
-latitude and longitude ranges.}
+\item{division}{the division distances across the latitude and longitude
+ranges.}
 
-\item{dist_units}{the distance units used with
-values supplied to \code{range} and
-\code{division}. The default is \code{degrees}.}
+\item{dist_units}{the distance units used with values supplied to
+\code{range} and \code{division}. The default is \code{degrees}.}
 }
 \description{
-Flexibly create a grid of sites for
-ensemble trajectory model runs.
+Flexibly create a grid of sites for ensemble trajectory model runs.
 }

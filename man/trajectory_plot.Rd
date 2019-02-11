@@ -7,22 +7,19 @@
 trajectory_plot(x, show_hourly = TRUE, color_scheme = "cycle_hues")
 }
 \arguments{
-\item{x}{either a trajectory data frame, typically
-created from use of the \code{hysplit_trajectory},
-or a trajectory model object that contains output
-data (i.e., after executing model runs via the
-\code{run_model} function).}
+\item{x}{either a trajectory data frame, typically created from use of the
+\code{hysplit_trajectory}, or a trajectory model object that contains
+output data (i.e., after executing model runs via the \code{run_model}
+function).}
 
-\item{show_hourly}{an option to show hourly
-positions and associated data along trajectories.}
+\item{show_hourly}{an option to show hourly positions and associated data
+along trajectories.}
 
-\item{color_scheme}{defines the appearance of
-multiple trajectories in a single plot. Current
-options are \code{cycle_hues} (the default), and
+\item{color_scheme}{defines the appearance of multiple trajectories in a
+single plot. Current options are \code{cycle_hues} (the default), and
 \code{increasingly_gray}.}
 }
 \description{
-The function plots modeled wind
-trajectories onto a map with information provided
-at every air transport time interval.
+The function plots modeled wind trajectories onto a map with information
+provided at every air transport time interval.
 }

@@ -10,8 +10,7 @@ get_output_df(model)
 \item{model}{a SplitR modeling object.}
 }
 \description{
-If a model has been executed, the output
-data frame will be available within a SplitR modeling
-object and this function will get either the entire
-output data frame or a subset of it.
+If a model has been executed, the output data frame will be available within
+a SplitR modeling object and this function will get either the entire output
+data frame or a subset of it.
 }

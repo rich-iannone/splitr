@@ -2,22 +2,18 @@
 % Please edit documentation in R/trajectory_list.R
 \name{trajectory_list}
 \alias{trajectory_list}
-\title{List HYSPLIT trajectory output archive files
-or folders}
+\title{List HYSPLIT trajectory output archive files or folders}
 \usage{
 trajectory_list(output_folder)
 }
 \arguments{
-\item{output_folder}{the absolute path of the
-directory containing the trajectory endpoints files
-is to be provided.}
+\item{output_folder}{the absolute path of the directory containing the
+trajectory endpoints files is to be provided.}
 }
 \value{
-data frame with information on trajectory
-model output data archives
+data frame with information on trajectory model output data archives
 }
 \description{
-The function lists the HYSPLIT
-trajectory output files that reside in a specified
-directory.
+The function lists the HYSPLIT trajectory output files that reside in a
+specified directory.
 }

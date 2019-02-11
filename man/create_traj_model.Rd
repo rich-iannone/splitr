@@ -7,10 +7,8 @@
 create_traj_model(name = NULL)
 }
 \arguments{
-\item{name}{an optional name for the trajectory
-model object.}
+\item{name}{an optional name for the trajectory model object.}
 }
 \description{
-Create a trajectory model object to
-begin a modelling pipeline.
+Create a trajectory model object to begin a modelling pipeline.
 }

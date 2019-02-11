@@ -8,87 +8,73 @@ hysplit_dispersion(lat = 49.263, lon = -123.25, height = 50,
   duration = 24, start_day = "2015-07-01", start_hour = 0,
   direction = "forward", met_type = "reanalysis", met_dir = NULL,
   vert_motion = 0, model_height = 20000, particle_num = 2500,
-  particle_max = 10000, emissions, species, grids, return_disp_df = TRUE,
-  write_disp_CSV = TRUE, disp_name = NULL)
+  particle_max = 10000, emissions, species, grids,
+  return_disp_df = TRUE, write_disp_CSV = TRUE, disp_name = NULL)
 }
 \arguments{
-\item{lat}{the starting latitude (in decimal
-degrees) for the model run(s).}
+\item{lat}{the starting latitude (in decimal degrees) for the model run(s).}
 
-\item{lon}{the starting longitude (in decimal
-degrees) for the model run(s).}
+\item{lon}{the starting longitude (in decimal degrees) for the model run(s).}
 
-\item{height}{the starting height (in meters above
-ground level) for the model run(s).}
+\item{height}{the starting height (in meters above ground level) for the
+model run(s).}
 
-\item{duration}{the duration of each
-model run (either forward or backward) in hours.}
+\item{duration}{the duration of each model run (either forward or backward)
+in hours.}
 
-\item{start_day}{the day that the model will 
-initialize and run. This should take the form of a
-single-length vector for a day (\code{"YYYY-MM-DD"}).}
+\item{start_day}{the day that the model will initialize and run. This should
+take the form of a single-length vector for a day (\code{"YYYY-MM-DD"}).}
 
-\item{start_hour}{a single daily hour as an
-integer hour (from \code{0} to \code{23}).}
+\item{start_hour}{a single daily hour as an integer hour (from \code{0} to
+\code{23}).}
 
-\item{direction}{an option to select whether to
-conduct the model in the \code{forward} or 
-\code{backward} directions.}
+\item{direction}{an option to select whether to conduct the model in the
+\code{forward} or \code{backward} directions.}
 
-\item{met_type}{an option to select meteorological
-data files. The options are \code{gdas1} (Global Data
-Assimilation System 1-degree resolution data),
-\code{reanalysis} (NCAR/NCEP global reanalysis data),
-and \code{hrrr} (High Resolution Rapid Refresh 3-km 
-resolution data - CONUS only).}
+\item{met_type}{an option to select meteorological data files. The options
+are \code{gdas1} (Global Data Assimilation System 1-degree resolution
+data), \code{reanalysis} (NCAR/NCEP global reanalysis data), and
+\code{hrrr} (High Resolution Rapid Refresh 3-km resolution data - CONUS
+only).}
 
-\item{met_dir}{an optional file path for storage and
-access of meteorological data files.}
+\item{met_dir}{an optional file path for storage and access of meteorological
+data files.}
 
-\item{vert_motion}{a numbered option to
-select the method used to simulation vertical
-motion. The methods are: (0) input model data,
-(1) isobaric, (2) isentropic, (3) constant density,
-(4) isosigma, (5) from divergence, (6) remap MSL to
-AGL, (7) average data, and (8) damped magnitude.}
+\item{vert_motion}{a numbered option to select the method used to simulation
+vertical motion. The methods are: (0) input model data, (1) isobaric, (2)
+isentropic, (3) constant density, (4) isosigma, (5) from divergence, (6)
+remap MSL to AGL, (7) average data, and (8) damped magnitude.}
 
-\item{model_height}{the upper limit of the
-model domain in meters.}
+\item{model_height}{the upper limit of the model domain in meters.}
 
-\item{particle_num}{the number of particles
-released by source during each release cycle.}
+\item{particle_num}{the number of particles released by source during each
+release cycle.}
 
-\item{particle_max}{the number of particles
-released by a source during a model run.}
+\item{particle_max}{the number of particles released by a source during a
+model run.}
 
-\item{emissions}{the numbers corresponding to the
-stored emissions presets. These presets are
-specified using the function
+\item{emissions}{the numbers corresponding to the stored emissions presets.
+These presets are specified using the function
 \code{hysplit_dispersion_define("emissions")}.}
 
-\item{species}{the numbers corresponding to the
-stored species presets. These presets are specified
-using the function
+\item{species}{the numbers corresponding to the stored species presets. These
+presets are specified using the function
 \code{hysplit_dispersion_define("species")}.}
 
-\item{grids}{the numbers corresponding to the
-stored grid presets. These presets are specified
-using the function
+\item{grids}{the numbers corresponding to the stored grid presets. These
+presets are specified using the function
 \code{hysplit_dispersion_define("grids")}.}
 
-\item{return_disp_df}{an option to return a data
-frame with dispersion data.}
+\item{return_disp_df}{an option to return a data frame with dispersion data.}
 
-\item{write_disp_CSV}{an option to write disperison
-data to a CSV file.}
+\item{write_disp_CSV}{an option to write disperison data to a CSV file.}
 
-\item{disp_name}{an optional, descriptive name for
-the output file collection.}
+\item{disp_name}{an optional, descriptive name for the output file
+collection.}
 }
 \description{
-The function executes single/multiple
-forward or backward HYSPLIT dispersion runs using
-specified meteorological datasets.
+The function executes single/multiple forward or backward HYSPLIT dispersion
+runs using specified meteorological datasets.
 }
 \examples{
 \dontrun{
