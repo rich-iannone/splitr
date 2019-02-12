@@ -2,7 +2,9 @@ Type: Package
 Package: SplitR
 Version: 0.4
 Title: Use the HYSPLIT model from inside R
-Description: Use the HYSPLIT model from inside R and do more with it.
+Description: Use the HYSPLIT model from inside R. Access data, set up trajectory
+    and dispersion models, execute the model runs, and obtain on-disk and
+    in-memory model results.
 Authors@R:
     person("Richard", "Iannone", , "rich@rstudio.com", c("aut", "cre"),
            comment = c(ORCID = "0000-0003-3925-190X"))
