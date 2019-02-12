@@ -124,5 +124,5 @@ add_params <- function(model,
     model$binary_path <- binary_path
   }
   
-  return(model)
+  model
 }

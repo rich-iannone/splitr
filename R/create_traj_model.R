@@ -7,25 +7,27 @@ create_traj_model <- function(name = NULL) {
   
   # Create the `traj_model` list object
   traj_model <- 
-    list(traj_name = NULL,
-         lat = NULL,
-         lon = NULL,
-         height = NULL,
-         duration = NULL,
-         run_period = NULL,
-         daily_hours = NULL,
-         direction = "forward",
-         met_type = NULL,
-         vert_motion = 0,
-         model_height = 20000,
-         traj_df = NULL,
-         exec_dir = NULL,
-         met_dir = NULL,
-         binary_path = NULL)
+    list(
+      traj_name = NULL,
+      lat = NULL,
+      lon = NULL,
+      height = NULL,
+      duration = NULL,
+      run_period = NULL,
+      daily_hours = NULL,
+      direction = "forward",
+      met_type = NULL,
+      vert_motion = 0,
+      model_height = 20000,
+      traj_df = NULL,
+      exec_dir = NULL,
+      met_dir = NULL,
+      binary_path = NULL
+    )
   
   attr(traj_model, "class") <- "traj_model"
   
   if (!is.null(name)) traj_model$traj_name <- name
   
-  return(traj_model)
+  traj_model
 }

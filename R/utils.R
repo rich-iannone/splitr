@@ -37,17 +37,11 @@ hysplit_config_init <- function(dir) {
 #' @noRd
 get_os <- function() {
   if (.Platform$OS.type == "windows") {
-    
     return("win")
-    
   } else if (Sys.info()["sysname"] == "Darwin") {
-    
     return("mac")
-    
   } else if (.Platform$OS.type == "unix") {
-    
     return("unix")
-    
   } else {
     stop("Unknown OS", call. = FALSE)
   }

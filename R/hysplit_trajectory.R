@@ -589,13 +589,13 @@ hysplit_trajectory <- function(lat = 49.263,
               start_day_GMT, " ",
               start_hour_GMT, "\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = FALSE)
+              sep = "", append = FALSE)
           
           # Write number of starting locations to
           # 'CONTROL'
           cat("1\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = TRUE)
+              sep = "", append = TRUE)
           
           # Write starting latitude, longitude, height
           # AGL to 'CONTROL'
@@ -603,47 +603,47 @@ hysplit_trajectory <- function(lat = 49.263,
               coords$lon[z], " ", 
               height, "\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = TRUE)
+              sep = "", append = TRUE)
           
           # Write direction and number of simulation
           # hours to 'CONTROL'
           cat(ifelse(direction == "backward", "-", ""),
               duration, "\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = TRUE)
+              sep = "", append = TRUE)
           
           # Write vertical motion option to 'CONTROL'
           cat(vert_motion, "\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = TRUE)
+              sep = "", append = TRUE)
           
           # Write top of model domain in meters to
           # 'CONTROL'
           cat(model_height, "\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = TRUE)
+              sep = "", append = TRUE)
           
           # Write number of met files used to 'CONTROL'
           cat(length(met), "\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = TRUE)
+              sep = "", append = TRUE)
           
           # Write met file paths to 'CONTROL'
           for (i in 1:length(met)) {
             cat(met_dir, "/\n", met[i], "\n",
                 file = paste0(exec_dir, "/CONTROL"),
-                sep = '', append = TRUE)}
+                sep = "", append = TRUE)}
           
           # Write path for trajectory output files to
           # 'CONTROL'
           cat(exec_dir, "/\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = TRUE)
+              sep = "", append = TRUE)
           
           # Write name of output filename to 'CONTROL'
           cat(output_filename, "\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = TRUE)
+              sep = "", append = TRUE)
         }
         
         if (get_os() == "win") {
@@ -655,13 +655,13 @@ hysplit_trajectory <- function(lat = 49.263,
               start_day_GMT, " ",
               start_hour_GMT, "\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = FALSE)
+              sep = "", append = FALSE)
           
           # Write number of starting locations
           # to 'CONTROL'
           cat("1\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = TRUE)
+              sep = "", append = TRUE)
           
           # Write starting latitude, longitude, height
           # AGL to 'CONTROL'
@@ -669,47 +669,47 @@ hysplit_trajectory <- function(lat = 49.263,
               coords$lon[z], " ", 
               height, "\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = TRUE)
+              sep = "", append = TRUE)
           
           # Write direction and number of simulation
           # hours to 'CONTROL'
           cat(ifelse(direction == "backward", "-", ""),
               duration, "\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = TRUE)
+              sep = "", append = TRUE)
           
           # Write vertical motion option to 'CONTROL'
           cat(vert_motion, "\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = TRUE)
+              sep = "", append = TRUE)
           
           # Write top of model domain in meters to
           # 'CONTROL'
           cat(model_height, "\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = TRUE)
+              sep = "", append = TRUE)
           
           # Write number of met files used to 'CONTROL'
           cat(length(met), "\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = TRUE)
+              sep = "", append = TRUE)
           
           # Write met file paths to 'CONTROL'
           for (i in 1:length(met)) {
             cat(met_dir, "/\n", met[i], "\n",
                 file = paste0(exec_dir, "/CONTROL"),
-                sep = '', append = TRUE)}
+                sep = "", append = TRUE)}
           
           # Write path for trajectory output files to
           # 'CONTROL'
           cat(exec_dir, "/\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = TRUE)
+              sep = "", append = TRUE)
           
           # Write name of output filename to 'CONTROL'
           cat(output_filename, "\n",
               file = paste0(exec_dir, "/CONTROL"),
-              sep = '', append = TRUE)
+              sep = "", append = TRUE)
         }
         
         # The CONTROL file is now complete and in the
@@ -784,5 +784,5 @@ hysplit_trajectory <- function(lat = 49.263,
     ensemble_df <- rbind(ensemble_df, traj_df)
   }
   
-  return(ensemble_df)
+  ensemble_df
 }

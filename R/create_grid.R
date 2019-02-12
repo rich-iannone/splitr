@@ -42,5 +42,6 @@ create_grid <- function(lat = 49.263,
       coords$lon[length(coords$lon) + 1] <- lon_vec[j]
     }
   }
-  return(coords)
+  
+  coords
 }

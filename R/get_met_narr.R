@@ -15,8 +15,7 @@ get_met_narr <- function(files = NULL,
                          years = NULL,
                          path_met_files) { 
   
-  narr_dir <- 
-    "ftp://arlftp.arlhq.noaa.gov/narr/"
+  narr_dir <- "ftp://arlftp.arlhq.noaa.gov/narr/"
   
   # Download list of NARR met files by name
   if (!is.null(files)) {
@@ -24,27 +23,27 @@ get_met_narr <- function(files = NULL,
     for (i in 1:length(files)) {
       
       if (.Platform$OS.type == "windows") {
+        
         download(
-          url = paste0(narr_dir,
-                       files[i]),
-          destfile = paste0(path_met_files,
-                            "\\", files[i]),
+          url = paste0(narr_dir, files[i]),
+          destfile = paste0(path_met_files, "\\", files[i]),
           method = "auto",
           quiet = FALSE,
           mode = "wb",
-          cacheOK = FALSE)
+          cacheOK = FALSE
+        )
       }
       
       if (.Platform$OS.type == "unix") {
+        
         download(
-          url = paste0(narr_dir,
-                       files[i]),
-          destfile = paste0(path_met_files,
-                            files[i]),
+          url = paste0(narr_dir, files[i]),
+          destfile = paste0(path_met_files, files[i]),
           method = "auto",
           quiet = FALSE,
           mode = "wb",
-          cacheOK = FALSE) 
+          cacheOK = FALSE
+        ) 
       } 
     }
   }
@@ -55,42 +54,59 @@ get_met_narr <- function(files = NULL,
       for (j in 1:12) {
         if (.Platform$OS.type == "unix") {
           download(
-            url = paste0(narr_dir,
-                         "NARR",
-                         years[i],
-                         formatC(j, width = 2,
-                                 format = "d",
-                                 flag = "0")),
-            destfile = paste0(path_met_files,
-                              "NARR",
-                              years[i],
-                              formatC(j, width = 2,
-                                      format = "d",
-                                      flag = "0")),
+            url = paste0(
+              narr_dir,
+              "NARR",
+              years[i],
+              formatC(
+                j, width = 2,
+                format = "d",
+                flag = "0")
+            ),
+            destfile = paste0(
+              path_met_files,
+              "NARR",
+              years[i],
+              formatC(
+                j, width = 2,
+                format = "d",
+                flag = "0")
+            ),
             method = "auto",
             quiet = FALSE,
             mode = "wb",
-            cacheOK = FALSE)
+            cacheOK = FALSE
+          )
         }
         
         if (.Platform$OS.type == "windows") {
+          
           download(
-            url = paste0(narr_dir,
-                         "NARR",
-                         years[i],
-                         formatC(j, width = 2,
-                                 format = "d",
-                                 flag = "0")),
-            destfile = paste0(path_met_files, "//",
-                              "NARR",
-                              years[i],
-                              formatC(j, width = 2,
-                                      format = "d",
-                                      flag = "0")),
+            url = paste0(
+              narr_dir,
+              "NARR",
+              years[i],
+              formatC(
+                j, width = 2,
+                format = "d",
+                flag = "0"
+              )
+            ),
+            destfile = paste0(
+              path_met_files, "//",
+              "NARR",
+              years[i],
+              formatC(
+                j, width = 2,
+                format = "d",
+                flag = "0"
+              )
+            ),
             method = "auto",
             quiet = FALSE,
             mode = "wb",
-            cacheOK = FALSE)
+            cacheOK = FALSE
+          )
         }
       }
     }

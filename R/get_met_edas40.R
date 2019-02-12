@@ -34,29 +34,25 @@ get_met_edas40 <- function(files = NULL,
                            months = NULL,
                            path_met_files) {
   
-  edas40_dir <- 
-    "ftp://arlftp.arlhq.noaa.gov/archives/edas40/"
+  edas40_dir <- "ftp://arlftp.arlhq.noaa.gov/archives/edas40/"
   
   # Download the 'listing' file from NOAA server
   # It contains a list of EDAS40 files currently
   # available on the server
-  download.file(
-    url = paste0("ftp://arlftp.arlhq.noaa.gov/archives/edas40/",
-                 "listing"),
+  download(
+    url = paste0(edas40_dir, "listing"),
     destfile = paste0(getwd(), "/listing"),
     method = "auto",
     quiet = TRUE,
     mode = "wb",
-    cacheOK = TRUE)
+    cacheOK = TRUE
+  )
   
-  edas40_listing <-
-    readLines(paste0(getwd(), "/listing"))
+  edas40_listing <- readLines(paste0(getwd(), "/listing"))
   
-  edas40_listing <-
-    gsub(" ", "", edas40_listing)
+  edas40_listing <- gsub(" ", "", edas40_listing)
   
   if (!is.null(years)) {
-    
     if (length(years) > 1) {
       years <- seq.default(years[1], years[2])
     }
@@ -66,16 +62,19 @@ get_met_edas40 <- function(files = NULL,
     for (i in 1:length(years)) {
       
       if (i == 1) {
-        edas40_file_list <-
-          vector(mode = "character")
+        edas40_file_list <-vector(mode = "character")
       }
       
       edas40_file_list <-
-        c(edas40_file_list,
+        c(
+          edas40_file_list,
           edas40_listing[
-            which(grepl(paste0("[a-z][a-z][a-z]",
-                               years[i]),
-                        edas40_listing))])
+            which(
+              grepl(
+                paste0("[a-z][a-z][a-z]", years[i]),
+                edas40_listing)
+            )]
+        )
     }
   }
   
@@ -88,16 +87,20 @@ get_met_edas40 <- function(files = NULL,
     
     for (i in 1:length(months)) {
       if (i == 1) {
-        edas40_file_list_month <-
-          vector(mode = "character", length = 0)
+        edas40_file_list_month <- vector(mode = "character", length = 0)
       }
       
       edas40_file_list_month <-
-        c(edas40_file_list_month,
+        c(
+          edas40_file_list_month,
           edas40_file_list[
-            which(grepl(paste0("edas.",
-                               months_3_letter[months[i]]),
-                        edas40_file_list))])
+            which(
+              grepl(
+                paste0("edas.", months_3_letter[months[i]]),
+                edas40_file_list
+              )
+            )]
+        )
     }
     
     edas40_file_list <- edas40_file_list_month
@@ -109,13 +112,12 @@ get_met_edas40 <- function(files = NULL,
   
   for (i in 1:length(edas40_file_list)) {
     download(
-      url = paste0(edas40_dir,
-                   edas40_file_list[i]),
-      destfile = paste0(path_met_files,
-                        edas40_file_list[i]),
+      url = paste0(edas40_dir, edas40_file_list[i]),
+      destfile = paste0(path_met_files, edas40_file_list[i]),
       method = "auto",
       quiet = FALSE,
       mode = "wb",
-      cacheOK = FALSE)
+      cacheOK = FALSE
+    )
   }
 }

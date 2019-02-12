@@ -39,8 +39,7 @@ add_species <- function(model,
     if (is.null(model$species)) {
       name <- "species_1"
     } else {
-      name <- paste0("species_",
-                     nrow(model$species) + 1)
+      name <- paste0("species_", nrow(model$species) + 1)
     }
   }
   
@@ -113,16 +112,16 @@ add_species <- function(model,
       wdep_below_cloud = wdep_below_cloud,
       rad_decay = rad_decay,
       resuspension = resuspension,
-      stringsAsFactors = FALSE)
+      stringsAsFactors = FALSE
+    )
   
   # Write data frame to the `species` list
   # component of `model`
   if (is.null(model$species)) {
     model$species <- species
   } else {
-    model$species <- 
-      rbind(model$species, species)
+    model$species <- rbind(model$species, species)
   }
   
-  return(model)
+  model
 }

@@ -149,8 +149,7 @@ add_grid <- function(model,
     if (is.null(model$grids)) {
       model$grids <- grid
     } else {
-      model$grids <- 
-        rbind(model$grids, grid)
+      model$grids <- rbind(model$grids, grid)
     }
     
     return(model)

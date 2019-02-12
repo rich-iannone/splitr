@@ -18,8 +18,7 @@ get_met_gdas1 <- function(files = NULL,
                           months = NULL,
                           path_met_files) {
   
-  gdas1_dir <- 
-    "ftp://arlftp.arlhq.noaa.gov/archives/gdas1/"
+  gdas1_dir <- "ftp://arlftp.arlhq.noaa.gov/archives/gdas1/"
   
   # Download list of GDAS1 met files by name
   if (!is.null(files)) {
@@ -38,8 +37,11 @@ get_met_gdas1 <- function(files = NULL,
   }
   
   if (!is.null(months)) {
-    months_3_letter <- c("jan", "feb", "mar", "apr", "may", "jun",
-                         "jul", "aug", "sep", "oct", "nov", "dec")
+    months_3_letter <- 
+      c(
+        "jan", "feb", "mar", "apr", "may", "jun",
+        "jul", "aug", "sep", "oct", "nov", "dec"
+      )
     
     for (i in 1:length(months)) {
       if (i == 1) {
@@ -105,7 +107,8 @@ get_met_gdas1 <- function(files = NULL,
           vector(mode = "character", length = 0)
       }
       months_from_year <- 
-        c(paste0("01-", years[i]),
+        c(
+          paste0("01-", years[i]),
           paste0("02-", years[i]),
           paste0("03-", years[i]),
           paste0("04-", years[i]),
@@ -116,7 +119,9 @@ get_met_gdas1 <- function(files = NULL,
           paste0("09-", years[i]),
           paste0("10-", years[i]),
           paste0("11-", years[i]),
-          paste0("12-", years[i]))
+          paste0("12-", years[i])
+        )
+      
       months <- c(months, months_from_year)
     }
     
@@ -158,6 +163,7 @@ get_met_gdas1 <- function(files = NULL,
     }
     
     for (i in 1:length(the_files)) {
+      
       download(
         url = paste0(gdas1_dir,
                      the_files[i]),
@@ -166,7 +172,8 @@ get_met_gdas1 <- function(files = NULL,
         method = "auto",
         quiet = FALSE,
         mode = "wb",
-        cacheOK = FALSE)
+        cacheOK = FALSE
+      )
     }
   }
 }

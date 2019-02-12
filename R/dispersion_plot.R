@@ -18,7 +18,7 @@ dispersion_plot <- function(x,
     if (!is.null(x$disp_df)) {
       disp_df <- x$disp_df
     } else {
-      stop("There is no data available for plotting.")
+      stop("There is no data available for plotting.", call. = FALSE)
     }
   }
   
@@ -27,19 +27,22 @@ dispersion_plot <- function(x,
               "hour") %in% colnames(x))) {
       disp_df <- x
     } else {
-      stop("This data frame does not contain plottable data.")
+      stop("This data frame does not contain plottable data.", call. = FALSE)
     }
   }
   
   if (color_scheme == "cycle_hues") {
     colors <- 
       hue_pal(c = 90, l = 70)(
-        length(sort(unique(disp_df$hour))))
+        length(sort(unique(disp_df$hour)))
+      )
   }
   
   if (color_scheme == "increasingly_gray") {
     colors <-
-      grey_pal(0.7, 0.1)(length(sort(unique(disp_df$hour))))
+      grey_pal(0.7, 0.1)(
+        length(sort(unique(disp_df$hour)))
+      )
   }
   
   disp_plot <- leaflet()
@@ -48,31 +51,36 @@ dispersion_plot <- function(x,
     addProviderTiles(
       disp_plot,
       "OpenStreetMap",
-      group = "OpenStreetMap") 
+      group = "OpenStreetMap"
+    ) 
   
   disp_plot <-
     addProviderTiles(
       disp_plot,
       "CartoDB.DarkMatter",
-      group = "CartoDB Dark Matter")
+      group = "CartoDB Dark Matter"
+    )
   
   disp_plot <-
     addProviderTiles(
       disp_plot,
       "CartoDB.Positron",
-      group = "CartoDB Positron")
+      group = "CartoDB Positron"
+    )
   
   disp_plot <- 
     addProviderTiles(
       disp_plot,
       "Esri.WorldTerrain",
-      group = "ESRI World Terrain")
+      group = "ESRI World Terrain"
+    )
   
   disp_plot <-
     addProviderTiles(
       disp_plot,
       "Stamen.Toner",
-      group = "Stamen Toner")
+      group = "Stamen Toner"
+    )
   
   disp_plot <- 
     fitBounds(
@@ -80,7 +88,8 @@ dispersion_plot <- function(x,
       min(disp_df$lon),
       min(disp_df$lat),
       max(disp_df$lon),
-      max(disp_df$lat))
+      max(disp_df$lat)
+    )
   
   # Get different particle plots by hour of transport
   for (i in 1:length(sort(unique(disp_df$hour)))) {
@@ -105,18 +114,22 @@ dispersion_plot <- function(x,
         stroke = FALSE,
         fill = TRUE,
         color = colors[i],
-        fillColor = colors[i])
+        fillColor = colors[i]
+      )
   }
   
   disp_plot <-
     addLayersControl(
       disp_plot,
       position = "topright",
-      baseGroups = c("CartoDB Positron",
-                     "CartoDB Dark Matter",
-                     "Stamen Toner",
-                     "ESRI World Terrain"),
-      overlayGroups = groups)
+      baseGroups = c(
+        "CartoDB Positron",
+        "CartoDB Dark Matter",
+        "Stamen Toner",
+        "ESRI World Terrain"
+      ),
+      overlayGroups = groups
+    )
   
   disp_plot
 }

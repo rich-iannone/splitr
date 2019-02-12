@@ -22,8 +22,8 @@ add_emissions <- function(model,
     if (is.null(model$emissions)) {
       name <- "emissions_1"
     } else {
-      name <- paste0("emissions_",
-                     nrow(model$emissions) + 1)
+      name <- paste0("emissions_", nrow(model$emissions) + 1
+      )
     }
   }
   
@@ -51,16 +51,16 @@ add_emissions <- function(model,
       duration = duration,
       start_day = start_day,
       start_hour = start_hour,
-      stringsAsFactors = FALSE)
+      stringsAsFactors = FALSE
+    )
   
   # Write data frame to the `emissions` list
   # component of `model`
   if (is.null(model$emissions)) {
     model$emissions <- emissions
   } else {
-    model$emissions <- 
-      rbind(model$emissions, emissions)
+    model$emissions <- rbind(model$emissions, emissions)
   }
   
-  return(model)
+  model
 }

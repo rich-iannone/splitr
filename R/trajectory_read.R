@@ -228,5 +228,5 @@ trajectory_read <- function(output_folder,
     traj_df <- cbind(traj_df, traj_extra_df)
   }
   
-  return(traj_df)
+  traj_df
 }
