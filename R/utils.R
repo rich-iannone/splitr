@@ -1,5 +1,6 @@
-# Create default `SETUP.CFG` and `ASCDATA.CFG`
-# files for trajectory and dispersion runs
+#' Create default `SETUP.CFG` and `ASCDATA.CFG` files
+#' @param dir The directory to which the files should be written.
+#' @noRd
 hysplit_config_init <- function(dir) {
   
   # Default `SETUP.CFG` configuration file
