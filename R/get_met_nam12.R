@@ -11,7 +11,6 @@
 #'   obtained via FTP.
 #' @param path_met_files a full path should be provided for the location of the
 #'   meteorological data files; downloaded files will be saved in this location.
-#' @export
 get_met_nam12 <- function(files = NULL,
                           years = NULL,
                           months = NULL,
