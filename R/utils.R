@@ -2,6 +2,7 @@
 #' Download files using consistent options
 #' @param url The URL from which the files reside.
 #' @param local_path The path to which the files should be written.
+#' @noRd
 met_download <- function(url, local_path) {
   
   download(
