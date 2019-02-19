@@ -1,3 +1,19 @@
+
+#' Download files using consistent options
+#' @param url The URL from which the files reside.
+#' @param local_path The path to which the files should be written.
+met_download <- function(url, local_path) {
+  
+  download(
+    url = url,
+    destfile = local_path,
+    method = "auto",
+    quiet = TRUE,
+    mode = "wb",
+    cacheOK = FALSE
+  )
+}
+
 #' Create default `SETUP.CFG` and `ASCDATA.CFG` files
 #' @param dir The directory to which the files should be written.
 #' @noRd
