@@ -3,7 +3,8 @@
 #' @param url The URL from which the files reside.
 #' @param local_path The path to which the files should be written.
 #' @noRd
-met_download <- function(url, local_path) {
+met_download <- function(url,
+                         local_path) {
   
   download(
     url = url,
@@ -12,6 +13,19 @@ met_download <- function(url, local_path) {
     quiet = TRUE,
     mode = "wb",
     cacheOK = FALSE
+  )
+}
+
+#' Read a `listing` file
+#' @param file_path The path to the \code{listing} file.
+#' @noRd
+read_listing_file <- function(file_path) {
+  
+  as.vector(
+    read.table(
+      file = file_path,
+      sep = "\n"
+    )[, 1]
   )
 }
 
