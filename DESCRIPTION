@@ -13,9 +13,9 @@ Encoding: UTF-8
 RoxygenNote: 6.1.1
 Imports:
     downloader (>= 0.4),
-    dplyr (>= 0.4.3),
+    dplyr (>= 0.8.0),
     ggmap (>= 2.6.1),
-    leaflet (>= 1.0.0),
-    lubridate (>= 1.5.0),
+    leaflet (>= 2.0.2),
+    lubridate (>= 1.7.4),
     RCurl (>= 1.95),
-    scales (>= 0.4.0)
+    scales (>= 1.0.0)
