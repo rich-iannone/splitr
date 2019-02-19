@@ -63,7 +63,7 @@ create_file_list <- function(output_folder,
   # List files from the specified archive folder
   file_list <- 
     list.files(
-      output_folder = output_folder,
+      path = output_folder,
       pattern = "traj.*"
     )
   
