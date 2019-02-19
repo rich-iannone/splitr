@@ -18,4 +18,5 @@ Imports:
     leaflet (>= 2.0.2),
     lubridate (>= 1.7.4),
     RCurl (>= 1.95),
-    scales (>= 1.0.0)
+    scales (>= 1.0.0),
+    magrittr
