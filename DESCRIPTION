@@ -20,3 +20,4 @@ Imports:
     RCurl (>= 1.95),
     scales (>= 1.0.0),
     magrittr
+Roxygen: list(markdown = TRUE)
