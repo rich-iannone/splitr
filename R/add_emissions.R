@@ -6,9 +6,9 @@
 #' @param rate the rate of emissions for the pollutant in mass units per hour.
 #' @param duration the duration of emissions in hours.
 #' @param start_day the day that the emissions will begin. This should take the
-#'   form of a single-length vector for a day (\code{"YYYY-MM-DD"}).
-#' @param start_hour a single daily hour as an integer hour (from \code{0} to
-#'   \code{23}).
+#'   form of a single-length vector for a day (`"YYYY-MM-DD"`).
+#' @param start_hour a single daily hour as an integer hour (from `0` to
+#'   `23`).
 #' @param name an identifier for the group of emissions parameters.
 #' @export
 add_emissions <- function(model,

@@ -2,7 +2,7 @@
 #'
 #' This function downloads NARR meteorology data files from the NOAA FTP server
 #' and saves them to a specified folder. Files can be downloaded either by
-#' specifying a list of filenames (in the form of \code{'NARR[YYYY][MM]'}) or
+#' specifying a list of filenames (in the form of `'NARR[YYYY][MM]'`) or
 #' through bulk download of a year of files.
 #' @param files a vector list of exact filenames for the NARR files.
 #' @param years a vector list of years for which NARR files are to be obtained

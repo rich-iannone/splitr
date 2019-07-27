@@ -22,6 +22,6 @@ meteorological data files.}
 \description{
 This function downloads GDAS1 meteorology data files from the NOAA FTP server
 and saves them to a specified folder. Files can be downloaded either by
-specifying a list of filenames (in the form of "RP[YYYY][MM].gbl") or through
+specifying a list of filenames (in the form of "RP\link[=MM]{YYYY}.gbl") or through
 bulk download of a year of files.
 }

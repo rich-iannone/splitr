@@ -7,7 +7,7 @@
 #' @param pdiam the particle diameter in units of micrometers.
 #' @param density the particle density in units of g/cm3.
 #' @param shape_factor the particle shape factor as a value in the range
-#'   \code{0}-\code{1}.
+#'   `0`-`1`.
 #' @param ddep_vel the dry deposition velocity in units of m/s.
 #' @param ddep_mw the molecular weight in units of g/mol.
 #' @param ddep_a_ratio the dry deposition A ratio.

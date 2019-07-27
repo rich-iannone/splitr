@@ -6,31 +6,31 @@
 #' @param lon the starting longitude (in decimal degrees) for the model run(s).
 #' @param height the starting height (in meters above ' ground level) for the
 #'   model run(s). ' @param duration the duration of one or several model runs
-#'   (either \code{forward} or ' \code{backward}) in hours.
+#'   (either `forward` or ' `backward`) in hours.
 #' @param run_period the extended period (i.e., days, years) when the model will
 #'   initialize and run. This can take the form of a single-length vector for a
-#'   day (\code{"YYYY-MM-DD"}) or year (\code{YYYY}), or, a vector of length 2
+#'   day (`"YYYY-MM-DD"`) or year (`YYYY`), or, a vector of length 2
 #'   to specify the range of days or years.
 #' @param start_day is specific to a dispersion model and it refers to the day
 #'   that the model will initialize and run. This should take the form of a
-#'   single-length vector for a day (\code{"YYYY-MM-DD"}).
+#'   single-length vector for a day (`"YYYY-MM-DD"`).
 #' @param start_hour is specific to a dispersion model and it should indicate
-#'   which hour in the \code{start_day} that modeling will begin. Provide this
-#'   as an integer (from \code{0} to \code{23}).
+#'   which hour in the `start_day` that modeling will begin. Provide this
+#'   as an integer (from `0` to `23`).
 #' @param daily_hours are specific to a trajectory model and should consist of a
-#'   single daily hour as an integer (from \code{0} to \code{23}), or, a vector
+#'   single daily hour as an integer (from `0` to `23`), or, a vector
 #'   of several daily hours represented as integers.
 #' @param direction an option to select whether to conduct the model in the
-#'   \code{forward} or \code{backward} directions.
+#'   `forward` or `backward` directions.
 #' @param met_type an option to select meteorological data files. The options
-#'   are \code{gdas1} (Global Data Assimilation System 1-degree resolution
-#'   data), \code{reanalysis} (NCAR/NCEP global reanalysis data), and
-#'   \code{narr} (North American Regional Reanalysis).
+#'   are `gdas1` (Global Data Assimilation System 1-degree resolution
+#'   data), `reanalysis` (NCAR/NCEP global reanalysis data), and
+#'   `narr` (North American Regional Reanalysis).
 #' @param vert_motion a numbered option to select the method used to simulation
-#'   vertical motion. The methods are: \code{0} (input model data), \code{1}
-#'   (isobaric), \code{2} (isentropic), \code{3} (constant density), \code{4}
-#'   (isosigma), \code{5} (from divergence), \code{6} (remap MSL to AGL),
-#'   \code{7} (average data), and \code{8} (damped magnitude).
+#'   vertical motion. The methods are: `0` (input model data), `1`
+#'   (isobaric), `2` (isentropic), `3` (constant density), `4`
+#'   (isosigma), `5` (from divergence), `6` (remap MSL to AGL),
+#'   `7` (average data), and `8` (damped magnitude).
 #' @param model_height the upper limit of the model domain in meters.
 #' @param traj_name an optional, descriptive name for the output file
 #'   collection.

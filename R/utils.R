@@ -20,7 +20,7 @@ met_download <- function(urls,
 }
 
 #' Read a `listing` file
-#' @param file_path The path to the \code{listing} file.
+#' @param file_path The path to the `listing` file.
 #' @noRd
 read_listing_file <- function(file_path) {
   

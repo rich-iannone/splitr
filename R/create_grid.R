@@ -5,12 +5,12 @@
 #'   the grid.
 #' @param lon a longitude value in decimal degrees for the point of reference on
 #'   the grid.
-#' @param grid_ref the grid reference point. The default value is \code{center}.
-#' @param range the latitude and longitude range about the \code{grid_ref}.
+#' @param grid_ref the grid reference point. The default value is `center`.
+#' @param range the latitude and longitude range about the `grid_ref`.
 #' @param division the division distances across the latitude and longitude
 #'   ranges.
 #' @param dist_units the distance units used with values supplied to
-#'   \code{range} and \code{division}. The default is \code{degrees}.
+#'   `range` and `division`. The default is `degrees`.
 #' @export
 create_grid <- function(lat = 49.263,
                         lon = -123.250,
