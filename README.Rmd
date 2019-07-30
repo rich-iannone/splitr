@@ -45,16 +45,17 @@ trajectory <-
     lon = -80.30364,
     height = 50,
     duration = 24,
-    run_period = "2012-03-12",
+    days = "2012-03-12",
     daily_hours = c(0, 6, 12, 18),
     direction = "forward",
     met_type = "gdas1",
-    extended_met = TRUE) 
+    extended_met = TRUE
+  ) 
 ```
 
-This use of `hysplit_trajectory()` sets up four trajectory runs that start at 00:00, 06:00, 12:00, and 18:00 UTC on March 12, 2012 (using `run_period = "2012-03-12"` and `daily_hours = c(0, 6, 12, 18)`). Several years of runs can be initiated using `run_period = c(2012, 2014)`, model runs can be performed between a range of dates as well (`run_period = c("2012-03-12", "2013-05-23")`). These runs are 24 h in duration (`duration = 24`). 
+This use of `hysplit_trajectory()` sets up four trajectory runs that start at 00:00, 06:00, 12:00, and 18:00 UTC on March 12, 2012 (using `days = "2012-03-12"` and `daily_hours = c(0, 6, 12, 18)`). These runs are 24 h in duration (`duration = 24`). 
 
-The receptor/origin locations are set using `lat` and `lon` for the latitude(s) and longitude(s). The starting location of 42.83752ºN and 80.30364ºW is set here using `lat = 42.83752` and `lon = -80.30364`. Equal-length vectors of `lat` and `lon` values can be used here to create an ensemble of model runs. The starting height of 5 m above ground level is set by `height = 5`.
+The receptor/origin locations are set using `lat` and `lon` for the latitude(s) and longitude(s). The starting location of 42.83752ºN and 80.30364ºW is set here using `lat = 42.83752` and `lon = -80.30364`. Equal-length vectors of `lat` and `lon` values can be used here to create an ensemble of model runs. The starting height of 50 m above ground level is set by `height = 50`.
 
 The model runs as set above are forward runs (moving forward in time, set here using `direction = "forward"`) and not backtrajectory runs (set with `direction = "backward"`).
 
@@ -86,38 +87,37 @@ Models can also be defined and executed using a modeling object in a **magrittr*
 
 ```R
 # Create the `trajectory_model` object, add
-# a grid of starting locations, add run
-# parameters, and execute the model runs
+# various parameters with `add_params()`, and
+# execute the model runs
 trajectory_model <-
   create_traj_model() %>%
-  add_grid(
-    lat = 49.0,
-    lon = -123.0,
-    range = c(0.8, 0.8),
-    division = c(0.2, 0.2)) %>%
   add_params(
+    lat = 43.45,
+    lon = -79.70,
     height = 50,
     duration = 6,
-    run_period = "2015-07-01",
+    days = "2015-07-01",
     daily_hours = c(0, 12),
     direction = "backward",
-    met_type = "reanalysis") %>%
+    met_type = "reanalysis"
+  ) %>%
   run_model()
 ```
 
-Here, we create a `trajectory_model` object which serves as a container for the model definition and for the results. Read left to right, the order of operations is: `create_traj_model()` -> `add_grid()` -> `add_params` -> `run_model()`.
+Here, we create a `trajectory_model` object which serves as a container for the model definition and for the results.
 
-This pipeline setup allows for more flexibility as **R** objects can be piped in for variation in the types of models created. The `create_traj_model()` function creates the trajectory model object. The `add_grid()` allows for the simple creation of a grid for multiple starting locations in an ensemble run. As shown, a grid centered on 49ºN and 123ºW has bounds 0.8º in each direction and grid points at every 0.2º in each direction. One or more `add_params()` statements can be used to write model parameters to the model object. Ending the pipeline with `run_model()` runs the model and creates results.
+This pipeline setup allows for more flexibility as **R** objects can be piped in for variation in the types of models created. The `create_traj_model()` function creates the trajectory model object. One or more `add_params()` statements can be used to write model parameters to the model object. Ending the pipeline with `run_model()` runs the model and creates results.
 
 The trajectory data can be be extracted from the trajectory model object using `get_output_df()`...
 
 ```R
 # Get a data frame containing the model results
 trajectory_df <-
-  trajectory_model %>% get_output_df()
+  trajectory_model %>%
+  get_output_df()
 ```
 
-...and a `tbl_df` (tibble) object is now available:
+...and a tibble of output data is returned:
 
 ```R
 trajectory_df
@@ -143,14 +143,11 @@ trajectory_df
 
 #### Plotting Trajectory Data
 
-Trajectories can be plotted onto an interactive map. Use the `trajectory_plot()` function with either the `trajectory` data frame (created directly by the `hysplit_trajectory()` function), or, even better, with a trajectory model object.
+Trajectories can be plotted onto an interactive map. Use the `trajectory_plot()` function with either the `trajectory` data frame (created directly by the `hysplit_trajectory()` function), or, with a trajectory model object.
 
 ```R
-library(SplitR)
-library(magrittr)
-
 # Plot results using the trajectory data frame
-trajectory_plot(trajectory)
+trajectory %>% trajectory_plot()
 
 # Plot results using the trajectory model object
 trajectory_model %>% trajectory_plot()
@@ -187,14 +184,17 @@ dispersion_model <-
     rate = 5,
     duration = 6,
     start_day = "2015-07-01",
-    start_hour = 0) %>%
+    start_hour = 0
+  ) %>%
   add_species(
     pdiam = 1,
     density = 1,
-    shape_factor = 1) %>%
+    shape_factor = 1
+  ) %>%
   add_grid(
     range = c(0.5, 0.5),
-    division = c(0.1, 0.1)) %>%
+    division = c(0.1, 0.1)
+  ) %>%
   add_params(
     lat = 49.0,
     lon = -123.0,
@@ -203,7 +203,8 @@ dispersion_model <-
     start_day = "2015-07-01",
     start_hour = 0,
     direction = "forward",
-    met_type = "reanalysis") %>%
+    met_type = "reanalysis"
+  ) %>%
   run_model()
 ```
 
@@ -222,7 +223,8 @@ The output data can be extracted from the dispersion model object...
 ```R
 # Get a data frame containing the model results
 dispersion_df <-
-  dispersion_model %>% get_output_df()
+  dispersion_model %>% 
+  get_output_df()
 ```
 
 ...and the data is conveniently supplied as a tibble object:
@@ -251,9 +253,6 @@ dispersion_df
 Dispersion data can also be plotted onto a map. Use the `dispersion_plot()` function with the dispersion model object.
 
 ```R
-library(SplitR)
-library(magrittr)
-
 # Plot particle data onto a map
 dispersion_model %>% dispersion_plot()
 ```
@@ -273,8 +272,6 @@ You can install the development version of **SplitR** from **GitHub** using the 
 ```r
 devtools::install_github("rich-iannone/SplitR")
 ```
-
-<img src="man/figures/SplitR.svg" width="100%" />
 
 ## HYSPLIT Citations
 
