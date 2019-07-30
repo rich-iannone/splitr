@@ -1,15 +1,15 @@
 #' Create a grid of sites
 #'
 #' Flexibly create a grid of sites for ensemble trajectory model runs.
-#' @param lat a latitude value in decimal degrees for the point of reference on
+#' @param lat A latitude value in decimal degrees for the point of reference on
 #'   the grid.
-#' @param lon a longitude value in decimal degrees for the point of reference on
+#' @param lon A longitude value in decimal degrees for the point of reference on
 #'   the grid.
-#' @param grid_ref the grid reference point. The default value is `center`.
-#' @param range the latitude and longitude range about the `grid_ref`.
-#' @param division the division distances across the latitude and longitude
+#' @param grid_ref The grid reference point. The default value is `center`.
+#' @param range The latitude and longitude range about the `grid_ref`.
+#' @param division The division distances across the latitude and longitude
 #'   ranges.
-#' @param dist_units the distance units used with values supplied to
+#' @param dist_units The distance units used with values supplied to
 #'   `range` and `division`. The default is `degrees`.
 #' @export
 create_grid <- function(lat = 49.263,

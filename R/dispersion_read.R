@@ -2,8 +2,8 @@
 #'
 #' The function takes HYSPLIT dispersion output files in a specified output
 #' directory and processes all files into a data frame object.
-#' @param archive_folder the absolute path of the directory containing
-#'   dispersion output files is provided here.
+#' @param archive_folder The absolute path of the directory containing
+#'   dispersion output files is to be provided here.
 #' @return data frame with hourly particle positions
 #' @examples
 #' \dontrun{

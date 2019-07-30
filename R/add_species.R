@@ -2,22 +2,23 @@
 #'
 #' Add a set of species parameters to a dispersion model object. Multiple sets
 #' of species parameters can can be added to a single dispersion model object.
-#' @param model a SplitR modeling object.
-#' @param name an identifier for the species.
-#' @param pdiam the particle diameter in units of micrometers.
-#' @param density the particle density in units of g/cm3.
-#' @param shape_factor the particle shape factor as a value in the range
+#' @param model A SplitR modeling object.
+#' @param name An identifier for the species.
+#' @param pdiam The particle diameter in units of micrometers.
+#' @param density The particle density in units of g/cm3.
+#' @param shape_factor The particle shape factor as a value in the range
 #'   `0`-`1`.
-#' @param ddep_vel the dry deposition velocity in units of m/s.
-#' @param ddep_mw the molecular weight in units of g/mol.
-#' @param ddep_a_ratio the dry deposition A ratio.
-#' @param ddep_d_ratio the dry deposition D ratio.
-#' @param ddep_hl_coeff the Henry's Law value associated with dry deposition.
-#' @param wdep_hl_coeff the Henry's Law value associated with wet deposition.
-#' @param wdep_in_cloud the in-cloud wet deposition rate in units of L/L.
-#' @param wdep_below_cloud the below cloud wet deposition rate in units of 1/s.
-#' @param rad_decay the rate of radioactive decay, in units of days.
-#' @param resuspension the pollutant resuspension factor in units of 1/m.
+#' @param ddep_vel The dry deposition velocity in units of m/s.
+#' @param ddep_mw The molecular weight in units of g/mol.
+#' @param ddep_a_ratio The dry deposition A ratio.
+#' @param ddep_d_ratio The dry deposition D ratio.
+#' @param ddep_hl_coeff The Henry's Law value associated with dry deposition.
+#' @param wdep_hl_coeff The Henry's Law value associated with wet deposition.
+#' @param wdep_in_cloud The in-cloud wet deposition rate in units of L/L.
+#' @param wdep_below_cloud The below cloud wet deposition rate in units of 1/s.
+#' @param rad_decay The rate of radioactive decay, in units of days.
+#' @param resuspension The pollutant resuspension factor in units of 1/m.
+#' 
 #' @export
 add_species <- function(model,
                         name = NULL,

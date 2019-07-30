@@ -1,35 +1,35 @@
 #' Add lat/lon grid to a model
 #'
 #' Create and add a grid of latitude and longitude points to a model object.
-#' @param model a SplitR modeling object
-#' @param lat a latitude value in decimal degrees for the point of reference on
+#' @param model A SplitR modeling object
+#' @param lat A latitude value in decimal degrees for the point of reference on
 #'   the grid.
-#' @param lon a longitude value in decimal degrees for the point of reference on
+#' @param lon A longitude value in decimal degrees for the point of reference on
 #'   the grid.
-#' @param range the latitude and longitude range about the `grid_ref`.
-#' @param division the division distances across the latitude and longitude
+#' @param range The latitude and longitude range about the `grid_ref`.
+#' @param division The division distances across the latitude and longitude
 #'   ranges.
-#' @param start_day the day that the grid will become active and measuring
+#' @param start_day The day that the grid will become active and measuring
 #'   particle concentrations. This should take the form of a single-length
 #'   vector for a day (`"YYYY-MM-DD"`).
-#' @param start_hour the associated hour for the `start_day` variable,
+#' @param start_hour The associated hour for the `start_day` variable,
 #'   taking the form of a single integer hour (from `0` to `23`).
-#' @param end_day the day that the grid will cease to be active and no longer
+#' @param end_day The day that the grid will cease to be active and no longer
 #'   measuring particle concentrations. This should take the form of a
 #'   single-length vector for a day (`"YYYY-MM-DD"`).
-#' @param end_hour the associated hour for the `end_day` variable, taking
+#' @param end_hour The associated hour for the `end_day` variable, taking
 #'   the form of a single integer hour (from `0` to `23`).
-#' @param duration a length of time in hours that the grid will remain active
+#' @param duration A length of time in hours that the grid will remain active
 #'   from the start date-time.
-#' @param heights a vector of heights for which there will be horizontal
+#' @param heights A vector of heights for which there will be horizontal
 #'   sampling grids.
-#' @param samp_type the method of reporting for the sampling grid. The default
+#' @param samp_type The method of reporting for the sampling grid. The default
 #'   is `avg` for reporting average concentrations at every sampling
 #'   interval. Other options are `snapshot` and `max` for
 #'   concentrations at the time of sampling and for maximum concentrations,
 #'   respectively.
-#' @param samp_interval the sampling interval in units of hours.
-#' @param name an identifier for this set of grid parameters.
+#' @param samp_interval The sampling interval in units of hours.
+#' @param name An identifier for this set of grid parameters.
 #' @import lubridate
 #' @export
 add_grid <- function(model,
@@ -55,7 +55,8 @@ add_grid <- function(model,
         lat = lat,
         lon = lon,
         range = range,
-        division = division)
+        division = division
+      )
     
     # Add the grid points to the model object
     model$lat <- grid$lat
@@ -70,8 +71,7 @@ add_grid <- function(model,
       if (is.null(model$grids)) {
         name <- "grid_1"
       } else {
-        name <- paste0("grid_",
-                       nrow(model$grids) + 1)
+        name <- paste0("grid_", nrow(model$grids) + 1)
       }
     }
     
@@ -96,8 +96,7 @@ add_grid <- function(model,
       layers <- 1
     } else {
       layers <- length(heights)
-      heights <- 
-        paste(heights, collapse = " ")
+      heights <- paste(heights, collapse = " ")
     }
     
     if (is.null(start_day)) {
@@ -142,7 +141,8 @@ add_grid <- function(model,
         heights = heights,
         samp_type = samp_type,
         samp_interval = samp_interval,
-        stringsAsFactors = FALSE)
+        stringsAsFactors = FALSE
+      )
     
     # Write data frame to the `grids` list
     # component of `model`

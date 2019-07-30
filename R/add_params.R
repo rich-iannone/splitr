@@ -1,53 +1,15 @@
 #' Add model parameters
 #'
 #' Add modelling parameters to a model object.
-#' @param model a SplitR modeling object.
-#' @param lat the starting latitude (in decimal  degrees) for the model run(s).
-#' @param lon the starting longitude (in decimal degrees) for the model run(s).
-#' @param height the starting height (in meters above ' ground level) for the
-#'   model run(s). ' @param duration the duration of one or several model runs
-#'   (either `forward` or ' `backward`) in hours.
-#' @param run_period the extended period (i.e., days, years) when the model will
-#'   initialize and run. This can take the form of a single-length vector for a
-#'   day (`"YYYY-MM-DD"`) or year (`YYYY`), or, a vector of length 2
-#'   to specify the range of days or years.
-#' @param start_day is specific to a dispersion model and it refers to the day
-#'   that the model will initialize and run. This should take the form of a
-#'   single-length vector for a day (`"YYYY-MM-DD"`).
-#' @param start_hour is specific to a dispersion model and it should indicate
-#'   which hour in the `start_day` that modeling will begin. Provide this
-#'   as an integer (from `0` to `23`).
-#' @param daily_hours are specific to a trajectory model and should consist of a
-#'   single daily hour as an integer (from `0` to `23`), or, a vector
-#'   of several daily hours represented as integers.
-#' @param direction an option to select whether to conduct the model in the
-#'   `forward` or `backward` directions.
-#' @param met_type an option to select meteorological data files. The options
-#'   are `gdas1` (Global Data Assimilation System 1-degree resolution
-#'   data), `reanalysis` (NCAR/NCEP global reanalysis data), and
-#'   `narr` (North American Regional Reanalysis).
-#' @param vert_motion a numbered option to select the method used to simulation
-#'   vertical motion. The methods are: `0` (input model data), `1`
-#'   (isobaric), `2` (isentropic), `3` (constant density), `4`
-#'   (isosigma), `5` (from divergence), `6` (remap MSL to AGL),
-#'   `7` (average data), and `8` (damped magnitude).
-#' @param model_height the upper limit of the model domain in meters.
-#' @param traj_name an optional, descriptive name for the output file
-#'   collection.
-#' @param exec_dir an optional file path for the working directory of the model
-#'   input and output files.
-#' @param met_dir an optional file path for storage and access of meteorological
-#'   data files.
-#' @param binary_path an optional path to a HYSPLIT trajectory model binary.
-#'   When not specified, the model binary will be chosen from several available
-#'   in the package (based on the user's platform).
+#' @param model A SplitR modeling object.
+#' @inheritParams hysplit_trajectory
 #' @export
 add_params <- function(model,
                        lat = NULL,
                        lon = NULL,
                        height = NULL,
                        duration = NULL,
-                       run_period = NULL,
+                       days = NULL,
                        start_day = NULL,
                        start_hour = NULL,
                        daily_hours = NULL,
@@ -76,8 +38,8 @@ add_params <- function(model,
     model$duration <- duration
   }
   
-  if (!is.null(run_period)) {
-    model$run_period <- run_period
+  if (!is.null(days)) {
+    model$days <- days
   }
 
   if (!is.null(start_day)) {
