@@ -1,113 +1,48 @@
+#' Get filenames for the NARR meteorology files
+#'
+#' @noRd
+get_narr_filenames <- function(days,
+                               duration,
+                               direction) {
+  
+  get_monthly_filenames(
+    days = days,
+    duration = duration,
+    prefix = "NARR",
+    extension = NULL
+  )
+}
+
 #' Get NARR meteorology data files
 #'
 #' This function downloads NARR meteorology data files from the NOAA FTP server
-#' and saves them to a specified folder. Files can be downloaded either by
-#' specifying a list of filenames (in the form of `'NARR[YYYY][MM]'`) or
-#' through bulk download of a year of files.
-#' @param files a vector list of exact filenames for the NARR files.
-#' @param years a vector list of years for which NARR files are to be obtained
-#'   via FTP.
-#' @param path_met_files a full path should be provided for the location of the
-#'   meteorological data files; downloaded files will be saved in this location.
-#' @import downloader
+#' and saves them to a specified folder. Files can be downloaded by specifying a
+#' list of filenames (in the form of `'NARR[YYYY][MM]'`).
+#' @inheritParams get_met_gdas1
+#' 
 #' @export
 get_met_narr <- function(files = NULL,
-                         years = NULL,
                          path_met_files) { 
   
-  narr_dir <- "ftp://arlftp.arlhq.noaa.gov/narr/"
+  ftp_dir <- "ftp://arlftp.arlhq.noaa.gov/archives/narr"
+  
+  files_in_path <- list.files()
   
   # Download list of NARR met files by name
   if (!is.null(files)) {
     
-    for (i in 1:length(files)) {
+    for (file in files) {
       
-      if (.Platform$OS.type == "windows") {
+      if (!(file %in% files_in_path)) {
         
-        download(
-          url = paste0(narr_dir, files[i]),
-          destfile = paste0(path_met_files, "\\", files[i]),
-          method = "auto",
-          quiet = FALSE,
-          mode = "wb",
-          cacheOK = FALSE
-        )
-      }
-      
-      if (.Platform$OS.type == "unix") {
-        
-        download(
-          url = paste0(narr_dir, files[i]),
-          destfile = paste0(path_met_files, files[i]),
+        downloader::download(
+          url = file.path(ftp_dir, file),
+          destfile = path.expand(file.path(path_met_files, file)),
           method = "auto",
           quiet = FALSE,
           mode = "wb",
           cacheOK = FALSE
         ) 
-      } 
-    }
-  }
-  
-  # Download one or more years of NARR met files
-  if (!is.null(years)) {
-    for (i in 1:length(years)) {
-      for (j in 1:12) {
-        if (.Platform$OS.type == "unix") {
-          download(
-            url = paste0(
-              narr_dir,
-              "NARR",
-              years[i],
-              formatC(
-                j, width = 2,
-                format = "d",
-                flag = "0")
-            ),
-            destfile = paste0(
-              path_met_files,
-              "NARR",
-              years[i],
-              formatC(
-                j, width = 2,
-                format = "d",
-                flag = "0")
-            ),
-            method = "auto",
-            quiet = FALSE,
-            mode = "wb",
-            cacheOK = FALSE
-          )
-        }
-        
-        if (.Platform$OS.type == "windows") {
-          
-          download(
-            url = paste0(
-              narr_dir,
-              "NARR",
-              years[i],
-              formatC(
-                j, width = 2,
-                format = "d",
-                flag = "0"
-              )
-            ),
-            destfile = paste0(
-              path_met_files, "//",
-              "NARR",
-              years[i],
-              formatC(
-                j, width = 2,
-                format = "d",
-                flag = "0"
-              )
-            ),
-            method = "auto",
-            quiet = FALSE,
-            mode = "wb",
-            cacheOK = FALSE
-          )
-        }
       }
     }
   }

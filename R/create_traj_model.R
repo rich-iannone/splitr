@@ -1,7 +1,7 @@
 #' Create a trajectory model
 #' 
-#' Create a trajectory model object to begin a modelling pipeline.
-#' @param name an optional name for the trajectory model object.
+#' Create a trajectory model object to begin a modeling pipeline.
+#' @param name An optional name for the trajectory model object.
 #' @export
 create_traj_model <- function(name = NULL) {
   
@@ -13,7 +13,7 @@ create_traj_model <- function(name = NULL) {
       lon = NULL,
       height = NULL,
       duration = NULL,
-      run_period = NULL,
+      days = NULL,
       daily_hours = NULL,
       direction = "forward",
       met_type = NULL,
@@ -25,9 +25,9 @@ create_traj_model <- function(name = NULL) {
       binary_path = NULL
     )
   
-  attr(traj_model, "class") <- "traj_model"
-  
   if (!is.null(name)) traj_model$traj_name <- name
+  
+  class(traj_model) <- "traj_model"
   
   traj_model
 }

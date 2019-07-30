@@ -3,8 +3,7 @@
 #' If a model has been executed, the output data frame will be available within
 #' a SplitR modeling object and this function will get either the entire output
 #' data frame or a subset of it.
-#' @param model a SplitR modeling object.
-#' @importFrom dplyr as.tbl
+#' @param model A SplitR modeling object.
 #' @export
 get_output_df <- function(model) {
   

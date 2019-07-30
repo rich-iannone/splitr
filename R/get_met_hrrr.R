@@ -12,23 +12,19 @@ get_met_hrrr <- function(files = NULL,
                           years = NULL,
                           months = NULL,
                           path_met_files) {
-  reanalysis_dir <- 
-    "ftp://arlftp.arlhq.noaa.gov/pub/archives/hrrr/"
+  ftp_dir <- "ftp://arlftp.arlhq.noaa.gov/pub/archives/hrrr/"
   
   # Download list of reanalysis met files by name
   if (!is.null(files)) {
     
     for (i in 1:length(files)) {
         download(
-          url = file.path(reanalysis_dir,
-                       files[i]),
-          destfile = file.path(path_met_files,
-                            files[i]),
+          url = file.path(ftp_dir, files[i]),
+          destfile = file.path(path_met_files, files[i]),
           method = "auto",
           quiet = FALSE,
           mode = "wb",
           cacheOK = FALSE) 
     }
   }
-
 }

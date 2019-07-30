@@ -1,7 +1,7 @@
 #' Create a dispersion model
 #'
-#' Create a dispersion model object to begin a modelling pipeline.
-#' @param name an optional name for the dispersion model object.
+#' Create a dispersion model object to begin a modeling pipeline.
+#' @param name An optional name for the dispersion model object.
 #' @export
 create_disp_model <- function(name = NULL) {
   
@@ -25,9 +25,9 @@ create_disp_model <- function(name = NULL) {
       disp_df = NULL
     )
   
-  attr(disp_model, "class") <- "disp_model"
-  
   if (!is.null(name)) disp_model$disp_name <- name
+  
+  class(disp_model) <- "disp_model"
   
   disp_model
 }

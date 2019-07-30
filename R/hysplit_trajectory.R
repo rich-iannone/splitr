@@ -9,10 +9,8 @@
 #'   model run.
 #' @param duration The duration of each model run (either forward or backward)
 #'   in hours.
-#' @param run_period The extended period (i.e., days, years) when the model will
-#'   initialize and run. This can take the form of a single-length vector for a
-#'   day (`"YYYY-MM-DD"`) or year (`"YYYY"`), or, a vector of length 2 to
-#'   specify the range of days or years.
+#' @param days A vector of days that the model will run. This is combined with
+#'   the `daily_hours` to produce a series of date-times.
 #' @param daily_hours Should consist of a single daily hour as an integer hour
 #'   (from `0` to `23`), or, a vector of several daily hours represented as
 #'   integers.
@@ -20,9 +18,8 @@
 #'   `"forward"` (default) or `"backward"` directions.
 #' @param met_type An option to select meteorological data files. The options
 #'   are `"reanalysis"` (NCAR/NCEP global reanalysis data, the default),
-#'   `"gdas1"` (Global Data Assimilation System 1-degree resolution data),
-#'   `"narr"` (North American Regional Reanalysis), and `"hrrr"` (High
-#'   Resolution Rapid Refresh 3-km resolution data - CONUS only).
+#'   `"gdas1"` (Global Data Assimilation System 1-degree resolution data), and
+#'   `"narr"` (North American Regional Reanalysis).
 #' @param vert_motion A numbered option to select the method used to simulation
 #'   vertical motion. The methods are: `0` (input model data), `1` (isobaric),
 #'   `2` (isentropic), `3` (constant density), `4` (isosigma), `5` (from
@@ -43,6 +40,8 @@
 #'   in the package (based on the user's platform).
 #' @examples
 #' \dontrun{
+#' library(lubridate)
+#' 
 #' # Run a trajectory model 4 times a day throughout
 #' # 2004 using NCEP/NCAR reanalysis data
 #' trajectory <-
@@ -51,7 +50,7 @@
 #'     lon = -122.942,
 #'     height = 100,
 #'     duration = 48,
-#'     run_period = 2004,
+#'     days = seq(ymd("2012-02-22"), ymd("2012-02-27"), by = "1 day"),
 #'     daily_hours = c(0, 6, 12, 18)
 #'   )
 #' }
@@ -60,7 +59,7 @@ hysplit_trajectory <- function(lat = 49.263,
                                lon = -123.250,
                                height = 50,
                                duration = 24,
-                               run_period = "2015-07-01",
+                               days = NULL,
                                daily_hours = 0,
                                direction = "forward",
                                met_type = "reanalysis",
@@ -77,21 +76,8 @@ hysplit_trajectory <- function(lat = 49.263,
   
   if (is.null(met_dir)) met_dir <- getwd()
   
-  if (is.null(binary_path)) {
-    
-    if (get_os() == "mac") {
-      binary_path <- system.file("osx/hyts_std", package = "SplitR")
-    }
-    
-    if (get_os() == "unix") {
-      binary_path <- system.file("linux-amd64/hyts_std", package = "SplitR")
-    }
-    
-    if (get_os() == "win") {
-      binary_path <- system.file("win/hyts_std.exe", package = "SplitR")
-    }
-  }
-
+  binary_path <- set_binary_path(binary_path = binary_path)
+  
   # Generate name of output folder
   if (is.null(traj_name)) {
     folder_name <- paste0("traj-", format(Sys.time(), "%Y-%m-%d-%H-%M-%S"))
@@ -99,41 +85,16 @@ hysplit_trajectory <- function(lat = 49.263,
     folder_name <- traj_name
   }
   
-  if (length(run_period) == 1 &&
-      inherits(run_period, "character") &&
-      grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]", run_period)) {
-    run_type <- "day"
-    run_day <- run_period
-  }
-  
-  if (length(run_period) == 2 &&
-      inherits(run_period, "character") &&
-      all(grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]", run_period))) {
-    run_type <- "range"
-    run_range <- run_period
-  }
-  
-  if (length(run_period) == 1 &&
-      inherits(run_period, "numeric")) {
-    run_type <- "years"
-    run_years <- run_period
-  }
-  
-  if (length(run_period) == 2 &&
-      inherits(run_period, "numeric")) {
-    run_type <- "years"
-    run_years <- paste0(run_period[1], "-", run_period[2])
-  }
-  
   # Write default versions of the SETUP.CFG and
   # ASCDATA.CFG files in the working directory
   hysplit_config_init(dir = exec_dir)
   
-  if (extended_met) {
-    setup_cfg <- readLines('SETUP.CFG')
-    setup_cfg <- gsub("(tm_.* )(0),", "\\11,", setup_cfg)
-    cat(setup_cfg, sep = "\n", file = paste0(exec_dir, "/", "SETUP.CFG"))
-  }
+  # Modify the default `SETUP.CFG` file when the
+  # option for extended meteorology is `TRUE`
+  hysplit_config_extended_met(
+    extended_met = extended_met,
+    dir = exec_dir
+  )
   
   # Stop function if there are vectors of different
   # length for `lat` and `lon`
@@ -141,450 +102,120 @@ hysplit_trajectory <- function(lat = 49.263,
     stop("The coordinate vectors are not the same length.", call. = FALSE)
   }
   
+  if (met_type == "gdas1") {
+    
+    # Get filenames for GDAS1 files
+    met_files <-
+      get_gdas1_filenames(
+        days = days,
+        duration = duration,
+        direction = direction
+      )
+    
+    # Get the GDAS1 meteorology files
+    get_met_gdas1(
+      files = met_files,
+      path_met_files = met_dir
+    )
+  }
+  
+  if (met_type == "reanalysis") {
+    
+    # Get filenames for reanalysis files
+    met_files <-
+      get_reanalysis_filenames(
+        days = days,
+        duration = duration,
+        direction = direction
+      )
+    
+    get_met_reanalysis(
+      files = met_files,
+      path_met_files = met_dir
+    )
+  }
+  
+  if (met_type == "narr") {
+    
+    # Get filenames for NARR files
+    met_files <-
+      get_narr_filenames(
+        days = days,
+        duration = duration,
+        direction = direction
+      )
+    
+    get_met_narr(
+      files = met_files,
+      path_met_files = met_dir
+    )
+  }
+  
   # Create a coordinates list
   coords <- list(lat = lat, lon = lon)
+  
+  # Create a dataframe for the ensemble
+  ensemble_df <- data.frame()
   
   # For every set of coordinates, perform a set
   # of model runs
   for (z in 1:length(coords$lat)) {
-    if (z == 1) ensemble_df <- data.frame()
     
     lat <- coords$lat[z]
     lon <- coords$lon[z]
     
-    # Determine whether the run_years input is a single
-    # year or a range
-    if (exists("run_years")) run_years_single_range <-
-        ifelse(nchar(run_years) == 4, "single", "range")
+    list_run_days <- days %>% as.character()
     
-    # Make a vector list of run days in POSIXct format
-    if (run_type == "day") {
-      list_run_days <- 
-        as.POSIXct(run_day,
-                   origin = "1970-01-01",
-                   tz = "UTC")
-    } else if (run_type == "range") {
-      list_run_days <- 
-        seq(as.POSIXct(run_range[1],
-                       origin = "1970-01-01",
-                       tz = "UTC"),
-            as.POSIXct(run_range[2],
-                       origin = "1970-01-01",
-                       tz = "UTC"),
-            by = 86400)
-      
-    } else if (run_type == "years") {
-      list_run_days <- 
-        seq(
-          as.POSIXct(paste0(substr(run_years, 1, 4),
-                            "-01-01"), 
-                     origin = "1970-01-01",
-                     tz = "UTC"),
-          as.POSIXct(
-            ifelse(run_years_single_range == "single",
-                   paste0(substr(run_years, 1, 4),
-                          "-12-31"),
-                   paste0(substr(run_years, 6, 9),
-                          "-12-31")), 
-            origin = "1970-01-01",
-            tz = "UTC"),
-          by = 86400)
-      
-    } else {
-      stop("A run type has not been selected")
-    }
-    
-    # Initialize a vector that will contain names for
-    # all files generated
+    # Initialize a vector for all filenames to be used
     all_trajectory_files <- vector(mode = "character", length = 0)
     
     # Make loop with all run days
-    for (i in 1:length(list_run_days)) {
+    for (i in seq(list_run_days)) {
       
       # Define starting time parameters
-      start_year_GMT <- 
-        substr(as.character(year(list_run_days[i])), 3, 4)
-      
-      start_month_GMT <-
-        formatC(as.numeric(month(list_run_days[i])),
-                width = 2, format = "d", flag = "0")
-      
-      start_day_GMT <-
-        formatC(as.numeric(day(list_run_days[i])),
-                width = 2, format = "d", flag = "0")
+      start_year_GMT <- to_short_year(list_run_days[i])
+      start_month_GMT <- to_short_month(list_run_days[i])
+      start_day_GMT <- to_short_day(list_run_days[i])
       
       # Sort daily starting hours if given as
       # numeric values
-      if (class(daily_hours) == "numeric") {
-        
+      if (inherits(daily_hours, "numeric")) {
         daily_hours <- formatC(sort(daily_hours), width = 2, flag = 0)
       }
       
       # Make nested loop with daily beginning hours
-      for (j in daily_hours) {    
+      for (j in daily_hours) {
+        
         start_hour_GMT <- j
         
-        #--- Determine which met files are required for this run
-        
-        # Determine the start time of the model run
-        start_time_GMT <-
-          lubridate::ymd_hms(
-            paste0(
-              ifelse(
-                start_year_GMT > 40,
-                paste0("19", start_year_GMT),
-                start_year_GMT
-              ),
-              "-",
-              start_month_GMT, "-",
-              start_day_GMT, " ",
-              start_hour_GMT, ":00:00"
-            )
-          )
-        
-        # Determine the end time of the model run
-        end_time_GMT <-
-          as.POSIXct(
-            ifelse(
-              direction == "backward", 
-              start_time_GMT - (duration * 3600),
-              start_time_GMT + (duration * 3600)
-            ),
-            origin = "1970-01-01",
-            tz = "UTC"
-          )
-        
-        # Determine whether the start year is a leap year
-        leap_year <-
-          lubridate::leap_year(
-            lubridate::ymd(
-              paste0(
-                start_year_GMT, "-",
-                start_month_GMT, "-",
-                start_day_GMT
-              )
-            )
-          )
-        
-        # Determine whether the beginning and end of the
-        # current run crosses over a calendar year
-        number_of_calendar_years <-
-          ifelse(lubridate::year(start_time_GMT) == 
-                   lubridate::year(end_time_GMT), 1, 2)
-        
-        # Determine whether the beginning and end of the
-        # current run crosses over a calendar month
-        number_of_calendar_months <-
-          ifelse(lubridate::month(start_time_GMT) == 
-                   lubridate::month(end_time_GMT), 1, 2)
-        
-        #--- Divide different requirements for met files
-        #    into different cases
-        
-        # Set the different cases to FALSE by default
-        case_within_month <- FALSE
-        case_over_year <- FALSE
-        case_over_month <- FALSE
-        
-        # Determine which of the three cases is true
-        if (number_of_calendar_years == 1 & 
-            number_of_calendar_months == 1) {
-          case_within_month <- TRUE
-        } else if (number_of_calendar_years > 1) {
-          case_over_year <- TRUE
-        } else if (number_of_calendar_months > 1) {
-          case_over_month <- TRUE
+        if (start_year_GMT > 40) {
+          full_year_GMT <- paste0("19", start_year_GMT)
         } else {
-          NULL 
-        }
-        
-        #--- Get vector lists of met files applicable to
-        # run from GDAS 1-degree dataset
-        
-        # Trap leap-year condition of missing .w5 met
-        # file for February in a '0' list value
-        if (case_within_month & met_type == "gdas1") {
-          
-          met <- 
-            c(paste0(
-              "gdas1.",
-              substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-              substr(year(start_time_GMT), 3, 4), ".w1"),                                      
-              paste0(
-                "gdas1.",
-                substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                substr(year(start_time_GMT), 3, 4), ".w2"),
-              paste0(
-                "gdas1.",
-                substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                substr(year(start_time_GMT), 3, 4), ".w3"),
-              paste0(
-                "gdas1.",
-                substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                substr(year(start_time_GMT), 3, 4), ".w4"),
-              ifelse(month(start_time_GMT) == 2 &
-                       leap_year == TRUE, 0,
-                     paste0(
-                       "gdas1.",
-                       substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                       substr(year(start_time_GMT), 3, 4), ".w5")))
-        }
-        
-        if (case_over_year & met_type == "gdas1") {
-          
-          met <- 
-            c(paste0(
-              "gdas1.dec",
-              substr(year(end_time_GMT), 3, 4), ".w3"),                                      
-              paste0(
-                "gdas1.dec",
-                substr(year(end_time_GMT), 3, 4), ".w4"),
-              paste0(
-                "gdas1.dec",
-                substr(year(end_time_GMT), 3, 4), ".w5"),
-              paste0(
-                "gdas1.jan",
-                substr(year(start_time_GMT), 3, 4), ".w1"),
-              paste0(
-                "gdas1.jan",
-                substr(year(start_time_GMT), 3, 4), ".w2"),
-              paste0(
-                "gdas1.jan",
-                substr(year(start_time_GMT), 3, 4), ".w3"))
-        }
-        
-        if (case_over_month & met_type == "gdas1") {
-          
-          met <-
-            c(paste0(
-              "gdas1.",
-              substr(tolower(format(end_time_GMT, "%B")), 1, 3),
-              substr(year(end_time_GMT), 3, 4), ".w3"),                                      
-              paste0(
-                "gdas1.",
-                substr(tolower(format(end_time_GMT, "%B")), 1, 3),
-                substr(year(end_time_GMT), 3, 4), ".w4"),
-              ifelse(
-                month(end_time_GMT) == 2 &
-                  leap_year == TRUE, 0,
-                paste0("gdas1.",
-                       substr(tolower(format(end_time_GMT,
-                                             "%B")), 1, 3),
-                       substr(year(end_time_GMT), 3, 4),
-                       ".w5")),
-              paste0(
-                "gdas1.",
-                substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                substr(year(start_time_GMT), 3, 4), ".w1"),
-              paste0(
-                "gdas1.",
-                substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                substr(year(start_time_GMT), 3, 4), ".w2"),
-              paste0(
-                "gdas1.",
-                substr(tolower(format(start_time_GMT, "%B")), 1, 3),
-                substr(year(start_time_GMT), 3, 4), ".w3"))
-        }
-        
-        # Get vector lists of met files applicable to run
-        # from the NCEP/NCAR reanalysis dataset
-        if (met_type == "reanalysis") {
-          tt <- 
-            c(
-              start_time_GMT,
-              start_time_GMT +
-                (1 - 2 * as.numeric(direction == "backward")) *
-                duration * 3600
-            )
-          
-          met <- 
-            paste0(
-              "RP",
-              unique(
-                format(seq.POSIXt(min(tt), max(tt), by = "1 hour"), "%Y%m")
-              ),
-              ".gbl"
-            )
-        }
-
-        # Get vector lists of met files applicable to run
-        # from the NARR dataset
-        if (met_type == "narr") met <- 
-          c(paste0(
-            "NARR",
-            ifelse(start_month_GMT == "01",
-                   year(start_time_GMT) - 1,
-                   year(start_time_GMT)),
-            ifelse(start_month_GMT == "01", "12",
-                   formatC(month(start_time_GMT) - 1,
-                           width = 2,
-                           format = "d",
-                           flag = "0"))),
-            paste0(
-              "NARR",
-              year(start_time_GMT),
-              start_month_GMT),
-            paste0(
-              "NARR",
-              ifelse(start_month_GMT == "12",
-                     year(start_time_GMT) + 1,
-                     year(start_time_GMT)),
-              ifelse(start_month_GMT == "12", "01",
-                     formatC(month(start_time_GMT) + 1,
-                             width = 2,
-                             format = "d",
-                             flag = "0"))))
-        
-        #--- Get vector lists of met files applicable to
-        #    run from hrrr 3-km dataset
-        if (met_type == "hrrr") {
-          # Get all date/times needed for download
-          seq_start <- as.POSIXct(paste(format(start_time_GMT, "%Y-%m-%d"), 
-            (as.numeric(format(start_time_GMT, "%H")) %/% 6)*6), 
-            format = "%Y-%m-%d %H", tz = "UTC")
-          seq_end <- as.POSIXct(paste(format(end_time_GMT, "%Y-%m-%d"),
-            (as.numeric(format(end_time_GMT, "%H")) %/% 6)*6),
-            format = "%Y-%m-%d %H", tz = "UTC")
-          # Format date times to conform to hrrr file names
-          file_datetimes_format <- format(seq(from = seq_start,
-            to = seq_end, by = 6*60*60), "%Y%m%d.%H")
-          # Create file names
-          met <- paste0("hysplit.",
-              file_datetimes_format, "z.hrrra")
-        }
-
-        # Remove list values containing '0' (representing
-        # missing .w5 data files for Feb in leap years)
-        if (exists("met")) met <- met[!met %in% c(0)]
-        
-        # Are the met files available on the selected path?
-        met_file_df <-
-          setNames(data.frame(
-            mat.or.vec(nr = length(met), nc = 2)),
-            nm = c("file","available"))
-        
-        if (any(c("mac", "unix") %in% get_os())) {
-          
-          for (k in 1:length(met)) {
-            met_file_df[k, 1] <- met[k]
-            
-            met_file_df[k, 2] <- 
-              as.character(
-                file.exists(paste0(met_dir,
-                                   "/", met[k])))
-          }
-          
-          # Write the met file availability to file
-          write.table(
-            met_file_df,
-            file = paste0(met_dir, "/met_file_list"),
-            sep = ",",
-            row.names = FALSE,
-            col.names = FALSE,
-            quote = FALSE,
-            append = FALSE
-          )
-          
-          # Download the missing met files
-          if (FALSE %in% met_file_df[,2]) {
-            
-            files_to_get <- subset(met_file_df, available == FALSE)[,1]
-            
-            if (met_type == "reanalysis") {
-              get_met_reanalysis(
-                files = files_to_get,
-                path_met_files = paste0(met_dir, "/"))
-            }
-            
-            if (met_type == "narr") {
-              get_met_narr(
-                files = files_to_get,
-                path_met_files = paste0(met_dir, "/"))
-            }
-            
-            if (met_type == "gdas1") {
-              get_met_gdas1(
-                files = files_to_get,
-                path_met_files = paste0(met_dir, "/"))
-            } 
-
-            if (met_type == "hrrr") {
-              get_met_hrrr(
-                files = files_to_get,
-                path_met_files = paste0(met_dir, "/"))
-            } 
-          }
-        }
-        
-        if (get_os() == "win") {
-          
-          for (k in 1:length(met)) {
-            met_file_df[k, 1] <- met[k]
-            
-            met_file_df[k, 2] <-
-              as.character(file.exists(paste0(met_dir, "/", met[k])))
-          }
-          
-          # Write the met file availability to file
-          write.table(
-            met_file_df,
-            file = paste0(met_dir, "/met_file_list"),
-            sep = ",",
-            row.names = FALSE,
-            col.names = FALSE,
-            quote = FALSE,
-            append = FALSE
-          )
-          
-          # Download the missing met files
-          if (FALSE %in% met_file_df[,2]) {
-            
-            files_to_get <- subset(met_file_df, available == FALSE)[,1]
-            
-            if (met_type == "reanalysis") {
-              get_met_reanalysis(files = files_to_get, path_met_files = met_dir)
-            }
-            
-            if (met_type == "narr") {
-              get_met_narr(files = files_to_get, path_met_files = met_dir)
-            }
-            
-            if (met_type == "gdas1") {
-              get_met_gdas1(files = files_to_get, path_met_files = met_dir)
-            } 
-
-            if (met_type == "hrrr") {
-              get_met_hrrr(files = files_to_get, path_met_files = met_dir)
-            } 
-          }
+          full_year_GMT <- paste0("20", start_year_GMT)
         }
         
         # Construct the output filename string for this
         # model run
         output_filename <-
-          paste0("traj-",
-                 ifelse(is.null(traj_name), 
-                        "", traj_name),
-                 "-",
-                 ifelse(direction == "backward",
-                        "bwd", "fwd"), "-",
-                 start_year_GMT, "-",
-                 start_month_GMT, "-",
-                 start_day_GMT, "-",
-                 start_hour_GMT, "-",
-                 z,
-                 "lat_", gsub("\\.", "p", as.character(lat)), "_",
-                 "lon_", gsub("\\.", "p", as.character(lon)), "-",
-                 "hgt_", height, "-",
-                 duration, "h")
-                 #formatC(z, width = 5, format = "d", flag = "0"))
+          get_traj_output_filename(
+            traj_name = traj_name,
+            site = z,
+            direction = direction,
+            year = start_year_GMT,
+            month = start_month_GMT,
+            day = start_day_GMT,
+            hour = start_hour_GMT,
+            lat = lat,
+            lon = lon,
+            height = height,
+            duration = duration
+          )
         
         all_trajectory_files <- c(all_trajectory_files, output_filename)
         
         if (any(c("mac", "unix") %in% get_os())) {
           
-          # Write start year, month, day, hour to
-          # 'CONTROL'
+          # Write start year, month, day, hour to 'CONTROL'
           cat(start_year_GMT, " ", 
               start_month_GMT, " ",
               start_day_GMT, " ",
@@ -593,15 +224,13 @@ hysplit_trajectory <- function(lat = 49.263,
               sep = "", append = FALSE
           )
           
-          # Write number of starting locations to
-          # 'CONTROL'
+          # Write number of starting locations to 'CONTROL'
           cat("1\n",
               file = paste0(exec_dir, "/CONTROL"),
               sep = "", append = TRUE
           )
           
-          # Write starting latitude, longitude, height
-          # AGL to 'CONTROL'
+          # Write starting latitude, longitude, height AGL to 'CONTROL'
           cat(coords$lat[z], " ", 
               coords$lon[z], " ", 
               height, "\n",
@@ -609,8 +238,7 @@ hysplit_trajectory <- function(lat = 49.263,
               sep = "", append = TRUE
           )
           
-          # Write direction and number of simulation
-          # hours to 'CONTROL'
+          # Write direction and number of simulation hours to 'CONTROL'
           cat(ifelse(direction == "backward", "-", ""),
               duration, "\n",
               file = paste0(exec_dir, "/CONTROL"),
@@ -631,21 +259,20 @@ hysplit_trajectory <- function(lat = 49.263,
           )
           
           # Write number of met files used to 'CONTROL'
-          cat(length(met), "\n",
+          cat(length(met_files), "\n",
               file = paste0(exec_dir, "/CONTROL"),
               sep = "", append = TRUE
           )
           
           # Write met file paths to 'CONTROL'
-          for (i in 1:length(met)) {
-            cat(met_dir, "/\n", met[i], "\n",
+          for (i in 1:length(met_files)) {
+            cat(met_dir, "/\n", met_files[i], "\n",
                 file = paste0(exec_dir, "/CONTROL"),
                 sep = "", append = TRUE
             )
           }
           
-          # Write path for trajectory output files to
-          # 'CONTROL'
+          # Write path for trajectory output files to 'CONTROL'
           cat(exec_dir, "/\n",
               file = paste0(exec_dir, "/CONTROL"),
               sep = "", append = TRUE
@@ -660,8 +287,7 @@ hysplit_trajectory <- function(lat = 49.263,
         
         if (get_os() == "win") {
           
-          # Write start year, month, day, hour to
-          # 'CONTROL'
+          # Write start year, month, day, hour to 'CONTROL'
           cat(start_year_GMT, " ", 
               start_month_GMT, " ",
               start_day_GMT, " ",
@@ -670,15 +296,13 @@ hysplit_trajectory <- function(lat = 49.263,
               sep = "", append = FALSE
           )
           
-          # Write number of starting locations
-          # to 'CONTROL'
+          # Write number of starting locations to 'CONTROL'
           cat("1\n",
               file = paste0(exec_dir, "/CONTROL"),
               sep = "", append = TRUE
           )
           
-          # Write starting latitude, longitude, height
-          # AGL to 'CONTROL'
+          # Write starting latitude, longitude, height AGL to 'CONTROL'
           cat(coords$lat[z], " ", 
               coords$lon[z], " ", 
               height, "\n",
@@ -686,8 +310,7 @@ hysplit_trajectory <- function(lat = 49.263,
               sep = "", append = TRUE
           )
           
-          # Write direction and number of simulation
-          # hours to 'CONTROL'
+          # Write direction and number of simulation hours to 'CONTROL'
           cat(ifelse(direction == "backward", "-", ""),
               duration, "\n",
               file = paste0(exec_dir, "/CONTROL"),
@@ -708,14 +331,14 @@ hysplit_trajectory <- function(lat = 49.263,
           )
           
           # Write number of met files used to 'CONTROL'
-          cat(length(met), "\n",
+          cat(length(met_files), "\n",
               file = paste0(exec_dir, "/CONTROL"),
               sep = "", append = TRUE
           )
           
           # Write met file paths to 'CONTROL'
-          for (i in 1:length(met)) {
-            cat(met_dir, "/\n", met[i], "\n",
+          for (i in 1:length(met_files)) {
+            cat(met_dir, "/\n", met_files[i], "\n",
                 file = paste0(exec_dir, "/CONTROL"),
                 sep = "", append = TRUE
             )

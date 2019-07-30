@@ -153,5 +153,5 @@ trajectory_list <- function(output_folder) {
     }
   }
   
-  return(trajectory_output_df)  
+  trajectory_output_df
 }

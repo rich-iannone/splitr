@@ -123,8 +123,6 @@ hysplit_dispersion <- function(lat = 49.263,
   
   writeLines(setup.cfg, paste0(getwd(), "/SETUP.CFG"))
   
-  rm(setup.cfg)
-  
   # Make a vector list of run days in POSIXct format
   run_day <- 
     as.POSIXct(run_day,
@@ -132,9 +130,7 @@ hysplit_dispersion <- function(lat = 49.263,
                tz = "UTC")
   
   # Define starting time parameters
-  start_year_GMT <- 
-    substr(
-      as.character(year(run_day)), 3, 4)
+  start_year_GMT <- substr(as.character(year(run_day)), 3, 4)
   
   start_month_GMT <- 
     formatC(as.numeric(month(run_day)),
@@ -154,7 +150,7 @@ hysplit_dispersion <- function(lat = 49.263,
   
   # Determine the start time of the model run
   start_time_GMT <- 
-    ymd_hms(paste0(ifelse(start_year_GMT > 50,
+    lubridate::ymd_hms(paste0(ifelse(start_year_GMT > 50,
                           paste0("19",
                                  start_year_GMT),
                           start_year_GMT), "-",
@@ -175,7 +171,7 @@ hysplit_dispersion <- function(lat = 49.263,
   
   # Determine whether the start year is a leap year
   leap_year <- 
-    leap_year(ymd(paste0(start_year_GMT, "-",
+    lubridate::leap_year(lubridate::ymd(paste0(start_year_GMT, "-",
                          start_month_GMT, "-",
                          start_day_GMT)))
   
@@ -556,13 +552,13 @@ hysplit_dispersion <- function(lat = 49.263,
     grids$start_hour <- start_hour
     
     grids$end_day <-
-      format(ymd_h(paste(grids$start_day, grids$start_hour)) + 
+      format(lubridate::ymd_h(paste(grids$start_day, grids$start_hour)) + 
                (duration * 3600),
              "%Y-%m-%d")
     
     grids$end_hour <-
       as.numeric(
-        format(ymd_h(paste(grids$start_day, grids$start_hour)) + 
+        format(lubridate::ymd_h(paste(grids$start_day, grids$start_hour)) + 
                  (duration * 3600),
                "%H")
       )
@@ -578,17 +574,17 @@ hysplit_dispersion <- function(lat = 49.263,
     sampling_type <- "0"
   }
   
+  # TODO: fix issue with `strsplit()` call
+  #browser()
+  
   grids_text <-
     c("1",
-      paste(grids[1, 2],
-            grids[1, 3]),
-      paste(grids[1, 6],
-            grids[1, 7]),
-      paste(grids[1, 4],
-            grids[1, 5]),
+      paste(grids[1, 2], grids[1, 3]),
+      paste(grids[1, 6], grids[1, 7]),
+      paste(grids[1, 4], grids[1, 5]),
       paste0(getwd(), "/"),
       grids[1,1],
-      length(strsplit(grids$heights, split = " ")[[1]]),
+      length(strsplit(as.character(grids$heights), split = " ")[[1]]),
       grids[1,13],
       paste0(paste(unlist(strsplit(substr(grids[i, 9], 3, 10), "-")),
                    collapse = " "),
@@ -774,8 +770,7 @@ hysplit_dispersion <- function(lat = 49.263,
     
     # Perform the movement of all dispersion files
     # into a folder residing in the output dir
-    dir.create(path = paste0(getwd(), "/",
-                             folder_name))
+    dir.create(path = paste0(getwd(), "/", folder_name))
     
     system(paste0("(cd ", getwd(),
                   " && mv GIS_part*.csv '",
@@ -800,8 +795,7 @@ hysplit_dispersion <- function(lat = 49.263,
     
     # Perform the movement of all dispersion files
     # into a folder residing in the output dir
-    dir.create(path = paste0(getwd(), "/",
-                             folder_name))
+    dir.create(path = paste0(getwd(), "/", folder_name))
     
     shell(paste0("(cd \"", getwd(),
                  "\" && move GIS_part*.csv \"",
@@ -842,8 +836,7 @@ hysplit_dispersion <- function(lat = 49.263,
   # Return a dispersion data frame if it is requested
   if (return_disp_df) {
     
-    disp_df <- 
-      dispersion_read(archive_folder = folder_name)
+    disp_df <- dispersion_read(archive_folder = folder_name)
     
     invisible(disp_df)
   }
