@@ -5,7 +5,7 @@
 \title{Conduct HYSPLIT trajectory runs}
 \usage{
 hysplit_trajectory(lat = 49.263, lon = -123.25, height = 50,
-  duration = 24, run_period = "2015-07-01", daily_hours = 0,
+  duration = 24, days = NULL, daily_hours = 0,
   direction = "forward", met_type = "reanalysis", vert_motion = 0,
   model_height = 20000, extended_met = FALSE, return_traj_df = TRUE,
   traj_name = NULL, exec_dir = NULL, met_dir = NULL,
@@ -21,10 +21,8 @@ model run.}
 \item{duration}{The duration of each model run (either forward or backward)
 in hours.}
 
-\item{run_period}{The extended period (i.e., days, years) when the model will
-initialize and run. This can take the form of a single-length vector for a
-day (\code{"YYYY-MM-DD"}) or year (\code{"YYYY"}), or, a vector of length 2 to
-specify the range of days or years.}
+\item{days}{A vector of days that the model will run. This is combined with
+the \code{daily_hours} to produce a series of date-times.}
 
 \item{daily_hours}{Should consist of a single daily hour as an integer hour
 (from \code{0} to \code{23}), or, a vector of several daily hours represented as
@@ -35,9 +33,8 @@ integers.}
 
 \item{met_type}{An option to select meteorological data files. The options
 are \code{"reanalysis"} (NCAR/NCEP global reanalysis data, the default),
-\code{"gdas1"} (Global Data Assimilation System 1-degree resolution data),
-\code{"narr"} (North American Regional Reanalysis), and \code{"hrrr"} (High
-Resolution Rapid Refresh 3-km resolution data - CONUS only).}
+\code{"gdas1"} (Global Data Assimilation System 1-degree resolution data), and
+\code{"narr"} (North American Regional Reanalysis).}
 
 \item{vert_motion}{A numbered option to select the method used to simulation
 vertical motion. The methods are: \code{0} (input model data), \code{1} (isobaric),
@@ -71,6 +68,8 @@ runs using specified meteorological datasets.
 }
 \examples{
 \dontrun{
+library(lubridate)
+
 # Run a trajectory model 4 times a day throughout
 # 2004 using NCEP/NCAR reanalysis data
 trajectory <-
@@ -79,7 +78,7 @@ trajectory <-
     lon = -122.942,
     height = 100,
     duration = 48,
-    run_period = 2004,
+    days = seq(ymd("2012-02-22"), ymd("2012-02-27"), by = "1 day"),
     daily_hours = c(0, 6, 12, 18)
   )
 }

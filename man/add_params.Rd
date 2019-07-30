@@ -5,66 +5,60 @@
 \title{Add model parameters}
 \usage{
 add_params(model, lat = NULL, lon = NULL, height = NULL,
-  duration = NULL, run_period = NULL, start_day = NULL,
+  duration = NULL, days = NULL, start_day = NULL,
   start_hour = NULL, daily_hours = NULL, direction = NULL,
   met_type = NULL, vert_motion = NULL, model_height = NULL,
   traj_name = NULL, exec_dir = NULL, met_dir = NULL,
   binary_path = NULL)
 }
 \arguments{
-\item{model}{a SplitR modeling object.}
+\item{model}{A SplitR modeling object.}
 
-\item{lat}{the starting latitude (in decimal  degrees) for the model run(s).}
+\item{lat}{The starting latitude and longitude (in decimal degrees) for
+each model run.}
 
-\item{lon}{the starting longitude (in decimal degrees) for the model run(s).}
+\item{lon}{The starting latitude and longitude (in decimal degrees) for
+each model run.}
 
-\item{height}{the starting height (in meters above ' ground level) for the
-model run(s). ' @param duration the duration of one or several model runs
-(either \code{forward} or ' \code{backward}) in hours.}
+\item{height}{The starting height (in meters above ground level) for each
+model run.}
 
-\item{run_period}{the extended period (i.e., days, years) when the model will
-initialize and run. This can take the form of a single-length vector for a
-day (\code{"YYYY-MM-DD"}) or year (\code{YYYY}), or, a vector of length 2
-to specify the range of days or years.}
+\item{duration}{The duration of each model run (either forward or backward)
+in hours.}
 
-\item{start_day}{is specific to a dispersion model and it refers to the day
-that the model will initialize and run. This should take the form of a
-single-length vector for a day (\code{"YYYY-MM-DD"}).}
+\item{days}{A vector of days that the model will run. This is combined with
+the \code{daily_hours} to produce a series of date-times.}
 
-\item{start_hour}{is specific to a dispersion model and it should indicate
-which hour in the \code{start_day} that modeling will begin. Provide this
-as an integer (from \code{0} to \code{23}).}
+\item{daily_hours}{Should consist of a single daily hour as an integer hour
+(from \code{0} to \code{23}), or, a vector of several daily hours represented as
+integers.}
 
-\item{daily_hours}{are specific to a trajectory model and should consist of a
-single daily hour as an integer (from \code{0} to \code{23}), or, a vector
-of several daily hours represented as integers.}
+\item{direction}{An option to select whether to conduct the model in the
+\code{"forward"} (default) or \code{"backward"} directions.}
 
-\item{direction}{an option to select whether to conduct the model in the
-\code{forward} or \code{backward} directions.}
+\item{met_type}{An option to select meteorological data files. The options
+are \code{"reanalysis"} (NCAR/NCEP global reanalysis data, the default),
+\code{"gdas1"} (Global Data Assimilation System 1-degree resolution data), and
+\code{"narr"} (North American Regional Reanalysis).}
 
-\item{met_type}{an option to select meteorological data files. The options
-are \code{gdas1} (Global Data Assimilation System 1-degree resolution
-data), \code{reanalysis} (NCAR/NCEP global reanalysis data), and
-\code{narr} (North American Regional Reanalysis).}
+\item{vert_motion}{A numbered option to select the method used to simulation
+vertical motion. The methods are: \code{0} (input model data), \code{1} (isobaric),
+\code{2} (isentropic), \code{3} (constant density), \code{4} (isosigma), \code{5} (from
+divergence), \code{6} (remap MSL to AGL), \code{7} (average data), and \code{8} (damped
+magnitude).}
 
-\item{vert_motion}{a numbered option to select the method used to simulation
-vertical motion. The methods are: \code{0} (input model data), \code{1}
-(isobaric), \code{2} (isentropic), \code{3} (constant density), \code{4}
-(isosigma), \code{5} (from divergence), \code{6} (remap MSL to AGL),
-\code{7} (average data), and \code{8} (damped magnitude).}
+\item{model_height}{The upper limit of the model domain in meters.}
 
-\item{model_height}{the upper limit of the model domain in meters.}
-
-\item{traj_name}{an optional, descriptive name for the output file
+\item{traj_name}{An optional, descriptive name for the output file
 collection.}
 
-\item{exec_dir}{an optional file path for the working directory of the model
+\item{exec_dir}{An optional file path for the working directory of the model
 input and output files.}
 
-\item{met_dir}{an optional file path for storage and access of meteorological
+\item{met_dir}{An optional file path for storage and access of meteorological
 data files.}
 
-\item{binary_path}{an optional path to a HYSPLIT trajectory model binary.
+\item{binary_path}{An optional path to a HYSPLIT trajectory model binary.
 When not specified, the model binary will be chosen from several available
 in the package (based on the user's platform).}
 }

@@ -7,15 +7,14 @@
 trajectory_plot(x, show_hourly = TRUE, color_scheme = "cycle_hues")
 }
 \arguments{
-\item{x}{either a trajectory data frame, typically created from use of the
-\code{hysplit_trajectory}, or a trajectory model object that contains
-output data (i.e., after executing model runs via the \code{run_model}
-function).}
+\item{x}{Either a trajectory data frame, typically created from use of the
+\code{hysplit_trajectory}, or a trajectory model object that contains output
+data (i.e., after executing model runs via the \code{run_model} function).}
 
-\item{show_hourly}{an option to show hourly positions and associated data
+\item{show_hourly}{An option to show hourly positions and associated data
 along trajectories.}
 
-\item{color_scheme}{defines the appearance of multiple trajectories in a
+\item{color_scheme}{Defines the appearance of multiple trajectories in a
 single plot. Current options are \code{cycle_hues} (the default), and
 \code{increasingly_gray}.}
 }

@@ -7,8 +7,8 @@
 create_disp_model(name = NULL)
 }
 \arguments{
-\item{name}{an optional name for the dispersion model object.}
+\item{name}{An optional name for the dispersion model object.}
 }
 \description{
-Create a dispersion model object to begin a modelling pipeline.
+Create a dispersion model object to begin a modeling pipeline.
 }

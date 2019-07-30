@@ -8,20 +8,20 @@ create_grid(lat = 49.263, lon = -123.25, grid_ref = "center",
   range = c(5, 5), division = c(0.5, 0.5), dist_units = "degrees")
 }
 \arguments{
-\item{lat}{a latitude value in decimal degrees for the point of reference on
+\item{lat}{A latitude value in decimal degrees for the point of reference on
 the grid.}
 
-\item{lon}{a longitude value in decimal degrees for the point of reference on
+\item{lon}{A longitude value in decimal degrees for the point of reference on
 the grid.}
 
-\item{grid_ref}{the grid reference point. The default value is \code{center}.}
+\item{grid_ref}{The grid reference point. The default value is \code{center}.}
 
-\item{range}{the latitude and longitude range about the \code{grid_ref}.}
+\item{range}{The latitude and longitude range about the \code{grid_ref}.}
 
-\item{division}{the division distances across the latitude and longitude
+\item{division}{The division distances across the latitude and longitude
 ranges.}
 
-\item{dist_units}{the distance units used with values supplied to
+\item{dist_units}{The distance units used with values supplied to
 \code{range} and \code{division}. The default is \code{degrees}.}
 }
 \description{

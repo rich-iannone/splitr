@@ -7,7 +7,7 @@
 get_output_df(model)
 }
 \arguments{
-\item{model}{a SplitR modeling object.}
+\item{model}{A SplitR modeling object.}
 }
 \description{
 If a model has been executed, the output data frame will be available within

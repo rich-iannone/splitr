@@ -7,8 +7,8 @@
 dispersion_read(archive_folder)
 }
 \arguments{
-\item{archive_folder}{the absolute path of the directory containing
-dispersion output files is provided here.}
+\item{archive_folder}{The absolute path of the directory containing
+dispersion output files is to be provided here.}
 }
 \value{
 data frame with hourly particle positions
