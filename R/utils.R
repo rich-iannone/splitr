@@ -2,6 +2,7 @@
 #' Download files using consistent options
 #' @param urls One or more URLs from which the files reside.
 #' @param local_path The path to which the files should be written.
+#' 
 #' @noRd
 met_download <- function(urls,
                          local_path) {
@@ -21,6 +22,7 @@ met_download <- function(urls,
 
 #' Read a `listing` file
 #' @param file_path The path to the `listing` file.
+#' 
 #' @noRd
 read_listing_file <- function(file_path) {
   
@@ -34,6 +36,7 @@ read_listing_file <- function(file_path) {
 
 #' Create default `SETUP.CFG` and `ASCDATA.CFG` files
 #' @param dir The directory to which the files should be written.
+#' 
 #' @noRd
 hysplit_config_init <- function(dir) {
   
@@ -67,7 +70,24 @@ hysplit_config_init <- function(dir) {
   )
 }
 
+#' Modify default `SETUP.CFG` for extended meteorology
+#' @param extended_met An option to report additional meteorological data along
+#'   each output trajectory.
+#' @param dir The directory to which the files should be written.
+#' 
+#' @noRd
+hysplit_config_extended_met <- function(extended_met, dir) {
+  
+  if (extended_met) {
+    setup_cfg <- readLines('SETUP.CFG')
+    setup_cfg <- gsub("(tm_.* )(0),", "\\11,", setup_cfg)
+    cat(setup_cfg, sep = "\n", file = paste0(dir, "/", "SETUP.CFG"))
+  }
+}
+
+
 #' Determine which operating system is in use
+#' 
 #' @noRd
 get_os <- function() {
   if (.Platform$OS.type == "windows") {
@@ -81,7 +101,33 @@ get_os <- function() {
   }
 }
 
+#' Upgrade the `binary_path` variable
+#' 
+#' @noRd
+set_binary_path <- function(binary_path) {
+  
+  if (is.null(binary_path)) {
+    
+    system_os <- get_os()
+    
+    if (system_os == "mac") {
+      binary_path <- system.file("osx/hyts_std", package = "SplitR")
+    }
+    
+    if (system_os == "unix") {
+      binary_path <- system.file("linux-amd64/hyts_std", package = "SplitR")
+    }
+    
+    if (system_os == "win") {
+      binary_path <- system.file("win/hyts_std.exe", package = "SplitR")
+    }
+  }
+  
+  binary_path
+}
+
 #' Determine whether 64-bit architecture is present
+#' 
 #' @noRd 
 is_64bit_system <- function() {
   ifelse(.Machine$sizeof.pointer == 8, TRUE, FALSE)
@@ -89,6 +135,7 @@ is_64bit_system <- function() {
 
 #' Create a file list for output files
 #' @param output_folder The directory where the file list is to be written.
+#' 
 #' @noRd
 create_file_list <- function(output_folder,
                              create_file = TRUE,
@@ -110,4 +157,95 @@ create_file_list <- function(output_folder,
   )
   
   file_list
+}
+
+to_short_year <- function(date) {
+  
+  date %>%
+    lubridate::year() %>%
+    as.character() %>%
+    substr(3, 4)
+}
+
+to_short_month <- function(date) {
+  
+  formatC(
+    date %>% lubridate::month(),
+    width = 2, flag = "0"
+  )
+}
+
+to_short_day <- function(date) {
+  
+  formatC(
+    date %>% lubridate::day(),
+    width = 2, flag = "0"
+  )
+}
+
+
+get_monthly_filenames <- function(days,
+                                  duration,
+                                  prefix = NULL,
+                                  extension = NULL) {
+  
+  # Determine the minimum month (as a `Date`) for the model run
+  if (direction == "backward") {
+    min_month <- 
+      (lubridate::as_date(days[1]) - (duration / 24)) %>%
+      lubridate::floor_date(unit = "month")
+  } else if (direction == "forward") {
+    min_month <- 
+      (lubridate::as_date(days[1]) + (duration / 24)) %>%
+      lubridate::floor_date(unit = "month")
+  }
+  
+  # Determine the maximum month (as a `Date`) for the model run
+  if (direction == "backward") {
+    max_month <- 
+      (lubridate::as_date(days[length(days)]) - (duration / 24)) %>%
+      lubridate::floor_date(unit = "month")
+  } else if (direction == "forward") {
+    max_month <- 
+      (lubridate::as_date(days[length(days)]) + (duration / 24)) %>%
+      lubridate::floor_date(unit = "month")
+  }
+  
+  met_months <- seq(min_month, max_month, by = "1 month")
+  
+  months_short <- met_months %>% to_short_month()
+  
+  years_long <- lubridate::year(met_months)
+  
+  paste0(prefix, years_long, months_short, extension)
+}
+
+get_traj_output_filename <- function(traj_name,
+                                     site,
+                                     direction,
+                                     year,
+                                     month,
+                                     day,
+                                     hour,
+                                     lat,
+                                     lon,
+                                     height,
+                                     duration) {
+  
+  output_filename <-
+    paste0(
+      "traj-",
+      ifelse(is.null(traj_name), "", traj_name),
+      "-",
+      ifelse(direction == "backward", "bwd", "fwd"), "-",
+      year, "-",
+      month, "-",
+      day, "-",
+      hour, "-",
+      site,
+      "lat_", gsub("\\.", "p", as.character(lat)), "_",
+      "lon_", gsub("\\.", "p", as.character(lon)), "-",
+      "hgt_", height, "-",
+      duration, "h"
+    )
 }
