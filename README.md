@@ -392,3 +392,9 @@ ARL-230, NOAA Air Resources Laboratory, Silver Spring, MD.
 Draxler, R.R., and G.D. Hess, 1998: An overview of the HYSPLIT\_4
 modeling system of trajectories, dispersion, and deposition. Aust.
 Meteor. Mag., 47, 295-308.
+
+## Code of Conduct
+
+Please note that the **SplitR** project is released with a [Contributor
+Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
+you agree to abide by its terms.
