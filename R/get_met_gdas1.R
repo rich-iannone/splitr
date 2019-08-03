@@ -78,7 +78,7 @@ get_met_gdas1 <- function(files = NULL,
   
   ftp_dir <- "ftp://arlftp.arlhq.noaa.gov/archives/gdas1"
   
-  files_in_path <- list.files()
+  files_in_path <- list.files(path_met_files)
   
   # Download list of GDAS1 met files by name
   if (!is.null(files)) {

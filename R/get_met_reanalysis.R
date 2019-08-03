@@ -49,7 +49,7 @@ get_met_reanalysis <- function(files = NULL,
   
   ftp_dir <- "ftp://arlftp.arlhq.noaa.gov/archives/reanalysis"
   
-  files_in_path <- list.files()
+  files_in_path <- list.files(path_met_files)
   
   # Download list of reanalysis met files by name
   if (!is.null(files)) {

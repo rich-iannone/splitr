@@ -26,7 +26,7 @@ get_met_narr <- function(files = NULL,
   
   ftp_dir <- "ftp://arlftp.arlhq.noaa.gov/archives/narr"
   
-  files_in_path <- list.files()
+  files_in_path <- list.files(path_met_files)
   
   # Download list of NARR met files by name
   if (!is.null(files)) {
