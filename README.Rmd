@@ -17,9 +17,12 @@ knitr::opts_chunk$set(
 
 <img src="man/figures/fig_SplitR.png" width="70%">
 
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/rich-iannone/SplitR.svg?branch=master)](https://travis-ci.org/rich-iannone/SplitR)
 [![DOI](https://zenodo.org/badge/20543/rich-iannone/SplitR.svg)](https://zenodo.org/badge/latestdoi/20543/rich-iannone/SplitR)
+<!-- badges: end -->
 
-**SplitR** is an **R** package for conducting trajectory and dispersion modeling with **HYSPLIT**. You can determine where air (came from | is going), or, where gas-phase or particulate matter (came from | is going). It's a means to help explain how, where, and when chemicals and materials are atmospherically transported, dispersed, and deposited.
+**SplitR** is an **R** package for conducting trajectory and dispersion modeling with **HYSPLIT**. We can determine, from one or more receptor sites, where arriving air masses originated. Conversely, it's possible to model trajectories of air masses from receptor sites. Forward and backward modeling of gas-phase or particulate matter can also be conducted from defined sites. It's a means to help explain how, where, and when chemicals and materials are atmospherically transported, dispersed, and deposited.
 
 This model has many applications. Some have modeled the atmospheric transport of moisture to determine probable extreme rainfall locations leading to flood events ([Gustafsson et al., 2010](http://tellusa.net/index.php/tellusa/article/view/15715)). Similarly, [Creamean et al., 2013](http://science.sciencemag.org/content/339/6127/1572.full) have presented a direct link between long-range transported dust and biological aerosols affecting cloud ice formation and precipitation processes in western United States.
 

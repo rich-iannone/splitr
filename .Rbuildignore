@@ -4,3 +4,4 @@
 ^CODE_OF_CONDUCT\.md$
 ^met$
 ^out$
+^\.travis\.yml$
