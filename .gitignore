@@ -11,6 +11,9 @@
 .Rproj.user/
 .Rproj.user
 
+# Input files
+met
+
 # Output files
 *.txt
 *.tif
