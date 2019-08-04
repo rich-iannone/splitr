@@ -19,7 +19,8 @@ Imports:
     lubridate (>= 1.7.4),
     magrittr,
     RCurl (>= 1.95),
-    scales (>= 1.0.0)
+    scales (>= 1.0.0),
+    tidyr (>= 0.8.3)
 Roxygen: list(markdown = TRUE)
 Suggests: 
     testthat
