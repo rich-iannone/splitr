@@ -28,7 +28,6 @@
 #' @param model_height The upper limit of the model domain in meters.
 #' @param extended_met An option to report additional meteorological data along
 #'   each output trajectory.
-#' @param return_traj_df An option to return a data frame with trajectory data.
 #' @param traj_name An optional, descriptive name for the output file
 #'   collection.
 #' @param exec_dir An optional file path for the working directory of the model
@@ -66,7 +65,6 @@ hysplit_trajectory <- function(lat = 49.263,
                                vert_motion = 0,
                                model_height = 20000,
                                extended_met = FALSE,
-                               return_traj_df = TRUE,
                                traj_name = NULL,
                                exec_dir = NULL,
                                met_dir = NULL,
@@ -77,6 +75,8 @@ hysplit_trajectory <- function(lat = 49.263,
   if (is.null(met_dir)) met_dir <- getwd()
   
   binary_path <- set_binary_path(binary_path = binary_path)
+  
+  system_type <- get_os()
   
   # Generate name of output folder
   if (is.null(traj_name)) {
@@ -102,72 +102,51 @@ hysplit_trajectory <- function(lat = 49.263,
     stop("The coordinate vectors are not the same length.", call. = FALSE)
   }
   
-  if (met_type == "gdas1") {
-    
-    # Get filenames for GDAS1 files
-    met_files <-
-      get_gdas1_filenames(
-        days = days,
-        duration = duration,
-        direction = direction
-      )
-    
-    # Get the GDAS1 meteorology files
-    get_met_gdas1(
-      files = met_files,
-      path_met_files = met_dir
+  # Download any necessary meteorological data files
+  # and return a vector of the all files required
+  met_files <- 
+    download_met_files(
+      met_type = met_type,
+      days = days,
+      duration = duration,
+      direction = direction,
+      met_dir = met_dir
     )
-  }
   
-  if (met_type == "reanalysis") {
-    
-    # Get filenames for reanalysis files
-    met_files <-
-      get_reanalysis_filenames(
-        days = days,
-        duration = duration,
-        direction = direction
-      )
-    
-    get_met_reanalysis(
-      files = met_files,
-      path_met_files = met_dir
-    )
-  }
+  # Generate a tibble of receptor sites
+  receptors_tbl <- 
+    dplyr::tibble(lat = lat, lon = lon) %>%
+    dplyr::group_by(lat, lon) %>% 
+    tidyr::expand(height = height) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(receptor = dplyr::row_number()) %>%
+    dplyr::select(receptor, dplyr::everything())
   
-  if (met_type == "narr") {
-    
-    # Get filenames for NARR files
-    met_files <-
-      get_narr_filenames(
-        days = days,
-        duration = duration,
-        direction = direction
-      )
-    
-    get_met_narr(
-      files = met_files,
-      path_met_files = met_dir
-    )
-  }
-  
-  # Create a coordinates list
-  coords <- list(lat = lat, lon = lon)
+  # Get vector of receptor indices
+  receptors <- seq(nrow(receptors_tbl))
   
   # Create a dataframe for the ensemble
-  ensemble_df <- data.frame()
+  ensemble_df <- dplyr::tibble()
   
   # For every set of coordinates, perform a set
   # of model runs
-  for (z in 1:length(coords$lat)) {
+  for (receptor in receptors) {
     
-    lat <- coords$lat[z]
-    lon <- coords$lon[z]
+    receptor_vals <- 
+      get_receptor_values(
+        receptors_tbl = receptors_tbl,
+        receptor_i = receptor
+      )
+    
+    receptor_i <- receptor_vals$receptor
+    lat <- receptor_vals$lat
+    lon <- receptor_vals$lon
+    height <- receptor_vals$height
     
     list_run_days <- days %>% as.character()
     
-    # Initialize a vector for all filenames to be used
-    all_trajectory_files <- vector(mode = "character", length = 0)
+    # Initialize a vector for all filenames at this receptor
+    trajectory_files <- c()
     
     # Make loop with all run days
     for (i in seq(list_run_days)) {
@@ -199,7 +178,7 @@ hysplit_trajectory <- function(lat = 49.263,
         output_filename <-
           get_traj_output_filename(
             traj_name = traj_name,
-            site = z,
+            site = receptor_i,
             direction = direction,
             year = start_year_GMT,
             month = start_month_GMT,
@@ -211,167 +190,39 @@ hysplit_trajectory <- function(lat = 49.263,
             duration = duration
           )
         
-        all_trajectory_files <- c(all_trajectory_files, output_filename)
+        trajectory_files <- c(trajectory_files, output_filename)
         
-        if (any(c("mac", "unix") %in% get_os())) {
-          
-          # Write start year, month, day, hour to 'CONTROL'
-          cat(start_year_GMT, " ", 
-              start_month_GMT, " ",
-              start_day_GMT, " ",
-              start_hour_GMT, "\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = FALSE
-          )
-          
-          # Write number of starting locations to 'CONTROL'
-          cat("1\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = TRUE
-          )
-          
-          # Write starting latitude, longitude, height AGL to 'CONTROL'
-          cat(coords$lat[z], " ", 
-              coords$lon[z], " ", 
-              height, "\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = TRUE
-          )
-          
-          # Write direction and number of simulation hours to 'CONTROL'
-          cat(ifelse(direction == "backward", "-", ""),
-              duration, "\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = TRUE
-          )
-          
-          # Write vertical motion option to 'CONTROL'
-          cat(vert_motion, "\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = TRUE
-          )
-          
-          # Write top of model domain in meters to
-          # 'CONTROL'
-          cat(model_height, "\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = TRUE
-          )
-          
-          # Write number of met files used to 'CONTROL'
-          cat(length(met_files), "\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = TRUE
-          )
-          
-          # Write met file paths to 'CONTROL'
-          for (i in 1:length(met_files)) {
-            cat(met_dir, "/\n", met_files[i], "\n",
-                file = paste0(exec_dir, "/CONTROL"),
-                sep = "", append = TRUE
-            )
-          }
-          
-          # Write path for trajectory output files to 'CONTROL'
-          cat(exec_dir, "/\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = TRUE
-          )
-          
-          # Write name of output filename to 'CONTROL'
-          cat(output_filename, "\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = TRUE
-          )
-        }
-        
-        if (get_os() == "win") {
-          
-          # Write start year, month, day, hour to 'CONTROL'
-          cat(start_year_GMT, " ", 
-              start_month_GMT, " ",
-              start_day_GMT, " ",
-              start_hour_GMT, "\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = FALSE
-          )
-          
-          # Write number of starting locations to 'CONTROL'
-          cat("1\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = TRUE
-          )
-          
-          # Write starting latitude, longitude, height AGL to 'CONTROL'
-          cat(coords$lat[z], " ", 
-              coords$lon[z], " ", 
-              height, "\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = TRUE
-          )
-          
-          # Write direction and number of simulation hours to 'CONTROL'
-          cat(ifelse(direction == "backward", "-", ""),
-              duration, "\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = TRUE
-          )
-          
-          # Write vertical motion option to 'CONTROL'
-          cat(vert_motion, "\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = TRUE
-          )
-          
-          # Write top of model domain in meters to
-          # 'CONTROL'
-          cat(model_height, "\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = TRUE
-          )
-          
-          # Write number of met files used to 'CONTROL'
-          cat(length(met_files), "\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = TRUE
-          )
-          
-          # Write met file paths to 'CONTROL'
-          for (i in 1:length(met_files)) {
-            cat(met_dir, "/\n", met_files[i], "\n",
-                file = paste0(exec_dir, "/CONTROL"),
-                sep = "", append = TRUE
-            )
-          }
-          
-          # Write path for trajectory output files to
-          # 'CONTROL'
-          cat(exec_dir, "/\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = TRUE
-          )
-          
-          # Write name of output filename to 'CONTROL'
-          cat(output_filename, "\n",
-              file = paste0(exec_dir, "/CONTROL"),
-              sep = "", append = TRUE
-          )
-        }
+        # Write the CONTROL file
+        write_traj_control_file(
+          start_year_GMT = start_year_GMT,
+          start_month_GMT = start_month_GMT,
+          start_day_GMT = start_day_GMT,
+          start_hour_GMT = start_hour_GMT,
+          lat = lat,
+          lon = lon,
+          height = height,
+          direction = direction,
+          duration = duration,
+          vert_motion = vert_motion,
+          model_height = model_height,
+          met_files = met_files,
+          output_filename = output_filename,
+          system_type = system_type,
+          met_dir = met_dir,
+          exec_dir = exec_dir
+        )
         
         # The CONTROL file is now complete and in the
         # working directory, so, execute the model run
-        if (any(c("mac", "unix") %in% get_os())) {
+        if (any(c("mac", "unix") %in% system_type)) {
           
-          system(
-            paste0(
-              "(cd ", exec_dir, " && ",
-              binary_path,
-              " >> /dev/null 2>&1)"
-            )
-          )
+          sys_cmd <- 
+            paste0("(cd ", exec_dir, " && ", binary_path, " >> /dev/null 2>&1)")
+          
+          system(sys_cmd)
         }
         
-        if (get_os() == "win") {
+        if (system_type == "win") {
           shell(
             paste0(
               "(cd \"", exec_dir, "\" && \"",
@@ -383,40 +234,41 @@ hysplit_trajectory <- function(lat = 49.263,
       }
     }
     
+    receptor_file_path <- file.path(exec_dir, receptor_i, folder_name)
+    
     # Create the output folder if it doesn't exist
-    if (!dir.exists(paste0(exec_dir, "/", folder_name))) {
-      
-      dir.create(path = paste0(exec_dir, "/", folder_name))
+    if (!dir.exists(receptor_file_path)) {
+      dir.create(path = receptor_file_path, recursive = TRUE)
     }
     
-    if (any(c("mac", "unix") %in% get_os())) {
+    if (any(c("mac", "unix") %in% system_type)) {
       
       # Perform the movement of all trajectory files
       # into a folder residing to the output directory
-      for (i in 1:length(all_trajectory_files)) {
+      for (trajectory_file in trajectory_files) {
         
         system(
           paste0(
             "(cd ", exec_dir, " && mv '",
-            all_trajectory_files[i], "' ",
-            paste0(exec_dir, "/", folder_name),
+            trajectory_file, "' ",
+            receptor_file_path,
             ")"
           )
         )
       }
     }
     
-    if (get_os() == "win") {
+    if (system_type == "win") {
       
       # Perform the movement of all trajectory files
       # into a folder residing to the output directory
-      for (i in 1:length(all_trajectory_files)) {
+      for (trajectory_file in trajectory_files) {
         
         shell(
           paste0(
             "(cd \"", exec_dir, "\" && move \"",
-            all_trajectory_files[i], "\" \"",
-            paste0(exec_dir, "/", folder_name),
+            trajectory_file, "\" \"",
+            receptor_file_path,
             "\")"
           )
         )
@@ -424,31 +276,14 @@ hysplit_trajectory <- function(lat = 49.263,
     }
     
     # Obtain a trajectory data frame
-    if (return_traj_df) {
-      traj_df <-
-        trajectory_read(
-          output_folder = paste0(exec_dir, "/", folder_name)
-        )
-    }
+    traj_df <-
+      trajectory_read(output_folder = receptor_file_path) %>%
+      dplyr::as_tibble() %>%
+      dplyr::mutate(receptor = receptor_i)
     
-    if (z == 1) {
-      
-      col_names <- colnames(traj_df)
-      
-      ensemble_df <-
-        data.frame(
-          mat.or.vec(
-            nr = 0,
-            nc = length(col_names)
-          )
-        )
-      
-      colnames(ensemble_df) <- col_names
-    }
-    
-    traj_df[,1] <- z
-    
-    ensemble_df <- rbind(ensemble_df, traj_df)
+    ensemble_df <-
+      ensemble_df %>%
+      dplyr::bind_rows(traj_df)
   }
   
   ensemble_df

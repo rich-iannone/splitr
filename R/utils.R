@@ -232,20 +232,25 @@ get_traj_output_filename <- function(traj_name,
                                      height,
                                      duration) {
   
-  output_filename <-
-    paste0(
-      "traj-",
-      ifelse(is.null(traj_name), "", traj_name),
-      "-",
-      ifelse(direction == "backward", "bwd", "fwd"), "-",
-      year, "-",
-      month, "-",
-      day, "-",
-      hour, "-",
-      site,
-      "lat_", gsub("\\.", "p", as.character(lat)), "_",
-      "lon_", gsub("\\.", "p", as.character(lon)), "-",
-      "hgt_", height, "-",
-      duration, "h"
-    )
+  paste0(
+    "traj-",
+    ifelse(is.null(traj_name), "", traj_name),
+    "-",
+    ifelse(direction == "backward", "bwd", "fwd"), "-",
+    year, "-",
+    month, "-",
+    day, "-",
+    hour, "-",
+    site,
+    "lat_", gsub("\\.", "p", as.character(lat)), "_",
+    "lon_", gsub("\\.", "p", as.character(lon)), "-",
+    "hgt_", height, "-",
+    duration, "h"
+  )
+}
+
+get_receptor_values <- function(receptors_tbl,
+                                receptor_i) {
+  
+  receptors_tbl[receptor_i, ] %>% as.list()
 }
