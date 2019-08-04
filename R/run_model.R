@@ -1,8 +1,8 @@
 #' Run the model
 #'
 #' Run either a trajectory model or a dispersion model, depending on the class
-#' of the SplitR modeling object
-#' @param model a SplitR modeling object
+#' of the SplitR modeling object.
+#' @param model A SplitR modeling object.
 #' @export
 run_model <- function(model) {
   
@@ -25,7 +25,6 @@ run_model <- function(model) {
         model_height = ifelse(is.null(model$model_height),
                               20000, model$model_height),
         extended_met = TRUE,
-        return_traj_df = TRUE,
         traj_name = model$traj_name,
         exec_dir = model$exec_dir,
         met_dir = model$met_dir,
@@ -33,7 +32,8 @@ run_model <- function(model) {
       )
     
     model$traj_df <- traj_df
-    return(model)
+    
+    model
   }
   
   if (inherits(model, "disp_model")) {
@@ -66,6 +66,7 @@ run_model <- function(model) {
       )
    
     model$disp_df <- disp_df
-    return(model) 
+    
+    model 
   }
 }
