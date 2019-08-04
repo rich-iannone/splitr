@@ -186,6 +186,7 @@ to_short_day <- function(date) {
 
 get_monthly_filenames <- function(days,
                                   duration,
+                                  direction,
                                   prefix = NULL,
                                   extension = NULL) {
   
