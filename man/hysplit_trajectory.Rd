@@ -7,9 +7,8 @@
 hysplit_trajectory(lat = 49.263, lon = -123.25, height = 50,
   duration = 24, days = NULL, daily_hours = 0,
   direction = "forward", met_type = "reanalysis", vert_motion = 0,
-  model_height = 20000, extended_met = FALSE, return_traj_df = TRUE,
-  traj_name = NULL, exec_dir = NULL, met_dir = NULL,
-  binary_path = NULL)
+  model_height = 20000, extended_met = FALSE, traj_name = NULL,
+  exec_dir = NULL, met_dir = NULL, binary_path = NULL)
 }
 \arguments{
 \item{lat, lon}{The starting latitude and longitude (in decimal degrees) for
@@ -46,8 +45,6 @@ magnitude).}
 
 \item{extended_met}{An option to report additional meteorological data along
 each output trajectory.}
-
-\item{return_traj_df}{An option to return a data frame with trajectory data.}
 
 \item{traj_name}{An optional, descriptive name for the output file
 collection.}
