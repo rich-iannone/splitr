@@ -8,6 +8,7 @@ get_narr_filenames <- function(days,
   get_monthly_filenames(
     days = days,
     duration = duration,
+    direction = direction,
     prefix = "NARR",
     extension = NULL
   )

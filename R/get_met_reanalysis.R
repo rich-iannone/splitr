@@ -30,6 +30,7 @@ get_reanalysis_filenames <- function(days,
   get_monthly_filenames(
     days = days,
     duration = duration,
+    direction = direction,
     prefix = "RP",
     extension = ".gbl"
   )
