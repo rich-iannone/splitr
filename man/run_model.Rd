@@ -7,9 +7,9 @@
 run_model(model)
 }
 \arguments{
-\item{model}{a SplitR modeling object}
+\item{model}{A SplitR modeling object.}
 }
 \description{
 Run either a trajectory model or a dispersion model, depending on the class
-of the SplitR modeling object
+of the SplitR modeling object.
 }
