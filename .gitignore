@@ -13,6 +13,7 @@
 
 # Input files
 met
+out
 
 # Output files
 *.txt
@@ -26,4 +27,5 @@ traj*
 gdas*
 CONTROL
 MESSAGE
+WARNING
 listing
