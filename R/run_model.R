@@ -33,7 +33,7 @@ run_model <- function(model) {
     
     model$traj_df <- traj_df
     
-    model
+    return(model)
   }
   
   if (inherits(model, "disp_model")) {
@@ -67,6 +67,6 @@ run_model <- function(model) {
    
     model$disp_df <- disp_df
     
-    model 
+    return(model) 
   }
 }
