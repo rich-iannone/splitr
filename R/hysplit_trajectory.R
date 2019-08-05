@@ -88,12 +88,12 @@ hysplit_trajectory <- function(lat = 49.263,
   # Write default versions of the SETUP.CFG and
   # ASCDATA.CFG files in the working directory
   hysplit_config_init(dir = exec_dir)
-  
+
   # Modify the default `SETUP.CFG` file when the
   # option for extended meteorology is `TRUE`
   hysplit_config_extended_met(
     extended_met = extended_met,
-    dir = exec_dir
+    exec_dir = exec_dir
   )
   
   # Stop function if there are vectors of different

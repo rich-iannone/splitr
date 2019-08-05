@@ -76,12 +76,13 @@ hysplit_config_init <- function(dir) {
 #' @param dir The directory to which the files should be written.
 #' 
 #' @noRd
-hysplit_config_extended_met <- function(extended_met, dir) {
+hysplit_config_extended_met <- function(extended_met,
+                                        exec_dir) {
   
   if (extended_met) {
-    setup_cfg <- readLines('SETUP.CFG')
+    setup_cfg <- readLines(con = file.path(exec_dir, "SETUP.CFG"))
     setup_cfg <- gsub("(tm_.* )(0),", "\\11,", setup_cfg)
-    cat(setup_cfg, sep = "\n", file = paste0(dir, "/", "SETUP.CFG"))
+    cat(setup_cfg, file = file.path(exec_dir, "SETUP.CFG"), sep = "\n")
   }
 }
 
@@ -193,22 +194,26 @@ get_monthly_filenames <- function(days,
   # Determine the minimum month (as a `Date`) for the model run
   if (direction == "backward") {
     min_month <- 
-      (lubridate::as_date(days[1]) - (duration / 24)) %>%
+      (lubridate::as_date(days) - (duration / 24) - lubridate::days(1)) %>%
+      min() %>%
       lubridate::floor_date(unit = "month")
   } else if (direction == "forward") {
     min_month <- 
-      (lubridate::as_date(days[1]) + (duration / 24)) %>%
+      (lubridate::as_date(days) + (duration / 24) - lubridate::days(1)) %>%
+      min() %>%
       lubridate::floor_date(unit = "month")
   }
   
   # Determine the maximum month (as a `Date`) for the model run
   if (direction == "backward") {
     max_month <- 
-      (lubridate::as_date(days[length(days)]) - (duration / 24)) %>%
+      (lubridate::as_date(days) - (duration / 24) + lubridate::days(1)) %>%
+      max() %>%
       lubridate::floor_date(unit = "month")
   } else if (direction == "forward") {
     max_month <- 
-      (lubridate::as_date(days[length(days)]) + (duration / 24)) %>%
+      (lubridate::as_date(days) + (duration / 24) + lubridate::days(1)) %>%
+      max() %>%
       lubridate::floor_date(unit = "month")
   }
   
