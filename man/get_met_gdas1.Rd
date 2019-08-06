@@ -14,7 +14,7 @@ files.}
 meteorological data files. Downloaded files will be saved in this location.}
 }
 \description{
-This function downloads GDAS1 meteorology data files from the NOAA FTP server
-and saves them to a specified folder. Files can be downloaded by specifying a
-list of filenames.
+Downloads GDAS1 meteorology data files from the NOAA FTP server and saves
+them to a specified folder. Files can be downloaded by specifying a list of
+filenames.
 }
