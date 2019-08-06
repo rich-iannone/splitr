@@ -3,6 +3,7 @@
 #' Add modelling parameters to a model object.
 #' @param model A SplitR modeling object.
 #' @inheritParams hysplit_trajectory
+#' @inheritParams hysplit_dispersion
 #' @export
 add_params <- function(model,
                        lat = NULL,
