@@ -2,9 +2,9 @@
 #'
 #' This function downloads NAM meteorology forecast data files from the NOAA FTP
 #' server and saves them to a specified folder.
-#' @param path_met_files a full path should be provided for the location of the
-#'   meteorological data files; downloaded files will be saved in this location.
-#' @import downloader RCurl
+#' 
+#' @inheritParams get_met_gdas1
+#' 
 #' @export
 get_met_forecast_nam <- function(path_met_files) {
   
@@ -32,7 +32,7 @@ get_met_forecast_nam <- function(path_met_files) {
   
   if (today %in% forecast_dirs) {
     
-    download(
+    downloader::download(
       url = paste0(
         "ftp://arlftp.arlhq.noaa.gov/forecast/",
         today, "/hysplit.t00z.namf"),

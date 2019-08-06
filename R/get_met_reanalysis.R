@@ -5,28 +5,6 @@ get_reanalysis_filenames <- function(days,
                                      duration,
                                      direction) {
   
-  # # Determine the minimum month (as a `Date`) for the model run
-  # if (direction == "backward") {
-  #   min_day <- 
-  #     (lubridate::as_date(days[1]) - (duration / 24)) %>%
-  #     lubridate::floor_date(unit = "day") - days(2)
-  # } else if (direction == "forward") {
-  #   min_day <- 
-  #     (lubridate::as_date(days[1]) + (duration / 24)) %>%
-  #     lubridate::floor_date(unit = "day") - days(2)
-  # }
-  # 
-  # # Determine the maximum month (as a `Date`) for the model run
-  # if (direction == "backward") {
-  #   max_day <- 
-  #     (lubridate::as_date(days[length(days)]) - (duration / 24)) %>%
-  #     lubridate::floor_date(unit = "day") + days(2)
-  # } else if (direction == "forward") {
-  #   max_day <- 
-  #     (lubridate::as_date(days[length(days)]) + (duration / 24)) %>%
-  #     lubridate::floor_date(unit = "day") + days(2)
-  # }
-  
   get_monthly_filenames(
     days = days,
     duration = duration,
@@ -38,9 +16,9 @@ get_reanalysis_filenames <- function(days,
 
 #' Get reanalysis meteorology data files
 #'
-#' This function downloads reanalysis meteorology data files from the NOAA FTP
-#' server and saves them to a specified folder. Files can be downloaded by
-#' specifying a list of filenames (in the form of `'RP[YYYY][MM].gbl'`).
+#' Downloads reanalysis meteorology data files from the NOAA FTP server and
+#' saves them to a specified folder. Files can be downloaded by specifying a
+#' list of filenames (in the form of `'RP[YYYY][MM].gbl'`).
 #' 
 #' @inheritParams get_met_gdas1
 #' 

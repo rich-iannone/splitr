@@ -64,9 +64,10 @@ get_gdas1_filenames <- function(days,
 
 #' Get GDAS1 meteorology data files
 #'
-#' This function downloads GDAS1 meteorology data files from the NOAA FTP server
-#' and saves them to a specified folder. Files can be downloaded by specifying a
-#' list of filenames.
+#' Downloads GDAS1 meteorology data files from the NOAA FTP server and saves
+#' them to a specified folder. Files can be downloaded by specifying a list of
+#' filenames.
+#' 
 #' @param files A vector list of exact filenames for the meteorological model
 #'   files.
 #' @param path_met_files A full path should be provided for the location of the
