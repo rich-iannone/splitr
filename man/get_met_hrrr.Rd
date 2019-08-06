@@ -4,8 +4,7 @@
 \alias{get_met_hrrr}
 \title{Get HRRR meteorology data files}
 \usage{
-get_met_hrrr(files = NULL, years = NULL, months = NULL,
-  path_met_files)
+get_met_hrrr(files = NULL, path_met_files)
 }
 \arguments{
 \item{files}{a vector list of exact filenames for the HRRR files.}

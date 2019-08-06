@@ -29,6 +29,12 @@ in hours.}
 \item{days}{A vector of days that the model will run. This is combined with
 the \code{daily_hours} to produce a series of date-times.}
 
+\item{start_day}{the day that the model will initialize and run. This should
+take the form of a single-length vector for a day (\code{"YYYY-MM-DD"}).}
+
+\item{start_hour}{a single daily hour as an integer hour (from \code{0} to
+\code{23}).}
+
 \item{daily_hours}{Should consist of a single daily hour as an integer hour
 (from \code{0} to \code{23}), or, a vector of several daily hours represented as
 integers.}
