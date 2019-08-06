@@ -27,7 +27,7 @@ met_download <- function(urls,
 read_listing_file <- function(file_path) {
   
   as.vector(
-    read.table(
+    utils::read.table(
       file = file_path,
       sep = "\n"
     )[, 1]

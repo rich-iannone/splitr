@@ -35,7 +35,7 @@ dispersion_read <- function(archive_folder) {
           "height", "hour")
     }
     
-    disp <- read.csv(dispersion_file_list[i], header = FALSE)
+    disp <- utils::read.csv(dispersion_file_list[i], header = FALSE)
     
     colnames(disp) <- c("particle_no", "lon", "lat", "height")
     

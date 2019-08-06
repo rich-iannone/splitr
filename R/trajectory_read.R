@@ -82,7 +82,7 @@ trajectory_read <- function(output_folder,
   
   # Initialize empty data frame with 12 named columns
   traj_df <- 
-    setNames(data.frame(mat.or.vec(nr = 0, nc = 12)),
+    stats::setNames(data.frame(mat.or.vec(nr = 0, nc = 12)),
              nm = c("receptor", "year", "month", "day",
                     "hour", "hour.inc", "lat", "lon", 
                     "height", "pressure", "date2",
@@ -117,7 +117,7 @@ trajectory_read <- function(output_folder,
     }
     
     traj_temp <- try(
-      read.fwf(paste0(path.expand(output_folder),
+      utils::read.fwf(paste0(path.expand(output_folder),
                       "/", trajectory_file_list[i]),
                widths = column_widths)
     )
@@ -134,7 +134,7 @@ trajectory_read <- function(output_folder,
         c(6, 6, 6, 6, 6, 6, 6, 6, 8, 9, 9, 9, 9)
       
       traj <- try(
-        read.fwf(paste0(path.expand(output_folder),
+        utils::read.fwf(paste0(path.expand(output_folder),
                         "/", trajectory_file_list[i]),
                  skip = skip_up_to_line,
                  widths = column_widths)
@@ -192,7 +192,7 @@ trajectory_read <- function(output_folder,
     
     # Initialize empty data frame with 9 named columns
     traj_extra_df <- 
-      setNames(data.frame(mat.or.vec(nr = 0, nc = 9)),
+      stats::setNames(data.frame(mat.or.vec(nr = 0, nc = 9)),
                nm = c("theta", "air_temp", "rainfall",
                       "mixdepth", "rh", "sp_humidity", 
                       "h2o_mixrate", "terr_msl",
@@ -205,7 +205,7 @@ trajectory_read <- function(output_folder,
     for (i in 1:length(trajectory_file_list)) {
       
       traj_extra <- 
-        read.fwf(paste0(path.expand(output_folder),
+        utils::read.fwf(paste0(path.expand(output_folder),
                         "/", trajectory_file_list[i]),
                  skip = skip_up_to_line,
                  widths = extra_column_widths)[,14:22]
