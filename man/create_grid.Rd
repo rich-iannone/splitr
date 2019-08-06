@@ -4,25 +4,20 @@
 \alias{create_grid}
 \title{Create a grid of sites}
 \usage{
-create_grid(lat = 49.263, lon = -123.25, grid_ref = "center",
-  range = c(5, 5), division = c(0.5, 0.5), dist_units = "degrees")
+create_grid(lat = 49.263, lon = -123.25, range = c(5, 5),
+  division = c(0.5, 0.5))
 }
 \arguments{
-\item{lat}{A latitude value in decimal degrees for the point of reference on
-the grid.}
+\item{lat, lon}{Latitude and longitude values in decimal degrees for the
+center point of the grid.}
 
 \item{lon}{A longitude value in decimal degrees for the point of reference on
 the grid.}
-
-\item{grid_ref}{The grid reference point. The default value is \code{center}.}
 
 \item{range}{The latitude and longitude range about the \code{grid_ref}.}
 
 \item{division}{The division distances across the latitude and longitude
 ranges.}
-
-\item{dist_units}{The distance units used with values supplied to
-\code{range} and \code{division}. The default is \code{degrees}.}
 }
 \description{
 Flexibly create a grid of sites for ensemble trajectory model runs.
