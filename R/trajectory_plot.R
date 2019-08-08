@@ -98,9 +98,6 @@ trajectory_plot <- function(x,
       position = "topright"
     )
   
-  # wind_traj_by_site_date <- list()
-  # wind_traj_by_date <- list()
-  
   # Get different trajectories by site and by date
   for (i in seq_along(receptors)) {
     
