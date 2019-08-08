@@ -215,7 +215,7 @@ hysplit_trajectory <- function(lat = 49.263,
         # The CONTROL file is now complete and in the
         # working directory, so, execute the model run
         if (any(c("mac", "unix") %in% system_type)) {
-          
+   
           sys_cmd <- 
             paste0("(cd ", exec_dir, " && ", binary_path, " >> /dev/null 2>&1)")
           
@@ -223,38 +223,35 @@ hysplit_trajectory <- function(lat = 49.263,
         }
         
         if (system_type == "win") {
-          shell(
-            paste0(
-              "(cd \"", exec_dir, "\" && \"",
-              binary_path,
-              "\")"
-            )
-          )
+          
+          sys_cmd <-
+            paste0("(cd \"", exec_dir, "\" && \"", binary_path, "\")")
+          
+          shell(sys_cmd)
         }
       }
     }
     
-    receptor_file_path <- file.path(exec_dir, receptor_i, folder_name)
+    recep_file_path <- file.path(exec_dir, receptor_i, folder_name)
     
     # Create the output folder if it doesn't exist
-    if (!dir.exists(receptor_file_path)) {
-      dir.create(path = receptor_file_path, recursive = TRUE)
+    if (!dir.exists(recep_file_path)) {
+      dir.create(path = recep_file_path, recursive = TRUE)
     }
     
     if (any(c("mac", "unix") %in% system_type)) {
       
       # Perform the movement of all trajectory files
       # into a folder residing to the output directory
-      for (trajectory_file in trajectory_files) {
+      for (traj_file in trajectory_files) {
         
-        system(
+        sys_cmd <-
           paste0(
-            "(cd ", exec_dir, " && mv '",
-            trajectory_file, "' ",
-            receptor_file_path,
-            ")"
+            "(cd ", exec_dir, " && mv '", traj_file,
+            "' ", recep_file_path, ")"
           )
-        )
+        
+        system(sys_cmd)
       }
     }
     
@@ -262,22 +259,21 @@ hysplit_trajectory <- function(lat = 49.263,
       
       # Perform the movement of all trajectory files
       # into a folder residing to the output directory
-      for (trajectory_file in trajectory_files) {
+      for (traj_file in trajectory_files) {
         
-        shell(
+        sys_cmd <-
           paste0(
-            "(cd \"", exec_dir, "\" && move \"",
-            trajectory_file, "\" \"",
-            receptor_file_path,
-            "\")"
+            "(cd \"", exec_dir, "\" && move \"", traj_file, "\" \"",
+            recep_file_path, "\")"
           )
-        )
+        
+        shell(sys_cmd)
       }
     }
     
     # Obtain a trajectory data frame
     traj_df <-
-      trajectory_read(output_folder = receptor_file_path) %>%
+      trajectory_read(output_folder = recep_file_path) %>%
       dplyr::as_tibble() %>%
       dplyr::mutate(receptor = receptor_i)
     
