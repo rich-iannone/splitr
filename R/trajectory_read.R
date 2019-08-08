@@ -119,9 +119,14 @@ trajectory_read <- function(output_folder) {
 
   if (any(widths_1 == 173)) {
     
-    # Initialize empty data frame with 9 named columns
+    # Initialize empty data frame with 14 named columns
     traj_extra_df <-
       dplyr::tibble(
+        receptor = integer(0),
+        year = integer(0),
+        month = integer(0),
+        day = integer(0),
+        hour = integer(0),
         theta = numeric(0),
         air_temp = numeric(0), 
         rainfall = numeric(0),
@@ -146,19 +151,27 @@ trajectory_read <- function(output_folder) {
           widths = extra_column_widths
         ) %>%
         dplyr::as_tibble() %>%
-        .[, 14:22] %>%
+        .[, c(2:6, 14:22)] %>%
         tidyr::drop_na()
       
       names(traj_extra) <- 
-        c("theta", "air_temp", "rainfall", "mixdepth", "rh", "sp_humidity", 
+        c("receptor", "year", "month", "day", "hour",
+          "theta", "air_temp", "rainfall", "mixdepth", "rh", "sp_humidity", 
           "h2o_mixrate", "terr_msl", "sun_flux")
       
       # Continuously bind data frames together to make
       # a large df from all trajectory files
       traj_extra_df <- traj_extra_df %>% dplyr::bind_rows(traj_extra)
     }
+
+    #traj_df <- traj_df %>% dplyr::bind_cols(traj_extra_df)
     
-    traj_df <- traj_df %>% dplyr::bind_cols(traj_extra_df)
+    traj_df <-
+      traj_df %>% 
+      dplyr::left_join(
+        traj_extra_df,
+        by = c("receptor", "year", "month", "day", "hour")
+      )
   }
   
   traj_df
