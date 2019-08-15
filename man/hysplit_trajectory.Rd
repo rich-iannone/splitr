@@ -8,7 +8,8 @@ hysplit_trajectory(lat = 49.263, lon = -123.25, height = 50,
   duration = 24, days = NULL, daily_hours = 0,
   direction = "forward", met_type = "reanalysis", vert_motion = 0,
   model_height = 20000, extended_met = FALSE, traj_name = NULL,
-  exec_dir = NULL, met_dir = NULL, binary_path = NULL)
+  binary_path = NULL, met_dir = NULL, exec_dir = NULL,
+  clean_up = TRUE)
 }
 \arguments{
 \item{lat, lon}{The starting latitude and longitude (in decimal degrees) for
@@ -23,15 +24,14 @@ in hours.}
 \item{days}{A vector of days that the model will run. This is combined with
 the \code{daily_hours} to produce a series of date-times.}
 
-\item{daily_hours}{Should consist of a single daily hour as an integer hour
-(from \code{0} to \code{23}), or, a vector of several daily hours represented as
-integers.}
+\item{daily_hours}{A vector of daily hours for initiations of runs across the
+given \code{days}. Use values from from \code{0} to \code{23}.}
 
 \item{direction}{An option to select whether to conduct the model in the
 \code{"forward"} (default) or \code{"backward"} directions.}
 
-\item{met_type}{An option to select meteorological data files. The options
-are \code{"reanalysis"} (NCAR/NCEP global reanalysis data, the default),
+\item{met_type}{The type of meteorological data files to use. The options
+are: \code{"reanalysis"} (NCAR/NCEP global reanalysis data, the default),
 \code{"gdas1"} (Global Data Assimilation System 1-degree resolution data), and
 \code{"narr"} (North American Regional Reanalysis).}
 
@@ -49,15 +49,18 @@ each output trajectory.}
 \item{traj_name}{An optional, descriptive name for the output file
 collection.}
 
-\item{exec_dir}{An optional file path for the working directory of the model
-input and output files.}
+\item{binary_path}{An optional path to a HYSPLIT trajectory model binary.
+When not specified, the model binary will be chosen from several available
+in the package (based on the user's platform).}
 
 \item{met_dir}{An optional file path for storage and access of meteorological
 data files.}
 
-\item{binary_path}{An optional path to a HYSPLIT trajectory model binary.
-When not specified, the model binary will be chosen from several available
-in the package (based on the user's platform).}
+\item{exec_dir}{An optional file path for the working directory of the model
+input and output files.}
+
+\item{clean_up}{An option to make the \code{exec_dir} directory clean after
+completion of all trajectory runs. By default, this is set to \code{TRUE}.}
 }
 \description{
 The function executes single/multiple forward or backward HYSPLIT trajectory
@@ -67,15 +70,20 @@ runs using specified meteorological datasets.
 \dontrun{
 library(lubridate)
 
-# Run a trajectory model 4 times a day throughout
-# 2004 using NCEP/NCAR reanalysis data
+# Run a trajectory model 4 times a day
+# for 6 days in 2012 using NCEP/NCAR
+# reanalysis data
 trajectory <-
   hysplit_trajectory(
     lat = 50.108,
     lon = -122.942,
     height = 100,
     duration = 48,
-    days = seq(ymd("2012-02-22"), ymd("2012-02-27"), by = "1 day"),
+    days = seq(
+      lubridate::ymd("2012-02-22"),
+      lubridate::ymd("2012-02-27"),
+      by = "1 day"
+    ),
     daily_hours = c(0, 6, 12, 18)
   )
 }

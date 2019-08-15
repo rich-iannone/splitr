@@ -32,18 +32,16 @@ the \code{daily_hours} to produce a series of date-times.}
 \item{start_day}{the day that the model will initialize and run. This should
 take the form of a single-length vector for a day (\code{"YYYY-MM-DD"}).}
 
-\item{start_hour}{a single daily hour as an integer hour (from \code{0} to
-\code{23}).}
+\item{start_hour}{a single daily hour as an integer hour (from \code{0} to \code{23}).}
 
-\item{daily_hours}{Should consist of a single daily hour as an integer hour
-(from \code{0} to \code{23}), or, a vector of several daily hours represented as
-integers.}
+\item{daily_hours}{A vector of daily hours for initiations of runs across the
+given \code{days}. Use values from from \code{0} to \code{23}.}
 
 \item{direction}{An option to select whether to conduct the model in the
 \code{"forward"} (default) or \code{"backward"} directions.}
 
-\item{met_type}{An option to select meteorological data files. The options
-are \code{"reanalysis"} (NCAR/NCEP global reanalysis data, the default),
+\item{met_type}{The type of meteorological data files to use. The options
+are: \code{"reanalysis"} (NCAR/NCEP global reanalysis data, the default),
 \code{"gdas1"} (Global Data Assimilation System 1-degree resolution data), and
 \code{"narr"} (North American Regional Reanalysis).}
 
