@@ -111,34 +111,33 @@ The function will return a data frame containing trajectory information.
 The data frame (named here as the object `trajectory`) will be have the
 following columns when `extended_met` is set to `FALSE`:
 
-  - `receptor` a numeric label for the receptor
-  - `year`, `month`, `day`, `hour` integer values for date/time
-    components
-  - `hour.inc` the integer hour difference compared to the run starting
-    time
+  - `run` the index value for an individual model run
+  - `receptor` a numeric label for the receptor, which is a
+    3-dimensional position
+  - `hour_along` the integer hour difference (positve for forward
+    trajectories, negative for backward trajectories) for the trajectory
+    position compared to the run starting time
+  - `traj_dt` the date-time value for the trajectory location
   - `lat`, `lon`, `height` the latitude, longitude, and height (meters
     above ground level) of the air mass along the trajectory
-  - `pressure` the air pressure along the trajectory (in hPa)
-  - `date2` a POSIXct date-time value (in UTC) for the air mass along
-    the trajectory
-  - `date` a POSIXct date-time value (in UTC) for the time of release or
-    time of incidence at the receptor site
+  - `traj_dt_i`, `lat_i`, `lon_i`, `height_i` the initial values (at the
+    model start) for `traj_dt`, `lat`, `lon`, and `height`
+  - `pressure` the air pressure at each position and time along the
+    trajectory (in hPa)
 
 If the model is run with `extended_met` set to `TRUE` then the following
-columns will also be available in the output data frame:
+along-trajectory values will also be available in the output tibble:
 
-  - `theta` the potential temperature (in K) along the trajectory
-  - `air_temp` the ambient air temperature (in K) along the trajectory
-  - `rainfall` the rate of rainfall (in mm/h) along the trajectory
-  - `mixdepth` the mixing depth (or mixing height, in meters) along the
-    trajectory
-  - `rh` the relative humidity along the trajectory
-  - `sp_humidity` the specific humidity (in g/kg) along the trajectory
-  - `h2o_mixrate` the mixed layer depth (in meters) along the trajectory
+  - `theta` the potential temperature (in K)
+  - `air_temp` the ambient air temperature (in K)
+  - `rainfall` the rate of rainfall (in mm/h)
+  - `mixdepth` the mixing depth (or mixing height, in meters)
+  - `rh` the relative humidity
+  - `sp_humidity` the specific humidity (in g/kg)
+  - `h2o_mixrate` the mixed layer depth (in meters)
   - `terr_msl` the terrain height at the location defined by `lat` and
     `long`
-  - `sun_flux` the downward solar radiation flux (in watts) along the
-    trajectory
+  - `sun_flux` the downward solar radiation flux (in watts)
 
 Models can also be defined and executed using a modeling object in a
 **magrittr** workflow. Here’s an example:
@@ -173,7 +172,7 @@ to the model object. Ending the pipeline with `run_model()` runs the
 model and creates results.
 
 The trajectory data can be be extracted from the trajectory model object
-using `get_output_df()`…
+using the `get_output_df()` function.
 
 ``` r
 # Get a data frame containing the model results
@@ -185,38 +184,43 @@ trajectory_df <-
 …and a tibble of output data is returned:
 
 ``` r
-trajectory_df
-#> Source: local data frame [175 x 21]
-#> 
-#>    receptor  year month   day  hour hour.inc    lat      lon height
-#>       (int) (int) (int) (int) (int)    (dbl)  (dbl)    (dbl)  (dbl)
-#> 1         1    15     7     1     0        0 49.400 -123.400   50.0
-#> 2         1    15     7     1     1        1 49.359 -123.203   49.9
-#> 3         1    15     7     1     2        2 49.326 -123.039   49.3
-#> 4         1    15     7     1     3        3 49.300 -122.905   48.2
-#> 5         1    15     7     1     4        4 49.282 -122.800   46.7
-#> 6         1    15     7     1     5        5 49.268 -122.723   44.8
-#> 7         1    15     7     1     6        6 49.260 -122.672   42.5
-#> 8         2    15     7     1     0        0 49.400 -123.200   50.0
-#> 9         2    15     7     1     1        1 49.369 -123.008   49.9
-#> 10        2    15     7     1     2        2 49.346 -122.848   49.4
-#> ..      ...   ...   ...   ...   ...      ...    ...      ...    ...
-#> Variables not shown: pressure (dbl), date2 (time), date (time), theta
-#>   (dbl), air_temp (dbl), rainfall (dbl), mixdepth (dbl), rh (dbl),
-#>   sp_humidity (dbl), h2o_mixrate (dbl), terr_msl (dbl), sun_flux (dbl)
+#> # A tibble: 14 x 21
+#>      run receptor hour_along traj_dt               lat   lon height
+#>    <int>    <int>      <int> <dttm>              <dbl> <dbl>  <dbl>
+#>  1     1        1          0 2015-07-01 00:00:00  43.4 -79.7   50  
+#>  2     1        1         -1 2015-06-30 23:00:00  43.4 -79.7   44.1
+#>  3     1        1         -2 2015-06-30 22:00:00  43.3 -79.8   39  
+#>  4     1        1         -3 2015-06-30 21:00:00  43.3 -79.8   34.5
+#>  5     1        1         -4 2015-06-30 20:00:00  43.2 -79.7   30.7
+#>  6     1        1         -5 2015-06-30 19:00:00  43.2 -79.7   27.4
+#>  7     1        1         -6 2015-06-30 18:00:00  43.1 -79.7   24.5
+#>  8     2        1          0 2015-07-01 12:00:00  43.4 -79.7   50  
+#>  9     2        1         -1 2015-07-01 11:00:00  43.5 -79.9   44.6
+#> 10     2        1         -2 2015-07-01 10:00:00  43.5 -80.1   40.7
+#> 11     2        1         -3 2015-07-01 09:00:00  43.5 -80.2   37.7
+#> 12     2        1         -4 2015-07-01 08:00:00  43.6 -80.4   35.7
+#> 13     2        1         -5 2015-07-01 07:00:00  43.6 -80.5   34.4
+#> 14     2        1         -6 2015-07-01 06:00:00  43.6 -80.6   33.8
+#> # … with 14 more variables: traj_dt_i <dttm>, lat_i <dbl>, lon_i <dbl>,
+#> #   height_i <dbl>, pressure <dbl>, theta <dbl>, air_temp <dbl>,
+#> #   rainfall <dbl>, mixdepth <dbl>, rh <dbl>, sp_humidity <dbl>,
+#> #   h2o_mixrate <dbl>, terr_msl <dbl>, sun_flux <dbl>
 ```
 
 #### Plotting Trajectory Data
 
 Trajectories can be plotted onto an interactive map. Use the
 `trajectory_plot()` function with either the `trajectory` data frame
-(created directly by the `hysplit_trajectory()` function), or, with a
-trajectory model object.
+(created directly by the `hysplit_trajectory()` function)…
 
 ``` r
 # Plot results using the trajectory data frame
-trajectory %>% trajectory_plot()
+trajectory_df %>% trajectory_plot()
+```
 
+…or, with a trajectory model object
+
+``` r
 # Plot results using the trajectory model object
 trajectory_model %>% trajectory_plot()
 ```
@@ -235,20 +239,19 @@ following selection of basemaps is also provided:
   - Stamen Toner
 
 Clicking any of the points along the trajectory will provide an
-informative popup with time/position info and meteorological data for
-that location at that point in time:
+informative popup with time/position info for that location at that
+point in time:
 
 <img src="man/figures/fig_trajectory_popup.png" width="100%">
 
 ## **HYSPLIT** Dispersion Runs
 
-Dispersion models can also be conveniently built and executed using a
-**magrittr** workflow. Instantiate the dispersion model with the
-`create_disp_model()` function. Use one or more `add_params()`
-statements to write parameters to the model object. The `add_grid()`
-function here facilitates the creation of sampling grids. Using
-`add_emissions()` function anywhere in the pipeline will define
-emissions properties for one or more emitted pollutants. With
+Dispersion models can also be conveniently built and executed. Begin the
+process with the `create_disp_model()` function. Use one or more
+`add_params()` statements to write parameters to the model object. The
+`add_grid()` function here facilitates the creation of sampling grids.
+Using the `add_emissions()` function anywhere in the pipeline will
+define emissions properties for one or more emitted pollutants. With
 `add_species()`, the physical properties and deposition parameters of
 one or more emitted species can be added to the model.
 
