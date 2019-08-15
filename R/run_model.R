@@ -61,8 +61,9 @@ run_model <- function(model) {
         emissions = model$emissions,
         species = model$species,
         grids = model$grids,
-        return_disp_df = TRUE,
-        write_disp_CSV = TRUE
+        exec_dir = model$exec_dir,
+        met_dir = model$met_dir,
+        binary_path = model$binary_path
       )
    
     model$disp_df <- disp_df
