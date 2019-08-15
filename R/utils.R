@@ -276,3 +276,32 @@ get_receptor_values <- function(receptors_tbl,
   
   receptors_tbl[receptor_i, ] %>% as.list()
 }
+
+#' Wrapper for `gsub()` where `x` is the first argument
+#'
+#' This function is wrapper for `gsub()` that uses default argument values and
+#' rearranges first three arguments for better pipelining
+#' @param x,pattern,replacement,fixed Select arguments from the `gsub()`
+#'   function.
+#' @noRd
+tidy_gsub <- function(x, pattern, replacement, fixed = FALSE) {
+  
+  gsub(pattern, replacement, x, fixed = fixed)
+}
+
+tidy_sub <- function(x, pattern, replacement, fixed = FALSE) {
+  
+  sub(pattern, replacement, x, fixed = fixed)
+}
+
+tidy_grepl <- function(x, pattern) {
+  
+  vapply(
+    pattern,
+    FUN = function(pattern) {
+      grepl(pattern = pattern, x = x)
+    },
+    FUN.VALUE = logical(1),
+    USE.NAMES = FALSE
+  )
+}
