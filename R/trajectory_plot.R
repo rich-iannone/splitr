@@ -24,41 +24,34 @@ trajectory_plot <- function(x,
   }
   
   if (inherits(x, "data.frame")) {
-    if (all(c("receptor", "year", "month", "day",
-              "hour", "hour.inc", "lat", "lon",
-              "height", "pressure", "date2",
-              "date") %in% colnames(x))) {
+    if (all(c("run", "receptor", "hour_along", "traj_dt",
+              "lat", "lon", "height", "traj_dt_i") %in% colnames(x))) {
       traj_df <- x
     } else {
-      stop("This data frame does not contain plottable data.")
+      stop("This tibble does not contain plottable trajectory data.")
     }
   }
   
-  if (color_scheme == "cycle_hues") {
-    colors <- scales::hue_pal(c = 90, l = 70)(length(sort(unique(traj_df$date))))
-  }
+  dt_runs <- traj_df$traj_dt_i %>% unique() %>% length()
   
-  if (color_scheme == "increasingly_gray") {
-    colors <- scales::grey_pal(0.7, 0.1)(length(sort(unique(traj_df$date))))
+  if (color_scheme == "cycle_hues") {
+    colors <- scales::hue_pal(c = 90, l = 70)(dt_runs)
+  } else if (color_scheme == "increasingly_gray") {
+    colors <- scales::grey_pal(0.7, 0.1)(dt_runs)
   }
   
   # Correct longitude values near prime meridian
   traj_df$lon[which(traj_df$lon > 0)] <- 
     traj_df$lon[which(traj_df$lon > 0)] - (180*2)
   
-  # Arrange the data in `traj_df`
-  traj_df <-
-    traj_df %>%
-    dplyr::arrange(receptor, date, hour.inc) %>%
-    dplyr::distinct()
-  
   receptors <-
-    traj_df[["receptor"]] %>%
+    traj_df %>%
+    dplyr::pull(receptor) %>%
     unique()
-  
-  dates <- 
-    traj_df[["date"]] %>%
-    sort() %>%
+
+  dates <-
+    traj_df %>%
+    dplyr::pull(traj_dt_i) %>%
     unique()
   
   traj_plot <- 
@@ -98,7 +91,7 @@ trajectory_plot <- function(x,
       position = "topright"
     )
   
-  # Get different trajectories by site and by date
+  # Get different trajectories by receptor and by date
   for (i in seq_along(receptors)) {
     
     receptor_i <- receptors[i]
@@ -111,19 +104,14 @@ trajectory_plot <- function(x,
         traj_df %>%
         dplyr::filter(
           receptor == receptor_i,
-          date == date_i
-        ) %>%
-        dplyr::arrange(hour.inc)
+          traj_dt_i == date_i
+        )
       
-      #
-      # Create circle markers
-      #
-      
-      popup_circle <- 
+      popup <- 
         paste0(
-          "<strong>trajectory</strong> ", wind_traj_ij[["date"]],
-          "<br><strong>at time</strong> ", wind_traj_ij[["date2"]],
-          " (", wind_traj_ij[["hour.inc"]],
+          "<strong>trajectory</strong> ", wind_traj_ij[["traj_dt_i"]],
+          "<br><strong>at time</strong> ", wind_traj_ij[["traj_dt"]],
+          " (", wind_traj_ij[["hour_along"]],
           " h)<br><strong>height</strong> ", wind_traj_ij[["height"]],
           " <font size=\"1\">m AGL</font> / ",
           "<strong>P</strong> ", wind_traj_ij[["pressure"]],
@@ -148,7 +136,7 @@ trajectory_plot <- function(x,
           fill = TRUE,
           color = colors[j],
           fillColor = colors[j], 
-          popup = popup_circle
+          popup = popup
         )
     }
   }
