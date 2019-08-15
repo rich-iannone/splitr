@@ -305,3 +305,15 @@ tidy_grepl <- function(x, pattern) {
     USE.NAMES = FALSE
   )
 }
+
+output_files <- function() {
+  
+  c(
+    "ASCDATA.CFG",
+    "CONTROL",
+    "MESSAGE",
+    "SETUP.CFG",
+    "TRAJ.CFG",
+    "WARNING"
+  )
+}
