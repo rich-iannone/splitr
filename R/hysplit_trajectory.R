@@ -11,13 +11,12 @@
 #'   in hours.
 #' @param days A vector of days that the model will run. This is combined with
 #'   the `daily_hours` to produce a series of date-times.
-#' @param daily_hours Should consist of a single daily hour as an integer hour
-#'   (from `0` to `23`), or, a vector of several daily hours represented as
-#'   integers.
+#' @param daily_hours A vector of daily hours for initiations of runs across the
+#'   given `days`. Use values from from `0` to `23`.
 #' @param direction An option to select whether to conduct the model in the
 #'   `"forward"` (default) or `"backward"` directions.
-#' @param met_type An option to select meteorological data files. The options
-#'   are `"reanalysis"` (NCAR/NCEP global reanalysis data, the default),
+#' @param met_type The type of meteorological data files to use. The options
+#'   are: `"reanalysis"` (NCAR/NCEP global reanalysis data, the default),
 #'   `"gdas1"` (Global Data Assimilation System 1-degree resolution data), and
 #'   `"narr"` (North American Regional Reanalysis).
 #' @param vert_motion A numbered option to select the method used to simulation
@@ -30,26 +29,33 @@
 #'   each output trajectory.
 #' @param traj_name An optional, descriptive name for the output file
 #'   collection.
-#' @param exec_dir An optional file path for the working directory of the model
-#'   input and output files.
-#' @param met_dir An optional file path for storage and access of meteorological
-#'   data files.
 #' @param binary_path An optional path to a HYSPLIT trajectory model binary.
 #'   When not specified, the model binary will be chosen from several available
 #'   in the package (based on the user's platform).
+#' @param met_dir An optional file path for storage and access of meteorological
+#'   data files.
+#' @param exec_dir An optional file path for the working directory of the model
+#'   input and output files.
+#' @param clean_up An option to make the `exec_dir` directory clean after
+#'   completion of all trajectory runs. By default, this is set to `TRUE`.
 #' @examples
 #' \dontrun{
 #' library(lubridate)
 #' 
-#' # Run a trajectory model 4 times a day throughout
-#' # 2004 using NCEP/NCAR reanalysis data
+#' # Run a trajectory model 4 times a day
+#' # for 6 days in 2012 using NCEP/NCAR
+#' # reanalysis data
 #' trajectory <-
 #'   hysplit_trajectory(
 #'     lat = 50.108,
 #'     lon = -122.942,
 #'     height = 100,
 #'     duration = 48,
-#'     days = seq(ymd("2012-02-22"), ymd("2012-02-27"), by = "1 day"),
+#'     days = seq(
+#'       lubridate::ymd("2012-02-22"),
+#'       lubridate::ymd("2012-02-27"),
+#'       by = "1 day"
+#'     ),
 #'     daily_hours = c(0, 6, 12, 18)
 #'   )
 #' }
@@ -66,15 +72,20 @@ hysplit_trajectory <- function(lat = 49.263,
                                model_height = 20000,
                                extended_met = FALSE,
                                traj_name = NULL,
-                               exec_dir = NULL,
+                               binary_path = NULL,
                                met_dir = NULL,
-                               binary_path = NULL) {
+                               exec_dir = NULL,
+                               clean_up = TRUE) {
   
   if (is.null(exec_dir)) exec_dir <- getwd()
   
   if (is.null(met_dir)) met_dir <- getwd()
   
-  binary_path <- set_binary_path(binary_path = binary_path)
+  binary_path <- 
+    set_binary_path(
+      binary_path = binary_path,
+      binary_name = "hyts_std"
+    )
   
   system_type <- get_os()
   
@@ -88,7 +99,7 @@ hysplit_trajectory <- function(lat = 49.263,
   # Write default versions of the SETUP.CFG and
   # ASCDATA.CFG files in the working directory
   hysplit_config_init(dir = exec_dir)
-
+  
   # Modify the default `SETUP.CFG` file when the
   # option for extended meteorology is `TRUE`
   hysplit_config_extended_met(
@@ -128,6 +139,8 @@ hysplit_trajectory <- function(lat = 49.263,
   # Create a dataframe for the ensemble
   ensemble_df <- dplyr::tibble()
   
+  recep_file_path_stack <- c()
+  
   # For every set of coordinates, perform a set
   # of model runs
   for (receptor in receptors) {
@@ -139,9 +152,9 @@ hysplit_trajectory <- function(lat = 49.263,
       )
     
     receptor_i <- receptor_vals$receptor
-    lat <- receptor_vals$lat
-    lon <- receptor_vals$lon
-    height <- receptor_vals$height
+    lat_i <- receptor_vals$lat
+    lon_i <- receptor_vals$lon
+    height_i <- receptor_vals$height
     
     list_run_days <- days %>% as.character()
     
@@ -184,9 +197,9 @@ hysplit_trajectory <- function(lat = 49.263,
             month = start_month_GMT,
             day = start_day_GMT,
             hour = start_hour_GMT,
-            lat = lat,
-            lon = lon,
-            height = height,
+            lat = lat_i,
+            lon = lon_i,
+            height = height_i,
             duration = duration
           )
         
@@ -198,9 +211,9 @@ hysplit_trajectory <- function(lat = 49.263,
           start_month_GMT = start_month_GMT,
           start_day_GMT = start_day_GMT,
           start_hour_GMT = start_hour_GMT,
-          lat = lat,
-          lon = lon,
-          height = height,
+          lat = lat_i,
+          lon = lon_i,
+          height = height_i,
           direction = direction,
           duration = duration,
           vert_motion = vert_motion,
@@ -215,7 +228,7 @@ hysplit_trajectory <- function(lat = 49.263,
         # The CONTROL file is now complete and in the
         # working directory, so, execute the model run
         if (any(c("mac", "unix") %in% system_type)) {
-   
+          
           sys_cmd <- 
             paste0("(cd ", exec_dir, " && ", binary_path, " >> /dev/null 2>&1)")
           
@@ -233,6 +246,9 @@ hysplit_trajectory <- function(lat = 49.263,
     }
     
     recep_file_path <- file.path(exec_dir, receptor_i, folder_name)
+    
+    recep_file_path_stack <- 
+      c(recep_file_path_stack, file.path(exec_dir, receptor_i))
     
     # Create the output folder if it doesn't exist
     if (!dir.exists(recep_file_path)) {
@@ -275,12 +291,64 @@ hysplit_trajectory <- function(lat = 49.263,
     traj_df <-
       trajectory_read(output_folder = recep_file_path) %>%
       dplyr::as_tibble() %>%
-      dplyr::mutate(receptor = receptor_i)
+      dplyr::mutate(
+        receptor = receptor_i,
+        lat_i = lat_i,
+        lon_i = lon_i,
+        height_i = height_i
+      )
     
     ensemble_df <-
       ensemble_df %>%
       dplyr::bind_rows(traj_df)
   }
+
+  if (clean_up) {
+    unlink(file.path(exec_dir, output_files()), force = TRUE)
+    unlink(recep_file_path_stack, recursive = TRUE, force = TRUE)
+  }
   
-  ensemble_df
+  ensemble_df <-
+    ensemble_df %>%
+    dplyr::select(-c(year, month, day, hour)) %>%
+    dplyr::select(
+      receptor,
+      hour_along = hour.inc,
+      traj_dt = date2,
+      lat,
+      lon,
+      height,
+      traj_dt_i = date,
+      lat_i,
+      lon_i,
+      height_i,
+      dplyr::everything()
+    ) %>%
+    dplyr::group_by(
+      receptor, hour_along, traj_dt, traj_dt_i, lat_i, lon_i, height_i) %>%
+    dplyr::slice(1) %>%
+    dplyr::ungroup()
+  
+  if (direction == "forward") {
+    
+    ensemble_df <-
+      ensemble_df %>%
+      dplyr::arrange(receptor, traj_dt_i)
+    
+  } else {
+    
+    ensemble_df <-
+      ensemble_df %>%
+      dplyr::arrange(receptor, traj_dt_i, dplyr::desc(hour_along))
+  }
+  
+  ensemble_df %>%
+    dplyr::right_join(
+      ensemble_df %>%
+        dplyr::select(receptor, traj_dt_i, lat_i, lon_i, height_i) %>%
+        dplyr::distinct() %>%
+        dplyr::mutate(run = dplyr::row_number()),
+      by = c("receptor", "traj_dt_i", "lat_i", "lon_i", "height_i")
+    ) %>%
+    dplyr::select(run, dplyr::everything())
 }
