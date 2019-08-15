@@ -105,22 +105,38 @@ get_os <- function() {
 #' Upgrade the `binary_path` variable
 #' 
 #' @noRd
-set_binary_path <- function(binary_path) {
+set_binary_path <- function(binary_path, binary_name) {
+  
+  # binary names should be either:
+  #  - hyts_std (trajectory models)
+  #  - hycs_std (dispersion models)
   
   if (is.null(binary_path)) {
     
     system_os <- get_os()
     
     if (system_os == "mac") {
-      binary_path <- system.file("osx/hyts_std", package = "SplitR")
+      binary_path <- 
+        system.file(
+          file.path("osx", binary_name),
+          package = "SplitR"
+          )
     }
     
     if (system_os == "unix") {
-      binary_path <- system.file("linux-amd64/hyts_std", package = "SplitR")
+      binary_path <- 
+        system.file(
+          file.path("linux-amd64", binary_name),
+          package = "SplitR"
+        )
     }
     
     if (system_os == "win") {
-      binary_path <- system.file("win/hyts_std.exe", package = "SplitR")
+      binary_path <- 
+        system.file(
+          file.path("win", paste0(binary_name, ".exe")),
+          package = "SplitR"
+        )
     }
   }
   
