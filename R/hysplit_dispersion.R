@@ -2,46 +2,17 @@
 #' 
 #' The function executes single/multiple forward or backward HYSPLIT dispersion
 #' runs using specified meteorological datasets.
-#' @param lat the starting latitude (in decimal degrees) for the model run(s).
-#' @param lon the starting longitude (in decimal degrees) for the model run(s).
-#' @param height the starting height (in meters above ground level) for the
-#'   model run(s).
-#' @param duration the duration of each model run (either forward or backward)
-#'   in hours.
+#' @inheritParams hysplit_trajectory
 #' @param start_day the day that the model will initialize and run. This should
 #'   take the form of a single-length vector for a day (`"YYYY-MM-DD"`).
-#' @param start_hour a single daily hour as an integer hour (from `0` to
-#'   `23`).
-#' @param direction an option to select whether to conduct the model in the
-#'   `forward` or `backward` directions.
-#' @param met_type an option to select meteorological data files. The options
-#'   are `gdas1` (Global Data Assimilation System 1-degree resolution
-#'   data), `reanalysis` (NCAR/NCEP global reanalysis data), and
-#'   `hrrr` (High Resolution Rapid Refresh 3-km resolution data - CONUS
-#'   only).
-#' @param met_dir an optional file path for storage and access of meteorological
-#'   data files.
-#' @param vert_motion a numbered option to select the method used to simulation
-#'   vertical motion. The methods are: (0) input model data, (1) isobaric, (2)
-#'   isentropic, (3) constant density, (4) isosigma, (5) from divergence, (6)
-#'   remap MSL to AGL, (7) average data, and (8) damped magnitude.
-#' @param model_height the upper limit of the model domain in meters.
-#' @param particle_num the number of particles released by source during each
+#' @param start_hour a single daily hour as an integer hour (from `0` to `23`).
+#' @param particle_num The number of particles released by a source during each
 #'   release cycle.
-#' @param particle_max the number of particles released by a source during a
-#'   model run.
-#' @param emissions the numbers corresponding to the stored emissions presets.
-#'   These presets are specified using the function
-#'   `hysplit_dispersion_define("emissions")`.
-#' @param species the numbers corresponding to the stored species presets. These
-#'   presets are specified using the function
-#'   `hysplit_dispersion_define("species")`.
-#' @param grids the numbers corresponding to the stored grid presets. These
-#'   presets are specified using the function
-#'   `hysplit_dispersion_define("grids")`.
-#' @param return_disp_df an option to return a data frame with dispersion data.
-#' @param write_disp_CSV an option to write disperison data to a CSV file.
-#' @param disp_name an optional, descriptive name for the output file
+#' @param particle_max The maximum number of particles released by a source
+#'   during a model run.
+#' @param emissions,species,grids An ID corresponding to the stored emissions,
+#'   species, and grids presets.
+#' @param disp_name An optional, descriptive name for the output file
 #'   collection.
 #' @examples
 #' \dontrun{
@@ -55,13 +26,11 @@
 #'   lon = -123.250,
 #'   height = 15,
 #'   duration = 12,
-#'   run_type = "range",
 #'   start_day = "2012-02-01",
 #'   start_hour = 0,
 #'   emissions = 1,
 #'   species = 1,
 #'   grids = c(1,2),
-#'   return_disp_df = FALSE,
 #'   disp_name = "example")
 #' }
 #' @import lubridate
@@ -75,7 +44,6 @@ hysplit_dispersion <- function(lat = 49.263,
                                start_hour = 0,
                                direction = "forward",
                                met_type = "reanalysis",
-                               met_dir = NULL,
                                vert_motion = 0,
                                model_height = 20000,
                                particle_num = 2500,
@@ -83,61 +51,85 @@ hysplit_dispersion <- function(lat = 49.263,
                                emissions,
                                species,
                                grids,
-                               return_disp_df = TRUE,
-                               write_disp_CSV = TRUE,
-                               disp_name = NULL) { 
+                               disp_name = NULL,
+                               exec_dir = NULL,
+                               met_dir = NULL,
+                               binary_path = NULL) { 
+  
+  if (is.null(exec_dir)) exec_dir <- getwd()
   
   if (is.null(met_dir)) met_dir <- getwd()
   
-  if (length(start_day) == 1 &
-      class(start_day) == "character" &
-      all(grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]",
-                start_day))) {
-    
-    run_type <- "day"
-    run_day <- start_day
+  binary_path <- 
+    set_binary_path(
+      binary_path = binary_path,
+      binary_name = "hycs_std"
+    )
+  
+  system_type <- get_os()
+
+  # Stop if `start_day` isn't a length 1 vector
+  if (length(start_day) != 1) {
+    stop("The value provided to `start_day` must be a single value.",
+         call. = FALSE)
   }
   
-  # If SETUP.CFG or ASCDATA.CFG do not exist in the 
-  # working directory, write default versions of those
-  # config files
-  if (!("SETUP.CFG" %in% list.files()) |
-      !("ASCDATA.CFG" %in% list.files())) {
-    hysplit_config_init(getwd())
+  if (!(inherits(start_day, "character") |
+      inherits(start_day, "Date") |
+      inherits(start_day, "POSIXct"))) {
+    stop("The value provided to `start_day` must be a valid date.")
   }
+  
+  start_day <- lubridate::as_date(start_day)
+  
+  # Write default versions of the SETUP.CFG and
+  # ASCDATA.CFG files in the working directory
+  hysplit_config_init(dir = exec_dir)
+  
+  # Modify numbers of particles in the SETUP.CFG file
+  readLines(con = file.path(exec_dir, "SETUP.CFG")) %>%
+    tidy_gsub(
+      pattern = " numpar = ([0-9]*),",
+      replacement = paste0(" numpar = ", particle_num, ",")
+    ) %>%
+    tidy_gsub(
+      pattern = " maxpar = ([0-9]*),",
+      replacement = paste0(" maxpar = ", particle_max, ",")
+    ) %>%
+    writeLines(con = file.path(exec_dir, "SETUP.CFG"))
   
   # Set number of particles to 1 in the SETUP.CFG file
-  setup.cfg <- readLines(paste0(getwd(), "/SETUP.CFG"))
+  # setup.cfg <- readLines(con = file.path(exec_dir, "SETUP.CFG"))
+  # 
+  # setup.cfg <- gsub(" numpar = ([0-9]*),",
+  #                   paste0(" numpar = ", particle_num, ","),
+  #                   setup.cfg)
+  # 
+  # setup.cfg <- gsub(" maxpar = ([0-9]*),",
+  #                   paste0(" maxpar = ",
+  #                          particle_max,
+  #                          ","),
+  #                   setup.cfg)
+  # 
+  # writeLines(setup.cfg, paste0(getwd(), "/SETUP.CFG"))
   
-  setup.cfg <- gsub(" numpar = ([0-9]*),",
-                    paste0(" numpar = ",
-                           particle_num,
-                           ","),
-                    setup.cfg)
-  
-  setup.cfg <- gsub(" maxpar = ([0-9]*),",
-                    paste0(" maxpar = ",
-                           particle_max,
-                           ","),
-                    setup.cfg)
-  
-  writeLines(setup.cfg, paste0(getwd(), "/SETUP.CFG"))
+  browser()
   
   # Make a vector list of run days in POSIXct format
-  run_day <- 
-    as.POSIXct(run_day,
+  start_day <- 
+    as.POSIXct(start_day,
                origin = "1970-01-01",
                tz = "UTC")
   
   # Define starting time parameters
-  start_year_GMT <- substr(as.character(year(run_day)), 3, 4)
+  start_year_GMT <- substr(as.character(year(start_day)), 3, 4)
   
   start_month_GMT <- 
-    formatC(as.numeric(month(run_day)),
+    formatC(as.numeric(month(start_day)),
             width = 2, format = "d", flag = "0")
   
   start_day_GMT <- 
-    formatC(as.numeric(day(run_day)),
+    formatC(as.numeric(day(start_day)),
             width = 2, format = "d", flag = "0")
   
   # Format `start_hour` if given as a numeric value
@@ -804,40 +796,42 @@ hysplit_dispersion <- function(lat = 49.263,
                  "\")"))
   }
   
-  # Write the dispersion data frame to a CSV if
-  # it is requested
-  if (write_disp_CSV) {
-    disp_df <- 
-      dispersion_read(archive_folder =
-                        paste0(getwd(), "/",
-                               folder_name))
-    
-    if (any(c("mac", "unix") %in% get_os())) {
-      utils::write.table(
-        disp_df,
-        file = paste0(getwd(), "/",
-                      folder_name,
-                      "/dispersion.csv"),
-        sep = ",",
-        row.names = FALSE)
-    }
-    
-    if (get_os() == "win") {
-      utils::write.table(
-        disp_df,
-        file = paste0("\"", getwd(), "/",
-                      folder_name,
-                      "/dispersion.csv\""),
-        sep = ",",
-        row.names = FALSE) 
-    }
-  }
+  # # Write the dispersion data frame to a CSV if
+  # # it is requested
+  # if (write_disp_CSV) {
+  #   disp_df <- 
+  #     dispersion_read(archive_folder =
+  #                       paste0(getwd(), "/",
+  #                              folder_name))
+  #   
+  #   if (any(c("mac", "unix") %in% get_os())) {
+  #     utils::write.table(
+  #       disp_df,
+  #       file = paste0(getwd(), "/",
+  #                     folder_name,
+  #                     "/dispersion.csv"),
+  #       sep = ",",
+  #       row.names = FALSE)
+  #   }
+  #   
+  #   if (get_os() == "win") {
+  #     utils::write.table(
+  #       disp_df,
+  #       file = paste0("\"", getwd(), "/",
+  #                     folder_name,
+  #                     "/dispersion.csv\""),
+  #       sep = ",",
+  #       row.names = FALSE) 
+  #   }
+  # }
   
-  # Return a dispersion data frame if it is requested
-  if (return_disp_df) {
-    
-    disp_df <- dispersion_read(archive_folder = folder_name)
-    
-    invisible(disp_df)
-  }
+  dispersion_read(archive_folder = folder_name)
+  
+  # # Return a dispersion data frame if it is requested
+  # if (return_disp_df) {
+  #   
+  #   disp_df <- dispersion_read(archive_folder = folder_name)
+  #   
+  #   invisible(disp_df)
+  # }
 }
