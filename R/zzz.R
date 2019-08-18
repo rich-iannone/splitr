@@ -1,7 +1,16 @@
 utils::globalVariables(
   c(
+    ".",
     "available",
+    "date2",
+    "date_str",
+    "date_h_str",
+    "hour.inc.",
+    "hour_along",
     "receptor",
-    "hour.inc"
+    "run",
+    "traj_dt",
+    "traj_dt_i",
+    "year_full"
   )
 )
