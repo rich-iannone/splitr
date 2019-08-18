@@ -34,7 +34,6 @@
 #'   disp_name = "example")
 #' }
 #' @import lubridate
-#' @import ggmap
 #' @export
 hysplit_dispersion <- function(lat = 49.263,
                                lon = -123.250,
@@ -112,8 +111,6 @@ hysplit_dispersion <- function(lat = 49.263,
   #                   setup.cfg)
   # 
   # writeLines(setup.cfg, paste0(getwd(), "/SETUP.CFG"))
-  
-  browser()
   
   # Make a vector list of run days in POSIXct format
   start_day <- 
@@ -565,9 +562,6 @@ hysplit_dispersion <- function(lat = 49.263,
   } else {
     sampling_type <- "0"
   }
-  
-  # TODO: fix issue with `strsplit()` call
-  #browser()
   
   grids_text <-
     c("1",
