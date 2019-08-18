@@ -1,4 +1,4 @@
-library(SplitR)
+library(splitr)
 library(tidyverse)
 library(here)
 

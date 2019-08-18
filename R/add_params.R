@@ -1,7 +1,8 @@
 #' Add model parameters
 #'
 #' Add modelling parameters to a model object.
-#' @param model A SplitR modeling object.
+#' 
+#' @param model A splitr modeling object.
 #' @inheritParams hysplit_trajectory
 #' @inheritParams hysplit_dispersion
 #' @export

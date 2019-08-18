@@ -8,7 +8,7 @@ add_emissions(model, rate = NULL, duration = NULL, start_day = NULL,
   start_hour = NULL, name = NULL)
 }
 \arguments{
-\item{model}{a SplitR modeling object.}
+\item{model}{a splitr modeling object.}
 
 \item{rate}{the rate of emissions for the pollutant in mass units per hour.}
 

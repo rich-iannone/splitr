@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# SplitR
+# splitr
 
 <img src="man/figures/fig_SplitR.png" width="70%">
 
@@ -12,7 +12,7 @@ status](https://travis-ci.org/rich-iannone/SplitR.svg?branch=master)](https://tr
 [![DOI](https://zenodo.org/badge/20543/rich-iannone/SplitR.svg)](https://zenodo.org/badge/latestdoi/20543/rich-iannone/SplitR)
 <!-- badges: end -->
 
-**SplitR** is an **R** package for conducting trajectory and dispersion
+**splitr** is an **R** package for conducting trajectory and dispersion
 modeling with **HYSPLIT**. We can determine, from one or more receptor
 sites, where arriving air masses originated. Conversely, it’s possible
 to model trajectories of air masses from receptor sites. Forward and
@@ -41,17 +41,17 @@ management decisions, such as applications of fungicide or pesticide to
 potentially-affected agricultural areas ([Schmale and
 Ross, 2015](http://www.annualreviews.org/doi/abs/10.1146/annurev-phyto-080614-115942?journalCode=phyto)).
 
-**SplitR** allows you to build and run **HYSPLIT** models in a fast,
+**splitr** allows you to build and run **HYSPLIT** models in a fast,
 easy, and organized manner. A few or, perhaps, thousands of trajectory
 or dispersion runs can be conducted with minimal code. Because
-**SplitR** is an **R** interface to **HYSPLIT**, we can store output in
+**splitr** is an **R** interface to **HYSPLIT**, we can store output in
 memory and take advantage of the vast selection of **R** packages to
 perform statistical analyses and to generate visualizations. This
 package furthermore simplifies the process of running **HYSPLIT** models
 by automating the retrieval and storage of associated meteorological
 data files.
 
-Some of the things you can do with **SplitR** are:
+Some of the things you can do with **splitr** are:
 
   - create and execute model runs with an easily readable **magrittr**
     pipeline workflow
@@ -66,7 +66,7 @@ Some of the things you can do with **SplitR** are:
 ## **HYSPLIT** Trajectory Model Runs
 
 To perform a series of **HYSPLIT** trajectory model runs, one can use
-the **SplitR** `hysplit_trajectory()` function:
+the **splitr** `hysplit_trajectory()` function:
 
 ``` r
 trajectory <- 
@@ -376,18 +376,18 @@ of the view.
 
 ## Installation
 
-**SplitR** is used in an **R** environment. If you don’t have an **R**
+**splitr** is used in an **R** environment. If you don’t have an **R**
 installation, it can be obtained from the [**Comprehensive R Archive
 Network (CRAN)**](http://cran.rstudio.com). It is recommended that
 [**RStudio**](http://www.rstudio.com/products/RStudio/) be used as the
 **R** IDE to take advantage of its ability to visualize output in its
 *Viewer* pane.
 
-You can install the development version of **SplitR** from **GitHub**
+You can install the development version of **splitr** from **GitHub**
 using the **devtools** package.
 
 ``` r
-devtools::install_github("rich-iannone/SplitR")
+devtools::install_github("rich-iannone/splitr")
 ```
 
 ## HYSPLIT Citations
@@ -406,6 +406,6 @@ Meteor. Mag., 47, 295-308.
 
 ## Code of Conduct
 
-Please note that the **SplitR** project is released with a [Contributor
+Please note that the **splitr** project is released with a [Contributor
 Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
 you agree to abide by its terms.

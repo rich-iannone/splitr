@@ -1,7 +1,7 @@
 #' Add lat/lon grid to a model
 #'
 #' Create and add a grid of latitude and longitude points to a model object.
-#' @param model A SplitR modeling object
+#' @param model A splitr modeling object
 #' @param lat A latitude value in decimal degrees for the point of reference on
 #'   the grid.
 #' @param lon A longitude value in decimal degrees for the point of reference on

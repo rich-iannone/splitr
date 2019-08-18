@@ -2,7 +2,8 @@
 #'
 #' Add a set of emissions parameters to a dispersion model object. Multiple sets
 #' of emissions parameters can can be added to a single dispersion model object.
-#' @param model a SplitR modeling object.
+#' 
+#' @param model a splitr modeling object.
 #' @param rate the rate of emissions for the pollutant in mass units per hour.
 #' @param duration the duration of emissions in hours.
 #' @param start_day the day that the emissions will begin. This should take the
@@ -10,6 +11,7 @@
 #' @param start_hour a single daily hour as an integer hour (from `0` to
 #'   `23`).
 #' @param name an identifier for the group of emissions parameters.
+#' 
 #' @export
 add_emissions <- function(model,
                           rate = NULL,

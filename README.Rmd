@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# SplitR
+# splitr
 
 <img src="man/figures/fig_SplitR.png" width="70%">
 
@@ -22,15 +22,15 @@ knitr::opts_chunk$set(
 [![DOI](https://zenodo.org/badge/20543/rich-iannone/SplitR.svg)](https://zenodo.org/badge/latestdoi/20543/rich-iannone/SplitR)
 <!-- badges: end -->
 
-**SplitR** is an **R** package for conducting trajectory and dispersion modeling with **HYSPLIT**. We can determine, from one or more receptor sites, where arriving air masses originated. Conversely, it's possible to model trajectories of air masses from receptor sites. Forward and backward modeling of gas-phase or particulate matter can also be conducted from defined sites. It's a means to help explain how, where, and when chemicals and materials are atmospherically transported, dispersed, and deposited.
+**splitr** is an **R** package for conducting trajectory and dispersion modeling with **HYSPLIT**. We can determine, from one or more receptor sites, where arriving air masses originated. Conversely, it's possible to model trajectories of air masses from receptor sites. Forward and backward modeling of gas-phase or particulate matter can also be conducted from defined sites. It's a means to help explain how, where, and when chemicals and materials are atmospherically transported, dispersed, and deposited.
 
 This model has many applications. Some have modeled the atmospheric transport of moisture to determine probable extreme rainfall locations leading to flood events ([Gustafsson et al., 2010](http://tellusa.net/index.php/tellusa/article/view/15715)). Similarly, [Creamean et al., 2013](http://science.sciencemag.org/content/339/6127/1572.full) have presented a direct link between long-range transported dust and biological aerosols affecting cloud ice formation and precipitation processes in western United States.
 
 Others have successfully improved understanding of invasive species dispersal abilities to inform conservation and landscape management ([Lander et al., 2014](http://onlinelibrary.wiley.com/doi/10.1002/ece3.1206/abstract)). Along similar lines, the long-distance transport of high-risk plant pathogens can be modeled with **HYSPLIT** to assist with plant disease management decisions, such as applications of fungicide or pesticide to potentially-affected agricultural areas ([Schmale and Ross, 2015](http://www.annualreviews.org/doi/abs/10.1146/annurev-phyto-080614-115942?journalCode=phyto)).
 
-**SplitR** allows you to build and run **HYSPLIT** models in a fast, easy, and organized manner. A few or, perhaps, thousands of trajectory or dispersion runs can be conducted with minimal code. Because **SplitR** is an **R** interface to **HYSPLIT**, we can store output in memory and take advantage of the vast selection of **R** packages to perform statistical analyses and to generate visualizations. This package furthermore simplifies the process of running **HYSPLIT** models by automating the retrieval and storage of associated meteorological data files.
+**splitr** allows you to build and run **HYSPLIT** models in a fast, easy, and organized manner. A few or, perhaps, thousands of trajectory or dispersion runs can be conducted with minimal code. Because **splitr** is an **R** interface to **HYSPLIT**, we can store output in memory and take advantage of the vast selection of **R** packages to perform statistical analyses and to generate visualizations. This package furthermore simplifies the process of running **HYSPLIT** models by automating the retrieval and storage of associated meteorological data files.
 
-Some of the things you can do with **SplitR** are:
+Some of the things you can do with **splitr** are:
 
 - create and execute model runs with an easily readable **magrittr** pipeline workflow
 - run multiple trajectory and dispersion model runs (forward or backward) with multiple temporal and spatial variations
@@ -39,7 +39,7 @@ Some of the things you can do with **SplitR** are:
 
 ## **HYSPLIT** Trajectory Model Runs
 
-To perform a series of **HYSPLIT** trajectory model runs, one can use the **SplitR** `hysplit_trajectory()` function:
+To perform a series of **HYSPLIT** trajectory model runs, one can use the **splitr** `hysplit_trajectory()` function:
 
 ```R
 trajectory <- 
@@ -274,12 +274,12 @@ The dispersed particles at every hour are present as map layers, where their vis
 
 ## Installation
 
-**SplitR** is used in an **R** environment. If you don't have an **R** installation, it can be obtained from the [**Comprehensive R Archive Network (CRAN)**](http://cran.rstudio.com). It is recommended that [**RStudio**](http://www.rstudio.com/products/RStudio/) be used as the **R** IDE to take advantage of its ability to visualize output in its *Viewer* pane.
+**splitr** is used in an **R** environment. If you don't have an **R** installation, it can be obtained from the [**Comprehensive R Archive Network (CRAN)**](http://cran.rstudio.com). It is recommended that [**RStudio**](http://www.rstudio.com/products/RStudio/) be used as the **R** IDE to take advantage of its ability to visualize output in its *Viewer* pane.
 
-You can install the development version of **SplitR** from **GitHub** using the **devtools** package.
+You can install the development version of **splitr** from **GitHub** using the **devtools** package.
 
 ```r
-devtools::install_github("rich-iannone/SplitR")
+devtools::install_github("rich-iannone/splitr")
 ```
 
 ## HYSPLIT Citations
@@ -292,4 +292,4 @@ Draxler, R.R., and G.D. Hess, 1998: An overview of the HYSPLIT_4 modeling system
 
 ## Code of Conduct
 
-Please note that the **SplitR** project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+Please note that the **splitr** project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.

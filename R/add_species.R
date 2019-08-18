@@ -2,7 +2,8 @@
 #'
 #' Add a set of species parameters to a dispersion model object. Multiple sets
 #' of species parameters can can be added to a single dispersion model object.
-#' @param model A SplitR modeling object.
+#' 
+#' @param model A splitr modeling object.
 #' @param name An identifier for the species.
 #' @param pdiam The particle diameter in units of micrometers.
 #' @param density The particle density in units of g/cm3.

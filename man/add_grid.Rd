@@ -10,7 +10,7 @@ add_grid(model, lat = NULL, lon = NULL, range = c(5, 5),
   samp_type = "avg", samp_interval = 24, name = NULL)
 }
 \arguments{
-\item{model}{A SplitR modeling object}
+\item{model}{A splitr modeling object}
 
 \item{lat}{A latitude value in decimal degrees for the point of reference on
 the grid.}

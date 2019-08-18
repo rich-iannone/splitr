@@ -1,11 +1,13 @@
 #' Extract model data
 #'
-#' If a model has been executed, the output data frame will be available within
-#' a SplitR modeling object and this function will get either the entire output
-#' data frame or a subset of it.
-#' @param model A SplitR modeling object.
+#' If a model has been executed, the output tibble will be available within a
+#' splitr modeling object and this function will return the entire output
+#' tibble.
+#' 
+#' @param model A splitr modeling object.
+#' 
 #' @export
-get_output_df <- function(model) {
+get_output_tbl <- function(model) {
   
   if (inherits(model, "traj_model")) {
     

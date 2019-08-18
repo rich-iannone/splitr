@@ -12,7 +12,7 @@ add_params(model, lat = NULL, lon = NULL, height = NULL,
   binary_path = NULL)
 }
 \arguments{
-\item{model}{A SplitR modeling object.}
+\item{model}{A splitr modeling object.}
 
 \item{lat}{The starting latitude and longitude (in decimal degrees) for
 each model run.}

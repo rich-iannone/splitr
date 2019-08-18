@@ -1,4 +1,4 @@
 library(testthat)
-library(SplitR)
+library(splitr)
 
-test_check("SplitR")
+test_check("splitr")

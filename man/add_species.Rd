@@ -11,7 +11,7 @@ add_species(model, name = NULL, pdiam = NULL, density = NULL,
   wdep_below_cloud = NULL, rad_decay = NULL, resuspension = NULL)
 }
 \arguments{
-\item{model}{A SplitR modeling object.}
+\item{model}{A splitr modeling object.}
 
 \item{name}{An identifier for the species.}
 

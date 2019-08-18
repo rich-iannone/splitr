@@ -119,7 +119,7 @@ set_binary_path <- function(binary_path, binary_name) {
       binary_path <- 
         system.file(
           file.path("osx", binary_name),
-          package = "SplitR"
+          package = "splitr"
           )
     }
     
@@ -127,7 +127,7 @@ set_binary_path <- function(binary_path, binary_name) {
       binary_path <- 
         system.file(
           file.path("linux-amd64", binary_name),
-          package = "SplitR"
+          package = "splitr"
         )
     }
     
@@ -135,7 +135,7 @@ set_binary_path <- function(binary_path, binary_name) {
       binary_path <- 
         system.file(
           file.path("win", paste0(binary_name, ".exe")),
-          package = "SplitR"
+          package = "splitr"
         )
     }
   }
