@@ -1,6 +1,6 @@
 Type: Package
 Package: splitr
-Version: 0.4
+Version: 0.4.0.9000
 Title: Use the HYSPLIT model from inside R
 Description: Use the HYSPLIT model from inside R. Access data, set up trajectory
     and dispersion models, execute the model runs, and obtain on-disk and
