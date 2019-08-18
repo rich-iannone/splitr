@@ -14,7 +14,6 @@ RoxygenNote: 6.1.1
 Imports:
     downloader (>= 0.4),
     dplyr (>= 0.8.3),
-    ggmap (>= 2.6.1),
     leaflet (>= 2.0.2),
     lubridate (>= 1.7.4),
     magrittr,
