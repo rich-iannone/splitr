@@ -1,5 +1,5 @@
 Type: Package
-Package: SplitR
+Package: splitr
 Version: 0.4
 Title: Use the HYSPLIT model from inside R
 Description: Use the HYSPLIT model from inside R. Access data, set up trajectory
