@@ -1,9 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# splitr
-
-<img src="man/figures/fig_SplitR.png" width="70%">
+# splitr <img src="man/figures/logo.svg" align="right" height="250px" />
 
 <!-- badges: start -->
 
