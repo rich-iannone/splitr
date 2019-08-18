@@ -38,6 +38,7 @@
 #'   input and output files.
 #' @param clean_up An option to make the `exec_dir` directory clean after
 #'   completion of all trajectory runs. By default, this is set to `TRUE`.
+#'   
 #' @examples
 #' \dontrun{
 #' library(lubridate)
@@ -59,6 +60,7 @@
 #'     daily_hours = c(0, 6, 12, 18)
 #'   )
 #' }
+#' 
 #' @export
 hysplit_trajectory <- function(lat = 49.263,
                                lon = -123.250,
