@@ -19,7 +19,8 @@ Imports:
     magrittr,
     RCurl (>= 1.95),
     scales (>= 1.0.0),
-    tidyr (>= 0.8.3)
+    tidyr (>= 0.8.3),
+    usethis (>= 1.5.1)
 Roxygen: list(markdown = TRUE)
 Suggests: 
     testthat
