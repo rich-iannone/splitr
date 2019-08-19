@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Travis build
-status](https://travis-ci.org/rich-iannone/SplitR.svg?branch=master)](https://travis-ci.org/rich-iannone/SplitR)
+status](https://travis-ci.org/rich-iannone/splitr.svg?branch=master)](https://travis-ci.org/rich-iannone/splitr)
 [![DOI](https://zenodo.org/badge/20543/rich-iannone/SplitR.svg)](https://zenodo.org/badge/latestdoi/20543/rich-iannone/SplitR)
 <!-- badges: end -->
 

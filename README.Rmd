@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 # splitr <img src="man/figures/logo.svg" align="right" height="250px" />
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/rich-iannone/SplitR.svg?branch=master)](https://travis-ci.org/rich-iannone/SplitR)
+[![Travis build status](https://travis-ci.org/rich-iannone/splitr.svg?branch=master)](https://travis-ci.org/rich-iannone/splitr)
 [![DOI](https://zenodo.org/badge/20543/rich-iannone/SplitR.svg)](https://zenodo.org/badge/latestdoi/20543/rich-iannone/SplitR)
 <!-- badges: end -->
 
