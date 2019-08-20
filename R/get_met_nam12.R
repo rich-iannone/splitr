@@ -1,19 +1,25 @@
 #' Get NAM12 meteorology data files
 #'
-#' This function downloads NAM12 meteorology data files from the NOAA FTP server
-#' and saves them to a specified folder. Files can be downloaded either by
-#' specifying a list of filenames (in the form of `'RP[YYYY][MM].gbl'`) or
-#' through bulk download of a year of files.
-#' @param files a vector list of exact filenames for the NAM12 files.
-#' @param years a vector list of years for which NAM12 files are to be obtained
-#'   via FTP.
-#' @param months a vector list of months for which NAM12 files are to be
-#'   obtained via FTP.
-#' @param path_met_files a full path should be provided for the location of the
-#'   meteorological data files; downloaded files will be saved in this location.
-get_met_nam12 <- function(files = NULL,
-                          years = NULL,
-                          months = NULL,
+#' Downloads NAM12 meteorology data files from the NOAA FTP server and saves
+#' them to a specified folder. Files can be downloaded by specifying a list of
+#' filenames (in the form of `"{YYYY}{MM}{DD}_nam12"`).
+#' 
+#' @inheritParams get_met_gdas1
+#' 
+#' @export
+get_met_nam12 <- function(days,
+                          duration,
+                          direction,
                           path_met_files) {
- 
+  
+  get_daily_filenames(
+    days = days,
+    duration = duration,
+    direction = direction,
+    suffix = "_nam12"
+  ) %>%
+    get_met_files(
+      path_met_files = path_met_files,
+      ftp_dir = "ftp://arlftp.arlhq.noaa.gov/archives/nam12"
+    )
 }
