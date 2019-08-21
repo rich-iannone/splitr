@@ -8,8 +8,8 @@ hysplit_dispersion(lat = 49.263, lon = -123.25, height = 50,
   start_day = "2015-07-01", start_hour = 0, duration = 24,
   direction = "forward", met_type = "reanalysis", vert_motion = 0,
   model_height = 20000, particle_num = 2500, particle_max = 10000,
-  emissions, species, disp_name = NULL, binary_path = NULL,
-  exec_dir = NULL, met_dir = NULL, clean_up = TRUE)
+  species, disp_name = NULL, binary_path = NULL, exec_dir = NULL,
+  met_dir = NULL, clean_up = TRUE)
 }
 \arguments{
 \item{lat}{The starting latitude and longitude (in decimal degrees) for
@@ -34,8 +34,10 @@ in hours.}
 
 \item{met_type}{The type of meteorological data files to use. The options
 are: \code{"reanalysis"} (NCAR/NCEP global reanalysis data, the default),
-\code{"gdas1"} (Global Data Assimilation System 1-degree resolution data), and
-\code{"narr"} (North American Regional Reanalysis).}
+\code{"gdas1"} and \code{"gdas0.5"} (Global Data Assimilation System 1-degree and
+0.5-degree resolution data), \code{"narr"} (North American Regional Reanalysis),
+\code{"gfs0.25"} (Global Forecast System 0.25 degree data), and \code{"nam12"} (North
+American Mesoscale Forecast System, 12-km/6-hour resolution data).}
 
 \item{vert_motion}{A numbered option to select the method used to simulation
 vertical motion. The methods are: \code{0} (input model data), \code{1} (isobaric),
@@ -51,8 +53,7 @@ release cycle.}
 \item{particle_max}{The maximum number of particles released by a source
 during a model run.}
 
-\item{emissions, species, grids}{An ID corresponding to the stored emissions,
-species, and grids presets.}
+\item{species}{A list of parameters corresponding to an emissions source..}
 
 \item{disp_name}{An optional, descriptive name for the output file
 collection.}
@@ -73,25 +74,4 @@ completion of all trajectory runs. By default, this is set to \code{TRUE}.}
 \description{
 The function executes single/multiple forward or backward HYSPLIT dispersion
 runs using specified meteorological datasets.
-}
-\examples{
-\dontrun{
-# Perform a dispersion run lasting 12 hours over
-# two consecutive days, both starting at midnight;
-# grid presets 1 and 2 will be used as sampling
-# grids (presets for species and emissions are set
-# to the first, which is the default)
-hysplit_dispersion(
-  lat = 49.263,
-  lon = -123.250,
-  height = 15,
-  duration = 12,
-  start_day = "2012-02-01",
-  start_hour = 0,
-  emissions = 1,
-  species = 1,
-  grids = c(1,2),
-  disp_name = "example")
-}
-
 }

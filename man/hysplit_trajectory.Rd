@@ -32,8 +32,10 @@ given \code{days}. Use values from from \code{0} to \code{23}.}
 
 \item{met_type}{The type of meteorological data files to use. The options
 are: \code{"reanalysis"} (NCAR/NCEP global reanalysis data, the default),
-\code{"gdas1"} (Global Data Assimilation System 1-degree resolution data), and
-\code{"narr"} (North American Regional Reanalysis).}
+\code{"gdas1"} and \code{"gdas0.5"} (Global Data Assimilation System 1-degree and
+0.5-degree resolution data), \code{"narr"} (North American Regional Reanalysis),
+\code{"gfs0.25"} (Global Forecast System 0.25 degree data), and \code{"nam12"} (North
+American Mesoscale Forecast System, 12-km/6-hour resolution data).}
 
 \item{vert_motion}{A numbered option to select the method used to simulation
 vertical motion. The methods are: \code{0} (input model data), \code{1} (isobaric),
