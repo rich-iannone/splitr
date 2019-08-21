@@ -15,7 +15,7 @@ trajectory_plot <- function(x,
                             show_hourly = TRUE,
                             color_scheme = "cycle_hues") {
   
-  if (inherits(x, "traj_model")) {
+  if (inherits(x, "trajectory_model")) {
     if (!is.null(x$traj_df)) {
       traj_df <- x$traj_df
     } else {
