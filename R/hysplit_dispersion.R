@@ -33,7 +33,7 @@
 #'   grids = c(1,2),
 #'   disp_name = "example")
 #' }
-#' @import lubridate
+#' 
 #' @export
 hysplit_dispersion <- function(lat = 49.263,
                                lon = -123.250,
