@@ -79,16 +79,20 @@ hysplit_trajectory <- function(lat = 49.263,
                                exec_dir = NULL,
                                clean_up = TRUE) {
   
+  # If the execution dir isn't specified, use the working directory
   if (is.null(exec_dir)) exec_dir <- getwd()
   
+  # If the meteorology dir isn't specified, use the working directory
   if (is.null(met_dir)) met_dir <- getwd()
   
+  # Set the path for the `hyts_std` binary file
   binary_path <- 
     set_binary_path(
       binary_path = binary_path,
       binary_name = "hyts_std"
     )
   
+  # Get the system type
   system_type <- get_os()
   
   # Generate name of output folder
