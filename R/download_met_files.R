@@ -16,17 +16,6 @@ download_met_files <- function(met_type,
       )
   }
   
-  if (met_type == "reanalysis") {
-    
-    met_files <-
-      get_met_reanalysis(
-        days = days,
-        duration = duration,
-        direction = direction,
-        path_met_files = met_dir
-      )
-  }
-  
   if (met_type == "gdas0.5") {
     
     met_files <-
@@ -42,6 +31,17 @@ download_met_files <- function(met_type,
     
     met_files <-
       get_met_gfs0p25(
+        days = days,
+        duration = duration,
+        direction = direction,
+        path_met_files = met_dir
+      )
+  }
+  
+  if (met_type == "reanalysis") {
+    
+    met_files <-
+      get_met_reanalysis(
         days = days,
         duration = duration,
         direction = direction,
