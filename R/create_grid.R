@@ -4,8 +4,6 @@
 #' 
 #' @param lat,lon Latitude and longitude values in decimal degrees for the
 #'   center point of the grid.
-#' @param lon A longitude value in decimal degrees for the point of reference on
-#'   the grid.
 #' @param range The latitude and longitude range about the `grid_ref`.
 #' @param division The division distances across the latitude and longitude
 #'   ranges.
