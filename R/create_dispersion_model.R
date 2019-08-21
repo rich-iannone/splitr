@@ -8,10 +8,6 @@ create_dispersion_model <- function() {
   # Create the 'disp_model' list object
   disp_model <- 
     list(
-      # disp_name = NULL,
-      # lat = NULL,
-      # lon = NULL,
-      # height = NULL,
       start_time = NULL,
       end_time = NULL,
       direction = "forward",
