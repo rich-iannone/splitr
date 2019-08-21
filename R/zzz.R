@@ -5,7 +5,7 @@ utils::globalVariables(
     "date2",
     "date_str",
     "date_h_str",
-    "hour.inc.",
+    "hour.inc",
     "hour_along",
     "receptor",
     "run",
