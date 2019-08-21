@@ -5,11 +5,11 @@
 \title{Conduct HYSPLIT dispersion runs}
 \usage{
 hysplit_dispersion(lat = 49.263, lon = -123.25, height = 50,
-  duration = 24, start_day = "2015-07-01", start_hour = 0,
+  start_day = "2015-07-01", start_hour = 0, duration = 24,
   direction = "forward", met_type = "reanalysis", vert_motion = 0,
   model_height = 20000, particle_num = 2500, particle_max = 10000,
-  emissions, species, grids, disp_name = NULL, exec_dir = NULL,
-  met_dir = NULL, binary_path = NULL)
+  emissions, species, disp_name = NULL, binary_path = NULL,
+  exec_dir = NULL, met_dir = NULL, clean_up = TRUE)
 }
 \arguments{
 \item{lat}{The starting latitude and longitude (in decimal degrees) for
@@ -21,13 +21,13 @@ each model run.}
 \item{height}{The starting height (in meters above ground level) for each
 model run.}
 
-\item{duration}{The duration of each model run (either forward or backward)
-in hours.}
-
 \item{start_day}{the day that the model will initialize and run. This should
 take the form of a single-length vector for a day (\code{"YYYY-MM-DD"}).}
 
 \item{start_hour}{a single daily hour as an integer hour (from \code{0} to \code{23}).}
+
+\item{duration}{The duration of each model run (either forward or backward)
+in hours.}
 
 \item{direction}{An option to select whether to conduct the model in the
 \code{"forward"} (default) or \code{"backward"} directions.}
@@ -57,15 +57,18 @@ species, and grids presets.}
 \item{disp_name}{An optional, descriptive name for the output file
 collection.}
 
+\item{binary_path}{An optional path to a HYSPLIT trajectory model binary.
+When not specified, the model binary will be chosen from several available
+in the package (based on the user's platform).}
+
 \item{exec_dir}{An optional file path for the working directory of the model
 input and output files.}
 
 \item{met_dir}{An optional file path for storage and access of meteorological
 data files.}
 
-\item{binary_path}{An optional path to a HYSPLIT trajectory model binary.
-When not specified, the model binary will be chosen from several available
-in the package (based on the user's platform).}
+\item{clean_up}{An option to make the \code{exec_dir} directory clean after
+completion of all trajectory runs. By default, this is set to \code{TRUE}.}
 }
 \description{
 The function executes single/multiple forward or backward HYSPLIT dispersion
@@ -90,4 +93,5 @@ hysplit_dispersion(
   grids = c(1,2),
   disp_name = "example")
 }
+
 }

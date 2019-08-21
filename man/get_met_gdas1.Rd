@@ -4,17 +4,23 @@
 \alias{get_met_gdas1}
 \title{Get GDAS1 meteorology data files}
 \usage{
-get_met_gdas1(files = NULL, path_met_files)
+get_met_gdas1(days, duration, direction, path_met_files)
 }
 \arguments{
-\item{files}{A vector list of exact filenames for the meteorological model
-files.}
+\item{days}{A vector of days that the model will run. This is combined with
+the \code{daily_hours} to produce a series of date-times.}
 
-\item{path_met_files}{A full path should be provided for the location of the
-meteorological data files. Downloaded files will be saved in this location.}
+\item{duration}{The duration of each model run (either forward or backward)
+in hours.}
+
+\item{direction}{An option to select whether to conduct the model in the
+\code{"forward"} (default) or \code{"backward"} directions.}
+
+\item{path_met_files}{A full directory path to which the meteorological data
+files will be saved.}
 }
 \description{
 Downloads GDAS1 meteorology data files from the NOAA FTP server and saves
 them to a specified folder. Files can be downloaded by specifying a list of
-filenames.
+filenames (in the form of \code{"gdas1.{month-abbrev}{year-2}.w{wk-num}"}).
 }

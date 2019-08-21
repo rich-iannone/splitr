@@ -11,9 +11,6 @@ create_grid(lat = 49.263, lon = -123.25, range = c(5, 5),
 \item{lat, lon}{Latitude and longitude values in decimal degrees for the
 center point of the grid.}
 
-\item{lon}{A longitude value in decimal degrees for the point of reference on
-the grid.}
-
 \item{range}{The latitude and longitude range about the \code{grid_ref}.}
 
 \item{division}{The division distances across the latitude and longitude

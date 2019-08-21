@@ -4,27 +4,23 @@
 \alias{get_met_gdas0p5}
 \title{Get GDAS0.5 meteorology data files}
 \usage{
-get_met_gdas0p5(files = NULL, years = NULL, months = NULL,
-  days = NULL, path_met_files)
+get_met_gdas0p5(days, duration, direction, path_met_files)
 }
 \arguments{
-\item{files}{a vector list of exact filenames for the GDAS0.5 files.}
+\item{days}{A vector of days that the model will run. This is combined with
+the \code{daily_hours} to produce a series of date-times.}
 
-\item{years}{a vector list of years for which GDAS0.5 files are to be
-obtained via FTP.}
+\item{duration}{The duration of each model run (either forward or backward)
+in hours.}
 
-\item{months}{a vector list of months for which GDAS0.5 files are to be
-obtained via FTP.}
+\item{direction}{An option to select whether to conduct the model in the
+\code{"forward"} (default) or \code{"backward"} directions.}
 
-\item{days}{a vector list of days for which GDAS0.5 files are to be obtained
-via FTP.}
-
-\item{path_met_files}{a full path should be provided for the location of the
-meteorological data files; downloaded files will be saved in this location.}
+\item{path_met_files}{A full directory path to which the meteorological data
+files will be saved.}
 }
 \description{
-This function downloads GDAS0.5 meteorology data files from the NOAA FTP
-server and saves them to a specified folder. Files can be downloaded either
-by specifying a list of filenames (in the form of "RP\link[=MM]{YYYY}.gbl") or
-through bulk download of a year of files.
+Downloads GDAS0.5 meteorology data files from the NOAA FTP server and saves
+them to a specified folder. Files can be downloaded by specifying a list of
+filenames (in the form of \code{"{YYYY}{MM}{DD}_gdas0p5"}).
 }
