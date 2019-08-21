@@ -4,7 +4,6 @@
 #' 
 #' @param model A splitr modeling object.
 #' @inheritParams hysplit_trajectory
-#' @inheritParams hysplit_dispersion
 #' @export
 add_params <- function(model,
                        lat = NULL,
