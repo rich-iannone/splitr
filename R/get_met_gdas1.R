@@ -1,9 +1,18 @@
-#' Get filenames for GDAS1 meteorology files
+#' Get GDAS1 meteorology data files
 #'
-#' @noRd
-get_gdas1_filenames <- function(days,
-                                duration,
-                                direction) {
+#' Downloads GDAS1 meteorology data files from the NOAA FTP server and saves
+#' them to a specified folder. Files can be downloaded by specifying a list of
+#' filenames (in the form of `"gdas1.{month-abbrev}{year-2}.w{wk-num}"`).
+#'
+#' @inheritParams hysplit_trajectory
+#' @param path_met_files A full directory path to which the meteorological data
+#'   files will be saved.
+#'   
+#' @export
+get_met_gdas1 <- function(days,
+                          duration,
+                          direction,
+                          path_met_files) {
   
   # Determine the minimum month (as a `Date`) for the model run
   if (direction == "backward") {
@@ -58,45 +67,11 @@ get_gdas1_filenames <- function(days,
   
   files <- paste0("gdas1.", month_names, met_years, ".w", 1:5)
   
-  files %>% base::setdiff(excluded_files)
-}
-
-
-#' Get GDAS1 meteorology data files
-#'
-#' Downloads GDAS1 meteorology data files from the NOAA FTP server and saves
-#' them to a specified folder. Files can be downloaded by specifying a list of
-#' filenames.
-#' 
-#' @param files A vector list of exact filenames for the meteorological model
-#'   files.
-#' @param path_met_files A full path should be provided for the location of the
-#'   meteorological data files. Downloaded files will be saved in this location.
-#'   
-#' @export
-get_met_gdas1 <- function(files = NULL,
-                          path_met_files) {
+  files <- files %>% base::setdiff(excluded_files)
   
-  ftp_dir <- "ftp://arlftp.arlhq.noaa.gov/archives/gdas1"
-  
-  files_in_path <- list.files(path_met_files)
-  
-  # Download list of GDAS1 met files by name
-  if (!is.null(files)) {
-    
-    for (file in files) {
-
-      if (!(file %in% files_in_path)) {
-        
-        downloader::download(
-          url = file.path(ftp_dir, file),
-          destfile = path.expand(file.path(path_met_files, file)),
-          method = "auto",
-          quiet = FALSE,
-          mode = "wb",
-          cacheOK = FALSE
-        )
-      }
-    }
-  }
+  get_met_files(
+    files = files,
+    path_met_files = path_met_files,
+    ftp_dir = "ftp://arlftp.arlhq.noaa.gov/archives/gdas1"
+  )
 }

@@ -9,7 +9,7 @@
 #' @export
 get_output_tbl <- function(model) {
   
-  if (inherits(model, "traj_model")) {
+  if (inherits(model, "trajectory_model")) {
     
     if (is.null(model$traj_df)) {
       return(NA)
@@ -20,7 +20,7 @@ get_output_tbl <- function(model) {
     }
   }
   
-  if (inherits(model, "disp_model")) {
+  if (inherits(model, "dispersion_model")) {
     
     if (is.null(model$disp_df)) {
       return(NA)

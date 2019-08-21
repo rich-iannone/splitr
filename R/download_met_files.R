@@ -1,53 +1,74 @@
 #' @noRd
-download_met_files <- function(met_type, days, duration, direction, met_dir) {
+download_met_files <- function(met_type,
+                               days,
+                               duration,
+                               direction,
+                               met_dir) {
   
   if (met_type == "gdas1") {
     
-    # Get filenames for GDAS1 files
     met_files <-
-      get_gdas1_filenames(
+      get_met_gdas1(
         days = days,
         duration = duration,
-        direction = direction
+        direction = direction,
+        path_met_files = met_dir
       )
-    
-    # Get the GDAS1 meteorology files
-    get_met_gdas1(
-      files = met_files,
-      path_met_files = met_dir
-    )
   }
   
   if (met_type == "reanalysis") {
     
-    # Get filenames for reanalysis files
     met_files <-
-      get_reanalysis_filenames(
+      get_met_reanalysis(
         days = days,
         duration = duration,
-        direction = direction
+        direction = direction,
+        path_met_files = met_dir
       )
+  }
+  
+  if (met_type == "gdas0.5") {
     
-    get_met_reanalysis(
-      files = met_files,
-      path_met_files = met_dir
-    )
+    met_files <-
+      get_met_gdas0p5(
+        days = days,
+        duration = duration,
+        direction = direction,
+        path_met_files = met_dir
+      )
+  }
+  
+  if (met_type == "gfs0.25") {
+    
+    met_files <-
+      get_met_gfs0p25(
+        days = days,
+        duration = duration,
+        direction = direction,
+        path_met_files = met_dir
+      )
+  }
+  
+  if (met_type == "nam12") {
+    
+    met_files <-
+      get_met_nam12(
+        days = days,
+        duration = duration,
+        direction = direction,
+        path_met_files = met_dir
+      )
   }
   
   if (met_type == "narr") {
     
-    # Get filenames for NARR files
     met_files <-
-      get_narr_filenames(
+      get_met_narr(
         days = days,
         duration = duration,
-        direction = direction
+        direction = direction,
+        path_met_files = met_dir
       )
-    
-    get_met_narr(
-      files = met_files,
-      path_met_files = met_dir
-    )
   }
   
   met_files

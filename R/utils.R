@@ -105,7 +105,8 @@ get_os <- function() {
 #' Upgrade the `binary_path` variable
 #' 
 #' @noRd
-set_binary_path <- function(binary_path, binary_name) {
+set_binary_path <- function(binary_path,
+                            binary_name) {
   
   # binary names should be either:
   #  - hyts_std (trajectory models)
@@ -242,6 +243,76 @@ get_monthly_filenames <- function(days,
   paste0(prefix, years_long, months_short, extension)
 }
 
+
+get_daily_filenames <- function(days,
+                                duration,
+                                direction,
+                                prefix = NULL,
+                                suffix = NULL) {
+  
+  # Determine the minimum month (as a `Date`) for the model run
+  if (direction == "backward") {
+    
+    min_day <- 
+      (lubridate::as_date(days) - (duration / 24) - lubridate::days(1)) %>%
+      min()
+    
+  } else if (direction == "forward") {
+    
+    min_day <- 
+      (lubridate::as_date(days) + (duration / 24) - lubridate::days(1)) %>%
+      min()
+  }
+  
+  # Determine the maximum month (as a `Date`) for the model run
+  if (direction == "backward") {
+    
+    max_day <- 
+      (lubridate::as_date(days) - (duration / 24) + lubridate::days(1)) %>%
+      max()
+    
+  } else if (direction == "forward") {
+    
+    max_day <- 
+      (lubridate::as_date(days) + (duration / 24) + lubridate::days(1)) %>%
+      max()
+  }
+  
+  met_days <- 
+    seq(min_day, max_day, by = "1 day") %>%
+    as.character() %>%
+    tidy_gsub("-", "")
+  
+  paste0(prefix, met_days, suffix)
+}
+
+get_met_files <- function(files, path_met_files, ftp_dir) {
+  
+  # Determine which met files are already locally available
+  files_in_path <- list.files(path_met_files)
+  
+  # Download list of GFS0.25 met files by name
+  if (!is.null(files)) {
+    
+    for (file in files) {
+      
+      if (!(file %in% files_in_path)) {
+        
+        downloader::download(
+          url = file.path(ftp_dir, file),
+          destfile = path.expand(file.path(path_met_files, file)),
+          method = "auto",
+          quiet = FALSE,
+          mode = "wb",
+          cacheOK = FALSE
+        ) 
+      }
+    }
+  }
+  
+  files
+}
+
 get_traj_output_filename <- function(traj_name,
                                      site,
                                      direction,
@@ -264,6 +335,33 @@ get_traj_output_filename <- function(traj_name,
     day, "-",
     hour, "-",
     site,
+    "lat_", gsub("\\.", "p", as.character(lat)), "_",
+    "lon_", gsub("\\.", "p", as.character(lon)), "-",
+    "hgt_", height, "-",
+    duration, "h"
+  )
+}
+
+get_disp_output_filename <- function(disp_name,
+                                     direction,
+                                     year,
+                                     month,
+                                     day,
+                                     hour,
+                                     lat,
+                                     lon,
+                                     height,
+                                     duration) {
+  
+  paste0(
+    "disp-",
+    ifelse(is.null(disp_name), "", disp_name),
+    "-",
+    ifelse(direction == "backward", "bwd", "fwd"), "-",
+    year, "-",
+    month, "-",
+    day, "-",
+    hour, "-",
     "lat_", gsub("\\.", "p", as.character(lat)), "_",
     "lon_", gsub("\\.", "p", as.character(lon)), "-",
     "hgt_", height, "-",
@@ -306,7 +404,7 @@ tidy_grepl <- function(x, pattern) {
   )
 }
 
-output_files <- function() {
+traj_output_files <- function() {
   
   c(
     "ASCDATA.CFG",
@@ -316,4 +414,35 @@ output_files <- function() {
     "TRAJ.CFG",
     "WARNING"
   )
+}
+
+disp_output_files <- function() {
+  
+  c(
+    "ASCDATA.CFG",
+    "CONC.CFG",
+    "CONTROL",
+    "MESSAGE",
+    "output.bin",
+    "PARDUMP",
+    "SETUP.CFG",
+    "VMSDIST",
+    "WARNING"
+  )
+}
+
+check_start_day <- function(start_day) {
+  
+  # Stop if `start_day` isn't a length 1 vector
+  if (length(start_day) != 1) {
+    stop("The value provided to `start_day` must be a single value.",
+         call. = FALSE)
+  }
+  
+  if (!(inherits(start_day, "character") |
+        inherits(start_day, "Date") |
+        inherits(start_day, "POSIXct"))) {
+    stop("The value provided to `start_day` must be a valid date.",
+         call. = FALSE)
+  }
 }
