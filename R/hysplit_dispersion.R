@@ -11,31 +11,10 @@
 #'   release cycle.
 #' @param particle_max The maximum number of particles released by a source
 #'   during a model run.
-#' @param emissions,species,grids An ID corresponding to the stored emissions,
-#'   species, and grids presets.
+#' @param species A list of parameters corresponding to an emissions source..
 #' @param disp_name An optional, descriptive name for the output file
 #'   collection.
 #'   
-#' @examples
-#' \dontrun{
-#' # Perform a dispersion run lasting 12 hours over
-#' # two consecutive days, both starting at midnight;
-#' # grid presets 1 and 2 will be used as sampling
-#' # grids (presets for species and emissions are set
-#' # to the first, which is the default)
-#' hysplit_dispersion(
-#'   lat = 49.263,
-#'   lon = -123.250,
-#'   height = 15,
-#'   duration = 12,
-#'   start_day = "2012-02-01",
-#'   start_hour = 0,
-#'   emissions = 1,
-#'   species = 1,
-#'   grids = c(1,2),
-#'   disp_name = "example")
-#' }
-#' 
 #' @export
 hysplit_dispersion <- function(lat = 49.263,
                                lon = -123.250,
@@ -49,7 +28,6 @@ hysplit_dispersion <- function(lat = 49.263,
                                model_height = 20000,
                                particle_num = 2500,
                                particle_max = 10000,
-                               emissions,
                                species,
                                disp_name = NULL,
                                binary_path = NULL, 

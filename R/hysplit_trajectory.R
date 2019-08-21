@@ -17,8 +17,10 @@
 #'   `"forward"` (default) or `"backward"` directions.
 #' @param met_type The type of meteorological data files to use. The options
 #'   are: `"reanalysis"` (NCAR/NCEP global reanalysis data, the default),
-#'   `"gdas1"` (Global Data Assimilation System 1-degree resolution data), and
-#'   `"narr"` (North American Regional Reanalysis).
+#'   `"gdas1"` and `"gdas0.5"` (Global Data Assimilation System 1-degree and
+#'   0.5-degree resolution data), `"narr"` (North American Regional Reanalysis),
+#'   `"gfs0.25"` (Global Forecast System 0.25 degree data), and `"nam12"` (North
+#'   American Mesoscale Forecast System, 12-km/6-hour resolution data).
 #' @param vert_motion A numbered option to select the method used to simulation
 #'   vertical motion. The methods are: `0` (input model data), `1` (isobaric),
 #'   `2` (isentropic), `3` (constant density), `4` (isosigma), `5` (from
