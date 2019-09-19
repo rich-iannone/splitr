@@ -239,14 +239,14 @@ hysplit_trajectory <- function(lat = 49.263,
           
           sys_cmd <- 
             paste0("(cd ", exec_dir, " && ", binary_path, " >> /dev/null 2>&1)")
-          
+
           system(sys_cmd)
         }
         
         if (system_type == "win") {
           
           sys_cmd <-
-            paste0("(cd \"", exec_dir, "\" && \"", binary_path, "\")")
+            paste0("(cd \"", exec_dir, "\" && \"", binary_path, "\" > NUL 2>&1)")
           
           shell(sys_cmd)
         }
