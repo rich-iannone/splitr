@@ -145,7 +145,7 @@ hysplit_trajectory <- function(lat = 49.263,
   receptors <- seq(nrow(receptors_tbl))
   
   # Create a dataframe for the ensemble
-  ensemble_df <- dplyr::tibble()
+  ensemble_tbl <- dplyr::tibble()
   
   recep_file_path_stack <- c()
   
@@ -294,9 +294,9 @@ hysplit_trajectory <- function(lat = 49.263,
         shell(sys_cmd)
       }
     }
-    
+
     # Obtain a trajectory data frame
-    traj_df <-
+    traj_tbl <-
       trajectory_read(output_folder = recep_file_path) %>%
       dplyr::as_tibble() %>%
       dplyr::mutate(
@@ -306,9 +306,9 @@ hysplit_trajectory <- function(lat = 49.263,
         height_i = height_i
       )
     
-    ensemble_df <-
-      ensemble_df %>%
-      dplyr::bind_rows(traj_df)
+    ensemble_tbl <-
+      ensemble_tbl %>%
+      dplyr::bind_rows(traj_tbl)
   }
 
   if (clean_up) {
@@ -316,17 +316,17 @@ hysplit_trajectory <- function(lat = 49.263,
     unlink(recep_file_path_stack, recursive = TRUE, force = TRUE)
   }
   
-  ensemble_df <-
-    ensemble_df %>%
+  ensemble_tbl <-
+    ensemble_tbl %>%
     dplyr::select(-c(year, month, day, hour)) %>%
     dplyr::select(
       receptor,
-      hour_along = hour.inc,
-      traj_dt = date2,
+      hour_along,
+      traj_dt,
       lat,
       lon,
       height,
-      traj_dt_i = date,
+      traj_dt_i,
       lat_i,
       lon_i,
       height_i,
@@ -339,20 +339,20 @@ hysplit_trajectory <- function(lat = 49.263,
   
   if (direction == "forward") {
     
-    ensemble_df <-
-      ensemble_df %>%
+    ensemble_tbl <-
+      ensemble_tbl %>%
       dplyr::arrange(receptor, traj_dt_i)
     
   } else {
     
-    ensemble_df <-
-      ensemble_df %>%
+    ensemble_tbl <-
+      ensemble_tbl %>%
       dplyr::arrange(receptor, traj_dt_i, dplyr::desc(hour_along))
   }
   
-  ensemble_df %>%
+  ensemble_tbl %>%
     dplyr::right_join(
-      ensemble_df %>%
+      ensemble_tbl %>%
         dplyr::select(receptor, traj_dt_i, lat_i, lon_i, height_i) %>%
         dplyr::distinct() %>%
         dplyr::mutate(run = dplyr::row_number()),
