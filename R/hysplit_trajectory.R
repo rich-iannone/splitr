@@ -263,38 +263,15 @@ hysplit_trajectory <- function(lat = 49.263,
       dir.create(path = recep_file_path, recursive = TRUE)
     }
     
-    if (any(c("mac", "unix") %in% system_type)) {
-      
-      # Perform the movement of all trajectory files
-      # into a folder residing to the output directory
-      for (traj_file in trajectory_files) {
-        
-        sys_cmd <-
-          paste0(
-            "(cd ", exec_dir, " && mv '", traj_file,
-            "' ", recep_file_path, ")"
-          )
-        
-        system(sys_cmd)
-      }
-    }
+    # Move files into the output folder
+    file.copy(
+      from = file.path(exec_dir, trajectory_files),
+      to = recep_file_path,
+      copy.mode = TRUE
+    )
     
-    if (system_type == "win") {
-      
-      # Perform the movement of all trajectory files
-      # into a folder residing to the output directory
-      for (traj_file in trajectory_files) {
-        
-        sys_cmd <-
-          paste0(
-            "(cd \"", exec_dir, "\" && move \"", traj_file, "\" \"",
-            recep_file_path, "\")"
-          )
-        
-        shell(sys_cmd)
-      }
-    }
-
+    unlink(file.path(exec_dir, trajectory_files), force = TRUE)
+    
     # Obtain a trajectory data frame
     traj_tbl <-
       trajectory_read(output_folder = recep_file_path) %>%
