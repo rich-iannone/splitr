@@ -151,27 +151,24 @@ hysplit_dispersion <- function(lat = 49.263,
     exec_dir = exec_dir
   )
   
-  # CONTROL file is now complete and in the
-  # working directory; execute the model run
-  if (any(c("mac", "unix") %in% system_type)) {
-    
-    sys_cmd <- 
-      paste0("(cd ", exec_dir, " && ", hycs_std_binary_path, " >> /dev/null 2>&1)")
-    
-    system(sys_cmd)
-  }
+  # The CONTROL file is now complete and in the
+  # working directory, so, execute the model run
+  sys_cmd <- 
+    paste0(
+      "(cd \"",
+      exec_dir,
+      "\" && \"",
+      hycs_std_binary_path,
+      "\" ",
+      to_null_dev(system_type = system_type),
+      ")"
+    )
   
-  if (system_type == "win") {
-    
-    sys_cmd <-
-      paste0("(cd \"", exec_dir, "\" && \"", hycs_std_binary_path, "\")")
-    
-    shell(sys_cmd)
-  }
+  execute_on_system(sys_cmd, system_type = system_type)
   
   # Extract the particle positions at every hour
   sys_cmd <- 
-    paste0("(cd ", exec_dir, " && ", parhplot_binary_path, " -iPARDUMP -a1)")
+    paste0("(cd ", exec_dir, " && ", parhplot_binary_path, " -iPARDUMP -a1 >> /dev/null 2>&1)")
   
   system(sys_cmd)
 
