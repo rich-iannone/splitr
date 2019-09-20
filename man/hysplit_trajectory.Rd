@@ -7,9 +7,9 @@
 hysplit_trajectory(lat = 49.263, lon = -123.25, height = 50,
   duration = 24, days = NULL, daily_hours = 0,
   direction = "forward", met_type = "reanalysis", vert_motion = 0,
-  model_height = 20000, extended_met = FALSE, traj_name = NULL,
-  binary_path = NULL, met_dir = NULL, exec_dir = NULL,
-  clean_up = TRUE)
+  model_height = 20000, extended_met = FALSE, config = NULL,
+  ascdata = NULL, traj_name = NULL, binary_path = NULL,
+  met_dir = NULL, exec_dir = NULL, clean_up = TRUE)
 }
 \arguments{
 \item{lat, lon}{The starting latitude and longitude (in decimal degrees) for
@@ -47,6 +47,15 @@ magnitude).}
 
 \item{extended_met}{An option to report additional meteorological data along
 each output trajectory.}
+
+\item{config}{A configuration list serves to internally generate the
+\code{SETUP.CFG} file. This list can be easily created by using the
+\code{\link[=set_config]{set_config()}} function. If \code{NULL}, then the default configuration list
+will be generated.}
+
+\item{ascdata}{An ascdata list that will be used to create the \code{ASCDATA.CFG}
+file. This list can be provided through use of the \code{\link[=set_ascdata]{set_ascdata()}}
+function. If \code{NULL}, then the default ascdata list will be generated.}
 
 \item{traj_name}{An optional, descriptive name for the output file
 collection.}
