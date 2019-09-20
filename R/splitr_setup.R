@@ -9,7 +9,7 @@ splitr_setup <- function() {
   # Get the names of the files to be downloaded
   binary_files <- c("hyts_std", "hycs_std", "parhplot")
   
-  # Slighly modify the filenames for Windows
+  # Slightly modify the file names for Windows
   if (system_os == "win") {
     binary_files <- paste0(binary_files, ".exe")
   }
