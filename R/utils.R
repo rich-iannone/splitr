@@ -140,6 +140,39 @@ get_os <- function() {
   }
 }
 
+#' Determine whether 64-bit architecture is present
+#' 
+#' @noRd 
+is_64bit_system <- function() {
+  ifelse(.Machine$sizeof.pointer == 8, TRUE, FALSE)
+}
+
+#' Obtain the redirect to null device command-line text based on system
+#' 
+#' @noRd
+to_null_dev <- function(system_type) {
+  
+  if (system_type %in% c("mac", "unix")) {
+    null_dev <- ">> /dev/null 2>&1"
+  } else if (system_type == "win") {
+    null_dev <- "> NUL 2>&1"
+  }
+  
+  null_dev 
+}
+
+#' Execute a system command appropriate on the system type
+#' 
+#' @noRd
+execute_on_system <- function(sys_cmd, system_type) {
+  
+  if (system_type %in% c("mac", "unix")) {
+    system(sys_cmd)
+  } else if (system_type == "win") {
+    shell(sys_cmd)
+  }
+}
+
 #' Upgrade the `binary_path` variable
 #' 
 #' @noRd
@@ -180,13 +213,6 @@ set_binary_path <- function(binary_path,
   }
   
   binary_path
-}
-
-#' Determine whether 64-bit architecture is present
-#' 
-#' @noRd 
-is_64bit_system <- function() {
-  ifelse(.Machine$sizeof.pointer == 8, TRUE, FALSE)
 }
 
 #' Create a file list for output files
