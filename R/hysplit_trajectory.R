@@ -29,6 +29,13 @@
 #' @param model_height The upper limit of the model domain in meters.
 #' @param extended_met An option to report additional meteorological data along
 #'   each output trajectory.
+#' @param config A configuration list serves to internally generate the
+#'   `SETUP.CFG` file. This list can be easily created by using the
+#'   [set_config()] function. If `NULL`, then the default configuration list
+#'   will be generated.
+#' @param ascdata An ascdata list that will be used to create the `ASCDATA.CFG`
+#'   file. This list can be provided through use of the [set_ascdata()]
+#'   function. If `NULL`, then the default ascdata list will be generated.
 #' @param traj_name An optional, descriptive name for the output file
 #'   collection.
 #' @param binary_path An optional path to a HYSPLIT trajectory model binary.
@@ -75,6 +82,8 @@ hysplit_trajectory <- function(lat = 49.263,
                                vert_motion = 0,
                                model_height = 20000,
                                extended_met = FALSE,
+                               config = NULL,
+                               ascdata = NULL,
                                traj_name = NULL,
                                binary_path = NULL,
                                met_dir = NULL,
@@ -104,16 +113,39 @@ hysplit_trajectory <- function(lat = 49.263,
     folder_name <- traj_name
   }
   
-  # Write default versions of the SETUP.CFG and
-  # ASCDATA.CFG files in the working directory
-  hysplit_config_init(dir = exec_dir)
+  if (is.null(config)) {
+    config_list <- set_config()
+  } else {
+    config_list <- config
+  }
   
-  # Modify the default `SETUP.CFG` file when the
-  # option for extended meteorology is `TRUE`
-  hysplit_config_extended_met(
-    extended_met = extended_met,
-    exec_dir = exec_dir
-  )
+  if (is.null(ascdata)) {
+    ascdata_list <- set_ascdata()
+  } else {
+    ascdata_list <- ascdata
+  }
+  
+  # Modify the default `SETUP.CFG` file when the option for extended
+  # meteorology is `TRUE`
+  if (isTRUE(extended_met)) {
+    
+    tm_names <-
+      config_list %>%
+      names() %>%
+      vapply(
+        FUN.VALUE = logical(1),
+        USE.NAMES = FALSE,
+        FUN = function(y) y %>% tidy_grepl("^tm_")
+      ) %>%
+      which()
+    
+    config_list[tm_names] <- 1
+  }
+  
+  # Write the config and ascdata lists to files in
+  # the `exec` directory
+  config_list %>% write_config_list(dir = exec_dir)
+  ascdata_list %>% write_ascdata_list(dir = exec_dir)
   
   # Stop function if there are vectors of different
   # length for `lat` and `lon`
