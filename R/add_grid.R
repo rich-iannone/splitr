@@ -1,6 +1,7 @@
 #' Add lat/lon grid to a model
 #'
 #' Create and add a grid of latitude and longitude points to a model object.
+#' 
 #' @param model A splitr modeling object
 #' @param lat A latitude value in decimal degrees for the point of reference on
 #'   the grid.
@@ -30,7 +31,7 @@
 #'   respectively.
 #' @param samp_interval The sampling interval in units of hours.
 #' @param name An identifier for this set of grid parameters.
-#' @import lubridate
+#' 
 #' @export
 add_grid <- function(model,
                      lat = NULL,
