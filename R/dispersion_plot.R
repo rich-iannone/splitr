@@ -1,98 +1,89 @@
 #' Plot HYSPLIT dispersion model output onto a map
 #'
 #' The function plots modeled dispersion particles onto an interactive map.
-#' @param x either a dispersion data frame, typically created from use of the
+#' 
+#' @param x Either a dispersion data frame, typically created from use of the
 #'   `hysplit_dispersion`, or a dispersion model object that contains
 #'   output data (i.e., after executing model runs via the `run_model`
 #'   function).
-#' @param color_scheme defines the appearance of multiple trajectories in a
+#' @param color_scheme Defines the appearance of multiple trajectories in a
 #'   single plot. Current options are `cycle_hues` (the default), and
 #'   `increasingly_gray`.
-#' @import leaflet
-#' @import scales
+#'   
 #' @export
 dispersion_plot <- function(x,
                             color_scheme = "cycle_hues") {
   
-  if (inherits(x, "disp_model")) {
+  if (inherits(x, "dispersion_model")) {
     if (!is.null(x$disp_df)) {
       disp_df <- x$disp_df
     } else {
-      stop("There is no data available for plotting.", call. = FALSE)
+      stop("There is no data available for plotting.",
+           call. = FALSE)
     }
   }
   
   if (inherits(x, "data.frame")) {
-    if (all(c("particle_no", "lon", "lat", "height",
-              "hour") %in% colnames(x))) {
+    if (all(c("particle_i", "hour", "lat", "lon", "height") %in% colnames(x))) {
       disp_df <- x
     } else {
-      stop("This data frame does not contain plottable data.", call. = FALSE)
+      stop("This data frame does not contain plottable data.",
+           call. = FALSE)
     }
   }
   
   if (color_scheme == "cycle_hues") {
     colors <- 
-      hue_pal(c = 90, l = 70)(
+      scales::hue_pal(c = 90, l = 70)(
         length(sort(unique(disp_df$hour)))
       )
   }
   
   if (color_scheme == "increasingly_gray") {
     colors <-
-      grey_pal(0.7, 0.1)(
+      scales::grey_pal(0.7, 0.1)(
         length(sort(unique(disp_df$hour)))
       )
   }
   
-  disp_plot <- leaflet()
+  hours <-
+    disp_df %>%
+    dplyr::pull(hour) %>%
+    unique()
   
   disp_plot <- 
-    addProviderTiles(
-      disp_plot,
-      "OpenStreetMap",
+    leaflet::leaflet() %>%
+    leaflet::addProviderTiles(
+      provider = "OpenStreetMap",
       group = "OpenStreetMap"
-    ) 
-  
-  disp_plot <-
-    addProviderTiles(
-      disp_plot,
-      "CartoDB.DarkMatter",
+    ) %>%
+    leaflet::addProviderTiles(
+      provider = "CartoDB.DarkMatter",
       group = "CartoDB Dark Matter"
-    )
-  
-  disp_plot <-
-    addProviderTiles(
-      disp_plot,
-      "CartoDB.Positron",
+    ) %>%
+    leaflet::addProviderTiles(
+      provider = "CartoDB.Positron",
       group = "CartoDB Positron"
-    )
-  
-  disp_plot <- 
-    addProviderTiles(
-      disp_plot,
-      "Esri.WorldTerrain",
+    ) %>%
+    leaflet::addProviderTiles(
+      provider = "Esri.WorldTerrain",
       group = "ESRI World Terrain"
-    )
-  
-  disp_plot <-
-    addProviderTiles(
-      disp_plot,
-      "Stamen.Toner",
+    ) %>%
+    leaflet::addProviderTiles(
+      provider = "Stamen.Toner",
       group = "Stamen Toner"
-    )
-  
-  disp_plot <- 
-    fitBounds(
-      disp_plot,
-      min(disp_df$lon),
-      min(disp_df$lat),
-      max(disp_df$lon),
-      max(disp_df$lat)
+    ) %>%
+    leaflet::fitBounds(
+      lng1 = min(disp_df[["lon"]]),
+      lat1 = min(disp_df[["lat"]]),
+      lng2 = max(disp_df[["lon"]]),
+      lat2 = max(disp_df[["lat"]])
     )
   
   # Get different particle plots by hour of transport
-  for (i in 1:length(sort(unique(disp_df$hour)))) {
+  for (i in seq_along(hours)) {
+    
+    hour_i <- hours[i]
     
     if (i == 1) {
       groups <- vector("character")
@@ -101,14 +92,16 @@ dispersion_plot <- function(x,
     # Create the groups vector
     groups <- c(groups, paste0("Hour ", i))
     
-    # Add CircleMarkers for each hour
+    particles_i <-
+      disp_df %>%
+      dplyr::filter(hour == hour_i)
+    
+    # Add 'CircleMarkers' for each hour
     disp_plot <-
-      addCircleMarkers(
-        disp_plot,
-        subset(disp_df,
-               hour == sort(unique(disp_df$hour))[i])[, 2],
-        subset(disp_df,
-               hour == sort(unique(disp_df$hour))[i])[, 3],
+      leaflet::addCircleMarkers(
+        map = disp_plot,
+        lng = particles_i[["lon"]],
+        lat = particles_i[["lat"]],
         group = groups[i],
         radius = 1,
         stroke = FALSE,
@@ -119,7 +112,7 @@ dispersion_plot <- function(x,
   }
   
   disp_plot <-
-    addLayersControl(
+    leaflet::addLayersControl(
       disp_plot,
       position = "topright",
       baseGroups = c(
