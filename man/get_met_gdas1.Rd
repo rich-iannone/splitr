@@ -10,8 +10,8 @@ get_met_gdas1(days, duration, direction, path_met_files)
 \item{days}{A vector of days that the model will run. This is combined with
 the \code{daily_hours} to produce a series of date-times.}
 
-\item{duration}{The duration of each model run (either forward or backward)
-in hours.}
+\item{duration}{The duration of each model run (whether it is in the forward
+direction or running backwards) in hours.}
 
 \item{direction}{An option to select whether to conduct the model in the
 \code{"forward"} (default) or \code{"backward"} directions.}

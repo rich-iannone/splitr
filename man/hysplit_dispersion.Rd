@@ -12,22 +12,25 @@ hysplit_dispersion(lat = 49.263, lon = -123.25, height = 50,
   met_dir = NULL, clean_up = TRUE)
 }
 \arguments{
-\item{lat}{The starting latitude and longitude (in decimal degrees) for
-each model run.}
+\item{lat}{The receptor position in terms of latitude and
+longitude (both in decimal degrees), and height in meters above ground
+level.}
 
-\item{lon}{The starting latitude and longitude (in decimal degrees) for
-each model run.}
+\item{lon}{The receptor position in terms of latitude and
+longitude (both in decimal degrees), and height in meters above ground
+level.}
 
-\item{height}{The starting height (in meters above ground level) for each
-model run.}
+\item{height}{The receptor position in terms of latitude and
+longitude (both in decimal degrees), and height in meters above ground
+level.}
 
 \item{start_day}{the day that the model will initialize and run. This should
 take the form of a single-length vector for a day (\code{"YYYY-MM-DD"}).}
 
 \item{start_hour}{a single daily hour as an integer hour (from \code{0} to \code{23}).}
 
-\item{duration}{The duration of each model run (either forward or backward)
-in hours.}
+\item{duration}{The duration of each model run (whether it is in the forward
+direction or running backwards) in hours.}
 
 \item{direction}{An option to select whether to conduct the model in the
 \code{"forward"} (default) or \code{"backward"} directions.}
