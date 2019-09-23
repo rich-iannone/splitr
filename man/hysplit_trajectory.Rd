@@ -12,14 +12,12 @@ hysplit_trajectory(lat = 49.263, lon = -123.25, height = 50,
   met_dir = NULL, exec_dir = NULL, clean_up = TRUE)
 }
 \arguments{
-\item{lat, lon}{The starting latitude and longitude (in decimal degrees) for
-each model run.}
+\item{lat, lon, height}{The receptor position in terms of latitude and
+longitude (both in decimal degrees), and height in meters above ground
+level.}
 
-\item{height}{The starting height (in meters above ground level) for each
-model run.}
-
-\item{duration}{The duration of each model run (either forward or backward)
-in hours.}
+\item{duration}{The duration of each model run (whether it is in the forward
+direction or running backwards) in hours.}
 
 \item{days}{A vector of days that the model will run. This is combined with
 the \code{daily_hours} to produce a series of date-times.}
