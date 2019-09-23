@@ -12,17 +12,19 @@ add_trajectory_params <- function(model,
                                   height = NULL,
                                   duration = NULL,
                                   days = NULL,
-                                  start_day = NULL,
-                                  start_hour = NULL,
                                   daily_hours = NULL,
-                                  direction = NULL,
-                                  met_type = NULL,
-                                  vert_motion = NULL,
-                                  model_height = NULL,
+                                  direction = "forward",
+                                  met_type = "reanalysis",
+                                  vert_motion = 0,
+                                  model_height = 2000,
+                                  extended_met = FALSE,
+                                  config = NULL,
+                                  ascdata = NULL,
                                   traj_name = NULL,
-                                  exec_dir = NULL,
+                                  binary_path = NULL,
                                   met_dir = NULL,
-                                  binary_path = NULL) {
+                                  exec_dir = NULL,
+                                  clean_up = TRUE) {
   
   if (!is.null(lat)) {
     model$lat <- lat
@@ -44,14 +46,6 @@ add_trajectory_params <- function(model,
     model$days <- days
   }
 
-  if (!is.null(start_day)) {
-    model$start_day <- start_day
-  }
-  
-  if (!is.null(start_hour)) {
-    model$start_hour <- start_hour
-  }
-  
   if (!is.null(daily_hours)) {
     model$daily_hours <- daily_hours
   }
