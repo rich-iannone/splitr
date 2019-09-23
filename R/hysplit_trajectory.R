@@ -266,21 +266,19 @@ hysplit_trajectory <- function(lat = 49.263,
         
         # The CONTROL file is now complete and in the
         # working directory, so, execute the model run
-        if (any(c("mac", "unix") %in% system_type)) {
-          
-          sys_cmd <- 
-            paste0("(cd ", exec_dir, " && ", binary_path, " >> /dev/null 2>&1)")
-
-          system(sys_cmd)
-        }
+        sys_cmd <- 
+          paste0(
+            "(cd \"",
+            exec_dir,
+            "\" && \"",
+            binary_path,
+            "\" ",
+            to_null_dev(system_type = system_type),
+            ")"
+          )
         
-        if (system_type == "win") {
-          
-          sys_cmd <-
-            paste0("(cd \"", exec_dir, "\" && \"", binary_path, "\" > NUL 2>&1)")
-          
-          shell(sys_cmd)
-        }
+        execute_on_system(sys_cmd, system_type = system_type)
+        
       }
     }
     
