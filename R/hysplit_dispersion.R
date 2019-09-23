@@ -168,123 +168,58 @@ hysplit_dispersion <- function(lat = 49.263,
   
   # Extract the particle positions at every hour
   sys_cmd <- 
-    paste0("(cd ", exec_dir, " && ", parhplot_binary_path, " -iPARDUMP -a1 >> /dev/null 2>&1)")
+    paste0(
+      "(cd \"",
+      exec_dir,
+      "\" && \"",
+      parhplot_binary_path,
+      "\" -iPARDUMP -a1 ",
+      to_null_dev(system_type = system_type),
+      ")"
+    )
   
-  system(sys_cmd)
-
-  # Remove the .att files from the working directory
-  if (any(c("mac", "unix") %in% system_type)) {
-    system(paste0("(cd ", exec_dir,
-                  " && rm GIS_part*.att)"))
-  }
+  execute_on_system(sys_cmd, system_type = system_type)
   
-  if (system_type == "win") {
-    shell(paste0("(cd \"", exec_dir,
-                 "\" && del GIS_part*.att)"))
-  }
+  dispersion_file_list <-
+    list.files(
+      path = exec_dir,
+      pattern = "^GIS_part_[0-9][0-9][0-9]_ps.txt",
+      full.names = TRUE
+    )
   
-  # Remove the postscript plot from the working directory
-  if (any(c("mac", "unix") %in% system_type)) {
-    system(paste0("(cd ", exec_dir,
-                  " && rm parhplot.ps)"))
-  }
+  dispersion_tbl <-
+    dplyr::tibble(
+      particle_i = character(0),
+      hour = integer(0),
+      lat = numeric(0),
+      lon = numeric(0),
+      height = numeric(0)
+    )
   
-  if (system_type == "win") {
-    shell(paste0("(cd \"", exec_dir,
-                 "\" && del parhplot.ps)"))
-  }
-  
-  # Rename the TXT files as CSV files
-  if (any(c("mac", "unix") %in% system_type)) {
-    system(
-      paste0("(cd ", exec_dir,
-             " && for files in GIS*.txt;",
-             " do mv \"$files\" \"${files%.txt}.csv\"; done)"))
-  }
-  
-  # Remove the 'END' string near the end of
-  # each CSV file
-  if (any(c("mac", "unix") %in% system_type)) {
-    system(paste0("(cd ", exec_dir,
-                  " && sed -i .bk 's/END//g'",
-                  " GIS_part_*.csv; rm *.bk)"))
-  }
-  
-  if (system_type == "win") {        
-    temp_file_list <- 
-      list.files(path = exec_dir,
-                 pattern = "*._ps.txt",
-                 full.names = TRUE)
+  for (file in dispersion_file_list) {
     
-    for (i in 1:length(temp_file_list)) {
-      temp_lines <- readLines(temp_file_list[i])
-      temp_lines <- temp_lines[-(length(temp_lines))]
-      utils::write.table(temp_lines,
-                         file = gsub("txt", "csv",
-                                     temp_file_list[i]),
-                         col.names = FALSE,
-                         row.names = FALSE,
-                         quote = FALSE)
-    }
+    hour_index <- 
+      file %>%
+      tidy_gsub(".*GIS_part_([0-9][0-9][0-9])_ps.*", "\\1") %>%
+      as.integer()
+    
+    disp_tbl <-
+      readr::read_csv(
+        file,
+        col_names = c("particle_i", "lon", "lat", "height"),
+        col_types = "cddd",
+        comment = "END"
+      ) %>%
+      dplyr::mutate(hour = hour_index) %>%
+      dplyr::select(particle_i, hour, lat, lon, height)
+    
+    dispersion_tbl <-
+      dplyr::bind_rows(dispersion_tbl, disp_tbl)
   }
-  
-  # Move the .csv files from the working directory
-  # to the output folder
-  if (any(c("mac", "unix") %in% system_type)) {
-    
-    if (is.null(disp_name)) {
-      folder_name <- 
-        paste0("disp--", 
-               format(Sys.time(),
-                      "%Y-%m-%d--%H-%M-%S"))  
-    } else if (!is.null(disp_name)) {
-      folder_name <- 
-        paste0(disp_name, "--",
-               format(Sys.time(),
-                      "%Y-%m-%d--%H-%M-%S"))  
-    }
-    
-    # Perform the movement of all dispersion files
-    # into a folder residing in the output dir
-    dir.create(path = file.path(exec_dir, folder_name))
-    
-    system(paste0("(cd ", exec_dir,
-                  " && mv GIS_part*.csv '",
-                  file.path(exec_dir, folder_name),
-                  "')"))
-  }
-  
-  if (system_type == "win") {
-    
-    if (is.null(disp_name)) {
-      folder_name <- 
-        paste0("disp--", 
-               format(Sys.time(),
-                      "%Y-%m-%d--%H-%M-%S"))  
-    } else if (!is.null(disp_name)) {
-      folder_name <- 
-        paste0(disp_name, "--",
-               format(Sys.time(),
-                      "%Y-%m-%d--%H-%M-%S"))  
-    }
-    
-    # Perform the movement of all dispersion files
-    # into a folder residing in the output dir
-    dir.create(path = file.path(exec_dir, folder_name))
-    
-    shell(paste0("(cd \"", getwd(),
-                 "\" && move GIS_part*.csv \"",
-                 file.path(exec_dir, folder_name),
-                 "\")"))
-  }
-  
-  disp_tbl <- 
-    create_dispersion_tbl(dispersion_dir = file.path(exec_dir, folder_name))
   
   if (clean_up) {
-    unlink(file.path(exec_dir, disp_output_files()), force = TRUE)
-    unlink(file.path(exec_dir, folder_name), recursive = TRUE, force = TRUE)
+    unlink(file.path(exec_dir, list.files(path = exec_dir, pattern = "^.*$")), force = TRUE)
   }
   
-  disp_tbl
+  dispersion_tbl
 }
