@@ -5,34 +5,32 @@
 \title{Add model parameters}
 \usage{
 add_trajectory_params(model, lat = NULL, lon = NULL, height = NULL,
-  duration = NULL, days = NULL, start_day = NULL,
-  start_hour = NULL, daily_hours = NULL, direction = NULL,
-  met_type = NULL, vert_motion = NULL, model_height = NULL,
-  traj_name = NULL, exec_dir = NULL, met_dir = NULL,
-  binary_path = NULL)
+  duration = NULL, days = NULL, daily_hours = NULL,
+  direction = "forward", met_type = "reanalysis", vert_motion = 0,
+  model_height = 2000, extended_met = FALSE, config = NULL,
+  ascdata = NULL, traj_name = NULL, binary_path = NULL,
+  met_dir = NULL, exec_dir = NULL, clean_up = TRUE)
 }
 \arguments{
 \item{model}{A splitr modeling object.}
 
-\item{lat}{The starting latitude and longitude (in decimal degrees) for
-each model run.}
+\item{lat}{The receptor position in terms of latitude and
+longitude (both in decimal degrees), and height in meters above ground
+level.}
 
-\item{lon}{The starting latitude and longitude (in decimal degrees) for
-each model run.}
+\item{lon}{The receptor position in terms of latitude and
+longitude (both in decimal degrees), and height in meters above ground
+level.}
 
-\item{height}{The starting height (in meters above ground level) for each
-model run.}
+\item{height}{The receptor position in terms of latitude and
+longitude (both in decimal degrees), and height in meters above ground
+level.}
 
-\item{duration}{The duration of each model run (either forward or backward)
-in hours.}
+\item{duration}{The duration of each model run (whether it is in the forward
+direction or running backwards) in hours.}
 
 \item{days}{A vector of days that the model will run. This is combined with
 the \code{daily_hours} to produce a series of date-times.}
-
-\item{start_day}{the day that the model will initialize and run. This should
-take the form of a single-length vector for a day (\code{"YYYY-MM-DD"}).}
-
-\item{start_hour}{a single daily hour as an integer hour (from \code{0} to \code{23}).}
 
 \item{daily_hours}{A vector of daily hours for initiations of runs across the
 given \code{days}. Use values from from \code{0} to \code{23}.}
@@ -55,18 +53,33 @@ magnitude).}
 
 \item{model_height}{The upper limit of the model domain in meters.}
 
+\item{extended_met}{An option to report additional meteorological data along
+each output trajectory.}
+
+\item{config}{A configuration list serves to internally generate the
+\code{SETUP.CFG} file. This list can be easily created by using the
+\code{\link[=set_config]{set_config()}} function. If \code{NULL}, then the default configuration list
+will be generated.}
+
+\item{ascdata}{An ascdata list that will be used to create the \code{ASCDATA.CFG}
+file. This list can be provided through use of the \code{\link[=set_ascdata]{set_ascdata()}}
+function. If \code{NULL}, then the default ascdata list will be generated.}
+
 \item{traj_name}{An optional, descriptive name for the output file
 collection.}
-
-\item{exec_dir}{An optional file path for the working directory of the model
-input and output files.}
-
-\item{met_dir}{An optional file path for storage and access of meteorological
-data files.}
 
 \item{binary_path}{An optional path to a HYSPLIT trajectory model binary.
 When not specified, the model binary will be chosen from several available
 in the package (based on the user's platform).}
+
+\item{met_dir}{An optional file path for storage and access of meteorological
+data files.}
+
+\item{exec_dir}{An optional file path for the working directory of the model
+input and output files.}
+
+\item{clean_up}{An option to make the \code{exec_dir} directory clean after
+completion of all trajectory runs. By default, this is set to \code{TRUE}.}
 }
 \description{
 Add modelling parameters to a model object.
