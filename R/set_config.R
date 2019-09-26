@@ -167,7 +167,7 @@ write_config_list <- function(config_list, dir) {
   paste0(
     "&SETUP\n",
     paste0(names(config_list), " = ", config_list, ",\n", collapse = ""),
-    "/"
+    "/\n"
   ) %>%
     cat(file = file.path(dir, "SETUP.CFG"))
 }
