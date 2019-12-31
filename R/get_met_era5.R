@@ -19,7 +19,7 @@ get_met_era5 <- function(days,
     duration = duration,
     direction = direction,
     suffix = ".ARL",
-    precix = "ERA5_"
+    prefix = "ERA5_"
   ) #%>%
     #get_met_files(
     #  path_met_files = path_met_files,
