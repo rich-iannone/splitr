@@ -280,7 +280,7 @@ get_monthly_filenames <- function(days,
       lubridate::floor_date(unit = "month")
   } else if (direction == "forward") {
     min_month <-
-      (lubridate::as_date(days) + (duration / 24) - lubridate::days(1)) %>%
+      (lubridate::as_date(days) - lubridate::days(1)) %>%
       min() %>%
       lubridate::floor_date(unit = "month")
   }
@@ -288,7 +288,7 @@ get_monthly_filenames <- function(days,
   # Determine the maximum month (as a `Date`) for the model run
   if (direction == "backward") {
     max_month <-
-      (lubridate::as_date(days) - (duration / 24) + lubridate::days(1)) %>%
+      (lubridate::as_date(days) + lubridate::days(1)) %>%
       max() %>%
       lubridate::floor_date(unit = "month")
   } else if (direction == "forward") {
