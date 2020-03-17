@@ -2,13 +2,13 @@
 #' Download files using consistent options
 #' @param urls One or more URLs from which the files reside.
 #' @param local_path The path to which the files should be written.
-#' 
+#'
 #' @noRd
 met_download <- function(urls,
                          local_path) {
-  
+
   for (url in urls) {
-    
+
     download(
       url = url,
       destfile = local_path,
@@ -22,10 +22,10 @@ met_download <- function(urls,
 
 #' Read a `listing` file
 #' @param file_path The path to the `listing` file.
-#' 
+#'
 #' @noRd
 read_listing_file <- function(file_path) {
-  
+
   as.vector(
     utils::read.table(
       file = file_path,
@@ -36,10 +36,10 @@ read_listing_file <- function(file_path) {
 
 #' Create default `SETUP.CFG` and `ASCDATA.CFG` files
 #' @param dir The directory to which the files should be written.
-#' 
+#'
 #' @noRd
 hysplit_config_init <- function(dir) {
-  
+
   # Default `SETUP.CFG` configuration file
   cat(
     "&SETUP",
@@ -85,17 +85,17 @@ hysplit_config_init <- function(dir) {
     "tm_tpot = 0,",
     "tm_tamb = 0,",
     "tm_rain = 0,",
-    "tm_mixd = 0,", 
+    "tm_mixd = 0,",
     "tm_relh = 0,",
     "tm_sphu = 0,",
     "tm_mixr = 0,",
     "tm_dswf = 0,",
-    "tm_terr = 0,",  
+    "tm_terr = 0,",
     "/",
     sep = "\n",
     file = paste0(dir, "/", "SETUP.CFG")
   )
-  
+
   # Default `ASCDATA.CFG` file
   cat(
     "-90.0  -180.0  lat/lon of lower left corner (last record in file)",
@@ -113,11 +113,11 @@ hysplit_config_init <- function(dir) {
 # #' @param extended_met An option to report additional meteorological data along
 # #'   each output trajectory.
 # #' @param dir The directory to which the files should be written.
-# #' 
+# #'
 # #' @noRd
 # hysplit_config_extended_met <- function(extended_met,
 #                                         exec_dir) {
-#   
+#
 #   if (extended_met) {
 #     setup_cfg <- readLines(con = file.path(exec_dir, "SETUP.CFG"))
 #     setup_cfg <- gsub("(tm_.* )(0),", "\\11,", setup_cfg)
@@ -126,7 +126,7 @@ hysplit_config_init <- function(dir) {
 # }
 
 #' Determine which operating system is in use
-#' 
+#'
 #' @noRd
 get_os <- function() {
   if (.Platform$OS.type == "windows") {
@@ -141,31 +141,31 @@ get_os <- function() {
 }
 
 #' Determine whether 64-bit architecture is present
-#' 
-#' @noRd 
+#'
+#' @noRd
 is_64bit_system <- function() {
   ifelse(.Machine$sizeof.pointer == 8, TRUE, FALSE)
 }
 
 #' Obtain the redirect to null device command-line text based on system
-#' 
+#'
 #' @noRd
 to_null_dev <- function(system_type) {
-  
+
   if (system_type %in% c("mac", "unix")) {
     null_dev <- ">> /dev/null 2>&1"
   } else if (system_type == "win") {
     null_dev <- "> NUL 2>&1"
   }
-  
-  null_dev 
+
+  null_dev
 }
 
 #' Execute a system command appropriate on the system type
-#' 
+#'
 #' @noRd
 execute_on_system <- function(sys_cmd, system_type) {
-  
+
   if (system_type %in% c("mac", "unix")) {
     system(sys_cmd)
   } else if (system_type == "win") {
@@ -174,62 +174,62 @@ execute_on_system <- function(sys_cmd, system_type) {
 }
 
 #' Upgrade the `binary_path` variable
-#' 
+#'
 #' @noRd
 set_binary_path <- function(binary_path,
                             binary_name) {
-  
+
   # binary names should be either:
   #  - hyts_std (trajectory models)
   #  - hycs_std (dispersion models)
-  
+
   if (is.null(binary_path)) {
-    
+
     system_os <- get_os()
-    
+
     if (system_os == "mac") {
-      binary_path <- 
+      binary_path <-
         system.file(
           file.path("osx", binary_name),
           package = "splitr"
           )
     }
-    
+
     if (system_os == "unix") {
-      binary_path <- 
+      binary_path <-
         system.file(
           file.path("linux-amd64", binary_name),
           package = "splitr"
         )
     }
-    
+
     if (system_os == "win") {
-      binary_path <- 
+      binary_path <-
         system.file(
           file.path("win", paste0(binary_name, ".exe")),
           package = "splitr"
         )
     }
   }
-  
+
   binary_path
 }
 
 #' Create a file list for output files
 #' @param output_folder The directory where the file list is to be written.
-#' 
+#'
 #' @noRd
 create_file_list <- function(output_folder,
                              create_file = TRUE,
                              file_name = "file_list.txt") {
-  
+
   # List files from the specified archive folder
-  file_list <- 
+  file_list <-
     list.files(
       path = output_folder,
       pattern = "traj.*"
     )
-  
+
   # Create file list in the output folder
   cat(
     file_list,
@@ -237,12 +237,12 @@ create_file_list <- function(output_folder,
     sep = '\n',
     append = FALSE
   )
-  
+
   file_list
 }
 
 to_short_year <- function(date) {
-  
+
   date %>%
     lubridate::year() %>%
     as.character() %>%
@@ -250,7 +250,7 @@ to_short_year <- function(date) {
 }
 
 to_short_month <- function(date) {
-  
+
   formatC(
     date %>% lubridate::month(),
     width = 2, flag = "0"
@@ -258,7 +258,7 @@ to_short_month <- function(date) {
 }
 
 to_short_day <- function(date) {
-  
+
   formatC(
     date %>% lubridate::day(),
     width = 2, flag = "0"
@@ -271,39 +271,39 @@ get_monthly_filenames <- function(days,
                                   direction,
                                   prefix = NULL,
                                   extension = NULL) {
-  
+
   # Determine the minimum month (as a `Date`) for the model run
   if (direction == "backward") {
-    min_month <- 
+    min_month <-
       (lubridate::as_date(days) - (duration / 24) - lubridate::days(1)) %>%
       min() %>%
       lubridate::floor_date(unit = "month")
   } else if (direction == "forward") {
-    min_month <- 
-      (lubridate::as_date(days) + (duration / 24) - lubridate::days(1)) %>%
+    min_month <-
+      (lubridate::as_date(days)) %>%
       min() %>%
       lubridate::floor_date(unit = "month")
   }
-  
+
   # Determine the maximum month (as a `Date`) for the model run
   if (direction == "backward") {
-    max_month <- 
-      (lubridate::as_date(days) - (duration / 24) + lubridate::days(1)) %>%
+    max_month <-
+      (lubridate::as_date(days)) %>%
       max() %>%
       lubridate::floor_date(unit = "month")
   } else if (direction == "forward") {
-    max_month <- 
+    max_month <-
       (lubridate::as_date(days) + (duration / 24) + lubridate::days(1)) %>%
       max() %>%
       lubridate::floor_date(unit = "month")
   }
-  
+
   met_months <- seq(min_month, max_month, by = "1 month")
-  
+
   months_short <- met_months %>% to_short_month()
-  
+
   years_long <- lubridate::year(met_months)
-  
+
   paste0(prefix, years_long, months_short, extension)
 }
 
@@ -313,55 +313,55 @@ get_daily_filenames <- function(days,
                                 direction,
                                 prefix = NULL,
                                 suffix = NULL) {
-  
+
   # Determine the minimum month (as a `Date`) for the model run
   if (direction == "backward") {
-    
-    min_day <- 
+
+    min_day <-
       (lubridate::as_date(days) - (duration / 24) - lubridate::days(1)) %>%
       min()
-    
+
   } else if (direction == "forward") {
-    
-    min_day <- 
-      (lubridate::as_date(days) + (duration / 24) - lubridate::days(1)) %>%
+
+    min_day <-
+      (lubridate::as_date(days)) %>%
       min()
   }
-  
+
   # Determine the maximum month (as a `Date`) for the model run
   if (direction == "backward") {
-    
-    max_day <- 
-      (lubridate::as_date(days) - (duration / 24) + lubridate::days(1)) %>%
+
+    max_day <-
+      (lubridate::as_date(days)) %>%
       max()
-    
+
   } else if (direction == "forward") {
-    
-    max_day <- 
+
+    max_day <-
       (lubridate::as_date(days) + (duration / 24) + lubridate::days(1)) %>%
       max()
   }
-  
-  met_days <- 
+
+  met_days <-
     seq(min_day, max_day, by = "1 day") %>%
     as.character() %>%
     tidy_gsub("-", "")
-  
+
   paste0(prefix, met_days, suffix)
 }
 
 get_met_files <- function(files, path_met_files, ftp_dir) {
-  
+
   # Determine which met files are already locally available
   files_in_path <- list.files(path_met_files)
-  
+
   # Download list of GFS0.25 met files by name
   if (!is.null(files)) {
-    
+
     for (file in files) {
-      
+
       if (!(file %in% files_in_path)) {
-        
+
         downloader::download(
           url = file.path(ftp_dir, file),
           destfile = path.expand(file.path(path_met_files, file)),
@@ -369,11 +369,11 @@ get_met_files <- function(files, path_met_files, ftp_dir) {
           quiet = FALSE,
           mode = "wb",
           cacheOK = FALSE
-        ) 
+        )
       }
     }
   }
-  
+
   files
 }
 
@@ -388,7 +388,7 @@ get_traj_output_filename <- function(traj_name,
                                      lon,
                                      height,
                                      duration) {
-  
+
   paste0(
     "traj-",
     ifelse(is.null(traj_name), "", traj_name),
@@ -416,7 +416,7 @@ get_disp_output_filename <- function(disp_name,
                                      lon,
                                      height,
                                      duration) {
-  
+
   paste0(
     "disp-",
     ifelse(is.null(disp_name), "", disp_name),
@@ -435,7 +435,7 @@ get_disp_output_filename <- function(disp_name,
 
 get_receptor_values <- function(receptors_tbl,
                                 receptor_i) {
-  
+
   receptors_tbl[receptor_i, ] %>% as.list()
 }
 
@@ -447,17 +447,17 @@ get_receptor_values <- function(receptors_tbl,
 #'   function.
 #' @noRd
 tidy_gsub <- function(x, pattern, replacement, fixed = FALSE) {
-  
+
   gsub(pattern, replacement, x, fixed = fixed)
 }
 
 tidy_sub <- function(x, pattern, replacement, fixed = FALSE) {
-  
+
   sub(pattern, replacement, x, fixed = fixed)
 }
 
 tidy_grepl <- function(x, pattern) {
-  
+
   vapply(
     pattern,
     FUN = function(pattern) {
@@ -469,7 +469,7 @@ tidy_grepl <- function(x, pattern) {
 }
 
 traj_output_files <- function() {
-  
+
   c(
     "ASCDATA.CFG",
     "CONTROL",
@@ -481,7 +481,7 @@ traj_output_files <- function() {
 }
 
 disp_output_files <- function() {
-  
+
   c(
     "ASCDATA.CFG",
     "CONC.CFG",
@@ -496,13 +496,13 @@ disp_output_files <- function() {
 }
 
 check_start_day <- function(start_day) {
-  
+
   # Stop if `start_day` isn't a length 1 vector
   if (length(start_day) != 1) {
     stop("The value provided to `start_day` must be a single value.",
          call. = FALSE)
   }
-  
+
   if (!(inherits(start_day, "character") |
         inherits(start_day, "Date") |
         inherits(start_day, "POSIXct"))) {

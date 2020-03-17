@@ -71,5 +71,16 @@ download_met_files <- function(met_type,
       )
   }
   
+    if (met_type == "era5") {
+    
+    met_files <-
+      get_met_era5(
+        days = days,
+        duration = duration,
+        direction = direction,
+        path_met_files = met_dir
+      )
+  }
+
   met_files
 }
