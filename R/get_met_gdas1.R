@@ -42,7 +42,7 @@ get_met_gdas1 <- function(days,
   
   month_names <-
     met_months %>%
-    lubridate::month(label = TRUE, abbr = TRUE) %>%
+    lubridate::month(label = TRUE, abbr = TRUE, locale = "en_US.UTF-8") %>%
     as.character() %>%
     tolower()
   
