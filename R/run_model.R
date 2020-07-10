@@ -29,7 +29,8 @@ run_model <- function(model) {
         traj_name = model$traj_name,
         exec_dir = model$exec_dir,
         met_dir = model$met_dir,
-        binary_path = model$binary_path
+        binary_path = model$binary_path,
+        clean_up = model$clean_up
       )
     
     model$traj_df <- traj_df
@@ -80,7 +81,8 @@ run_model <- function(model) {
           species = species_list,
           exec_dir = model$exec_dir,
           met_dir = model$met_dir,
-          binary_path = model$binary_path
+          binary_path = model$binary_path,
+          clean_up = model$clean_up
         )
       
       model$disp_df <- disp_df

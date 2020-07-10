@@ -82,6 +82,10 @@ add_trajectory_params <- function(model,
     model$binary_path <- binary_path
   }
   
+  if (!is.null(clean_up)) {
+    model$clean_up <- clean_up
+  }
+  
   model
 }
 
@@ -96,7 +100,8 @@ add_dispersion_params <- function(model,
                                   model_height = NULL,
                                   exec_dir = NULL,
                                   met_dir = NULL,
-                                  binary_path = NULL) {
+                                  binary_path = NULL,
+                                  clean_up = TRUE) {
   
   if (!is.null(start_time)) {
     model$start_time <- start_time
@@ -132,6 +137,10 @@ add_dispersion_params <- function(model,
   
   if (!is.null(binary_path)) {
     model$binary_path <- binary_path
+  }
+  
+  if (!is.null(clean_up)) {
+    model$clean_up <- clean_up
   }
   
   model
