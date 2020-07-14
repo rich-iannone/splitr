@@ -4,6 +4,7 @@
 #' runs using specified meteorological datasets.
 #' 
 #' @inheritParams hysplit_trajectory
+#' @param binary_name An optional file name for the hysplit binary code. Defaults to "hycs_std", but could be "hycm_std", for example.
 #' @param start_day the day that the model will initialize and run. This should
 #'   take the form of a single-length vector for a day (`"YYYY-MM-DD"`).
 #' @param start_hour a single daily hour as an integer hour (from `0` to `23`).
@@ -31,6 +32,7 @@ hysplit_dispersion <- function(lat = 49.263,
                                species,
                                disp_name = NULL,
                                binary_path = NULL, 
+                               binary_name = NULL,
                                exec_dir = NULL,
                                met_dir = NULL,
                                clean_up = TRUE) {
@@ -41,11 +43,13 @@ hysplit_dispersion <- function(lat = 49.263,
   # If the meteorology dir isn't specified, use the working directory
   if (is.null(met_dir)) met_dir <- getwd()
   
-  # Set the path for the `hycs_std` binary file
+  # Set the path for the binary file. Defaults to "hycs_std"
+  if (is.null(binary_name)) binary_name <- "hycs_std"
+  
   hycs_std_binary_path <- 
     set_binary_path(
       binary_path = binary_path,
-      binary_name = "hycs_std"
+      binary_name = binary_name
     )
   
   parhplot_binary_path <-

@@ -101,6 +101,7 @@ add_dispersion_params <- function(model,
                                   exec_dir = NULL,
                                   met_dir = NULL,
                                   binary_path = NULL,
+                                  binary_name = NULL,
                                   clean_up = TRUE) {
   
   if (!is.null(start_time)) {
@@ -137,6 +138,10 @@ add_dispersion_params <- function(model,
   
   if (!is.null(binary_path)) {
     model$binary_path <- binary_path
+  }
+  
+  if (!is.null(binary_name)) {
+    model$binary_name <- binary_name
   }
   
   if (!is.null(clean_up)) {
