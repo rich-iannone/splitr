@@ -24,6 +24,7 @@ add_trajectory_params <- function(model,
                                   binary_path = NULL,
                                   met_dir = NULL,
                                   exec_dir = NULL,
+                                  softrun = FALSE,
                                   clean_up = TRUE) {
   
   if (!is.null(lat)) {
@@ -82,6 +83,10 @@ add_trajectory_params <- function(model,
     model$binary_path <- binary_path
   }
   
+  if (!is.null(softrun)) {
+    model$softrun <- softrun
+  }
+  
   if (!is.null(clean_up)) {
     model$clean_up <- clean_up
   }
@@ -102,6 +107,7 @@ add_dispersion_params <- function(model,
                                   met_dir = NULL,
                                   binary_path = NULL,
                                   binary_name = NULL,
+                                  softrun = FALSE,
                                   clean_up = TRUE) {
   
   if (!is.null(start_time)) {
@@ -140,8 +146,8 @@ add_dispersion_params <- function(model,
     model$binary_path <- binary_path
   }
   
-  if (!is.null(binary_name)) {
-    model$binary_name <- binary_name
+  if (!is.null(softrun)) {
+    model$softrun <- softrun
   }
   
   if (!is.null(clean_up)) {

@@ -35,6 +35,7 @@ hysplit_dispersion <- function(lat = 49.263,
                                binary_name = NULL,
                                exec_dir = NULL,
                                met_dir = NULL,
+                               softrun = NULL,
                                clean_up = TRUE) {
   
   # If the execution dir isn't specified, use the working directory
@@ -155,6 +156,7 @@ hysplit_dispersion <- function(lat = 49.263,
     exec_dir = exec_dir
   )
   
+  
   # The CONTROL file is now complete and in the
   # working directory, so, execute the model run
   sys_cmd <- 
@@ -168,7 +170,9 @@ hysplit_dispersion <- function(lat = 49.263,
       ")"
     )
   
-  execute_on_system(sys_cmd, system_type = system_type)
+  if (isFALSE(softrun)) {
+    execute_on_system(sys_cmd, system_type = system_type)
+  }
   
   # Extract the particle positions at every hour
   sys_cmd <- 
@@ -182,8 +186,11 @@ hysplit_dispersion <- function(lat = 49.263,
       ")"
     )
   
-  execute_on_system(sys_cmd, system_type = system_type)
+  if (isFALSE(softrun)) {
+    execute_on_system(sys_cmd, system_type = system_type)
+  }
   
+  if (isFALSE(softrun)) {
   dispersion_file_list <-
     list.files(
       path = exec_dir,
@@ -219,6 +226,7 @@ hysplit_dispersion <- function(lat = 49.263,
     
     dispersion_tbl <-
       dplyr::bind_rows(dispersion_tbl, disp_tbl)
+    }
   }
   
   if (clean_up) {

@@ -30,6 +30,7 @@ run_model <- function(model) {
         exec_dir = model$exec_dir,
         met_dir = model$met_dir,
         binary_path = model$binary_path,
+        softrun = model$softrun,
         clean_up = model$clean_up
       )
     
@@ -83,6 +84,7 @@ run_model <- function(model) {
           met_dir = model$met_dir,
           binary_path = model$binary_path,
           binary_name = model$binary_name,
+          softrun = model$softrun,
           clean_up = model$clean_up
         )
       
