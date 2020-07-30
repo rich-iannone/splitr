@@ -87,6 +87,7 @@ hysplit_trajectory <- function(lat = 49.263,
                                binary_path = NULL,
                                met_dir = NULL,
                                exec_dir = NULL,
+                               softrun = NULL, # This is not evaluated, yet
                                clean_up = TRUE) {
   
   # If the execution dir isn't specified, use the working directory

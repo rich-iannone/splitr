@@ -179,10 +179,12 @@ execute_on_system <- function(sys_cmd, system_type) {
 set_binary_path <- function(binary_path,
                             binary_name) {
 
-  # binary names should be either:
+  # By default, binary names should be either:
   #  - hyts_std (trajectory models)
   #  - hycs_std (dispersion models)
 
+  # If a user uses another binary name, the path to it should also be specified
+  
   if (is.null(binary_path)) {
 
     system_os <- get_os()
@@ -210,6 +212,8 @@ set_binary_path <- function(binary_path,
           package = "splitr"
         )
     }
+  } else {
+    binary_path <- paste0(binary_path, binary_name)
   }
 
   binary_path

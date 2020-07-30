@@ -14,64 +14,58 @@ get_met_gdas1 <- function(days,
                           direction,
                           path_met_files) {
   
-  # Determine the minimum month (as a `Date`) for the model run
+  # Determine the minimum date (as a `Date`) for the model run
   if (direction == "backward") {
-    min_month <- 
+    min_date <- 
       (lubridate::as_date(days[1]) - (duration / 24)) %>%
-      lubridate::floor_date(unit = "month")
+      lubridate::floor_date(unit = "day")
   } else if (direction == "forward") {
-    min_month <- 
-      (lubridate::as_date(days[1]) + (duration / 24)) %>%
-      lubridate::floor_date(unit = "month")
+    min_date <- 
+      (lubridate::as_date(days[1])) %>%
+      lubridate::floor_date(unit = "day")
   }
   
-  # Determine the maximum month (as a `Date`) for the model run
+  # Determine the maximum date (as a `Date`) for the model run
   if (direction == "backward") {
-    max_month <- 
-      (lubridate::as_date(days[length(days)]) - (duration / 24)) %>%
-      lubridate::floor_date(unit = "month")
+    max_date <- 
+      (lubridate::as_date(days[length(days)])) %>%
+      lubridate::floor_date(unit = "day")
   } else if (direction == "forward") {
-    max_month <- 
+    max_date <- 
       (lubridate::as_date(days[length(days)]) + (duration / 24)) %>%
-      lubridate::floor_date(unit = "month")
+      lubridate::floor_date(unit = "day")
   }
   
-  met_months <- 
-    seq(min_month, max_month, by = "1 month") %>%
-    rep(each = 5)
+  met_days <- 
+    seq(min_date, max_date, by = "1 day") %>% 
+    lubridate::day()
   
-  month_names <-
-    met_months %>%
-    lubridate::month(label = TRUE, abbr = TRUE) %>%
+  month_names <- 
+    seq(min_date, max_date, by = "1 day") %>%
+    lubridate::month(label = TRUE, abbr = TRUE, locale = "en_US.UTF-8")  %>%
     as.character() %>%
     tolower()
   
   met_years <- 
-    met_months %>%
+    seq(min_date, max_date, by = "1 day") %>%
+    lubridate::year() %>% 
     substr(3, 4)
   
-  if (!all(lubridate::leap_year(lubridate::year(days)))) {
-    
-    not_leap_years_lgl <- !lubridate::leap_year(lubridate::ymd(days))
-    
-    exclusion_years_feb_5 <- 
-      lubridate::year(days[not_leap_years_lgl]) %>%
-      unique()
-    
-    excluded_files <- 
-      paste0("gdas1.feb", substr(exclusion_years_feb_5, 3, 4), ".w5")
-    
-  } else {
-    excluded_files <- character(0)
-  }
+  # Only consider the weeks of the month we need:
+  #.w1 - days 1-7
+  #.w2 - days 8-14
+  #.w3 - days 15-21
+  #.w4 - days 22-28
+  #.w5 - days 29 - rest of the month 
   
-  files <- paste0("gdas1.", month_names, met_years, ".w", 1:5)
+  met_week <- ceiling(met_days / 7)
   
-  files <- files %>% base::setdiff(excluded_files)
+  files <- paste0("gdas1.", month_names, met_years, ".w", met_week) %>% unique()
   
   get_met_files(
     files = files,
     path_met_files = path_met_files,
     ftp_dir = "ftp://arlftp.arlhq.noaa.gov/archives/gdas1"
   )
+  
 }
