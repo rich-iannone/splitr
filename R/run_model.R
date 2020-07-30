@@ -48,8 +48,8 @@ run_model <- function(model) {
       # Get time window for observations
       start_day <- model$start_time %>% lubridate::floor_date()
       start_hour <- model$start_time %>% lubridate::hour() 
-      duration <- as.numeric(model$end_time - model$start_time)
-      
+      duration <- as.numeric(difftime(model$end_time, model$start_time, units = "hours"))
+    
       # Get ith source parameters
       lat <- model$sources[i, ][["lat"]]
       lon <- model$sources[i, ][["lon"]]
