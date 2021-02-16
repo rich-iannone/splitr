@@ -1,11 +1,10 @@
-FROM rocker/rstudio:3.4.0
+FROM rocker/tidyverse:3.3.1
   
-# Install
-RUN install2.r --error --deps TRUE \
-here \ 
-&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds
-
+# Install splitr
 RUN R -e "devtools::install_github('rich-iannone/splitr')"
 
+#RUN install2.r --error --deps TRUE \
+#here \ 
+#&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 #sudo apt-get install gcc-7 g++-7
 #sudo apt-get install gfortran-7
