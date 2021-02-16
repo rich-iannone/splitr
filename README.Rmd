@@ -282,8 +282,8 @@ devtools::install_github("rich-iannone/splitr")
 
 ```
 cd $(pwd)
-
-docker run --platform linux/amd64 -p 8787:8787 -e ROOT=true -e DISABLE_AUTH=true rocker/geospatial:3.6.3 $(pwd):/home/rstudio/kitematic/ 
+docker build -t splitr .
+docker run -p 8787:8787 -e ROOT=true -e DISABLE_AUTH=true -v $(pwd):/home/rstudio/kitematic/ splitr 
 ```
 
 ## HYSPLIT Citations
