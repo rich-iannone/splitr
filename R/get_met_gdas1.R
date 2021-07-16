@@ -40,11 +40,21 @@ get_met_gdas1 <- function(days,
     seq(min_date, max_date, by = "1 day") %>% 
     lubridate::day()
   
-  month_names <- 
-    seq(min_date, max_date, by = "1 day") %>%
-    lubridate::month(label = TRUE, abbr = TRUE, locale = "en_US.UTF-8")  %>%
-    as.character() %>%
-    tolower()
+  # "en_US.UTF-8" is not a valid locale for windows. 
+  os_for_locale <- get_os()
+  if(os_for_locale == "win"){
+    month_names <- 
+      seq(min_date, max_date, by = "1 day") %>%
+      lubridate::month(label = TRUE, abbr = TRUE, locale = Sys.getlocale("LC_TIME"))  %>%
+      as.character() %>%
+      tolower()
+  } else {
+    month_names <- 
+      seq(min_date, max_date, by = "1 day") %>%
+      lubridate::month(label = TRUE, abbr = TRUE, locale = "en_US.UTF-8")  %>%
+      as.character() %>%
+      tolower()
+  }
   
   met_years <- 
     seq(min_date, max_date, by = "1 day") %>%

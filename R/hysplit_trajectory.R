@@ -218,7 +218,7 @@ hysplit_trajectory <- function(lat = 49.263,
       # Make nested loop with daily beginning hours
       for (j in daily_hours) {
         
-        start_hour_GMT <- j
+        start_hour_GMT <- daily_hours[j]
         
         if (start_year_GMT > 40) {
           full_year_GMT <- paste0("19", start_year_GMT)
