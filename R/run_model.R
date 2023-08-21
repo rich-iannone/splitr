@@ -73,7 +73,7 @@ run_model <- function(model) {
           start_day = start_day,
           start_hour = start_hour,
           duration = duration,
-          direction = "forward",
+          direction = model$direction,
           met_type = model$met_type,
           vert_motion = model$vert_motion,
           model_height = model$model_height,

@@ -80,7 +80,7 @@ hysplit_dispersion <- function(lat = 49.263,
     download_met_files(
       met_type = met_type,
       days = start_day,
-      duration = duration,
+      duration = abs(duration),
       direction = direction,
       met_dir = met_dir
     )
