@@ -16,7 +16,7 @@ get_output_tbl <- function(model) {
     }
     
     if (!is.null(model$traj_df)) {
-      return(dplyr::as.tbl(model$traj_df))
+      return(tibble::as.tibble(model$traj_df))
     }
   }
   
@@ -27,7 +27,7 @@ get_output_tbl <- function(model) {
     }
     
     if (!is.null(model$disp_df)) {
-      return(dplyr::as.tbl(model$disp_df))
+      return(tibble::as.tibble(model$disp_df))
     }
   }
 }
